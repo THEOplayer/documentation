@@ -74,10 +74,12 @@
 }
 
 .item {
-  align-items: center;
   cursor: pointer;
+}
+
+.itemContent {
+  align-items: center;
   display: flex;
-  flex-direction: row;
   gap: 0.6rem;
 }
 

@@ -64,19 +64,18 @@ export default function CopyPageDropdown({ markdownUrl, className }: CopyPageDro
             href={markdownUrl}
             target="_blank"
             rel="noopener"
-            title="Open this page as plain text"
             className={({ isFocused }) => clsx('dropdown__link', { focused: isFocused }, styles.item)}
           >
-            <DocumentIcon />
-            View as Markdown
+            <span className={styles.itemContent} title="Open this page as plain text">
+              <DocumentIcon />
+              View as Markdown
+            </span>
           </MenuItem>
-          <MenuItem
-            onAction={copyMarkdown}
-            title="Copy this page as Markdown for LLMs"
-            className={({ isFocused }) => clsx('dropdown__link', { focused: isFocused }, styles.item)}
-          >
-            <CopyIcon />
-            Copy as Markdown
+          <MenuItem onAction={copyMarkdown} className={({ isFocused }) => clsx('dropdown__link', { focused: isFocused }, styles.item)}>
+            <span className={styles.itemContent} title="Copy this page as Markdown for LLMs">
+              <CopyIcon />
+              Copy as Markdown
+            </span>
           </MenuItem>
         </Menu>
       </Popover>
