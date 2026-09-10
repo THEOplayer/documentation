@@ -29,7 +29,7 @@
   box-shadow: var(--ifm-global-shadow-md);
   list-style: none;
   max-height: 80vh;
-  min-width: 16rem;
+  min-width: 12rem;
   max-width: min(25rem, 90vw);
   overflow-y: auto;
   padding: 0.5rem;
@@ -74,26 +74,15 @@
 }
 
 .item {
+  align-items: center;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   gap: 0.6rem;
-  align-items: flex-start;
 }
 
 .icon {
   flex: 0 0 auto;
   height: 16px;
-  margin-top: 0.1rem;
   width: 16px;
-}
-
-.itemText {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.itemText [data-slot='description'] {
-  color: var(--ifm-color-emphasis-600);
-  font-size: 0.75rem;
 }

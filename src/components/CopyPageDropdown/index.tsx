@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button, Menu, MenuItem, MenuTrigger, Popover, Text } from 'react-aria-components';
+import { Button, Menu, MenuItem, MenuTrigger, Popover } from 'react-aria-components';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -64,20 +64,19 @@ export default function CopyPageDropdown({ markdownUrl, className }: CopyPageDro
             href={markdownUrl}
             target="_blank"
             rel="noopener"
+            title="Open this page as plain text"
             className={({ isFocused }) => clsx('dropdown__link', { focused: isFocused }, styles.item)}
           >
             <DocumentIcon />
-            <span className={styles.itemText}>
-              <Text slot="label">View as Markdown</Text>
-              <Text slot="description">Open this page as plain text</Text>
-            </span>
+            View as Markdown
           </MenuItem>
-          <MenuItem onAction={copyMarkdown} className={({ isFocused }) => clsx('dropdown__link', { focused: isFocused }, styles.item)}>
+          <MenuItem
+            onAction={copyMarkdown}
+            title="Copy this page as Markdown for LLMs"
+            className={({ isFocused }) => clsx('dropdown__link', { focused: isFocused }, styles.item)}
+          >
             <CopyIcon />
-            <span className={styles.itemText}>
-              <Text slot="label">Copy as Markdown</Text>
-              <Text slot="description">Copy this page as Markdown for LLMs</Text>
-            </span>
+            Copy as Markdown
           </MenuItem>
         </Menu>
       </Popover>
