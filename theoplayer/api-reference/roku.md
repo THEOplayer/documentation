@@ -145,7 +145,7 @@ The following key/value pairs are supported on the `contentProtection` attribute
 | playready           | Key System Config  | Optional. The configuration for Playready DRM for this source. If both `widevine` and `playready` are specified, the order specified in `preferredKeySystems` will be used.                                                                                              |
 | preferredKeySystems | Array of strings   | Optional. The preferred key systems to use. The key systems will be tried in the order specified. If not specified, `widevine` will be preferred over `playready`.                                                                                                       |
 
-NOTE: Playready is not supported with HLS streams on Roku, so even if set to be preferred, it will be ignored for HLS streams.
+NOTE: PlayReady is not supported with HLS streams on Roku, so even if set to be preferred, it will be ignored for HLS streams.
 
 ### Key System Config
 
@@ -184,7 +184,7 @@ vuDrmSource = {
 
 ### DRM Parameters
 
-The `drmParams` attribute of the `contentProtection` is an associative array that represents the `drmParams` property of the Roku Content Node metadata. For a full list of the available properties and which versions of Roku they are available for, please visit [the Roku documentation for `drmParams`](https://developer.roku.com/docs/developer-program/getting-started/architecture/content-metadata.md#digital-rights-management-drm-control-attributes). The following key/value pairs have been available for a while on the `drmParams` attribute. Note that, unlike most properties in Brightscript, _these property names are case sensitive_:
+The `drmParams` attribute of the `contentProtection` is an associative array that represents the `drmParams` property of the Roku Content Node metadata. For a full list of the available properties and which versions of Roku they are available for, please visit [the Roku documentation for `drmParams`](https://developer.roku.com/docs/developer-program/getting-started/architecture/content-metadata.md#digital-rights-management-drm-control-attributes). The following key/value pairs have been available for a while on the `drmParams` attribute. Note that, unlike most properties in BrightScript, _these property names are case sensitive_:
 
 | Name             | Type   | Description                                                                                                                                                                                                                                                                                                                                                                  |
 | ---------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
