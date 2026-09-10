@@ -9,6 +9,89 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.11.0 (2026/09/10)
+
+### General
+
+#### ✨ Features
+
+- Added the `THEO_LIVE_DISCOVERY_ERROR` (13004) error code, which is reported when an OptiView Live channel could not be played because the discovery request failed or returned an invalid response.
+
+### Web
+
+#### ✨ Features
+
+- Added Google IMA SDK for webOS and Tizen to enable beacons and UI for serverside ads on LG and Samsung TVs.
+- Added CMCD v2 buffer starvation reporting (`bs`, `bsa`, `bsd`), media start delay (`msd`) and media resume delay (`com.dolby.optiview-mrd`) to make tracking rebuffering easier.
+
+#### 🐛 Issues
+
+- Fixed an issue where playback would fail when the selected DRM key system (e.g. Widevine) failed after selection, instead of falling back to an alternative configured key system (e.g. PlayReady).
+- Fixed an issue where latency management stayed disabled for low-latency HLS streams without an explicit `latencyConfiguration` on the source, such as the LL-HLS playback of a THEOlive channel, causing playback to never catch up with the live edge.
+- Fixed an issue where playback of a low-latency HLS stream could fail with an 'attempted to download an incomplete segment' error.
+- Fixed an issue where the player would keep targeting the primary channel's latency after switching to the backup channel.
+- Fixed an issue where an HLS stream with a Dolby Vision enhancement layer failed to play on webOS devices without Dolby Vision support, instead of falling back to its base layer.
+- Fixed an issue where the CMCD session ID (sid) was not regenerated when a new source was set, so separate playback sessions were reported as one. A new session ID is now generated each time a source is set and stays stable for that source, including OptiView Live endpoint switches, fallbacks and OptiView Ads interstitials.
+- Fixed an issue where an unnecessary FairPlay license request was sent on every quality switch when playing HESP content on Safari.
+- Report fatal player errors to CMCD before the first media request.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- The Google IMA and Google DAI integrations now require `minSdk` 24 or higher, because the Google IMA SDK 3.40.0 dependency requires it. The core THEOplayer SDK still supports `minSdk` 23. Applications that use the Google IMA or Google DAI integration must raise their `minSdk` to 24.
+
+#### 🐛 Issues
+
+- Fixed a stray `pause` event being dispatched when switching between two back-to-back OptiView ad breaks.
+- Fixed unbounded memory growth during THEOlive playback when the network delivers data faster than the player consumes it, which could cause `OutOfMemoryError` crashes.
+- Fixed a NullPointerException that could occur when Google IMA delivered a null AdMediaInfo to the ad player.
+- Fixed an issue where the player would keep targeting the primary channel's latency after switching to the backup channel.
+- Fixed an issue where Google DAI live streams could fail to start with a `MANIFEST_LOAD_ERROR` after a 15 second timeout, caused by a bug in Google IMA SDK 3.39.0. The Google IMA SDK dependency was updated to 3.40.0, which requires `minSdk` 24 or higher for applications that use the Google IMA or Google DAI integration.
+- The `MANIFEST_LOAD_ERROR` that is dispatched when a Google DAI stream request fails now contains the original Google IMA `AdError` as its cause.
+- Report fatal player errors through CMCD when they occur before the first media request.
+- Fixed missing CMCD headers and playback state reporting on THEOlive HLS segment requests since 11.8.0.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the CMCD channel name (`theo-cn`) reported the raw distribution ID. It is now only reported once the human-readable name is known, and is left unset until then rather than falling back to the ID.
+- Fixed an issue where the player would keep targeting the primary channel's latency after switching to the backup channel.
+- Fixed an issue where a seek that was cancelled by AVFoundation left the player stuck in the seeking state, so `player.seeking` stayed `true` and no `seeking` or `seeked` events were dispatched for any later seek. A seek issued before a player item exists now invokes its completion handler with an error instead of never calling back.
+- Fixed an issue where the CMCD-States header could grow past CDN log limits: state reason and error strings are now capped at 128 characters, and when more than 20 states are pending the oldest are dropped and their count is reported on the first shipped state.
+- Report fatal player errors through CMCD when they occur before the first media request.
+
+### tvOS
+
+#### 🐛 Issues
+
+- Fixed an issue where a seek that was cancelled by AVFoundation left the player stuck in the seeking state, so `player.seeking` stayed `true` and no `seeking` or `seeked` events were dispatched for any later seek. A seek issued before a player item exists now invokes its completion handler with an error instead of never calling back.
+- Fixed an issue where the CMCD-States header could grow past CDN log limits: state reason and error strings are now capped at 128 characters, and when more than 20 states are pending the oldest are dropped and their count is reported on the first shipped state.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fixed an issue where sources with erroring IMAGE-STREAM URLs would fail to play on Chromecast receiver apps.
+
+### Roku
+
+#### ✨ Features
+
+- Added CMCD reporting of whether the device can present Dolby Vision and decode Dolby Digital Plus (EC-3), and of the video and audio codecs which are actually being decoded.
+
+#### ⚡ Improvements
+
+- Added the reason a playback state was entered to the reported CMCD state, so a session that restarted because an OptiView Live channel fell back to another stream can now be told apart from one that started normally, matching the other platforms.
+
+#### 🐛 Issues
+
+- Fixed an issue where a fatal error could be reported in the CMCD data without its error code or message, leaving the failure unclassifiable.
+- Fixed an issue where adding an unsupported integration reported an unrelated error code and no error message.
+- Fixed an issue where an HLS stream mixing Dolby Vision and SDR variants could fail to play on devices whose display output is SDR.
+- Report fatal player errors through CMCD before the first media request.
+
 ## 🚀 11.10.2 (2026/09/03)
 
 ### Web
@@ -581,7 +664,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
+- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
 - Added support for DRM-protected OptiView Live Streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
 
 #### 🐛 Issues
@@ -748,7 +831,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -761,7 +844,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.
