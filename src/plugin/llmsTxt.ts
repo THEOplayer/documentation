@@ -3,8 +3,10 @@ import path from 'node:path';
 import type { LoadContext, Plugin } from '@docusaurus/types';
 import { normalizeUrl } from '@docusaurus/utils';
 import llmsTxtPlugin, { type PluginOptions as LlmsTxtPluginOptions } from '@signalwire/docusaurus-plugin-llms-txt';
+import micromatch from 'micromatch';
 import { rehypeDocusaurusMarkdown, remarkAbsoluteLinks } from './llmsTxtMarkdown';
 import { locateDocs, type DocLocation } from './llmsTxtSidebars';
+import type { LlmsTxtGlobalData } from './llmsTxtClient';
 
 export interface Product {
   /** First path segment of the product's docs, e.g. `theoplayer` for `/docs/theoplayer/**`. */
@@ -85,6 +87,10 @@ function header(title: string, description: string | undefined): string {
 }
 
 const OVERVIEW_SECTION = 'Overview';
+
+function excludeRoutesRegExp(patterns: string[]): string {
+  return patterns.map((pattern) => micromatch.makeRe(pattern).source).join('|');
+}
 
 /**
  * Section of the product index for a page, based on where the page appears in the sidebars.
@@ -203,6 +209,12 @@ export default function llmsTxt(context: LoadContext, options: Options): Plugin<
   });
   return {
     name: 'llms-txt',
+    async contentLoaded({ actions }) {
+      // Serialize patterns as a regex so the client uses the same matcher as the plugin for the current route.
+      actions.setGlobalData({
+        excludeRoutes: excludeRoutesRegExp([...(options.llmsTxt.content?.excludeRoutes ?? [])]),
+      } satisfies LlmsTxtGlobalData);
+    },
     async postBuild(props) {
       await inner.postBuild?.(props);
       const locations = locateDocs(props.plugins, siteConfig.baseUrl);
