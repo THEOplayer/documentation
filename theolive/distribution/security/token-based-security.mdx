@@ -121,6 +121,35 @@ The `hw` device types are derived from the viewer's `User-Agent` header:
 }
 ```
 
+## Troubleshooting rejected viewers
+
+A viewer can be rejected because the geo or device restrictions in their token do not match what the CDN detected for them, which is hard to diagnose from an HTTP `403` alone: you know the token you issued, but not the country, region, DMA code or device type the CDN resolved for that viewer.
+
+For those two restrictions, the `403` response carries an `x-optiview-reject-reason` header describing what the CDN detected. The value is a comma-separated list of `<claim property>=<detected value>` pairs, keyed by the path of the restriction that rejected the request:
+
+| Rejected by                                                        | Header value                                                    | Example                               |
+| ------------------------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------- |
+| [Geo restrictions](#geo-restrictions) (`geo`, or `cc`/`rgn`/`dma`) | `geo.cc=<country>`, `geo.rgn=<region>` and `geo.dma=<DMA code>` | `geo.cc=US,geo.rgn=US-CA,geo.dma=803` |
+| [Device type](#device-type-mapping) (`hw`)                         | `hw=<device type>`                                              | `hw=mobile`                           |
+
+For example, a token restricted with `"geo": { "cc": ["BE"] }` presented by a viewer in California is rejected with:
+
+```http
+HTTP/2 403
+x-optiview-reject-reason: geo.cc=US,geo.rgn=US-CA,geo.dma=803
+```
+
+Comparing that against the token shows why playback failed: the viewer is in `US`, the token only allows `BE`.
+
+Keep in mind when reading the header:
+
+- The values describe the **viewer**, not the token. They are what the CDN resolved from the request, so they are exactly the values the restrictions were evaluated against.
+- Only attributes the CDN could determine are listed. A viewer in a country without region subdivisions, or outside the United States and Canada (where regions and DMA codes are supported), yields `geo.cc` only.
+- Only the restriction that rejected the request is reported. Restrictions are evaluated in order (channel, distribution, geo, device) and evaluation stops at the first one that fails, so a viewer failing both the geo and the device restriction sees the geo detail only.
+- The header is exposed through `Access-Control-Expose-Headers`, so a browser-based player can read it on the `403`.
+
+Every other rejection returns a plain `403` without this header, including an expired, malformed or incorrectly signed token, a channel restriction (`ch`) that does not match, and the distribution's own [geo-blocking](./geo-blocking.md), [IP blocking](./ip-blocking.md) and [referrer blocking](./referrer-blocking.mdx) rules.
+
 ## Configuration
 
 To enable token-based security, navigate to your distribution's security settings and enable the token security toggle. Provide the shared secret or public key used to verify tokens.
