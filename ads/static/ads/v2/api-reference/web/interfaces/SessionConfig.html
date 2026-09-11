@@ -51,11 +51,14 @@ string or a zero-argument callback per macro name, e.g.
 <code>{ '$CUSTOM_TEAM$': () =&gt; currentTeam() }</code>. Every <code>$NAME$</code> token inside a
 manifest / session / update value is replaced when the ad request is built,
 so <code>&quot;$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$&quot;</code> becomes <code>&quot;1920x1080&quot;</code>.
-Customer macros are consulted before the built-in <code>$OPTIVIEW_*</code> set, so a
-built-in can be overridden. <code>$OPTIVIEW_*</code> and registered customer macros without
-values stay literal; the parameter is sent and <code>DA-ASSET-MACRO-UNKNOWN</code> is raised
-once per key/macro (context: <code>key</code>, <code>macro</code>). Other unresolved <code>$NAME$</code> tokens
-stay literal without a diagnostic. <code>$</code> without a closing <code>$</code> is unchanged.
+Customer macros are consulted before the built-in <code>$OPTIVIEW_*</code> set, so a built-in can be
+overridden. A string replaces the token. <code>null</code> omits the parameter; for GAM <code>cust_params</code>,
+only the containing pair is dropped and the key is omitted if no pair remains. For VAST,
+the whole <code>cust_params</code> parameter is omitted. <code>undefined</code> leaves an unresolved token literal
+and sends the parameter. <code>DA-ASSET-MACRO-UNKNOWN</code> reports
+unresolved built-in or registered macros; <code>DA-ASSET-PARAMETER-OMITTED</code> reports null omissions.
+Other unresolved <code>$NAME$</code> tokens stay literal without a diagnostic. <code>$</code> without a closing <code>$</code>
+is unchanged.
 Callbacks are evaluated per ad request and cleared when the session ends.
 Session-scoped parameters are sent to IMA DAI with
 built-in and customer macros resolved; break-duration macros are omitted.</p>
