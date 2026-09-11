@@ -735,6 +735,13 @@ const config: Config = {
           docsPluginId: 'theolive',
           position: 'right',
         },
+        {
+          to: '/theoplayer/faq/how-to-use-ai-coding-assistants',
+          label: 'AI coding assistants',
+          title: 'Use the documentation with AI coding assistants',
+          position: 'right',
+          className: 'navbar__ai-link',
+        },
       ],
     },
     footer: {

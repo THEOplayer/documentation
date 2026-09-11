@@ -111,6 +111,53 @@
   display: none;
 }
 
+/* Show the AI coding assistants link as an icon in the top navbar; the mobile sidebar keeps the text */
+.navbar__items .navbar__ai-link {
+  font-size: 0;
+  padding: var(--ifm-navbar-item-padding-vertical) 0.5rem;
+}
+
+.navbar__items .navbar__ai-link::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  /* A gradient band inside a 3x background that moves from bottom right to top left on hover and on leave */
+  background: linear-gradient(
+    135deg,
+    currentColor 0 30%,
+    var(--ifm-color-primary-lightest) 36%,
+    var(--ifm-color-primary-darker) 50%,
+    var(--ifm-color-primary-lightest) 64%,
+    currentColor 70% 100%
+  );
+  background-size: 300% 300%;
+  mask: url('../../static/img/ai-sparkle.svg') no-repeat center / contain;
+  animation: ai-sweep-out 0.5s ease-out forwards;
+}
+
+.navbar__items .navbar__ai-link:hover::before {
+  animation: ai-sweep-in 0.5s ease-out forwards;
+}
+
+@keyframes ai-sweep-in {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 50% 50%;
+  }
+}
+
+@keyframes ai-sweep-out {
+  from {
+    background-position: 50% 50%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
 .navbar-sidebar {
   background-color: var(--ifm-background-surface-color);
 }
