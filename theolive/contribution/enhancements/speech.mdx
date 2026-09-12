@@ -1,0 +1,145 @@
+---
+sidebar_position: 1
+sidebar_label: Speech (Live Captions & Translations)
+sidebar_custom_props:
+  icon: 🗣️
+description: Automatically transcribe and translate live stream audio into multiple languages with real-time captions.
+---
+
+
+# Enhancements: Speech (Live Captions & Translations)
+
+OptiView Live can automatically transcribe the spoken audio of your live stream and translate it into one or more languages, delivered to your viewers as text tracks (captions) in real time and in sync with the video. This is done through the **`speech` enhancement**, configured on an ingest.
+
+> **Premium feature**
+>
+> Live captions & translations is a premium feature and needs to be enabled on your account before you can use it. Get in touch with your account team to have it enabled. As long as the feature is not enabled, requests that configure a speech enhancement fail with the error code `translations_not_enabled`.
+
+## How it works
+
+You enable the speech enhancement on an **ingest** by adding an entry with `"kind": "speech"` to its `enhancements` list. You tell us which language is spoken in the stream (`sourceLanguage`) and which languages you want captions in (`targetTextTracks`). The audio is transcribed, translated into the requested target languages and injected back into the stream as text tracks, aligned with what is being said. Optionally, a **dictionary** with domain-specific terms can be attached to improve the speech recognition.
+
+## Quick start
+
+1. Look up the supported languages:
+    - `GET /v2/enhancements/speech/supported-source-languages`
+    - `GET /v2/enhancements/speech/supported-target-languages`
+2. (Optional) Create a dictionary with domain-specific terms: `POST /v2/enhancements/speech/dictionaries`.
+3. Add a `speech` entry to the `enhancements` list when creating or updating an ingest.
+
+## Enabling translations on an ingest
+
+The speech enhancement is configured per ingest, either when creating the ingest or by updating an existing one:
+
+- `POST /v2/channels/{channelId}/ingests` — create an ingest with a speech enhancement
+- `PATCH /v2/ingests/{ingestId}` — add, change or remove the speech enhancement on an existing ingest
+
+```json
+{
+    "name": "my-ingest",
+    "type": "rtmp-push",
+    "region": "europe-west",
+    "enhancements": [
+        {
+            "kind": "speech",
+            "sourceLanguage": "en",
+            "targetTextTracks": ["fr", "de", "es"],
+            "dictionary": "my-dictionary-id"
+        }
+    ]
+}
+```
+
+### `speech` entry fields
+
+| Field              | Type       | Required | Description                                                                                       |
+| ------------------ | ---------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `sourceLanguage`   | `string`   | yes      | Language spoken in the stream (must be a supported source language)                                |
+| `targetTextTracks` | `string[]` | yes      | Languages to generate translated text tracks for (max **5**, must be supported target languages). Include the source language itself to also get captions in the original language |
+| `sourceAudioTrack` | `number`   | no       | PID of the audio track to use as translation source (non-negative integer)                         |
+| `dictionary`       | `string`   | no       | ID of a dictionary that helps the speech recognition. The dictionary's `language` must match the enhancement's `sourceLanguage`. Set to `null` to disconnect the dictionary |
+
+### Updating and disabling
+
+- On update, the `enhancements` list is replaced as a whole: always send the full list you want to keep.
+- To disable translations, update the ingest with an `enhancements` list without a `speech` entry (e.g. `[]`).
+- To disconnect a dictionary, resend the `speech` entry without the `dictionary` field (or with `"dictionary": null`).
+
+> **Tip:** when using an `rtmp-push` ingest with a speech enhancement, always push to the ingest URL and stream key returned by the API for that ingest — they can differ from a regular ingest's connection details.
+
+## Supported languages
+
+Use these endpoints to discover which languages you can translate from and to. Only languages returned by these endpoints are accepted in `sourceLanguage` and `targetTextTracks`:
+
+| Method | Path                                                 | Description                                                       |
+| ------ | ---------------------------------------------------- | ----------------------------------------------------------------- |
+| `GET`  | `/v2/enhancements/speech/supported-source-languages` | Languages the speech recognition can transcribe (`sourceLanguage`) |
+| `GET`  | `/v2/enhancements/speech/supported-target-languages` | Languages that can be translated into (`targetTextTracks`)         |
+
+Both return a simple list:
+
+```json
+{
+    "data": ["en", "fr", "de", "es", "nl"]
+}
+```
+
+## Dictionaries
+
+A speech dictionary is a **flat list of terms** — names, proper nouns, acronyms and specialized terminology — that helps the speech recognition correctly caption the source audio of a speech enhancement. It does **not** translate terms: the source audio is first captioned in the source language (aided by the dictionary) and then translated into the target languages.
+
+Connect a dictionary to an ingest via the `dictionary` field of the speech enhancement entry; the dictionary's `language` must match that enhancement's `sourceLanguage`.
+
+| Method   | Path                                        | Description                                                                |
+| -------- | ------------------------------------------- | -------------------------------------------------------------------------- |
+| `GET`    | `/v2/enhancements/speech/dictionaries`      | List dictionaries (supports `cursor`, `limit` and `name` query parameters) |
+| `POST`   | `/v2/enhancements/speech/dictionaries`      | Create a dictionary                                                        |
+| `GET`    | `/v2/enhancements/speech/dictionaries/{id}` | Get a single dictionary                                                    |
+| `PATCH`  | `/v2/enhancements/speech/dictionaries/{id}` | Update a dictionary                                                        |
+| `DELETE` | `/v2/enhancements/speech/dictionaries/{id}` | Delete a dictionary                                                        |
+
+Example create request:
+
+```json
+{
+    "name": "horse-racing",
+    "language": "en",
+    "terms": [
+        "OptiView",
+        "A. Väyrynen",
+        "D&I|dee-and-eye,dee-n-eye"
+    ]
+}
+```
+
+### Writing good dictionary terms
+
+- Keep terms short: each entry is a single term of at most **6 words**. One- to three-word phrases give the best results.
+- Add terms the way they are actually spoken. An entry like `"Initial Public Offering (IPO)"` won't match anything — a speaker says either the full phrase or just "IPO", so add those as two separate terms.
+- When a term is pronounced differently than its spelling suggests, append one or more **phonetic "sounds like" hints** after a pipe, separated by commas: `"D&I|dee-and-eye,dee-n-eye"`.
+- Terms containing symbols, digits or punctuation (hashtags, abbreviations, hyphenated words) should always get a phonetic hint, since their spelling alone gives the speech recognition little to work with.
+- Dictionary terms are hints, not overrides: when the speech recognition is confident it heard a different word, it captions that instead.
+
+### Dictionary rules
+
+- `language` must be a valid IETF BCP 47 language tag (e.g. `"en"`, `"en-US"`) and must match the `sourceLanguage` of the speech enhancement it is connected to.
+- Terms are cleaned up automatically where possible: whitespace is normalized and empty and duplicate entries are dropped. Terms that cannot be fixed automatically are rejected with `invalid_value`, describing the offending entry: terms containing the forbidden characters `;` or `/`, terms with more than 6 words, more than one `|` separator, or a missing term before the `|`.
+- On update, the `terms` list is replaced as a whole.
+- A dictionary cannot be deleted while it is connected to an ingest that is in use by a running engine; the delete fails with `409 speech_dictionary_in_use`. Once deleted, the dictionary is automatically disconnected from all ingests that referenced it.
+
+## Limitations
+
+- Translated captions are currently only available on **HLS** streams. They are **not** available on HLS-TS or HESP.
+- `targetTextTracks` can contain at most **5** languages.
+- The `enhancements` list can contain at most **1** `speech` entry.
+- The speech enhancement is only supported on ingests of type `rtmp-push`, `srt-push` and `srt-pull`.
+- `sourceLanguage` and every language in `targetTextTracks` must be one of the supported languages (see above).
+
+## Errors
+
+| Code                       | Meaning                                                                                          |
+| -------------------------- | ------------------------------------------------------------------------------------------------ |
+| `translations_not_enabled` | Live captions & translations is not enabled on your account — contact your account team           |
+| `invalid_value`            | Invalid configuration (wrong ingest type, missing/unsupported languages, invalid dictionary terms) |
+| `too_many_values`          | More than 5 target text tracks were provided                                                      |
+| `speech_dictionary_in_use` | The dictionary is connected to an ingest with a running engine and cannot be deleted              |
