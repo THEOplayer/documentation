@@ -268,6 +268,18 @@ Set `theoplayer/version.txt` to `<NEW>.0.0`.
 - Ensure the platform teams have filled in the migration guides (Web, Android,
   iOS, Roku) with the real breaking changes.
 
+## Archive old versions
+
+Keep only the current version, `v<OLD>`, and `v<OLD-1>` in the repository.
+
+When `v<OLD-2>` is ready to archive:
+
+1. Run the `Archive THEOplayer version` workflow from a commit that still contains that version.
+2. Add it to `theoplayer_archived_versions.json`.
+3. Remove its versioned docs, sidebar, generated static assets, and submodules.
+4. Remove the version from `theoplayer_versions.json` and the Docusaurus config.
+5. Replace links to the removed version with absolute production URLs.
+
 ## PR description
 
 Use the same summary as the reference PRs:
