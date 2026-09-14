@@ -885,12 +885,17 @@ function isMarkdownUrl(href: string): boolean {
 }
 
 function rewriteArchiveSidebarItems(items: any[]): any[] {
-  return items.map((item) => ({
-    ...item,
-    ...(item.href ? { href: rewriteArchiveLink(item.href) } : {}),
-    ...(item.link?.href ? { link: { ...item.link, href: rewriteArchiveLink(item.link.href) } } : {}),
-    ...(item.items ? { items: rewriteArchiveSidebarItems(item.items) } : {}),
-  }));
+  return items.map((item) => {
+    if (typeof item === 'string') {
+      return item;
+    }
+    return {
+      ...item,
+      ...(item.href ? { href: rewriteArchiveLink(item.href) } : {}),
+      ...(item.link?.href ? { link: { ...item.link, href: rewriteArchiveLink(item.link.href) } } : {}),
+      ...(item.items ? { items: rewriteArchiveSidebarItems(item.items) } : {}),
+    };
+  });
 }
 
 function prepareArchiveBuild(version?: string) {
