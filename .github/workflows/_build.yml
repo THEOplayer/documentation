@@ -29,6 +29,10 @@ on:
       docusaurus_pr_url:
         required: false
         type: string
+      docusaurus_archive_version:
+        required: false
+        type: string
+        default: ''
       artifact_path:
         description: Define the artifact path.
         required: false
@@ -101,6 +105,7 @@ jobs:
           DOCUSAURUS_NO_INDEX: ${{ inputs.docusaurus_no_index }}
           DOCUSAURUS_PR_NUMBER: ${{ inputs.docusaurus_pr_number }}
           DOCUSAURUS_PR_URL: ${{ inputs.docusaurus_pr_url }}
+          DOCUSAURUS_ARCHIVE_VERSION: ${{ inputs.docusaurus_archive_version }}
 
       - name: Upload Build ☁️
         uses: actions/upload-artifact@v7
