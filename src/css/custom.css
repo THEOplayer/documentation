@@ -111,6 +111,12 @@
   display: none;
 }
 
+.dropdown-archived-versions {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  padding: 0.25rem 0.5rem;
+}
+
 .navbar-sidebar {
   background-color: var(--ifm-background-surface-color);
 }
