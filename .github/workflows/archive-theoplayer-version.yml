@@ -1,0 +1,33 @@
+name: 'Archive THEOplayer version'
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'THEOplayer major version to archive, e.g. v6. Run this workflow from a commit that still contains the version.'
+        required: true
+        type: string
+
+concurrency:
+  group: archive-theoplayer-${{ inputs.version }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    uses: ./.github/workflows/_build.yml
+    with:
+      environment_name: production
+      docusaurus_base_url: '/docs/'
+      docusaurus_no_index: 0
+      docusaurus_archive_version: ${{ inputs.version }}
+
+  deploy:
+    name: deploy
+    needs: [build]
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      environment_name: production
+      artifact_name: ${{ needs.build.outputs.artifact_name }}
+      s3_prefix: 'docs/theoplayer/${{ inputs.version }}'
+      cf_invalidate_path: '/docs/theoplayer/${{ inputs.version }}/*'
