@@ -18,6 +18,7 @@ import fs from 'fs';
 import redirectsMillicast from './redirectsMillicast.json';
 import redirectsAds from './redirectsAds.json';
 import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
+import theoplayerArchivedVersions from './theoplayer_archived_versions.json';
 
 // THEOplayer license URL: /docs/theoplayer-license.txt
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
