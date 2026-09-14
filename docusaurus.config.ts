@@ -28,6 +28,59 @@ fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplay
 const PR_NUMBER = Number(process.env.DOCUSAURUS_PR_NUMBER ?? -1);
 const isProductionDeployment = process.env.NODE_ENV === 'production' && PR_NUMBER <= 0;
 const NO_INDEX = ['1', 'true'].includes((process.env.DOCUSAURUS_NO_INDEX ?? '').trim().toLowerCase());
+// Set to e.g. "v6" to build a single archived THEOplayer version as a standalone site.
+const ARCHIVE_VERSION = process.env.DOCUSAURUS_ARCHIVE_VERSION?.trim() || undefined;
+const BASE_URL = process.env.DOCUSAURUS_BASE_URL || '/docs/';
+const PRODUCTION_URL = 'https://optiview.dolby.com/docs/';
+
+const theoplayerVersions: Record<string, DocsPlugin.VersionOptions> = {
+  current: {
+    label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
+  },
+  v10: {
+    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v10/version.txt'), 'utf8').trim(),
+    banner: 'none',
+    noIndex: true,
+  },
+  v9: {
+    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v9/version.txt'), 'utf8').trim(),
+    banner: 'unmaintained',
+    noIndex: true,
+  },
+  v8: {
+    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v8/version.txt'), 'utf8').trim(),
+    banner: 'unmaintained',
+    noIndex: true,
+  },
+  v7: {
+    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v7/version.txt'), 'utf8').trim(),
+    banner: 'unmaintained',
+    noIndex: true,
+  },
+  v6: {
+    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v6/version.txt'), 'utf8').trim(),
+    banner: 'unmaintained',
+    noIndex: true,
+  },
+  v4: {
+    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v4/version.txt'), 'utf8').trim(),
+    banner: 'unmaintained',
+    noIndex: true,
+  },
+};
+
+if (ARCHIVE_VERSION && !theoplayerVersions[ARCHIVE_VERSION]) {
+  throw new Error(`Unknown THEOplayer archive version: ${ARCHIVE_VERSION}`);
+}
+
+const archiveStaticDirectory = path.join(__dirname, '.docusaurus/archive-static');
+if (ARCHIVE_VERSION) {
+  const archiveStaticVersionDirectory = path.join(archiveStaticDirectory, 'theoplayer', ARCHIVE_VERSION);
+  fs.mkdirSync(path.dirname(archiveStaticVersionDirectory), { recursive: true });
+  if (!fs.existsSync(archiveStaticVersionDirectory)) {
+    fs.symlinkSync(`../../../theoplayer/static/theoplayer/${ARCHIVE_VERSION}`, archiveStaticVersionDirectory, 'dir');
+  }
+}
 
 const docsConfigBase = {
   include: [
@@ -72,6 +125,7 @@ const docsConfigBase = {
       remarkLinkRewrite,
       {
         replacer: (url: string, docPath: string) => {
+          url = rewriteArchiveLink(url);
           // External documentation may contain relative URLs to non-Markdown files.
           // Turn them into absolute URLs to GitHub instead.
           if (isRelativeUrl(url) && !isMarkdownUrl(url)) {
@@ -101,6 +155,79 @@ function removeDocIndexItems(items: any) {
   return result;
 }
 
+const theoplayerDocsPlugin = [
+  '@docusaurus/plugin-content-docs',
+  {
+    ...docsConfigBase,
+    id: 'theoplayer',
+    path: 'theoplayer',
+    routeBasePath: ARCHIVE_VERSION ? '/' : '/theoplayer',
+    sidebarPath: './sidebarsTheoplayer.ts',
+    lastVersion: ARCHIVE_VERSION ?? 'current',
+    onlyIncludeVersions: ARCHIVE_VERSION
+      ? [ARCHIVE_VERSION]
+      : isProductionDeployment
+        ? undefined
+        : // v6 and v7 aren't being updated anymore.
+          // We still have links to v4 and v8 docs, so we always need to build those.
+          ['current', 'v10', 'v9', 'v8', 'v4'],
+    versions: ARCHIVE_VERSION ? { [ARCHIVE_VERSION]: { ...theoplayerVersions[ARCHIVE_VERSION], banner: 'none' } } : theoplayerVersions,
+    async sidebarItemsGenerator(args) {
+      const sidebarItems = await sidebarItemsGenerator(args);
+      return removeDocIndexItems(sidebarItems);
+    },
+  } satisfies DocsPlugin.Options,
+] as const;
+
+const webpackPlugin = [
+  (_context: unknown, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
+    name: 'webpack-plugin',
+    configureWebpack(_config: unknown, isServer: boolean) {
+      return options.webpack(isServer);
+    },
+  }),
+  {
+    webpack: (isServer: boolean): WebpackConfiguration => ({
+      optimization: {
+        // https://github.com/facebook/docusaurus/discussions/11199
+        concatenateModules: isProductionDeployment ? !isServer : false,
+      },
+    }),
+  },
+] as const;
+
+const announcementBar = ARCHIVE_VERSION
+  ? {
+      id: 'archived_version',
+      content: `This is the archived documentation for THEOplayer ${ARCHIVE_VERSION.slice(1)}.x, which is no longer maintained. <a href="${PRODUCTION_URL}theoplayer/">Go to the latest documentation.</a>`,
+      backgroundColor: '#9cb9c9',
+      textColor: '#344a5e',
+      isCloseable: false,
+    }
+  : PR_NUMBER > 0
+    ? {
+        id: 'pr_preview',
+        content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${PR_NUMBER}</a>.`,
+        backgroundColor: '#9cb9c9',
+        textColor: '#344a5e',
+        isCloseable: false,
+      }
+    : undefined;
+
+const theoplayerDocsVersionDropdown = {
+  type: 'docsVersionDropdown',
+  docsPluginId: 'theoplayer',
+  position: 'right',
+  dropdownItemsAfter: [
+    { type: 'html', value: '<hr class="dropdown-separator">' },
+    ...(ARCHIVE_VERSION ? [{ href: `${PRODUCTION_URL}theoplayer/`, label: 'Latest' }] : []),
+    { type: 'html', className: 'dropdown-archived-versions', value: 'Archived versions' },
+    ...theoplayerArchivedVersions
+      .filter((version) => version !== ARCHIVE_VERSION)
+      .map((version) => ({ href: `${PRODUCTION_URL}theoplayer/${version}/`, label: `${version.slice(1)}.x` })),
+  ],
+};
+
 const config: Config = {
   title: 'Dolby OptiView Documentation',
   tagline: 'Discover the latest developer documentation and samples for OptiView products',
@@ -110,7 +237,7 @@ const config: Config = {
   url: process.env.DOCUSAURUS_URL || 'https://optiview.dolby.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.DOCUSAURUS_BASE_URL || '/docs/',
+  baseUrl: ARCHIVE_VERSION ? `${BASE_URL}theoplayer/${ARCHIVE_VERSION}/` : BASE_URL,
   trailingSlash: true,
   noIndex: NO_INDEX,
 
@@ -154,61 +281,7 @@ const config: Config = {
   ],
 
   plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        ...docsConfigBase,
-        id: 'theoplayer',
-        path: 'theoplayer',
-        routeBasePath: '/theoplayer',
-        sidebarPath: './sidebarsTheoplayer.ts',
-        lastVersion: 'current',
-        onlyIncludeVersions: isProductionDeployment
-          ? undefined
-          : // v6 and v7 aren't being updated anymore.
-            // We still have links to v4 and v8 docs, so we always need to build those.
-            ['current', 'v10', 'v9', 'v8', 'v4'],
-        versions: {
-          current: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
-          },
-          v10: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v10/version.txt'), 'utf8').trim(),
-            banner: 'none',
-            noIndex: true,
-          },
-          v9: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v9/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
-            noIndex: true,
-          },
-          v8: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v8/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
-            noIndex: true,
-          },
-          v7: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v7/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
-            noIndex: true,
-          },
-          v6: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v6/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
-            noIndex: true,
-          },
-          v4: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v4/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
-            noIndex: true,
-          },
-        },
-        async sidebarItemsGenerator(args) {
-          const sidebarItems = await sidebarItemsGenerator(args);
-          return removeDocIndexItems(sidebarItems);
-        },
-      } satisfies DocsPlugin.Options,
-    ],
+    theoplayerDocsPlugin,
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -529,24 +602,9 @@ const config: Config = {
         ],
       } satisfies LlmsTxtOptions,
     ],
-    [
-      (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
-        name: 'webpack-plugin',
-        configureWebpack(_config, isServer) {
-          return options.webpack(isServer);
-        },
-      }),
-      {
-        webpack: (isServer: boolean): WebpackConfiguration => ({
-          optimization: {
-            // https://github.com/facebook/docusaurus/discussions/11199
-            concatenateModules: isProductionDeployment ? !isServer : false,
-          },
-        }),
-      },
-    ],
+    webpackPlugin,
     '@docsearch/docusaurus-adapter',
-  ],
+  ].filter((plugin) => !ARCHIVE_VERSION || plugin === theoplayerDocsPlugin || plugin === webpackPlugin),
 
   themes: ['docusaurus-theme-openapi-docs'],
 
@@ -632,118 +690,118 @@ const config: Config = {
     },
   },
 
-  staticDirectories: ['static', 'theoplayer/static', 'ads/static', 'adengine/static', 'open-video-ui/external/web-ui/docs/static'],
+  staticDirectories: ARCHIVE_VERSION
+    ? ['static', `theoplayer/static/theoplayer/${ARCHIVE_VERSION}`, archiveStaticDirectory]
+    : ['static', 'theoplayer/static', 'ads/static', 'adengine/static', 'open-video-ui/external/web-ui/docs/static'],
 
   themeConfig: {
     // TODO OpenGraph image for OptiView?
     // image: 'img/opengraph.png',
 
-    // announcement bar for PR preview only
-    announcementBar:
-      PR_NUMBER > 0
-        ? {
-            id: 'pr_preview',
-            content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${PR_NUMBER}</a>.`,
-            backgroundColor: '#9cb9c9',
-            textColor: '#344a5e',
-            isCloseable: false,
-          }
-        : undefined,
+    announcementBar,
 
     navbar: {
       title: undefined,
       logo: {
         alt: 'Dolby OptiView',
         src: 'img/dolby-optiview-white.svg',
+        ...(ARCHIVE_VERSION ? { href: PRODUCTION_URL } : {}),
       },
-      items: [
-        {
-          type: 'dropdown',
-          label: 'Player',
-          href: '/theoplayer',
-          position: 'left',
-          items: [
+      items: ARCHIVE_VERSION
+        ? [
             {
               type: 'custom-platformSidebar',
               docsPluginId: 'theoplayer',
               label: 'OptiView Player',
+              href: '/',
+              activeBasePath: '/',
+            } satisfies PlatformSidebarNavbarItemProps,
+            theoplayerDocsVersionDropdown,
+          ]
+        : [
+            {
+              type: 'dropdown',
+              label: 'Player',
               href: '/theoplayer',
-              activeBasePath: '/theoplayer',
-            } satisfies PlatformSidebarNavbarItemProps,
+              position: 'left',
+              items: [
+                {
+                  type: 'custom-platformSidebar',
+                  docsPluginId: 'theoplayer',
+                  label: 'OptiView Player',
+                  href: '/theoplayer',
+                  activeBasePath: '/theoplayer',
+                } satisfies PlatformSidebarNavbarItemProps,
+                {
+                  type: 'custom-platformSidebar',
+                  docsPluginId: 'open-video-ui',
+                  label: 'Open Video UI',
+                  href: '/open-video-ui',
+                  activeBasePath: '/open-video-ui',
+                } satisfies PlatformSidebarNavbarItemProps,
+              ],
+            },
             {
-              type: 'custom-platformSidebar',
-              docsPluginId: 'open-video-ui',
-              label: 'Open Video UI',
-              href: '/open-video-ui',
-              activeBasePath: '/open-video-ui',
-            } satisfies PlatformSidebarNavbarItemProps,
-          ],
-        },
-        {
-          type: 'dropdown',
-          label: 'Ads',
-          position: 'left',
-          items: [
+              type: 'dropdown',
+              label: 'Ads',
+              position: 'left',
+              items: [
+                {
+                  type: 'docSidebar',
+                  docsPluginId: 'ads',
+                  sidebarId: 'ads',
+                  label: 'OptiView Ads',
+                  activeBasePath: '/ads',
+                },
+                {
+                  type: 'docSidebar',
+                  docsPluginId: 'adengine',
+                  sidebarId: 'adengine',
+                  label: 'OptiView Ad Engine',
+                  activeBasePath: '/ad-engine',
+                },
+              ],
+            },
             {
-              type: 'docSidebar',
+              type: 'dropdown',
+              label: 'Streaming',
+              position: 'left',
+              items: [
+                {
+                  type: 'docSidebar',
+                  docsPluginId: 'theolive',
+                  sidebarId: 'theolive',
+                  label: 'Live',
+                  activeBasePath: '/theolive',
+                },
+                {
+                  type: 'docSidebar',
+                  docsPluginId: 'millicast',
+                  sidebarId: 'millicast',
+                  label: 'Real-time',
+                  activeBasePath: '/millicast',
+                },
+              ],
+            },
+            theoplayerDocsVersionDropdown,
+            {
+              type: 'docsVersionDropdown',
               docsPluginId: 'ads',
-              sidebarId: 'ads',
-              label: 'OptiView Ads',
-              activeBasePath: '/ads',
+              position: 'right',
             },
             {
-              type: 'docSidebar',
-              docsPluginId: 'adengine',
-              sidebarId: 'adengine',
-              label: 'OptiView Ad Engine',
-              activeBasePath: '/ad-engine',
-            },
-          ],
-        },
-        {
-          type: 'dropdown',
-          label: 'Streaming',
-          position: 'left',
-          items: [
-            {
-              type: 'docSidebar',
+              type: 'docsVersionDropdown',
               docsPluginId: 'theolive',
-              sidebarId: 'theolive',
-              label: 'Live',
-              activeBasePath: '/theolive',
+              position: 'right',
             },
             {
-              type: 'docSidebar',
-              docsPluginId: 'millicast',
-              sidebarId: 'millicast',
-              label: 'Real-time',
-              activeBasePath: '/millicast',
+              to: '/theoplayer/faq/how-to-use-ai-coding-assistants',
+              label: 'AI coding assistants',
+              title: 'Use the documentation with AI coding assistants',
+              position: 'right',
+              className: 'navbar__ai-link',
             },
           ],
-        },
-        {
-          type: 'docsVersionDropdown',
-          docsPluginId: 'theoplayer',
-          position: 'right',
-        },
-        {
-          type: 'docsVersionDropdown',
-          docsPluginId: 'ads',
-          position: 'right',
-        },
-        {
-          type: 'docsVersionDropdown',
-          docsPluginId: 'theolive',
-          position: 'right',
-        },
-        {
-          to: '/theoplayer/faq/how-to-use-ai-coding-assistants',
-          label: 'AI coding assistants',
-          title: 'Use the documentation with AI coding assistants',
-          position: 'right',
-          className: 'navbar__ai-link',
-        },
-      ],
     },
     footer: {
       style: 'light',
@@ -758,30 +816,38 @@ const config: Config = {
       darkTheme: prismThemes.oneDark,
       additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff', 'json', 'ruby'],
     },
-    docsearch: {
-      appId: '7HRS9V6FEL',
-      apiKey: '415e178afdd1c3ea819b42fb9a6a1c99',
-      indices: [{ name: 'theoplayer' }],
-      contextualSearch: true,
-      replaceSearchResultPathname: {
-        from: '/docs/',
-        to: process.env.DOCUSAURUS_BASE_URL || '/docs/',
-      },
-    },
+    ...(ARCHIVE_VERSION
+      ? {}
+      : {
+          docsearch: {
+            appId: '7HRS9V6FEL',
+            apiKey: '415e178afdd1c3ea819b42fb9a6a1c99',
+            indices: [{ name: 'theoplayer' }],
+            contextualSearch: true,
+            replaceSearchResultPathname: {
+              from: '/docs/',
+              to: BASE_URL,
+            },
+          },
+        }),
     tableOfContents: {
       minHeadingLevel: 2,
       maxHeadingLevel: 4,
     },
-    zoom: {
-      selector: '.markdown :not(a, em) > img',
-      background: {
-        light: 'rgb(255, 255, 255)',
-        dark: 'rgb(50, 50, 50)',
-      },
-      config: {
-        // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-      },
-    },
+    ...(ARCHIVE_VERSION
+      ? {}
+      : {
+          zoom: {
+            selector: '.markdown :not(a, em) > img',
+            background: {
+              light: 'rgb(255, 255, 255)',
+              dark: 'rgb(50, 50, 50)',
+            },
+            config: {
+              // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+            },
+          },
+        }),
   } satisfies Preset.ThemeConfig & DocSearchThemeConfig,
 };
 
@@ -816,6 +882,20 @@ function isRelativeUrl(href: string): boolean {
 
 function isMarkdownUrl(href: string): boolean {
   return /\.mdx?(?:#|$)/.test(href);
+}
+
+function rewriteArchiveLink(url: string): string {
+  if (!ARCHIVE_VERSION) {
+    return url;
+  }
+
+  const archivePrefix = `pathname:///theoplayer/${ARCHIVE_VERSION}/`;
+  if (url.startsWith(archivePrefix)) {
+    return `pathname:///${url.slice(archivePrefix.length)}`;
+  }
+
+  const absolutePath = url.startsWith('pathname:///') ? `/${url.slice('pathname:///'.length)}` : url;
+  return absolutePath.startsWith('/') ? new URL(absolutePath, PRODUCTION_URL).href : url;
 }
 
 function externalDocUrl(docPath: string): string {
