@@ -142,10 +142,10 @@ export function getPlatforms(docsPluginId: string): readonly PlatformDescription
   }
 }
 
-export function getPlatformsByVersion(docsPluginId: string, version?: string): readonly PlatformDescription[] {
+export function getPlatformsByVersion(docsPluginId: string, version?: GlobalVersion): readonly PlatformDescription[] {
   let platforms = getPlatforms(docsPluginId);
-  if (version && version !== 'current') {
-    const versionNumber = Number(version.slice(1)); // e.g. "v4" -> 4
+  if (version) {
+    const versionNumber = Number.parseInt(version.label); // Version labels are semver values from version.txt.
     platforms = platforms.filter((desc) => desc.minVersion <= versionNumber);
   }
   return platforms;
@@ -155,10 +155,10 @@ export function usePlatforms(): readonly PlatformDescriptionWithUrl[] {
   const { activePlugin, activeVersion } = useActivePluginAndVersion({ failfast: true })!;
   const { withBaseUrl } = useBaseUrlUtils();
   if (!activeVersion) return [];
-  return getPlatformsByVersion(activePlugin.pluginId, activeVersion.name).map((desc) => ({
+  return getPlatformsByVersion(activePlugin.pluginId, activeVersion).map((desc) => ({
     ...desc,
-    baseUrl: withBaseUrl(`${activeVersion.path}/${desc.platform}`),
-    gettingStartedDocUrl: withBaseUrl(`${activeVersion.path}/${desc.gettingStartedDoc}`),
+    baseUrl: withBaseUrl(`${activeVersion.path.replace(/\/$/, '')}/${desc.platform}`),
+    gettingStartedDocUrl: withBaseUrl(`${activeVersion.path.replace(/\/$/, '')}/${desc.gettingStartedDoc}`),
   }));
 }
 

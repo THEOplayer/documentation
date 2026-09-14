@@ -14,14 +14,13 @@ function DocSidebarHeader(): JSX.Element | null {
     activePlugin: { pluginId },
     activeVersion,
   } = useActivePluginAndVersion({ failfast: true })!;
-  const versionName = activeVersion!.name;
-  const platforms = getPlatformsByVersion(pluginId, versionName);
+  const platforms = getPlatformsByVersion(pluginId, activeVersion);
   if (!platforms.length) {
     return null;
   }
   return (
     <>
-      <PlatformSelect docsPluginId={pluginId} version={versionName} />
+      <PlatformSelect docsPluginId={pluginId} />
       <DocSidebarItemSeparator />
     </>
   );

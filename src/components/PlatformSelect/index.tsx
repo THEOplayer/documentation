@@ -1,6 +1,6 @@
 import React, { JSX } from 'react';
 import Select, { Item, SelectProps } from '@site/src/components/Select';
-import { defaultPlatformName, getPlatformDoc, getPlatformsByVersion } from '@site/src/util/platform';
+import { defaultPlatformName, getPlatformDoc, getPlatforms, getPlatformsByVersion } from '@site/src/util/platform';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
@@ -11,18 +11,17 @@ import clsx from 'clsx';
 
 interface PlatformSelectProps extends Omit<SelectProps<any>, 'items' | 'children'> {
   docsPluginId: string;
-  version?: string;
 }
 
 /**
  * A dropdown to change the current platform.
  */
-export default function PlatformSelect({ docsPluginId, version, className, ...props }: PlatformSelectProps): JSX.Element {
+export default function PlatformSelect({ docsPluginId, className, ...props }: PlatformSelectProps): JSX.Element {
   const { search, hash } = useLocation();
   const { activeVersion, activeDoc } = useActiveDocContext(docsPluginId);
   const versionCandidates = useDocsVersionCandidates(docsPluginId);
   const { lastPlatformName } = useLastPlatformByPluginId(docsPluginId);
-  const platforms = getPlatformsByVersion(docsPluginId, version);
+  const platforms = activeVersion ? getPlatformsByVersion(docsPluginId, activeVersion) : getPlatforms(docsPluginId);
   return (
     <Select
       {...props}
