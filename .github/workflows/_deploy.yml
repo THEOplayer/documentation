@@ -59,12 +59,30 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_ROLE }}
 
+      - name: Read archived THEOplayer versions
+        if: ${{ inputs.environment_name == 'production' && inputs.s3_prefix == 'docs' }}
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          path: repo
+          sparse-checkout: theoplayer_archived_versions.json
+          sparse-checkout-cone-mode: false
+
+      - name: Compute S3 sync exclusions
+        id: s3_sync_excludes
+        if: ${{ inputs.environment_name == 'production' && inputs.s3_prefix == 'docs' }}
+        shell: bash
+        run: |
+          excludes=$(jq -r '.[] | "--exclude theoplayer/\(.)/*"' repo/theoplayer_archived_versions.json | xargs)
+          echo "excludes=$excludes" >> "$GITHUB_OUTPUT"
+
       - name: 'Sync to ${{ inputs.s3_prefix }} on S3 💾'
         run: |
           echo "Copying artifact: ${ARTIFACT_PATH} to S3 bucket: ${S3_BUCKET}/${S3_PREFIX}"
           aws s3 sync ${ARTIFACT_PATH}/ s3://${S3_BUCKET}/${S3_PREFIX}/ \
             --only-show-errors \
-            --delete
+            --delete \
+            ${{ steps.s3_sync_excludes.outputs.excludes }}
         env:
           S3_BUCKET: ${{ vars.S3_BUCKET_NAME }}
           S3_PREFIX: ${{ inputs.s3_prefix }}
