@@ -32,6 +32,7 @@ const NO_INDEX = ['1', 'true'].includes((process.env.DOCUSAURUS_NO_INDEX ?? '').
 const ARCHIVE_VERSION = process.env.DOCUSAURUS_ARCHIVE_VERSION?.trim() || undefined;
 const BASE_URL = process.env.DOCUSAURUS_BASE_URL || '/docs/';
 const PRODUCTION_URL = 'https://optiview.dolby.com/docs/';
+const archiveVersionDirectory = ARCHIVE_VERSION ? path.join(__dirname, `theoplayer_versioned_docs/version-${ARCHIVE_VERSION}`) : undefined;
 
 const theoplayerVersions: Record<string, DocsPlugin.VersionOptions> = {
   current: {
@@ -69,18 +70,12 @@ const theoplayerVersions: Record<string, DocsPlugin.VersionOptions> = {
   },
 };
 
-if (ARCHIVE_VERSION && !theoplayerVersions[ARCHIVE_VERSION]) {
+if (ARCHIVE_VERSION && !fs.existsSync(archiveVersionDirectory!)) {
   throw new Error(`Unknown THEOplayer archive version: ${ARCHIVE_VERSION}`);
 }
 
-const archiveStaticDirectory = path.join(__dirname, '.docusaurus/archive-static');
-if (ARCHIVE_VERSION) {
-  const archiveStaticVersionDirectory = path.join(archiveStaticDirectory, 'theoplayer', ARCHIVE_VERSION);
-  fs.mkdirSync(path.dirname(archiveStaticVersionDirectory), { recursive: true });
-  if (!fs.existsSync(archiveStaticVersionDirectory)) {
-    fs.symlinkSync(`../../../theoplayer/static/theoplayer/${ARCHIVE_VERSION}`, archiveStaticVersionDirectory, 'dir');
-  }
-}
+const archiveVersionLabel = archiveVersionDirectory ? fs.readFileSync(path.join(archiveVersionDirectory, 'version.txt'), 'utf8').trim() : undefined;
+const archiveBuild = prepareArchiveBuild(ARCHIVE_VERSION);
 
 const docsConfigBase = {
   include: [
@@ -125,7 +120,10 @@ const docsConfigBase = {
       remarkLinkRewrite,
       {
         replacer: (url: string, docPath: string) => {
-          url = rewriteArchiveLink(url);
+          if (ARCHIVE_VERSION) {
+            url = rewriteArchiveLink(url);
+            url = rewriteArchivedVersionLink(url);
+          }
           // External documentation may contain relative URLs to non-Markdown files.
           // Turn them into absolute URLs to GitHub instead.
           if (isRelativeUrl(url) && !isMarkdownUrl(url)) {
@@ -160,18 +158,19 @@ const theoplayerDocsPlugin = [
   {
     ...docsConfigBase,
     id: 'theoplayer',
-    path: 'theoplayer',
+    path: ARCHIVE_VERSION ? `theoplayer_versioned_docs/version-${ARCHIVE_VERSION}` : 'theoplayer',
     routeBasePath: ARCHIVE_VERSION ? '/' : '/theoplayer',
-    sidebarPath: './sidebarsTheoplayer.ts',
-    lastVersion: ARCHIVE_VERSION ?? 'current',
+    sidebarPath: ARCHIVE_VERSION ? archiveBuild!.sidebarPath : './sidebarsTheoplayer.ts',
+    disableVersioning: ARCHIVE_VERSION ? true : undefined,
+    lastVersion: 'current',
     onlyIncludeVersions: ARCHIVE_VERSION
-      ? [ARCHIVE_VERSION]
+      ? undefined
       : isProductionDeployment
         ? undefined
         : // v6 and v7 aren't being updated anymore.
           // We still have links to v4 and v8 docs, so we always need to build those.
           ['current', 'v10', 'v9', 'v8', 'v4'],
-    versions: ARCHIVE_VERSION ? { [ARCHIVE_VERSION]: { ...theoplayerVersions[ARCHIVE_VERSION], banner: 'none' } } : theoplayerVersions,
+    versions: ARCHIVE_VERSION ? { current: { label: archiveVersionLabel!, banner: 'none', noIndex: true } } : theoplayerVersions,
     async sidebarItemsGenerator(args) {
       const sidebarItems = await sidebarItemsGenerator(args);
       return removeDocIndexItems(sidebarItems);
@@ -267,6 +266,7 @@ const config: Config = {
       {
         docs: false,
         blog: false,
+        ...(ARCHIVE_VERSION ? { pages: false } : {}),
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -691,7 +691,7 @@ const config: Config = {
   },
 
   staticDirectories: ARCHIVE_VERSION
-    ? ['static', `theoplayer/static/theoplayer/${ARCHIVE_VERSION}`, archiveStaticDirectory]
+    ? ['static', `theoplayer/static/theoplayer/${ARCHIVE_VERSION}`, archiveBuild!.staticDirectory]
     : ['static', 'theoplayer/static', 'ads/static', 'adengine/static', 'open-video-ui/external/web-ui/docs/static'],
 
   themeConfig: {
@@ -884,18 +884,73 @@ function isMarkdownUrl(href: string): boolean {
   return /\.mdx?(?:#|$)/.test(href);
 }
 
+function rewriteArchiveSidebarItems(items: any[]): any[] {
+  return items.map((item) => ({
+    ...item,
+    ...(item.href ? { href: rewriteArchiveLink(item.href) } : {}),
+    ...(item.link?.href ? { link: { ...item.link, href: rewriteArchiveLink(item.link.href) } } : {}),
+    ...(item.items ? { items: rewriteArchiveSidebarItems(item.items) } : {}),
+  }));
+}
+
+function prepareArchiveBuild(version?: string) {
+  if (!version) {
+    return undefined;
+  }
+
+  const versionDirectory = path.join(__dirname, `theoplayer_versioned_docs/version-${version}`);
+  if (!fs.existsSync(versionDirectory)) {
+    throw new Error(`Unknown THEOplayer archive version: ${version}`);
+  }
+
+  const staticDirectory = path.join(__dirname, '.docusaurus/archive-static');
+  const staticVersionDirectory = path.join(staticDirectory, 'theoplayer', version);
+  fs.mkdirSync(path.dirname(staticVersionDirectory), { recursive: true });
+  if (!fs.existsSync(staticVersionDirectory)) {
+    fs.symlinkSync(`../../../theoplayer/static/theoplayer/${version}`, staticVersionDirectory, 'dir');
+  }
+
+  const sidebarsPath = path.join(__dirname, `theoplayer_versioned_sidebars/version-${version}-sidebars.json`);
+  const sidebars = JSON.parse(fs.readFileSync(sidebarsPath, 'utf8')) as Record<string, any[]>;
+  const rewrittenSidebars = Object.fromEntries(Object.entries(sidebars).map(([sidebarId, items]) => [sidebarId, rewriteArchiveSidebarItems(items)]));
+  const generatedSidebarsPath = path.join(__dirname, '.docusaurus/archive-sidebars.json');
+  fs.writeFileSync(generatedSidebarsPath, `${JSON.stringify(rewrittenSidebars, null, 2)}\n`);
+
+  return { staticDirectory, sidebarPath: generatedSidebarsPath };
+}
+
 function rewriteArchiveLink(url: string): string {
   if (!ARCHIVE_VERSION) {
     return url;
   }
 
-  const archivePrefix = `pathname:///theoplayer/${ARCHIVE_VERSION}/`;
-  if (url.startsWith(archivePrefix)) {
-    return `pathname:///${url.slice(archivePrefix.length)}`;
+  const pathnameArchivePrefix = `pathname:///theoplayer/${ARCHIVE_VERSION}/`;
+  if (url.startsWith(pathnameArchivePrefix)) {
+    return `pathname:///${url.slice(pathnameArchivePrefix.length)}`;
+  }
+
+  const siteArchivePrefix = `/theoplayer/${ARCHIVE_VERSION}/`;
+  if (url.startsWith(siteArchivePrefix)) {
+    return `/${url.slice(siteArchivePrefix.length)}`;
   }
 
   const absolutePath = url.startsWith('pathname:///') ? `/${url.slice('pathname:///'.length)}` : url;
-  return absolutePath.startsWith('/') ? new URL(absolutePath, PRODUCTION_URL).href : url;
+  return absolutePath.startsWith('/') ? `${PRODUCTION_URL}${absolutePath.slice(1)}` : url;
+}
+
+function rewriteArchivedVersionLink(url: string): string {
+  const match = url.match(/(?:^|\/)version-(v\d+)\/(.+)$/);
+  if (!match) {
+    return url;
+  }
+
+  const route = match[2]
+    .split('/')
+    .map((segment) => segment.replace(/^\d+-/, ''))
+    .join('/')
+    .replace(/\.(md|mdx)$/, '')
+    .replace(/\/index$/, '');
+  return `${PRODUCTION_URL}theoplayer/${match[1]}/${route}`;
 }
 
 function externalDocUrl(docPath: string): string {
