@@ -32,7 +32,7 @@ const NO_INDEX = ['1', 'true'].includes((process.env.DOCUSAURUS_NO_INDEX ?? '').
 const ARCHIVE_VERSION = process.env.DOCUSAURUS_ARCHIVE_VERSION?.trim() || undefined;
 const BASE_URL = process.env.DOCUSAURUS_BASE_URL || '/docs/';
 const PRODUCTION_URL = 'https://optiview.dolby.com/docs/';
-const archiveVersionDirectory = ARCHIVE_VERSION ? path.join(__dirname, `theoplayer_versioned_docs/version-${ARCHIVE_VERSION}`) : undefined;
+const archiveBuild = prepareArchiveBuild(ARCHIVE_VERSION);
 
 const theoplayerVersions: Record<string, DocsPlugin.VersionOptions> = {
   current: {
@@ -69,13 +69,6 @@ const theoplayerVersions: Record<string, DocsPlugin.VersionOptions> = {
     noIndex: true,
   },
 };
-
-if (ARCHIVE_VERSION && !fs.existsSync(archiveVersionDirectory!)) {
-  throw new Error(`Unknown THEOplayer archive version: ${ARCHIVE_VERSION}`);
-}
-
-const archiveVersionLabel = archiveVersionDirectory ? fs.readFileSync(path.join(archiveVersionDirectory, 'version.txt'), 'utf8').trim() : undefined;
-const archiveBuild = prepareArchiveBuild(ARCHIVE_VERSION);
 
 const docsConfigBase = {
   include: [
@@ -160,7 +153,7 @@ const theoplayerDocsPlugin = [
     id: 'theoplayer',
     path: ARCHIVE_VERSION ? `theoplayer_versioned_docs/version-${ARCHIVE_VERSION}` : 'theoplayer',
     routeBasePath: ARCHIVE_VERSION ? '/' : '/theoplayer',
-    sidebarPath: ARCHIVE_VERSION ? archiveBuild!.sidebarPath : './sidebarsTheoplayer.ts',
+    sidebarPath: archiveBuild ? archiveBuild.sidebarPath : './sidebarsTheoplayer.ts',
     disableVersioning: ARCHIVE_VERSION ? true : undefined,
     lastVersion: 'current',
     onlyIncludeVersions: ARCHIVE_VERSION
@@ -170,7 +163,7 @@ const theoplayerDocsPlugin = [
         : // v6 and v7 aren't being updated anymore.
           // We still have links to v4 and v8 docs, so we always need to build those.
           ['current', 'v10', 'v9', 'v8', 'v4'],
-    versions: ARCHIVE_VERSION ? { current: { label: archiveVersionLabel!, banner: 'none', noIndex: true } } : theoplayerVersions,
+    versions: archiveBuild ? { current: { label: archiveBuild.label, banner: 'none', noIndex: true } } : theoplayerVersions,
     async sidebarItemsGenerator(args) {
       const sidebarItems = await sidebarItemsGenerator(args);
       return removeDocIndexItems(sidebarItems);
@@ -691,7 +684,7 @@ const config: Config = {
   },
 
   staticDirectories: ARCHIVE_VERSION
-    ? ['static', `theoplayer/static/theoplayer/${ARCHIVE_VERSION}`, archiveBuild!.staticDirectory]
+    ? ['static', `theoplayer/static/theoplayer/${ARCHIVE_VERSION}`, archiveBuild.staticDirectory]
     : ['static', 'theoplayer/static', 'ads/static', 'adengine/static', 'open-video-ui/external/web-ui/docs/static'],
 
   themeConfig: {
@@ -908,6 +901,8 @@ function prepareArchiveBuild(version?: string) {
     throw new Error(`Unknown THEOplayer archive version: ${version}`);
   }
 
+  const label = fs.readFileSync(path.join(versionDirectory, 'version.txt'), 'utf8').trim();
+
   const staticDirectory = path.join(__dirname, '.docusaurus/archive-static');
   const staticVersionDirectory = path.join(staticDirectory, 'theoplayer', version);
   fs.mkdirSync(path.dirname(staticVersionDirectory), { recursive: true });
@@ -921,7 +916,7 @@ function prepareArchiveBuild(version?: string) {
   const generatedSidebarsPath = path.join(__dirname, '.docusaurus/archive-sidebars.json');
   fs.writeFileSync(generatedSidebarsPath, `${JSON.stringify(rewrittenSidebars, null, 2)}\n`);
 
-  return { staticDirectory, sidebarPath: generatedSidebarsPath };
+  return { label, staticDirectory, sidebarPath: generatedSidebarsPath };
 }
 
 function rewriteArchiveLink(url: string): string {
