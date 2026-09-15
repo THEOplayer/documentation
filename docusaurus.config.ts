@@ -52,21 +52,6 @@ const theoplayerVersions: Record<string, DocsPlugin.VersionOptions> = {
     banner: 'unmaintained',
     noIndex: true,
   },
-  v7: {
-    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v7/version.txt'), 'utf8').trim(),
-    banner: 'unmaintained',
-    noIndex: true,
-  },
-  v6: {
-    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v6/version.txt'), 'utf8').trim(),
-    banner: 'unmaintained',
-    noIndex: true,
-  },
-  v4: {
-    label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v4/version.txt'), 'utf8').trim(),
-    banner: 'unmaintained',
-    noIndex: true,
-  },
 };
 
 const docsConfigBase = {
@@ -245,9 +230,8 @@ const config: Config = {
           ? undefined
           : isProductionDeployment
             ? undefined
-            : // v6 and v7 aren't being updated anymore.
-              // We still have links to v4 and v8 docs, so we always need to build those.
-              ['current', 'v10', 'v9', 'v8', 'v4'],
+            : // We still have links to v8 docs, so we always need to build it.
+              ['current', 'v10', 'v9', 'v8'],
         versions: archiveBuild ? { current: { label: archiveBuild.label, banner: 'none', noIndex: true } } : theoplayerVersions,
         async sidebarItemsGenerator(args) {
           const sidebarItems = await sidebarItemsGenerator(args);
@@ -622,12 +606,11 @@ const config: Config = {
       items: ARCHIVE_VERSION
         ? [
             {
-              type: 'custom-platformSidebar',
+              type: 'docSidebar',
               docsPluginId: 'theoplayer',
+              sidebarId: 'web',
               label: 'OptiView Player',
-              href: '/',
-              activeBasePath: '/',
-            } satisfies PlatformSidebarNavbarItemProps,
+            },
             theoplayerDocsVersionDropdown,
           ]
         : [

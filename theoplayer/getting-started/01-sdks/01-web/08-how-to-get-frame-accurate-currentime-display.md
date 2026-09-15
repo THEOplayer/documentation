@@ -42,7 +42,7 @@ player.addEventListener('durationchange', function (e) {
 
 ##### Android & iOS SDK
 
-This can be done through JavaScript injection: [How to add CSS or JavaScript files to an Android/iOS project](../../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+This can be done through JavaScript injection: [How to add CSS or JavaScript files to an Android/iOS project](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios)
 
 ## Remarks
 
