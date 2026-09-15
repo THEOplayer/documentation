@@ -28,3 +28,5 @@ jobs:
       artifact_name: ${{ needs.build.outputs.artifact_name }}
       s3_prefix: 'docs'
       cf_invalidate_path: '/*'
+      # Archived THEOplayer versions live in the same bucket but are not part of this build.
+      s3_sync_excludes: ${{ needs.build.outputs.s3_sync_excludes }}
