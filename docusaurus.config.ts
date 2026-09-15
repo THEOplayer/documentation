@@ -256,352 +256,330 @@ const config: Config = {
         },
       } satisfies DocsPlugin.Options,
     ],
-    ARCHIVE_VERSION
-      ? undefined
+    ...(ARCHIVE_VERSION
+      ? []
       : [
-          '@docusaurus/plugin-content-docs',
-          {
-            ...docsConfigBase,
-            id: 'ads',
-            path: 'ads',
-            routeBasePath: '/ads',
-            sidebarPath: './sidebarsAds.ts',
-            docItemComponent: '@theme/ApiItem',
-            lastVersion: 'current',
-            versions: {
-              current: {
-                label: 'v2',
-              },
-              v1: {
-                label: 'v1',
-                banner: 'none',
-              },
-            },
-            async sidebarItemsGenerator(args) {
-              const sidebarItems = await sidebarItemsGenerator(args);
-              return removeDocIndexItems(sidebarItems);
-            },
-          } satisfies DocsPlugin.Options,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          '@docusaurus/plugin-content-docs',
-          {
-            ...docsConfigBase,
-            id: 'adengine',
-            path: 'adengine',
-            routeBasePath: '/ad-engine',
-            sidebarPath: './sidebarsAdEngine.ts',
-            docItemComponent: '@theme/ApiItem',
-            async sidebarItemsGenerator(args) {
-              const sidebarItems = await sidebarItemsGenerator(args);
-              return removeDocIndexItems(sidebarItems);
-            },
-          } satisfies DocsPlugin.Options,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          'docusaurus-plugin-openapi-docs',
-          {
-            id: 'ad-engine-api',
-            docsPluginId: 'adengine',
-            config: {
-              reference: {
-                specPath: 'adengine/static/ad-engine.yaml',
-                outputDir: 'adengine/reference',
-                hideSendButton: true,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
+          [
+            '@docusaurus/plugin-content-docs',
+            {
+              ...docsConfigBase,
+              id: 'ads',
+              path: 'ads',
+              routeBasePath: '/ads',
+              sidebarPath: './sidebarsAds.ts',
+              docItemComponent: '@theme/ApiItem',
+              lastVersion: 'current',
+              versions: {
+                current: {
+                  label: 'v2',
+                },
+                v1: {
+                  label: 'v1',
+                  banner: 'none',
                 },
               },
-            },
-          } satisfies OpenApiPlugin.PluginOptions,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          '@docusaurus/plugin-content-docs',
-          {
-            ...docsConfigBase,
-            id: 'open-video-ui',
-            path: 'open-video-ui',
-            routeBasePath: '/open-video-ui',
-            sidebarPath: './sidebarsOpenVideoUI.ts',
-            lastVersion: 'current',
-            versions: {
-              current: {
-                label: webUiVersion,
+              async sidebarItemsGenerator(args) {
+                const sidebarItems = await sidebarItemsGenerator(args);
+                return removeDocIndexItems(sidebarItems);
               },
-            },
-            sidebarItemsGenerator,
-          } satisfies DocsPlugin.Options,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          '@docusaurus/plugin-content-docs',
-          {
-            ...docsConfigBase,
-            id: 'theolive',
-            path: 'theolive',
-            routeBasePath: '/theolive',
-            sidebarPath: './sidebarsTheolive.ts',
-            docItemComponent: '@theme/ApiItem',
-            lastVersion: 'current',
-            versions: {
-              current: {
-                label: 'v2',
+            } satisfies DocsPlugin.Options,
+          ],
+          [
+            '@docusaurus/plugin-content-docs',
+            {
+              ...docsConfigBase,
+              id: 'adengine',
+              path: 'adengine',
+              routeBasePath: '/ad-engine',
+              sidebarPath: './sidebarsAdEngine.ts',
+              docItemComponent: '@theme/ApiItem',
+              async sidebarItemsGenerator(args) {
+                const sidebarItems = await sidebarItemsGenerator(args);
+                return removeDocIndexItems(sidebarItems);
               },
-              v1: {
-                label: 'v1',
-                banner: 'none',
-              },
-            },
-          } satisfies DocsPlugin.Options,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          '@docusaurus/plugin-content-docs',
-          {
-            ...docsConfigBase,
-            id: 'millicast',
-            path: 'millicast',
-            routeBasePath: '/millicast',
-            sidebarPath: './sidebarsMillicast.ts',
-            docItemComponent: '@theme/ApiItem',
-            async sidebarItemsGenerator(args) {
-              const sidebarItems = await sidebarItemsGenerator(args);
-              return removeDocIndexItems(sidebarItems);
-            },
-          } satisfies DocsPlugin.Options,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          'docusaurus-plugin-image-zoom',
-          {
-            id: 'docusaurus-plugin-image-zoom',
-            path: 'millicast',
-            routeBasePath: '/millicast',
-          },
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          '@docusaurus/plugin-content-docs',
-          {
-            ...docsConfigBase,
-            id: 'contributing',
-            path: 'contributing',
-            routeBasePath: '/contributing',
-            sidebarPath: './sidebarsContributing.ts',
-            versions: {
-              current: {
-                noIndex: true,
-              },
-            },
-          } satisfies DocsPlugin.Options,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          'docusaurus-plugin-openapi-docs',
-          {
-            id: 'ads-api',
-            docsPluginId: 'ads',
-            config: {
-              ads: {
-                version: 'v2',
-                label: 'v2',
-                specPath: '.docusaurus/openapi/ads-v2/openapi.json',
-                outputDir: 'ads/api/reference',
-                hideSendButton: true,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
+            } satisfies DocsPlugin.Options,
+          ],
+          [
+            'docusaurus-plugin-openapi-docs',
+            {
+              id: 'ad-engine-api',
+              docsPluginId: 'adengine',
+              config: {
+                reference: {
+                  specPath: 'adengine/static/ad-engine.yaml',
+                  outputDir: 'adengine/reference',
+                  hideSendButton: true,
+                  sidebarOptions: {
+                    groupPathsBy: 'tag',
+                  },
                 },
               },
-              signaling: {
-                version: 'v1',
-                label: 'v1',
-                specPath: 'ads_versioned_docs/version-v1/api/ads-client.swagger.json',
-                outputDir: 'ads_versioned_docs/version-v1/api/signaling',
-                hideSendButton: true,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
+            } satisfies OpenApiPlugin.PluginOptions,
+          ],
+          [
+            '@docusaurus/plugin-content-docs',
+            {
+              ...docsConfigBase,
+              id: 'open-video-ui',
+              path: 'open-video-ui',
+              routeBasePath: '/open-video-ui',
+              sidebarPath: './sidebarsOpenVideoUI.ts',
+              lastVersion: 'current',
+              versions: {
+                current: {
+                  label: webUiVersion,
                 },
               },
+              sidebarItemsGenerator,
+            } satisfies DocsPlugin.Options,
+          ],
+          [
+            '@docusaurus/plugin-content-docs',
+            {
+              ...docsConfigBase,
+              id: 'theolive',
+              path: 'theolive',
+              routeBasePath: '/theolive',
+              sidebarPath: './sidebarsTheolive.ts',
+              docItemComponent: '@theme/ApiItem',
+              lastVersion: 'current',
+              versions: {
+                current: {
+                  label: 'v2',
+                },
+                v1: {
+                  label: 'v1',
+                  banner: 'none',
+                },
+              },
+            } satisfies DocsPlugin.Options,
+          ],
+          [
+            '@docusaurus/plugin-content-docs',
+            {
+              ...docsConfigBase,
+              id: 'millicast',
+              path: 'millicast',
+              routeBasePath: '/millicast',
+              sidebarPath: './sidebarsMillicast.ts',
+              docItemComponent: '@theme/ApiItem',
+              async sidebarItemsGenerator(args) {
+                const sidebarItems = await sidebarItemsGenerator(args);
+                return removeDocIndexItems(sidebarItems);
+              },
+            } satisfies DocsPlugin.Options,
+          ],
+          [
+            'docusaurus-plugin-image-zoom',
+            {
+              id: 'docusaurus-plugin-image-zoom',
+              path: 'millicast',
+              routeBasePath: '/millicast',
             },
-          } satisfies OpenApiPlugin.PluginOptions,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          'docusaurus-plugin-openapi-docs',
-          {
-            id: 'millicast-api',
-            docsPluginId: 'millicast',
-            config: {
-              millicast: {
-                specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
-                outputDir: 'millicast/api',
-                hideSendButton: true,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
-                },
-                markdownGenerators: openApiLinkRewrite(),
-              },
-              millicastDirector: {
-                specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
-                outputDir: 'millicast/api/director',
-                hideSendButton: true,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
+          ],
+          [
+            '@docusaurus/plugin-content-docs',
+            {
+              ...docsConfigBase,
+              id: 'contributing',
+              path: 'contributing',
+              routeBasePath: '/contributing',
+              sidebarPath: './sidebarsContributing.ts',
+              versions: {
+                current: {
+                  noIndex: true,
                 },
               },
-              millicastReportingApi: {
-                specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json',
-                outputDir: 'millicast/api/reporting',
-                hideSendButton: true,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
+            } satisfies DocsPlugin.Options,
+          ],
+          [
+            'docusaurus-plugin-openapi-docs',
+            {
+              id: 'ads-api',
+              docsPluginId: 'ads',
+              config: {
+                ads: {
+                  version: 'v2',
+                  label: 'v2',
+                  specPath: '.docusaurus/openapi/ads-v2/openapi.json',
+                  outputDir: 'ads/api/reference',
+                  hideSendButton: true,
+                  sidebarOptions: {
+                    groupPathsBy: 'tag',
+                  },
+                },
+                signaling: {
+                  version: 'v1',
+                  label: 'v1',
+                  specPath: 'ads_versioned_docs/version-v1/api/ads-client.swagger.json',
+                  outputDir: 'ads_versioned_docs/version-v1/api/signaling',
+                  hideSendButton: true,
+                  sidebarOptions: {
+                    groupPathsBy: 'tag',
+                  },
                 },
               },
-            },
-          } satisfies OpenApiPlugin.PluginOptions,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          'docusaurus-plugin-openapi-docs',
-          {
-            id: 'theolive-api',
-            docsPluginId: 'theolive',
-            config: {
-              theolive: {
-                version: 'v2',
-                label: 'v2',
-                specPath: 'https://api.theo.live/v2/api-docs/swagger.json',
-                outputDir: `theolive/api/`,
-                hideSendButton: false,
-                sidebarOptions: {
-                  groupPathsBy: 'tag',
-                  sidebarCollapsible: true,
+            } satisfies OpenApiPlugin.PluginOptions,
+          ],
+          [
+            'docusaurus-plugin-openapi-docs',
+            {
+              id: 'millicast-api',
+              docsPluginId: 'millicast',
+              config: {
+                millicast: {
+                  specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
+                  outputDir: 'millicast/api',
+                  hideSendButton: true,
+                  sidebarOptions: {
+                    groupPathsBy: 'tag',
+                  },
+                  markdownGenerators: openApiLinkRewrite(),
                 },
-                markdownGenerators: openApiLinkRewrite(),
-              },
-              channels: theoLiveV1OpenApiOptions('channels'),
-              events: theoLiveV1OpenApiOptions('events'),
-              reports: theoLiveV1OpenApiOptions('reports'),
-              schedulers: theoLiveV1OpenApiOptions('schedulers'),
-              webhooks: theoLiveV1OpenApiOptions('webhooks'),
-            },
-          } satisfies OpenApiPlugin.PluginOptions,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          '@docusaurus/plugin-client-redirects',
-          {
-            redirects: [...redirectsMillicast, ...redirectsAds, ...redirectsTHEOPlayer],
-            createRedirects(existingPath) {
-              if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
-                return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
-              } else if (existingPath.startsWith('/theolive/v1/api/')) {
-                return [existingPath.replace('/theolive/v1/api/', '/theolive/api/')];
-              } else if (existingPath.startsWith('/ads/v1/')) {
-                return [existingPath.replace('/ads/v1/', '/ads/')];
-              } else if (existingPath === '/theolive/channel/metadata-insertion') {
-                return ['/theolive/contribution/sei-messages'];
-              }
-              return undefined;
-            },
-          } satisfies ClientRedirectsPlugin.Options,
-        ],
-    ARCHIVE_VERSION
-      ? undefined
-      : [
-          llmsTxt,
-          {
-            // Generates /llms.txt, /llms-full.txt, /<product>/llms.txt, /<product>/llms-full.txt and a .md twin of every page
-            llmsTxt: {
-              siteTitle: 'Dolby OptiView Documentation',
-              siteDescription: 'Developer documentation for Dolby OptiView Player, Open Video UI, Live, Real-time, Ads and Ad Engine.',
-              content: {
-                enableMarkdownFiles: true,
-                relativePaths: false,
-                includeBlog: false,
-                includePages: false,
-                includeGeneratedIndex: false,
-                excludeRoutes: [
-                  // Unmaintained Player versions
-                  '**/theoplayer/v{4,5,6,7,8,9}/**',
-                  '**/contributing/**',
-                  '**/search/**',
-                  '**/404*',
-                ],
-                // OpenAPI pages render with `@theme/ApiItem`, which uses `.theme-api-markdown`
-                contentSelectors: ['.theme-doc-markdown', '.theme-api-markdown', 'main'],
-              },
-              onRouteError: 'warn',
-            },
-            products: [
-              {
-                slug: 'theoplayer',
-                title: 'Dolby OptiView Player',
-                description:
-                  'Dolby OptiView Player (formerly THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.',
-                platformSidebars: {
-                  web: 'Web SDK',
-                  android: 'Android SDK',
-                  ios: 'iOS & tvOS SDK',
-                  'react-native': 'React Native SDK',
-                  flutter: 'Flutter SDK',
-                  chromecast: 'Chromecast SDK',
-                  roku: 'Roku SDK',
+                millicastDirector: {
+                  specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
+                  outputDir: 'millicast/api/director',
+                  hideSendButton: true,
+                  sidebarOptions: {
+                    groupPathsBy: 'tag',
+                  },
+                },
+                millicastReportingApi: {
+                  specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json',
+                  outputDir: 'millicast/api/reporting',
+                  hideSendButton: true,
+                  sidebarOptions: {
+                    groupPathsBy: 'tag',
+                  },
                 },
               },
-              {
-                slug: 'open-video-ui',
-                title: 'Open Video UI',
-                description:
-                  'The Open Video UI provides component libraries for building a world-class video player experience powered by the OptiView Player SDK, with dedicated libraries for web, Android and React Native.',
-                platformSidebars: {
-                  web: 'Web',
-                  android: 'Android',
-                  react: 'React',
-                  'react-native': 'React Native',
+            } satisfies OpenApiPlugin.PluginOptions,
+          ],
+          [
+            'docusaurus-plugin-openapi-docs',
+            {
+              id: 'theolive-api',
+              docsPluginId: 'theolive',
+              config: {
+                theolive: {
+                  version: 'v2',
+                  label: 'v2',
+                  specPath: 'https://api.theo.live/v2/api-docs/swagger.json',
+                  outputDir: `theolive/api/`,
+                  hideSendButton: false,
+                  sidebarOptions: {
+                    groupPathsBy: 'tag',
+                    sidebarCollapsible: true,
+                  },
+                  markdownGenerators: openApiLinkRewrite(),
                 },
+                channels: theoLiveV1OpenApiOptions('channels'),
+                events: theoLiveV1OpenApiOptions('events'),
+                reports: theoLiveV1OpenApiOptions('reports'),
+                schedulers: theoLiveV1OpenApiOptions('schedulers'),
+                webhooks: theoLiveV1OpenApiOptions('webhooks'),
               },
-              {
-                slug: 'theolive',
-                title: 'Dolby OptiView Live',
-                description:
-                  "Dolby OptiView's Live-streaming solution enables you to stream with consistency to any audience size with the best quality of experience, whether it's for a large live broadcast event, sports betting, or interactive entertainment.",
+            } satisfies OpenApiPlugin.PluginOptions,
+          ],
+          [
+            '@docusaurus/plugin-client-redirects',
+            {
+              redirects: [...redirectsMillicast, ...redirectsAds, ...redirectsTHEOPlayer],
+              createRedirects(existingPath) {
+                if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
+                  return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
+                } else if (existingPath.startsWith('/theolive/v1/api/')) {
+                  return [existingPath.replace('/theolive/v1/api/', '/theolive/api/')];
+                } else if (existingPath.startsWith('/ads/v1/')) {
+                  return [existingPath.replace('/ads/v1/', '/ads/')];
+                } else if (existingPath === '/theolive/channel/metadata-insertion') {
+                  return ['/theolive/contribution/sei-messages'];
+                }
+                return undefined;
               },
-              {
-                slug: 'millicast',
-                title: 'Dolby OptiView Real-time Streaming',
-                description:
-                  "Dolby OptiView's Real-time Streaming (formerly Millicast) makes it easier to globally stream your high-value content with broadcast-quality picture and sound to massive audiences all with subsecond latency.",
+            } satisfies ClientRedirectsPlugin.Options,
+          ],
+          [
+            llmsTxt,
+            {
+              // Generates /llms.txt, /llms-full.txt, /<product>/llms.txt, /<product>/llms-full.txt and a .md twin of every page
+              llmsTxt: {
+                siteTitle: 'Dolby OptiView Documentation',
+                siteDescription: 'Developer documentation for Dolby OptiView Player, Open Video UI, Live, Real-time, Ads and Ad Engine.',
+                content: {
+                  enableMarkdownFiles: true,
+                  relativePaths: false,
+                  includeBlog: false,
+                  includePages: false,
+                  includeGeneratedIndex: false,
+                  excludeRoutes: [
+                    // Unmaintained Player versions
+                    '**/theoplayer/v{4,5,6,7,8,9}/**',
+                    '**/contributing/**',
+                    '**/search/**',
+                    '**/404*',
+                  ],
+                  // OpenAPI pages render with `@theme/ApiItem`, which uses `.theme-api-markdown`
+                  contentSelectors: ['.theme-doc-markdown', '.theme-api-markdown', 'main'],
+                },
+                onRouteError: 'warn',
               },
-              {
-                slug: 'ads',
-                title: 'Dolby OptiView Ads',
-                description:
-                  'Dolby OptiView Ads enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer engagement and maximize ad revenue.',
-              },
-              {
-                slug: 'ad-engine',
-                title: 'Dolby OptiView Ad Engine',
-                description:
-                  'The Dolby OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream.',
-              },
-            ],
-          } satisfies LlmsTxtOptions,
-        ],
+              products: [
+                {
+                  slug: 'theoplayer',
+                  title: 'Dolby OptiView Player',
+                  description:
+                    'Dolby OptiView Player (formerly THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.',
+                  platformSidebars: {
+                    web: 'Web SDK',
+                    android: 'Android SDK',
+                    ios: 'iOS & tvOS SDK',
+                    'react-native': 'React Native SDK',
+                    flutter: 'Flutter SDK',
+                    chromecast: 'Chromecast SDK',
+                    roku: 'Roku SDK',
+                  },
+                },
+                {
+                  slug: 'open-video-ui',
+                  title: 'Open Video UI',
+                  description:
+                    'The Open Video UI provides component libraries for building a world-class video player experience powered by the OptiView Player SDK, with dedicated libraries for web, Android and React Native.',
+                  platformSidebars: {
+                    web: 'Web',
+                    android: 'Android',
+                    react: 'React',
+                    'react-native': 'React Native',
+                  },
+                },
+                {
+                  slug: 'theolive',
+                  title: 'Dolby OptiView Live',
+                  description:
+                    "Dolby OptiView's Live-streaming solution enables you to stream with consistency to any audience size with the best quality of experience, whether it's for a large live broadcast event, sports betting, or interactive entertainment.",
+                },
+                {
+                  slug: 'millicast',
+                  title: 'Dolby OptiView Real-time Streaming',
+                  description:
+                    "Dolby OptiView's Real-time Streaming (formerly Millicast) makes it easier to globally stream your high-value content with broadcast-quality picture and sound to massive audiences all with subsecond latency.",
+                },
+                {
+                  slug: 'ads',
+                  title: 'Dolby OptiView Ads',
+                  description:
+                    'Dolby OptiView Ads enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer engagement and maximize ad revenue.',
+                },
+                {
+                  slug: 'ad-engine',
+                  title: 'Dolby OptiView Ad Engine',
+                  description:
+                    'The Dolby OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream.',
+                },
+              ],
+            } satisfies LlmsTxtOptions,
+          ],
+        ]),
     [
       (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
         name: 'webpack-plugin',
@@ -618,8 +596,8 @@ const config: Config = {
         }),
       },
     ],
-    ARCHIVE_VERSION ? undefined : '@docsearch/docusaurus-adapter',
-  ].filter(isDefined),
+    ...(ARCHIVE_VERSION ? [] : ['@docsearch/docusaurus-adapter']),
+  ],
 
   themes: ['docusaurus-theme-openapi-docs'],
 
@@ -973,10 +951,6 @@ function rewriteArchivedVersionLink(url: string): string {
     .replace(/\.(md|mdx)$/, '')
     .replace(/\/index$/, '');
   return `${PRODUCTION_URL}theoplayer/${match[1]}/${route}`;
-}
-
-function isDefined<T>(value: T | undefined): value is T {
-  return value !== undefined;
 }
 
 function externalDocUrl(docPath: string): string {
