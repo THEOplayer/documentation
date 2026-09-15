@@ -87,7 +87,7 @@ To achieve the same result on Android SDK, the same CSS need to be passed to you
 
 **Step 1**
 
-To learn how to inject CSS into your Android project, follow the guide [Android SDK Customization - Custom CSS and JavaScript files](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+To learn how to inject CSS into your Android project, follow the guide [Android SDK Customization - Custom CSS and JavaScript files](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios).
 
 **Step 2**
 
@@ -99,7 +99,7 @@ To achieve the same result on iOS SDK, the same CSS need to be passed to your ap
 
 **Step 1**
 
-To learn how to inject CSS into your iOS project, follow the guide [iOS SDK Customization - Custom CSS and JavaScript files](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+To learn how to inject CSS into your iOS project, follow the guide [iOS SDK Customization - Custom CSS and JavaScript files](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios).
 
 **Step 2**
 

@@ -53,11 +53,11 @@ Follow our [Android Network Interceptor](02-android-network-interceptor.md) page
 
 ##### Legacy Android (TV) SDK (4.12.X)
 
-Add the above JavaScript snippet to your legacy Android (TV) SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+Add the above JavaScript snippet to your legacy Android (TV) SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios).
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
-Add the above JavaScript snippet to your legacy iOS SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+Add the above JavaScript snippet to your legacy iOS SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios).
 
 ### 2. Add/use response interceptor
 
@@ -98,11 +98,11 @@ Follow our [Android Network Interceptor](02-android-network-interceptor.md) page
 
 ##### Legacy Android (TV) SDK (4.12.X)
 
-Add the above JavaScript snippet to your legacy Android (TV) SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+Add the above JavaScript snippet to your legacy Android (TV) SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios).
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
-Add the above JavaScript snippet to your legacy iOS SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+Add the above JavaScript snippet to your legacy iOS SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios).
 
 ## HTTP Errors
 

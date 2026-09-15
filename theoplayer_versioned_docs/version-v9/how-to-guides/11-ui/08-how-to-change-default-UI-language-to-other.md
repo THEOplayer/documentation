@@ -102,7 +102,7 @@ player = new THEOplayer.Player(playerElement, {
 
 In the implementation for Android SDK, the addition of language needs to be done in 2 following Steps:
 
-1. An Additional separate JavaScript file needs to be added to your Android project. You can follow the instructions presented in this article: [How to add/customize the Android THEOplayer SDK](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+1. An Additional separate JavaScript file needs to be added to your Android project. You can follow the instructions presented in this article: [How to add/customize the Android THEOplayer SDK](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios)
 
 2. After a JavaScript file is added to your project, Please add the specific language to the JS file
 
@@ -154,7 +154,7 @@ theoPlayerView = new THEOplayerView(this, playerConfig);
 
 In the implementation for iOS SDK, the addition of language needs to be done in 2 following Steps:
 
-1. An Additional separate JavaScript file needs to be added to your Android project. You can follow the instructions presented in this article: [How to add/customize the iOS THEOplayer SDK](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+1. An Additional separate JavaScript file needs to be added to your Android project. You can follow the instructions presented in this article: [How to add/customize the iOS THEOplayer SDK](https://optiview.dolby.com/docs/theoplayer/v4/faq/how-to-add-css-or-javascript-files-to-android-ios)
 
 2. After a JavaScript file is added to your project, Please add the specific language to the JS file
 

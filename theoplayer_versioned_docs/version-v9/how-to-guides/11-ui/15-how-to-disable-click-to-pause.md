@@ -7,8 +7,8 @@ You might be interested in disabling this behavior because your functional requi
 
 You can disable this default UX behavior through CSS on both the Web SDK, iOS SDK and Android SDK.
 The next section will focus on the Web SDK specifically. We'll also discuss some related APIs.
-To achieve the same on the iOS SDK you can implement the Web SDK approach through [iOS SDK customization](../../../version-v4/getting-started/01-sdks/03-ios/01-ios-sdk-customization.md).
-To achieve the same on the Android Legacy (4.12.x) SDK you can implement the Web SDK approach through [Android Legacy (4.12.x) SDK customization](../../../version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
+To achieve the same on the iOS SDK you can implement the Web SDK approach through [iOS SDK customization](https://optiview.dolby.com/docs/theoplayer/v4/getting-started/sdks/ios/ios-sdk-customization).
+To achieve the same on the Android Legacy (4.12.x) SDK you can implement the Web SDK approach through [Android Legacy (4.12.x) SDK customization](https://optiview.dolby.com/docs/theoplayer/v4/getting-started/sdks/android/android-sdk-customization).
 
 ## SDKs
 
