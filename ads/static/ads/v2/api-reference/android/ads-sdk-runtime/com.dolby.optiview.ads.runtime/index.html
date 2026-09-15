@@ -1,0 +1,400 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.dolby.optiview.ads.runtime</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">1.0.0-beta.6-custom.1361
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ads-sdk-runtime/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ads-sdk-runtime/main" data-filter=":ads-sdk-runtime/main">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="ads-sdk-runtime::com.dolby.optiview.ads.runtime////PointingToDeclaration//-1659482093">
+  <div class="breadcrumbs"><a href="../index.html">ads-sdk-runtime</a><span class="delimiter">/</span><span class="current">com.dolby.optiview.ads.runtime</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><p class="paragraph">The Media3 player adapter, the overlay ad renderer with its scaling and audio focus options, the GAM stream manager and its configuration, the VAST ad manager, and the device type detection.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="117699722%2FClasslikes%2F-1659482093" anchor-label="AdAssetException" id="117699722%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ad-asset-exception/index.html"><span>Ad</span><wbr><span>Asset</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="117699722%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-ad-asset-exception/index.html">AdAssetException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown to represent an ad asset that failed to play (surfaced via <code class="lang-kotlin">aderror</code>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-712496505%2FClasslikes%2F-1659482093" anchor-label="AdAudioFocus" id="-712496505%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ad-audio-focus/index.html"><span>Ad</span><wbr><span>Audio</span><wbr><span><span>Focus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-712496505%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-ad-audio-focus/index.html">AdAudioFocus</a></div><div class="brief "><p class="paragraph">The renderer's handle on audio focus for ad playback. <a href="-ad-audio-focus/request.html">request</a>/<a href="-ad-audio-focus/abandon.html">abandon</a> bracket a break; focus transitions while held arrive via <a href="-ad-audio-focus-callbacks/index.html">AdAudioFocusCallbacks</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-107185747%2FClasslikes%2F-1659482093" anchor-label="AdAudioFocusCallbacks" id="-107185747%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ad-audio-focus-callbacks/index.html"><span>Ad</span><wbr><span>Audio</span><wbr><span>Focus</span><wbr><span><span>Callbacks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-107185747%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-ad-audio-focus-callbacks/index.html">AdAudioFocusCallbacks</a></div><div class="brief "><p class="paragraph">What the renderer does when the system moves audio focus around during a break. Split from the platform calls so unit tests can drive focus transitions directly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-727564369%2FClasslikes%2F-1659482093" anchor-label="AdAudioFocusRequestResult" id="-727564369%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ad-audio-focus-request-result/index.html"><span>Ad</span><wbr><span>Audio</span><wbr><span>Focus</span><wbr><span>Request</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-727564369%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-ad-audio-focus-request-result/index.html">AdAudioFocusRequestResult</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-ad-audio-focus-request-result/index.html">AdAudioFocusRequestResult</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Outcome of an <a href="-ad-audio-focus/request.html">AdAudioFocus.request</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1260704466%2FClasslikes%2F-1659482093" anchor-label="AdScaling" id="1260704466%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ad-scaling/index.html"><span>Ad</span><wbr><span><span>Scaling</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1260704466%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-ad-scaling/index.html">AdScaling</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-ad-scaling/index.html">AdScaling</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">How ad creatives scale inside the ad surface — the Kotlin mirror of the iOS runtime's <code class="lang-kotlin">AdScaling</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1218010814%2FClasslikes%2F-1659482093" anchor-label="AndroidAdAudioFocus" id="-1218010814%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-android-ad-audio-focus/index.html"><span>Android</span><wbr><span>Ad</span><wbr><span>Audio</span><wbr><span><span>Focus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1218010814%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-android-ad-audio-focus/index.html">AndroidAdAudioFocus</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">callbacks<span class="token operator">: </span><a href="-ad-audio-focus-callbacks/index.html">AdAudioFocusCallbacks</a></span></span><span class="token punctuation">)</span> : <a href="-ad-audio-focus/index.html">AdAudioFocus</a></div><div class="brief "><p class="paragraph">Platform <a href="-ad-audio-focus/index.html">AdAudioFocus</a> over <a href="https://developer.android.com/reference/kotlin/android/media/AudioManager.html">AudioManager</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2027272282%2FClasslikes%2F-1659482093" anchor-label="ExoPlayerAdapter" id="2027272282%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-exo-player-adapter/index.html"><span>Exo</span><wbr><span>Player</span><wbr><span><span>Adapter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2027272282%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-exo-player-adapter/index.html">ExoPlayerAdapter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">player<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a></span></span><span class="token punctuation">)</span> : <a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a>, <a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-content-video-size-provider/index.html">ContentVideoSizeProvider</a></div><div class="brief "><p class="paragraph">Media3/ExoPlayer implementation of the portable <a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a> (P4b-2).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="547138028%2FClasslikes%2F-1659482093" anchor-label="GamAdEventCallbacks" id="547138028%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gam-ad-event-callbacks/index.html"><span>Gam</span><wbr><span>Ad</span><wbr><span>Event</span><wbr><span><span>Callbacks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="547138028%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-gam-ad-event-callbacks/index.html">GamAdEventCallbacks</a></div><div class="brief "><p class="paragraph">Callbacks for IMA ad-progress events (mirrors the web <code class="lang-kotlin">GamAdEventCallbacks</code>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="609792565%2FClasslikes%2F-1659482093" anchor-label="GamLiveStreamConfig" id="609792565%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gam-live-stream-config/index.html"><span>Gam</span><wbr><span>Live</span><wbr><span>Stream</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="609792565%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-gam-live-stream-config/index.html">GamLiveStreamConfig</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>assetKey<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>adTagParameters<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>streamActivityMonitorId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>apiKey<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Configuration for a full-service IMA DAI live-stream session (ADS-326 steered ssai): the ads are stitched by Google and the SDK plays the single returned stream, so this carries the DAI <code class="lang-kotlin">assetKey</code> rather than the pod-serving <code class="lang-kotlin">customAssetKey</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1227285462%2FClasslikes%2F-1659482093" anchor-label="GamSessionException" id="-1227285462%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gam-session-exception/index.html"><span>Gam</span><wbr><span>Session</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1227285462%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-gam-session-exception/index.html">GamSessionException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when the IMA DAI session fails to initialize.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1287235391%2FClasslikes%2F-1659482093" anchor-label="GamStreamConfig" id="-1287235391%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gam-stream-config/index.html"><span>Gam</span><wbr><span>Stream</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1287235391%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-gam-stream-config/index.html">GamStreamConfig</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>networkCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>customAssetKey<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>adTagParameters<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>streamActivityMonitorId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>apiKey<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Configuration for a GAM/IMA DAI pod-serving session (mirrors <code class="lang-kotlin">GamStreamConfig</code>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1188459054%2FClasslikes%2F-1659482093" anchor-label="GamStreamManager" id="-1188459054%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gam-stream-manager/index.html"><span>Gam</span><wbr><span>Stream</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1188459054%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-gam-stream-manager/index.html">GamStreamManager</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">adUiContainer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.html">ViewGroup</a><span class="token punctuation">, </span></span><span class="parameter ">adPlayerVolumeProvider<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>{ 100 }</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Manages a Google IMA DAI SDK pod-serving session on Android — the Kotlin mirror of the web <code class="lang-kotlin">GamStreamManager</code>. Initializes an IMA <code class="lang-kotlin">StreamManager</code> via a <code class="lang-kotlin">PodStreamRequest</code>, exposes the resulting <code class="lang-kotlin">streamId</code> for pod-manifest URL construction (delegated to the portable <a href="../../ads-sdk-core/com.dolby.optiview.ads.core/index.html">buildGamPodUrl</a>), and forwards ad progress/quartile events.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1800597685%2FClasslikes%2F-1659482093" anchor-label="ImaVastAdManager" id="-1800597685%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ima-vast-ad-manager/index.html"><span>Ima</span><wbr><span>Vast</span><wbr><span>Ad</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1800597685%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-ima-vast-ad-manager/index.html">ImaVastAdManager</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">adUiContainer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.html">ViewGroup</a><span class="token punctuation">, </span></span><span class="parameter ">adPlayer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a></span></span><span class="token punctuation">)</span> : <a href="-vast-ad-manager/index.html">VastAdManager</a></div><div class="brief "><p class="paragraph">Real IMA client-side <a href="-vast-ad-manager/index.html">VastAdManager</a>. Drives <code class="lang-kotlin">AdsLoader.requestAds</code> with the VAST tag URL, renders via an <a href="../../ads-sdk-runtime/com.dolby.optiview.ads.runtime/-ima-vast-ad-manager/-ad-video-player/index.html">AdVideoPlayer</a> backed by the SDK's ad <a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a>, and maps IMA <code class="lang-kotlin">AdEvent</code>/<code class="lang-kotlin">AdErrorEvent</code> to <a href="-vast-ad-event-callbacks/index.html">VastAdEventCallbacks</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="431142272%2FClasslikes%2F-1659482093" anchor-label="OverlayAdRenderer" id="431142272%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-overlay-ad-renderer/index.html"><span>Overlay</span><wbr><span>Ad</span><wbr><span><span>Renderer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="431142272%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-overlay-ad-renderer/index.html">OverlayAdRenderer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">overlayContainer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.html">ViewGroup</a><span class="token punctuation">, </span></span><span class="parameter ">contentPlayer<span class="token operator">: </span><a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a><span class="token punctuation">, </span></span><span class="parameter ">gamConfig<span class="token operator">: </span><a href="../../ads-sdk/com.dolby.optiview.ads.sdk/-gam-config/index.html">GamConfig</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">adBreakCutSafetyMarginSec<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>DEFAULT_AD_BREAK_CUT_SAFETY_MARGIN_SEC<span class="token punctuation">, </span></span><span class="parameter ">ioDispatcher<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineDispatcher///PointingToDeclaration/">CoroutineDispatcher</span><span class="token operator"> = </span>Dispatchers.IO<span class="token punctuation">, </span></span><span class="parameter ">vastAdManagerFactory<span class="token operator">: </span><span class="token punctuation">(</span>player<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a><span class="token punctuation">, </span>container<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.html">ViewGroup</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="-vast-ad-manager/index.html">VastAdManager</a><span class="token operator">?</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">adPlayerFactory<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">pauseVastFetcher<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span>url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">pauseBeaconSink<span class="token operator">: </span><span class="token punctuation">(</span>url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">clock<span class="token operator">: </span><a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-clock/index.html">Clock</a><span class="token operator"> = </span>systemClock<span class="token punctuation">, </span></span><span class="parameter ">contentContainer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">contentSurfaceTransformable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">deviceTypeOverride<span class="token operator">: </span><a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-device-type/index.html">DeviceType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">transitionMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>FADE_MS<span class="token punctuation">, </span></span><span class="parameter ">audioFocusFactory<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span><a href="-ad-audio-focus-callbacks/index.html">AdAudioFocusCallbacks</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="-ad-audio-focus/index.html">AdAudioFocus</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">adScaling<span class="token operator">: </span><a href="-ad-scaling/index.html">AdScaling</a><span class="token operator"> = </span>AdScaling.FIT<span class="token punctuation">, </span></span><span class="parameter ">companionContainer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.html">ViewGroup</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ads-sdk/com.dolby.optiview.ads.sdk/-ad-renderer/index.html">AdRenderer</a></div><div class="brief "><p class="paragraph">Overlay <a href="../../ads-sdk/com.dolby.optiview.ads.sdk/-ad-renderer/index.html">AdRenderer</a> for Android: plays break assets on a dedicated ad <a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a> in a <a href="https://developer.android.com/reference/kotlin/androidx/media3/ui/PlayerView.html">PlayerView</a> above the integrator's content surface. Event ORDER comes from the portable <a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-ad-break-sequencer/index.html">AdBreakSequencer</a>; this class only performs side effects and reports outcomes back.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="125343657%2FClasslikes%2F-1659482093" anchor-label="VastAdEventCallbacks" id="125343657%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-vast-ad-event-callbacks/index.html"><span>Vast</span><wbr><span>Ad</span><wbr><span>Event</span><wbr><span><span>Callbacks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="125343657%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-vast-ad-event-callbacks/index.html">VastAdEventCallbacks</a></div><div class="brief "><p class="paragraph">Ad-progress callbacks fired during a single VAST (CSAI) ad — the Kotlin mirror of the web <code class="lang-kotlin">VastAdManager</code> callbacks. Quartiles map onto the SDK's existing GAM quartile event stream in <a href="-overlay-ad-renderer/index.html">OverlayAdRenderer</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="628027126%2FClasslikes%2F-1659482093" anchor-label="VastAdException" id="628027126%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-vast-ad-exception/index.html"><span>Vast</span><wbr><span>Ad</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="628027126%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-vast-ad-exception/index.html">VastAdException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when the IMA client-side (CSAI) SDK fails to load or play a VAST ad.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1886776744%2FClasslikes%2F-1659482093" anchor-label="VastAdManager" id="-1886776744%2FClasslikes%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-vast-ad-manager/index.html"><span>Vast</span><wbr><span>Ad</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1886776744%2FClasslikes%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-vast-ad-manager/index.html">VastAdManager</a></div><div class="brief "><p class="paragraph">Plays a single VAST ad tag client-side (CSAI) — the Kotlin counterpart of the web <code class="lang-kotlin">@dolby-optiview/ads-sdk-core</code> <code class="lang-kotlin">VastAdManager</code>. This is the <strong>client-side</strong> IMA surface (<code class="lang-kotlin">AdsLoader</code>/<code class="lang-kotlin">AdsManager</code>/<code class="lang-kotlin">AdDisplayContainer</code> + a <code class="lang-kotlin">VideoAdPlayer</code>), distinct from the DAI pod-serving <a href="-gam-stream-manager/index.html">GamStreamManager</a>: here IMA fetches/parses the VAST document and the SDK's ad <a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a> renders the creative.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1220428217%2FFunctions%2F-1659482093" anchor-label="detectDeviceType" id="-1220428217%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="detect-device-type.html"><span>detect</span><wbr><span>Device</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1220428217%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="detect-device-type.html"><span class="token function">detectDeviceType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-device-type/index.html">DeviceType</a></div><div class="brief "><p class="paragraph">Classify the host device into a <a href="../../ads-sdk-core/com.dolby.optiview.ads.core/-device-type/index.html">DeviceType</a> for per-URI asset targeting (see <code class="lang-kotlin">resolveTargetedUri</code>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

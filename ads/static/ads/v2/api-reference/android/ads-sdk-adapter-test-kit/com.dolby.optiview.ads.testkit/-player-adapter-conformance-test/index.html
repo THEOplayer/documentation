@@ -1,0 +1,340 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PlayerAdapterConformanceTest</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">1.0.0-beta.6-custom.1361
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ads-sdk-adapter-test-kit/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ads-sdk-adapter-test-kit/main" data-filter=":ads-sdk-adapter-test-kit/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ads-sdk-adapter-test-kit::com.dolby.optiview.ads.testkit/PlayerAdapterConformanceTest///PointingToDeclaration//651842953">
+  <div class="breadcrumbs"><a href="../../index.html">ads-sdk-adapter-test-kit</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.testkit</a><span class="delimiter">/</span><span class="current">PlayerAdapterConformanceTest</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Player</span><wbr><span>Adapter</span><wbr><span>Conformance</span><wbr><span><span>Test</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">PlayerAdapterConformanceTest</a></div><p class="paragraph">Language-neutral <code class="lang-kotlin">PlayerAdapter</code> conformance suite (Kotlin port of the web <code class="lang-kotlin">@dolby-optiview/ads-sdk-adapter-test-kit</code>). Subclass it for a concrete adapter, provide <a href="create-adapter.html">createAdapter</a>, and the inherited tests assert the shared contract every OptiView Ads <code class="lang-kotlin">PlayerAdapter</code> must satisfy:</p><ul><li><p class="paragraph">state properties (<code class="lang-kotlin">currentTime</code>/<code class="lang-kotlin">duration</code>/<code class="lang-kotlin">paused</code>/<code class="lang-kotlin">muted</code>/<code class="lang-kotlin">volume</code>/<code class="lang-kotlin">programDateTime</code>),</p></li><li><p class="paragraph">volume clamping to <code class="lang-kotlin">[0, 1]</code> and mute pass-through,</p></li><li><p class="paragraph">subscription lifecycle (<code class="lang-kotlin">on</code>/<code class="lang-kotlin">off</code>, multiple handlers, idempotent <code class="lang-kotlin">destroy</code>),</p></li><li><p class="paragraph">optional capabilities (<code class="lang-kotlin">preload</code>, <code class="lang-kotlin">supportsParallelBuffering</code>).</p></li></ul><p class="paragraph">Event <i>delivery</i> is platform-dependent: it is only asserted when the platform can synthesize a player event headlessly (see <a href="trigger-volume-change.html">triggerVolumeChange</a>). On Android, ExoPlayer volume/playback events need real playback or a device, so delivery is covered by on-device integration; here it is skipped via <code class="lang-kotlin">Assume</code>.</p><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html"><span>Player</span><wbr><span><span>Adapter</span></span></a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="587157383%2FConstructors%2F651842953" anchor-label="PlayerAdapterConformanceTest" id="587157383%2FConstructors%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-player-adapter-conformance-test.html"><span>Player</span><wbr><span>Adapter</span><wbr><span>Conformance</span><wbr><span><span>Test</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="587157383%2FConstructors%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1678894663%2FFunctions%2F651842953" anchor-label="createAdapter" id="1678894663%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-adapter.html"><span>create</span><wbr><span><span>Adapter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1678894663%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="create-adapter.html"><span class="token function">createAdapter</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a></div><div class="brief "><p class="paragraph">Create a fresh adapter wrapping a fresh underlying player.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="709321077%2FFunctions%2F651842953" anchor-label="deliversVolumeChangeToSubscribersAndStopsAfterOff" id="709321077%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delivers-volume-change-to-subscribers-and-stops-after-off.html"><span>delivers</span><wbr><span>Volume</span><wbr><span>Change</span><wbr><span>To</span><wbr><span>Subscribers</span><wbr><span>And</span><wbr><span>Stops</span><wbr><span>After</span><wbr><span><span>Off</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="709321077%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="delivers-volume-change-to-subscribers-and-stops-after-off.html"><span class="token function">deliversVolumeChangeToSubscribersAndStopsAfterOff</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A <code class="lang-kotlin">volumechange</code> reaches a subscribed handler and stops after <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/off.html">PlayerAdapter.off</a>; skipped when <a href="trigger-volume-change.html">triggerVolumeChange</a> returns false.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="844532061%2FFunctions%2F651842953" anchor-label="destroyIsIdempotent" id="844532061%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="destroy-is-idempotent.html"><span>destroy</span><wbr><span>Is</span><wbr><span><span>Idempotent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="844532061%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="destroy-is-idempotent.html"><span class="token function">destroyIsIdempotent</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Calling <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/destroy.html">PlayerAdapter.destroy</a> twice does not throw.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2024732090%2FFunctions%2F651842953" anchor-label="initialStateIsLiveLike" id="-2024732090%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initial-state-is-live-like.html"><span>initial</span><wbr><span>State</span><wbr><span>Is</span><wbr><span>Live</span><wbr><span><span>Like</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2024732090%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="initial-state-is-live-like.html"><span class="token function">initialStateIsLiveLike</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A fresh adapter reports position 0, an infinite duration and a paused player.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="483961580%2FFunctions%2F651842953" anchor-label="muteIsSettableAndReflected" id="483961580%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mute-is-settable-and-reflected.html"><span>mute</span><wbr><span>Is</span><wbr><span>Settable</span><wbr><span>And</span><wbr><span><span>Reflected</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="483961580%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mute-is-settable-and-reflected.html"><span class="token function">muteIsSettableAndReflected</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Setting <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/muted.html">PlayerAdapter.muted</a> reads back the same value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1551528805%2FFunctions%2F651842953" anchor-label="preloadDoesNotThrow" id="1551528805%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="preload-does-not-throw.html"><span>preload</span><wbr><span>Does</span><wbr><span>Not</span><wbr><span><span>Throw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1551528805%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="preload-does-not-throw.html"><span class="token function">preloadDoesNotThrow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/preload.html">PlayerAdapter.preload</a> of a URL does not throw.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-751895128%2FFunctions%2F651842953" anchor-label="programDateTimeIsNullWithoutStream" id="-751895128%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="program-date-time-is-null-without-stream.html"><span>program</span><wbr><span>Date</span><wbr><span>Time</span><wbr><span>Is</span><wbr><span>Null</span><wbr><span>Without</span><wbr><span><span>Stream</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-751895128%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="program-date-time-is-null-without-stream.html"><span class="token function">programDateTimeIsNullWithoutStream</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/program-date-time.html">PlayerAdapter.programDateTime</a> is null before any stream is loaded.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2758598%2FFunctions%2F651842953" anchor-label="subscribeAndUnsubscribeDoNotThrowForEveryEvent" id="-2758598%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="subscribe-and-unsubscribe-do-not-throw-for-every-event.html"><span>subscribe</span><wbr><span>And</span><wbr><span>Unsubscribe</span><wbr><span>Do</span><wbr><span>Not</span><wbr><span>Throw</span><wbr><span>For</span><wbr><span>Every</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2758598%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="subscribe-and-unsubscribe-do-not-throw-for-every-event.html"><span class="token function">subscribeAndUnsubscribeDoNotThrowForEveryEvent</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/on.html">PlayerAdapter.on</a> and <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/off.html">PlayerAdapter.off</a> accept every <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event/index.html">PlayerAdapterEvent</a> without throwing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1669008847%2FFunctions%2F651842953" anchor-label="supportsParallelBufferingIsBooleanOrNull" id="1669008847%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="supports-parallel-buffering-is-boolean-or-null.html"><span>supports</span><wbr><span>Parallel</span><wbr><span>Buffering</span><wbr><span>Is</span><wbr><span>Boolean</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1669008847%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="supports-parallel-buffering-is-boolean-or-null.html"><span class="token function">supportsParallelBufferingIsBooleanOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/supports-parallel-buffering.html">PlayerAdapter.supportsParallelBuffering</a> is true, false or null.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1749911426%2FFunctions%2F651842953" anchor-label="tearDownConformanceAdapter" id="1749911426%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tear-down-conformance-adapter.html"><span>tear</span><wbr><span>Down</span><wbr><span>Conformance</span><wbr><span><span>Adapter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1749911426%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="tear-down-conformance-adapter.html"><span class="token function">tearDownConformanceAdapter</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Destroys the adapter created for the test; runs after every test.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1136883005%2FFunctions%2F651842953" anchor-label="triggerVolumeChange" id="1136883005%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="trigger-volume-change.html"><span>trigger</span><wbr><span>Volume</span><wbr><span><span>Change</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1136883005%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="trigger-volume-change.html"><span class="token function">triggerVolumeChange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">adapter<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Synthesize a <code class="lang-kotlin">volumechange</code> on the adapter's underlying player so delivery can be asserted headlessly. Return <code class="lang-kotlin">false</code> if the platform cannot trigger it without real playback/a device (the delivery test is then skipped).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2028587470%2FFunctions%2F651842953" anchor-label="videoQualitySelectionIsOptionalAndSafe" id="2028587470%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="video-quality-selection-is-optional-and-safe.html"><span>video</span><wbr><span>Quality</span><wbr><span>Selection</span><wbr><span>Is</span><wbr><span>Optional</span><wbr><span>And</span><wbr><span><span>Safe</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2028587470%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="video-quality-selection-is-optional-and-safe.html"><span class="token function">videoQualitySelectionIsOptionalAndSafe</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/set-video-quality.html">PlayerAdapter.setVideoQuality</a> with null returns false and does not throw.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="712971439%2FFunctions%2F651842953" anchor-label="volumeIsSettableAndClampedToUnitRange" id="712971439%2FFunctions%2F651842953" data-filterable-set=":ads-sdk-adapter-test-kit/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-test-kit/main" data-filterable-set=":ads-sdk-adapter-test-kit/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="volume-is-settable-and-clamped-to-unit-range.html"><span>volume</span><wbr><span>Is</span><wbr><span>Settable</span><wbr><span>And</span><wbr><span>Clamped</span><wbr><span>To</span><wbr><span>Unit</span><wbr><span><span>Range</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="712971439%2FFunctions%2F651842953"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-test-kit/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="volume-is-settable-and-clamped-to-unit-range.html"><span class="token function">volumeIsSettableAndClampedToUnitRange</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Setting <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/volume.html">PlayerAdapter.volume</a> reads back the same value, clamped to 0.0..1.0.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

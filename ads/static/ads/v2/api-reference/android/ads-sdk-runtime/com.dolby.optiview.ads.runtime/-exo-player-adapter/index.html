@@ -1,0 +1,434 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ExoPlayerAdapter</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">1.0.0-beta.6-custom.1361
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ads-sdk-runtime/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ads-sdk-runtime/main" data-filter=":ads-sdk-runtime/main">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ads-sdk-runtime::com.dolby.optiview.ads.runtime/ExoPlayerAdapter///PointingToDeclaration//-1659482093">
+  <div class="breadcrumbs"><a href="../../index.html">ads-sdk-runtime</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.runtime</a><span class="delimiter">/</span><span class="current">ExoPlayerAdapter</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Exo</span><wbr><span>Player</span><wbr><span><span>Adapter</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ExoPlayerAdapter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">player<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a></span></span><span class="token punctuation">)</span> : <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a>, <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-content-video-size-provider/index.html">ContentVideoSizeProvider</a></div><p class="paragraph">Media3/ExoPlayer implementation of the portable <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a> (P4b-2).</p><p class="paragraph">Wraps an <a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a> the integrator owns (created and attached to their own <code class="lang-kotlin">PlayerView</code>); the SDK only ever drives the content player through this adapter, keeping the brain player-agnostic. A single <a href="https://developer.android.com/reference/kotlin/androidx/media3/common/Player.Listener.html">Player.Listener</a> fans Media3 callbacks out to the adapter's <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event/index.html">PlayerAdapterEvent</a> handlers.</p><h2 class="">Thread safety</h2><p class="paragraph">ExoPlayer is thread-affine: every access must happen on its application thread (<code class="lang-kotlin">ExoPlayer.applicationLooper</code>, normally the main thread) or it throws <code class="lang-kotlin">IllegalStateException: Player is accessed on the wrong thread</code>.</p><p class="paragraph">The SDK cannot honour that from the caller's side. <code class="lang-kotlin">BreakScheduler.tick()</code> reads <a href="current-time.html">currentTime</a> on whatever thread drives the ticker, and both <code class="lang-kotlin">OptiViewAds</code>'s default <code class="lang-kotlin">scope</code> and a plainly-constructed <code class="lang-kotlin">CoroutineSchedulerTicker</code> use <code class="lang-kotlin">Dispatchers.Default</code> — so ticking crashed on the very first tick unless the integrator happened to pass a <code class="lang-kotlin">Dispatchers.Main</code> scope (which is the only reason the demo apps worked).</p><p class="paragraph">This adapter therefore makes itself safe from ANY thread:</p><ul><li><p class="paragraph"><strong>Reads</strong> (<a href="current-time.html">currentTime</a>, <a href="duration.html">duration</a>, <a href="paused.html">paused</a>, <a href="muted.html">muted</a>, <a href="volume.html">volume</a>,     <a href="program-date-time.html">programDateTime</a>) are served from a <code class="lang-kotlin">@Volatile</code> snapshot refreshed ON the     application thread — after every listener callback and on a periodic poll     (position advances between callbacks, so events alone are not enough).</p></li><li><p class="paragraph"><strong>Commands</strong> (<a href="pause.html">pause</a>, <a href="play.html">play</a>, <a href="seek.html">seek</a>, <a href="load.html">load</a>, and the <a href="muted.html">muted</a>/<a href="volume.html">volume</a>     setters) run inline when already on the application thread, and are posted to     it otherwise.</p></li></ul></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="1839775421%2FConstructors%2F-1659482093" anchor-label="ExoPlayerAdapter" id="1839775421%2FConstructors%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-exo-player-adapter.html"><span>Exo</span><wbr><span>Player</span><wbr><span><span>Adapter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1839775421%2FConstructors%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">player<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/exoplayer/ExoPlayer.html">ExoPlayer</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1254577135%2FProperties%2F-1659482093" anchor-label="currentTime" id="1254577135%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-time.html"><span>current</span><wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1254577135%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="current-time.html">currentTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/current-time.html">PlayerAdapter.currentTime</a> from the application-thread snapshot, in seconds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1142096465%2FProperties%2F-1659482093" anchor-label="duration" id="1142096465%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="duration.html"><span><span>duration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1142096465%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="duration.html">duration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/duration.html">PlayerAdapter.duration</a> from the snapshot, in seconds; the live window length for live streams.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1950385903%2FProperties%2F-1659482093" anchor-label="isLive" id="1950385903%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-live.html"><span>is</span><wbr><span><span>Live</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1950385903%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-live.html">isLive</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/is-live.html">PlayerAdapter.isLive</a> from the snapshot: whether the current Media3 window is live.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1636977654%2FProperties%2F-1659482093" anchor-label="muted" id="-1636977654%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="muted.html"><span><span>muted</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1636977654%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="muted.html">muted</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/muted.html">PlayerAdapter.muted</a>: reads the snapshot, writes on the application thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="808739319%2FProperties%2F-1659482093" anchor-label="paused" id="808739319%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="paused.html"><span><span>paused</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="808739319%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="paused.html">paused</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/paused.html">PlayerAdapter.paused</a> from the snapshot.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1237585878%2FProperties%2F-1659482093" anchor-label="playbackRate" id="-1237585878%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="playback-rate.html"><span>playback</span><wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1237585878%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="playback-rate.html">playbackRate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Playback speed, read from the ENGINE rather than echoed back from the last write.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1701400150%2FProperties%2F-1659482093" anchor-label="positionIsWindowRelative" id="1701400150%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="position-is-window-relative.html"><span>position</span><wbr><span>Is</span><wbr><span>Window</span><wbr><span><span>Relative</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1701400150%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="position-is-window-relative.html">positionIsWindowRelative</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True on live: media3's <code class="lang-kotlin">getCurrentPosition()</code> is relative to the current Timeline.Window, whose start advances as the live window slides. See the contract for what that breaks.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-277954634%2FProperties%2F-1659482093" anchor-label="programDateTime" id="-277954634%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="program-date-time.html"><span>program</span><wbr><span>Date</span><wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-277954634%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="program-date-time.html">programDateTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Wallclock of the current playhead (epoch ms) for HLS <code class="lang-kotlin">EXT-X-PROGRAM-DATE-TIME</code> matching, derived from the live window's start time plus the position in the window. Null when the timeline carries no wallclock anchor (VOD/no PDT).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-246458997%2FProperties%2F-1659482093" anchor-label="volume" id="-246458997%2FProperties%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="volume.html"><span><span>volume</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-246458997%2FProperties%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="volume.html">volume</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/volume.html">PlayerAdapter.volume</a> (0.0 to 1.0): reads the snapshot, writes on the application thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="635736098%2FFunctions%2F-1659482093" anchor-label="contentVideoSize" id="635736098%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="content-video-size.html"><span>content</span><wbr><span>Video</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="635736098%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="content-video-size.html"><span class="token function">contentVideoSize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-content-video-size/index.html">ContentVideoSize</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-content-video-size-provider/index.html">ContentVideoSizeProvider</a>: lets the renderer confine break layouts to the video.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="154844763%2FFunctions%2F-1659482093" anchor-label="destroy" id="154844763%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="destroy.html"><span><span>destroy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="154844763%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="destroy.html"><span class="token function">destroy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/destroy.html">PlayerAdapter.destroy</a>: detaches from the player and stops the snapshot poll; the player itself is left to the app.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2071662555%2FFunctions%2F-1659482093" anchor-label="load" id="-2071662555%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load.html"><span><span>load</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2071662555%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="load.html"><span class="token function">load</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/load.html">PlayerAdapter.load</a>: sets <a href="load.html">url</a> as the player's media item and prepares it, on the application thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1656895915%2FFunctions%2F-1659482093" anchor-label="off" id="-1656895915%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="off.html"><span><span>off</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1656895915%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="off.html"><span class="token function">off</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">event<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event/index.html">PlayerAdapterEvent</a><span class="token punctuation">, </span></span><span class="parameter ">handler<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event-handler/index.html">PlayerAdapterEventHandler</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/off.html">PlayerAdapter.off</a>: removes a <a href="off.html">handler</a> added with <a href="on.html">on</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="174351925%2FFunctions%2F-1659482093" anchor-label="on" id="174351925%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on.html"><span><span>on</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="174351925%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="on.html"><span class="token function">on</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">event<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event/index.html">PlayerAdapterEvent</a><span class="token punctuation">, </span></span><span class="parameter ">handler<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event-handler/index.html">PlayerAdapterEventHandler</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/on.html">PlayerAdapter.on</a>: subscribes <a href="on.html">handler</a> to <a href="on.html">event</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2068783583%2FFunctions%2F-1659482093" anchor-label="pause" id="2068783583%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pause.html"><span><span>pause</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2068783583%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="pause.html"><span class="token function">pause</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/pause.html">PlayerAdapter.pause</a> on the application thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1728680783%2FFunctions%2F-1659482093" anchor-label="play" id="-1728680783%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="play.html"><span><span>play</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1728680783%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="play.html"><span class="token function">play</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/play.html">PlayerAdapter.play</a> on the application thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1805588361%2FFunctions%2F-1659482093" anchor-label="seek" id="-1805588361%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="seek.html"><span><span>seek</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1805588361%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="seek.html"><span class="token function">seek</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">time<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Seek the content player, snapping to the nearest sync sample.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="260497014%2FFunctions%2F-1659482093" anchor-label="seekExact" id="260497014%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="seek-exact.html"><span>seek</span><wbr><span><span>Exact</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="260497014%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="seek-exact.html"><span class="token function">seekExact</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">time<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">SDK-owned post-break resume seek: keyframe-aligned via CLOSEST_SYNC, the same parameters as <a href="seek.html">seek</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1254441849%2FFunctions%2F-1659482093" anchor-label="setVideoQuality" id="1254441849%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-video-quality.html"><span>set</span><wbr><span>Video</span><wbr><span><span>Quality</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1254441849%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-video-quality.html"><span class="token function">setVideoQuality</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">quality<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-video-quality/index.html">VideoQuality</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Pin to the cheapest rendition with <code class="lang-kotlin">setMaxVideoBitrate</code>, not by selecting a track.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

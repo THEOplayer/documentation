@@ -1,0 +1,310 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>GamStreamManager</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">1.0.0-beta.6-custom.1361
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ads-sdk-runtime/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ads-sdk-runtime/main" data-filter=":ads-sdk-runtime/main">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ads-sdk-runtime::com.dolby.optiview.ads.runtime/GamStreamManager///PointingToDeclaration//-1659482093">
+  <div class="breadcrumbs"><a href="../../index.html">ads-sdk-runtime</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.runtime</a><span class="delimiter">/</span><span class="current">GamStreamManager</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Gam</span><wbr><span>Stream</span><wbr><span><span>Manager</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">GamStreamManager</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">adUiContainer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.html">ViewGroup</a><span class="token punctuation">, </span></span><span class="parameter ">adPlayerVolumeProvider<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>{ 100 }</span></span><span class="token punctuation">)</span></div><p class="paragraph">Manages a Google IMA DAI SDK pod-serving session on Android — the Kotlin mirror of the web <code class="lang-kotlin">GamStreamManager</code>. Initializes an IMA <code class="lang-kotlin">StreamManager</code> via a <code class="lang-kotlin">PodStreamRequest</code>, exposes the resulting <code class="lang-kotlin">streamId</code> for pod-manifest URL construction (delegated to the portable <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/index.html">buildGamPodUrl</a>), and forwards ad progress/quartile events.</p><p class="paragraph">Pod manifests are stitched/played by the SDK's ad player (we build the pod URL ourselves); IMA tracks ad progress from the stream's timed metadata, which the player forwards via <a href="process-metadata.html">processMetadata</a>. Requires a device/emulator at runtime (the IMA SDK has no headless mode); this class is structured for that.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="746558809%2FConstructors%2F-1659482093" anchor-label="GamStreamManager" id="746558809%2FConstructors%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gam-stream-manager.html"><span>Gam</span><wbr><span>Stream</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="746558809%2FConstructors%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">adUiContainer<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.html">ViewGroup</a><span class="token punctuation">, </span></span><span class="parameter ">adPlayerVolumeProvider<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>{ 100 }</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="235002803%2FFunctions%2F-1659482093" anchor-label="buildPodUrl" id="235002803%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="build-pod-url.html"><span>build</span><wbr><span>Pod</span><wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="235002803%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="build-pod-url.html"><span class="token function">buildPodUrl</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">podId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">durationSeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">params<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-gam-vendor-parameters/index.html">GamVendorParameters</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Build a pod-manifest URL for <a href="build-pod-url.html">podId</a> using the current <a href="../../../ads-sdk-runtime/com.dolby.optiview.ads.runtime/-gam-stream-manager/stream-id.html">streamId</a>. Throws if not initialized.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1224893485%2FFunctions%2F-1659482093" anchor-label="destroy" id="-1224893485%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="destroy.html"><span><span>destroy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1224893485%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="destroy.html"><span class="token function">destroy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Destroy and release all resources.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="678115708%2FFunctions%2F-1659482093" anchor-label="getStreamId" id="678115708%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-stream-id.html"><span>get</span><wbr><span>Stream</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="678115708%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-stream-id.html"><span class="token function">getStreamId</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The IMA stream id of the initialized session, or null before <a href="is-initialized.html">isInitialized</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1082050476%2FFunctions%2F-1659482093" anchor-label="initialize" id="1082050476%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1082050476%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../-gam-stream-config/index.html">GamStreamConfig</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Initialize a fresh IMA pod-serving session and suspend until the stream id is available (or the request errors). Always resets any prior session.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="219192692%2FFunctions%2F-1659482093" anchor-label="initializeLiveStream" id="219192692%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize-live-stream.html"><span>initialize</span><wbr><span>Live</span><wbr><span><span>Stream</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="219192692%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="initialize-live-stream.html"><span class="token function">initializeLiveStream</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../-gam-live-stream-config/index.html">GamLiveStreamConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Open a full-service IMA DAI live-stream session and suspend until IMA hands back the stitched stream URL to play on the content player.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1490618749%2FFunctions%2F-1659482093" anchor-label="isInitialized" id="-1490618749%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-initialized.html"><span>is</span><wbr><span><span>Initialized</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1490618749%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-initialized.html"><span class="token function">isInitialized</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether a stream session has been initialized with a valid <a href="../../../ads-sdk-runtime/com.dolby.optiview.ads.runtime/-gam-stream-manager/stream-id.html">streamId</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-769941547%2FFunctions%2F-1659482093" anchor-label="processMetadata" id="-769941547%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="process-metadata.html"><span>process</span><wbr><span><span>Metadata</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-769941547%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="process-metadata.html"><span class="token function">processMetadata</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">userText<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Forward timed metadata (HLS ID3 <code class="lang-kotlin">TXXX</code> text) from the ad player to IMA.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1384467480%2FFunctions%2F-1659482093" anchor-label="processTimedMetadata" id="-1384467480%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="process-timed-metadata.html"><span>process</span><wbr><span>Timed</span><wbr><span><span>Metadata</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1384467480%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="process-timed-metadata.html"><span class="token function">processTimedMetadata</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">cue<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-timed-metadata-cue/index.html">TimedMetadataCue</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Forward an in-stream timed-metadata marker (from the content player in SSAI mode) to IMA for ad tracking. Picks the ID3 <code class="lang-kotlin">TXXX</code> user text (falling back to the first frame / message payload). No-op when no text is present.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1868813008%2FFunctions%2F-1659482093" anchor-label="replaceAdTagParameters" id="-1868813008%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replace-ad-tag-parameters.html"><span>replace</span><wbr><span>Ad</span><wbr><span>Tag</span><wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1868813008%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="replace-ad-tag-parameters.html"><span class="token function">replaceAdTagParameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Replace ad-tag parameters on the active stream session. No-op if not initialized.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="182373406%2FFunctions%2F-1659482093" anchor-label="reset" id="182373406%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset.html"><span><span>reset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="182373406%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Reset session state before starting a new session.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="597260699%2FFunctions%2F-1659482093" anchor-label="setCallbacks" id="597260699%2FFunctions%2F-1659482093" data-filterable-set=":ads-sdk-runtime/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-runtime/main" data-filterable-set=":ads-sdk-runtime/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-callbacks.html"><span>set</span><wbr><span><span>Callbacks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="597260699%2FFunctions%2F-1659482093"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-runtime/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-callbacks.html"><span class="token function">setCallbacks</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callbacks<span class="token operator">: </span><a href="../-gam-ad-event-callbacks/index.html">GamAdEventCallbacks</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Install the sink for IMA ad-progress events; replaces any earlier one.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
