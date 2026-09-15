@@ -48,6 +48,9 @@ on:
       artifact_name:
         description: 'Return the name of the built artifact.'
         value: ${{ inputs.artifact_name }}
+      s3_sync_excludes:
+        description: 'Return the `aws s3 sync` exclusions that protect archived THEOplayer versions.'
+        value: ${{ jobs.build.outputs.s3_sync_excludes }}
 
 concurrency:
   group: build-${{ github.ref }}
@@ -66,6 +69,8 @@ jobs:
       # Use environment's secrets without creating a deployment object.
       # https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments#using-environments-without-deployments
       deployment: false
+    outputs:
+      s3_sync_excludes: ${{ steps.s3_sync_excludes.outputs.excludes }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
@@ -101,6 +106,13 @@ jobs:
           DOCUSAURUS_PR_NUMBER: ${{ inputs.docusaurus_pr_number }}
           DOCUSAURUS_PR_URL: ${{ inputs.docusaurus_pr_url }}
           DOCUSAURUS_ARCHIVE_VERSION: ${{ inputs.docusaurus_archive_version }}
+
+      - name: Compute S3 sync exclusions for archived THEOplayer versions
+        id: s3_sync_excludes
+        shell: bash
+        run: |
+          excludes=$(jq -r '.[] | "--exclude theoplayer/\(.)/*"' theoplayer_archived_versions.json | xargs)
+          echo "excludes=$excludes" >> "$GITHUB_OUTPUT"
 
       - name: Upload Build ☁️
         uses: actions/upload-artifact@v7
