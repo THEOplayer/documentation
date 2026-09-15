@@ -51,14 +51,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.artifact_name }}
-          path: ${{ github.workspace }}/artifact
-
-      # Counterpart of "Pack Build" in _build.yml: the site is one tarball.
-      - name: Unpack build artifact 📦
-        shell: bash
-        run: |
-          mkdir -p "${{ github.workspace }}/site"
-          tar -xf "${{ github.workspace }}/artifact/${{ inputs.artifact_name }}" -C "${{ github.workspace }}/site"
+          path: ${{ github.workspace }}/${{ inputs.artifact_name }}
 
       - name: Configure AWS credentials ☁️
         uses: aws-actions/configure-aws-credentials@v6
@@ -75,7 +68,7 @@ jobs:
         env:
           S3_BUCKET: ${{ vars.S3_BUCKET_NAME }}
           S3_PREFIX: ${{ inputs.s3_prefix }}
-          ARTIFACT_PATH: ${{ github.workspace }}/site
+          ARTIFACT_PATH: ${{ github.workspace }}/${{ inputs.artifact_name }}
 
       - name: Invalidate Amazon CloudFront 🧹
         run: |

@@ -38,7 +38,7 @@ on:
         description: Define the artifact name.
         required: false
         type: string
-        default: 'dist.tar'
+        default: 'dist.zip'
       artifact_retention_day:
         description: Define retention period in days.
         required: false
@@ -102,19 +102,9 @@ jobs:
           DOCUSAURUS_PR_NUMBER: ${{ inputs.docusaurus_pr_number }}
           DOCUSAURUS_PR_URL: ${{ inputs.docusaurus_pr_url }}
 
-      # The OptiView Ads SDK iOS API reference (DocC) names pages after Swift
-      # signatures, e.g. `init(player:).json`. upload-artifact rejects ':' in
-      # file names (NTFS rule), even with archive: true, so the site travels as
-      # one tarball and _deploy.yml unpacks it before the S3 sync.
-      - name: Pack Build 📦
-        shell: bash
-        run: |
-          tar -cf "${{ inputs.artifact_name }}" -C "${{ inputs.artifact_path }}" .
-
       - name: Upload Build ☁️
         uses: actions/upload-artifact@v7
         with:
           name: ${{ inputs.artifact_name }}
-          path: ${{ inputs.artifact_name }}
+          path: ${{ inputs.artifact_path }}
           retention-days: ${{ inputs.artifact_retention_day }}
-          if-no-files-found: error
