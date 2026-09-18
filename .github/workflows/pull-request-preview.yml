@@ -1,0 +1,80 @@
+name: 'Pull request preview'
+
+# Deploys the build artifact from "On Pull Requests" to the preview environment.
+# This workflow runs in the context of the main branch, so it has access to
+# secrets and the AWS OIDC token, even for pull requests from forks.
+# It must never check out or run code from the pull request.
+# See https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/
+on:
+  workflow_run:
+    workflows: ['On Pull Requests']
+    types:
+      - completed
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  pull-request:
+    name: pull-request
+    if: >-
+      github.event_name == 'workflow_run'
+      && github.event.workflow_run.event == 'pull_request'
+      && github.event.workflow_run.conclusion == 'success'
+      && github.event.workflow_run.actor.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      number: ${{ steps.pr.outputs.number }}
+      head_sha: ${{ github.event.workflow_run.head_sha }}
+      is_fork: ${{ github.event.workflow_run.head_repository.full_name != github.repository }}
+    steps:
+      - name: Find pull request for commit 🔍
+        id: pr
+        # The workflow_run event does not list pull requests from forks,
+        # so look up the open pull request whose head is exactly this commit.
+        run: |
+          number=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/pulls" \
+            --jq "[.[] | select(.state == \"open\" and .head.sha == \"${HEAD_SHA}\" and .head.repo.full_name == \"${HEAD_REPO}\")] | first | .number")
+          if [[ -z "$number" || "$number" == "null" ]]; then
+            echo "No open pull request found with head ${HEAD_REPO}@${HEAD_SHA}, skipping preview."
+            exit 1
+          fi
+          echo "number=${number}" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          HEAD_REPO: ${{ github.event.workflow_run.head_repository.full_name }}
+
+  deploy:
+    name: deploy
+    needs: [pull-request]
+    concurrency: preview-pr-${{ needs.pull-request.outputs.number }}
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    permissions:
+      actions: read
+      id-token: write
+      pull-requests: write
+    with:
+      # Deployments from forks use a separate environment, so that they can require approval.
+      environment_name: ${{ needs.pull-request.outputs.is_fork == 'true' && 'preview-fork' || 'preview' }}
+      environment_url: '${{ vars.PREVIEW_CLOUDFRONT_URL }}/pr-${{ needs.pull-request.outputs.number }}/'
+      artifact_name: dist.zip
+      artifact_run_id: ${{ github.event.workflow_run.id }}
+      pr_number: ${{ fromJSON(needs.pull-request.outputs.number) }}
+      pr_head_sha: ${{ needs.pull-request.outputs.head_sha }}
+      s3_prefix: 'pr-${{ needs.pull-request.outputs.number }}'
+      cf_invalidate_path: '/pr-${{ needs.pull-request.outputs.number }}*'
+
+  undeploy:
+    name: undeploy
+    if: ${{ github.event_name == 'pull_request_target' && github.triggering_actor != 'dependabot[bot]' }}
+    concurrency: preview-pr-${{ github.event.number }}
+    uses: ./.github/workflows/_undeploy.yml
+    secrets: inherit
+    with:
+      environment_name: preview
+      s3_prefix: 'pr-${{ github.event.number }}'
+      cf_invalidate_path: '/pr-${{ github.event.number }}*'
