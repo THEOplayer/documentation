@@ -1,0 +1,25 @@
+---
+sidebar_label: Getting started
+---
+
+# Getting started with the default UI on Web
+
+The default UI is included with the OptiView Player Web SDK. Follow the [Web SDK getting-started guide](../../../../getting-started/01-sdks/01-web/00-getting-started.mdx) to install the SDK and include its JavaScript and CSS files.
+
+Create a `Player` instance to enable the default UI:
+
+```javascript
+const element = document.querySelector('.theoplayer-container');
+const player = new THEOplayer.Player(element, {
+  libraryLocation: '/path/to/your-theoplayer-folder/',
+  license: 'your_license_string',
+});
+
+player.source = {
+  sources: [{ src: 'https://example.com/stream.m3u8' }],
+};
+```
+
+Use `THEOplayer.Player`, rather than `THEOplayer.ChromelessPlayer`, when you want the SDK to render its default controls.
+
+Next, explore the default UI how-to guides in the sidebar to change its appearance and behavior.

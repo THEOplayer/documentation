@@ -1,0 +1,11 @@
+---
+sidebar_label: Error handling
+---
+
+# Error handling in a chromeless UI
+
+A chromeless UI must display its own error state because there is no default interface to inform the viewer when playback fails.
+
+Decide how your UI will present recoverable and terminal errors, whether viewers can retry, and which technical details should remain available for diagnostics. Clear any loading state when an error occurs so the player does not appear to buffer indefinitely.
+
+See the [error-handling guides](../../miscellaneous/error/introduction.mdx) to detect Player errors and map them to messages and recovery actions in your interface.

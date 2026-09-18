@@ -9,7 +9,6 @@ import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects
 import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/src/types';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
-import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
@@ -269,23 +268,6 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
-        id: 'open-video-ui',
-        path: 'open-video-ui',
-        routeBasePath: '/open-video-ui',
-        sidebarPath: './sidebarsOpenVideoUI.ts',
-        lastVersion: 'current',
-        versions: {
-          current: {
-            label: webUiVersion,
-          },
-        },
-        sidebarItemsGenerator,
-      } satisfies DocsPlugin.Options,
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        ...docsConfigBase,
         id: 'theolive',
         path: 'theolive',
         routeBasePath: '/theolive',
@@ -435,7 +417,29 @@ const config: Config = {
       {
         redirects: [...redirectsMillicast, ...redirectsAds, ...redirectsTHEOPlayer],
         createRedirects(existingPath) {
-          if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
+          if (
+            existingPath.startsWith('/theoplayer/how-to-guides/web/ui/open-video-ui/react/') &&
+            existingPath !== '/theoplayer/how-to-guides/web/ui/open-video-ui/react/'
+          ) {
+            return [existingPath.replace('/theoplayer/how-to-guides/web/ui/open-video-ui/react/', '/open-video-ui/react/')];
+          } else if (
+            existingPath.startsWith('/theoplayer/how-to-guides/web/ui/open-video-ui/') &&
+            !existingPath.startsWith('/theoplayer/how-to-guides/web/ui/open-video-ui/react/') &&
+            existingPath !== '/theoplayer/how-to-guides/web/ui/open-video-ui/' &&
+            existingPath !== '/theoplayer/how-to-guides/web/ui/open-video-ui/getting-started/'
+          ) {
+            return [existingPath.replace('/theoplayer/how-to-guides/web/ui/open-video-ui/', '/open-video-ui/web/')];
+          } else if (
+            existingPath.startsWith('/theoplayer/how-to-guides/android/ui/open-video-ui/') &&
+            existingPath !== '/theoplayer/how-to-guides/android/ui/open-video-ui/'
+          ) {
+            return [existingPath.replace('/theoplayer/how-to-guides/android/ui/open-video-ui/', '/open-video-ui/android/')];
+          } else if (
+            existingPath.startsWith('/theoplayer/how-to-guides/react-native/ui/open-video-ui/') &&
+            existingPath !== '/theoplayer/how-to-guides/react-native/ui/open-video-ui/'
+          ) {
+            return [existingPath.replace('/theoplayer/how-to-guides/react-native/ui/open-video-ui/', '/open-video-ui/react-native/')];
+          } else if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
           } else if (existingPath.startsWith('/theolive/v1/api/')) {
             return [existingPath.replace('/theolive/v1/api/', '/theolive/api/')];
@@ -454,7 +458,7 @@ const config: Config = {
         // Generates /llms.txt, /llms-full.txt, /<product>/llms.txt, /<product>/llms-full.txt and a .md twin of every page
         llmsTxt: {
           siteTitle: 'Dolby OptiView Documentation',
-          siteDescription: 'Developer documentation for Dolby OptiView Player, Open Video UI, Live, Real-time, Ads and Ad Engine.',
+          siteDescription: 'Developer documentation for Dolby OptiView Player, Live, Real-time, Ads and Ad Engine.',
           content: {
             enableMarkdownFiles: true,
             relativePaths: false,
@@ -478,7 +482,7 @@ const config: Config = {
             slug: 'theoplayer',
             title: 'Dolby OptiView Player',
             description:
-              'Dolby OptiView Player (formerly THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.',
+              "Dolby OptiView Player (formerly THEOplayer) enables you to deploy cutting-edge video playback experiences on any device. Use the basic default UI, customize your player with Open Video UI's ready-made components, or build a complete UI from scratch with the chromeless player.",
             platformSidebars: {
               web: 'Web SDK',
               android: 'Android SDK',
@@ -487,18 +491,6 @@ const config: Config = {
               flutter: 'Flutter SDK',
               chromecast: 'Chromecast SDK',
               roku: 'Roku SDK',
-            },
-          },
-          {
-            slug: 'open-video-ui',
-            title: 'Open Video UI',
-            description:
-              'The Open Video UI provides component libraries for building a world-class video player experience powered by the OptiView Player SDK, with dedicated libraries for web, Android and React Native.',
-            platformSidebars: {
-              web: 'Web',
-              android: 'Android',
-              react: 'React',
-              'react-native': 'React Native',
             },
           },
           {
@@ -529,12 +521,15 @@ const config: Config = {
       } satisfies LlmsTxtOptions,
     ],
     [
-      (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
-        name: 'webpack-plugin',
-        configureWebpack(_config, isServer) {
-          return options.webpack(isServer);
-        },
-      }),
+      (_context: unknown, pluginOptions: unknown) => {
+        const options = pluginOptions as { webpack: (isServer: boolean) => WebpackConfiguration };
+        return {
+          name: 'webpack-plugin',
+          configureWebpack(_config: WebpackConfiguration, isServer: boolean) {
+            return options.webpack(isServer);
+          },
+        };
+      },
       {
         webpack: (isServer: boolean): WebpackConfiguration => ({
           optimization: {
@@ -559,6 +554,11 @@ const config: Config = {
       const parsedDocPath = parseDocPath(params.filePath)!;
       const { docPluginId } = parsedDocPath;
       let { docPath } = parsedDocPath;
+      if (docPath.startsWith('external/web-ui/') && typeof frontMatter.slug === 'string') {
+        frontMatter.slug = frontMatter.slug
+          .replace(/^\/web(?=\/|$)/, '/how-to-guides/web/ui/open-video-ui')
+          .replace(/^\/react(?=\/|$)/, '/how-to-guides/web/ui/open-video-ui/react');
+      }
       if (!frontMatter.slug && docPath.startsWith('external/')) {
         // Add a slug to all external doc pages
         frontMatter.slug = docPath
@@ -566,19 +566,20 @@ const config: Config = {
           .replace('external/', '')
           .replace(/\.mdx?$/, '')
           // Map external projects to desired URLs
-          .replace('web-ui/docs/', '/web/')
-          .replace('android-ui/docs/', '/android/')
-          .replace('web-ui/CHANGELOG', '/web/changelog')
-          .replace('web-ui/react/CHANGELOG', '/react/changelog')
-          .replace('android-ui/CHANGELOG', '/android/changelog')
+          .replace('web-ui/docs/react/', '/how-to-guides/web/ui/open-video-ui/react/')
+          .replace('web-ui/docs/', '/how-to-guides/web/ui/open-video-ui/')
+          .replace('android-ui/docs/', '/how-to-guides/android/ui/open-video-ui/')
+          .replace('web-ui/react/CHANGELOG', '/how-to-guides/web/ui/open-video-ui/react/changelog')
+          .replace('web-ui/CHANGELOG', '/how-to-guides/web/ui/open-video-ui/changelog')
+          .replace('android-ui/CHANGELOG', '/how-to-guides/android/ui/open-video-ui/changelog')
           .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk/', 'flutter-theoplayer-sdk/flutter_theoplayer_sdk/')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/CHANGELOG', '/flutter/changelog')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/README', '/getting-started/frameworks/flutter/getting-started')
           .replace('flutter-theoplayer-sdk/doc/', '/flutter/guides/')
-          .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
-          .replace('react-native-theoplayer-ui/doc/', '/react-native/')
+          .replace('react-native-theoplayer-ui/CHANGELOG', '/how-to-guides/react-native/ui/open-video-ui/changelog')
+          .replace('react-native-theoplayer-ui/doc/', '/how-to-guides/react-native/ui/open-video-ui/')
           .replace(/react-native-connectors\/([^/]+)\/CHANGELOG/, '/connectors/react-native/$1/changelog')
           .replace(/react-native-connectors\/([^/]+)\/README/, '/connectors/react-native/$1/getting-started')
           .replace(/react-native-connectors\/([^/]+)\/doc\//, '/connectors/react-native/$1/')
@@ -599,7 +600,7 @@ const config: Config = {
         // Fix changelog titles
         frontMatter.title ??= 'Changelog';
         if (!frontMatter.description) {
-          if (docPluginId === 'open-video-ui') {
+          if (docPath.includes('web-ui/') || docPath.includes('android-ui/') || docPath.includes('react-native-theoplayer-ui/')) {
             frontMatter.description = "Find out what's new in Open Video UI.";
           } else if (docPluginId === 'theoplayer' && !docPath.includes('connector')) {
             frontMatter.description = "Find out what's new in the OptiView Player.";
@@ -617,7 +618,7 @@ const config: Config = {
       } else if (docPath.endsWith('readme.md')) {
         frontMatter.title ??= 'Getting started';
         if (!frontMatter.description) {
-          if (docPluginId === 'open-video-ui') {
+          if (docPath.includes('web-ui/') || docPath.includes('android-ui/') || docPath.includes('react-native-theoplayer-ui/')) {
             frontMatter.description = 'Start building your UI in just a few minutes!';
           } else if (docPath.includes('connector')) {
             frontMatter.description = 'Set up your connector in just a few minutes!';
@@ -631,7 +632,7 @@ const config: Config = {
     },
   },
 
-  staticDirectories: ['static', 'theoplayer/static', 'ads/static', 'adengine/static', 'open-video-ui/external/web-ui/docs/static'],
+  staticDirectories: ['static', 'theoplayer/static', 'ads/static', 'adengine/static', 'theoplayer/external/web-ui/docs/static'],
 
   themeConfig: {
     // TODO OpenGraph image for OptiView?
@@ -657,27 +658,13 @@ const config: Config = {
       },
       items: [
         {
-          type: 'dropdown',
+          type: 'custom-platformSidebar',
+          docsPluginId: 'theoplayer',
           label: 'Player',
           href: '/theoplayer',
+          activeBasePath: '/theoplayer',
           position: 'left',
-          items: [
-            {
-              type: 'custom-platformSidebar',
-              docsPluginId: 'theoplayer',
-              label: 'OptiView Player',
-              href: '/theoplayer',
-              activeBasePath: '/theoplayer',
-            } satisfies PlatformSidebarNavbarItemProps,
-            {
-              type: 'custom-platformSidebar',
-              docsPluginId: 'open-video-ui',
-              label: 'Open Video UI',
-              href: '/open-video-ui',
-              activeBasePath: '/open-video-ui',
-            } satisfies PlatformSidebarNavbarItemProps,
-          ],
-        },
+        } satisfies PlatformSidebarNavbarItemProps,
         {
           type: 'dropdown',
           label: 'Ads',
@@ -762,6 +749,9 @@ const config: Config = {
       apiKey: '415e178afdd1c3ea819b42fb9a6a1c99',
       indices: [{ name: 'theoplayer' }],
       contextualSearch: true,
+      searchPage: {
+        path: 'search',
+      },
       replaceSearchResultPathname: {
         from: '/docs/',
         to: process.env.DOCUSAURUS_BASE_URL || '/docs/',
@@ -818,7 +808,11 @@ function isMarkdownUrl(href: string): boolean {
 }
 
 function externalDocUrl(docPath: string): string {
-  const [, projectName, externalDocPath] = docPath.match(/\bexternal\/([^/]+)\/(.+)$/);
+  const match = docPath.match(/\bexternal\/([^/]+)\/(.+)$/);
+  if (!match) {
+    throw new Error(`Invalid external documentation path: ${docPath}`);
+  }
+  const [, projectName, externalDocPath] = match;
   return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
 }
 

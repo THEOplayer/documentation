@@ -1,0 +1,16 @@
+---
+sidebar_label: UX enhancements
+---
+
+# UX enhancements for a chromeless UI on iOS and tvOS
+
+A functional player still needs clear feedback and convenient interactions. Plan these experiences alongside the core playback controls:
+
+1. **Loading spinner:** Indicate when the player is waiting for video data.
+2. **Poster:** Show an image before initial playback and after the video ends.
+3. **Up next:** Offer the next stream near the end of playback and optionally start it automatically.
+4. **Skip intro:** Let viewers skip the current introduction.
+5. **Ad countdown:** Display the remaining duration of an ad break.
+6. **Ad markers:** Indicate ad-break positions on the scrub bar.
+
+Drive each enhancement from Player events and state. Start with [tracking player states](../../player/track-player-states.mdx), then account for application lifecycle and presentation-mode transitions.

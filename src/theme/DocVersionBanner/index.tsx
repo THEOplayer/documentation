@@ -11,8 +11,6 @@ function getProductNameByPluginId(pluginId: string): string {
     // Keep these in sync with @docusaurus/plugin-content-docs plugin IDs in Docusaurus config
     case 'theoplayer':
       return 'THEOplayer';
-    case 'open-video-ui':
-      return 'Open Video UI';
     case 'ads':
       return 'OptiView Ads';
     case 'adengine':

@@ -1,0 +1,20 @@
+---
+slug: /how-to-guides/web/ui/default-ui/
+sidebar_label: Introduction
+---
+
+# Default UI on Web
+
+The OptiView Player Web SDK includes a responsive default UI with standard playback controls such as play and pause, volume, seeking, language and quality selection, picture-in-picture, and fullscreen.
+
+Use the default UI when its existing layout and controls meet your requirements. You can adapt its appearance with CSS, hide controls, and add small extensions without implementing common player interactions yourself.
+
+The default UI is not optimized for big-screen devices such as Samsung Tizen, LG webOS, and Android TV. For those environments, use Open Video UI where supported or consider a chromeless implementation.
+
+:::note[Default UI terminology]
+
+The Player SDK default UI is different from the ready-made `<theoplayer-default-ui>` layout provided by Open Video UI. Open Video UI uses its own component library on top of the chromeless Player SDK.
+
+:::
+
+For more extensive control over layout and components, use [Open Video UI](../open-video-ui/introduction.mdx). To implement every control yourself, use the [chromeless player](../chromeless/introduction.mdx).

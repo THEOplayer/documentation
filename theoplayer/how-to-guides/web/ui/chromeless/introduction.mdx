@@ -1,0 +1,16 @@
+---
+slug: /how-to-guides/web/ui/chromeless/
+sidebar_label: Introduction
+---
+
+# Chromeless UI on Web
+
+A chromeless player provides playback capabilities without rendering a user interface. Your application is responsible for creating every control, displaying player state, and connecting interactions to the OptiView Player API.
+
+Choose this approach when you need complete control over the UI and UX, cannot use Open Video UI components, or are targeting an environment that requires a fully bespoke implementation.
+
+Building from scratch requires a solid understanding of playback states, events, media tracks, accessibility, error handling, and platform-specific behavior.
+
+Some features are implemented on top of the default UI and are unavailable in a chromeless player. For example, the [Up Next](../../miscellaneous/up-next.mdx) feature and API depend on the default UI.
+
+Continue with [Getting started](../build-chromeless-ui.mdx) to create a `ChromelessPlayer` and map the first controls to the Player API.

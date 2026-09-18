@@ -77,7 +77,7 @@ selectQuality(resolutions[0]);
 
 ##### Android SDK
 
-Android SDK does not have a built-in UI. It also does not support JavaScript injection. However, you can implement a similar custom quality selection menu using [Open Video UI for Android](/open-video-ui/android/) and following the same logic for Web SDK.
+Android SDK does not have a built-in UI. It also does not support JavaScript injection. However, you can implement a similar custom quality selection menu using [Open Video UI for Android](/theoplayer/how-to-guides/android/ui/open-video-ui/) and following the same logic for Web SDK.
 
 ##### iOS SDK
 
