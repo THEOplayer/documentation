@@ -1,11 +1,35 @@
 [
   {
+    "from": "/open-video-ui",
+    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/"
+  },
+  {
+    "from": "/open-video-ui/web",
+    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/"
+  },
+  {
+    "from": "/open-video-ui/web/getting-started",
+    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/getting-started/"
+  },
+  {
+    "from": "/open-video-ui/android",
+    "to": "/theoplayer/how-to-guides/android/ui/open-video-ui/"
+  },
+  {
+    "from": "/open-video-ui/react",
+    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/react/"
+  },
+  {
+    "from": "/open-video-ui/react-native",
+    "to": "/theoplayer/how-to-guides/react-native/ui/open-video-ui/"
+  },
+  {
     "from": "/theoplayer/getting-started/sdks/web/getting-started-extended",
     "to": "/theoplayer/getting-started/sdks/web/getting-started/"
   },
   {
     "from": "/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui",
-    "to": "/open-video-ui/web/getting-started"
+    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/getting-started/"
   },
   {
     "from": "/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/",

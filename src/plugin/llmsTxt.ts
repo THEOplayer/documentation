@@ -195,7 +195,8 @@ async function writeProductFiles(
  * same `postBuild` step: Docusaurus runs the `postBuild` hooks of all plugins in parallel, so a
  * separate plugin could not rely on the generated Markdown being present yet.
  */
-export default function llmsTxt(context: LoadContext, options: Options): Plugin<void> {
+export default function llmsTxt(context: LoadContext, pluginOptions: unknown): Plugin<void> {
+  const options = pluginOptions as Options;
   const { siteConfig } = context;
   const siteUrl = normalizeUrl([siteConfig.url, siteConfig.baseUrl]);
   const inner = llmsTxtPlugin(context, {

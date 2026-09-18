@@ -1,0 +1,18 @@
+---
+sidebar_label: UX enhancements
+---
+
+# UX enhancements for a chromeless UI
+
+A functional player still needs clear feedback and convenient interactions. Plan these experiences alongside the core playback controls so viewers always understand the current state and available actions.
+
+Common enhancements include:
+
+1. **Loading spinner:** Indicate when the player is waiting for video data.
+2. **Poster:** Show an image before initial playback and after the video ends.
+3. **Up next:** Near the end of playback, offer a way to open the next stream and optionally start it automatically.
+4. **Skip intro:** Let viewers skip the current introduction.
+5. **Ad countdown:** Display the remaining duration of the current ad break.
+6. **Ad markers:** Indicate ad-break positions on the scrub bar.
+
+Each enhancement should respond to Player events and state rather than relying on timers or visual state alone. Start with [tracking player states](../../player/track-player-states.mdx), then use the relevant playback and advertising APIs for each interaction.

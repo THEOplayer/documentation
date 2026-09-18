@@ -1,8 +1,15 @@
-THEOplayer lets you build the video player UI that fits your application.
-You can use a ready-made UI and customize it, or build a brand-new chromeless UI from scratch.
+OptiView Player lets you choose how much of the video player UI you want to build:
 
-Building a chromeless UI means building a new UI from scratch using the THEOplayer API and custom application code.
-In other words: you are responsible for inserting your own controls (e.g. a play button),
-and connecting them with the THEOplayer API (e.g. `player.play()`).
-A chromeless UI gives you total control over your UI and UX,
-but it requires an understanding of video playback and of the THEOplayer API.
+- Use the basic default UI where one is available.
+- Customize the player with Open Video UI's out-of-the-box components.
+- Use the chromeless player to build the complete UI from scratch.
+
+| Approach      | Starting point                 | Flexibility | Development effort |
+| ------------- | ------------------------------ | ----------- | ------------------ |
+| Default UI    | Complete basic player UI       | Basic       | Lowest             |
+| Open Video UI | Ready-made, modular components | High        | Moderate           |
+| Chromeless    | Player API without a UI        | Complete    | Highest            |
+
+Building a chromeless UI means using the OptiView Player API and your own application code without a ready-made UI.
+You are responsible for adding every control, such as a play button, and connecting it to the player API, such as `player.play()`.
+This approach gives you total control over the UI and UX, but requires an understanding of video playback and the OptiView Player API.

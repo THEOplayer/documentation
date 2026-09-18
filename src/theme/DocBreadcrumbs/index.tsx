@@ -47,8 +47,6 @@ function getMainDocTitle(docPluginId: string): string | null {
   switch (docPluginId) {
     case 'theoplayer':
       return 'Player';
-    case 'open-video-ui':
-      return 'Open Video UI';
     case 'theoads':
       return 'Ads';
     case 'adengine':
