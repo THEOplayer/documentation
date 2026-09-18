@@ -1,5 +1,65 @@
 # Changelog
 
+## [11.10.0] - 2026-09-18
+
+- Added Low-Latency HLS and HESP-3 output to every channel, no configuration needed: `main.m3u8` keeps
+  serving standard HLS, while `main.hesp.m3u8` serves the same renditions with partial segments and the
+  HESP-3 tags. Every playlist accepts a `latency` query parameter (milliseconds) naming the end-to-end
+  latency the player asks for and is sized for it: `HOLD-BACK` (now declared on every playlist) and
+  `PART-HOLD-BACK` follow the buffer that latency leaves the player once the encoder's share is spent,
+  the HESP-3 multivariant playlist publishes that buffer as `EXT-X-HESP-TARGET-BUFFER` (at least 0.5 s),
+  and a buffer of more than four segment durations is served as standard HLS. Every media playlist of a
+  channel carries the same `EXT-X-SERVER-CONTROL`, as the HLS specification requires
+- HESP-3 media playlists signal how far the stream has progressed into the segment in production
+  (`EXT-X-HESP-PROGRAM-DATE-TIME`), and every media playlist response carries the engine's clock at
+  generation (`x-hesp-origin-now`), so a joining player lands at a predictable distance from live even
+  when the playlist was served from a cache
+- Added SCTE-35 ad break signaling to HLS, enabled by the new optional `hls.scte35` config key (off by
+  default): `splice_insert` cues in an MPEG-TS ingest are exposed in every media playlist as
+  `EXT-X-DATERANGE` tags carrying the `SCTE35-OUT` / `SCTE35-IN` payloads, and segments are cut at the
+  splice points so an ad decision server can splice on segment boundaries. When off, the SCTE-35 PID of
+  the ingest is left unparsed
+- Added SCTE-35 `time_signal` cues from an MPEG-TS ingest to the `EXT-X-DATERANGE` tags of every
+  HLS media playlist, alongside the `splice_insert` cues. Advertisement, placement opportunity and
+  promo segmentation descriptors open a range with `SCTE35-OUT` and `PLANNED-DURATION` and close it
+  with `SCTE35-IN`, `END-DATE` and `DURATION`, paired by their segmentation event id; other
+  segmentation descriptors and time signals without any mark their time with `SCTE35-CMD`. A segment
+  boundary is cut at every time signal that carries an avail, DTMF or segmentation descriptor
+- `EXT-X-DATERANGE` `START-DATE` and `END-DATE` attributes are now written in the same form as
+  `EXT-X-PROGRAM-DATE-TIME`: UTC with a `Z` suffix and millisecond precision, instead of `+00:00` with
+  a varying number of fraction digits
+- Kept HLS playlists and published media available for 10 seconds after graceful shutdown, with
+  `EXT-X-ENDLIST` signaling the end of the stream
+- Fixed engine crashes when an MPEG-TS ingest carries an SCTE-35 section that fails validation;
+  such sections are now skipped with a warning without interrupting playback
+- Fixed SCTE-35 cues padded with alignment stuffing before their checksum being rejected instead
+  of forwarded to the HLS playlists
+- Fixed HESP playback failing to start when the player requested an initialization segment slightly
+  ahead of the live edge
+- Fixed SRT ingest in listener mode (`?mode=listener`) binding a random port instead of the configured one,
+  which left the channel restarting on "no live data" forever; `localport` in the ingest URL also no longer
+  crashes the engine
+- Fixed renditions whose aspect ratio differs from the source (such as a portrait 9:16 ladder fed by a
+  16:9 ingest) being encoded with non-square pixels, which Chrome rendered squeezed while Safari
+  rendered it correctly. Such renditions now keep square pixels and are letterboxed to fit, so they
+  render identically in every browser
+
+## [11.9.0] - 2026-09-03
+
+- Sorted media playlists in HLS multivariant playlists by descending preference score
+- Fixed brief gaps between contiguous DVB-TTML subtitles when cue durations differ from packet timing
+- Fixed HLS multivariant playlists not declaring `CLOSED-CAPTIONS=NONE` on variants when no closed
+  captions are configured, as the specification requires
+- Removed the `EXT-X-INDEPENDENT-SEGMENTS` tag from HLS media playlists; it stays declared once in the
+  multivariant playlist, matching Apple's validation guidance
+- Improved the quality of GPU-encoded H.264 renditions at 720p and above, which were encoded with the
+  H.264 Main profile while CPU-encoded renditions of the same rung used High. All renditions at 720p and
+  above now use High at the same bitrate, worth around 1 VMAF point at a 1080p 6.5 Mbps rung and more at
+  lower bitrates. Renditions below 720p stay on Main for decoder compatibility, and the `CODECS`
+  attribute in HLS manifests changes accordingly for the affected renditions
+- Fixed H.265 and H.264 ingests the GPU decoder cannot handle (such as 4:2:2 chroma subsampling)
+  leaving the channel stuck in a reconnect loop; those streams now fall back to software decoding
+
 ## [11.8.1] - 2026-08-06
 
 - Fixed RTMP ingest failing with "stream not found" against servers that only offer the stream as live
