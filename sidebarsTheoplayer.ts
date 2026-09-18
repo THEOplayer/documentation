@@ -420,35 +420,6 @@ function webUiCategory(): SidebarItemCategoryConfig {
     items: [
       {
         type: 'category',
-        label: 'Default UI',
-        description: 'Use and adapt the basic UI included with the Web SDK.',
-        items: [
-          'how-to-guides/web/ui/default-ui/introduction',
-          'how-to-guides/web/ui/default-ui/getting-started',
-          {
-            type: 'category',
-            label: 'How-to guides',
-            items: [
-              'how-to-guides/web/ui/remove-ui-element',
-              'how-to-guides/web/ui/align-timeline',
-              'how-to-guides/web/ui/change-big-play-button',
-              'how-to-guides/web/ui/keep-control-bar-visible',
-              'how-to-guides/web/ui/detect-control-bar-visibility',
-              'how-to-guides/web/ui/hide-google-ima-ui',
-              'how-to-guides/web/ui/insert-a-button',
-              'how-to-guides/web/ui/change-ui-language',
-              'how-to-guides/web/ui/customize-ui-during-ad-playback',
-              'how-to-guides/web/ui/change-video-fit',
-              'how-to-guides/web/ui/audio-only-player',
-              'how-to-guides/web/ui/vertical-volume-slider',
-              'how-to-guides/web/ui/disable-click-to-pause',
-              'how-to-guides/web/ui/ui-skinning',
-            ],
-          },
-        ],
-      },
-      {
-        type: 'category',
         label: 'Open Video UI',
         description: 'Customize the player with ready-made, open-source components.',
         items: [
@@ -542,6 +513,35 @@ function webUiCategory(): SidebarItemCategoryConfig {
             type: 'category',
             label: 'Examples',
             items: ['how-to-guides/web/ui/chromeless/sample-code'],
+          },
+        ],
+      },
+      {
+        type: 'category',
+        label: 'Default UI',
+        description: 'Use and adapt the basic UI included with the Web SDK.',
+        items: [
+          'how-to-guides/web/ui/default-ui/introduction',
+          'how-to-guides/web/ui/default-ui/getting-started',
+          {
+            type: 'category',
+            label: 'How-to guides',
+            items: [
+              'how-to-guides/web/ui/remove-ui-element',
+              'how-to-guides/web/ui/align-timeline',
+              'how-to-guides/web/ui/change-big-play-button',
+              'how-to-guides/web/ui/keep-control-bar-visible',
+              'how-to-guides/web/ui/detect-control-bar-visibility',
+              'how-to-guides/web/ui/hide-google-ima-ui',
+              'how-to-guides/web/ui/insert-a-button',
+              'how-to-guides/web/ui/change-ui-language',
+              'how-to-guides/web/ui/customize-ui-during-ad-playback',
+              'how-to-guides/web/ui/change-video-fit',
+              'how-to-guides/web/ui/audio-only-player',
+              'how-to-guides/web/ui/vertical-volume-slider',
+              'how-to-guides/web/ui/disable-click-to-pause',
+              'how-to-guides/web/ui/ui-skinning',
+            ],
           },
         ],
       },
@@ -721,6 +721,14 @@ function rokuUiCategory(): SidebarItemCategoryConfig {
     items: [
       {
         type: 'category',
+        label: 'Chromeless',
+        items: [
+          'how-to-guides/roku/ui/chromeless/introduction',
+          { type: 'doc', id: 'how-to-guides/roku/ui/build-chromeless-ui', label: 'Getting started' },
+        ],
+      },
+      {
+        type: 'category',
         label: 'Default UI',
         items: [
           'how-to-guides/roku/ui/default-ui/introduction',
@@ -730,14 +738,6 @@ function rokuUiCategory(): SidebarItemCategoryConfig {
             label: 'How-to guides',
             items: ['how-to-guides/roku/ui/remove-ui-element'],
           },
-        ],
-      },
-      {
-        type: 'category',
-        label: 'Chromeless',
-        items: [
-          'how-to-guides/roku/ui/chromeless/introduction',
-          { type: 'doc', id: 'how-to-guides/roku/ui/build-chromeless-ui', label: 'Getting started' },
         ],
       },
     ],
