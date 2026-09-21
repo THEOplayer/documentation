@@ -11,7 +11,7 @@ Run the following command to install THEOplayer Web SDK version 9:
 npm install theoplayer@9
 ```
 
-If you're using the [Open Video UI for Web](/theoplayer/how-to-guides/web/ui/open-video-ui/) or one
+If you're using the [Open Video UI for Web](/theoplayer/ui/web/open-video-ui/) or one
 of [our connectors](/theoplayer/connectors/web/),
 make sure to update them to the latest version too to ensure proper support for THEOplayer version 9.
 

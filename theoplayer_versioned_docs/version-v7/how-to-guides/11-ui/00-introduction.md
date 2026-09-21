@@ -73,7 +73,7 @@ Overlaying text and images is a matter of overlaying a custom `<div>` (or native
 #### iOS and Android SDK
 
 As of THEOplayer version 5, the iOS and Android SDKs no longer ship a default UI.
-We recommend switching to our [Open Video UI](/theoplayer/how-to-guides/android/ui/open-video-ui/) (for Android)
+We recommend switching to our [Open Video UI](/theoplayer/ui/android/open-video-ui/) (for Android)
 or our [React Native UI](https://github.com/THEOplayer/react-native-theoplayer-ui) (for Android and iOS).
 
 For THEOplayer version 4 and lower, the default UI is the same UI as our Web SDK.

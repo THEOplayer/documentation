@@ -208,6 +208,12 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
       if (matchingDoc) return matchingDoc;
     }
   }
+  // UI
+  const uiMatch = docPath.match(/^\/ui\/([a-z-]+)(|\/.*)$/);
+  if (uiMatch && isPlatformName(uiMatch[1])) {
+    const prefix = `${version.path}/ui/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, uiMatch[2], '');
+  }
   // How-to guides
   const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)(|\/.*)$/);
   if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {

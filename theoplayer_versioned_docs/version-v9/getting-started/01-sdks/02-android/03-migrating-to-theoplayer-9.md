@@ -13,7 +13,7 @@ dependencies {
 }
 ```
 
-If you're using the [Open Video UI for Android](/theoplayer/how-to-guides/android/ui/open-video-ui/) or one of [our connectors](/theoplayer/connectors/android/),
+If you're using the [Open Video UI for Android](/theoplayer/ui/android/open-video-ui/) or one of [our connectors](/theoplayer/connectors/android/),
 make sure to update them to the latest version too to ensure proper support for THEOplayer version 9.
 
 ## Update compile SDK to API 35 or higher

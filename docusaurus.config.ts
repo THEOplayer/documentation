@@ -417,28 +417,30 @@ const config: Config = {
       {
         redirects: [...redirectsMillicast, ...redirectsAds, ...redirectsTHEOPlayer],
         createRedirects(existingPath) {
-          if (
-            existingPath.startsWith('/theoplayer/how-to-guides/web/ui/open-video-ui/react/') &&
-            existingPath !== '/theoplayer/how-to-guides/web/ui/open-video-ui/react/'
-          ) {
-            return [existingPath.replace('/theoplayer/how-to-guides/web/ui/open-video-ui/react/', '/open-video-ui/react/')];
-          } else if (
-            existingPath.startsWith('/theoplayer/how-to-guides/web/ui/open-video-ui/') &&
-            !existingPath.startsWith('/theoplayer/how-to-guides/web/ui/open-video-ui/react/') &&
-            existingPath !== '/theoplayer/how-to-guides/web/ui/open-video-ui/' &&
-            existingPath !== '/theoplayer/how-to-guides/web/ui/open-video-ui/getting-started/'
-          ) {
-            return [existingPath.replace('/theoplayer/how-to-guides/web/ui/open-video-ui/', '/open-video-ui/web/')];
-          } else if (
-            existingPath.startsWith('/theoplayer/how-to-guides/android/ui/open-video-ui/') &&
-            existingPath !== '/theoplayer/how-to-guides/android/ui/open-video-ui/'
-          ) {
-            return [existingPath.replace('/theoplayer/how-to-guides/android/ui/open-video-ui/', '/open-video-ui/android/')];
-          } else if (
-            existingPath.startsWith('/theoplayer/how-to-guides/react-native/ui/open-video-ui/') &&
-            existingPath !== '/theoplayer/how-to-guides/react-native/ui/open-video-ui/'
-          ) {
-            return [existingPath.replace('/theoplayer/how-to-guides/react-native/ui/open-video-ui/', '/open-video-ui/react-native/')];
+          const uiPathMatch = existingPath.match(/^\/theoplayer\/ui\/(web|android|ios|react-native|roku)(\/.*)?$/);
+          if (uiPathMatch) {
+            const [, platform, suffix = ''] = uiPathMatch;
+            const oldPrefix = `/theoplayer/how-to-guides/${platform}/ui`;
+            const oldPaths = [`${oldPrefix}${suffix}`];
+            if (suffix === '' || suffix === '/' || ['/open-video-ui/', '/open-video-ui/react/', '/chromeless/', '/default-ui/'].includes(suffix)) {
+              oldPaths.push(`${oldPrefix}${suffix}${suffix.endsWith('/') ? '' : '/'}introduction/`);
+            }
+            if (platform === 'web' && suffix.startsWith('/open-video-ui/react/') && suffix !== '/open-video-ui/react/') {
+              oldPaths.push(suffix);
+            } else if (
+              platform === 'web' &&
+              suffix.startsWith('/open-video-ui/') &&
+              !suffix.startsWith('/open-video-ui/react/') &&
+              suffix !== '/open-video-ui/' &&
+              suffix !== '/open-video-ui/getting-started/'
+            ) {
+              oldPaths.push(suffix.replace('/open-video-ui/', '/open-video-ui/web/'));
+            } else if (platform === 'android' && suffix.startsWith('/open-video-ui/') && suffix !== '/open-video-ui/') {
+              oldPaths.push(suffix.replace('/open-video-ui/', '/open-video-ui/android/'));
+            } else if (platform === 'react-native' && suffix.startsWith('/open-video-ui/') && suffix !== '/open-video-ui/') {
+              oldPaths.push(suffix.replace('/open-video-ui/', '/open-video-ui/react-native/'));
+            }
+            return oldPaths;
           } else if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
           } else if (existingPath.startsWith('/theolive/v1/api/')) {
@@ -554,10 +556,16 @@ const config: Config = {
       const parsedDocPath = parseDocPath(params.filePath)!;
       const { docPluginId } = parsedDocPath;
       let { docPath } = parsedDocPath;
+      const uiDocMatch = docPath.match(/^how-to-guides\/(web|android|ios|react-native|roku)\/ui\/(.+)\.mdx?$/);
+      if (docPluginId === 'theoplayer' && uiDocMatch) {
+        const [, platform, path] = uiDocMatch;
+        const uiPath = path === 'introduction' ? '' : path.replace(/\/introduction$/, '');
+        frontMatter.slug = `/ui/${platform}/${uiPath}`;
+      }
       if (docPath.startsWith('external/web-ui/') && typeof frontMatter.slug === 'string') {
         frontMatter.slug = frontMatter.slug
-          .replace(/^\/web(?=\/|$)/, '/how-to-guides/web/ui/open-video-ui')
-          .replace(/^\/react(?=\/|$)/, '/how-to-guides/web/ui/open-video-ui/react');
+          .replace(/^\/web(?=\/|$)/, '/ui/web/open-video-ui')
+          .replace(/^\/react(?=\/|$)/, '/ui/web/open-video-ui/react');
       }
       if (!frontMatter.slug && docPath.startsWith('external/')) {
         // Add a slug to all external doc pages
@@ -566,20 +574,20 @@ const config: Config = {
           .replace('external/', '')
           .replace(/\.mdx?$/, '')
           // Map external projects to desired URLs
-          .replace('web-ui/docs/react/', '/how-to-guides/web/ui/open-video-ui/react/')
-          .replace('web-ui/docs/', '/how-to-guides/web/ui/open-video-ui/')
-          .replace('android-ui/docs/', '/how-to-guides/android/ui/open-video-ui/')
-          .replace('web-ui/react/CHANGELOG', '/how-to-guides/web/ui/open-video-ui/react/changelog')
-          .replace('web-ui/CHANGELOG', '/how-to-guides/web/ui/open-video-ui/changelog')
-          .replace('android-ui/CHANGELOG', '/how-to-guides/android/ui/open-video-ui/changelog')
+          .replace('web-ui/docs/react/', '/ui/web/open-video-ui/react/')
+          .replace('web-ui/docs/', '/ui/web/open-video-ui/')
+          .replace('android-ui/docs/', '/ui/android/open-video-ui/')
+          .replace('web-ui/react/CHANGELOG', '/ui/web/open-video-ui/react/changelog')
+          .replace('web-ui/CHANGELOG', '/ui/web/open-video-ui/changelog')
+          .replace('android-ui/CHANGELOG', '/ui/android/open-video-ui/changelog')
           .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk/', 'flutter-theoplayer-sdk/flutter_theoplayer_sdk/')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/CHANGELOG', '/flutter/changelog')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/README', '/getting-started/frameworks/flutter/getting-started')
           .replace('flutter-theoplayer-sdk/doc/', '/flutter/guides/')
-          .replace('react-native-theoplayer-ui/CHANGELOG', '/how-to-guides/react-native/ui/open-video-ui/changelog')
-          .replace('react-native-theoplayer-ui/doc/', '/how-to-guides/react-native/ui/open-video-ui/')
+          .replace('react-native-theoplayer-ui/CHANGELOG', '/ui/react-native/open-video-ui/changelog')
+          .replace('react-native-theoplayer-ui/doc/', '/ui/react-native/open-video-ui/')
           .replace(/react-native-connectors\/([^/]+)\/CHANGELOG/, '/connectors/react-native/$1/changelog')
           .replace(/react-native-connectors\/([^/]+)\/README/, '/connectors/react-native/$1/getting-started')
           .replace(/react-native-connectors\/([^/]+)\/doc\//, '/connectors/react-native/$1/')

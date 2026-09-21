@@ -1,27 +1,27 @@
 [
   {
     "from": "/open-video-ui",
-    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/"
+    "to": "/theoplayer/ui/web/open-video-ui/"
   },
   {
     "from": "/open-video-ui/web",
-    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/"
+    "to": "/theoplayer/ui/web/open-video-ui/"
   },
   {
     "from": "/open-video-ui/web/getting-started",
-    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/getting-started/"
+    "to": "/theoplayer/ui/web/open-video-ui/getting-started/"
   },
   {
     "from": "/open-video-ui/android",
-    "to": "/theoplayer/how-to-guides/android/ui/open-video-ui/"
+    "to": "/theoplayer/ui/android/open-video-ui/"
   },
   {
     "from": "/open-video-ui/react",
-    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/react/"
+    "to": "/theoplayer/ui/web/open-video-ui/react/"
   },
   {
     "from": "/open-video-ui/react-native",
-    "to": "/theoplayer/how-to-guides/react-native/ui/open-video-ui/"
+    "to": "/theoplayer/ui/react-native/open-video-ui/"
   },
   {
     "from": "/theoplayer/getting-started/sdks/web/getting-started-extended",
@@ -29,7 +29,7 @@
   },
   {
     "from": "/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui",
-    "to": "/theoplayer/how-to-guides/web/ui/open-video-ui/getting-started/"
+    "to": "/theoplayer/ui/web/open-video-ui/getting-started/"
   },
   {
     "from": "/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/",
@@ -405,71 +405,71 @@
   },
   {
     "from": "/theoplayer/how-to-guides/ui/",
-    "to": "/theoplayer/how-to-guides/web/ui/introduction/"
+    "to": "/theoplayer/ui/web/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/introduction/",
-    "to": "/theoplayer/how-to-guides/web/ui/introduction/"
+    "to": "/theoplayer/ui/web/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/is-it-possible-to-remove-an-element/",
-    "to": "/theoplayer/how-to-guides/web/ui/remove-ui-element/"
+    "to": "/theoplayer/ui/web/remove-ui-element/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-align-timeline-in-the-middle/",
-    "to": "/theoplayer/how-to-guides/web/ui/align-timeline/"
+    "to": "/theoplayer/ui/web/align-timeline/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-change-big-play-button/",
-    "to": "/theoplayer/how-to-guides/web/ui/change-big-play-button/"
+    "to": "/theoplayer/ui/web/change-big-play-button/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-make-control-keys-always-visible/",
-    "to": "/theoplayer/how-to-guides/web/ui/keep-control-bar-visible/"
+    "to": "/theoplayer/ui/web/keep-control-bar-visible/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/is-it-possible-to-hide-googla-ima/",
-    "to": "/theoplayer/how-to-guides/web/ui/hide-google-ima-ui/"
+    "to": "/theoplayer/ui/web/hide-google-ima-ui/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-build-chromeless-ui/",
-    "to": "/theoplayer/how-to-guides/web/ui/build-chromeless-ui/"
+    "to": "/theoplayer/ui/web/build-chromeless-ui/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-insert-a-button/",
-    "to": "/theoplayer/how-to-guides/web/ui/insert-a-button/"
+    "to": "/theoplayer/ui/web/insert-a-button/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-change-default-UI-language-to-other/",
-    "to": "/theoplayer/how-to-guides/web/ui/change-ui-language/"
+    "to": "/theoplayer/ui/web/change-ui-language/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/customize-ui-during-playback/",
-    "to": "/theoplayer/how-to-guides/web/ui/customize-ui-during-ad-playback/"
+    "to": "/theoplayer/ui/web/customize-ui-during-ad-playback/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-change-how-a-video-should-fit-inside-a-container/",
-    "to": "/theoplayer/how-to-guides/web/ui/change-video-fit/"
+    "to": "/theoplayer/ui/web/change-video-fit/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-make-audio-only-player/",
-    "to": "/theoplayer/how-to-guides/web/ui/audio-only-player/"
+    "to": "/theoplayer/ui/web/audio-only-player/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/customising-vertical-volume-slider/",
-    "to": "/theoplayer/how-to-guides/web/ui/vertical-volume-slider/"
+    "to": "/theoplayer/ui/web/vertical-volume-slider/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/ui-skinning/",
-    "to": "/theoplayer/how-to-guides/web/ui/ui-skinning/"
+    "to": "/theoplayer/ui/web/ui-skinning/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-detect-visibility-default-control-bar/",
-    "to": "/theoplayer/how-to-guides/web/ui/detect-control-bar-visibility/"
+    "to": "/theoplayer/ui/web/detect-control-bar-visibility/"
   },
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-disable-click-to-pause/",
-    "to": "/theoplayer/how-to-guides/web/ui/disable-click-to-pause/"
+    "to": "/theoplayer/ui/web/disable-click-to-pause/"
   },
   {
     "from": "/theoplayer/how-to-guides/miscellaneous/",
