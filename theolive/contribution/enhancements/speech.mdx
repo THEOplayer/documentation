@@ -6,7 +6,6 @@ sidebar_custom_props:
 description: Automatically transcribe and translate live stream audio into multiple languages with real-time captions.
 ---
 
-
 # Enhancements: Speech (Live Captions & Translations)
 
 OptiView Live can automatically transcribe the spoken audio of your live stream and translate it into one or more languages, delivered to your viewers as text tracks (captions) in real time and in sync with the video. This is done through the **`speech` enhancement**, configured on an ingest.
@@ -22,8 +21,8 @@ You enable the speech enhancement on an **ingest** by adding an entry with `"kin
 ## Quick start
 
 1. Look up the supported languages:
-    - `GET /v2/enhancements/speech/supported-source-languages`
-    - `GET /v2/enhancements/speech/supported-target-languages`
+   - `GET /v2/enhancements/speech/supported-source-languages`
+   - `GET /v2/enhancements/speech/supported-target-languages`
 2. (Optional) Create a dictionary with domain-specific terms: `POST /v2/enhancements/speech/dictionaries`.
 3. Add a `speech` entry to the `enhancements` list when creating or updating an ingest.
 
@@ -36,28 +35,28 @@ The speech enhancement is configured per ingest, either when creating the ingest
 
 ```json
 {
-    "name": "my-ingest",
-    "type": "rtmp-push",
-    "region": "europe-west",
-    "enhancements": [
-        {
-            "kind": "speech",
-            "sourceLanguage": "en",
-            "targetTextTracks": ["fr", "de", "es"],
-            "dictionary": "my-dictionary-id"
-        }
-    ]
+  "name": "my-ingest",
+  "type": "rtmp-push",
+  "region": "europe-west",
+  "enhancements": [
+    {
+      "kind": "speech",
+      "sourceLanguage": "en",
+      "targetTextTracks": ["fr", "de", "es"],
+      "dictionary": "my-dictionary-id"
+    }
+  ]
 }
 ```
 
 ### `speech` entry fields
 
-| Field              | Type       | Required | Description                                                                                       |
-| ------------------ | ---------- | -------- | ------------------------------------------------------------------------------------------------- |
-| `sourceLanguage`   | `string`   | yes      | Language spoken in the stream (must be a supported source language)                                |
+| Field              | Type       | Required | Description                                                                                                                                                                        |
+| ------------------ | ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceLanguage`   | `string`   | yes      | Language spoken in the stream (must be a supported source language)                                                                                                                |
 | `targetTextTracks` | `string[]` | yes      | Languages to generate translated text tracks for (max **5**, must be supported target languages). Include the source language itself to also get captions in the original language |
-| `sourceAudioTrack` | `number`   | no       | PID of the audio track to use as translation source (non-negative integer)                         |
-| `dictionary`       | `string`   | no       | ID of a dictionary that helps the speech recognition. The dictionary's `language` must match the enhancement's `sourceLanguage`. Set to `null` to disconnect the dictionary |
+| `sourceAudioTrack` | `number`   | no       | PID of the audio track to use as translation source (non-negative integer)                                                                                                         |
+| `dictionary`       | `string`   | no       | ID of a dictionary that helps the speech recognition. The dictionary's `language` must match the enhancement's `sourceLanguage`. Set to `null` to disconnect the dictionary        |
 
 ### Updating and disabling
 
@@ -71,8 +70,8 @@ The speech enhancement is configured per ingest, either when creating the ingest
 
 Use these endpoints to discover which languages you can translate from and to. Only languages returned by these endpoints are accepted in `sourceLanguage` and `targetTextTracks`:
 
-| Method | Path                                                 | Description                                                       |
-| ------ | ---------------------------------------------------- | ----------------------------------------------------------------- |
+| Method | Path                                                 | Description                                                        |
+| ------ | ---------------------------------------------------- | ------------------------------------------------------------------ |
 | `GET`  | `/v2/enhancements/speech/supported-source-languages` | Languages the speech recognition can transcribe (`sourceLanguage`) |
 | `GET`  | `/v2/enhancements/speech/supported-target-languages` | Languages that can be translated into (`targetTextTracks`)         |
 
@@ -80,7 +79,7 @@ Both return a simple list:
 
 ```json
 {
-    "data": ["en", "fr", "de", "es", "nl"]
+  "data": ["en", "fr", "de", "es", "nl"]
 }
 ```
 
@@ -102,13 +101,9 @@ Example create request:
 
 ```json
 {
-    "name": "horse-racing",
-    "language": "en",
-    "terms": [
-        "OptiView",
-        "A. Väyrynen",
-        "D&I|dee-and-eye,dee-n-eye"
-    ]
+  "name": "horse-racing",
+  "language": "en",
+  "terms": ["OptiView", "A. Väyrynen", "D&I|dee-and-eye,dee-n-eye"]
 }
 ```
 
@@ -137,9 +132,9 @@ Example create request:
 
 ## Errors
 
-| Code                       | Meaning                                                                                          |
-| -------------------------- | ------------------------------------------------------------------------------------------------ |
-| `translations_not_enabled` | Live captions & translations is not enabled on your account — contact your account team           |
+| Code                       | Meaning                                                                                            |
+| -------------------------- | -------------------------------------------------------------------------------------------------- |
+| `translations_not_enabled` | Live captions & translations is not enabled on your account — contact your account team            |
 | `invalid_value`            | Invalid configuration (wrong ingest type, missing/unsupported languages, invalid dictionary terms) |
-| `too_many_values`          | More than 5 target text tracks were provided                                                      |
-| `speech_dictionary_in_use` | The dictionary is connected to an ingest with a running engine and cannot be deleted              |
+| `too_many_values`          | More than 5 target text tracks were provided                                                       |
+| `speech_dictionary_in_use` | The dictionary is connected to an ingest with a running engine and cannot be deleted               |
