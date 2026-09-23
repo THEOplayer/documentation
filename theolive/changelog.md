@@ -1,5 +1,25 @@
 # Changelog
 
+## [11.11.0] - 2026-09-23
+
+- Added RFC 9218 priority hints to every HLS response (`priority: u=1` on playlists, `u=2` to `u=6`
+  on media in ascending order of the rendition's bit rate), so Apple devices keep Low-Latency HLS
+  playback over HTTP/3 instead of falling back to standard latency. HESP-3 objects streamed while
+  in production are marked incremental (`i`), thumbnails are served at the lowest urgency (`u=7`)
+  so they never delay media, and error responses at the highest (`u=1`) so a player learns of a
+  missing object without waiting behind a segment
+- Fixed the HLS (TS) multivariant playlist omitting the `CODECS` attribute; every variant now
+  declares its H.264 profile and level and the AAC audio codec
+- Every error response now says how long a CDN may keep it: a 404 for a playlist or segment, which
+  the next segment or the next restart may bring into existence, lasts one second, so a CDN no
+  longer keeps serving one it picked up while the channel was restarting. Segments that have left
+  the DVR window are answered with `410 Gone`, and paths the engine never serves or requests that
+  can never succeed stay 404 or 400, all cacheable for an hour; internal errors are not cacheable
+- Media playlists are now cacheable for half a target duration (at least a second), and the
+  responses to blocking playlist reloads (`_HLS_msn`) for three target durations; segments for an
+  hour rather than a day. Playlists no longer forbid a cache from serving them stale
+  (`must-revalidate`)
+
 ## [11.10.0] - 2026-09-18
 
 - Added Low-Latency HLS and HESP-3 output to every channel, no configuration needed: `main.m3u8` keeps
