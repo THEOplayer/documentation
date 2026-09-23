@@ -9,6 +9,73 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.12.0 (2026/09/22)
+
+### Web
+
+#### ✨ Features
+
+- Added support for restricting Millicast playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
+
+#### ⚡ Improvements
+
+- The Widevine service certificate and the FairPlay certificate provided by OptiView Live channel discovery are now used when starting playback, saving the certificate request. An empty certificate from discovery no longer overrides one configured on the source.
+- Improved the transition into an OptiView Ads double box ad break that directly follows another ad break, and out of one that ends right after it began.
+
+#### 🐛 Issues
+
+- Fixed an issue where Google DAI streams could fail to play or report server-side ad beacons when cast to Chromecast.
+- Fixed ABR not switching down to a lower quality when a segment download timed out while a response interceptor was registered, which could cause playback to stall while retrying the same quality and segment indefinitely.
+- Fixed an issue on iOS Safari where the native `ended` event of a Google IMA ad played in the shared video element was reported as the content's `ended` event.
+- Fixed an issue where the `textTrackStyle` margins were ignored for CEA-608 captions.
+- Fixed an issue where an endpoint in an OptiView Live stream that fails the player's license check could prevent the player from falling back to a different endpoint.
+- Fixed `player.autoplay = true` when the page is in the background. The player now waits until the page is brought to the foreground before attempting autoplay.
+- Fixed an issue where a "Cannot read properties from undefined" error was thrown when attempting to play an OptiView Real-time (Millicast) stream when this feature isn't enabled in the player's license. The player now correctly reports a `LICENSE_INVALID_SOURCE` error instead.
+- Fixed an issue where Dolby Vision (HEVC) content did not play on Edge for Windows when `preferredKeySystems` was omitted.
+- Fixed an issue where the player would fire an early `playing` event with `PlayingEvent.currentTime = Infinity` when seeking to live on a paused HLS livestream. The `playing` event now fires after the seek completes, with the resolved `currentTime`.
+- Fixed an issue where an OptiView Ads double box ad break would get stuck when closely followed by an L-shape ad break.
+
+#### 👎 Deprecations
+
+- Deprecated `allowMixedContent` on the `PlayerConfiguration` API. Use `network.allowMixedContent` instead.
+
+### Android
+
+#### ✨ Features
+
+- Added support for restricting Millicast playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
+
+#### 🐛 Issues
+
+- Fixed an issue where the CMCD-States payload could grow without bound when an OptiView Live channel was repeatedly falling back, causing CDN log parsing to fail. At most 20 states are now shipped per request (the oldest are dropped and the number of dropped states is reported), and reason and error strings are limited to 128 characters.
+- Fixed an issue where TTML subtitle cues without their own begin attribute inside a timed `<div>` were not shown.
+- Fixed an issue where ABR could select the lowest quality at startup of a DASH or HLS stream on a fast network or with a saved bandwidth estimate, when the initial request stayed open for more than 100 ms.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for restricting Millicast playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
+
+#### 🐛 Issues
+
+- Fixed an issue where Picture-in-Picture would exit after an OptiView Ads double-box ad break that was presented inside the Picture-in-Picture window.
+- Fixed missing or duplicate play events when explicitly starting or resuming Google IMA advertisements, and incorrect paused state while a pre-roll is pending.
+- Fixed an issue in OptiView Ads where ad audio and UI would show over the content during an `LSHAPE_CONTENT` ad break.
+- Fixed an issue in OptiView Ads where an ad break starting within 5 seconds after a double-box ad break would end prematurely.
+- Fixed a rare crash when destroying the player while an OptiView Ads ad break was shown in picture-in-picture.
+
+### Roku
+
+#### ✨ Features
+
+- The MediaKind connector can now send the X-TV3-Forwarded header on license and beacon requests.
+- CMCD states now report what triggered them: a customer API call, a player-internal decision or a media element event.
+
+#### 🐛 Issues
+
+- Fixed an issue with the MediaKind Connector config where `debug` was not actually optional. Also added support for the `cdns` property to be the `cdns` object from the MediaKind roll call response. Also defaulted `enableCSB` to true.
+
 ## 🚀 11.11.0 (2026/09/10)
 
 ### General
