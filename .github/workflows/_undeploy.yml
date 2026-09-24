@@ -15,8 +15,6 @@ on:
         required: true
         type: string
 
-concurrency: deploy-${{ github.ref }}
-
 jobs:
   undeploy-from-cloudfront:
     runs-on: ubuntu-latest
