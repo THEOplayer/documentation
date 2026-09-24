@@ -1,0 +1,144 @@
+---
+sidebar_label: Mapping components
+---
+
+# Mapping components in a chromeless UI
+
+A chromeless UI is made up of controls and displays that must reflect player state and call the appropriate OptiView Player APIs. This guide maps common interface components to the properties, methods, events, and supporting guides needed to implement them.
+
+A component can provide context, perform an action, or do both. For example, a play button performs an action, while a current-time display provides context.
+
+This guide covers:
+
+1. Play and pause
+2. Volume mute and level
+3. Current time and duration
+4. Scrubbing and buffered ranges
+5. Live playback
+6. Audio, subtitle, and quality selection
+7. Fullscreen and picture-in-picture
+8. Chromecast and AirPlay
+9. Subtitle and advertisement overlays
+
+![Chromeless UI Layout](../../../../assets/img/chromeless-ui-layout.png 'Chromeless UI Layout')
+
+The [Player API interfaces and events](../../analytics/custom-analytics-integration.mdx) provide the underlying state and actions used by these components.
+
+![OptiView Player API Interfaces and Events](../../../../assets/img/analytics-events.png 'OptiView Player API Interfaces and Events')
+
+## Play button
+
+Show the play button while the player is paused, as described in [tracking player states](../../player/track-player-states.mdx). When a viewer selects it, call [`player.play()`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#play).
+
+## Pause button
+
+Show the pause button while the player is playing, as described in [tracking player states](../../player/track-player-states.mdx). When a viewer selects it, call [`player.pause()`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#pause).
+
+## Volume mute button
+
+Read and update the [`muted`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#muted) property. Reflect the current value in the button and toggle it with `player.muted = !player.muted`.
+
+## Volume control
+
+Read and update the [`volume`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#volume) property. Reflect the current level and muted state in the control.
+
+## Current-time display
+
+Read [`currentTime`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#currentTime) to display the relative playback position in seconds.
+
+For live streams, you may prefer `currentProgramDateTime`, which provides an absolute value such as `"2022-04-01T13:37:42.666Z"`. This is also useful when implementing an electronic program guide.
+
+## Duration display
+
+Read [`duration`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#duration). It returns the duration in seconds for video-on-demand streams and `Infinity` for live streams.
+
+Calculate the remaining duration by subtracting `currentTime` from `duration` for finite streams.
+
+## Scrub bar
+
+Seek by setting `currentTime`. For live streams, you can use `currentProgramDateTime` to seek to absolute playback positions.
+
+Only seek within the ranges exposed by [`seekable`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#seekable). On Web, valid values remain between `player.seekable.start(0)` and `player.seekable.end(player.seekable.length - 1)`.
+
+Subscribe to [`timeupdate`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#timeupdate) to update the scrubber position during playback. The event is dispatched approximately every 200 milliseconds.
+
+The player dispatches `seeking` when a seek starts and `seeked` when it completes. Consider showing a loading state between these events.
+
+### Buffered ranges
+
+Use the `progress` event and [`buffered`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#buffered) ranges to indicate which portions of the stream are already available for immediate playback.
+
+## Live button
+
+A stream is live when `duration` is `Infinity`. To move to the live edge, set `currentTime` to `player.seekable.end(player.seekable.length - 1)`.
+
+## Audio selection
+
+Use these guides to implement an audio-track selector:
+
+- [Detect audio tracks](../../media-tracks/detect-audio-tracks.mdx)
+- [Enable and disable audio tracks](../../media-tracks/enable-disable-audio-tracks.mdx)
+- [Detect audio-track changes](../../media-tracks/detect-audio-track-changes.mdx)
+
+## Subtitle selection
+
+Use these guides to implement a subtitle and closed-caption selector:
+
+- [Detect text tracks](../../text-tracks/detect-text-tracks.mdx)
+- [Enable and disable text tracks](../../text-tracks/enable-disable-text-tracks.mdx)
+- [Detect text-track changes](../../text-tracks/detect-text-track-changes.mdx)
+
+## Video quality selection
+
+Use these guides to implement a quality selector:
+
+- [Detect video-track qualities](../../media-tracks/detect-video-track-qualities.mdx)
+- [Select a video-track quality](../../media-tracks/select-video-track-quality.mdx)
+- [Detect video-track quality changes](../../media-tracks/detect-video-track-quality-changes.mdx)
+
+## Fullscreen button
+
+The [`Presentation API`](pathname:///theoplayer/v11/api-reference/web/interfaces/Presentation.html) is not available for switching a chromeless player between fullscreen, inline, and picture-in-picture modes. Implement fullscreen behavior with the browser [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API).
+
+For iOS browsers, you can use [`webkitEnterFullscreen()`](https://developer.apple.com/documentation/webkitjs/htmlvideoelement/1633500-webkitenterfullscreen) or resize the player container to fill the viewport.
+
+## Picture-in-picture button
+
+Implement picture-in-picture UI and behavior independently of the Player SDK. The [Player Picture-in-Picture API](../../miscellaneous/picture-in-picture.mdx) is not available for chromeless players.
+
+On Web, you can locate the active video element with `player.element.querySelectorAll('video[src]')[0]`.
+
+Related resources:
+
+- [Picture-in-Picture for the Web](https://developers.google.com/web/updates/2017/09/picture-in-picture)
+- [Safari picture-in-picture controls](https://developer.apple.com/documentation/webkitjs/adding_picture_in_picture_to_your_safari_media_controls)
+- [Android picture-in-picture](https://developer.android.com/guide/topics/ui/picture-in-picture)
+- [Apple platform picture-in-picture](https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player)
+
+## Chromecast button
+
+Use the [Chromecast guide](../../cast/chromecast/introduction.mdx) to detect availability and start or stop a casting session.
+
+## AirPlay button
+
+Use the [AirPlay guide](../../cast/airplay/introduction.mdx) to detect availability and start or stop an AirPlay session.
+
+## Subtitle cues
+
+You can retain the Player SDK's default subtitle and closed-caption rendering in a chromeless UI. Depending on your design, additional styling may be required:
+
+```css
+.theoplayer-texttracks * {
+  font-size: 1em !important;
+}
+```
+
+For complete rendering control, [detect active text-track cues](../../text-tracks/detect-active-text-track-cues.mdx), then insert and remove each cue in your own interface.
+
+## Advertisement metadata
+
+During advertisements, your UI may need to display a countdown, skip button, or ad markers on the scrub bar.
+
+When using [Google IMA](../../ads/google-ima.mdx), the integration may provide some interface elements. When using the Player SDK's [default client-side ad integration](../../ads/set-up-vast-and-vmap.mdx), subscribe to the relevant [ad events](../../ads/subscribe-to-ad-events.mdx) and update your UI in their callbacks.
+
+Apply the same event-driven approach to server-side ad insertion.

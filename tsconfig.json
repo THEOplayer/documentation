@@ -10,6 +10,6 @@
       "@site/*": ["./*"]
     }
   },
-  "include": ["sidebars*.ts", "src/", "theoplayer/", "ads/", "adengine/", "open-video-ui/", "contributing/", "theolive/", "millicast/"],
-  "exclude": ["theoplayer/external/", "open-video-ui/external/", "theoplayer_versioned_docs/"]
+  "include": ["sidebars*.ts", "src/", "theoplayer/", "ads/", "adengine/", "contributing/", "theolive/", "millicast/"],
+  "exclude": ["theoplayer/external/", "theoplayer_versioned_docs/"]
 }

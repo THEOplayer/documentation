@@ -1,0 +1,56 @@
+---
+sidebar_label: Mapping components
+---
+
+# Mapping components in a chromeless UI on iOS and tvOS
+
+A chromeless UI is made up of native controls and displays that must reflect player state and call the appropriate OptiView Player APIs. This guide maps common components to the APIs and supporting guides used to implement them.
+
+![Chromeless UI Layout](../../../../assets/img/chromeless-ui-layout.png 'Chromeless UI Layout')
+
+## Play and pause
+
+Show the appropriate control for the current state, as described in [tracking player states](../../player/track-player-states.mdx). Call [`play()`](<pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)play>) or [`pause()`](<pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)pause>) when the viewer selects it.
+
+## Mute and volume
+
+Use the Player's [`muted`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C5mutedSbvp) property for mute controls. Apple platforms delegate volume-level changes to hardware controls, so the application should not provide an independent software volume slider.
+
+## Current time and duration
+
+Use [`requestCurrentTime()`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C18requestCurrentTime17completionHandleryySdSg_s5Error_pSgtc_tF) and [`setCurrentTime()`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C14setCurrentTime_17completionHandlerySd_yypSg_s5Error_pSgtcSgtF) for the playback position. Use [`duration`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C8durationSdSgvp) for duration.
+
+For live streams, `duration` is `Infinity`. Use `currentProgramDateTime` when the interface needs an absolute program time.
+
+## Scrub bar and buffered ranges
+
+Only seek within the ranges exposed by `seekable`. Update the scrubber in response to [`TIME_UPDATE`](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV11TIME_UPDATEAA0D4TypeCyAA010TimeUpdateD0CGvpZ), and represent downloaded portions using the Player's buffered ranges.
+
+Display a loading state between seeking and seek completion when appropriate.
+
+## Audio, subtitle, and quality selection
+
+Use the platform guides to build track selectors:
+
+- [Detect audio tracks](../../media-tracks/detect-audio-tracks.mdx)
+- [Enable and disable audio tracks](../../media-tracks/enable-disable-audio-tracks.mdx)
+- [Detect text tracks](../../text-tracks/detect-text-tracks.mdx)
+- [Enable and disable text tracks](../../text-tracks/enable-disable-text-tracks.mdx)
+- [Detect video-track qualities](../../media-tracks/detect-video-track-qualities.mdx)
+- [Select a video-track quality](../../media-tracks/select-video-track-quality.mdx)
+
+## Fullscreen and picture-in-picture
+
+Use `presentationMode` to switch between inline and fullscreen modes. Keep custom controls within the Player view hierarchy so they remain visible during presentation changes. Use `fullscreenOrientationCoupling` when fullscreen should follow device orientation.
+
+You can also implement presentation handling independently when the application needs more control. Picture-in-picture availability and behavior depend on the target Apple platform; see the [picture-in-picture guide](../../miscellaneous/picture-in-picture.mdx).
+
+## Casting
+
+Use the [Chromecast guide](../../cast/chromecast/introduction.mdx) and [AirPlay guide](../../cast/airplay/introduction.mdx) to detect availability and start or stop casting sessions.
+
+## Subtitle and advertisement overlays
+
+You can use the SDK's subtitle rendering or [detect active text-track cues](../../text-tracks/detect-active-text-track-cues.mdx) and render them yourself.
+
+For advertising controls such as countdowns, skip buttons, and scrub-bar markers, subscribe to the relevant [ad events](../../ads/subscribe-to-ad-events.mdx) and update your interface from their callbacks.

@@ -1,0 +1,58 @@
+---
+sidebar_label: Mapping components
+---
+
+# Mapping components in a chromeless UI on Android
+
+A chromeless UI is made up of native Android controls and displays that must reflect player state and call the appropriate OptiView Player APIs. This guide maps the most common components to the APIs and supporting guides used to implement them.
+
+![Chromeless UI Layout](../../../../assets/img/chromeless-ui-layout.png 'Chromeless UI Layout')
+
+## Play and pause
+
+Show the appropriate control for the current state, as described in [tracking player states](../../player/track-player-states.mdx). Call [`play()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#play--) or [`pause()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#pause--) when the viewer selects it.
+
+## Mute and volume
+
+Use [`isMuted()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#isMuted--) and [`setMuted()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#setMuted-boolean-) to implement mute controls.
+
+Android delegates volume level changes to hardware controls, so the application should not provide an independent software volume slider.
+
+## Current time and duration
+
+Use [`requestCurrentTime()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#requestCurrentTime-com.theoplayer.android.api.player.RequestCallback-) and [`setCurrentTime()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#setCurrentTime-double-) for the playback position. Use [`getDuration()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getDuration--) for duration.
+
+For live streams, `duration` is `Infinity`. You can use `currentProgramDateTime` when the interface needs an absolute program time.
+
+## Scrub bar and buffered ranges
+
+Only seek within [`requestSeekable()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#requestSeekable-com.theoplayer.android.api.player.RequestCallback-) ranges. Update the scrubber in response to [`TIMEUPDATE`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#TIMEUPDATE), and represent buffered ranges using [`requestBuffered()`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#requestBuffered-com.theoplayer.android.api.player.RequestCallback-).
+
+Display a loading state between seeking and seek completion when appropriate.
+
+## Audio, subtitle, and quality selection
+
+Use the platform guides to build track selectors:
+
+- [Detect audio tracks](../../media-tracks/detect-audio-tracks.mdx)
+- [Enable and disable audio tracks](../../media-tracks/enable-disable-audio-tracks.mdx)
+- [Detect text tracks](../../text-tracks/detect-text-tracks.mdx)
+- [Enable and disable text tracks](../../text-tracks/enable-disable-text-tracks.mdx)
+- [Detect video-track qualities](../../media-tracks/detect-video-track-qualities.mdx)
+- [Select a video-track quality](../../media-tracks/select-video-track-quality.mdx)
+
+## Fullscreen and picture-in-picture
+
+Implement fullscreen handling and orientation changes in the application rather than relying on `FullScreenManager`. See Android's [immersive-mode guidance](https://developer.android.com/training/system-ui/immersive).
+
+Implement picture-in-picture UI independently of the Player SDK. The [Player Picture-in-Picture API](../../miscellaneous/picture-in-picture.mdx) is not available for chromeless players.
+
+## Casting
+
+Use the [Chromecast guide](../../cast/chromecast/introduction.mdx) to detect availability and start or stop a casting session. AirPlay guidance is available in the [Web SDK documentation](../../../web/cast/airplay/introduction.mdx).
+
+## Subtitle and advertisement overlays
+
+You can use the SDK's subtitle rendering or [detect active text-track cues](../../text-tracks/detect-active-text-track-cues.mdx) and render them yourself.
+
+For advertising controls such as countdowns, skip buttons, and scrub-bar markers, subscribe to the relevant [ad events](../../ads/subscribe-to-ad-events.mdx) and update your interface from their callbacks.

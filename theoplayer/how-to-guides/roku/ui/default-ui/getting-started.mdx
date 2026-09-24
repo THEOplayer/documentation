@@ -1,0 +1,15 @@
+---
+sidebar_label: Getting started
+---
+
+# Getting started with the default UI on Roku
+
+The Roku SDK displays native controls when the `controls` field on the `THEOplayer` node is enabled. It is enabled by default, or you can set it explicitly:
+
+```xml
+<THEOsdk:THEOplayer id="TestPlayer" controls="true" />
+```
+
+Configure the Player and set a source as described in the [Roku SDK getting-started guide](/theoplayer/getting-started/sdks/roku/getting-started/). Roku renders its native playback controls when playback begins.
+
+Use the [default UI how-to guide](../remove-ui-element.mdx) to remove individual controls. Set `controls` to `false` if you want to build a [chromeless UI](../chromeless/introduction.mdx).

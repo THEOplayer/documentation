@@ -1,0 +1,19 @@
+---
+sidebar_label: Getting started
+---
+
+# Getting started with a chromeless UI on React Native
+
+First, follow the [React Native SDK getting-started guide](/theoplayer/getting-started/frameworks/react-native/getting-started/) to install `react-native-theoplayer` and render a minimal `THEOplayerView`.
+
+Do not add `@theoplayer/react-native-ui` when you want a chromeless implementation. Instead:
+
+1. Obtain the Player instance exposed by `THEOplayerView`.
+2. Subscribe to playback events and store the state required by your interface.
+3. Render your own React Native controls over or around the video view.
+4. Call Player methods from those controls.
+5. Handle loading, errors, accessibility, and platform lifecycle changes in your application.
+
+Start with play and pause controls, then add seeking, tracks, fullscreen behavior, casting, and advertising controls as your product requires.
+
+If you prefer ready-made components, use [Open Video UI for React Native](../open-video-ui/introduction.mdx).
