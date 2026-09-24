@@ -1,0 +1,280 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ManifestSource</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">1.0.0-beta.6-custom.1364
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ads-sdk/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ads-sdk/main" data-filter=":ads-sdk/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ads-sdk::com.dolby.optiview.ads.sdk/ManifestSource///PointingToDeclaration//2076289483">
+  <div class="breadcrumbs"><a href="../../index.html">ads-sdk</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.sdk</a><span class="delimiter">/</span><span class="current">ManifestSource</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Manifest</span><wbr><span><span>Source</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">ManifestSource</a></div><p class="paragraph">The manifest fetch + poll boundary. The portable <code class="lang-kotlin">:ads-sdk-core</code> <code class="lang-kotlin">ManifestService</code> only <i>parses</i> + validates a decoded manifest (so its validation stays conformance-locked across platforms); the actual network fetch and the polling timer are platform concerns and live behind this interface. <a href="../-http-manifest-source/index.html">HttpManifestSource</a> is the default implementation (OkHttp + coroutine poll loop); tests and the conformance driver supply a fake.</p><p class="paragraph">This mirrors the <i>additional</i> responsibilities the web <code class="lang-kotlin">ManifestService</code> carries on top of parsing (<code class="lang-kotlin">setManifestUrl</code> / <code class="lang-kotlin">fetchManifest</code> / <code class="lang-kotlin">startPolling</code> / <code class="lang-kotlin">setActive</code> / <code class="lang-kotlin">reset</code>), keeping the orchestrator's call sites identical to the TS reference.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-http-manifest-source/index.html">HttpManifestSource</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-811889297%2FProperties%2F2076289483" anchor-label="currentPollingIntervalSeconds" id="-811889297%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-polling-interval-seconds.html"><span>current</span><wbr><span>Polling</span><wbr><span>Interval</span><wbr><span><span>Seconds</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-811889297%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="current-polling-interval-seconds.html">currentPollingIntervalSeconds</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The cadence polling is currently running at, or null when it is not running or the implementation does not track it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1743805125%2FFunctions%2F2076289483" anchor-label="destroy" id="1743805125%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="destroy.html"><span><span>destroy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1743805125%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="destroy.html"><span class="token function">destroy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Release resources (stop polling, drop state).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2036621034%2FFunctions%2F2076289483" anchor-label="fetchManifest" id="-2036621034%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fetch-manifest.html"><span>fetch</span><wbr><span><span>Manifest</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2036621034%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="fetch-manifest.html"><span class="token function">fetchManifest</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break-manifest/index.html">BreakManifest</a></div><div class="brief "><p class="paragraph">Fetch + parse the manifest once; suspends until it resolves. Throws on fetch/parse failure.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1526243216%2FFunctions%2F2076289483" anchor-label="reset" id="1526243216%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset.html"><span><span>reset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1526243216%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Reset session state (stop polling, drop URL + cached manifest) before a new session.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1833906940%2FFunctions%2F2076289483" anchor-label="setActive" id="1833906940%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-active.html"><span>set</span><wbr><span><span>Active</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1833906940%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-active.html"><span class="token function">setActive</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">active<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Hint that a break is (in)active, so the source can adjust its poll cadence.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1256569906%2FFunctions%2F2076289483" anchor-label="setManifestInterceptor" id="-1256569906%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-manifest-interceptor.html"><span>set</span><wbr><span>Manifest</span><wbr><span><span>Interceptor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1256569906%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="set-manifest-interceptor.html"><span class="token function">setManifestInterceptor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">interceptor<span class="token operator">: </span><a href="../-manifest-response-interceptor/index.html">ManifestResponseInterceptor</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">diagnose<span class="token operator">: </span><a href="../-manifest-intercept-diagnose/index.html">ManifestInterceptDiagnose</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Provide the customer manifest-response interceptor (and a diagnostic sink for when it throws). The SDK forwards <a href="../-opti-view-ads-config/intercept-manifest-response.html">OptiViewAdsConfig.interceptManifestResponse</a> here at construction; sources apply it after parsing, on the initial fetch and every poll. Default no-op so custom sources need not support it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="210585096%2FFunctions%2F2076289483" anchor-label="setManifestRequestInterceptor" id="210585096%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-manifest-request-interceptor.html"><span>set</span><wbr><span>Manifest</span><wbr><span>Request</span><wbr><span><span>Interceptor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="210585096%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="set-manifest-request-interceptor.html"><span class="token function">setManifestRequestInterceptor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">interceptor<span class="token operator">: </span><a href="../-manifest-request-interceptor/index.html">ManifestRequestInterceptor</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">diagnose<span class="token operator">: </span><a href="../-manifest-intercept-diagnose/index.html">ManifestInterceptDiagnose</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Provide the customer manifest-request interceptor (and a diagnostic sink for when it throws). The SDK forwards <a href="../-opti-view-ads-config/intercept-manifest-request.html">OptiViewAdsConfig.interceptManifestRequest</a> here at construction; sources apply it before the network fetch, on the initial fetch and every poll. Default no-op so custom sources need not support it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-610384473%2FFunctions%2F2076289483" anchor-label="setManifestUrl" id="-610384473%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-manifest-url.html"><span>set</span><wbr><span>Manifest</span><wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-610384473%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-manifest-url.html"><span class="token function">setManifestUrl</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Set the manifest URL for the current session (call before <a href="fetch-manifest.html">fetchManifest</a>/<a href="start-polling.html">startPolling</a>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="983187803%2FFunctions%2F2076289483" anchor-label="startPolling" id="983187803%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="start-polling.html"><span>start</span><wbr><span><span>Polling</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="983187803%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="start-polling.html"><span class="token function">startPolling</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">onUpdate<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break-manifest/index.html">BreakManifest</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span></span><span class="parameter ">onError<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Start the poll loop at the cadence the manifest's <code class="lang-kotlin">polling</code> object dictates (no loop when it has none), delivering every re-fetched manifest to <a href="start-polling.html">onUpdate</a> and every failed poll to <a href="start-polling.html">onError</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1575958802%2FFunctions%2F2076289483" anchor-label="takeLastFailure" id="1575958802%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="take-last-failure.html"><span>take</span><wbr><span>Last</span><wbr><span><span>Failure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1575958802%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="take-last-failure.html"><span class="token function">takeLastFailure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-manifest-fetch-evidence/index.html">ManifestFetchEvidence</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Evidence for the most recent failed read, consumed by the caller raising <code class="lang-kotlin">DA-MANIFEST-FETCH-FAILED</code>. Defaults to null so a custom source keeps working without implementing it — it loses the evidence, not the diagnostic.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

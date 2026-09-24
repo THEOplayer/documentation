@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>All modules</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+1.0.0-beta.6-custom.1364        </div>
+        <div class="navigation-controls">
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageIds="OptiView Ads SDK for Android::.ext/allModules///PointingToDeclaration//0">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <div class="cover ">
+      <h1 class="">Module OptiView Ads SDK for Android</h1>
+      <p class="paragraph">The API reference for the OptiView Ads SDK on Android and Android TV. The SDK implements Server-Guided Ad Insertion: it polls a Break Manifest, schedules the breaks against the content player's timeline, plays the ads, and reports the impressions. Each artifact below is one Maven module under the <code class="lang-kotlin">com.dolby.optiview</code> group.</p>
+      <ul>
+        <li>
+          <p class="paragraph"><code class="lang-kotlin">ads-sdk-runtime</code> — start here. The Android runtime: the Media3 / ExoPlayer   player adapter, the overlay ad renderer, and Google Ad Manager pod serving.   Depending on it brings <code class="lang-kotlin">ads-sdk</code> and <code class="lang-kotlin">ads-sdk-core</code> transitively.</p>
+        </li>
+        <li>
+          <p class="paragraph"><code class="lang-kotlin">ads-sdk-adapter-theoplayer</code> — the player adapter for the OptiView Player   (THEOplayer).</p>
+        </li>
+        <li>
+          <p class="paragraph"><code class="lang-kotlin">ads-sdk</code> — the player-agnostic <code class="lang-kotlin">OptiViewAds</code> orchestrator: configuration,   session lifecycle, the event stream, and diagnostics.</p>
+        </li>
+        <li>
+          <p class="paragraph"><code class="lang-kotlin">ads-sdk-core</code> — the portable core: the Break Manifest model, the   <code class="lang-kotlin">PlayerAdapter</code> contract, and the diagnostic code taxonomy.</p>
+        </li>
+        <li>
+          <p class="paragraph"><code class="lang-kotlin">ads-sdk-adapter-test-kit</code> — the conformance test base for a custom   <code class="lang-kotlin">PlayerAdapter</code>.</p>
+        </li>
+      </ul>
+      <p class="paragraph">The integration guide is at <a href="https://optiview.dolby.com/docs/ads/player-integration/optiview-ads-sdk/">optiview.dolby.com</a>.</p>
+    </div>
+    <h2 class="">All modules:</h2>
+    <div class="table"><a data-name="1188504208%2FMain%2F0" anchor-label="ads-sdk" id="1188504208%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row table-row_multimodule">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ads-sdk/index.html">ads-sdk</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1188504208%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The player-agnostic orchestrator of the OptiView Ads SDK. <code class="lang-kotlin">OptiViewAds</code> wires the core to a <code class="lang-kotlin">PlayerAdapter</code>, runs the session lifecycle (<code class="lang-kotlin">startSession</code>, <code class="lang-kotlin">endSession</code>), emits the public event stream (<code class="lang-kotlin">OptiViewAdsEvent</code>) and the diagnostics stream, and defines the seams the Android runtime implements (<code class="lang-kotlin">AdRenderer</code>, <code class="lang-kotlin">ManifestSource</code>, <code class="lang-kotlin">SchedulerTicker</code>). Pure Kotlin/JVM; the Android-specific pieces live in <code class="lang-kotlin">ads-sdk-runtime</code>.</p>
+            </span></div>
+        </div>
+      </div>
+<a data-name="-1504331668%2FMain%2F0" anchor-label="ads-sdk-adapter-test-kit" id="-1504331668%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row table-row_multimodule">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ads-sdk-adapter-test-kit/index.html">ads-sdk-adapter-test-kit</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1504331668%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The conformance test base for a custom <code class="lang-kotlin">PlayerAdapter</code>. Extend <code class="lang-kotlin">PlayerAdapterConformanceTest</code> in your test source set (<code class="lang-kotlin">testImplementation</code>) to hold your adapter to the same contract the bundled adapters pass: event forwarding, state mirroring, seeking, and cleanup on <code class="lang-kotlin">destroy</code>.</p>
+            </span></div>
+        </div>
+      </div>
+<a data-name="-1197895672%2FMain%2F0" anchor-label="ads-sdk-adapter-theoplayer" id="-1197895672%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row table-row_multimodule">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ads-sdk-adapter-theoplayer/index.html">ads-sdk-adapter-theoplayer</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1197895672%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The <code class="lang-kotlin">PlayerAdapter</code> for the OptiView Player (THEOplayer) on Android. <code class="lang-kotlin">THEOplayerAdapter</code> wraps the <code class="lang-kotlin">Player</code> of a <code class="lang-kotlin">THEOplayerView</code> the app owns, so the SDK can drive THEOplayer-based playback exactly like Media3 through <code class="lang-kotlin">ExoPlayerAdapter</code>. THEOplayer itself is not bundled: the app provides its own THEOplayer dependency and license.</p>
+            </span></div>
+        </div>
+      </div>
+<a data-name="-755865242%2FMain%2F0" anchor-label="ads-sdk-core" id="-755865242%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row table-row_multimodule">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ads-sdk-core/index.html">ads-sdk-core</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-755865242%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The portable core of the OptiView Ads SDK: pure Kotlin/JVM with no Android or player dependencies. It holds the types the rest of the SDK is expressed in — the Break Manifest model, the <code class="lang-kotlin">PlayerAdapter</code> contract a content player is driven through, the ad-insertion and delivery modes, and the diagnostic code taxonomy. Integrators rarely depend on it directly; <code class="lang-kotlin">ads-sdk-runtime</code> and <code class="lang-kotlin">ads-sdk</code> bring it transitively.</p>
+            </span></div>
+        </div>
+      </div>
+<a data-name="1709150949%2FMain%2F0" anchor-label="ads-sdk-runtime" id="1709150949%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row table-row_multimodule">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ads-sdk-runtime/index.html">ads-sdk-runtime</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1709150949%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The Android runtime of the OptiView Ads SDK, and the artifact an app depends on: <code class="lang-kotlin">ExoPlayerAdapter</code> (the <code class="lang-kotlin">PlayerAdapter</code> for Media3 / ExoPlayer), <code class="lang-kotlin">OverlayAdRenderer</code> (ad playback in an overlay above the content player, including pause ads), <code class="lang-kotlin">GamStreamManager</code> (Google Ad Manager pod serving through the IMA SDK) and <code class="lang-kotlin">VastAdManager</code> (client-side VAST playout). Depends on <code class="lang-kotlin">ads-sdk</code> and <code class="lang-kotlin">ads-sdk-core</code>.</p>
+            </span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

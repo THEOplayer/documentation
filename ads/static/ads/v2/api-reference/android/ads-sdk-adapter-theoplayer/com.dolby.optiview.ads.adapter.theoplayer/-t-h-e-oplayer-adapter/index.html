@@ -1,0 +1,404 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>THEOplayerAdapter</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">1.0.0-beta.6-custom.1364
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ads-sdk-adapter-theoplayer/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ads-sdk-adapter-theoplayer/main" data-filter=":ads-sdk-adapter-theoplayer/main">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ads-sdk-adapter-theoplayer::com.dolby.optiview.ads.adapter.theoplayer/THEOplayerAdapter///PointingToDeclaration//-1608572452">
+  <div class="breadcrumbs"><a href="../../index.html">ads-sdk-adapter-theoplayer</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.adapter.theoplayer</a><span class="delimiter">/</span><span class="current">THEOplayerAdapter</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>THEOplayer</span><wbr><span><span>Adapter</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">THEOplayerAdapter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">player<span class="token operator">: </span><span data-unresolved-link="com.theoplayer.android.api.player/Player///PointingToDeclaration/">Player</span></span></span><span class="token punctuation">)</span> : <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a>, <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-content-video-size-provider/index.html">ContentVideoSizeProvider</a></div><p class="paragraph">THEOplayer implementation of the portable <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a> (PLAYG-398).</p><p class="paragraph">Wraps a <span data-unresolved-link="com.theoplayer.android.api.player/Player///PointingToDeclaration/">Player</span> the integrator owns — a plain <code class="lang-kotlin">THEOplayerView.player</code>, or the native player resolved from a <code class="lang-kotlin">react-native-theoplayer</code> view by the RN bridge — so the SDK drives THEOplayer-based content exactly like it drives Media3 through <code class="lang-kotlin">ExoPlayerAdapter</code>. The adapter never owns the player: <a href="destroy.html">destroy</a> detaches listeners and nothing else.</p><h2 class="">Thread safety</h2><p class="paragraph">THEOplayer is main-thread-affine: its API must be called on the Android main thread. The SDK reads <a href="current-time.html">currentTime</a> from whatever thread drives the scheduler ticker (<code class="lang-kotlin">Dispatchers.Default</code> by default), so — like <code class="lang-kotlin">ExoPlayerAdapter</code> — this adapter is safe from ANY thread:</p><ul><li><p class="paragraph"><strong>Reads</strong> are served from a <code class="lang-kotlin">@Volatile</code> snapshot refreshed ON the main     thread, after every player callback and on a periodic poll (the playhead     advances between callbacks).</p></li><li><p class="paragraph"><strong>Commands</strong> run inline when already on the main thread and are posted     to it otherwise.</p></li></ul><h2 class="">Timed metadata</h2><p class="paragraph">In-stream markers (HLS ID3 / <code class="lang-kotlin">EXT-X-DATERANGE</code> / DASH emsg) arrive as cues on THEOplayer text tracks of kind <code class="lang-kotlin">metadata</code>; the adapter subscribes to every such track as it appears and forwards each new cue as a <code class="lang-kotlin">TIMEDMETADATA</code> event with a portable <code class="lang-kotlin">TimedMetadataCue</code> payload (the Anvato signal path for <code class="lang-kotlin">ptsSource = ANVATO_CUE</code>).</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="1113753622%2FConstructors%2F-1608572452" anchor-label="THEOplayerAdapter" id="1113753622%2FConstructors%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-t-h-e-oplayer-adapter.html"><span>THEOplayer</span><wbr><span><span>Adapter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1113753622%2FConstructors%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">player<span class="token operator">: </span><span data-unresolved-link="com.theoplayer.android.api.player/Player///PointingToDeclaration/">Player</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1364960743%2FProperties%2F-1608572452" anchor-label="currentTime" id="-1364960743%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-time.html"><span>current</span><wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1364960743%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="current-time.html">currentTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/current-time.html">PlayerAdapter.currentTime</a> from the main-thread snapshot, in seconds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-359809945%2FProperties%2F-1608572452" anchor-label="duration" id="-359809945%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="duration.html"><span><span>duration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-359809945%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="duration.html">duration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/duration.html">PlayerAdapter.duration</a> from the snapshot, in seconds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1657876859%2FProperties%2F-1608572452" anchor-label="isLive" id="-1657876859%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-live.html"><span>is</span><wbr><span><span>Live</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1657876859%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-live.html">isLive</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/is-live.html">PlayerAdapter.isLive</a> from the snapshot: whether THEOplayer reports an infinite duration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1433215412%2FProperties%2F-1608572452" anchor-label="muted" id="1433215412%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="muted.html"><span><span>muted</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1433215412%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="muted.html">muted</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/muted.html">PlayerAdapter.muted</a>: reads the snapshot, writes on the main thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1495443853%2FProperties%2F-1608572452" anchor-label="paused" id="1495443853%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="paused.html"><span><span>paused</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1495443853%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="paused.html">paused</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/paused.html">PlayerAdapter.paused</a> from the snapshot.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-838881472%2FProperties%2F-1608572452" anchor-label="playbackRate" id="-838881472%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="playback-rate.html"><span>playback</span><wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-838881472%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="playback-rate.html">playbackRate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Playback rate, read from the ENGINE rather than echoed from the last write.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1940431072%2FProperties%2F-1608572452" anchor-label="programDateTime" id="1940431072%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="program-date-time.html"><span>program</span><wbr><span>Date</span><wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1940431072%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="program-date-time.html">programDateTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/program-date-time.html">PlayerAdapter.programDateTime</a>: the stream's program date time at the current position, in milliseconds since the Unix epoch; null without one.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="440245537%2FProperties%2F-1608572452" anchor-label="volume" id="440245537%2FProperties%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="volume.html"><span><span>volume</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="440245537%2FProperties%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="volume.html">volume</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/volume.html">PlayerAdapter.volume</a> (0.0 to 1.0): reads the snapshot, writes on the main thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="686216248%2FFunctions%2F-1608572452" anchor-label="contentVideoSize" id="686216248%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="content-video-size.html"><span>content</span><wbr><span>Video</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="686216248%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="content-video-size.html"><span class="token function">contentVideoSize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-content-video-size/index.html">ContentVideoSize</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-content-video-size-provider/index.html">ContentVideoSizeProvider</a>: lets the renderer confine break layouts to the video.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-32151163%2FFunctions%2F-1608572452" anchor-label="destroy" id="-32151163%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="destroy.html"><span><span>destroy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-32151163%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="destroy.html"><span class="token function">destroy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/destroy.html">PlayerAdapter.destroy</a>: removes the THEOplayer listeners; the player itself is left to the app.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-506777905%2FFunctions%2F-1608572452" anchor-label="load" id="-506777905%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load.html"><span><span>load</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-506777905%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="load.html"><span class="token function">load</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/load.html">PlayerAdapter.load</a>: sets <a href="load.html">url</a> as the THEOplayer source on the main thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-351868801%2FFunctions%2F-1608572452" anchor-label="off" id="-351868801%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="off.html"><span><span>off</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-351868801%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="off.html"><span class="token function">off</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">event<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event/index.html">PlayerAdapterEvent</a><span class="token punctuation">, </span></span><span class="parameter ">handler<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event-handler/index.html">PlayerAdapterEventHandler</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/off.html">PlayerAdapter.off</a>: removes a <a href="off.html">handler</a> added with <a href="on.html">on</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1463375563%2FFunctions%2F-1608572452" anchor-label="on" id="1463375563%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on.html"><span><span>on</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1463375563%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="on.html"><span class="token function">on</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">event<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event/index.html">PlayerAdapterEvent</a><span class="token punctuation">, </span></span><span class="parameter ">handler<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter-event-handler/index.html">PlayerAdapterEventHandler</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/on.html">PlayerAdapter.on</a>: subscribes <a href="on.html">handler</a> to <a href="on.html">event</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="844009353%2FFunctions%2F-1608572452" anchor-label="pause" id="844009353%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pause.html"><span><span>pause</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="844009353%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="pause.html"><span class="token function">pause</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/pause.html">PlayerAdapter.pause</a> on the main thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1629642297%2FFunctions%2F-1608572452" anchor-label="play" id="-1629642297%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="play.html"><span><span>play</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1629642297%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="play.html"><span class="token function">play</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/play.html">PlayerAdapter.play</a> on the main thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-240703711%2FFunctions%2F-1608572452" anchor-label="seek" id="-240703711%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="seek.html"><span><span>seek</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-240703711%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="seek.html"><span class="token function">seek</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">time<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/seek.html">PlayerAdapter.seek</a> to <a href="seek.html">time</a> seconds on the main thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1157052815%2FFunctions%2F-1608572452" anchor-label="setVideoQuality" id="1157052815%2FFunctions%2F-1608572452" data-filterable-set=":ads-sdk-adapter-theoplayer/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-adapter-theoplayer/main" data-filterable-set=":ads-sdk-adapter-theoplayer/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-video-quality.html"><span>set</span><wbr><span>Video</span><wbr><span><span>Quality</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1157052815%2FFunctions%2F-1608572452"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-adapter-theoplayer/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-video-quality.html"><span class="token function">setVideoQuality</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">quality<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-video-quality/index.html">VideoQuality</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Pin the cheapest rendition by assigning a single <span data-unresolved-link="com.theoplayer.android.api.player.track.mediatrack.quality/VideoQuality///PointingToDeclaration/">VideoQuality</span> to <code class="lang-kotlin">targetQuality</code>, which both selects it and disables ABR for the track.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

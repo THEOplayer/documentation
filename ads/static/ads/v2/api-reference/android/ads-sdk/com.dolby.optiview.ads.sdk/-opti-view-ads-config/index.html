@@ -1,0 +1,415 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>OptiViewAdsConfig</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    OptiView Ads SDK for Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">1.0.0-beta.6-custom.1364
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":ads-sdk/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ads-sdk/main" data-filter=":ads-sdk/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    OptiView Ads SDK for Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ads-sdk::com.dolby.optiview.ads.sdk/OptiViewAdsConfig///PointingToDeclaration//2076289483">
+  <div class="breadcrumbs"><a href="../../index.html">ads-sdk</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.sdk</a><span class="delimiter">/</span><span class="current">OptiViewAdsConfig</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Opti</span><wbr><span>View</span><wbr><span>Ads</span><wbr><span><span>Config</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">OptiViewAdsConfig</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>player<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>adPreload<span class="token operator">: </span><a href="../-ad-preload-mode/index.html">AdPreloadMode</a><span class="token operator"> = </span>AdPreloadMode.AUTO<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>doubleBoxAudio<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-double-box-audio/index.html">DoubleBoxAudio</a><span class="token operator"> = </span>DoubleBoxAudio.AD<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>adInsertion<span class="token operator">: </span><a href="../-ad-insertion-mode/index.html">AdInsertionMode</a><span class="token operator"> = </span>AdInsertionMode.AUTO<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>transition<span class="token operator">: </span><a href="../-transition-config/index.html">TransitionConfig</a><span class="token operator"> = </span>TransitionConfig()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>chaining<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-chaining-config/index.html">ChainingConfig</a><span class="token operator"> = </span>ChainingConfig(enabled = true, maxGapSeconds = 2.0)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>tuneIn<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-tune-in-config/index.html">TuneInConfig</a><span class="token operator"> = </span>TuneInConfig(enabled = true, minBreakDurationSeconds = 5.0)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>breakWarnings<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break-warnings-config/index.html">BreakWarningsConfig</a><span class="token operator"> = </span>BreakWarningsConfig()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>pdtGraceSeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>DEFAULT_PDT_GRACE_SECONDS<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>ptsSource<span class="token operator">: </span><a href="../-pts-source/index.html">PtsSource</a><span class="token operator"> = </span>PtsSource.MEDIA_TIME<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>continueContentDuringBreak<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>diagnostics<span class="token operator">: </span><a href="../-diagnostics-config/index.html">DiagnosticsConfig</a><span class="token operator"> = </span>DiagnosticsConfig()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>debug<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gam<span class="token operator">: </span><a href="../-gam-config/index.html">GamConfig</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>deliveryMode<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-delivery-mode/index.html">DeliveryMode</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>adBreakCutSafetyMarginSec<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>DEFAULT_AD_BREAK_CUT_SAFETY_MARGIN_SEC<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>interceptManifestResponse<span class="token operator">: </span><a href="../-manifest-response-interceptor/index.html">ManifestResponseInterceptor</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>interceptManifestRequest<span class="token operator">: </span><a href="../-manifest-request-interceptor/index.html">ManifestRequestInterceptor</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><p class="paragraph">Org-level SDK configuration, fixed for the lifetime of the <a href="../-opti-view-ads/index.html">OptiViewAds</a> instance. Chaining uses the brain's already-resolved <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-chaining-config/index.html">ChainingConfig</a>; the default below matches the web <code class="lang-kotlin">DEFAULT_CHAINING</code> (enabled, 2s gap). <a href="../../../ads-sdk/com.dolby.optiview.ads.sdk/-opti-view-ads-config/--root--.html">tuneIn</a> matches the web <code class="lang-kotlin">DEFAULT_TUNE_IN</code> (enabled, 5s minimum remaining duration).</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-1393926982%2FConstructors%2F2076289483" anchor-label="OptiViewAdsConfig" id="-1393926982%2FConstructors%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-opti-view-ads-config.html"><span>Opti</span><wbr><span>View</span><wbr><span>Ads</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1393926982%2FConstructors%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">player<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a><span class="token punctuation">, </span></span><span class="parameter ">adPreload<span class="token operator">: </span><a href="../-ad-preload-mode/index.html">AdPreloadMode</a><span class="token operator"> = </span>AdPreloadMode.AUTO<span class="token punctuation">, </span></span><span class="parameter ">doubleBoxAudio<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-double-box-audio/index.html">DoubleBoxAudio</a><span class="token operator"> = </span>DoubleBoxAudio.AD<span class="token punctuation">, </span></span><span class="parameter ">adInsertion<span class="token operator">: </span><a href="../-ad-insertion-mode/index.html">AdInsertionMode</a><span class="token operator"> = </span>AdInsertionMode.AUTO<span class="token punctuation">, </span></span><span class="parameter ">transition<span class="token operator">: </span><a href="../-transition-config/index.html">TransitionConfig</a><span class="token operator"> = </span>TransitionConfig()<span class="token punctuation">, </span></span><span class="parameter ">chaining<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-chaining-config/index.html">ChainingConfig</a><span class="token operator"> = </span>ChainingConfig(enabled = true, maxGapSeconds = 2.0)<span class="token punctuation">, </span></span><span class="parameter ">tuneIn<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-tune-in-config/index.html">TuneInConfig</a><span class="token operator"> = </span>TuneInConfig(enabled = true, minBreakDurationSeconds = 5.0)<span class="token punctuation">, </span></span><span class="parameter ">breakWarnings<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break-warnings-config/index.html">BreakWarningsConfig</a><span class="token operator"> = </span>BreakWarningsConfig()<span class="token punctuation">, </span></span><span class="parameter ">pdtGraceSeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>DEFAULT_PDT_GRACE_SECONDS<span class="token punctuation">, </span></span><span class="parameter ">ptsSource<span class="token operator">: </span><a href="../-pts-source/index.html">PtsSource</a><span class="token operator"> = </span>PtsSource.MEDIA_TIME<span class="token punctuation">, </span></span><span class="parameter ">continueContentDuringBreak<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">diagnostics<span class="token operator">: </span><a href="../-diagnostics-config/index.html">DiagnosticsConfig</a><span class="token operator"> = </span>DiagnosticsConfig()<span class="token punctuation">, </span></span><span class="parameter ">debug<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">gam<span class="token operator">: </span><a href="../-gam-config/index.html">GamConfig</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">deliveryMode<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-delivery-mode/index.html">DeliveryMode</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">adBreakCutSafetyMarginSec<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>DEFAULT_AD_BREAK_CUT_SAFETY_MARGIN_SEC<span class="token punctuation">, </span></span><span class="parameter ">interceptManifestResponse<span class="token operator">: </span><a href="../-manifest-response-interceptor/index.html">ManifestResponseInterceptor</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">interceptManifestRequest<span class="token operator">: </span><a href="../-manifest-request-interceptor/index.html">ManifestRequestInterceptor</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-143592659%2FProperties%2F2076289483" anchor-label="adBreakCutSafetyMarginSec" id="-143592659%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ad-break-cut-safety-margin-sec.html"><span>ad</span><wbr><span>Break</span><wbr><span>Cut</span><wbr><span>Safety</span><wbr><span>Margin</span><wbr><span><span>Sec</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-143592659%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="ad-break-cut-safety-margin-sec.html">adBreakCutSafetyMarginSec</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Safety margin, in seconds, added to a break's effective duration to form the hard cut-off at which the SDK always returns to content — regardless of whether the inserted ad media has reached its own end. Set to <code class="lang-kotlin">0.0</code> to cut exactly at the break boundary. Mirrors the web <code class="lang-kotlin">adBreakCutSafetyMarginSec</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-24311316%2FProperties%2F2076289483" anchor-label="adInsertion" id="-24311316%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ad-insertion.html"><span>ad</span><wbr><span><span>Insertion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-24311316%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="ad-insertion.html">adInsertion</a><span class="token operator">: </span><a href="../-ad-insertion-mode/index.html">AdInsertionMode</a></div><div class="brief "><p class="paragraph">Ad insertion strategy; defaults to <a href="../-ad-insertion-mode/-a-u-t-o/index.html">AdInsertionMode.AUTO</a>, which resolves to overlay on Android.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1243532114%2FProperties%2F2076289483" anchor-label="adPreload" id="1243532114%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ad-preload.html"><span>ad</span><wbr><span><span>Preload</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1243532114%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="ad-preload.html">adPreload</a><span class="token operator">: </span><a href="../-ad-preload-mode/index.html">AdPreloadMode</a></div><div class="brief "><p class="paragraph">Ad preload strategy; defaults to <a href="../-ad-preload-mode/-a-u-t-o/index.html">AdPreloadMode.AUTO</a>, matching the web <code class="lang-kotlin">DEFAULT_AD_PRELOAD_MODE</code>. Android has no browser UA, so <code class="lang-kotlin">auto</code> resolves to <a href="../-ad-preload-mode/-p-a-r-a-l-l-e-l/index.html">AdPreloadMode.PARALLEL</a> unless the adapter reports <code class="lang-kotlin">supportsParallelBuffering == false</code> — with the AUTO default that capability hint is authoritative without any configuration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1994214974%2FProperties%2F2076289483" anchor-label="breakWarnings" id="-1994214974%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="break-warnings.html"><span>break</span><wbr><span><span>Warnings</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1994214974%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="break-warnings.html">breakWarnings</a><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break-warnings-config/index.html">BreakWarningsConfig</a></div><div class="brief "><p class="paragraph">Pre-break warning thresholds (seconds before a non-pre-roll break) at which the SDK emits an <code class="lang-kotlin">adbreakstatus</code> with <code class="lang-kotlin">phase = upcoming</code>. Defaults to none. Mirrors the web <code class="lang-kotlin">breakWarnings</code> config. See <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break-warnings-config/index.html">BreakWarningsConfig</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="655044801%2FProperties%2F2076289483" anchor-label="chaining" id="655044801%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="chaining.html"><span><span>chaining</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="655044801%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="chaining.html">chaining</a><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-chaining-config/index.html">ChainingConfig</a></div><div class="brief "><p class="paragraph">Consecutive-break chaining; defaults to on with a 2-second gap.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1659876182%2FProperties%2F2076289483" anchor-label="continueContentDuringBreak" id="1659876182%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="continue-content-during-break.html"><span>continue</span><wbr><span>Content</span><wbr><span>During</span><wbr><span><span>Break</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1659876182%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="continue-content-during-break.html">continueContentDuringBreak</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Keep the content player PLAYING through an eligible replacement break instead of pausing it and seeking back afterwards.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-180569211%2FProperties%2F2076289483" anchor-label="debug" id="-180569211%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="debug.html"><span><span>debug</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-180569211%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="debug.html">debug</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to log verbose diagnostics and attribute break-transition sub-phases.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1590021323%2FProperties%2F2076289483" anchor-label="deliveryMode" id="1590021323%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delivery-mode.html"><span>delivery</span><wbr><span><span>Mode</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1590021323%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="delivery-mode.html">deliveryMode</a><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-delivery-mode/index.html">DeliveryMode</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Pin this session's delivery architecture instead of letting the break manifest's <code class="lang-kotlin">delivery</code> rules steer it (ADS-326).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="702531084%2FProperties%2F2076289483" anchor-label="diagnostics" id="702531084%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="diagnostics.html"><span><span>diagnostics</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="702531084%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="diagnostics.html">diagnostics</a><span class="token operator">: </span><a href="../-diagnostics-config/index.html">DiagnosticsConfig</a></div><div class="brief "><p class="paragraph">Structured diagnostics settings.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1098685658%2FProperties%2F2076289483" anchor-label="doubleBoxAudio" id="-1098685658%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="double-box-audio.html"><span>double</span><wbr><span>Box</span><wbr><span><span>Audio</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1098685658%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="double-box-audio.html">doubleBoxAudio</a><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-double-box-audio/index.html">DoubleBoxAudio</a></div><div class="brief "><p class="paragraph">Which side keeps audio during a <code class="lang-kotlin">double</code>-format break: the ad (default) or content.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1132345915%2FProperties%2F2076289483" anchor-label="gam" id="-1132345915%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="gam.html"><span><span>gam</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1132345915%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="gam.html">gam</a><span class="token operator">: </span><a href="../-gam-config/index.html">GamConfig</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Google Ad Manager pod-serving settings; null when the app does not wire IMA.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1707347620%2FProperties%2F2076289483" anchor-label="interceptManifestRequest" id="1707347620%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="intercept-manifest-request.html"><span>intercept</span><wbr><span>Manifest</span><wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1707347620%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="intercept-manifest-request.html">interceptManifestRequest</a><span class="token operator">: </span><a href="../-manifest-request-interceptor/index.html">ManifestRequestInterceptor</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Optional hook to inspect/modify the manifest HTTP request before the SDK fetches it (initial fetch and every poll). Can redirect the URL, add headers, or short-circuit the network with a mocked raw body (parsed + validated normally). May suspend. On throw emits <code class="lang-kotlin">DA-MANIFEST-REQUEST-INTERCEPT-FAILED</code> and falls back to the normal network fetch. See <a href="../-manifest-request-interceptor/index.html">ManifestRequestInterceptor</a>. The SDK forwards it to the <a href="../-manifest-source/index.html">ManifestSource</a>; the default <a href="../-http-manifest-source/index.html">HttpManifestSource</a> applies it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1818316486%2FProperties%2F2076289483" anchor-label="interceptManifestResponse" id="1818316486%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="intercept-manifest-response.html"><span>intercept</span><wbr><span>Manifest</span><wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1818316486%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="intercept-manifest-response.html">interceptManifestResponse</a><span class="token operator">: </span><a href="../-manifest-response-interceptor/index.html">ManifestResponseInterceptor</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Optional hook to inspect/modify the break manifest after the SDK fetches and validates it, before it is scheduled. Receives the typed, parsed <a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break-manifest/index.html">BreakManifest</a> (initial fetch and every poll) and returns the manifest to use. May suspend. See <a href="../-manifest-response-interceptor/index.html">ManifestResponseInterceptor</a>. The SDK forwards it to the <a href="../-manifest-source/index.html">ManifestSource</a>; the default <a href="../-http-manifest-source/index.html">HttpManifestSource</a> applies it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1140505135%2FProperties%2F2076289483" anchor-label="pdtGraceSeconds" id="-1140505135%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pdt-grace-seconds.html"><span>pdt</span><wbr><span>Grace</span><wbr><span><span>Seconds</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1140505135%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="pdt-grace-seconds.html">pdtGraceSeconds</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How long, in seconds, to wait for the stream's <code class="lang-kotlin">EXT-X-PROGRAM-DATE-TIME</code> on a <code class="lang-kotlin">wallclock</code>-timebase session before concluding the stream carries none.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="886092961%2FProperties%2F2076289483" anchor-label="player" id="886092961%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="player.html"><span><span>player</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="886092961%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="player.html">player</a><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-player-adapter/index.html">PlayerAdapter</a></div><div class="brief "><p class="paragraph">The adapter around the application's content player.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1805923250%2FProperties%2F2076289483" anchor-label="ptsSource" id="-1805923250%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pts-source.html"><span>pts</span><wbr><span><span>Source</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1805923250%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="pts-source.html">ptsSource</a><span class="token operator">: </span><a href="../-pts-source/index.html">PtsSource</a></div><div class="brief "><p class="paragraph">Selects how <code class="lang-kotlin">timebase: "pts"</code> break starts are resolved. <a href="../-pts-source/-m-e-d-i-a_-t-i-m-e/index.html">PtsSource.MEDIA_TIME</a> uses the manifest start directly. <a href="../-pts-source/-a-n-v-a-t-o_-c-u-e/index.html">PtsSource.ANVATO_CUE</a> tracks Anvato timed-metadata cues from the content player — HLS ID3 GEOB frames with description <code class="lang-kotlin">Anvatos</code> (MIME <code class="lang-kotlin">application/json</code>) and DASH emsg events with scheme <code class="lang-kotlin">urn:anvato:es1:052016</code> — whose payload is a query string of the form <code class="lang-kotlin">type=cue&amp;pts=&lt;seconds&gt;</code>. A PTS break is then scheduled at the media time of the observed cue whose <code class="lang-kotlin">pts</code> matches the break's <code class="lang-kotlin">start</code> (±5 ms); a break whose cue has not been observed yet stays pending (surfaced once per break via the <code class="lang-kotlin">DA-ANVATO-CUE-PENDING</code> diagnostic). SGAI only; has no effect on wallclock-timebase manifests. Mirrors the web <code class="lang-kotlin">ptsSource</code>. Defaults to <a href="../-pts-source/-m-e-d-i-a_-t-i-m-e/index.html">PtsSource.MEDIA_TIME</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1887760941%2FProperties%2F2076289483" anchor-label="transition" id="1887760941%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="transition.html"><span><span>transition</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1887760941%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="transition.html">transition</a><span class="token operator">: </span><a href="../-transition-config/index.html">TransitionConfig</a></div><div class="brief "><p class="paragraph">How the picture changes at the edges of a break; see <a href="../-transition-config/index.html">TransitionConfig</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1963146299%2FProperties%2F2076289483" anchor-label="tuneIn" id="-1963146299%2FProperties%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tune-in.html"><span>tune</span><wbr><span><span>In</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1963146299%2FProperties%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="tune-in.html">tuneIn</a><span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-tune-in-config/index.html">TuneInConfig</a></div><div class="brief "><p class="paragraph">Tune-in (join-in-progress); defaults to on with a 5-second minimum remaining duration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
