@@ -1,5 +1,11 @@
 # Changelog
 
+## [11.11.2] - 2026-09-25
+
+- Fixed an RTMP ingest that accepts the connection but sends no data crash-looping the engine and
+  putting the channel in `error`: the channel now waits for the contribution, goes live as soon as
+  it arrives, and is stopped by its ingest idle timeout like channels with other ingest types
+
 ## [11.11.1] - 2026-09-24
 
 - Allowed browsers to reuse multivariant playlists (`main.m3u8`, `main.hesp.m3u8`) and HESP
