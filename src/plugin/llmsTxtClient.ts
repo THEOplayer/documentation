@@ -10,10 +10,12 @@ export interface LlmsTxtGlobalData {
 export function useMarkdownUrl(): string | undefined {
   const { pathname } = useLocation();
   const { siteConfig } = useDocusaurusContext();
-  const { excludeRoutes } = usePluginData('llms-txt') as LlmsTxtGlobalData;
-  const excludeRoutesRegExp = useMemo(() => (excludeRoutes === '' ? undefined : new RegExp(excludeRoutes)), [excludeRoutes]);
+  // The plugin is not loaded in archive builds
+  const pluginData = usePluginData('llms-txt') as LlmsTxtGlobalData | undefined;
+  const excludeRoutes = pluginData?.excludeRoutes;
+  const excludeRoutesRegExp = useMemo(() => (excludeRoutes ? new RegExp(excludeRoutes) : undefined), [excludeRoutes]);
 
-  if (excludeRoutesRegExp?.test(pathname)) {
+  if (!pluginData || excludeRoutesRegExp?.test(pathname)) {
     return undefined;
   }
   return new URL(`${pathname.replace(/\/$/, '')}.md`, siteConfig.url).href;
