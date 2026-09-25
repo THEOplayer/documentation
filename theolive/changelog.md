@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.11.1] - 2026-09-24
+
+- Allowed browsers to reuse multivariant playlists (`main.m3u8`, `main.hesp.m3u8`) and HESP
+  manifests (`manifest.json`) for up to two seconds while CDNs keep caching them for one
+  (`Cache-Control: max-age=2, s-maxage=1`), so a repeated request for the same manifest no longer
+  goes back to the CDN when the CDN reports its copy as a second old
+
 ## [11.11.0] - 2026-09-23
 
 - Added RFC 9218 priority hints to every HLS response (`priority: u=1` on playlists, `u=2` to `u=6`
