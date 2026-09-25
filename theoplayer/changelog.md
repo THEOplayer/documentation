@@ -9,6 +9,14 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.12.1 (2026/09/25)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an application crash when starting playback of an OptiView Ads-enabled source.
+
 ## 🚀 11.12.0 (2026/09/22)
 
 ### Web
