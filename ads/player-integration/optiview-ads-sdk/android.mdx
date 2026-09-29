@@ -11,7 +11,31 @@ On Android and Android TV, the OptiView Ads SDK is a native Kotlin library that 
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
 2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
-3. Add the OptiView Ads SDK for Android to your project. Contact us for access to the SDK artifacts.
+3. Install the SDK together with the adapter for your player (see [Installation](#installation) and the player sections below).
+
+## Installation
+
+The SDK is published to the THEOplayer Maven repository. Add it to the repositories in `settings.gradle.kts`, keeping Google and Maven Central for third-party dependencies:
+
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        maven { url = uri("https://maven.theoplayer.com/releases") }
+        google()
+        mavenCentral()
+    }
+}
+```
+
+Then add the runtime to your app module. It brings in the core and SDK layers, Media3 and the Google IMA SDK transitively; replace `<version>` with the SDK release you want to use:
+
+```kotlin
+dependencies {
+    implementation("com.dolby.optiview:ads-sdk-runtime:<version>")
+}
+```
+
+The app needs Java 17 and `compileSdk` 34 or later.
 
 ## Integration
 
@@ -36,15 +60,24 @@ From this point the SDK polls the [Break Manifest](../../concepts/break-manifest
 
 ### OptiView Player (THEOplayer)
 
+Add the THEOplayer adapter alongside the runtime:
+
+```kotlin
+dependencies {
+    implementation("com.dolby.optiview:ads-sdk-adapter-theoplayer:<version>")
+}
+```
+
 The `THEOplayerAdapter` wraps the `Player` of a `THEOplayerView`. Ads are rendered in an overlay view stacked above your content player view.
 
 **Limitations:**
 
-- Requires a valid THEOplayer license.
+- Requires the THEOplayer Android SDK 11 or later, which your app provides (the adapter does not bundle it), and a valid THEOplayer license.
+- Requires Android 6.0 (API level 23) or later.
 
 ### Media3 / ExoPlayer
 
-The `ExoPlayerAdapter` wraps a Media3 `ExoPlayer` instance. Ads are rendered in an overlay view stacked above your content player view.
+The `ExoPlayerAdapter` ships with the runtime and wraps a Media3 `ExoPlayer` instance. Ads are rendered in an overlay view stacked above your content player view.
 
 **Limitations:**
 

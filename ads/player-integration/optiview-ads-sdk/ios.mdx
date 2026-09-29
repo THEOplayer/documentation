@@ -11,7 +11,22 @@ On iOS and tvOS, the OptiView Ads SDK is a native Swift library that works with 
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
 2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
-3. Add the OptiView Ads SDK for iOS to your project. Contact us for access to the SDK artifacts.
+3. Install the SDK together with the adapter for your player (see [Installation](#installation) and the player sections below).
+
+## Installation
+
+The SDK is distributed through CocoaPods from the THEOplayer Specs repository. Add that repository as a `source` next to the CocoaPods CDN in your `Podfile`, add the runtime pod to your target, and run `pod install`; replace `<version>` with the SDK release you want to use:
+
+```ruby
+source 'https://github.com/THEOplayer/cocoapods-specs.git'
+source 'https://cdn.cocoapods.org/'
+
+target 'MyApp' do
+  pod 'OptiViewAdsRuntime', '<version>'
+end
+```
+
+`OptiViewAdsRuntime` brings in `OptiViewAdsSDK`, `OptiViewAdsCore` and the Google IMA SDK transitively. The same pods serve iOS and tvOS apps and require iOS 15 / tvOS 15 or later.
 
 ## Integration
 
@@ -36,15 +51,21 @@ From this point the SDK polls the [Break Manifest](../../concepts/break-manifest
 
 ### OptiView Player (THEOplayer)
 
+Add the THEOplayer adapter pod alongside the runtime:
+
+```ruby
+pod 'OptiViewAdsAdapterTHEOplayer', '<version>'
+```
+
 The `THEOplayerAdapter` wraps a `THEOplayer` instance. Ads are rendered in an overlay view stacked above your content player view.
 
 **Limitations:**
 
-- Requires a valid THEOplayer license.
+- Requires the THEOplayer iOS SDK 11 or later and a valid THEOplayer license.
 
 ### AVPlayer
 
-The `AVPlayerAdapter` wraps an `AVPlayer` instance. Ads are rendered in an overlay view stacked above your content player view.
+The `AVPlayerAdapter` ships with the runtime and wraps an `AVPlayer` instance. Ads are rendered in an overlay view stacked above your content player view.
 
 **Limitations:**
 
