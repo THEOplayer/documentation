@@ -20,6 +20,21 @@ You can also select a quality manually from the settings menu in the player.
 
 The box below the player shows the quality that is currently playing, using the `activequalitychanged` event of the active video track.
 
+By default, the player limits quality to the rendered player size only on mobile devices.
+Set `abr: { restrictToPlayerSize: true }` to apply this limit on all devices.
+Set `abr: { restrictToPlayerSize: false }` to allow larger qualities.
+Set `abr` on a typed source or in the player configuration. See [`restrictToPlayerSize`](pathname:///theoplayer/v11/api-reference/web/interfaces/SourceAbrConfiguration.html#restrictToPlayerSize).
+
+```js
+player.source = {
+  sources: {
+    src: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd',
+    type: 'application/dash+xml',
+    abr: { restrictToPlayerSize: true },
+  },
+};
+```
+
 :::tip
 To play 4K content, your device must be able to decode it and your screen should be large enough to show it.
 Enter fullscreen for the best experience.

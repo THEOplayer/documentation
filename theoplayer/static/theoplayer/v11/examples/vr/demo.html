@@ -76,11 +76,6 @@
         }
         vr.addEventListener(['directionchange', 'stereochange', 'statechange'], reportState);
 
-        onParentMessage('vr-direction', ({ direction }) => {
-          vr.direction = direction;
-          reportState();
-        });
-
         const stereoButton = document.querySelector('#stereo-toggle');
         function updateStereoButton() {
           const canPresentVR = vr.canPresentVR;
