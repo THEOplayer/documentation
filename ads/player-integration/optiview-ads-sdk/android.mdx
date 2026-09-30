@@ -35,16 +35,7 @@ dependencies {
 }
 ```
 
-The app needs Java 17 and `compileSdk` 34 or later. The SDK uses `java.time`, so an app with a `minSdk` below 26 must also enable core library desugaring:
-
-```kotlin
-android {
-    compileOptions { isCoreLibraryDesugaringEnabled = true }
-}
-dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
-}
-```
+The app needs Java 17 and `compileSdk` 34 or later.
 
 ## Integration
 
@@ -81,7 +72,7 @@ The `THEOplayerAdapter` wraps the `Player` of a `THEOplayerView`. Ads are render
 
 **Limitations:**
 
-- Requires the THEOplayer Android SDK 9 or later, which your app provides (the adapter does not bundle it), and a valid THEOplayer license.
+- Requires the THEOplayer Android SDK 11 or later, which your app provides (the adapter does not bundle it), and a valid THEOplayer license.
 - Requires Android 6.0 (API level 23) or later.
 
 ### Media3 / ExoPlayer

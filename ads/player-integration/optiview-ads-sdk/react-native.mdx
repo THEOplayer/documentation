@@ -38,18 +38,6 @@ allprojects {
 }
 ```
 
-The SDK uses `java.time`, so an app with a `minSdk` below 26 (React Native's default is 24) must also enable core library desugaring in `android/app/build.gradle`:
-
-```groovy
-// android/app/build.gradle
-android {
-    compileOptions { coreLibraryDesugaringEnabled true }
-}
-dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
-}
-```
-
 ### iOS and tvOS
 
 Add the THEOplayer CocoaPods source next to the default one in your `Podfile`, then run `pod install`:
