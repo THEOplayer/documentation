@@ -28,23 +28,6 @@
         --artwork: url('https://cdn2.hubspot.net/hubfs/2163521/Demo_zone/id3_background.svg');
       }
 
-      .player {
-        position: relative;
-      }
-
-      .song-info {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 1em;
-        color: #fff;
-        font-family: 'Noto Sans', sans-serif;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-        text-shadow: 0 0 5px #000;
-        pointer-events: none;
-      }
-
       .song-info[hidden] {
         display: none;
       }
@@ -81,18 +64,17 @@
       licenseUrl: Change this to point to your THEOplayer license file.
       Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
     -->
-    <div class="player">
-      <theoplayer-default-ui
-        configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
-        source='{"sources":{"src":"https://cdn.theoplayer.com/video/indexcom/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn2.hubspot.net/hubfs/2163521/Demo_zone/id3_background.svg"}'
-      ></theoplayer-default-ui>
-      <!-- Song details, shown on top of the player. -->
-      <div class="song-info" hidden>
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/indexcom/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn2.hubspot.net/hubfs/2163521/Demo_zone/id3_background.svg"}'
+    >
+      <!-- Song details, slotted into the title area at the top of the player. -->
+      <div class="song-info" slot="title" hidden>
         <p class="song-artist"></p>
         <p class="song-title"></p>
         <p class="song-details"></p>
       </div>
-    </div>
+    </theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
       // Convert an ID3 frame into a simple { id, description, value } object.
