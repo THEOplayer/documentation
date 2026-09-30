@@ -556,12 +556,6 @@ const config: Config = {
       const parsedDocPath = parseDocPath(params.filePath)!;
       const { docPluginId } = parsedDocPath;
       let { docPath } = parsedDocPath;
-      const uiDocMatch = docPath.match(/^how-to-guides\/(web|android|ios|react-native|roku)\/ui\/(.+)\.mdx?$/);
-      if (docPluginId === 'theoplayer' && uiDocMatch) {
-        const [, platform, path] = uiDocMatch;
-        const uiPath = path === 'introduction' ? '' : path.replace(/\/introduction$/, '');
-        frontMatter.slug = `/ui/${platform}/${uiPath}`;
-      }
       if (docPath.startsWith('external/web-ui/') && typeof frontMatter.slug === 'string') {
         frontMatter.slug = frontMatter.slug
           .replace(/^\/web(?=\/|$)/, '/ui/web/open-video-ui')

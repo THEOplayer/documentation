@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+sidebar_label: Getting started
+---
+
+# Getting started with a chromeless UI on Android
+
+import DocCardList from '@theme/DocCardList';
+import Intro from '../shared/_build-chromeless-ui-intro.mdx';
+
+<Intro />
+
+## Create a chromeless player instance
+
+The Android SDK does not ship a default UI. A [`THEOplayerView`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/THEOplayerView.html) renders the video, and your application adds its own controls on top.
+
+```kotlin
+val config = THEOplayerConfig.Builder()
+    .license("your_license_string")
+    .build()
+val theoPlayerView = THEOplayerView(this, config)
+val player = theoPlayerView.player
+```
+
+The following guides refer to this `player` variable. If you prefer to start with ready-made components, use [Open Video UI for Android](./open-video-ui/index.mdx).
+
+## Track player states
+
+Before adding controls, learn how to [track player states](../../how-to-guides/android/player/track-player-states.mdx). Your UI should respond correctly when playback starts, pauses, buffers, ends, or encounters an error.
+
+![Video Player States](../../assets/img/player-video-player-states.png 'Video Player States')
+
+## Next steps
+
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      label: 'Map UI components',
+      description: 'Connect Android controls and displays to the appropriate Player APIs.',
+      href: '/theoplayer/ui/android/chromeless/mapping-components/',
+    },
+    {
+      type: 'link',
+      label: 'Add UX enhancements',
+      description: 'Plan loading, poster, next-content, intro-skip, and advertising experiences.',
+      href: '/theoplayer/ui/android/chromeless/ux-enhancements/',
+    },
+    {
+      type: 'link',
+      label: 'Handle errors',
+      description: 'Make failures visible and actionable in your custom UI.',
+      href: '/theoplayer/ui/android/chromeless/error-handling/',
+    },
+  ]}
+/>
