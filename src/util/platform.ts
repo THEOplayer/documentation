@@ -180,7 +180,7 @@ export function isDocSharedWithPlatform(docsPluginId: string, doc: GlobalDoc, pl
       return platformName === 'web' || platformName === 'android' || platformName === 'ios' || platformName === 'chromecast';
     }
     if (doc.id.startsWith('how-to-guides/')) {
-      // how-to-guides/ads/ = shared
+      // Older versions: how-to-guides/ads/ = shared
       // how-to-guides/web/ = not shared, because platform-specific
       const [, docPlatformName] = doc.id.split('/', 2);
       return !isPlatformName(docPlatformName) || docPlatformName === platformName;
@@ -282,11 +282,11 @@ function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, plat
 
 function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string, suffix: string, fallbackSuffix: string): GlobalDoc | undefined {
   // Find exact match
-  const exactDocPath = `${prefix}${suffix}`.replace(/\/$/, '');
-  if (doc.path === exactDocPath) {
+  const exactDocPath = `${prefix}${suffix}`;
+  if (isSameDocPath(doc.path, exactDocPath)) {
     return doc;
   }
-  const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
+  const exactDoc = findDocByPath(version, exactDocPath);
   if (exactDoc) {
     return exactDoc;
   }
@@ -295,7 +295,7 @@ function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string,
   suffixParts.pop();
   while (suffixParts.length > 0) {
     const looseDocPath = `${prefix}${suffixParts.join('/')}`;
-    const looseDoc = version.docs.find((otherDoc) => otherDoc.path === looseDocPath);
+    const looseDoc = findDocByPath(version, looseDocPath);
     if (looseDoc) {
       return looseDoc;
     }
@@ -303,5 +303,17 @@ function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string,
   }
   // Find fallback page
   const fallbackDocPath = `${prefix}${fallbackSuffix}`;
-  return version.docs.find((otherDoc) => otherDoc.path === fallbackDocPath);
+  return findDocByPath(version, fallbackDocPath);
+}
+
+function findDocByPath(version: GlobalVersion, path: string): GlobalDoc | undefined {
+  return version.docs.find((otherDoc) => isSameDocPath(otherDoc.path, path));
+}
+
+/**
+ * Compare doc paths, ignoring trailing slashes.
+ * (Index docs have a trailing slash, e.g. `/theoplayer/connectors/web/`.)
+ */
+function isSameDocPath(a: string, b: string): boolean {
+  return a.replace(/\/$/, '') === b.replace(/\/$/, '');
 }

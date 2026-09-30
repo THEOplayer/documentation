@@ -12,6 +12,10 @@
     "to": "/theoplayer/how-to-guides/web/miscellaneous/vr/"
   },
   {
+    "from": "/theoplayer/how-to-guides/",
+    "to": "/theoplayer/how-to-guides/web/"
+  },
+  {
     "from": "/theoplayer/how-to-guides/drm/verizon-uplynk/",
     "to": "/theoplayer/how-to-guides/web/drm/uplynk/"
   },
