@@ -11,7 +11,41 @@ On React Native, the OptiView Ads SDK bridges the native Android and iOS SDKs be
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
 2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
-3. Add the OptiView Ads SDK for React Native to your project. Contact us for access to the SDK artifacts.
+3. Install the SDK and make its native dependencies resolvable for your platforms (see [Installation](#installation)).
+
+## Installation
+
+Install the SDK alongside your host player (`react-native-theoplayer` or `react-native-video`):
+
+```bash
+npm install @dolby-optiview/ads-sdk-react-native
+```
+
+The package requires React Native 0.76 or later with the new architecture (TurboModules / Fabric). It links the native Android and iOS/tvOS SDKs automatically; the only setup left is to make the native artifacts resolvable.
+
+### Android
+
+Add the THEOplayer Maven repository to the repositories in `android/build.gradle`, keeping Google and Maven Central:
+
+```groovy
+// android/build.gradle
+allprojects {
+    repositories {
+        maven { url "https://maven.theoplayer.com/releases" }
+        google()
+        mavenCentral()
+    }
+}
+```
+
+### iOS and tvOS
+
+Add the THEOplayer CocoaPods source next to the default one in your `Podfile`, then run `pod install`:
+
+```ruby
+source 'https://github.com/THEOplayer/cocoapods-specs.git'
+source 'https://cdn.cocoapods.org/'
+```
 
 ## Integration
 
@@ -19,11 +53,11 @@ Attach the SDK to your host player once it is ready, then start a session with t
 
 ```tsx
 import { THEOplayerView } from 'react-native-theoplayer';
-import { createOptiViewAds } from '@dolby-optiview/ads-react-native';
+import { createOptiViewAds } from '@dolby-optiview/ads-sdk-react-native';
 
 const onPlayerReady = async (player) => {
   player.source = { sources: [{ src: CONTENT_URL, type: 'application/x-mpegurl' }] };
-  const ads = createOptiViewAds({ nativeHandle: player.nativeHandle });
+  const ads = createOptiViewAds(player, { gam: { networkCode: 'NETWORK-CODE' } });
   await ads.startSession({
     manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
   });
@@ -34,21 +68,39 @@ const onPlayerReady = async (player) => {
 
 From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
 
+All configuration options, session settings, and ad events are documented in the [React Native API reference](pathname:///ads/v2/api-reference/react-native/), starting from the [`createOptiViewAds`](pathname:///ads/v2/api-reference/react-native/variables/createOptiViewAds.html) function.
+
 ## Supported players
 
 ### OptiView Player (react-native-theoplayer)
 
-The SDK attaches to a `THEOplayerView` through its native player handle.
+The SDK attaches to a `THEOplayerView` through the `player` it hands to `onPlayerReady`; pass that player to `createOptiViewAds` as shown above.
 
 **Limitations:**
 
-- Requires the React Native new architecture (TurboModules / Fabric).
+- Requires a valid THEOplayer license.
 
 ### react-native-video
 
-The SDK attaches to a `react-native-video` player through its native player handle.
+`react-native-video` does not expose its native player handle directly. Use the `useReactVideoHandle` hook: attach its `onVideoEvent` callback to the `<Video>` component's `onLoad`, and pass the `player` it returns to `createOptiViewAds` once it is defined:
+
+```tsx
+import Video from 'react-native-video';
+import { createOptiViewAds, useReactVideoHandle } from '@dolby-optiview/ads-sdk-react-native';
+
+const { player, onVideoEvent } = useReactVideoHandle();
+
+useEffect(() => {
+  if (!player) return;
+  const ads = createOptiViewAds(player, { gam: { networkCode: 'NETWORK-CODE' } });
+  void ads.startSession({ manifestUrl: MANIFEST_URL });
+  return () => void ads.destroy();
+}, [player]);
+
+<Video source={{ uri: CONTENT_URL }} disableFocus onLoad={onVideoEvent} />;
+```
 
 **Limitations:**
 
 - Requires `react-native-video` v6.
-- Requires the React Native new architecture (TurboModules / Fabric).
+- On Android, set `RNVideo_useExoplayerIMA=true` in `android/gradle.properties` so `react-native-video` uses the real IMA integration instead of its stub classes, which conflict with the IMA SDK shipped by the OptiView runtime.

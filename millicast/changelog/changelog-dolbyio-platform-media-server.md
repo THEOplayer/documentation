@@ -2,6 +2,17 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-09-30
+
+### Media Server
+
+{/* 3.6.3 */}
+
+#### Fixes
+
+- Fixed an issue where AV1 broadcasts contributed over RTMP could not be played back in recent versions of Chrome. The viewer connected and received video, but no frames were decoded.
+- Fixed an issue where AV1 broadcasts contributed over RTMP had no video when the encoder sent a codec configuration without a sequence header.
+
 ## 2026-09-07
 
 ### Media Server

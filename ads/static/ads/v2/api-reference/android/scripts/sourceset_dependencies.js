@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":ads-sdk-runtime/main":[],":ads-sdk-runtime/release":[],":ads-sdk-adapter-theoplayer/main":[],":ads-sdk-adapter-theoplayer/release":[],":ads-sdk/main":[],":ads-sdk-adapter-test-kit/main":[],":ads-sdk-core/main":[]}'

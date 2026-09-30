@@ -1,0 +1,15 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+module:ads-sdk
+com.dolby.optiview.ads.sdk
+module:ads-sdk-adapter-test-kit
+com.dolby.optiview.ads.testkit
+module:ads-sdk-adapter-theoplayer
+com.dolby.optiview.ads.adapter.theoplayer
+module:ads-sdk-core
+com.dolby.optiview.ads.core
+com.dolby.optiview.ads.core.config
+com.dolby.optiview.ads.core.generated
+module:ads-sdk-runtime
+com.dolby.optiview.ads.runtime

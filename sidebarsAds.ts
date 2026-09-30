@@ -98,9 +98,27 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          label: 'Ads SDK Web API (beta)',
+          label: 'Ads SDK Web API',
           customProps: { icon: '🧩' },
           href: 'pathname:///ads/v2/api-reference/web/',
+        },
+        {
+          type: 'link',
+          label: 'Ads SDK iOS API',
+          customProps: { icon: '🧩' },
+          href: 'pathname:///ads/v2/api-reference/ios/',
+        },
+        {
+          type: 'link',
+          label: 'Ads SDK Android API',
+          customProps: { icon: '🧩' },
+          href: 'pathname:///ads/v2/api-reference/android/',
+        },
+        {
+          type: 'link',
+          label: 'Ads SDK React Native API',
+          customProps: { icon: '🧩' },
+          href: 'pathname:///ads/v2/api-reference/react-native/',
         },
       ],
     },

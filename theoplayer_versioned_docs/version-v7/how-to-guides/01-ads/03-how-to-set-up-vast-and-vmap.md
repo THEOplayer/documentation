@@ -49,9 +49,9 @@ You configure an [AdDescription](pathname:///theoplayer/v7/api-reference/web/int
 
 In this `AdDescription`,
 
-- You set the value of `sources` to your ad tag URL.
+- You set the value of `sources` to an object with the URL of your ad tag as its `src`.
 - You set the value of `timeOffset` to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
-- You set its `type` to `"vast"`. When this isn't provided, the player will still try to figure out its `type` after making the ad request.
+- Optionally, you set the `type` of that `sources` object to `"vast"`. When this isn't provided, the player will still try to figure out its `type` after making the ad request.
 
 ```js
 player.source = {
@@ -62,9 +62,8 @@ player.source = {
   ],
   ads: [
     {
-      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      sources: { src: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml', type: 'vast' },
       timeOffset: 'start',
-      type: 'vast',
       integration: 'csai', // When no integration is provided, the player defaults to `csai`.
     },
   ],
@@ -249,8 +248,7 @@ player.source = {
   ],
   ads: [
     {
-      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
-      type: 'vast',
+      sources: { src: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml', type: 'vast' },
       timeOffset: '00:00:15',
       skipOffset: '5',
     },
@@ -276,9 +274,7 @@ player.source = {
   ],
   ads: [
     {
-      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
-      timeOffset: 'start',
-      type: 'vmap',
+      sources: { src: 'https://cdn.theoplayer.com/demos/ads/vmap/single-pre-mid-post-no-skip.xml', type: 'vmap' },
       integration: 'csai', // When no integration is provided, the player defaults to `csai`.
     },
   ],

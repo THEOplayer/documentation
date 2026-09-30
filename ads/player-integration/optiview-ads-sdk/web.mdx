@@ -19,7 +19,7 @@ Create the SDK with your player's adapter, then start a session with the channel
 
 ```typescript
 import { OptiViewAds } from '@dolby-optiview/ads-sdk';
-import { THEOplayerAdapter } from '@dolby-optiview/ads-adapter-theoplayer';
+import { THEOplayerAdapter } from '@dolby-optiview/ads-sdk-adapter-theoplayer';
 
 const sdk = new OptiViewAds({
   player: new THEOplayerAdapter(player, container),
@@ -43,7 +43,7 @@ All configuration options, session settings, and ad events are documented in the
 Install the THEOplayer adapter alongside the SDK:
 
 ```bash
-npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-theoplayer theoplayer
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-sdk-adapter-theoplayer theoplayer
 ```
 
 Wrap the `ChromelessPlayer` instance in a `THEOplayerAdapter`. THEOplayer manages its own `<video>` element inside a container `<div>`.
@@ -58,7 +58,7 @@ Wrap the `ChromelessPlayer` instance in a `THEOplayerAdapter`. THEOplayer manage
 Install the HLS.js adapter alongside the SDK:
 
 ```bash
-npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-hlsjs hls.js
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-sdk-adapter-hlsjs hls.js
 ```
 
 Wrap your `Hls` instance and content `<video>` element in an `HlsJsAdapter` and pass it as the `player`.
@@ -68,7 +68,7 @@ Wrap your `Hls` instance and content `<video>` element in an `HlsJsAdapter` and 
 Install the Shaka adapter alongside the SDK:
 
 ```bash
-npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-shaka shaka-player
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-sdk-adapter-shaka shaka-player
 ```
 
 Call `shaka.polyfill.installAll()` once before creating any `shaka.Player` instance, then wrap the player and `<video>` element in a `ShakaAdapter`.

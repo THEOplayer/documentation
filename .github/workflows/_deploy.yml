@@ -17,6 +17,21 @@ on:
         description: Name of the built artifact for deployment.
         required: true
         type: string
+      artifact_run_id:
+        description: ID of the workflow run that uploaded the artifact. Defaults to the current run.
+        required: false
+        type: string
+        default: ''
+      pr_number:
+        description: Number of the pull request to comment on with a link to the preview.
+        required: false
+        type: number
+        default: -1
+      pr_head_sha:
+        description: Commit that the pull request preview was built from.
+        required: false
+        type: string
+        default: ''
       s3_prefix:
         description: AWS S3 prefix where to store the build.
         required: true
@@ -26,8 +41,6 @@ on:
         required: true
         type: string
 
-concurrency: deploy-${{ github.ref }}
-
 jobs:
   deploy-to-cloudfront:
     runs-on: ubuntu-latest
@@ -36,13 +49,14 @@ jobs:
       deployment: true
       url: ${{ inputs.environment_url }}
     permissions:
+      actions: read
       id-token: write
       pull-requests: write
     steps:
       - name: Create app token
         uses: actions/create-github-app-token@v3
         id: app-token
-        if: ${{ inputs.environment_name == 'preview' }}
+        if: ${{ inputs.pr_number > 0 }}
         with:
           client-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
           private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
@@ -52,6 +66,8 @@ jobs:
         with:
           name: ${{ inputs.artifact_name }}
           path: ${{ github.workspace }}/${{ inputs.artifact_name }}
+          run-id: ${{ inputs.artifact_run_id || github.run_id }}
+          github-token: ${{ github.token }}
 
       - name: Configure AWS credentials ☁️
         uses: aws-actions/configure-aws-credentials@v6
@@ -81,17 +97,18 @@ jobs:
 
       - name: Get deployment timestamp 🕰️
         id: timestamp
-        if: ${{ inputs.environment_name == 'preview' }}
+        if: ${{ inputs.pr_number > 0 }}
         run: echo "time=$(date -u '+%Y-%m-%d %H:%M %Z')" >> "$GITHUB_OUTPUT"
 
       - name: Add comment to Pull Request with link to preview 🕸️
         uses: marocchino/sticky-pull-request-comment@v3
-        if: ${{ inputs.environment_name == 'preview' }}
+        if: ${{ inputs.pr_number > 0 }}
         with:
           header: pr-preview
+          number: ${{ inputs.pr_number }}
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           message: |
             Documentation preview
             :---:
             | :rocket: View preview at <br> ${{ inputs.environment_url }} <br><br>
-            | <h6>Deployed from commit ${{ github.event.pull_request.head.sha }} at ${{ steps.timestamp.outputs.time }}.</h6>
+            | <h6>Deployed from commit ${{ inputs.pr_head_sha }} at ${{ steps.timestamp.outputs.time }}.</h6>

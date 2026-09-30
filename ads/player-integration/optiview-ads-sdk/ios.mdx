@@ -11,7 +11,45 @@ On iOS and tvOS, the OptiView Ads SDK is a native Swift library that works with 
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
 2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
-3. Add the OptiView Ads SDK for iOS to your project. Contact us for access to the SDK artifacts.
+3. Install the SDK together with the adapter for your player (see [Installation](#installation) and the player sections below).
+
+## Installation
+
+The SDK ships as binary frameworks for iOS and tvOS (iOS 15 / tvOS 15 or later) through CocoaPods or Swift Package Manager. Either way, add the `OptiViewAdsRuntime` module: it brings in `OptiViewAdsSDK` and `OptiViewAdsCore`. Replace `<version>` with the SDK release you want to use.
+
+### CocoaPods
+
+Add the THEOplayer Specs repository as a `source` next to the CocoaPods CDN in your `Podfile`, add the runtime pod to your target, and run `pod install`:
+
+```ruby
+source 'https://github.com/THEOplayer/cocoapods-specs.git'
+source 'https://cdn.cocoapods.org/'
+
+target 'MyApp' do
+  pod 'OptiViewAdsRuntime', '<version>'
+end
+```
+
+The runtime pod also brings in the Google IMA SDK.
+
+### Swift Package Manager
+
+Add the package from [https://github.com/Dolby-OptiView/optiview-ads-sdk-spm](https://github.com/Dolby-OptiView/optiview-ads-sdk-spm) and link the `OptiViewAdsRuntime` product. Because the frameworks are binary targets, also add the Google IMA package for each platform you build for:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/Dolby-OptiView/optiview-ads-sdk-spm", from: "<version>"),
+    .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios", from: "3.18.4"), // iOS
+    .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-tvos", from: "4.2.0"), // tvOS
+],
+targets: [
+    .target(name: "MyApp", dependencies: [
+        .product(name: "OptiViewAdsRuntime", package: "optiview-ads-sdk-spm"),
+        .product(name: "GoogleInteractiveMediaAds", package: "swift-package-manager-google-interactive-media-ads-ios", condition: .when(platforms: [.iOS])),
+        .product(name: "GoogleInteractiveMediaAdsTvOS", package: "swift-package-manager-google-interactive-media-ads-tvos", condition: .when(platforms: [.tvOS])),
+    ]),
+]
+```
 
 ## Integration
 
@@ -36,15 +74,27 @@ From this point the SDK polls the [Break Manifest](../../concepts/break-manifest
 
 ### OptiView Player (THEOplayer)
 
+Add the THEOplayer adapter alongside the runtime, as the `OptiViewAdsAdapterTHEOplayer` pod:
+
+```ruby
+pod 'OptiViewAdsAdapterTHEOplayer', '<version>'
+```
+
+or as the `OptiViewAdsAdapterTHEOplayer` product of the Swift package:
+
+```swift
+.product(name: "OptiViewAdsAdapterTHEOplayer", package: "optiview-ads-sdk-spm"),
+```
+
 The `THEOplayerAdapter` wraps a `THEOplayer` instance. Ads are rendered in an overlay view stacked above your content player view.
 
 **Limitations:**
 
-- Requires a valid THEOplayer license.
+- Requires the THEOplayer iOS SDK 11 or later and a valid THEOplayer license.
 
 ### AVPlayer
 
-The `AVPlayerAdapter` wraps an `AVPlayer` instance. Ads are rendered in an overlay view stacked above your content player view.
+The `AVPlayerAdapter` ships with the runtime and wraps an `AVPlayer` instance. Ads are rendered in an overlay view stacked above your content player view.
 
 **Limitations:**
 
@@ -52,4 +102,4 @@ The `AVPlayerAdapter` wraps an `AVPlayer` instance. Ads are rendered in an overl
 
 ### Custom players
 
-Any other player can be integrated by implementing the SDK's `PlayerAdapter` interface, which exposes playback position, timing information, and basic playback controls. Contact us for the adapter interface reference.
+Any other player can be integrated by implementing the SDK's [`PlayerAdapter`](pathname:///ads/v2/api-reference/ios/OptiViewAdsCore/documentation/optiviewadscore/playeradapter/) protocol, which exposes playback position, timing information, and basic playback controls.

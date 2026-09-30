@@ -1,5 +1,8 @@
 name: 'On Pull Requests'
 
+# This workflow runs on pull requests from forks too, so it has no access to
+# secrets, environment variables or the AWS OIDC token. Deployment happens in
+# pull-request-preview.yml, which never runs code from the pull request.
 on:
   pull_request:
     types:
@@ -7,50 +10,24 @@ on:
       - reopened
       - synchronize
       - ready_for_review
-      - closed
 
 jobs:
   lint:
     name: lint
-    if: ${{ github.event.action != 'closed' }}
     uses: ./.github/workflows/_lint.yml
     secrets: inherit
 
   build:
     name: build
-    if: ${{ github.event.action != 'closed' }}
     uses: ./.github/workflows/_build.yml
     with:
       environment_name: preview
       # Preview URLs look like this: https://[storage-url]/pr-[number]/
-      docusaurus_url: ${{ vars.PREVIEW_CLOUDFRONT_URL }}
+      # The URL is hardcoded because `vars` are not available to pull requests from forks.
+      docusaurus_url: 'https://docs-preview.optiview.dolby.com'
       docusaurus_base_url: '/pr-${{ github.event.number }}/'
       # Prevent PR previews from being indexed by search engines
       docusaurus_no_index: 1
       # Add an announcement at the top to indicate if this is a preview
       docusaurus_pr_number: ${{ github.event.number }}
       docusaurus_pr_url: ${{ github.event.pull_request.html_url }}
-
-  deploy:
-    name: deploy
-    needs: [build]
-    # Do not run on PRs from Dependabot, since they should not need it.
-    if: ${{ github.event.action != 'closed' && github.triggering_actor != 'dependabot[bot]' }}
-    uses: ./.github/workflows/_deploy.yml
-    secrets: inherit
-    with:
-      environment_name: preview
-      environment_url: '${{ vars.PREVIEW_CLOUDFRONT_URL }}/pr-${{ github.event.number }}/'
-      artifact_name: ${{ needs.build.outputs.artifact_name }}
-      s3_prefix: 'pr-${{ github.event.number }}'
-      cf_invalidate_path: '/pr-${{ github.event.number }}*'
-
-  undeploy:
-    name: undeploy
-    if: ${{ github.event.action == 'closed' && github.triggering_actor != 'dependabot[bot]' }}
-    uses: ./.github/workflows/_undeploy.yml
-    secrets: inherit
-    with:
-      environment_name: preview
-      s3_prefix: 'pr-${{ github.event.number }}'
-      cf_invalidate_path: '/pr-${{ github.event.number }}*'
