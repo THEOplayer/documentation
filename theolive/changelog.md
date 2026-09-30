@@ -1,5 +1,35 @@
 # Changelog
 
+## [11.12.0] - 2026-09-30
+
+- Fixed a channel waiting for its RTMP contribution leaving a connection open on the RTMP server at
+  every retry when the server holds its reply to the engine's play request until a stream is
+  published; every attempt now closes its connection when it ends
+- Fixed `EXT-X-PROGRAM-DATE-TIME` running behind the wall clock, for as long as the channel kept
+  running, by however long the ingest took to deliver media after connecting, such as an RTMP source
+  whose server accepts the connection before its publisher is live. Latency measured from the program
+  date-time was overstated by the same amount; `EXT-X-HESP-PROGRAM-DATE-TIME` and the SCTE-35
+  `EXT-X-DATERANGE` dates are corrected alike
+- Fixed S3 DVR playlists opening with `EXT-X-DISCONTINUITY` when a channel restarted after being
+  stopped for longer than its DVR window, which kept Safari from starting playback, or left it
+  playing audio only, until the window had filled again; hourly VOD playlists that begin with a
+  restart are fixed alike. DVR playlists now also increment `EXT-X-DISCONTINUITY-SEQUENCE` as each
+  discontinuity leaves the window
+- Made the S3 DVR and VOD output cacheable like the engine's own HLS output: media playlists for half
+  a target duration (at least a second), multivariant playlists for two seconds in browsers and one
+  on CDNs like `main.m3u8`, and init segments for an hour; playlists no longer forbid caches from
+  serving them stale (`must-revalidate`). An ended hourly VOD playlist was cacheable until it
+  expired, keeping players on a stale copy when the channel restarted within the same hour
+- Fixed segments kept from before a restart in the S3 DVR window or hourly VOD playlist being paired
+  with the new init segment after an encoder configuration change: every channel start now uploads
+  its own `init-<id>.mp4` instead of overwriting `init.mp4`
+- Fixed a channel restarted within the same hour adding segments to an hourly VOD playlist on S3 that
+  kept its `EXT-X-ENDLIST`, so players took it as complete; the playlist is reopened until the hour
+  or the channel ends
+- Fixed S3 DVR playlists ignoring the channel's DVR window and always keeping the last four hours:
+  they now keep the configured window, one hour unless set otherwise, as the discovery response
+  already reported
+
 ## [11.11.2] - 2026-09-25
 
 - Fixed an RTMP ingest that accepts the connection but sends no data crash-looping the engine and
