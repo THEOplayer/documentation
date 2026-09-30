@@ -25,7 +25,7 @@ The package requires React Native 0.76 or later with the new architecture (Turbo
 
 ### Android
 
-Add the THEOplayer Maven repository to the repositories in `android/build.gradle`, keeping Google and Maven Central, and enable core library desugaring in `android/app/build.gradle`:
+Add the THEOplayer Maven repository to the repositories in `android/build.gradle`, keeping Google and Maven Central:
 
 ```groovy
 // android/build.gradle
@@ -37,6 +37,8 @@ allprojects {
     }
 }
 ```
+
+The SDK uses `java.time`, so an app with a `minSdk` below 26 (React Native's default is 24) must also enable core library desugaring in `android/app/build.gradle`:
 
 ```groovy
 // android/app/build.gradle

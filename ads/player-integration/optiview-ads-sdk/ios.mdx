@@ -34,7 +34,7 @@ The runtime pod also brings in the Google IMA SDK.
 
 ### Swift Package Manager
 
-Add the package from [https://github.com/Dolby-OptiView/optiview-ads-sdk-spm](https://github.com/Dolby-OptiView/optiview-ads-sdk-spm) and link the `OptiViewAdsRuntime` product. Access to this repository is currently granted on request; contact us. Because the frameworks are binary targets, also add the Google IMA package for each platform you build for:
+Add the package from [https://github.com/Dolby-OptiView/optiview-ads-sdk-spm](https://github.com/Dolby-OptiView/optiview-ads-sdk-spm) and link the `OptiViewAdsRuntime` product. Because the frameworks are binary targets, also add the Google IMA package for each platform you build for:
 
 ```swift
 dependencies: [
@@ -74,17 +74,23 @@ From this point the SDK polls the [Break Manifest](../../concepts/break-manifest
 
 ### OptiView Player (THEOplayer)
 
-The THEOplayer adapter is distributed as a CocoaPod only. Add it alongside the runtime pod:
+Add the THEOplayer adapter alongside the runtime, as the `OptiViewAdsAdapterTHEOplayer` pod:
 
 ```ruby
 pod 'OptiViewAdsAdapterTHEOplayer', '<version>'
+```
+
+or as the `OptiViewAdsAdapterTHEOplayer` product of the Swift package:
+
+```swift
+.product(name: "OptiViewAdsAdapterTHEOplayer", package: "optiview-ads-sdk-spm"),
 ```
 
 The `THEOplayerAdapter` wraps a `THEOplayer` instance. Ads are rendered in an overlay view stacked above your content player view.
 
 **Limitations:**
 
-- Requires the THEOplayer iOS SDK 11 or later and a valid THEOplayer license.
+- Requires the THEOplayer iOS SDK 9 or later and a valid THEOplayer license.
 
 ### AVPlayer
 
