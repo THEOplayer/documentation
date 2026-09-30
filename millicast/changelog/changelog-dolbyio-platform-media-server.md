@@ -2,11 +2,11 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
-## 2026-09-29
+## 2026-09-30
 
 ### Media Server
 
-{/* 3.6.2 */}
+{/* 3.6.3 */}
 
 #### Fixes
 
