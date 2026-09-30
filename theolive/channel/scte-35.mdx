@@ -1,0 +1,128 @@
+---
+sidebar_position: 4
+sidebar_label: SCTE-35 passthrough
+sidebar_custom_props:
+  icon: 🔖
+description: Carry the SCTE-35 ad markers of your SRT ingest into the HLS output as EXT-X-DATERANGE tags, with segments cut at every splice point.
+---
+
+# SCTE-35 passthrough
+
+SCTE-35 passthrough carries the SCTE-35 cues in your source stream through to the HLS output of your channel. Broadcasters use these cues to signal ad breaks and other program events. Each cue appears in the HLS media playlists as an `EXT-X-DATERANGE` tag, and the segments are cut at its splice point, so an ad decision server or server-side ad insertion (SSAI) service can replace content on segment boundaries.
+
+## Requirements
+
+SCTE-35 cues travel in the MPEG-TS container, so passthrough needs an **SRT** ingest, in pull or push mode, and an encoder that inserts the SCTE-35 cues into the MPEG-TS stream it sends. **RTMP** cannot carry SCTE-35: a channel ingesting over RTMP has no cues to pass through. See [Ingest protocols](../contribution/ingest-protocols.mdx) for how the two protocols compare.
+
+The platform forwards the two SCTE-35 commands that signal breaks, `splice_insert` and `time_signal`, and ignores all others. A cue that fails validation, such as one with a bad checksum, is skipped without interrupting the stream.
+
+Send each cue ahead of its splice time, as broadcast encoders normally do: a cue that arrives after its splice time has passed may be dropped. A `splice_insert` with the immediate flag, or a `time_signal` without a time, takes effect at the next frame. A cue that cancels a break removes it as long as its splice time has not been reached; a break that has already started stays listed and can still be closed by a later return cue.
+
+## Enable SCTE-35 passthrough
+
+SCTE-35 passthrough is off by default and applies to every engine of the channel. An engine picks up the setting when it starts, so a running engine keeps its current behavior until you stop and start it.
+
+### Dashboard
+
+When you create or edit a channel in the [dashboard](https://dashboard.optiview.dolby.com/), switch on the **SCTE-35 passthrough** card. While OptiView Ads is enabled on the channel, the card is switched on and locked (see [OptiView Ads](#optiview-ads)). The channel details page shows whether passthrough is enabled.
+
+### API
+
+Set `sctePassthrough` to `true` when [creating](../api/create-channel.api.mdx) or [updating](../api/update-channel.api.mdx) your channel.
+
+`POST https://api.theo.live/v2/channels`
+
+```json
+{
+  "name": "my-channel",
+  "sctePassthrough": true
+}
+```
+
+`PATCH https://api.theo.live/v2/channels/{channelId}`
+
+```json
+{
+  "sctePassthrough": true
+}
+```
+
+Channel responses always include `sctePassthrough` with the effective value: whether the channel's engines pass SCTE-35 through. It can be `true` even though you never set it (see [OptiView Ads](#optiview-ads)).
+
+## HLS output
+
+Every media playlist of the HLS (CMAF) output, one for each video, audio and subtitle rendition, carries the same `EXT-X-DATERANGE` tags. The HLS MPEG-TS output does not carry them.
+
+### Tags
+
+A break is listed as two tags with the same `ID` and `START-DATE`:
+
+- The tag that opens the break, at the splice-out, carries the complete SCTE-35 section of the cue in hexadecimal in `SCTE35-OUT`, and `PLANNED-DURATION` when the cue announces a duration.
+- The tag that closes the break, at the return, adds `END-DATE` and `DURATION` and carries the section of the return cue in `SCTE35-IN`.
+
+A cue that marks a moment rather than opening or closing a break is listed as a single tag with its section in `SCTE35-CMD`.
+
+`START-DATE` and `END-DATE` are written in UTC with a `Z` suffix and millisecond precision, the same form as `EXT-X-PROGRAM-DATE-TIME`, so a tag can be matched to its segment. The `ID` combines the event ID of the cue with the start of the break, so it stays unique when the encoder reuses an event ID.
+
+| Cue                                                                                                                                                   | Listed as                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `splice_insert` out of network                                                                                                                        | Opening tag with `SCTE35-OUT`, and `PLANNED-DURATION` when the cue has a break duration               |
+| `splice_insert` return to network, with the same `splice_event_id`                                                                                    | Closing tag with `END-DATE`, `DURATION` and `SCTE35-IN`                                               |
+| `splice_insert` out of network with auto-return, when no return cue arrives before its break duration ends                                            | Closing tag at the end of the break duration, with `END-DATE` and `DURATION` but without `SCTE35-IN`  |
+| `time_signal` with an advertisement, placement opportunity or promo start segmentation descriptor (even `segmentation_type_id` from `0x30` to `0x3E`) | Opening tag with `SCTE35-OUT`, and `PLANNED-DURATION` when the descriptor has a segmentation duration |
+| `time_signal` with the matching end segmentation descriptor (odd `segmentation_type_id` from `0x31` to `0x3F`), with the same `segmentation_event_id` | Closing tag with `END-DATE`, `DURATION` and `SCTE35-IN`                                               |
+| `time_signal` with any other segmentation descriptor, or with none                                                                                    | Single tag with `SCTE35-CMD`                                                                          |
+
+A few more rules apply:
+
+- A break signaled with `time_signal` stays open until its end descriptor arrives: the segmentation duration is only listed as `PLANNED-DURATION`.
+- A `time_signal` with several segmentation descriptors is listed as a tag for each descriptor.
+- Encoders repeat a cue until its splice time; the repeats are listed once.
+- A return cue for a break whose splice-out the channel did not see, for example because the channel started during the break, is listed as a single tag with `SCTE35-IN` at the return.
+
+### Segment boundaries
+
+Segments are cut at every splice point: at the start and end of every break, and at every `time_signal` that carries a `segmentation_descriptor`, `avail_descriptor` or `DTMF_descriptor`. The `START-DATE` or `END-DATE` of such a tag therefore falls on a segment boundary, to within one frame of the rendition, and the segments on either side of a splice point can be shorter than the target duration. A `time_signal` without any of these descriptors does not cut a segment.
+
+A tag is listed once the segment that ends at its splice point is published, and stays listed as long as the media it describes is in the playlist. The two tags of a break leave the playlist together.
+
+### Example
+
+This abridged video media playlist lists a `splice_insert` break with event ID 1026, planned for 6 seconds, that a return cue ends after 3 seconds. The segments are cut at both splice points, 10:00:13 and 10:00:16:
+
+```text
+#EXTM3U
+#EXT-X-VERSION:6
+#EXT-X-TARGETDURATION:2
+#EXT-X-MEDIA-SEQUENCE:1520
+#EXT-X-DATERANGE:ID="1026-1790762413000",START-DATE="2026-09-30T10:00:13.000Z",PLANNED-DURATION=6,SCTE35-OUT=0xFC302500000000000000FFF01405000004027FEFFF43B989007E00083D600001000000006949CBD7
+#EXT-X-DATERANGE:ID="1026-1790762413000",START-DATE="2026-09-30T10:00:13.000Z",END-DATE="2026-09-30T10:00:16.000Z",DURATION=3,SCTE35-IN=0xFC302000000000000000FFF00F05000004027F4FFF43BDA7B0000100000000C5B51F03
+#EXT-X-MAP:URI="init.mp4"
+#EXT-X-PROGRAM-DATE-TIME:2026-09-30T10:00:10.000Z
+#EXTINF:2.000000,
+1520.m4s
+#EXT-X-PROGRAM-DATE-TIME:2026-09-30T10:00:12.000Z
+#EXTINF:1.000000,
+1521.m4s
+#EXT-X-PROGRAM-DATE-TIME:2026-09-30T10:00:13.000Z
+#EXTINF:2.000000,
+1522.m4s
+#EXT-X-PROGRAM-DATE-TIME:2026-09-30T10:00:15.000Z
+#EXTINF:1.000000,
+1523.m4s
+#EXT-X-PROGRAM-DATE-TIME:2026-09-30T10:00:16.000Z
+#EXTINF:2.000000,
+1524.m4s
+```
+
+## OptiView Ads
+
+SCTE-35 passthrough is always on for a channel with [OptiView Ads](/ads/getting-started/) enabled (`ads.enabled: true`), because OptiView Ads relies on the SCTE-35 markers in the output. For such a channel:
+
+- channel responses return `sctePassthrough: true`, whatever value you set,
+- setting `sctePassthrough` to `false` has no effect while Ads stays enabled,
+- the dashboard shows the **SCTE-35 passthrough** card switched on and locked: "Always enabled while Ads are enabled on this channel."
+
+When you disable OptiView Ads, passthrough follows your own `sctePassthrough` setting again, which is off unless you set it. As with any change to the setting, it applies when the engines next start.
+
+To turn the markers in your stream into ad breaks automatically, see [Break Detection](/ads/concepts/marker-detection/).
