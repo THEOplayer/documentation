@@ -43,7 +43,16 @@
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","vr":{"useWebXR":true}}'
       source='{"sources":{"src":"https://demo.theoplayer.com/hubfs/videos/natgeo/playlist.m3u8","type":"application/x-mpegurl"},"poster":"https://demo.theoplayer.com/hubfs/videos/natgeo/poster.jpg","vr":{"360":true},"metadata":{"title":"National Geographic 360\u00b0"}}'
-    ></theoplayer-default-ui>
+    >
+      <theoplayer-button
+        id="stereo-toggle"
+        slot="bottom-control-bar"
+        aria-label="Toggle stereo (VR headset)"
+        title="Toggle stereo (VR headset)"
+        hidden
+        >Stereo</theoplayer-button
+      >
+    </theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
       onPlayerReady((player) => {
@@ -69,10 +78,22 @@
 
         onParentMessage('vr-direction', ({ direction }) => {
           vr.direction = direction;
+          reportState();
         });
-        onParentMessage('vr-stereo', ({ stereo }) => {
-          vr.stereo = stereo;
+
+        const stereoButton = document.querySelector('#stereo-toggle');
+        function updateStereoButton() {
+          const canPresentVR = vr.canPresentVR;
+          stereoButton.hidden = !canPresentVR;
+          stereoButton.disabled = !canPresentVR;
+          stereoButton.setAttribute('aria-pressed', String(vr.stereo));
+          stereoButton.textContent = vr.stereo ? 'Stereo on' : 'Stereo';
+        }
+        stereoButton.addEventListener('click', () => {
+          vr.stereo = !vr.stereo;
         });
+        vr.addEventListener(['statechange', 'stereochange'], updateStereoButton);
+        updateStereoButton();
 
         reportState();
       });

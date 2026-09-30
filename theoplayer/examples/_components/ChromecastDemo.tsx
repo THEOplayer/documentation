@@ -29,14 +29,16 @@ export default function ChromecastDemo(): JSX.Element {
   if (appID) params.set('appID', appID);
   const src = `${useBaseUrl('/theoplayer/v11/examples/chromecast/demo.html')}?${params}`;
 
-  const cast: { strategy: Strategy; chromecast?: { appID: string } } = { strategy };
-  if (appID) cast.chromecast = { appID };
+  const codeAppID = appID || DEFAULT_APP_ID;
+  const appIDComment = appID ? 'your own receiver app ID' : "THEOplayer's default receiver, replace with your own app ID";
   const code = `const player = new THEOplayer.ChromelessPlayer(element, {
   // ...
-  cast: ${JSON.stringify(cast, null, 2)
-    .replace(/"(\w+)":/g, '$1:')
-    .replace(/"/g, "'")
-    .replace(/\n/g, '\n  ')},
+  cast: {
+    strategy: '${strategy}',
+    chromecast: {
+      appID: '${codeAppID}', // ${appIDComment}
+    },
+  },
 });`;
 
   return (

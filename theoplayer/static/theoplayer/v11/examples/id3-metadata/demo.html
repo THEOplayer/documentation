@@ -23,7 +23,48 @@
         width: 100%;
         aspect-ratio: 16 / 9;
         font-family: 'Noto Sans', sans-serif;
-        background: #000;
+        /* This is an audio-only stream, so show the artwork behind the (transparent) video. */
+        --theoplayer-background: #000 var(--artwork) center / contain no-repeat;
+        --artwork: url('https://cdn2.hubspot.net/hubfs/2163521/Demo_zone/id3_background.svg');
+      }
+
+      .player {
+        position: relative;
+      }
+
+      .song-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1em;
+        color: #fff;
+        font-family: 'Noto Sans', sans-serif;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+        text-shadow: 0 0 5px #000;
+        pointer-events: none;
+      }
+
+      .song-info[hidden] {
+        display: none;
+      }
+
+      .song-info p {
+        margin: 0;
+      }
+
+      .song-artist {
+        font-size: 1.25em;
+      }
+
+      .song-title {
+        font-size: 1.75em;
+        font-weight: bold;
+      }
+
+      .song-details {
+        font-size: 0.9em;
+        opacity: 0.8;
       }
     </style>
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
@@ -40,10 +81,18 @@
       licenseUrl: Change this to point to your THEOplayer license file.
       Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
     -->
-    <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
-      source='{"sources":{"src":"https://cdn.theoplayer.com/video/indexcom/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn2.hubspot.net/hubfs/2163521/Demo_zone/id3_background.svg","metadata":{"title":"Radio with ID3 metadata"}}'
-    ></theoplayer-default-ui>
+    <div class="player">
+      <theoplayer-default-ui
+        configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+        source='{"sources":{"src":"https://cdn.theoplayer.com/video/indexcom/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn2.hubspot.net/hubfs/2163521/Demo_zone/id3_background.svg"}'
+      ></theoplayer-default-ui>
+      <!-- Song details, shown on top of the player. -->
+      <div class="song-info" hidden>
+        <p class="song-artist"></p>
+        <p class="song-title"></p>
+        <p class="song-details"></p>
+      </div>
+    </div>
     <script src="../utils.js"></script>
     <script>
       // Convert an ID3 frame into a simple { id, description, value } object.
@@ -68,6 +117,33 @@
         }
       }
 
+      const ui = document.querySelector('theoplayer-default-ui');
+      const songInfo = document.querySelector('.song-info');
+      const song = {};
+
+      function updateSongInfo(frame) {
+        switch (frame.id) {
+          case 'WXXX': {
+            // Artwork URL. The artwork of this (old) stream has moved to the theoplayer.com CDN.
+            const artwork = frame.url.replace('http://www.indexcom.com/img/rdj/5', 'https://cdn.theoplayer.com/demos/id3/images');
+            ui.style.setProperty('--artwork', `url("${artwork}")`);
+            return;
+          }
+          case 'TPE1': // Artist
+          case 'TIT2': // Title
+          case 'TALB': // Album
+          case 'TDRC': // Recording time
+            song[frame.id] = frame.text;
+            break;
+          default:
+            return;
+        }
+        songInfo.querySelector('.song-artist').textContent = song.TPE1 || '';
+        songInfo.querySelector('.song-title').textContent = song.TIT2 || '';
+        songInfo.querySelector('.song-details').textContent = [song.TALB, song.TDRC].filter(Boolean).join(' \u2022 ');
+        songInfo.hidden = false;
+      }
+
       onPlayerReady((player) => {
         player.textTracks.addEventListener('addtrack', (event) => {
           const track = event.track;
@@ -78,6 +154,7 @@
             const cue = event.cue;
             const frame = parseFrame(cue.content);
             console.log('ID3 frame', cue.content);
+            updateSongInfo(cue.content);
             sendToParent('id3', { frame: { ...frame, startTime: cue.startTime } });
           });
         });

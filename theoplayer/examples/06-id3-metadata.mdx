@@ -1,6 +1,6 @@
 ---
 sidebar_custom_props: { icon: '🏷️' }
-description: Read ID3 metadata (title, artist, album, ...) from an audio stream and show it next to the player.
+description: Read ID3 metadata from an audio stream, show WXXX artwork behind the player, and overlay the song details.
 ---
 
 # ID3 metadata
@@ -16,7 +16,8 @@ This example plays an HLS audio stream with timed ID3 metadata, such as the titl
 THEOplayer exposes ID3 metadata as a text track of type `id3`.
 Each cue in this track contains a parsed ID3 frame in its `content` property,
 for example `{ id: 'TIT2', text: 'Song title' }` or `{ id: 'WXXX', description: 'artwork', url: '...' }`.
-The example listens for the `entercue` event on this track, and shows the latest value of each frame in the box below the player.
+The example listens for the `entercue` event on this track. It shows artwork from the `WXXX` frame behind the player like a poster, and overlays the artist, title, album and year from the `TPE1`, `TIT2`, `TALB` and `TDRC` frames on top.
+The box below the player still lists the latest value of every frame.
 
 <details>
   <summary>Code</summary>

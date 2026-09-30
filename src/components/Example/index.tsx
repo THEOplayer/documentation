@@ -63,7 +63,14 @@ export default function Example({ ref, onMessage, exposeGlobals = true, classNam
       onMessageRef.current?.(data as ExampleMessage);
     };
     window.addEventListener('message', listener);
-    return () => window.removeEventListener('message', listener);
+    const iframe = iframeRef.current;
+    const connect = () => iframe?.contentWindow?.postMessage({ type: 'example-connect' }, window.location.origin);
+    iframe?.addEventListener('load', connect);
+    connect();
+    return () => {
+      window.removeEventListener('message', listener);
+      iframe?.removeEventListener('load', connect);
+    };
   }, []);
 
   // Expose `player` and `THEOplayer` from the iframe on this page

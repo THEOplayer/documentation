@@ -35,12 +35,6 @@ export default function VrDemo(): JSX.Element {
           >
             Reset direction
           </button>
-          <button
-            className="button button--secondary button--sm"
-            onClick={() => exampleRef.current?.postMessage({ type: 'vr-stereo', stereo: !state?.stereo })}
-          >
-            {state?.stereo ? 'Disable' : 'Enable'} stereo
-          </button>
         </div>
         <table className={styles.readout}>
           <tbody>

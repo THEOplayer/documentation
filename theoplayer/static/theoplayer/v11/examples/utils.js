@@ -5,6 +5,8 @@
  *   so you can use `player` and `THEOplayer` from your browser's developer console.
  * - Provides a small messaging layer between the demo page and this example.
  *   You don't need any of this in your own application.
+ *   The parent can request the latest message of each type after connecting,
+ *   so messages sent before the example listener is ready are not lost.
  */
 
 /**
@@ -32,13 +34,23 @@ function onParentMessage(type, callback) {
   });
 }
 
+const lastMessages = new Map();
+
 /**
  * Send a message to the demo page (if any).
  */
 function sendToParent(type, data) {
+  const message = { ...data, type };
+  lastMessages.set(type, message);
   if (window.parent === window) return;
-  window.parent.postMessage({ ...data, type }, location.origin);
+  window.parent.postMessage(message, location.origin);
 }
+
+onParentMessage('example-connect', () => {
+  for (const message of lastMessages.values()) {
+    window.parent.postMessage(message, location.origin);
+  }
+});
 
 function exposePlayer() {
   onPlayerReady((player) => {
