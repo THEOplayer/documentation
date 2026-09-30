@@ -34,15 +34,12 @@ const FeatureList: FeatureItem[] = [
           device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.
         </p>
         <p>
-          Pair it with Open Video UI to easily build and customize your video player UI to match your branding style through a comprehensive library
-          of open-source UI components.
+          Start with the basic default UI, customize the player with Open Video UI&apos;s ready-made components, or use the chromeless player to build
+          every part of the UI from scratch.
         </p>
       </>
     ),
-    to: [
-      { link: '/theoplayer', text: 'OptiView Player' },
-      { link: '/open-video-ui', text: 'Open Video UI' },
-    ],
+    to: [{ link: '/theoplayer', text: 'Get Started' }],
   },
   {
     title: 'Dolby OptiView Live',

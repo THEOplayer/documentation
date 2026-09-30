@@ -11,7 +11,7 @@ Run the following command to install THEOplayer Web SDK version 8:
 npm install theoplayer@8
 ```
 
-If you're using the [Open Video UI for Web](/open-video-ui/web/) or one of [our connectors](/theoplayer/connectors/web/),
+If you're using the [Open Video UI for Web](/theoplayer/ui/web/open-video-ui/) or one of [our connectors](/theoplayer/connectors/web/),
 make sure to update them to the latest version too to ensure proper support for THEOplayer version 8.
 
 ```bash

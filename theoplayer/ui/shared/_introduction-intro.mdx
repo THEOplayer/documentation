@@ -1,0 +1,15 @@
+Choose the approach that fits your requirements:
+
+- Use Open Video UI when you want a custom experience without building common player components yourself.
+- Use the chromeless player when you want to start with no UI and build every control and interaction from scratch.
+- Use the basic default UI when its ready-made controls meet your needs and one is available.
+
+| Approach      | Starting point                 | Flexibility | Development effort |
+| ------------- | ------------------------------ | ----------- | ------------------ |
+| Open Video UI | Ready-made, modular components | High        | Moderate           |
+| Chromeless    | Player API without a UI        | Complete    | Highest            |
+| Default UI    | Complete basic player UI       | Basic       | Lowest             |
+
+Building a chromeless UI means using the OptiView Player API and your own application code without a ready-made UI.
+You are responsible for adding every control, such as a play button, and connecting it to the player API, such as `player.play()`.
+This approach gives you total control over the UI and UX, but requires an understanding of video playback and the OptiView Player API.

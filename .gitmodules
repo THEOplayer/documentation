@@ -154,14 +154,14 @@
 	branch = main
     shallow = true
 [submodule "web-ui"]
-    path = open-video-ui/external/web-ui
+	path = theoplayer/external/web-ui
     url = https://github.com/THEOplayer/web-ui.git
     branch = main
 [submodule "android-ui"]
-    path = open-video-ui/external/android-ui
+	path = theoplayer/external/android-ui
     url = https://github.com/THEOplayer/android-ui.git
     branch = main
 [submodule "react-native-theoplayer-ui"]
-	path = open-video-ui/external/react-native-theoplayer-ui
+	path = theoplayer/external/react-native-theoplayer-ui
 	url = https://github.com/THEOplayer/react-native-theoplayer-ui.git
 	branch = main

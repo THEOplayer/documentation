@@ -96,50 +96,8 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
 ];
 
-const openVideoUiPlatforms: readonly PlatformDescription[] = [
-  {
-    platform: 'web',
-    label: 'Open Video UI for Web',
-    description: 'For desktop and mobile web browsers using Web Components',
-    gettingStartedDoc: 'web/getting-started',
-    icon: 'web',
-    minVersion: 1,
-  },
-  {
-    platform: 'android',
-    label: 'Open Video UI for Android',
-    description: 'For Android smartphones and tablets using Jetpack Compose',
-    gettingStartedDoc: 'android/getting-started',
-    icon: 'android',
-    minVersion: 1,
-  },
-  {
-    platform: 'react',
-    label: 'Open Video UI for React',
-    description: 'For web apps using React components',
-    gettingStartedDoc: 'react/getting-started',
-    icon: 'react',
-    minVersion: 1,
-  },
-  {
-    platform: 'react-native',
-    label: 'Open Video UI for React Native',
-    shortLabel: 'React Native UI',
-    description: 'For cross-platform apps using React Native components',
-    gettingStartedDoc: 'react-native/getting-started',
-    icon: 'react',
-    minVersion: 1,
-  },
-];
-
 export function getPlatforms(docsPluginId: string): readonly PlatformDescription[] {
-  if (docsPluginId === 'theoplayer') {
-    return theoplayerPlatforms;
-  } else if (docsPluginId === 'open-video-ui') {
-    return openVideoUiPlatforms;
-  } else {
-    return [];
-  }
+  return docsPluginId === 'theoplayer' ? theoplayerPlatforms : [];
 }
 
 export function getPlatformsByVersion(docsPluginId: string, version?: string): readonly PlatformDescription[] {
@@ -164,14 +122,9 @@ export function usePlatforms(): readonly PlatformDescriptionWithUrl[] {
 
 type PlatformDescriptionsByName = Record<PlatformName, PlatformDescription>;
 const theoplayerPlatformsByName = Object.fromEntries(theoplayerPlatforms.map((desc) => [desc.platform, desc])) as PlatformDescriptionsByName;
-const openVideoUiPlatformsByName = Object.fromEntries(openVideoUiPlatforms.map((desc) => [desc.platform, desc])) as PlatformDescriptionsByName;
 
 export function getPlatformByName(docsPluginId: string, platformName: PlatformName): PlatformDescription | undefined {
-  if (docsPluginId === 'theoplayer') {
-    return theoplayerPlatformsByName[platformName];
-  } else if (docsPluginId === 'open-video-ui') {
-    return openVideoUiPlatformsByName[platformName];
-  }
+  return docsPluginId === 'theoplayer' ? theoplayerPlatformsByName[platformName] : undefined;
 }
 
 export function isDocSharedWithPlatform(docsPluginId: string, doc: GlobalDoc, platformName: PlatformName) {
@@ -198,8 +151,6 @@ export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc
   }
   if (docsPluginId === 'theoplayer') {
     return findMatchingTheoplayerDoc(version, doc, platformName);
-  } else if (docsPluginId === 'open-video-ui') {
-    return findMatchingOpenVideoUiDoc(version, doc, platformName);
   }
 }
 
@@ -257,6 +208,12 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
       if (matchingDoc) return matchingDoc;
     }
   }
+  // UI
+  const uiMatch = docPath.match(/^\/ui\/([a-z-]+)(|\/.*)$/);
+  if (uiMatch && isPlatformName(uiMatch[1])) {
+    const prefix = `${version.path}/ui/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, uiMatch[2], '');
+  }
   // How-to guides
   const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)(|\/.*)$/);
   if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {
@@ -268,15 +225,6 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
   if (connectorMatch && isPlatformName(connectorMatch[1])) {
     const prefix = `${version.path}/connectors/${platformName}`;
     return findMatchingDoc(version, doc, prefix, connectorMatch[2], '');
-  }
-}
-
-function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
-  const docPath = doc.path.replace(version.path, '');
-  const match = docPath.match(/^\/([a-z-]+)(|\/.*)$/);
-  if (match && isPlatformName(match[1])) {
-    const prefix = `${version.path}/${platformName}`;
-    return findMatchingDoc(version, doc, prefix, match[2], '');
   }
 }
 
