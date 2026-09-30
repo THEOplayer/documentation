@@ -1,0 +1,26 @@
+---
+sidebar_custom_props: { icon: '🥽' }
+description: Play a 360° video and read the VR direction (yaw, pitch and roll) and stereo mode from the VR API.
+---
+
+# Virtual reality (360°)
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/vr/demo.html';
+import VrDemo from './_components/VrDemo';
+
+<VrDemo />
+
+This example plays a 360° video. To mark a source as a 360° video, set `vr: { 360: true }` on the source description.
+Drag the video (or move your phone) to look around.
+
+The box below the player reports the values of the [VR API](pathname:///theoplayer/v11/api-reference/web/interfaces/VR.html).
+They are updated using the `directionchange`, `stereochange` and `statechange` events of `player.vr`.
+Use the buttons to reset the viewing direction, or to switch to stereo mode for use with a VR headset such as Google Cardboard.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

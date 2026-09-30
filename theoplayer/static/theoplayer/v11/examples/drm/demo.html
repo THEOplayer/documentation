@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DRM and AES-128 encryption</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the theoplayer.com CDN.
+      For production use, we recommend hosting THEOplayer yourself
+      and changing this (as well as the <script> tags above)
+      to point to THEOplayer's location on your own website.
+
+      licenseUrl: Change this to point to your THEOplayer license file.
+      Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // A test token for the KeyOS license server.
+      const keyosCustomData =
+        'PEtleU9TQXV0aGVudGljYXRpb25YTUw+PERhdGE+PEdlbmVyYXRpb25UaW1lPjIwMTYtMTEtMTkgMDk6MzQ6MDEuOTkyPC9HZW5lcmF0aW9uVGltZT48RXhwaXJhdGlvblRpbWU+MjAyNi0xMS0xOSAwOTozNDowMS45OTI8L0V4cGlyYXRpb25UaW1lPjxVbmlxdWVJZD4wZmZmMTk3YWQzMzQ0ZTMyOWU0MTA0OTIwMmQ5M2VlYzwvVW5pcXVlSWQ+PFJTQVB1YktleUlkPjdlMTE0MDBjN2RjY2QyOWQwMTc0YzY3NDM5N2Q5OWRkPC9SU0FQdWJLZXlJZD48V2lkZXZpbmVQb2xpY3kgZmxfQ2FuUGxheT0idHJ1ZSIgZmxfQ2FuUGVyc2lzdD0iZmFsc2UiIC8+PFdpZGV2aW5lQ29udGVudEtleVNwZWMgVHJhY2tUeXBlPSJIRCI+PFNlY3VyaXR5TGV2ZWw+MTwvU2VjdXJpdHlMZXZlbD48L1dpZGV2aW5lQ29udGVudEtleVNwZWM+PEZhaXJQbGF5UG9saWN5IC8+PExpY2Vuc2UgdHlwZT0ic2ltcGxlIiAvPjwvRGF0YT48U2lnbmF0dXJlPk1sNnhkcU5xc1VNalNuMDdicU8wME15bHhVZUZpeERXSHB5WjhLWElBYlAwOE9nN3dnRUFvMTlYK1c3MDJOdytRdmEzNFR0eDQydTlDUlJPU1NnREQzZTM4aXE1RHREcW9HelcwS2w2a0JLTWxHejhZZGRZOWhNWmpPTGJkNFVkRnJUbmxxU21raC9CWnNjSFljSmdaUm5DcUZIbGI1Y0p0cDU1QjN4QmtxMUREZUEydnJUNEVVcVJiM3YyV1NueUhGeVZqWDhCR3o0ZWFwZmVFeDlxSitKbWI3dUt3VjNqVXN2Y0Fab1ozSHh4QzU3WTlySzRqdk9Wc1I0QUd6UDlCc3pYSXhKd1ZSZEk3RXRoMjhZNXVEQUVZVi9hZXRxdWZiSXIrNVZOaE9yQ2JIVjhrR2praDhHRE43dC9nYWh6OWhVeUdOaXRqY2NCekJvZHRnaXdSUT09PC9TaWduYXR1cmU+PC9LZXlPU0F1dGhlbnRpY2F0aW9uWE1MPg==';
+
+      const sources = {
+        // HLS with AES-128 encryption: no extra configuration is needed.
+        aes: {
+          sources: {
+            src: 'https://cdn.theoplayer.com/video/big_buck_bunny_encrypted/stream-800/index.m3u8',
+            type: 'application/x-mpegurl',
+          },
+          poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+          metadata: { title: 'Big Buck Bunny (AES-128)' },
+        },
+        // The player picks the first source that is supported by the current browser:
+        // DASH with Widevine or PlayReady, or HLS with FairPlay.
+        drm: {
+          sources: [
+            {
+              src: 'https://d2jl6e4h8300i8.cloudfront.net/netflix_meridian/4k-18.5!9/keyos-logo/g180-avc_a2.0-vbr-aac-128k/r30/dash-wv-pr/stream.mpd',
+              type: 'application/dash+xml',
+              contentProtection: {
+                integration: 'keyos',
+                widevine: {},
+                playready: {},
+                preferredKeySystems: ['widevine', 'playready'],
+                customdata: keyosCustomData,
+              },
+            },
+            {
+              src: 'https://d2jl6e4h8300i8.cloudfront.net/netflix_meridian/4k-19.5!9/keyos-logo/g180-avc_a2.0-vbr-aac-128k/r30/hls-fp/master.m3u8',
+              type: 'application/x-mpegurl',
+              contentProtection: {
+                integration: 'keyos',
+                fairplay: {
+                  certificateURL: 'https://fp-keyos.licensekeyserver.com/cert/7e11400c7dccd29d0174c674397d99dd.der',
+                  licenseAcquisitionURL: 'https://fp-keyos.licensekeyserver.com/getkey/',
+                },
+                customdata: keyosCustomData,
+              },
+            },
+          ],
+          metadata: { title: 'Meridian (Widevine, PlayReady or FairPlay)' },
+        },
+      };
+
+      const ui = document.querySelector('theoplayer-default-ui');
+      ui.source = sources.drm;
+
+      onPlayerReady((player) => {
+        function reportState(error) {
+          sendToParent('drm', { src: player.src, error: error && { code: error.code, message: error.message } });
+        }
+        player.addEventListener(['sourcechange', 'loadedmetadata'], () => reportState());
+        player.addEventListener('error', (event) => reportState(event.errorObject));
+
+        onParentMessage('drm-source', ({ name }) => {
+          player.source = sources[name];
+        });
+
+        reportState();
+      });
+    </script>
+  </body>
+</html>

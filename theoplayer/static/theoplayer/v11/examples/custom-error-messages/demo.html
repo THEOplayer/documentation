@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom error messages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the theoplayer.com CDN.
+      For production use, we recommend hosting THEOplayer yourself
+      and changing this (as well as the <script> tags above)
+      to point to THEOplayer's location on your own website.
+
+      licenseUrl: Change this to point to your THEOplayer license file.
+      Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      lang="en-custom"
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Custom messages for specific error codes.
+      function getCustomErrorMessage(error) {
+        switch (error.code) {
+          case THEOplayer.ErrorCode.MANIFEST_LOAD_ERROR:
+            return 'This video is not available right now. Please try again later.';
+          case THEOplayer.ErrorCode.SOURCE_NOT_SUPPORTED:
+            return 'This video format is not supported by your browser.';
+          case THEOplayer.ErrorCode.NETWORK_ERROR:
+          case THEOplayer.ErrorCode.NETWORK_TIMEOUT:
+            return 'Please check your internet connection and try again.';
+          default:
+            return `Something went wrong while playing this video (error ${error.code}).`;
+        }
+      }
+
+      // Register a locale with a custom error heading and message,
+      // and use it for the UI through its lang="en-custom" attribute.
+      THEOplayerUI.addLocale('en-custom', {
+        errorHeading: 'Oops, something went wrong',
+        errorMessage: (error) => getCustomErrorMessage(error),
+      });
+
+      const sources = {
+        // The manifest does not exist, so the player fails with a MANIFEST_LOAD_ERROR.
+        notFound: {
+          sources: { src: 'https://cdn.theoplayer.com/video/this-stream-does-not-exist/index.m3u8', type: 'application/x-mpegurl' },
+        },
+        // The source has a type which the player does not support, so the player fails with a SOURCE_NOT_SUPPORTED error.
+        unsupported: {
+          sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', type: 'video/x-unsupported' },
+        },
+        // A valid stream, which plays without errors.
+        valid: {
+          sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', type: 'application/x-mpegurl' },
+          poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        },
+      };
+
+      onPlayerReady((player) => {
+        // Load the manifest right away, so errors are shown without having to press play.
+        player.preload = 'auto';
+        player.source = sources.notFound;
+        onParentMessage('error-source', ({ name }) => {
+          player.source = sources[name];
+        });
+      });
+    </script>
+  </body>
+</html>

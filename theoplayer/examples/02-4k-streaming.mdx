@@ -1,0 +1,33 @@
+---
+slug: 4k-streaming
+sidebar_position: 2
+sidebar_custom_props: { icon: '🖥️' }
+description: Play a 4K Ultra HD DASH stream with Open Video UI, and see which quality is playing.
+---
+
+# 4K streaming
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/4k-streaming/demo.html';
+import FourKDemo from './_components/FourKDemo';
+
+<FourKDemo />
+
+This example plays a 4K Ultra HD (3840×2160) MPEG-DASH stream using Open Video UI.
+The player uses adaptive bitrate streaming to pick the best quality that your network and device can handle,
+and switches to the 4K quality when enough bandwidth is available.
+You can also select a quality manually from the settings menu in the player.
+
+The box below the player shows the quality that is currently playing, using the `activequalitychanged` event of the active video track.
+
+:::tip
+To play 4K content, your device must be able to decode it and your screen should be large enough to show it.
+Enter fullscreen for the best experience.
+:::
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

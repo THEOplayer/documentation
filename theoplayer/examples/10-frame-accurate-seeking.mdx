@@ -1,0 +1,25 @@
+---
+sidebar_custom_props: { icon: '🎞️' }
+description: Step through a video frame by frame, or jump to a specific frame number.
+---
+
+# Frame accurate seeking
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/frame-accurate-seeking/demo.html';
+import FrameAccurateSeekingDemo from './_components/FrameAccurateSeekingDemo';
+
+<FrameAccurateSeekingDemo />
+
+This example shows how to step through a video frame by frame, or jump directly to a specific frame.
+
+A frame number is converted to a time by dividing it by the frame rate of the video (24 frames per second for this video),
+and the player seeks to the middle of that frame by setting `player.currentTime`.
+The current frame number is calculated the other way around, from `player.currentTime`.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

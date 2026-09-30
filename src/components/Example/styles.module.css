@@ -1,0 +1,16 @@
+.player {
+  display: block;
+  width: 100%;
+  border: none;
+  /*
+   * Make the player slightly higher than necessary,
+   * to avoid scrollbars.
+   */
+  aspect-ratio: 16 / 9.1;
+}
+
+.tip {
+  margin: 0.25rem 0 1rem;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+}

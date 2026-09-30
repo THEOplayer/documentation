@@ -1,13 +1,14 @@
 ---
 sidebar_custom_props: { icon: '▶️' }
+description: A minimal player setup, playing an HLS stream.
 ---
 
 # Basic player
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './shared.module.css';
+import Example from '@site/src/components/Example';
 
-<iframe className={styles.player} src={useBaseUrl('/theoplayer/v11/examples/basic/demo.html')}></iframe>
+<Example src={useBaseUrl('/theoplayer/v11/examples/basic/demo.html')} />
 
 <details>
     <summary>Code</summary>

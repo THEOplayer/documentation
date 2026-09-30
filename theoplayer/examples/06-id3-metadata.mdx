@@ -1,0 +1,26 @@
+---
+sidebar_custom_props: { icon: '🏷️' }
+description: Read ID3 metadata (title, artist, album, ...) from an audio stream and show it next to the player.
+---
+
+# ID3 metadata
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/id3-metadata/demo.html';
+import Id3Demo from './_components/Id3Demo';
+
+<Id3Demo />
+
+This example plays an HLS audio stream with timed ID3 metadata, such as the title and artist of the song that is playing.
+
+THEOplayer exposes ID3 metadata as a text track of type `id3`.
+Each cue in this track contains a parsed ID3 frame in its `content` property,
+for example `{ id: 'TIT2', text: 'Song title' }` or `{ id: 'WXXX', description: 'artwork', url: '...' }`.
+The example listens for the `entercue` event on this track, and shows the latest value of each frame in the box below the player.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

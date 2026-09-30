@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Virtual reality (360°)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the theoplayer.com CDN.
+      For production use, we recommend hosting THEOplayer yourself
+      and changing this (as well as the <script> tags above)
+      to point to THEOplayer's location on your own website.
+
+      licenseUrl: Change this to point to your THEOplayer license file.
+      Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","vr":{"useWebXR":true}}'
+      source='{"sources":{"src":"https://demo.theoplayer.com/hubfs/videos/natgeo/playlist.m3u8","type":"application/x-mpegurl"},"poster":"https://demo.theoplayer.com/hubfs/videos/natgeo/poster.jpg","vr":{"360":true},"metadata":{"title":"National Geographic 360\u00b0"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      onPlayerReady((player) => {
+        const vr = player.vr;
+        let pending = false;
+
+        function reportState() {
+          // Report at most once per animation frame, since the direction changes very often.
+          if (pending) return;
+          pending = true;
+          requestAnimationFrame(() => {
+            pending = false;
+            sendToParent('vr', {
+              state: vr.state,
+              canPresentVR: vr.canPresentVR,
+              stereo: vr.stereo,
+              verticalFOV: vr.verticalFOV,
+              direction: { ...vr.direction },
+            });
+          });
+        }
+        vr.addEventListener(['directionchange', 'stereochange', 'statechange'], reportState);
+
+        onParentMessage('vr-direction', ({ direction }) => {
+          vr.direction = direction;
+        });
+        onParentMessage('vr-stereo', ({ stereo }) => {
+          vr.stereo = stereo;
+        });
+
+        reportState();
+      });
+    </script>
+  </body>
+</html>
