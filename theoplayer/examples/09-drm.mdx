@@ -1,0 +1,28 @@
+---
+sidebar_custom_props: { icon: '🔒' }
+description: Play content protected with Widevine, PlayReady or FairPlay DRM, or encrypted with AES-128.
+---
+
+# DRM and AES-128 encryption
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/drm/demo.html';
+import DrmDemo from './_components/DrmDemo';
+
+<DrmDemo />
+
+This example plays protected content:
+
+- **DRM**: a single source description with a DASH stream protected with Widevine and PlayReady, and an HLS stream protected with FairPlay.
+  The player picks the first stream that the current browser supports: Widevine or PlayReady in most browsers, and FairPlay in Safari.
+  The license requests are handled by the KeyOS [DRM integration](../how-to-guides/web/drm/buydrm-keyos.mdx).
+- **AES-128**: an HLS stream encrypted with AES-128. The player fetches the decryption key from the URL in the HLS playlist, so no extra configuration is needed.
+
+The box below the player shows which stream the player selected, and which DRM key systems your browser supports.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

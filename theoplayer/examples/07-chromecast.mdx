@@ -1,0 +1,34 @@
+---
+sidebar_custom_props: { icon: '📡' }
+description: Cast to a Chromecast device with the auto, manual or disabled cast strategy, and test your own receiver application ID.
+---
+
+# Chromecast
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/chromecast/demo.html';
+import ChromecastDemo from './_components/ChromecastDemo';
+
+<ChromecastDemo />
+
+This example shows how to cast a video to a Chromecast device from Google Chrome.
+Click the cast button in the control bar to choose a device and start casting.
+
+The [cast strategy](pathname:///theoplayer/v11/api-reference/web/types/JoinStrategy.html) (`cast.strategy`) controls how the player joins cast sessions:
+
+- **`auto`**: the player automatically joins an existing cast session, for example one that was started from another tab.
+- **`manual`** (default): the player only starts casting when the viewer clicks the cast button.
+- **`disabled`**: the player never casts, and does not show a cast button.
+
+By default, THEOplayer uses its own Chromecast receiver application with ID **`8E80B9CE`**.
+To cast to your own [custom receiver](../how-to-guides/web/cast/chromecast/enable-chromecast-on-the-sender.mdx),
+enter its application ID and click **Apply**.
+For example, use `44BAE7D1` to connect to the OptiView Player receiver application that uses Google's legacy Media Player Library (MPL).
+The player is recreated whenever you change the cast strategy or the application ID.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

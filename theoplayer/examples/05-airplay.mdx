@@ -1,0 +1,26 @@
+---
+sidebar_custom_props: { icon: '📺' }
+description: Stream to an Apple TV or another AirPlay receiver from Safari.
+---
+
+# AirPlay
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/airplay/demo.html';
+import AirPlayDemo from './_components/AirPlayDemo';
+
+<AirPlayDemo />
+
+This example shows how to stream a video to an Apple TV or another AirPlay receiver.
+Open Video UI shows an AirPlay button in the control bar when AirPlay is available.
+Click it to choose a receiver and start streaming.
+
+AirPlay is only available in Safari on macOS, iOS and iPadOS.
+The box below the player shows the AirPlay state, using the `statechange` event of `player.cast.airplay`.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

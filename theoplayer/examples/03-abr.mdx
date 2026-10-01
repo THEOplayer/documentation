@@ -1,0 +1,31 @@
+---
+sidebar_custom_props: { icon: '📶' }
+description: Compare the performance, quality and bandwidth ABR strategies, set an initial bitrate, and see which quality the player picks.
+---
+
+# Adaptive bitrate (ABR)
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/abr/demo.html';
+import AbrDemo from './_components/AbrDemo';
+
+<AbrDemo />
+
+This example shows how the [ABR strategy](pathname:///theoplayer/v11/api-reference/web/types/ABRStrategy.html) affects the quality that the player picks when it starts playing a stream.
+
+- **`performance`**: start with a lower quality, so the video starts playing as fast as possible.
+- **`quality`**: start with the highest quality, for the best visual quality from the start.
+- **`bandwidth`** (default): start with a quality based on the bandwidth that was measured in previous sessions.
+
+You can also pass ABR metadata with the strategy. The `metadata.bitrate` property sets the initial bitrate (in bits per second),
+which the player uses to pick its first quality before it has measured the actual bandwidth.
+
+Choose a strategy, optionally enter an initial bitrate, and click **Apply and reload** to reload the stream with the new strategy.
+The box below the player lists the available qualities, the initial quality chosen by the ABR strategy, and the quality that is currently playing.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

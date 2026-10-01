@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Basic player</title>
+    <title>Playback speed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,7 +28,7 @@
     </style>
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
     <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
-    <script src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
   </head>
   <body>
     <!--
@@ -42,8 +42,22 @@
     -->
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
-      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg","metadata":{"title":"Star Wars: The Force Awakens (Comic-Con 2015 reel)"}}'
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
+    <script>
+      onPlayerReady((player) => {
+        function reportPlaybackRate() {
+          sendToParent('ratechange', { playbackRate: player.playbackRate });
+        }
+        player.addEventListener('ratechange', reportPlaybackRate);
+
+        onParentMessage('playback-rate', ({ playbackRate }) => {
+          player.playbackRate = playbackRate;
+        });
+
+        reportPlaybackRate();
+      });
+    </script>
   </body>
 </html>

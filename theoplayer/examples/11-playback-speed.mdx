@@ -1,0 +1,23 @@
+---
+sidebar_custom_props: { icon: '⏩' }
+description: Speed up or slow down a video by changing the playback rate.
+---
+
+# Playback speed
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/playback-speed/demo.html';
+import PlaybackSpeedDemo from './_components/PlaybackSpeedDemo';
+
+<PlaybackSpeedDemo />
+
+This example shows how to change the playback speed of a video with `player.playbackRate`.
+A value of `1` plays the video at normal speed, lower values slow it down and higher values speed it up.
+You can also change the playback speed from the settings menu in the player.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

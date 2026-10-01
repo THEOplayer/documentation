@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chromecast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <!-- Google's Cast Sender SDK, required for Chromecast support. -->
+    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the theoplayer.com CDN.
+      For production use, we recommend hosting THEOplayer yourself
+      and changing this (as well as the <script> tags above)
+      to point to THEOplayer's location on your own website.
+
+      licenseUrl: Change this to point to your THEOplayer license file.
+      Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
+    -->
+    <script src="../utils.js"></script>
+    <script>
+      // Read the cast configuration from the URL, e.g. demo.html?strategy=auto&appID=8E80B9CE
+      const params = new URLSearchParams(location.search);
+      const strategy = params.get('strategy') || 'manual';
+      const appID = params.get('appID') || undefined;
+
+      const configuration = {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+        cast: {
+          strategy: strategy,
+          // When no appID is set, THEOplayer uses its default receiver application.
+          chromecast: appID ? { appID: appID } : {},
+        },
+      };
+      const source = {
+        sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', type: 'application/x-mpegurl' },
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        metadata: { title: 'Big Buck Bunny' },
+      };
+
+      // Create a new player with this configuration.
+      const ui = document.createElement('theoplayer-default-ui');
+      ui.setAttribute('configuration', JSON.stringify(configuration));
+      ui.setAttribute('source', JSON.stringify(source));
+      document.body.appendChild(ui);
+
+      onPlayerReady((player) => {
+        const chromecast = player.cast && player.cast.chromecast;
+
+        function reportState() {
+          sendToParent('chromecast', {
+            strategy: strategy,
+            appID: appID,
+            state: chromecast ? chromecast.state : 'unavailable',
+            casting: chromecast ? chromecast.casting : false,
+          });
+        }
+        if (chromecast) {
+          chromecast.addEventListener('statechange', reportState);
+        }
+
+        reportState();
+      });
+    </script>
+  </body>
+</html>

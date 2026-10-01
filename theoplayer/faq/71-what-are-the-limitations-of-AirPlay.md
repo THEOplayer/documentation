@@ -1,6 +1,6 @@
 # What are the limitations of AirPlay
 
-When casting through [AirPlay](https://www.theoplayer.com/theoplayer-demo-airplay) your viewer is relying on the native Apple video player.
+When casting through [AirPlay](../examples/05-airplay.mdx) your viewer is relying on the native Apple video player.
 This setup gives rise to a number of limitations, as a third-party video player (i.e. THEOplayer) cannot circumvent the limitations of this native Apple video player.
 
 Some of these limitations include, but are not limited to, the following:

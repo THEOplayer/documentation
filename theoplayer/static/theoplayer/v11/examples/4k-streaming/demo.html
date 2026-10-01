@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Basic player</title>
+    <title>4K streaming</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,7 +28,7 @@
     </style>
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
     <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
-    <script src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
   </head>
   <body>
     <!--
@@ -42,8 +42,25 @@
     -->
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
-      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+      source='{"sources":{"src":"https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd","type":"application/dash+xml"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster-alt3.jpg","metadata":{"title":"Big Buck Bunny (4K)"}}'
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
+    <script>
+      onPlayerReady((player) => {
+        // Report the quality of the video track that is currently playing.
+        function reportActiveQuality() {
+          const track = Array.from(player.videoTracks).find((track) => track.enabled);
+          const quality = track && track.activeQuality;
+          console.log('Active video quality', quality);
+          sendToParent('activequality', {
+            quality: quality && { width: quality.width, height: quality.height, bandwidth: quality.bandwidth, frameRate: quality.frameRate },
+          });
+        }
+
+        player.videoTracks.addEventListener('addtrack', (event) => {
+          event.track.addEventListener('activequalitychanged', reportActiveQuality);
+        });
+      });
+    </script>
   </body>
 </html>
