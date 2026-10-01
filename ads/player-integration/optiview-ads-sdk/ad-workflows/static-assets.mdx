@@ -1,0 +1,84 @@
+---
+sidebar_position: 1
+sidebar_label: Static assets
+---
+
+# Static assets
+
+With static assets, each break points directly at its ad creatives: video or image files that you host on your own CDN. No ad server is involved — the SDK fetches the creative from the URL on the break and plays it when the break starts. Use this workflow for direct-sold campaigns, sponsorships, promos, and branded overlays where you already know which creative to show.
+
+## What your app needs
+
+Nothing beyond the integration for your platform: [Web](../web.mdx), [Android](../android.mdx), [iOS](../ios.mdx), or [React Native](../react-native.mdx). Static assets need no ad server, no Google Ad Manager account, and no extra configuration in the app.
+
+## Schedule a break with static assets
+
+A static asset sets `type` to `static` and `uri` to the URL of the creative:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "start": "<start-time>",
+    "duration": 30,
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "static",
+          "mediaType": "video",
+          "mimeType": "application/x-mpegurl",
+          "uri": "https://cdn.example.com/ads/spot.m3u8",
+          "interaction": { "clickThrough": "https://www.example.com/offer" }
+        }
+      ]
+    }
+  }'
+```
+
+The `uri` can also be a list of URLs targeted per device type. See [Static assets](../../../concepts/breaks.mdx#static-assets) and [Asset URI targeting](../../../concepts/breaks.mdx#asset-uri-targeting) for the full asset model.
+
+## Supported layouts
+
+Static assets work in every [layout](../../../concepts/breaks.mdx#layouts) and as [pause ads](../../../concepts/breaks.mdx#pause):
+
+| Layout                | Static asset                                                                             |
+| --------------------- | ---------------------------------------------------------------------------------------- |
+| `single`              | A video that replaces the content.                                                       |
+| `double`, `lshape_ad` | A video, with an image or video `companion` that fills the background.                   |
+| `lshape_content`      | An image that fills the L-shaped backdrop while your content keeps playing.              |
+| `overlay`             | An image or video on top of your content.                                                |
+| Pause ad              | An image, or a progressive MP4 video that plays muted, shown while the viewer is paused. |
+
+An image stays on screen for the asset's `duration`, or for the break's `duration` when the asset has none.
+
+## Creative formats
+
+- **HLS (`.m3u8`)** is the recommended format for video creatives on every platform. On connected TVs in particular, the SDK can prefetch an HLS creative ahead of the break, so the ad starts faster.
+- **Progressive MP4** also works. On Web, the SDK plays MP4 creatives through the browser's own video element.
+- **Images** are used for overlays, companions, L-shape backdrops, and pause ads.
+
+Set `mimeType` on the asset when you know it. The SDK then knows upfront how to play the creative, instead of having to find out, which makes ad preparation faster.
+
+## Tracking and reporting
+
+The SDK reports an OptiView Ads [impression](../../../how-to-guides/ad-impressions.md) for every break it presents, and emits ad events — such as the start and end of each break and ad — that your app can listen to. See the API reference of your platform for the full list of events.
+
+Static assets carry no third-party tracking URLs. If an advertiser needs to count impressions in their own ad server, deliver the creative through a [VAST](./vast.mdx) tag instead: the VAST response carries the advertiser's tracking URLs, which are fired while the ad plays.
+
+## Troubleshooting
+
+- **The break does not play.** Check that the channel's [Break Manifest](../../../concepts/break-manifest.mdx) contains the break, and that the creative URL is publicly reachable.
+- **Web: the creative fails to load.** The SDK downloads HLS creatives with HTTP requests from your page, so your CDN must allow cross-origin requests (CORS) from your app's origin.
+- **A creative cannot be played.** The SDK emits an `aderror` event for the asset, continues with the next asset in the break if there is one, and otherwise returns to your content.
+
+## Related resources
+
+| Resource                                                           | Description                                                   |
+| ------------------------------------------------------------------ | ------------------------------------------------------------- |
+| [Breaks](../../../concepts/breaks.mdx)                             | Layouts, variants, controls, and the asset model.             |
+| [Templates](../../../concepts/templates.mdx)                       | Store a break with its static assets once, and reuse it.      |
+| [VAST](./vast.mdx)                                                 | Let your ad server decide which creative to play.             |
+| [Ad impression tracking](../../../how-to-guides/ad-impressions.md) | How OptiView Ads counts the breaks presented to your viewers. |

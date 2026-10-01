@@ -4,13 +4,30 @@ sidebar_position: 3
 
 # Ad targeting parameters
 
-When an ad server such as Google Ad Manager decisions a break, you can pass key-value parameters with the request to personalize the ads — for example the content genre, the placement type, or custom targeting values. In OptiView Ads, these parameters are called **`assetParameters`**. For Google, they map directly to the [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`) on the ad request.
+When an ad server decides which ad fills a break, you can pass key-value parameters with the ad request to personalize the ads — for example the content genre, the placement type, or custom targeting values. In OptiView Ads, these parameters are called **`assetParameters`**. How they reach the ad server depends on the [ad workflow](../player-integration/optiview-ads-sdk/index.mdx#ad-workflows):
 
-You can set `assetParameters` in two places: on the break in the **backend**, and in the **OptiView Ads SDK** on the client. Client-side values overwrite the backend values when the same key is set in both.
+- **[VAST](../player-integration/optiview-ads-sdk/ad-workflows/vast.mdx):** the SDK appends them to the VAST tag URL as URL-encoded query parameters.
+- **[Google Pod Serving](../player-integration/optiview-ads-sdk/ad-workflows/google-pod-serving.mdx):** they are sent to Google as [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`).
+- **[Static assets](../player-integration/optiview-ads-sdk/ad-workflows/static-assets.mdx)** involve no ad request, so they do not use `assetParameters`.
+
+You can set `assetParameters` in two places: on the break in the **backend**, and in the **OptiView Ads SDK** on the client.
 
 ## Asset parameters in the backend
 
-When you [schedule a break](../concepts/breaks.mdx#scheduling) with a vendor asset, you can add an `assetParameters` map to the asset:
+When you [schedule a break](../concepts/breaks.mdx#scheduling) with a VAST or vendor asset, you can add an `assetParameters` map to the asset. For a VAST asset:
+
+```json
+{
+  "type": "vast",
+  "mediaType": "video",
+  "uri": "https://adserver.example.com/vast?slot=midroll",
+  "assetParameters": {
+    "content_genre": "sports"
+  }
+}
+```
+
+For a Google Pod Serving vendor asset:
 
 ```json
 {
@@ -26,22 +43,24 @@ When you [schedule a break](../concepts/breaks.mdx#scheduling) with a vendor ass
 }
 ```
 
-OptiView Ads forwards these parameters to the ad server when the break is announced, and also delivers them to the player through the [Break Manifest](../concepts/break-manifest.mdx) so they are included on the ad request. See [Google Pod Serving](../integrations/google/pod-serving.mdx#required-google-parameters) for the parameters Google requires.
+OptiView Ads delivers these parameters to the player through the [Break Manifest](../concepts/break-manifest.mdx), so they are included on the ad request. For Google, they are also forwarded to Google when the break is announced; see [Google Pod Serving](../integrations/google/pod-serving.mdx#required-google-parameters) for the parameters Google requires.
 
-## Overwriting from the OptiView Ads SDK
+## Asset parameters in the OptiView Ads SDK
 
-The OptiView Ads SDK can supply its own `assetParameters` and overwrite the backend values. There are two client-side layers:
+The OptiView Ads SDK can add its own `assetParameters`. There are two client-side layers:
 
 - **Session parameters** — passed to `startSession()`, they apply to every break in the session.
 - **Live updates** — passed to `updateAssetParameters()` during an active session, for values that change while the viewer is watching.
 
-The three layers are merged **per key**, from lowest to highest precedence:
+## How the layers are merged
 
-1. The break's `assetParameters` from the backend.
-2. The session's `assetParameters` from `startSession()`.
-3. The latest `updateAssetParameters()` call.
+The layers are merged **per key**, from lowest to highest precedence:
 
-Overwriting one key never discards the others, and live updates apply to **future** breaks only: a break whose ad request has already been sent cannot be retargeted.
+1. The session's `assetParameters` from `startSession()`.
+2. The latest `updateAssetParameters()` call.
+3. The break's `assetParameters` from the backend.
+
+A value set on the break wins over the same key set in the SDK, so set each key in one place only. Overwriting one key never discards the others, and live updates apply to **future** breaks only: a break whose ad request has already been sent cannot be retargeted.
 
 ## Backend or client?
 
@@ -49,6 +68,20 @@ As a rule of thumb:
 
 - **Set through the backend** the values that describe the break or the content and are the same for every viewer — such as `description_url`, the placement declaration, and campaign or content targeting that is known when the break is scheduled.
 - **Set through the SDK** the values that depend on the viewer, the device, or the moment of playback — such as device identifiers, consent state, autoplay/mute state (`vpa`, `vpmute`), or audience context that changes during the session.
+
+## Macros
+
+A parameter value can contain macros: `$NAME$` tokens that the SDK replaces when it builds the ad request. Macros let a value on the break carry information that is only known on the device. The SDK provides these built-in macros:
+
+| Macro                               | Value                                                                        |
+| ----------------------------------- | ---------------------------------------------------------------------------- |
+| `$OPTIVIEW_PLAYER_WIDTH$`           | Width of the ad container, in logical pixels.                                |
+| `$OPTIVIEW_PLAYER_HEIGHT$`          | Height of the ad container, in logical pixels.                               |
+| `$OPTIVIEW_BREAK_DURATION_SECONDS$` | Duration of the ad, in seconds: the asset's `duration`, else the break's.    |
+| `$OPTIVIEW_BREAK_DURATION_MS$`      | The same duration, in whole milliseconds.                                    |
+| `$OPTIVIEW_USER_AGENT$`             | The user agent of the device. Not available on iOS; register your own value. |
+
+For example, `"size": "$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$"` is sent as `size=1920x1080`. You can register your own macros, or override a built-in one, with `assetParameterMacros` in the session configuration. Tokens the SDK does not know, such as `$PUBLISHER_ID$`, are sent unchanged, so your ad server can still expand its own macros. See `SessionConfig` in the API reference of your platform for the details.
 
 ## Platform examples
 
@@ -118,8 +151,10 @@ ads.updateAssetParameters({ cust_params: 'sport=basketball' });
 
 ## Related resources
 
-| Resource                                                             | Description                                     |
-| -------------------------------------------------------------------- | ----------------------------------------------- |
-| [Google Pod Serving](../integrations/google/pod-serving.mdx)         | Required Google parameters and pod decisioning. |
-| [Breaks](../concepts/breaks.mdx)                                     | Scheduling breaks with vendor assets.           |
-| [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) | Integrating the SDK with your player.           |
+| Resource                                                                                                      | Description                                     |
+| ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| [VAST](../player-integration/optiview-ads-sdk/ad-workflows/vast.mdx)                                          | Playing VAST tags with the SDK.                 |
+| [Google Pod Serving with the SDK](../player-integration/optiview-ads-sdk/ad-workflows/google-pod-serving.mdx) | Playing Google pods with the SDK.               |
+| [Google Pod Serving](../integrations/google/pod-serving.mdx)                                                  | Required Google parameters and pod decisioning. |
+| [Breaks](../concepts/breaks.mdx)                                                                              | Scheduling breaks with VAST and vendor assets.  |
+| [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx)                                          | Integrating the SDK with your player.           |

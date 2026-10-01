@@ -1,0 +1,115 @@
+---
+sidebar_position: 2
+sidebar_label: VAST
+---
+
+# VAST
+
+With VAST, each break points at a VAST tag: a URL on your ad server, or an advertiser's, that returns a [VAST](https://iabtechlab.com/standards/vast/) XML document. The ad server decides which creative to play, and its response carries the media files and the tracking URLs. Use this workflow when you run your own ad server, or buy from partners that deliver their ads through VAST tags.
+
+The SDK requests and plays VAST tags on the device, through Google's client-side IMA SDK. IMA processes the VAST response — it follows wrappers, picks a media file, and fires the tracking URLs. IMA works with any VAST-compliant ad server: you do not need a Google Ad Manager account.
+
+## What your app needs
+
+| Platform     | Requirement                                                                                                                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Web          | Load Google's client-side IMA SDK on the page, before your application script (see below).                                                                                   |
+| Android      | Nothing extra: the SDK runtime includes the Google IMA SDK.                                                                                                                  |
+| iOS and tvOS | Nothing extra: the runtime pod includes the Google IMA SDK. With Swift Package Manager, add the Google IMA packages as described in [iOS](../ios.mdx#swift-package-manager). |
+| React Native | Nothing extra: the native SDKs include the Google IMA SDK.                                                                                                                   |
+
+On Web, add the IMA loader to your page:
+
+```html
+<script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+```
+
+Without it, the SDK cannot play VAST breaks: it reports `DA-VAST-IMA-SDK-MISSING` and returns to your content. If your channel also uses [Google Pod Serving](./google-pod-serving.mdx), load `ima3_dai.js` as well; the two scripts work side by side.
+
+:::caution[Web: include an MP4 media file]
+The IMA SDK for HTML5 plays the ad through the browser's own video element, which cannot play HLS outside Safari. Make sure your VAST responses include a progressive MP4 media file, or the ad fails to play in Chrome, Edge, and Firefox.
+:::
+
+## Schedule a VAST break
+
+A VAST asset sets `type` to `vast` and `uri` to the VAST tag URL:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "start": "<start-time>",
+    "duration": 30,
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "vast",
+          "mediaType": "video",
+          "mimeType": "application/xml",
+          "uri": "https://adserver.example.com/vast?slot=midroll",
+          "assetParameters": {
+            "content_genre": "sports"
+          }
+        }
+      ]
+    }
+  }'
+```
+
+The `uri` can also be a list of tag URLs targeted per device type. See [VAST assets](../../../concepts/breaks.mdx#vast-assets) and [Asset URI targeting](../../../concepts/breaks.mdx#asset-uri-targeting) for the full asset model.
+
+## Supported layouts
+
+VAST describes a linear (video) ad, so VAST assets work in the layouts where an ad video plays:
+
+| Layout                      | VAST asset                                                                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `single`                    | Supported.                                                                                                                                             |
+| `double`, `lshape_ad`       | Supported. The VAST ad plays in the ad box, and the asset's `companion` fills the background.                                                          |
+| `lshape_content`, `overlay` | Not supported. The SDK does not play the asset and reports `DA-VAST-UNSUPPORTED-FORMAT`. Use a [static asset](./static-assets.mdx) instead.            |
+| Pause ad                    | Supported. The SDK reads the image from the VAST companion ads, or a progressive MP4 from the linear ad, and fires its impression tracking when shown. |
+
+VAST breaks play in server-guided sessions — the default `sgai` mode — only.
+
+## Ad targeting parameters
+
+To personalize the ad request, add `assetParameters`. The SDK appends them to the VAST tag URL as URL-encoded query parameters when it requests the tag. For the break above, with a session-level parameter `device_id` set in the SDK, the request becomes:
+
+```text
+https://adserver.example.com/vast?slot=midroll&content_genre=sports&device_id=abc123
+```
+
+Set the parameters in one of two places:
+
+- **On the break**, for values that are the same for every viewer, such as the content genre.
+- **In the SDK**, with `assetParameters` in the session configuration or `updateAssetParameters()`, for values that depend on the viewer or the device.
+
+When the same key is set in both places, the value on the break wins. Parameter values can also contain macros, such as `$OPTIVIEW_PLAYER_WIDTH$`, that the SDK fills in when it builds the request. See [Ad targeting parameters](../../../how-to-guides/ad-tag-parameters.mdx) for the merge rules, the macros, and platform examples.
+
+## Tracking and reporting
+
+- IMA fires the tracking URLs in the VAST response, such as impressions, quartiles, and clicks, so the ad server counts the ad.
+- The SDK reports an OptiView Ads [impression](../../../how-to-guides/ad-impressions.md) for the break, and emits the same ad events as for any other break.
+
+## Troubleshooting
+
+VAST failures never block your content: the SDK emits an `aderror` event, reports a diagnostic, and returns to the content.
+
+| Diagnostic                   | What it means                                                                                                                        | What to do                                                                                                                                                             |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DA-VAST-IMA-SDK-MISSING`    | Google's client-side IMA SDK is not available.                                                                                       | On Web, load `ima3.js` on the page.                                                                                                                                    |
+| `DA-VAST-IMA-ERROR`          | IMA could not load, parse, or play the VAST response — for example an unreachable tag, an empty response, or no playable media file. | Test the tag in Google's [VAST Inspector](https://googleads.github.io/googleads-ima-html5/vsi/). On Web, make sure the response includes a progressive MP4 media file. |
+| `DA-VAST-UNSUPPORTED-FORMAT` | The VAST asset is in an `overlay` or `lshape_content` break.                                                                         | Use the `single`, `double`, or `lshape_ad` layout, or a static asset.                                                                                                  |
+| `DA-VAST-SSAI-UNSUPPORTED`   | The VAST asset is in a server-side (SSAI) session.                                                                                   | Play VAST breaks in a server-guided (`sgai`) session.                                                                                                                  |
+
+## Related resources
+
+| Resource                                                                | Description                                                   |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Breaks](../../../concepts/breaks.mdx)                                  | Layouts, variants, controls, and the asset model.             |
+| [Ad targeting parameters](../../../how-to-guides/ad-tag-parameters.mdx) | Passing targeting parameters to your ad server.               |
+| [Static assets](./static-assets.mdx)                                    | Play creatives from your CDN without an ad server.            |
+| [Google Pod Serving](./google-pod-serving.mdx)                          | Let Google Ad Manager decision the ads that fill your breaks. |
