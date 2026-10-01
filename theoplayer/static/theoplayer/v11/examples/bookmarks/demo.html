@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Creating bookmarks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg","metadata":{"title":"Star Wars Reel"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const starWars = {
+        src: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+        poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+        title: 'Star Wars Reel',
+      };
+      const tearsOfSteel = {
+        src: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8',
+        poster: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+        title: 'Tears of Steel',
+      };
+      const bookmarks = [
+        { ...starWars, currentTime: 150, duration: 0 },
+        { ...starWars, currentTime: 20, duration: 0 },
+        { ...tearsOfSteel, currentTime: 500, duration: 0 },
+      ];
+      let activeIndex = -1;
+      let currentSource = starWars.src;
+      let switchToken = 0;
+      let lastReportAt = 0;
+      let awaitingPosition = true;
+
+      function getSource(bookmark) {
+        return {
+          sources: [{ src: bookmark.src, type: 'application/x-mpegurl' }],
+          poster: bookmark.poster,
+          metadata: { title: bookmark.title },
+        };
+      }
+
+      onPlayerReady((player) => {
+        function report() {
+          if (activeIndex >= 0 && bookmarks[activeIndex] && !awaitingPosition) {
+            bookmarks[activeIndex].currentTime = player.currentTime;
+            bookmarks[activeIndex].duration = Number.isFinite(player.duration) ? player.duration : 0;
+          }
+          sendToParent('bookmarks', {
+            bookmarks: bookmarks.map((bookmark) => ({ ...bookmark })),
+            activeIndex,
+          });
+          lastReportAt = Date.now();
+        }
+
+        function saveActivePosition() {
+          if (activeIndex < 0 || !bookmarks[activeIndex]) return;
+          bookmarks[activeIndex].currentTime = player.currentTime;
+          bookmarks[activeIndex].duration = Number.isFinite(player.duration) ? player.duration : 0;
+        }
+
+        function playMuted() {
+          player.muted = true;
+          const playResult = player.play();
+          if (playResult && typeof playResult.catch === 'function') playResult.catch(() => {});
+        }
+
+        function restoreBookmark(index, savePrevious = true, initial = false) {
+          if (!bookmarks[index]) return;
+          if (savePrevious) saveActivePosition();
+          const bookmark = bookmarks[index];
+          const token = ++switchToken;
+          activeIndex = index;
+          const sourceChanged = bookmark.src !== currentSource;
+
+          if (!sourceChanged && !awaitingPosition) {
+            awaitingPosition = false;
+            player.currentTime = bookmark.currentTime;
+            playMuted();
+            report();
+            return;
+          }
+
+          if (sourceChanged) currentSource = bookmark.src;
+          if (initial && !sourceChanged && player.readyState >= 1) {
+            awaitingPosition = false;
+            player.currentTime = bookmark.currentTime;
+            playMuted();
+            report();
+            return;
+          }
+
+          awaitingPosition = true;
+          player.pause();
+          player.addEventListener(
+            'loadedmetadata',
+            () => {
+              if (token !== switchToken) return;
+              player.currentTime = bookmark.currentTime;
+              awaitingPosition = false;
+              playMuted();
+              report();
+            },
+            { once: true }
+          );
+          if (sourceChanged) player.source = getSource(bookmark);
+          playMuted();
+        }
+
+        player.addEventListener(['timeupdate', 'durationchange'], () => {
+          if (Date.now() - lastReportAt >= 500) report();
+        });
+
+        onParentMessage('select-bookmark', (message) => {
+          if (typeof message.index === 'number') restoreBookmark(message.index);
+        });
+        onParentMessage('add-bookmark', () => {
+          if (awaitingPosition) return;
+          saveActivePosition();
+          const current = bookmarks[activeIndex];
+          bookmarks.push({
+            title: `Bookmark ${bookmarks.length + 1}`,
+            src: currentSource,
+            poster: current ? current.poster : '',
+            currentTime: player.currentTime,
+            duration: Number.isFinite(player.duration) ? player.duration : 0,
+          });
+          activeIndex = bookmarks.length - 1;
+          report();
+        });
+
+        report();
+        restoreBookmark(1, false, true);
+      });
+    </script>
+  </body>
+</html>

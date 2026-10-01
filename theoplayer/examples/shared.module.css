@@ -61,6 +61,15 @@
   margin-bottom: 0.75rem;
 }
 
+.readoutScroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.readoutScroll .readout {
+  margin-bottom: 0;
+}
+
 .readout th,
 .readout td {
   overflow-wrap: anywhere;
@@ -82,4 +91,81 @@
 .highlight {
   background-color: var(--ifm-color-primary-lightest) !important;
   color: #000;
+}
+
+.bookmarkList {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bookmarkButton {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  text-align: left;
+  cursor: pointer;
+}
+
+.bookmarkButtonActive {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary-lightest);
+  color: #000;
+}
+
+.bookmarkMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  overflow-wrap: anywhere;
+}
+
+.bookmarkProgress,
+.rangeBar {
+  position: relative;
+  width: 100%;
+  height: 0.6rem;
+  margin-top: 0.4rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-200);
+}
+
+.bookmarkProgressFill,
+.rangeSegment {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--ifm-color-primary);
+}
+
+.rangeRow {
+  margin: 0.5rem 0;
+}
+
+.rangeLabel {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .readout th:first-child {
+    width: 35%;
+  }
+
+  .readoutScroll .readout {
+    min-width: 32rem;
+  }
+
+  .fastSourceReadout th:first-child {
+    width: 25%;
+  }
 }

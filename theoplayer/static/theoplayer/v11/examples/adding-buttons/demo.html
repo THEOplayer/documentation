@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adding buttons to the UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+
+      #info-menu {
+        box-sizing: border-box;
+        max-width: min(22rem, calc(100vw - 2rem));
+        padding: 1rem;
+        color: #fff;
+      }
+
+      #info-menu [slot='heading'] {
+        font-weight: 700;
+      }
+
+      .info-values {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.35rem 1rem;
+        margin: 0.75rem 0 0;
+      }
+
+      .info-values dt {
+        opacity: 0.75;
+      }
+
+      .info-values dd {
+        margin: 0;
+        text-align: right;
+      }
+
+      .info-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        vertical-align: middle;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    >
+      <theoplayer-button id="skip-intro" slot="top-control-bar">Skip intro</theoplayer-button>
+      <theoplayer-menu-button slot="bottom-control-bar" menu="info-menu" aria-label="Info">
+        <svg class="info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+          <path d="M12 11v6m0-10h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </theoplayer-menu-button>
+      <theoplayer-menu id="info-menu" slot="menu" hidden>
+        <span slot="heading">About this video</span>
+        <p>Big Buck Bunny is a short animated film by the Blender Foundation.</p>
+        <dl class="info-values">
+          <dt>Quality</dt>
+          <dd id="current-quality">Loading</dd>
+          <dt>Duration</dt>
+          <dd id="duration">Loading</dd>
+        </dl>
+      </theoplayer-menu>
+    </theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const ui = document.querySelector('#player-ui');
+      const skipButton = document.querySelector('#skip-intro');
+      const qualityValue = document.querySelector('#current-quality');
+      const durationValue = document.querySelector('#duration');
+
+      function formatDuration(duration) {
+        if (!Number.isFinite(duration)) return 'Live';
+        const minutes = Math.floor(duration / 60);
+        const seconds = Math.floor(duration % 60);
+        return `${minutes}:${String(seconds).padStart(2, '0')}`;
+      }
+
+      onPlayerReady((player) => {
+        function updateInfo() {
+          const track = Array.from(player.videoTracks).find((videoTrack) => videoTrack.enabled);
+          const quality = track && track.activeQuality;
+          qualityValue.textContent = quality ? `${quality.height}p` : '—';
+          durationValue.textContent = formatDuration(player.duration);
+          skipButton.hidden = player.currentTime > 10;
+        }
+
+        skipButton.addEventListener('click', () => {
+          player.currentTime = 10;
+        });
+        player.addEventListener(['durationchange', 'timeupdate'], updateInfo);
+        player.videoTracks.addEventListener('addtrack', (event) => {
+          event.track.addEventListener('activequalitychanged', updateInfo);
+          updateInfo();
+        });
+        updateInfo();
+      });
+    </script>
+  </body>
+</html>

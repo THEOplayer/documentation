@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adding buttons to the UI (legacy UI)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #player {
+        position: relative;
+        width: 100%;
+      }
+
+      .custom-info-button {
+        width: 3rem;
+      }
+
+      .custom-info-button svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        vertical-align: middle;
+      }
+
+      .custom-info-overlay {
+        position: absolute;
+        z-index: 10;
+        right: 1rem;
+        bottom: 4.5rem;
+        box-sizing: border-box;
+        width: min(22rem, calc(100% - 2rem));
+        padding: 1rem;
+        border-radius: 0.4rem;
+        background: rgb(0 0 0 / 90%);
+        color: #fff;
+        font:
+          14px/1.5 Arial,
+          sans-serif;
+      }
+
+      .custom-info-overlay[hidden] {
+        display: none;
+      }
+
+      .custom-info-overlay h2 {
+        margin: 0 2rem 0.5rem 0;
+        font-size: 1rem;
+      }
+
+      .custom-info-overlay p {
+        margin: 0;
+      }
+
+      .custom-info-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        font-size: 1.25rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="player" class="video-js theoplayer-skin vjs-16-9"></div>
+    <script>
+      var playerElement = document.querySelector('#player');
+      var player = new THEOplayer.Player(playerElement, {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+      });
+      player.source = {
+        sources: [
+          {
+            src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        metadata: { title: 'Big Buck Bunny' },
+      };
+
+      var videojs = THEOplayer.videojs;
+      var overlay = document.createElement('div');
+      overlay.className = 'custom-info-overlay';
+      overlay.hidden = true;
+      overlay.innerHTML =
+        '<button class="custom-info-close" type="button" aria-label="Close">×</button>' +
+        '<h2>About this video</h2>' +
+        '<p>Big Buck Bunny is a short animated film by the Blender Foundation.</p>';
+
+      var InfoButton = videojs.extend(videojs.getComponent('Button'), {
+        constructor: function (player, options) {
+          videojs.getComponent('Button').call(this, player, options);
+          this.controlText('Info');
+        },
+        buildCSSClass: function () {
+          return 'custom-info-button vjs-control vjs-button';
+        },
+        handleClick: function () {
+          overlay.hidden = !overlay.hidden;
+        },
+      });
+      videojs.registerComponent('InfoButton', InfoButton);
+
+      var infoButton = player.ui.getChild('controlBar').addChild('InfoButton', {});
+      var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      icon.setAttribute('viewBox', '0 0 24 24');
+      icon.setAttribute('fill', 'none');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.innerHTML =
+        '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle><path d="M12 11v6m0-10h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
+      infoButton.el().insertBefore(icon, infoButton.el().firstChild);
+      infoButton.el().setAttribute('aria-label', 'Info');
+      playerElement.appendChild(overlay);
+      overlay.querySelector('.custom-info-close').addEventListener('click', function () {
+        overlay.hidden = true;
+      });
+    </script>
+  </body>
+</html>

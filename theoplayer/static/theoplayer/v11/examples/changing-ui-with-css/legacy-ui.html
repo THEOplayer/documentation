@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Changing the legacy UI with CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .theoplayer-skin {
+        width: 100%;
+        color: #11cefe;
+      }
+
+      .theoplayer-skin .vjs-control-bar .vjs-button::before {
+        color: #11cefe;
+      }
+
+      .theoplayer-skin .vjs-play-progress,
+      .theoplayer-skin .vjs-volume-level {
+        background: #000;
+      }
+
+      .theoplayer-skin .vjs-icon-cog,
+      .theoplayer-skin .vjs-icon-cog::before {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="player" class="video-js theoplayer-skin vjs-16-9"></div>
+    <script>
+      var player = new THEOplayer.Player(document.querySelector('#player'), {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+      });
+      player.source = {
+        sources: [
+          {
+            src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        metadata: { title: 'Big Buck Bunny' },
+      };
+    </script>
+  </body>
+</html>

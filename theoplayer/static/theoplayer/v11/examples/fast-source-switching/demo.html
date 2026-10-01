@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fast source switching</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const initialSource = {
+        src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+        label: 'Big Buck Bunny',
+        mediaType: 'hls',
+      };
+      let switchToken = 0;
+      let activeListeners = [];
+
+      function sourceConfiguration(source) {
+        const contentType = source.mediaType === 'hls' ? 'application/x-mpegurl' : source.mediaType === 'dash' ? 'application/dash+xml' : null;
+        return {
+          sources: {
+            src: source.src,
+            ...(contentType ? { type: contentType } : {}),
+          },
+          metadata: { title: source.label },
+        };
+      }
+
+      onPlayerReady((player) => {
+        let history = [];
+
+        function report(record) {
+          history = [record, ...history].slice(0, 10);
+          sendToParent('switch-measurements', { latest: record, history });
+        }
+
+        function removeActiveListeners() {
+          activeListeners.forEach(([eventName, listener]) => player.removeEventListener(eventName, listener));
+          activeListeners = [];
+        }
+
+        function beginSwitch(source) {
+          removeActiveListeners();
+          const token = ++switchToken;
+          const sourceSetAt = performance.now();
+          const measurement = {
+            source: source.label,
+            playStartedAt: null,
+            muted: false,
+            complete: false,
+          };
+
+          function isCurrent() {
+            return token === switchToken;
+          }
+
+          function finish(error) {
+            if (!isCurrent() || measurement.complete) return;
+            measurement.complete = true;
+            const now = performance.now();
+            report({
+              source: measurement.source,
+              ttff: measurement.playStartedAt === null || error ? null : now - measurement.playStartedAt,
+              sinceSourceChange: error ? null : now - sourceSetAt,
+              muted: measurement.muted,
+              error: error || null,
+            });
+            removeActiveListeners();
+          }
+
+          function onPlay() {
+            if (!isCurrent() || measurement.complete || measurement.playStartedAt !== null) return;
+            measurement.playStartedAt = performance.now();
+          }
+
+          function onPlaying() {
+            if (!isCurrent() || measurement.complete || measurement.playStartedAt === null) return;
+            finish(null);
+          }
+
+          function onError(event) {
+            const playerError = player.errorObject;
+            const message =
+              (playerError && playerError.message) || (event && event.message) || (event && event.error && event.error.message) || 'Player error';
+            finish(message);
+          }
+
+          activeListeners = [
+            ['play', onPlay],
+            ['playing', onPlaying],
+            ['error', onError],
+          ];
+          activeListeners.forEach(([eventName, listener]) => player.addEventListener(eventName, listener));
+
+          player.pause();
+          player.muted = false;
+          player.source = sourceConfiguration(source);
+
+          function attemptPlay() {
+            let playPromise;
+            try {
+              playPromise = player.play();
+            } catch (error) {
+              handlePlayError(error);
+              return;
+            }
+            if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(handlePlayError);
+          }
+
+          function handlePlayError(error) {
+            if (!isCurrent() || measurement.complete) return;
+            if (!measurement.muted) {
+              measurement.muted = true;
+              measurement.playStartedAt = null;
+              player.muted = true;
+              attemptPlay();
+              return;
+            }
+            finish((error && error.message) || 'Playback could not start');
+          }
+
+          attemptPlay();
+        }
+
+        onParentMessage('switch-source', (message) => {
+          if (typeof message.src !== 'string' || !message.src) return;
+          const mediaType = message.mediaType === 'hls' || message.mediaType === 'dash' ? message.mediaType : 'auto';
+          beginSwitch({
+            src: message.src,
+            label: typeof message.label === 'string' ? message.label : message.src,
+            mediaType,
+          });
+        });
+
+        beginSwitch(initialSource);
+      });
+    </script>
+  </body>
+</html>
