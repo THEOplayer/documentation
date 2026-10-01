@@ -33,6 +33,9 @@ interface DaiEvent {
 interface DaiState {
   adBreaks: AdBreak[];
   events: DaiEvent[];
+}
+
+interface DaiTime {
   streamTime: number | null;
   contentTime: number | null;
 }
@@ -83,7 +86,8 @@ const presetLabels: Record<PresetName, string> = {
   'live-dash': 'Live DASH',
 };
 
-const emptyState: DaiState = { adBreaks: [], events: [], streamTime: null, contentTime: null };
+const emptyState: DaiState = { adBreaks: [], events: [] };
+const emptyTime: DaiTime = { streamTime: null, contentTime: null };
 
 function formatSeconds(value: number | null): string {
   return value === null || !Number.isFinite(value) ? '—' : `${value.toFixed(1)} s`;
@@ -93,6 +97,7 @@ export default function GoogleDaiDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [form, setForm] = useState<DaiForm>(presets['vod-hls']);
   const [state, setState] = useState<DaiState>(emptyState);
+  const [time, setTime] = useState<DaiTime>(emptyTime);
 
   function updateForm<K extends keyof DaiForm>(key: K, value: DaiForm[K]): void {
     setForm((current) => ({ ...current, [key]: value }));
@@ -113,6 +118,9 @@ export default function GoogleDaiDemo(): JSX.Element {
             setState({
               adBreaks: Array.isArray(message.adBreaks) ? (message.adBreaks as AdBreak[]) : [],
               events: Array.isArray(message.events) ? (message.events as DaiEvent[]) : [],
+            });
+          } else if (message.type === 'dai-time') {
+            setTime({
               streamTime: typeof message.streamTime === 'number' ? message.streamTime : null,
               contentTime: typeof message.contentTime === 'number' ? message.contentTime : null,
             });
@@ -184,11 +192,11 @@ export default function GoogleDaiDemo(): JSX.Element {
           <tbody>
             <tr>
               <th>Stream time</th>
-              <td>{formatSeconds(state.streamTime)}</td>
+              <td>{formatSeconds(time.streamTime)}</td>
             </tr>
             <tr>
               <th>Content time</th>
-              <td>{formatSeconds(state.contentTime)}</td>
+              <td>{formatSeconds(time.contentTime)}</td>
             </tr>
           </tbody>
         </table>

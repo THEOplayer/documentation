@@ -62,7 +62,6 @@
       let currentSource = starWars.src;
       let switchToken = 0;
       let lastReportAt = 0;
-      let awaitingPosition = true;
 
       function getSource(bookmark) {
         return {
@@ -74,10 +73,6 @@
 
       onPlayerReady((player) => {
         function report() {
-          if (activeIndex >= 0 && bookmarks[activeIndex] && !awaitingPosition) {
-            bookmarks[activeIndex].currentTime = player.currentTime;
-            bookmarks[activeIndex].duration = Number.isFinite(player.duration) ? player.duration : 0;
-          }
           sendToParent('bookmarks', {
             bookmarks: bookmarks.map((bookmark) => ({ ...bookmark })),
             activeIndex,
@@ -86,68 +81,58 @@
         }
 
         function saveActivePosition() {
-          if (activeIndex < 0 || !bookmarks[activeIndex]) return;
+          if (activeIndex < 0 || !bookmarks[activeIndex] || player.readyState < 1) return;
           bookmarks[activeIndex].currentTime = player.currentTime;
           bookmarks[activeIndex].duration = Number.isFinite(player.duration) ? player.duration : 0;
         }
 
-        function playMuted() {
-          player.muted = true;
-          const playResult = player.play();
-          if (playResult && typeof playResult.catch === 'function') playResult.catch(() => {});
-        }
-
-        function restoreBookmark(index, savePrevious = true, initial = false) {
+        function selectBookmark(index, shouldPlay = true) {
           if (!bookmarks[index]) return;
-          if (savePrevious) saveActivePosition();
+          saveActivePosition();
           const bookmark = bookmarks[index];
           const token = ++switchToken;
-          activeIndex = index;
           const sourceChanged = bookmark.src !== currentSource;
 
-          if (!sourceChanged && !awaitingPosition) {
-            awaitingPosition = false;
+          function restorePosition() {
+            if (token !== switchToken) return;
+            activeIndex = index;
             player.currentTime = bookmark.currentTime;
-            playMuted();
+            saveActivePosition();
             report();
-            return;
           }
 
-          if (sourceChanged) currentSource = bookmark.src;
-          if (initial && !sourceChanged && player.readyState >= 1) {
-            awaitingPosition = false;
-            player.currentTime = bookmark.currentTime;
-            playMuted();
-            report();
-            return;
-          }
-
-          awaitingPosition = true;
           player.pause();
-          player.addEventListener(
-            'loadedmetadata',
-            () => {
-              if (token !== switchToken) return;
-              player.currentTime = bookmark.currentTime;
-              awaitingPosition = false;
-              playMuted();
-              report();
-            },
-            { once: true }
-          );
-          if (sourceChanged) player.source = getSource(bookmark);
-          playMuted();
+          if (!shouldPlay) {
+            activeIndex = index;
+            report();
+          }
+          if (sourceChanged) {
+            currentSource = bookmark.src;
+            player.addEventListener('loadedmetadata', restorePosition, { once: true });
+            player.source = getSource(bookmark);
+          } else if (player.readyState >= 1) {
+            restorePosition();
+          } else {
+            player.addEventListener('loadedmetadata', restorePosition, { once: true });
+          }
+          if (shouldPlay) player.play();
         }
 
-        player.addEventListener(['timeupdate', 'durationchange'], () => {
-          if (Date.now() - lastReportAt >= 500) report();
+        player.addEventListener('timeupdate', () => {
+          if (Date.now() - lastReportAt < 500) return;
+          saveActivePosition();
+          report();
+        });
+        player.addEventListener('durationchange', () => {
+          if (activeIndex >= 0 && bookmarks[activeIndex].src === currentSource) saveActivePosition();
+          report();
         });
 
         onParentMessage('select-bookmark', (message) => {
-          if (typeof message.index === 'number') restoreBookmark(message.index);
+          if (typeof message.index === 'number') selectBookmark(message.index);
         });
         onParentMessage('add-bookmark', () => {
-          if (awaitingPosition) return;
+          if (activeIndex < 0) return;
           saveActivePosition();
           const current = bookmarks[activeIndex];
           bookmarks.push({
@@ -162,7 +147,7 @@
         });
 
         report();
-        restoreBookmark(1, false, true);
+        selectBookmark(1, false);
       });
     </script>
   </body>

@@ -9,7 +9,6 @@ interface SwitchRecord {
   source: string;
   ttff: number | null;
   sinceSourceChange: number | null;
-  muted: boolean;
   error: string | null;
 }
 
@@ -95,9 +94,7 @@ export default function FastSourceSwitchingDemo(): JSX.Element {
           </button>
         </div>
         <h3 className={styles.panelTitle}>Latest TTFF</h3>
-        <p>
-          {latest ? `${latest.source}: ${formatMilliseconds(latest.ttff)}${latest.muted ? ' (muted)' : ''}` : 'Waiting for the first measurement.'}
-        </p>
+        <p>{latest ? `${latest.source}: ${formatMilliseconds(latest.ttff)}` : 'Waiting for the first measurement.'}</p>
         {latest?.error && <p role="alert">Error: {latest.error}</p>}
         <h3 className={styles.panelTitle}>Recent switches</h3>
         <table className={`${styles.readout} ${styles.fastSourceReadout}`}>
@@ -106,13 +103,12 @@ export default function FastSourceSwitchingDemo(): JSX.Element {
               <th>Source</th>
               <th>TTFF</th>
               <th>Since source</th>
-              <th>Muted</th>
             </tr>
           </thead>
           <tbody>
             {history.length === 0 ? (
               <tr>
-                <td colSpan={4}>No completed switches.</td>
+                <td colSpan={3}>No completed switches.</td>
               </tr>
             ) : (
               history.map((record, index) => (
@@ -120,7 +116,6 @@ export default function FastSourceSwitchingDemo(): JSX.Element {
                   <td>{record.source}</td>
                   <td>{formatMilliseconds(record.ttff)}</td>
                   <td>{formatMilliseconds(record.sinceSourceChange)}</td>
-                  <td>{record.muted ? 'Yes' : 'No'}</td>
                 </tr>
               ))
             )}

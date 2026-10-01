@@ -79,50 +79,35 @@
         },
       };
 
+      const resetStyle = {
+        backgroundColor: undefined,
+        edgeStyle: undefined,
+        fontColor: undefined,
+        fontFamily: undefined,
+        fontSize: undefined,
+        marginBottom: undefined,
+        marginLeft: undefined,
+        marginRight: undefined,
+        marginTop: undefined,
+        windowColor: undefined,
+      };
+
       const stylePresets = {
-        default: {
-          backgroundColor: undefined,
-          edgeStyle: undefined,
-          fontColor: undefined,
-          fontFamily: undefined,
-          fontSize: undefined,
-          marginBottom: undefined,
-          marginLeft: undefined,
-          marginRight: undefined,
-          marginTop: undefined,
-          windowColor: undefined,
-        },
+        default: {},
         yellow: {
           backgroundColor: 'rgba(0, 0, 0, 0.85)',
           edgeStyle: 'none',
           fontColor: '#ffff00',
-          fontFamily: undefined,
-          fontSize: undefined,
-          marginBottom: undefined,
-          marginLeft: undefined,
-          marginRight: undefined,
-          marginTop: undefined,
           windowColor: 'rgba(0, 0, 0, 0.85)',
         },
         large: {
           backgroundColor: 'rgba(0, 0, 0, 0.65)',
           edgeStyle: 'dropshadow',
           fontColor: '#ffffff',
-          fontFamily: undefined,
           fontSize: '150%',
-          marginBottom: undefined,
-          marginLeft: undefined,
-          marginRight: undefined,
-          marginTop: undefined,
           windowColor: 'rgba(0, 0, 0, 0.65)',
         },
       };
-
-      function playMuted(player) {
-        player.muted = true;
-        const playResult = player.play();
-        if (playResult && typeof playResult.catch === 'function') playResult.catch(() => {});
-      }
 
       onPlayerReady((player) => {
         function reportTracks() {
@@ -138,27 +123,21 @@
           sendToParent('text-tracks', { tracks });
         }
 
-        player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], (event) => {
-          if (event.type === 'addtrack' && event.track.type === 'srt') {
-            event.track.mode = 'showing';
-          }
-          reportTracks();
-        });
+        player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], reportTracks);
         player.addEventListener('sourcechange', reportTracks);
 
         onParentMessage('text-source', (message) => {
           if (typeof message.name !== 'string' || !sourceConfigurations[message.name]) return;
           player.source = sourceConfigurations[message.name];
-          playMuted(player);
+          player.play();
           reportTracks();
         });
         onParentMessage('text-style', (message) => {
           if (typeof message.name !== 'string' || !stylePresets[message.name]) return;
-          Object.assign(player.textTrackStyle, stylePresets[message.name]);
+          Object.assign(player.textTrackStyle, resetStyle, stylePresets[message.name]);
         });
 
         reportTracks();
-        playMuted(player);
       });
     </script>
   </body>

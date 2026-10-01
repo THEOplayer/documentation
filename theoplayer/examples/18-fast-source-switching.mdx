@@ -13,14 +13,16 @@ import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/fast-sour
 
 <FastSourceSwitchingDemo />
 
-The time to first frame (TTFF) is measured from the first `play` event to the first `playing` event after a source change.
-The second measurement starts when the source is set. The demo ignores events from superseded switches.
+The initial source stays paused until you press Play. Its startup time is measured from the first `play` event to the first `playing` event, and “Since source change” is not measured.
+When you load another source, the demo measures both startup time and time since the source was set. It ignores events from superseded switches.
 
 ```js
-player.source = {
-  sources: { src: streamUrl, type: 'application/x-mpegurl' },
-};
-player.play();
+function loadSource(streamUrl) {
+  player.source = {
+    sources: { src: streamUrl, type: 'application/x-mpegurl' },
+  };
+  player.play();
+}
 ```
 
 <details>

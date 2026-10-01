@@ -75,14 +75,12 @@
           activeListeners = [];
         }
 
-        function beginSwitch(source) {
+        function trackSwitch(source, sourceSetAt) {
           removeActiveListeners();
           const token = ++switchToken;
-          const sourceSetAt = performance.now();
           const measurement = {
             source: source.label,
             playStartedAt: null,
-            muted: false,
             complete: false,
           };
 
@@ -97,8 +95,7 @@
             report({
               source: measurement.source,
               ttff: measurement.playStartedAt === null || error ? null : now - measurement.playStartedAt,
-              sinceSourceChange: error ? null : now - sourceSetAt,
-              muted: measurement.muted,
+              sinceSourceChange: sourceSetAt === null || error ? null : now - sourceSetAt,
               error: error || null,
             });
             removeActiveListeners();
@@ -127,35 +124,14 @@
             ['error', onError],
           ];
           activeListeners.forEach(([eventName, listener]) => player.addEventListener(eventName, listener));
+        }
 
+        function beginSwitch(source) {
           player.pause();
-          player.muted = false;
+          const sourceSetAt = performance.now();
+          trackSwitch(source, sourceSetAt);
           player.source = sourceConfiguration(source);
-
-          function attemptPlay() {
-            let playPromise;
-            try {
-              playPromise = player.play();
-            } catch (error) {
-              handlePlayError(error);
-              return;
-            }
-            if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(handlePlayError);
-          }
-
-          function handlePlayError(error) {
-            if (!isCurrent() || measurement.complete) return;
-            if (!measurement.muted) {
-              measurement.muted = true;
-              measurement.playStartedAt = null;
-              player.muted = true;
-              attemptPlay();
-              return;
-            }
-            finish((error && error.message) || 'Playback could not start');
-          }
-
-          attemptPlay();
+          player.play();
         }
 
         onParentMessage('switch-source', (message) => {
@@ -168,7 +144,7 @@
           });
         });
 
-        beginSwitch(initialSource);
+        trackSwitch(initialSource, null);
       });
     </script>
   </body>

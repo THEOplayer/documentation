@@ -64,9 +64,6 @@
         }
 
         player.addEventListener(['timeupdate', 'progress', 'durationchange', 'seeking', 'seeked', 'play', 'pause'], report);
-        player.muted = true;
-        const playResult = player.play();
-        if (playResult && typeof playResult.catch === 'function') playResult.catch(() => {});
         report();
       });
     </script>

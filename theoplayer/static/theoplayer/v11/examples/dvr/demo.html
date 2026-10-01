@@ -61,7 +61,7 @@
             seekableEnd: range ? range.end : null,
             seekableLength: range ? range.end - range.start : null,
             behindLive: range ? Math.max(0, range.end - player.currentTime) : null,
-            programDateTime: programDateTime instanceof Date ? programDateTime.toISOString() : null,
+            programDateTime: programDateTime instanceof Date && Number.isFinite(programDateTime.getTime()) ? programDateTime.toISOString() : null,
           });
         }
 
@@ -84,9 +84,6 @@
         player.addEventListener(['play', 'pause'], updatePausedTimer);
         window.addEventListener('pagehide', () => window.clearInterval(pausedTimer));
 
-        player.muted = true;
-        const playResult = player.play();
-        if (playResult && typeof playResult.catch === 'function') playResult.catch(() => {});
         report();
         updatePausedTimer();
       });

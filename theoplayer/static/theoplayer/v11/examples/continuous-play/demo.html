@@ -59,12 +59,6 @@
           });
         }
 
-        function playMuted() {
-          player.muted = true;
-          const playResult = player.play();
-          if (playResult && typeof playResult.catch === 'function') playResult.catch(() => {});
-        }
-
         function savePosition() {
           if (!Number.isFinite(player.currentTime) || player.currentTime <= 0) return;
           saved = player.currentTime;
@@ -109,7 +103,6 @@
         });
 
         if (player.readyState >= 1) restorePosition();
-        playMuted();
         report();
       });
     </script>

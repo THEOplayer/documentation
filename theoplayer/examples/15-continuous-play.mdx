@@ -1,5 +1,5 @@
 ---
-sidebar_custom_props: { icon: '▶️' }
+sidebar_custom_props: { icon: '🔁' }
 description: Resume playback from its last saved position.
 ---
 
@@ -14,7 +14,7 @@ import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/continuou
 <ContinuousPlayDemo />
 
 This demo stores the playhead in `localStorage` for this source URL. It saves during playback, on pause, and when the page is closed. The position is cleared when playback ends.
-For cross-device continuity, store the position in a cookie or on your server for the signed-in user.
+Local storage and cookies persist only in the same browser. For cross-device continuity, store the position on your server for the signed-in user.
 
 ```js
 const key = `theoplayer-continuous-play:${sourceUrl}`;
