@@ -4,7 +4,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Example, { type ExampleController } from '@site/src/components/Example';
 import styles from '../shared.module.css';
 
-type SourceName = 'srt' | 'cea608' | 'ttml';
+type SourceName = 'srt' | 'webvtt' | 'cea608' | 'ttml';
 type StyleName = 'default' | 'yellow' | 'large';
 
 interface TextTrackRow {
@@ -17,6 +17,7 @@ interface TextTrackRow {
 
 const sources: Record<SourceName, string> = {
   srt: 'Sideloaded SRT',
+  webvtt: 'Sideloaded WebVTT',
   cea608: 'CEA-608 captions',
   ttml: 'DASH TTML',
 };

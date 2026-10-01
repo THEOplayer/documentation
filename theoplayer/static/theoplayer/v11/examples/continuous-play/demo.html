@@ -38,8 +38,9 @@
       licenseUrl: Point this to your license file, or replace it with a license property.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
       source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -49,6 +50,7 @@
       let restoredFrom = null;
       let lastSavedAt = 0;
       let restored = false;
+      let savingEnabled = true;
 
       onPlayerReady((player) => {
         function report() {
@@ -60,7 +62,7 @@
         }
 
         function savePosition() {
-          if (!Number.isFinite(player.currentTime) || player.currentTime <= 0) return;
+          if (!savingEnabled || !Number.isFinite(player.currentTime) || player.currentTime <= 0) return;
           saved = player.currentTime;
           localStorage.setItem(storageKey, String(saved));
           lastSavedAt = Date.now();
@@ -83,22 +85,30 @@
         player.addEventListener('loadedmetadata', restorePosition);
         player.addEventListener('durationchange', restorePosition);
         player.addEventListener('timeupdate', () => {
-          if (Date.now() - lastSavedAt >= 1000) savePosition();
+          if (savingEnabled && Date.now() - lastSavedAt >= 1000) savePosition();
           else report();
         });
-        player.addEventListener('pause', savePosition);
+        player.addEventListener('play', () => {
+          savingEnabled = true;
+        });
+        player.addEventListener('pause', () => {
+          if (savingEnabled) savePosition();
+        });
         player.addEventListener('ended', () => {
           localStorage.removeItem(storageKey);
           saved = null;
           restoredFrom = null;
           report();
         });
-        window.addEventListener('pagehide', savePosition);
+        window.addEventListener('pagehide', () => {
+          if (savingEnabled) savePosition();
+        });
 
         onParentMessage('clear-saved-position', () => {
           localStorage.removeItem(storageKey);
           saved = null;
           restoredFrom = null;
+          savingEnabled = false;
           report();
         });
 

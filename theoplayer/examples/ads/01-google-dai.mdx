@@ -16,6 +16,8 @@ import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/google
 The stream type and the `ssai` configuration identify the Google DAI stream. VOD uses a content source ID and video ID; live streams use an asset key.
 
 ```js
+player.autoplay = true;
+
 // VOD HLS
 player.source = {
   sources: {
@@ -23,9 +25,12 @@ player.source = {
     ssai: {
       integration: 'google-dai',
       availabilityType: 'vod',
-      apiKey: null,
+      apiKey: '',
       contentSourceID: '2548831',
       videoID: 'tears-of-steel',
+      adTagParameters: {
+        description_url: window.location.href,
+      },
     },
   },
 };
@@ -37,7 +42,7 @@ player.source = {
     ssai: {
       integration: 'google-dai',
       availabilityType: 'live',
-      apiKey: null,
+      apiKey: '',
       assetKey: 'c-rArva4ShKVIAkNfy6HUQ',
     },
   },

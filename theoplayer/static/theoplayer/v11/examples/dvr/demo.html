@@ -38,17 +38,25 @@
       licenseUrl: Point this to your license file, or replace it with a license property.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
       source='{"sources":{"src":"https://demo.unified-streaming.com/k8s/live/stable/live.isml/.m3u8","type":"application/x-mpegurl"},"metadata":{"title":"Live DVR stream"}}'
+      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
       onPlayerReady((player) => {
+        function ranges(timeRanges) {
+          const result = [];
+          for (let index = 0; index < timeRanges.length; index += 1) {
+            result.push({ start: timeRanges.start(index), end: timeRanges.end(index) });
+          }
+          return result;
+        }
+
         function currentWindow() {
           const ranges = player.seekable;
           if (ranges.length === 0) return null;
-          const last = ranges.length - 1;
-          return { start: ranges.start(last), end: ranges.end(last) };
+          return { start: ranges.start(0), end: ranges.end(ranges.length - 1) };
         }
 
         function report() {
@@ -62,6 +70,8 @@
             seekableLength: range ? range.end - range.start : null,
             behindLive: range ? Math.max(0, range.end - player.currentTime) : null,
             programDateTime: programDateTime instanceof Date && Number.isFinite(programDateTime.getTime()) ? programDateTime.toISOString() : null,
+            buffered: ranges(player.buffered),
+            seekable: ranges(player.seekable),
           });
         }
 

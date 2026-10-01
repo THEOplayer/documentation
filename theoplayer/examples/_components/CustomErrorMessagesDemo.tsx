@@ -12,14 +12,14 @@ const sourceLabels: Record<SourceName, string> = {
 };
 
 export interface CustomErrorMessagesDemoProps {
-  ui: 'open-video-ui' | 'legacy';
+  ui: 'open-video-ui' | 'default-ui';
   exposeGlobals?: boolean;
 }
 
 export default function CustomErrorMessagesDemo({ ui, exposeGlobals }: CustomErrorMessagesDemoProps): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [sourceName, setSourceName] = useState<SourceName>('notFound');
-  const src = useBaseUrl(`/theoplayer/v11/examples/custom-error-messages/${ui === 'legacy' ? 'legacy-ui' : 'demo'}.html`);
+  const src = useBaseUrl(`/theoplayer/v11/examples/custom-error-messages/${ui === 'default-ui' ? 'default-ui' : 'demo'}.html`);
   return (
     <>
       <Example ref={exampleRef} src={src} exposeGlobals={exposeGlobals} />

@@ -6,6 +6,7 @@ description: Load, style, and inspect subtitles and closed captions.
 # Closed captions and subtitles
 
 Compare sideloaded subtitles with captions and subtitles included in a stream.
+For sideloaded text tracks, set `format` on the text track description (for example, `'srt'`, `'webvtt'`, and other supported formats).
 
 import CodeBlock from '@theme/CodeBlock';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -17,32 +18,9 @@ import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/closed
 WebVTT, TTML, and CEA-608 tracks can be included in a manifest. You can also add a subtitle file when setting the source.
 The demo filters out metadata tracks and reports each text track's label, language, kind, format, and mode.
 
-## Add an SRT track
-
-Set `format: 'srt'` when the sideloaded subtitle file uses SRT:
-
-```js
-player.source = {
-  sources: {
-    src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
-    type: 'application/x-mpegurl',
-  },
-  textTracks: [
-    {
-      src: 'https://cdn.theoplayer.com/video/elephants-dream/captions.nl.srt',
-      srclang: 'nl',
-      label: 'Nederlands (SRT)',
-      kind: 'subtitles',
-      format: 'srt',
-      default: true,
-    },
-  ],
-};
-```
-
 ## Style subtitles
 
-Open Video UI includes a subtitle style menu in its language menu. You can also set `player.textTrackStyle` directly.
+You can set `player.textTrackStyle` directly.
 See the [`TextTrackStyle` API](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackStyle.html) for supported properties.
 
 ```js

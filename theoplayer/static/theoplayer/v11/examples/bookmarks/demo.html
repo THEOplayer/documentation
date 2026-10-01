@@ -38,8 +38,9 @@
       licenseUrl: Point this to your license file, or replace it with a license property.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
       source='{"sources":{"src":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg","metadata":{"title":"Star Wars Reel"}}'
+      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -86,36 +87,25 @@
           bookmarks[activeIndex].duration = Number.isFinite(player.duration) ? player.duration : 0;
         }
 
-        function selectBookmark(index, shouldPlay = true) {
+        function selectBookmark(index) {
           if (!bookmarks[index]) return;
           saveActivePosition();
           const bookmark = bookmarks[index];
           const token = ++switchToken;
-          const sourceChanged = bookmark.src !== currentSource;
-
-          function restorePosition() {
-            if (token !== switchToken) return;
-            activeIndex = index;
-            player.currentTime = bookmark.currentTime;
-            saveActivePosition();
-            report();
-          }
-
-          player.pause();
-          if (!shouldPlay) {
-            activeIndex = index;
-            report();
-          }
-          if (sourceChanged) {
-            currentSource = bookmark.src;
-            player.addEventListener('loadedmetadata', restorePosition, { once: true });
-            player.source = getSource(bookmark);
-          } else if (player.readyState >= 1) {
-            restorePosition();
-          } else {
-            player.addEventListener('loadedmetadata', restorePosition, { once: true });
-          }
-          if (shouldPlay) player.play();
+          currentSource = bookmark.src;
+          activeIndex = index;
+          report();
+          player.addEventListener(
+            'loadedmetadata',
+            () => {
+              if (token !== switchToken) return;
+              player.currentTime = bookmark.currentTime;
+              saveActivePosition();
+              report();
+            },
+            { once: true }
+          );
+          player.source = getSource(bookmark);
         }
 
         player.addEventListener('timeupdate', () => {
@@ -147,7 +137,7 @@
         });
 
         report();
-        selectBookmark(1, false);
+        selectBookmark(1);
       });
     </script>
   </body>

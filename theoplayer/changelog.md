@@ -598,7 +598,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - Fixed an issue where [ID3 metadata carried inside CMAF](https://aomediacodec.github.io/id3-emsg/) would end up in separate ID3 text tracks if the `scheme_id_uri` or `value` of the encapsulating `emsg` boxes were different. All ID3 cues will now always end up in a single ID3 text track, and the `value` of the `emsg` is ignored. This matches the existing behavior on Android and iOS.
 - Fixed an issue where an HESP stream failed to load on an iOS WebView.
 - Fixed an issue where `emsg` cues were never removed while playing an HESP stream.
-- Fixed a regression where the "exit fullscreen" button was no longer visible when the player encounters a fatal error while playing in fullscreen mode using the legacy UI.
+- Fixed a regression where the "exit fullscreen" button was no longer visible when the player encounters a fatal error while playing in fullscreen mode using the Default UI.
 - Fixed an issue where the `encrypted` event was not properly dispatched when playing a DRM-protected stream.
 - Fixed an issue where the player stalls for a while when switching back from ad to content with an OptiView Ads stream.
 

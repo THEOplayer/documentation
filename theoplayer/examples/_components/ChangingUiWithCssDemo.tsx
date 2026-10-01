@@ -3,13 +3,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Example, { type ExampleController } from '@site/src/components/Example';
 import styles from '../shared.module.css';
 
-export default function ChangingUiWithCssDemo(): JSX.Element {
+type Props = { ui: 'open-video-ui' | 'default-ui' };
+
+export default function ChangingUiWithCssDemo({ ui }: Props): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [color, setColor] = useState('#11cefe');
+  const demoFile = ui === 'default-ui' ? 'default-ui.html' : 'demo.html';
 
   return (
     <>
-      <Example ref={exampleRef} src={useBaseUrl('/theoplayer/v11/examples/changing-ui-with-css/demo.html')} />
+      <Example ref={exampleRef} src={useBaseUrl(`/theoplayer/v11/examples/changing-ui-with-css/${demoFile}`)} />
       <div className={styles.panel}>
         <div className={styles.controls}>
           <label>

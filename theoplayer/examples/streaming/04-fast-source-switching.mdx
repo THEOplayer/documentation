@@ -13,15 +13,15 @@ import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/fast-s
 
 <FastSourceSwitchingDemo />
 
-The initial source stays paused until you press Play. Its startup time is measured from the first `play` event to the first `playing` event, and “Since source change” is not measured.
-When you load another source, the demo measures both startup time and time since the source was set. It ignores events from superseded switches.
+The player starts its initial source automatically and measures startup time from source assignment. When you load another source, the demo also measures time since that source was set. It ignores events from superseded switches.
 
 ```js
+player.autoplay = true;
+
 function loadSource(streamUrl) {
   player.source = {
     sources: { src: streamUrl, type: 'application/x-mpegurl' },
   };
-  player.play();
 }
 ```
 

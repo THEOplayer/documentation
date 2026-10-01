@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Changing the legacy UI with CSS</title>
+    <title>Changing the Default UI with CSS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script src="../utils.js"></script>
     <style>
       html,
       body {
@@ -15,21 +16,17 @@
 
       .theoplayer-skin {
         width: 100%;
-        color: #11cefe;
+        --accent-color: #11cefe;
+        color: var(--accent-color);
       }
 
       .theoplayer-skin .vjs-control-bar .vjs-button::before {
-        color: #11cefe;
+        color: var(--accent-color);
       }
 
       .theoplayer-skin .vjs-play-progress,
       .theoplayer-skin .vjs-volume-level {
-        background: #000;
-      }
-
-      .theoplayer-skin .vjs-icon-cog,
-      .theoplayer-skin .vjs-icon-cog::before {
-        display: none !important;
+        background: var(--accent-color);
       }
     </style>
   </head>
@@ -39,7 +36,9 @@
       var player = new THEOplayer.Player(document.querySelector('#player'), {
         libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
         licenseUrl: '../../../../theoplayer-license.txt',
+        mutedAutoplay: 'all',
       });
+      player.autoplay = true;
       player.source = {
         sources: [
           {
@@ -50,6 +49,11 @@
         poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
         metadata: { title: 'Big Buck Bunny' },
       };
+
+      onParentMessage('accent-color', (message) => {
+        if (typeof message.color !== 'string' || !/^#[0-9a-f]{6}$/i.test(message.color)) return;
+        document.querySelector('.theoplayer-skin').style.setProperty('--accent-color', message.color);
+      });
     </script>
   </body>
 </html>

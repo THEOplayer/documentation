@@ -38,8 +38,9 @@
       licenseUrl: Point this to your license file, or replace it with a license property.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
-      source='{"sources":{"src":"https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/elephants-dream/playlist.png","textTracks":[{"src":"https://cdn.theoplayer.com/video/elephants-dream/captions.nl.srt","srclang":"nl","label":"Nederlands (SRT)","kind":"subtitles","format":"srt","default":true}],"metadata":{"title":"Elephants Dream"}}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/elephants-dream/playlist.png","textTracks":[{"src":"https://cdn.theoplayer.com/video/elephants-dream/captions.nl.srt","srclang":"nl","label":"Dutch (SRT)","kind":"subtitles","format":"srt","default":true}],"metadata":{"title":"Elephants Dream"}}'
+      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -54,9 +55,27 @@
             {
               src: 'https://cdn.theoplayer.com/video/elephants-dream/captions.nl.srt',
               srclang: 'nl',
-              label: 'Nederlands (SRT)',
+              label: 'Dutch (SRT)',
               kind: 'subtitles',
               format: 'srt',
+              default: true,
+            },
+          ],
+          metadata: { title: 'Elephants Dream' },
+        },
+        webvtt: {
+          sources: {
+            src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+            type: 'application/x-mpegurl',
+          },
+          poster: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.png',
+          textTracks: [
+            {
+              src: 'https://cdn.theoplayer.com/video/elephants-dream/captions.en.vtt',
+              srclang: 'en',
+              label: 'English (WebVTT)',
+              kind: 'subtitles',
+              format: 'webvtt',
               default: true,
             },
           ],
@@ -110,6 +129,9 @@
       };
 
       onPlayerReady((player) => {
+        let currentSource = 'srt';
+        let autoSelectedTrack;
+
         function reportTracks() {
           const tracks = Array.from(player.textTracks)
             .filter((track) => track.kind !== 'metadata')
@@ -123,13 +145,46 @@
           sendToParent('text-tracks', { tracks });
         }
 
+        function selectSubtitleTrack() {
+          if (currentSource !== 'cea608' && currentSource !== 'ttml') return;
+          const tracks = Array.from(player.textTracks).filter((track) => track.kind === 'subtitles' || track.kind === 'captions');
+          const showingTrack = tracks.find((track) => track.mode === 'showing');
+          const englishTrack = currentSource === 'ttml' ? tracks.find((track) => (track.language || '').toLowerCase().startsWith('en')) : undefined;
+
+          if (showingTrack) {
+            if (englishTrack && showingTrack === autoSelectedTrack && showingTrack !== englishTrack) {
+              showingTrack.mode = 'disabled';
+              englishTrack.mode = 'showing';
+              autoSelectedTrack = englishTrack;
+              reportTracks();
+            }
+            return;
+          }
+
+          const track = englishTrack || tracks[0];
+          if (track) {
+            track.mode = 'showing';
+            autoSelectedTrack = track;
+            reportTracks();
+          }
+        }
+
         player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], reportTracks);
+        player.textTracks.addEventListener('addtrack', selectSubtitleTrack);
         player.addEventListener('sourcechange', reportTracks);
 
         onParentMessage('text-source', (message) => {
           if (typeof message.name !== 'string' || !sourceConfigurations[message.name]) return;
+          if (message.name === 'cea608' || message.name === 'ttml') {
+            Array.from(player.textTracks)
+              .filter((track) => track.kind === 'subtitles' || track.kind === 'captions')
+              .forEach((track) => {
+                track.mode = 'disabled';
+              });
+          }
+          currentSource = message.name;
+          autoSelectedTrack = undefined;
           player.source = sourceConfigurations[message.name];
-          player.play();
           reportTracks();
         });
         onParentMessage('text-style', (message) => {

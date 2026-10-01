@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Adding buttons to the UI (legacy UI)</title>
+    <title>Adding buttons to the UI (Default UI)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
@@ -77,7 +77,9 @@
       var player = new THEOplayer.Player(playerElement, {
         libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
         licenseUrl: '../../../../theoplayer-license.txt',
+        mutedAutoplay: 'all',
       });
+      player.autoplay = true;
       player.source = {
         sources: [
           {

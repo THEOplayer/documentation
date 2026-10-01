@@ -1,6 +1,7 @@
 import React, { type JSX, useRef, useState } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Example, { type ExampleController } from '@site/src/components/Example';
+import RangeBar, { type TimeRange } from './RangeBar';
 import styles from '../shared.module.css';
 
 interface DvrState {
@@ -11,6 +12,8 @@ interface DvrState {
   seekableLength: number | null;
   behindLive: number | null;
   programDateTime: string | null;
+  buffered: TimeRange[];
+  seekable: TimeRange[];
 }
 
 const emptyState: DvrState = {
@@ -21,6 +24,8 @@ const emptyState: DvrState = {
   seekableLength: null,
   behindLive: null,
   programDateTime: null,
+  buffered: [],
+  seekable: [],
 };
 
 function seconds(value: number | null): string {
@@ -64,6 +69,22 @@ export default function DvrDemo(): JSX.Element {
             </button>
           </div>
         </div>
+        <RangeBar
+          label="Buffered"
+          ranges={state.buffered}
+          start={state.seekable[0]?.start ?? 0}
+          end={state.seekable[state.seekable.length - 1]?.end ?? 0}
+          color="#4c8bf5"
+          currentTime={state.currentTime}
+        />
+        <RangeBar
+          label="Seekable"
+          ranges={state.seekable}
+          start={state.seekable[0]?.start ?? 0}
+          end={state.seekable[state.seekable.length - 1]?.end ?? 0}
+          color="#f0ad4e"
+          currentTime={state.currentTime}
+        />
         <table className={styles.readout}>
           <tbody>
             <tr>

@@ -52,6 +52,8 @@
       const configuration = {
         libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
         licenseUrl: '../../../../theoplayer-license.txt',
+        mutedAutoplay: 'all',
+        autoplay: true,
         cast: {
           strategy: strategy,
           // When no appID is set, THEOplayer uses its default receiver application.
@@ -68,6 +70,7 @@
       const ui = document.createElement('theoplayer-default-ui');
       ui.setAttribute('configuration', JSON.stringify(configuration));
       ui.setAttribute('source', JSON.stringify(source));
+      ui.setAttribute('autoplay', '');
       document.body.appendChild(ui);
 
       onPlayerReady((player) => {

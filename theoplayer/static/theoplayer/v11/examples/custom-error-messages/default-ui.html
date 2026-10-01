@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Custom error messages (legacy UI)</title>
+    <title>Custom error messages (Default UI)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
     <style>
@@ -62,7 +62,9 @@
       var player = new THEOplayer.Player(element, {
         libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
         licenseUrl: '../../../../theoplayer-license.txt',
+        mutedAutoplay: 'all',
       });
+      player.autoplay = true;
 
       // Replace the message in the error display when an error occurs.
       player.addEventListener('error', (event) => {

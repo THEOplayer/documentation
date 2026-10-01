@@ -39,7 +39,8 @@
       licenseUrl: Point this to your license file, or replace it with a license property.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -67,10 +68,9 @@
 
       const defaultConfiguration = {
         format: 'hls',
-        availability: 'vod',
+        availabilityType: 'vod',
         contentSourceID: '2548831',
         videoID: 'tears-of-steel',
-        assetKey: '',
         apiKey: '',
       };
 
@@ -83,8 +83,8 @@
         function describeAdBreak(adBreak) {
           return {
             timeOffset: adBreak.timeOffset,
-            maxDuration: adBreak.maxDuration ?? null,
-            adCount: adBreak.ads?.length ?? 0,
+            maxDuration: adBreak.maxDuration,
+            adCount: adBreak.ads.length,
           };
         }
 
@@ -139,15 +139,20 @@
         function sourceFor(configuration) {
           const ssai = {
             integration: 'google-dai',
-            availabilityType: configuration.availability,
-            apiKey: configuration.apiKey || null,
+            availabilityType: configuration.availabilityType,
+            apiKey: configuration.apiKey,
           };
-          if (configuration.availability === 'vod') {
-            ssai.contentSourceID = configuration.contentSourceID;
-            ssai.videoID = configuration.videoID;
-          } else {
-            ssai.assetKey = configuration.assetKey;
+          if (configuration.authToken) ssai.authToken = configuration.authToken;
+          if (configuration.networkCode) ssai.networkCode = configuration.networkCode;
+          if (configuration.streamActivityMonitorID) ssai.streamActivityMonitorID = configuration.streamActivityMonitorID;
+          if (configuration.enableNonce) ssai.enableNonce = true;
+          if (configuration.adTagParameters && Object.keys(configuration.adTagParameters).length > 0) {
+            ssai.adTagParameters = configuration.adTagParameters;
           }
+          if (configuration.availabilityType === 'vod') {
+            if (configuration.contentSourceID) ssai.contentSourceID = configuration.contentSourceID;
+            if (configuration.videoID) ssai.videoID = configuration.videoID;
+          } else if (configuration.assetKey) ssai.assetKey = configuration.assetKey;
           return {
             sources: {
               type: configuration.format === 'dash' ? 'application/dash+xml' : 'application/x-mpegurl',
@@ -157,7 +162,7 @@
         }
 
         function setConfiguration(configuration) {
-          previousAdBreaks = configuration.availability === 'live' ? new Set(player.ads.scheduledAdBreaks) : new Set();
+          previousAdBreaks = configuration.availabilityType === 'live' ? new Set(player.ads.scheduledAdBreaks) : new Set();
           const token = ++sourceToken;
           events = [];
           adBreaks = [];
@@ -188,7 +193,6 @@
 
         onParentMessage('load-dai', (message) => {
           setConfiguration(message.config);
-          player.play();
         });
         onParentMessage('clear-dai-log', () => {
           events = [];

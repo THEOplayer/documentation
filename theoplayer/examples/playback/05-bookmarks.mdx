@@ -17,6 +17,7 @@ Each bookmark stores its title, source, poster, and playhead position. Selecting
 Use the button below the player to add a bookmark at the current playhead.
 
 ```js
+player.autoplay = true;
 player.addEventListener(
   'loadedmetadata',
   () => {
@@ -28,7 +29,6 @@ player.source = {
   sources: [{ src: bookmark.src, type: 'application/x-mpegurl' }],
   poster: bookmark.poster,
 };
-player.play();
 ```
 
 <details>

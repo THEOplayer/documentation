@@ -38,8 +38,8 @@
       licenseUrl: Point this to your license file, or replace it with a license property.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
-      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -47,6 +47,7 @@
         src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
         label: 'Big Buck Bunny',
         mediaType: 'hls',
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
       };
       let switchToken = 0;
       let activeListeners = [];
@@ -58,6 +59,7 @@
             src: source.src,
             ...(contentType ? { type: contentType } : {}),
           },
+          ...(source.poster ? { poster: source.poster } : {}),
           metadata: { title: source.label },
         };
       }
@@ -127,11 +129,9 @@
         }
 
         function beginSwitch(source) {
-          player.pause();
           const sourceSetAt = performance.now();
           trackSwitch(source, sourceSetAt);
           player.source = sourceConfiguration(source);
-          player.play();
         }
 
         onParentMessage('switch-source', (message) => {
@@ -144,7 +144,9 @@
           });
         });
 
-        trackSwitch(initialSource, null);
+        const sourceSetAt = performance.now();
+        trackSwitch(initialSource, sourceSetAt);
+        player.source = sourceConfiguration(initialSource);
       });
     </script>
   </body>
