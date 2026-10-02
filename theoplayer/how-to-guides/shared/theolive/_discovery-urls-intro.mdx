@@ -1,0 +1,52 @@
+Before the player can play an OptiView Live channel, it sends a discovery request to find the stream details of that channel (such as its manifest URLs and token security settings).
+OptiView Live channels are served by one of three discovery API versions:
+
+| API version | Channels                                          |
+| ----------- | ------------------------------------------------- |
+| V1 (legacy) | Channels created with the legacy THEOlive API.    |
+| V2          | Distributions created with the OptiView Live API. |
+| V3          | Distributions served by the newest discovery API. |
+
+The player does not know in advance which API version serves your channel.
+If you do not configure a discovery URL, the player tries its built-in discovery URLs one by one, in this order:
+
+1. V2
+2. V1 (legacy)
+3. V3
+
+The player stops at the first discovery URL that returns the channel.
+If your channel is not served by V2, the earlier requests fail before the right one succeeds.
+These failed requests add a small delay before playback starts, and they show up as `404` responses in the network tab of your browser or in a network proxy.
+The `404` responses are expected and do not mean that playback failed.
+
+## Why configure a discovery URL
+
+When you configure the discovery URL that serves your channel, the player sends its first discovery request to that URL.
+This removes the failed requests and the extra startup delay.
+
+Configured discovery URLs do not replace the built-in discovery URLs.
+The player tries them first, and continues with the built-in discovery URLs (V2, V1, V3) if the configured ones do not return the channel.
+A wrong discovery URL therefore costs one extra request, but it does not break playback.
+
+On platforms that support both `discoveryUrl` and `discoveryUrls`, the player tries `discoveryUrl` first, then each URL of `discoveryUrls` in the order of the list, and then the built-in discovery URLs.
+
+## Which discovery URL to use
+
+The player derives the API version from the path of the discovery URL, so use the URL exactly as listed for your platform, including the trailing `/`.
+The URL for V1 channels is different on Web than on the other platforms.
+
+| API version | Web                                             | Android, iOS, Roku                              |
+| ----------- | ----------------------------------------------- | ----------------------------------------------- |
+| V2          | `https://discovery.theo.live/v2/distributions/` | `https://discovery.theo.live/v2/distributions/` |
+| V1 (legacy) | `https://discovery.theo.live/`                  | `https://discovery.theo.live/v2/publications/`  |
+| V3          | `https://discovery.theo.live/v3/`               | `https://discovery.theo.live/v3/`               |
+
+React Native and Flutter apps pass the discovery URL to the underlying Web, Android or iOS SDK, so the same rules apply per platform.
+
+:::tip Find the API version of your channel
+
+Play your channel without a discovery URL and open the network tab of your browser (or a network proxy for a native app).
+The discovery request that returns `200` shows the discovery URL that serves your channel.
+For example, a request to `https://discovery.theo.live/v2/distributions/<your-channel-id>` means that your channel is served by V2.
+
+:::

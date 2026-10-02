@@ -1,0 +1,50 @@
+---
+title: Discovery URLs
+sidebar_position: 4
+---
+
+# Discovery URLs
+
+import Intro from '../../shared/theolive/_discovery-urls-intro.mdx';
+
+<Intro />
+
+## Configure the discovery URL
+
+Set the discovery URL in the `theolive` property of `THEOplayerConfig`.
+For example, for a channel served by V2:
+
+```dart
+player = THEOplayer(
+  theoPlayerConfig: THEOplayerConfig(
+    license: "your-license",
+    theolive: TheoLiveConfiguration(
+      discoveryUrl: "https://discovery.theo.live/v2/distributions/",
+    ),
+  ),
+);
+```
+
+Flutter supports one configured discovery URL, which is passed to the Web, Android or iOS SDK.
+The V2 and V3 discovery URLs are the same on all platforms.
+For V1 channels, the URL is different on Web (`https://discovery.theo.live/`) than on Android and iOS (`https://discovery.theo.live/v2/publications/`), so use `kIsWeb` to select the right one:
+
+```dart
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+final theoLiveConfig = TheoLiveConfiguration(
+  discoveryUrl: kIsWeb ? "https://discovery.theo.live/" : "https://discovery.theo.live/v2/publications/",
+);
+```
+
+## Configuration reference
+
+All properties of `TheoLiveConfiguration` are optional.
+
+| Property            | Type      | Platforms         | Description                                                                                                   |
+| ------------------- | --------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `discoveryUrl`      | `String?` | Web, Android, iOS | A discovery URL that the player tries before the built-in discovery URLs.                                     |
+| `externalSessionId` | `String?` | Web, Android, iOS | An ID used to report usage analytics.                                                                         |
+| `fallbackEnabled`   | `bool?`   | Web               | Whether the player plays the fallback stream when a V1 channel has a fallback configured. Defaults to `true`. |
+
+The default discovery order V2, V1, V3 applies when the app uses THEOplayer 11.13.0 or later.

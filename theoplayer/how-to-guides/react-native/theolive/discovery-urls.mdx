@@ -1,0 +1,57 @@
+---
+title: Discovery URLs
+sidebar_position: 4
+---
+
+# Discovery URLs
+
+import Intro from '../../shared/theolive/_discovery-urls-intro.mdx';
+
+<Intro />
+
+## Configure the discovery URL
+
+Set the discovery URL in the `theoLive` property of the player configuration.
+For example, for a channel served by V2:
+
+```tsx
+import { THEOplayerView, type PlayerConfiguration } from 'react-native-theoplayer';
+
+const playerConfig: PlayerConfiguration = {
+  license: 'your-license',
+  theoLive: {
+    discoveryUrl: 'https://discovery.theo.live/v2/distributions/',
+  },
+};
+
+<THEOplayerView config={playerConfig} />;
+```
+
+React Native supports one configured discovery URL, which is passed to the Web, Android or iOS SDK.
+The V2 and V3 discovery URLs are the same on all platforms.
+For V1 channels, the URL is different on Web (`https://discovery.theo.live/`) than on Android and iOS (`https://discovery.theo.live/v2/publications/`), so use `Platform.OS` to select the right one:
+
+```tsx
+import { Platform } from 'react-native';
+
+const playerConfig: PlayerConfiguration = {
+  license: 'your-license',
+  theoLive: {
+    discoveryUrl: Platform.OS === 'web' ? 'https://discovery.theo.live/' : 'https://discovery.theo.live/v2/publications/',
+  },
+};
+```
+
+## Configuration reference
+
+All properties of [`TheoLiveConfiguration`](https://theoplayer.github.io/react-native-theoplayer/api/interfaces/TheoLiveConfiguration.html) are optional.
+
+| Property            | Type      | Platforms         | Description                                                                                                                                                                                                                     |
+| ------------------- | --------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `discoveryUrl`      | `string`  | Web, Android, iOS | A discovery URL that the player tries before the built-in discovery URLs.                                                                                                                                                       |
+| `externalSessionId` | `string`  | Web, Android, iOS | An ID used to report usage analytics.                                                                                                                                                                                           |
+| `discoveryHeader`   | `string`  | Web               | A value that the player sends in the `x-theolive-discovery` HTTP header of every discovery request. Only use this if a discovery URL that you configured expects this header, for example your own proxy in front of discovery. |
+| `fallbackEnabled`   | `boolean` | Web               | Whether the player plays the fallback stream when a V1 channel has a fallback configured. Defaults to `true`.                                                                                                                   |
+| `analyticsDisabled` | `boolean` | Android           | Whether OptiView Live analytics is disabled. Defaults to `false`.                                                                                                                                                               |
+
+The default discovery order V2, V1, V3 applies when the app uses THEOplayer 11.13.0 or later.
