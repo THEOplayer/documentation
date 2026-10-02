@@ -21,15 +21,17 @@ LCEVC playback requires Media Source Extensions. On iOS Safari, the player falls
 ```
 
 ```js
-player.autoplay = true;
-player.abr.strategy = 'quality';
-player.source = {
-  sources: {
-    src: 'https://d3mfda3gpj3dw1.cloudfront.net/vnU7dmJoRQgbO0gr/master.mpd',
-    type: 'application/dash+xml',
-    lcevc: true,
-  },
-};
+function loadLcevcSource() {
+  player.autoplay = true;
+  player.abr.strategy = 'quality';
+  player.source = {
+    sources: {
+      src: 'https://d3mfda3gpj3dw1.cloudfront.net/vnU7dmJoRQgbO0gr/master.mpd',
+      type: 'application/dash+xml',
+      lcevc: true,
+    },
+  };
+}
 ```
 
 See [how to play an LCEVC source](../../getting-started/01-sdks/01-web/09-how-to-play-an-lcevc-source-with-theoplayer.md) for more prerequisites.

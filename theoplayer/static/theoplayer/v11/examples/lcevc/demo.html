@@ -40,7 +40,6 @@
     -->
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
-      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -98,6 +97,7 @@
         player.addEventListener('error', report);
         onParentMessage('lcevc-format', (message) => {
           if (message.format !== 'dash' && message.format !== 'hls') return;
+          player.autoplay = true;
           player.source = sources[message.format];
           report();
         });

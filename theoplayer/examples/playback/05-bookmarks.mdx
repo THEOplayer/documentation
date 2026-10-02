@@ -5,7 +5,7 @@ description: Save and restore playback bookmarks across videos.
 
 # Creating bookmarks
 
-Select a bookmark to seek within the current stream or switch to another stream.
+Select a bookmark to seek within the current stream or switch to another stream and start playback.
 
 import CodeBlock from '@theme/CodeBlock';
 import BookmarksDemo from '../_components/BookmarksDemo';
@@ -17,18 +17,20 @@ Each bookmark stores its title, source, poster, and playhead position. Selecting
 Use the button below the player to add a bookmark at the current playhead.
 
 ```js
-player.autoplay = true;
-player.addEventListener(
-  'loadedmetadata',
-  () => {
-    player.currentTime = bookmark.currentTime;
-  },
-  { once: true }
-);
-player.source = {
-  sources: [{ src: bookmark.src, type: 'application/x-mpegurl' }],
-  poster: bookmark.poster,
-};
+function selectBookmark(bookmark) {
+  player.autoplay = true;
+  player.addEventListener(
+    'loadedmetadata',
+    () => {
+      player.currentTime = bookmark.currentTime;
+    },
+    { once: true }
+  );
+  player.source = {
+    sources: [{ src: bookmark.src, type: 'application/x-mpegurl' }],
+    poster: bookmark.poster,
+  };
+}
 ```
 
 <details>

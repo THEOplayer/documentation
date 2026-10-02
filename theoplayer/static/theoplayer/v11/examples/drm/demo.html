@@ -42,7 +42,6 @@
     -->
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
-      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -103,6 +102,7 @@
         player.addEventListener('error', (event) => reportState(event.errorObject));
 
         onParentMessage('drm-source', ({ name }) => {
+          player.autoplay = true;
           player.source = sources[name];
         });
 

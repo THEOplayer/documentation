@@ -40,7 +40,6 @@
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
       source='{"sources":{"src":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg","metadata":{"title":"Star Wars Reel"}}'
-      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -119,7 +118,10 @@
         });
 
         onParentMessage('select-bookmark', (message) => {
-          if (typeof message.index === 'number') selectBookmark(message.index);
+          if (typeof message.index === 'number') {
+            player.autoplay = true;
+            selectBookmark(message.index);
+          }
         });
         onParentMessage('add-bookmark', () => {
           if (activeIndex < 0) return;

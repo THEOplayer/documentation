@@ -62,9 +62,7 @@
       var player = new THEOplayer.Player(element, {
         libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
         licenseUrl: '../../../../theoplayer-license.txt',
-        mutedAutoplay: 'all',
       });
-      player.autoplay = true;
 
       // Replace the message in the error display when an error occurs.
       player.addEventListener('error', (event) => {

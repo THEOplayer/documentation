@@ -40,7 +40,6 @@
     -->
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
-      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -192,6 +191,7 @@
         player.addEventListener('timeupdate', reportTime);
 
         onParentMessage('load-dai', (message) => {
+          player.autoplay = true;
           setConfiguration(message.config);
         });
         onParentMessage('clear-dai-log', () => {

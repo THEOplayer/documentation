@@ -39,7 +39,6 @@
     -->
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
-      autoplay
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -137,6 +136,7 @@
         onParentMessage('switch-source', (message) => {
           if (typeof message.src !== 'string' || !message.src) return;
           const mediaType = message.mediaType === 'hls' || message.mediaType === 'dash' ? message.mediaType : 'auto';
+          player.autoplay = true;
           beginSwitch({
             src: message.src,
             label: typeof message.label === 'string' ? message.label : message.src,
@@ -144,8 +144,7 @@
           });
         });
 
-        const sourceSetAt = performance.now();
-        trackSwitch(initialSource, sourceSetAt);
+        trackSwitch(initialSource, null);
         player.source = sourceConfiguration(initialSource);
       });
     </script>
