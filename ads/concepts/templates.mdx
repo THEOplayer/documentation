@@ -54,7 +54,7 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a
   }'
 ```
 
-`templateId` is the only required field. You can override the snapshotted configuration per break with optional fields — `start`, `duration`, `variant`, `eventId`, and `id`. For templates that contain [vendor assets](./breaks.mdx#vendor-assets), you can additionally pass `assetParameters` (a string map) with the request; these are merged into the vendor assets of the snapshot, and on duplicate keys the values you provide win.
+`templateId` is the only required field. You can override the snapshotted configuration per break with optional fields — `start`, `duration`, `variant`, and `id`. For templates that contain [vendor assets](./breaks.mdx#vendor-assets), you can additionally pass `assetParameters` (a string map) with the request; these are merged into the vendor assets of the snapshot, and on duplicate keys the values you provide win.
 
 Start semantics depend on the channel timebase; see [Timebase-based scheduling](./breaks.mdx#timebase-based-scheduling).
 
