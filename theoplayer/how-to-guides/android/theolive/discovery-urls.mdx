@@ -1,0 +1,54 @@
+---
+title: Discovery URLs
+sidebar_position: 4
+---
+
+# Discovery URLs
+
+import Intro from '../../shared/theolive/_discovery-urls-intro.mdx';
+
+<Intro />
+
+## Configure the discovery URL
+
+Create a `THEOLiveConfig` with the discovery URL and pass it to the player configuration with `theoLive`.
+For example, for a channel served by V2:
+
+```kotlin
+import com.theoplayer.android.api.THEOplayerConfig
+import com.theoplayer.android.api.theolive.THEOLiveConfig
+
+val theoLiveConfig = THEOLiveConfig.Builder()
+    .discoveryUrl("https://discovery.theo.live/v2/distributions/")
+    .build()
+
+val playerConfig = THEOplayerConfig.Builder()
+    .license("your-license")
+    .theoLive(theoLiveConfig)
+    .build()
+```
+
+Android supports one configured discovery URL.
+If the channel is not found there, the player continues with the built-in discovery URLs.
+
+The player derives the API version from the URL path:
+
+- A URL that contains `/v3/` is a V3 discovery URL.
+- A URL that contains `/v2/distributions/` is a V2 discovery URL.
+- Any other URL, including `https://discovery.theo.live/v2/publications/`, is a V1 discovery URL.
+
+Because of these rules, `https://discovery.theo.live/v2/` without `distributions/` is treated as a V1 discovery URL on Android.
+
+## Configuration reference
+
+[`THEOLiveConfig`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/theolive/THEOLiveConfig.html) has the following properties.
+You can set them with the methods of `THEOLiveConfig.Builder`, or as named arguments of the `THEOLiveConfig.Builder` constructor.
+
+| Property            | Type      | Description                                                                                                                      |
+| ------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `discoveryUrl`      | `String?` | A discovery URL that the player tries before the built-in discovery URLs. Defaults to `null`.                                    |
+| `analyticsDisabled` | `Boolean` | Whether OptiView Live analytics is disabled. Defaults to `false`.                                                                |
+| `externalSessionId` | `String?` | Deprecated. An ID used to report usage analytics. Use `THEOplayerConfig.cmcd.externalSessionId` instead, which takes precedence. |
+
+The default discovery order V2, V1, V3 applies from THEOplayer 11.13.0.
+Earlier versions try V1 first.

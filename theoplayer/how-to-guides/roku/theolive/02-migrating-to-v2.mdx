@@ -15,7 +15,7 @@ If you are using OptiView Live v2 for your live streams, you will need to do som
 
 ### Configure OptiView Live for v2
 
-OptiView Live v2 sources do not use the default discovery URL (https://discovery.theo.live/v2/publications/). In order to use v2, you will need to specify one or more discovery URLs. On the player configuration object, you may add the discovery URLs using the `theoLive` property on the player configuration.
+Since THEOplayer 11.5.0, the player tries the OptiView Live v2 discovery URL first, so v2 sources play without extra configuration. To avoid failed discovery requests, or with earlier versions of THEOplayer, specify one or more discovery URLs. On the player configuration object, you may add the discovery URLs using the `theoLive` property on the player configuration. See [Discovery URLs](./03-discovery-urls.mdx) for more information.
 
 ```brightscript
 playerConfiguration = {

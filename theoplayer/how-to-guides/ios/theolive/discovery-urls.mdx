@@ -1,0 +1,65 @@
+---
+title: Discovery URLs
+sidebar_position: 4
+---
+
+# Discovery URLs
+
+import Intro from '../../shared/theolive/_discovery-urls-intro.mdx';
+
+<Intro />
+
+## Configure the discovery URL
+
+Create a `THEOliveConfiguration` with the discovery URL and add it to the player configuration with `setTHEOliveConfiguration`.
+For example, for a channel served by V2:
+
+```swift
+import THEOplayerSDK
+import THEOplayerTHEOliveIntegration
+
+let builder = THEOplayerConfigurationBuilder()
+builder.license = "your-license"
+builder.setTHEOliveConfiguration(
+    THEOliveConfiguration(
+        externalSessionId: nil,
+        discoveryUrl: "https://discovery.theo.live/v2/distributions/"
+    )
+)
+let player = THEOplayer(configuration: builder.build())
+```
+
+If your channels are served by different API versions, list the discovery URLs in the order you want the player to try them:
+
+```swift
+builder.setTHEOliveConfiguration(
+    THEOliveConfiguration(
+        externalSessionId: nil,
+        discoveryUrls: [
+            "https://discovery.theo.live/v2/distributions/",
+            "https://discovery.theo.live/v2/publications/",
+        ]
+    )
+)
+```
+
+The player derives the API version from the URL path:
+
+- A URL that contains `/v3/` is a V3 discovery URL.
+- A URL that contains `/v2/distributions/` is a V2 discovery URL.
+- Any other URL, including `https://discovery.theo.live/v2/publications/`, is a V1 discovery URL.
+
+Because of these rules, `https://discovery.theo.live/v2/` without `distributions/` is treated as a V1 discovery URL on iOS.
+
+## Configuration reference
+
+[`THEOliveConfiguration`](pathname:///theoplayer/v11/api-reference/ios/THEOlive/Structs/THEOliveConfiguration.html) has the following properties, which you set with its initializer.
+
+| Property            | Type       | Description                                                                                                                             |
+| ------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `externalSessionId` | `String?`  | An ID used to report usage analytics. If `nil`, a random UUID is used.                                                                  |
+| `discoveryUrl`      | `String?`  | A discovery URL that the player tries before the built-in discovery URLs. Takes precedence over `discoveryUrls`. Defaults to `nil`.     |
+| `discoveryUrls`     | `[String]` | A list of discovery URLs that the player tries in order, after `discoveryUrl` and before the built-in discovery URLs. Defaults to `[]`. |
+
+The default discovery order V2, V1, V3 applies from THEOplayer 11.13.0.
+Earlier versions try V1 first.
