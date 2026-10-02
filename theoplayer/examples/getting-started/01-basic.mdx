@@ -1,14 +1,14 @@
 ---
 sidebar_custom_props: { icon: '▶️' }
-description: A minimal player setup playing an HLS stream, with Open Video UI and with the legacy UI.
+description: A minimal player setup playing an HLS stream, with Open Video UI and with the Default UI.
 ---
 
 # Basic player
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import CodeBlock from '@theme/CodeBlock';
-import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/basic/demo.html';
-import legacySource from '!!raw-loader!../static/theoplayer/v11/examples/basic/legacy-ui.html';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/basic/demo.html';
+import defaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/basic/default-ui.html';
 import Example from '@site/src/components/Example';
 
 This example plays a Big Buck Bunny HLS stream using a minimal player setup.
@@ -26,15 +26,15 @@ Open Video UI is provided by `<theoplayer-default-ui>`, configured through its `
   </CodeBlock>
 </details>
 
-## Legacy UI
+## Default UI
 
-<Example src={useBaseUrl('/theoplayer/v11/examples/basic/legacy-ui.html')} exposeGlobals={false} />
+<Example src={useBaseUrl('/theoplayer/v11/examples/basic/default-ui.html')} exposeGlobals={false} />
 
-The legacy video.js-based UI is created with `new THEOplayer.Player()`.
+The [Default UI](../../ui/web/default-ui/index.mdx) is created with `new THEOplayer.Player()`.
 
 <details>
   <summary>Code</summary>
-  <CodeBlock language="html" title="legacy-ui.html" showLineNumbers>
-    {legacySource}
+  <CodeBlock language="html" title="default-ui.html" showLineNumbers>
+    {defaultUiSource}
   </CodeBlock>
 </details>

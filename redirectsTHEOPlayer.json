@@ -582,5 +582,49 @@
   {
     "from": "/theoplayer/how-to-guides/license/introduction/",
     "to": "/theoplayer/how-to-guides/web/license/introduction/"
+  },
+  {
+    "from": "/theoplayer/examples/basic",
+    "to": "/theoplayer/examples/getting-started/basic/"
+  },
+  {
+    "from": "/theoplayer/examples/4k-streaming",
+    "to": "/theoplayer/examples/streaming/4k-streaming/"
+  },
+  {
+    "from": "/theoplayer/examples/abr",
+    "to": "/theoplayer/examples/streaming/abr/"
+  },
+  {
+    "from": "/theoplayer/examples/vr",
+    "to": "/theoplayer/examples/streaming/vr/"
+  },
+  {
+    "from": "/theoplayer/examples/airplay",
+    "to": "/theoplayer/examples/casting/airplay/"
+  },
+  {
+    "from": "/theoplayer/examples/id3-metadata",
+    "to": "/theoplayer/examples/subtitles-metadata/id3-metadata/"
+  },
+  {
+    "from": "/theoplayer/examples/chromecast",
+    "to": "/theoplayer/examples/casting/chromecast/"
+  },
+  {
+    "from": "/theoplayer/examples/custom-error-messages",
+    "to": "/theoplayer/examples/ui/custom-error-messages/"
+  },
+  {
+    "from": "/theoplayer/examples/drm",
+    "to": "/theoplayer/examples/content-protection/drm/"
+  },
+  {
+    "from": "/theoplayer/examples/frame-accurate-seeking",
+    "to": "/theoplayer/examples/playback/frame-accurate-seeking/"
+  },
+  {
+    "from": "/theoplayer/examples/playback-speed",
+    "to": "/theoplayer/examples/playback/playback-speed/"
   }
 ]

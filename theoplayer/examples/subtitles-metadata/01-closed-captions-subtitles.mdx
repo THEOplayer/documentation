@@ -1,0 +1,42 @@
+---
+sidebar_custom_props: { icon: '💬' }
+description: Load, style, and inspect subtitles and closed captions.
+---
+
+# Closed captions and subtitles
+
+Compare sideloaded subtitles with captions and subtitles included in a stream.
+For sideloaded text tracks, set `format` on the text track description (for example, `'srt'`, `'webvtt'`, and other supported formats).
+
+import CodeBlock from '@theme/CodeBlock';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ClosedCaptionsSubtitlesDemo from '../_components/ClosedCaptionsSubtitlesDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/closed-captions-subtitles/demo.html';
+
+<ClosedCaptionsSubtitlesDemo />
+
+WebVTT, TTML, and CEA-608 tracks can be included in a manifest. You can also add a subtitle file when setting the source.
+The demo filters out metadata tracks and reports each text track's label, language, kind, format, and mode.
+
+## Style subtitles
+
+You can set `player.textTrackStyle` directly.
+See the [`TextTrackStyle` API](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackStyle.html) for supported properties.
+
+```js
+player.textTrackStyle = {
+  backgroundColor: 'rgba(0, 0, 0, 0.85)',
+  edgeStyle: 'dropshadow',
+  fontColor: '#ffff00',
+  fontSize: '150%',
+};
+```
+
+See [how to insert subtitles](../../how-to-guides/web/text-tracks/insert-subtitles.mdx) for more details.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

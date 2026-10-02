@@ -1,0 +1,32 @@
+---
+sidebar_custom_props: { icon: '⚡' }
+description: Measure startup time when switching between video sources.
+---
+
+# Fast source switching
+
+Compare how long the player takes to start after changing the source.
+
+import CodeBlock from '@theme/CodeBlock';
+import FastSourceSwitchingDemo from '../_components/FastSourceSwitchingDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/fast-source-switching/demo.html';
+
+<FastSourceSwitchingDemo />
+
+The initial source stays paused until you start playback, so the time since it was set is left blank. When you load another source, the demo measures time to first frame and time since that source was set. It ignores events from superseded switches.
+
+```js
+function loadSource(streamUrl) {
+  player.autoplay = true;
+  player.source = {
+    sources: { src: streamUrl, type: 'application/x-mpegurl' },
+  };
+}
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Google DAI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const adEventNames = [
+        'addadbreak',
+        'removeadbreak',
+        'adbreakbegin',
+        'adbegin',
+        'adfirstquartile',
+        'admidpoint',
+        'adthirdquartile',
+        'adend',
+        'adbreakend',
+        'adimpression',
+        'adskip',
+        'aderror',
+        'adloaded',
+        'updateadbreak',
+        'adbreakchange',
+        'addad',
+        'updatead',
+        'adbuffering',
+        'adclicked',
+      ];
+
+      const defaultConfiguration = {
+        format: 'hls',
+        availabilityType: 'vod',
+        contentSourceID: '2548831',
+        videoID: 'tears-of-steel',
+        apiKey: '',
+      };
+
+      onPlayerReady((player) => {
+        let events = [];
+        let adBreaks = [];
+        let previousAdBreaks = new Set();
+        let sourceToken = 0;
+
+        function describeAdBreak(adBreak) {
+          return {
+            timeOffset: adBreak.timeOffset,
+            maxDuration: adBreak.maxDuration,
+            adCount: adBreak.ads.length,
+          };
+        }
+
+        function reportState() {
+          sendToParent('dai-state', {
+            adBreaks: adBreaks.slice(),
+            events: events.slice(),
+          });
+        }
+
+        function reportTime() {
+          const streamTime = player.currentTime;
+          sendToParent('dai-time', {
+            streamTime,
+            contentTime: player.ads.dai.contentTimeForStreamTime(streamTime),
+          });
+        }
+
+        function logEvent(name, event) {
+          const details = [];
+          if (event.adBreak) {
+            const breakInfo = describeAdBreak(event.adBreak);
+            const existingIndex = adBreaks.findIndex((adBreak) => adBreak.timeOffset === breakInfo.timeOffset);
+            if (name === 'removeadbreak') {
+              if (existingIndex >= 0) adBreaks.splice(existingIndex, 1);
+            } else if ((name === 'addadbreak' || name === 'updateadbreak') && !previousAdBreaks.has(event.adBreak)) {
+              if (existingIndex >= 0) adBreaks[existingIndex] = breakInfo;
+              else adBreaks.push(breakInfo);
+            }
+          }
+          if (event.ad) {
+            if (event.ad.id) details.push(`Ad ${event.ad.id}`);
+            if (event.ad.duration !== undefined) details.push(`duration ${event.ad.duration.toFixed(1)} s`);
+          }
+          if (event.adBreak) {
+            details.push(`break at ${event.adBreak.timeOffset.toFixed(1)} s`);
+          }
+          const errorMessage = event.error?.message || event.error || event.message;
+          if (errorMessage) details.push(String(errorMessage));
+          events = [
+            {
+              wallClock: new Date().toLocaleTimeString(),
+              playerTime: player.currentTime,
+              event: name,
+              details: details.join(' · '),
+            },
+            ...events,
+          ].slice(0, 100);
+          reportState();
+        }
+
+        function sourceFor(configuration) {
+          const ssai = {
+            integration: 'google-dai',
+            availabilityType: configuration.availabilityType,
+            apiKey: configuration.apiKey,
+          };
+          if (configuration.authToken) ssai.authToken = configuration.authToken;
+          if (configuration.networkCode) ssai.networkCode = configuration.networkCode;
+          if (configuration.streamActivityMonitorID) ssai.streamActivityMonitorID = configuration.streamActivityMonitorID;
+          if (configuration.enableNonce) ssai.enableNonce = true;
+          if (configuration.adTagParameters && Object.keys(configuration.adTagParameters).length > 0) {
+            ssai.adTagParameters = configuration.adTagParameters;
+          }
+          if (configuration.availabilityType === 'vod') {
+            if (configuration.contentSourceID) ssai.contentSourceID = configuration.contentSourceID;
+            if (configuration.videoID) ssai.videoID = configuration.videoID;
+          } else if (configuration.assetKey) ssai.assetKey = configuration.assetKey;
+          return {
+            sources: {
+              type: configuration.format === 'dash' ? 'application/dash+xml' : 'application/x-mpegurl',
+              ssai,
+            },
+          };
+        }
+
+        function setConfiguration(configuration) {
+          previousAdBreaks = configuration.availabilityType === 'live' ? new Set(player.ads.scheduledAdBreaks) : new Set();
+          const token = ++sourceToken;
+          events = [];
+          adBreaks = [];
+          player.addEventListener(
+            'loadedmetadata',
+            () => {
+              if (token !== sourceToken) return;
+              adBreaks = player.ads.scheduledAdBreaks.filter((adBreak) => !previousAdBreaks.has(adBreak)).map(describeAdBreak);
+              reportState();
+            },
+            { once: true }
+          );
+          player.source = sourceFor(configuration);
+          reportState();
+        }
+
+        player.ads.addEventListener(adEventNames, (event) => logEvent(event.type, event));
+        player.addEventListener('sourcechange', (event) => {
+          events = [];
+          adBreaks = [];
+          logEvent('sourcechange', event);
+        });
+        player.addEventListener('error', (event) => {
+          const error = player.errorObject;
+          logEvent('error', { ...event, message: error?.message || event.message || 'Player error' });
+        });
+        player.addEventListener('timeupdate', reportTime);
+
+        onParentMessage('load-dai', (message) => {
+          player.autoplay = true;
+          setConfiguration(message.config);
+        });
+        onParentMessage('clear-dai-log', () => {
+          events = [];
+          reportState();
+        });
+
+        setConfiguration(defaultConfiguration);
+      });
+    </script>
+  </body>
+</html>

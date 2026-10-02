@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Changing the UI with CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+        --theoplayer-icon-color: #11cefe;
+        --theoplayer-range-bar-color: #11cefe;
+        --theoplayer-range-thumb-background: #11cefe;
+        --theoplayer-range-thumb-height: 18px;
+        --theoplayer-range-thumb-width: 18px;
+        --theoplayer-range-track-height: 6px;
+        --theoplayer-control-background-gradient-stops: transparent 0%, rgb(0 0 0 / 85%) 100%;
+        --theoplayer-menu-backdrop-background: rgb(8 22 30 / 85%);
+        --theoplayer-mobile-control-backdrop-background: rgb(8 22 30 / 85%);
+        --theoplayer-center-play-button-icon-color: #11cefe;
+      }
+
+      theoplayer-default-ui::part(center-play-button) {
+        outline: 2px solid #11cefe;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const ui = document.querySelector('#player-ui');
+      const accentProperties = [
+        '--theoplayer-icon-color',
+        '--theoplayer-range-bar-color',
+        '--theoplayer-range-thumb-background',
+        '--theoplayer-center-play-button-icon-color',
+      ];
+
+      onPlayerReady(() => {
+        onParentMessage('accent-color', (message) => {
+          if (typeof message.color !== 'string' || !/^#[0-9a-f]{6}$/i.test(message.color)) return;
+          accentProperties.forEach((property) => ui.style.setProperty(property, message.color));
+        });
+      });
+    </script>
+  </body>
+</html>

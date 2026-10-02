@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Changing the Default UI with CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script src="../utils.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .theoplayer-skin {
+        width: 100%;
+        --accent-color: #11cefe;
+      }
+
+      .theoplayer-skin .theo-primary-color,
+      .theoplayer-skin .vjs-selected {
+        color: var(--accent-color) !important;
+      }
+
+      .theoplayer-skin .theo-primary-background {
+        color: #000000 !important;
+        background-color: var(--accent-color) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="player" class="video-js theoplayer-skin vjs-16-9"></div>
+    <script>
+      var player = new THEOplayer.Player(document.querySelector('#player'), {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+      });
+      player.source = {
+        sources: [
+          {
+            src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        metadata: { title: 'Big Buck Bunny' },
+      };
+
+      onParentMessage('accent-color', (message) => {
+        if (typeof message.color !== 'string' || !/^#[0-9a-f]{6}$/i.test(message.color)) return;
+        document.querySelector('.theoplayer-skin').style.setProperty('--accent-color', message.color);
+      });
+    </script>
+  </body>
+</html>

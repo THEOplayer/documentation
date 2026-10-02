@@ -1,0 +1,7 @@
+{
+  "label": "Playback control",
+  "position": 3,
+  "customProps": {
+    "icon": "⏯️"
+  }
+}

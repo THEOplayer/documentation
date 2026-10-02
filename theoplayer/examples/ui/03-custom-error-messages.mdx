@@ -1,14 +1,14 @@
 ---
 sidebar_custom_props: { icon: '⚠️' }
-description: Replace the default error messages with your own, in both Open Video UI and the legacy UI.
+description: Replace the default error messages with your own, in both Open Video UI and the Default UI.
 ---
 
 # Custom error messages
 
 import CodeBlock from '@theme/CodeBlock';
-import demoSource from '!!raw-loader!../static/theoplayer/v11/examples/custom-error-messages/demo.html';
-import legacySource from '!!raw-loader!../static/theoplayer/v11/examples/custom-error-messages/legacy-ui.html';
-import CustomErrorMessagesDemo from './_components/CustomErrorMessagesDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/custom-error-messages/demo.html';
+import defaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/custom-error-messages/default-ui.html';
+import CustomErrorMessagesDemo from '../_components/CustomErrorMessagesDemo';
 
 This example shows how to replace the default error messages of the player with your own messages,
 for example to show a friendlier message to your viewers, or to translate it into their language.
@@ -31,16 +31,16 @@ and set the `lang` attribute of the UI to the name of that locale.
   </CodeBlock>
 </details>
 
-## Legacy UI
+## Default UI
 
-<CustomErrorMessagesDemo ui="legacy" exposeGlobals={false} />
+<CustomErrorMessagesDemo ui="default-ui" exposeGlobals={false} />
 
-The legacy UI (created with `new THEOplayer.Player()`) shows the error message in its error display.
+The [Default UI](../../ui/web/default-ui/index.mdx) (created with `new THEOplayer.Player()`) shows the error message in its error display.
 Listen for the `error` event on the player, and replace the text in the error display with your own message.
 
 <details>
   <summary>Code</summary>
-  <CodeBlock language="html" title="legacy-ui.html" showLineNumbers>
-    {legacySource}
+  <CodeBlock language="html" title="default-ui.html" showLineNumbers>
+    {defaultUiSource}
   </CodeBlock>
 </details>

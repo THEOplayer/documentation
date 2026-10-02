@@ -1,0 +1,53 @@
+---
+sidebar_custom_props: { icon: '🎨' }
+description: Change player colors and controls with CSS.
+---
+
+# Changing the UI with CSS
+
+Use CSS custom properties and shadow parts to match the player to your site.
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/changing-ui-with-css/demo.html';
+import defaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/changing-ui-with-css/default-ui.html';
+import ChangingUiWithCssDemo from '../_components/ChangingUiWithCssDemo';
+
+## Open Video UI
+
+<ChangingUiWithCssDemo ui="open-video-ui" />
+
+The accent color, range track, and control-bar gradient use CSS custom properties. The `::part()` selector styles the centered play button.
+See the [Open Video UI styling example](https://optiview.dolby.com/docs/open-video-ui/web/examples/styling/) for more options.
+
+```css
+theoplayer-default-ui {
+  --theoplayer-icon-color: #11cefe;
+  --theoplayer-range-bar-color: #11cefe;
+  --theoplayer-range-track-height: 6px;
+  --theoplayer-control-background-gradient-stops: transparent 0%, rgb(0 0 0 / 85%) 100%;
+}
+
+theoplayer-default-ui::part(center-play-button) {
+  outline: 2px solid #11cefe;
+}
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
+
+## Default UI
+
+<ChangingUiWithCssDemo ui="default-ui" />
+
+The [Default UI](../../ui/web/default-ui/index.mdx) marks its themed elements with color classes such as `.theo-primary-color` and `.theo-primary-background`. Override these classes to recolor every element that uses that color at once. See [UI skinning](../../ui/web/ui-skinning.mdx) for the full list of classes.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="default-ui.html" showLineNumbers>
+    {defaultUiSource}
+  </CodeBlock>
+</details>

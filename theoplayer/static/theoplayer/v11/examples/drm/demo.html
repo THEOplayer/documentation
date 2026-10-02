@@ -41,7 +41,7 @@
       Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -102,6 +102,7 @@
         player.addEventListener('error', (event) => reportState(event.errorObject));
 
         onParentMessage('drm-source', ({ name }) => {
+          player.autoplay = true;
           player.source = sources[name];
         });
 

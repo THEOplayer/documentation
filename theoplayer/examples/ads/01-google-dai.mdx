@@ -1,0 +1,69 @@
+---
+sidebar_custom_props: { icon: '📺' }
+description: Load Google DAI streams and inspect their ad breaks and events.
+---
+
+# Google DAI
+
+Load a Google DAI stream and inspect its scheduled ad breaks, events, and content time.
+
+import CodeBlock from '@theme/CodeBlock';
+import GoogleDaiDemo from '../_components/GoogleDaiDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/google-dai/demo.html';
+
+<GoogleDaiDemo />
+
+The stream type and the `ssai` configuration identify the Google DAI stream. VOD uses a content source ID and video ID; live streams use an asset key.
+
+```js
+function loadVOD() {
+  player.autoplay = true;
+  player.source = {
+    sources: {
+      type: 'application/x-mpegurl',
+      ssai: {
+        integration: 'google-dai',
+        availabilityType: 'vod',
+        apiKey: '',
+        contentSourceID: '2548831',
+        videoID: 'tears-of-steel',
+        adTagParameters: {
+          description_url: window.location.href,
+        },
+      },
+    },
+  };
+}
+
+function loadLive() {
+  player.autoplay = true;
+  player.source = {
+    sources: {
+      type: 'application/x-mpegurl',
+      ssai: {
+        integration: 'google-dai',
+        availabilityType: 'live',
+        apiKey: '',
+        assetKey: 'c-rArva4ShKVIAkNfy6HUQ',
+      },
+    },
+  };
+}
+```
+
+Listen to `player.ads` events to track ad playback. Ad blockers can block the Google IMA DAI SDK.
+
+```js
+player.ads.addEventListener('adbegin', (event) => {
+  console.log(event.ad.id, event.ad.duration, event.adBreak.timeOffset);
+});
+```
+
+See the [Google DAI guide](../../how-to-guides/web/ads/google-dai.mdx) and the [`GoogleDAIConfiguration` API](pathname:///theoplayer/v11/api-reference/web/interfaces/GoogleDAIConfiguration.html).
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
