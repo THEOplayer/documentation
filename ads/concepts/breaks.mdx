@@ -402,6 +402,8 @@ A `static` asset is a media resource the player retrieves directly — a video o
 }
 ```
 
+See [Static assets](../player-integration/optiview-ads-sdk/ad-workflows/static-assets.mdx) for the supported creative formats and layouts in the OptiView Ads SDK.
+
 #### VAST assets
 
 A `vast` asset points to an ad server that responds with a VAST XML document describing how the ad should be played. The `uri` is the VAST tag URL, and the `mimeType` should be `application/xml` or `text/xml`:
@@ -414,6 +416,8 @@ A `vast` asset points to an ad server that responds with a VAST XML document des
   "uri": "https://adserver.example.com/vast/creative-001.xml"
 }
 ```
+
+A `vast` asset can also carry `assetParameters`, which the player appends to the VAST tag URL as query parameters. See [VAST](../player-integration/optiview-ads-sdk/ad-workflows/vast.mdx) for how the OptiView Ads SDK plays VAST tags, and the layouts they support.
 
 #### Vendor assets
 

@@ -17,6 +17,18 @@ The SDK is available for [Web](./web.mdx), [Android](./android.mdx), [iOS](./ios
 
 The SDK never talks to your player directly. All player interaction goes through a small **player adapter** interface, which exposes the playback state the SDK needs — most importantly the stream's timing information (such as the `EXT-X-PROGRAM-DATE-TIME` position on a live HLS stream) that breaks are scheduled against. The SDK ships ready-made adapters for popular players on each platform, and you can implement the adapter interface yourself for any other player.
 
+## Ad workflows
+
+The SDK plays whatever the breaks on your channel carry. Each [asset](../../concepts/breaks.mdx#asset-model) in a break uses one of three ad workflows, and one channel can mix them:
+
+| Workflow                                                    | What the break carries                                       | What your app needs on top of the platform integration                                               |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| [Static assets](./ad-workflows/static-assets.mdx)           | Direct URLs to video or image creatives, hosted on your CDN. | Nothing.                                                                                             |
+| [VAST](./ad-workflows/vast.mdx)                             | A VAST tag URL from your ad server.                          | On Web, Google's client-side IMA SDK (`ima3.js`) on the page. Nothing on Android, iOS, React Native. |
+| [Google Pod Serving](./ad-workflows/google-pod-serving.mdx) | An ad pod decisioned by Google Ad Manager.                   | On Web, Google's IMA DAI SDK (`ima3_dai.js`) on the page. Nothing on Android, iOS, React Native.     |
+
+The platform guides cover the integration that every workflow shares: installing the SDK, wrapping your player, and starting a session. The workflow pages describe how to set up breaks for each workflow, which layouts it supports, and how to troubleshoot it.
+
 ## Configuration
 
 Configuration is split into two levels:
@@ -24,32 +36,36 @@ Configuration is split into two levels:
 - **SDK configuration** is provided once, when you create the SDK instance. It describes your player and how ads should be presented.
 - **Session configuration** is provided per channel, when you start a monetization session. It identifies the channel to monetize.
 
+Neither level holds ad server URLs or accounts. What to play, and where to fetch it from, comes from the channel's Break Manifest — including the Google Ad Manager settings for [Google Pod Serving](./ad-workflows/google-pod-serving.mdx).
+
 ### SDK configuration
 
-| Property    | Description                                                                                                                                        |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `player`    | The adapter that wraps your content player. **Required.**                                                                                          |
-| `container` | The element or view in which the SDK renders ads, stacked above your content player. **Required.**                                                 |
-| `mode`      | The ad insertion model: `sgai` (server-guided, the default) or `ssai` (server-side, for streams where the ads are stitched into the media stream). |
-| `gam`       | Google Ad Manager configuration for [Google Pod Serving](../../integrations/google/pod-serving.mdx): contains your `networkCode`.                  |
-| `debug`     | Enables verbose logging during development.                                                                                                        |
+| Property    | Description                                                                                                                                                                                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `player`    | The adapter that wraps your content player. **Required.**                                                                                                                                                                                                          |
+| `container` | The element or view in which the SDK renders ads, stacked above your content player. **Required.**                                                                                                                                                                 |
+| `mode`      | The ad insertion model: `sgai` (server-guided, the default) or `ssai` (server-side, for streams where the ads are stitched into the media stream).                                                                                                                 |
+| `gam`       | Optional. Google Pod Serving starts automatically when the Break Manifest carries a Google configuration; set `enabled` to `false` to keep Google out of a session. See [Google Pod Serving](./ad-workflows/google-pod-serving.mdx#turn-google-off-for-a-session). |
+| `debug`     | Enables verbose logging during development.                                                                                                                                                                                                                        |
 
 The SDK also exposes optional presentation settings — such as ad preloading, break chaining, and tune-in behavior — with sensible defaults. The platform pages describe the platform-specific options.
 
 ### Session configuration
 
-| Property          | Description                                                                                                                                                                                                                                                             |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `manifestUrl`     | The channel's Break Manifest URL. **Required.** See [Retrieving the required values](#retrieving-the-required-values).                                                                                                                                                  |
-| `customAssetKey`  | The Google Pod Serving custom asset key of the channel. Required to play Google Ad Manager breaks. See [Google Pod Serving](../../integrations/google/pod-serving.mdx).                                                                                                 |
-| `assetParameters` | Session-level ad parameters, merged with the break's `assetParameters` and forwarded to Google as `adTagParameters`. Use these for player-side values such as device identifiers. See [Ad tag parameters](../../integrations/google/pod-serving.mdx#ad-tag-parameters). |
+| Property          | Description                                                                                                                                                                                                                                               |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `manifestUrl`     | The channel's Break Manifest URL. **Required.** See [Retrieving the required values](#retrieving-the-required-values).                                                                                                                                    |
+| `assetParameters` | Session-level ad targeting parameters for VAST and Google Pod Serving breaks: appended to VAST tag URLs, or sent to Google as `adTagParameters`. Static assets do not use them. See [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx). |
 
 ## Retrieving the required values
 
-- **Break Manifest URL (`manifestUrl`):** every channel exposes its Break Manifest on a public endpoint. The URL follows the pattern `https://us.markers.optiview.dolby.com/manifest/v1/{orgId}/channels/{channelId}` (replace `us.` with `eu.` for the EU region), using your organization ID and the channel's ID. See the [Break Manifest endpoint](../../concepts/break-manifest.mdx#endpoint) for details.
-- **Google `networkCode` and `customAssetKey`:** these come from your Google Ad Manager setup. See the [Google Ad Manager prerequisites](../../integrations/google/index.mdx) and [Google Pod Serving](../../integrations/google/pod-serving.mdx).
+The Break Manifest URL is the only value your app needs:
 
-## Choose a platform
+- **Break Manifest URL (`manifestUrl`):** every channel exposes its Break Manifest on a public endpoint. The URL follows the pattern `https://us.markers.optiview.dolby.com/manifest/v1/{orgId}/channels/{channelId}` (replace `us.` with `eu.` for the EU region), using your organization ID and the channel's ID. See the [Break Manifest endpoint](../../concepts/break-manifest.mdx#endpoint) for details.
+
+You do not configure ad server values in the app. VAST tag URLs are set on the breaks, and for Google Pod Serving the network code and the custom asset key are configured on the channel and delivered to the SDK through the Break Manifest.
+
+## Next steps
 
 import DocCardList from '@theme/DocCardList';
 
@@ -57,9 +73,9 @@ import DocCardList from '@theme/DocCardList';
 
 ## Related resources
 
-| Resource                                                        | Description                                                   |
-| --------------------------------------------------------------- | ------------------------------------------------------------- |
-| [Break Manifest](../../concepts/break-manifest.mdx)             | The contract between the OptiView Ads backend and the player. |
-| [Channels](../../concepts/channels.mdx)                         | The channel whose Break Manifest the SDK polls.               |
-| [Breaks](../../concepts/breaks.mdx)                             | The breaks the SDK schedules and plays.                       |
-| [Google Pod Serving](../../integrations/google/pod-serving.mdx) | Google Ad Manager configuration for pod-served breaks.        |
+| Resource                                                             | Description                                                   |
+| -------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Break Manifest](../../concepts/break-manifest.mdx)                  | The contract between the OptiView Ads backend and the player. |
+| [Channels](../../concepts/channels.mdx)                              | The channel whose Break Manifest the SDK polls.               |
+| [Breaks](../../concepts/breaks.mdx)                                  | The breaks the SDK schedules and plays.                       |
+| [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx) | Passing targeting parameters to VAST tags and Google.         |
