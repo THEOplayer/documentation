@@ -387,11 +387,11 @@ The PlayerConfiguration object is passed to the configure method. It is an assoc
 
 #### THEOlive Configuration
 
-| Property          | Type               | Description                                                                                                                                               |
-| ----------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| discoveryUrl      | string             | Optional. The discovery URL for your THEOlive deployment. If present, it will be tried before `discoveryUrls`.                                            |
-| discoveryUrls     | roArray of strings | Array of discovery URLs for your THEOlive deployment. If `theoLive` config is omitted, the default URL is 'https://discovery.theo.live/v2/publications/'. |
-| externalSessionId | string             | A session ID to use for your THEOlive session. This can tie an application session to a THEOlens session.                                                 |
+| Property          | Type               | Description                                                                                                                                                                                                                                                        |
+| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| discoveryUrl      | string             | Optional. The discovery URL for your THEOlive deployment. If present, it will be tried before `discoveryUrls`.                                                                                                                                                     |
+| discoveryUrls     | roArray of strings | Optional. Array of discovery URLs for your THEOlive deployment, tried in order after `discoveryUrl`. The player always tries its built-in discovery URLs after the configured ones. See [Discovery URLs](/theoplayer/how-to-guides/roku/theolive/discovery-urls/). |
+| externalSessionId | string             | A session ID to use for your THEOlive session. This can tie an application session to a THEOlens session.                                                                                                                                                          |
 
 #### CMCD Configuration
 
