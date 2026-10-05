@@ -85,9 +85,7 @@
         } else if (typeof ad.timeOffset === 'string' && /^(start|end|\d+%|\d{1,2}:\d{2}:\d{2}(\.\d+)?)$/.test(ad.timeOffset)) {
           description.timeOffset = ad.timeOffset;
         }
-        if (typeof ad.skipOffset === 'number' && Number.isFinite(ad.skipOffset)) {
-          description.skipOffset = ad.skipOffset;
-        }
+
         return description;
       }
 

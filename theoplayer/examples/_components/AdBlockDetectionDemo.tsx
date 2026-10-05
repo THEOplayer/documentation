@@ -14,11 +14,6 @@ export default function AdBlockDetectionDemo(): JSX.Element {
   const [blockContentIfAdError, setBlockContentIfAdError] = useState(false);
   const [status, setStatus] = useState<Status>({ state: 'waiting', blocked: false, message: '' });
 
-  let statusText = 'Waiting for playback';
-  if (status.state === 'adbegin') statusText = 'Ad loaded';
-  else if (status.state === 'aderror') statusText = 'Ad error detected';
-  else if (status.state === 'playererror') statusText = 'Player error';
-
   const blockedText = status.blocked ? 'Content is blocked until the ad blocker is disabled' : 'Content continues without ads';
 
   return (
@@ -52,10 +47,6 @@ export default function AdBlockDetectionDemo(): JSX.Element {
         </div>
         <table className={styles.readout}>
           <tbody>
-            <tr>
-              <th>Status</th>
-              <td>{statusText}</td>
-            </tr>
             {(status.state === 'aderror' || status.state === 'playererror') && (
               <>
                 <tr>

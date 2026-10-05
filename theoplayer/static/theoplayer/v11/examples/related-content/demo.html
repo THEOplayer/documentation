@@ -110,7 +110,7 @@
         </svg>
       </theoplayer-menu-button>
       <theoplayer-menu id="related-menu" slot="menu" hidden>
-        <span slot="heading">Up next</span>
+        <span slot="heading">Related content</span>
         <div class="related-grid" id="related-grid"></div>
       </theoplayer-menu>
     </theoplayer-default-ui>
@@ -168,8 +168,11 @@
           relatedGrid.appendChild(tile);
         }
 
+        // theoplayer-menu-group.openMenu(menuId) pushes the menu onto the group's open stack,
+        // which is what makes it visible — the menu element's own openMenu() only unhides it.
         player.addEventListener('ended', () => {
-          setTimeout(() => relatedMenu.openMenu(), 1000);
+          const ui = document.querySelector('#player-ui').shadowRoot.querySelector('theoplayer-ui');
+          ui.shadowRoot.querySelector('theoplayer-menu-group').openMenu('related-menu');
         });
       });
     </script>

@@ -84,7 +84,29 @@
           report();
         });
 
-        player.addEventListener(['progress', 'timeupdate', 'durationchange', 'sourcechange', 'emptied'], report);
+        player.addEventListener(
+          [
+            'progress',
+            'timeupdate',
+            'durationchange',
+            'sourcechange',
+            'emptied',
+            'readystatechange',
+            'loadedmetadata',
+            'loadeddata',
+            'canplay',
+            'canplaythrough',
+            'seeked',
+            'suspend',
+            'stalled',
+            'pause',
+            'playing',
+            'waiting',
+          ],
+          report
+        );
+        // Buffer growth is not guaranteed to fire an event while paused, so poll lightly too.
+        setInterval(report, 500);
 
         player.preload = 'auto';
         player.source = source;

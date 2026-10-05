@@ -13,7 +13,7 @@ interface Preset {
   adUrl: string;
   integration: Integration;
   position: Position;
-  midrollTime?: string;
+  timeOffset?: string;
 }
 
 interface AdEventEntry {
@@ -32,6 +32,10 @@ const defaultContentUrl = 'https://cdn.theoplayer.com/video/big_buck_bunny/big_b
 const defaultPoster = 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg';
 const imaVastUrl =
   'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
+const imaSimidUrl =
+  'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&correlator=';
+const imaCompanionUrl =
+  'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
 const imaNonLinearUrl =
   'data:text/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPFZBU1QgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOm5vTmFtZXNwYWNlU2NoZW1hTG9jYXRpb249InZhc3QueHNkIiB2ZXJzaW9uPSIzLjAiPgogPEFkIGlkPSI2OTcyMDM2MTYiPgogIDxJbkxpbmU+CiAgIDxBZFN5c3RlbT5HREZQPC9BZFN5c3RlbT4KICAgPEFkVGl0bGU+VEhFT3BsYXllciBOb25MaW5lYXJJbWFnZTwvQWRUaXRsZT4KICAgPERlc2NyaXB0aW9uPjwhW0NEQVRBW0V4dGVybmFsIE5DQTFDMUwxIE5vbkxpbmVhckltYWdlIGFkXV0+PC9EZXNjcmlwdGlvbj4KICAgPENyZWF0aXZlcz4KICAgIDxDcmVhdGl2ZSBpZD0iNTc4NTczNzA4NTYiIHNlcXVlbmNlPSIxIj4KICAgICA8Tm9uTGluZWFyQWRzPgogICAgICA8Tm9uTGluZWFyICBpZD0iR0RGUCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSIxNTAiIHNjYWxhYmxlPSJmYWxzZSIgbWFpbnRhaW5Bc3BlY3RSYXRpbz0idHJ1ZSI+CiAgICAgICAgPE5vbkxpbmVhckNsaWNrVGhyb3VnaD48IVtDREFUQVtodHRwczovL3d3dy50aGVvcGxheWVyLmNvbS9dXT48L05vbkxpbmVhckNsaWNrVGhyb3VnaD4KICAgICAgIDxTdGF0aWNSZXNvdXJjZSBjcmVhdGl2ZVR5cGU9ImltYWdlL3BuZyI+PCFbQ0RBVEFbaHR0cHM6Ly9jZG4udGhlb3BsYXllci5jb20vZGVtb3MvYWRzL2NvbXBhbmlvbmFkcy90aGVvcGxheWVyLmpwZ11dPjwvU3RhdGljUmVzb3VyY2U+CiAgICAgIDwvTm9uTGluZWFyPgogICAgIDwvTm9uTGluZWFyQWRzPgogICAgPC9DcmVhdGl2ZT4KICAgPC9DcmVhdGl2ZXM+CiAgPC9JbkxpbmU+CiA8L0FkPgo8L1ZBU1Q+';
 
@@ -43,7 +47,7 @@ const presets: Preset[] = [
     adUrl: 'https://cdn.theoplayer.com/demos/preroll.xml',
     integration: 'csai',
     position: 'midroll',
-    midrollTime: '00:00:15',
+    timeOffset: '00:00:15',
   },
   { id: 'vast-postroll', label: 'VAST post-roll', adUrl: 'https://cdn.theoplayer.com/demos/preroll.xml', integration: 'csai', position: 'end' },
   {
@@ -55,9 +59,9 @@ const presets: Preset[] = [
   },
   {
     id: 'companion',
-    label: 'VAST with companion ad',
-    adUrl: 'https://cdn.theoplayer.com/demos/ads/vast/livereal-no-skip-with-companion.xml',
-    integration: 'csai',
+    label: 'Google IMA with companion ad',
+    adUrl: imaCompanionUrl,
+    integration: 'google-ima',
     position: 'start',
   },
   { id: 'ima-vast', label: 'Google IMA VAST', adUrl: imaVastUrl, integration: 'google-ima', position: 'start' },
@@ -69,6 +73,7 @@ const presets: Preset[] = [
     integration: 'google-ima',
     position: 'start',
   },
+  { id: 'ima-simid', label: 'Google IMA SIMID', adUrl: imaSimidUrl, integration: 'google-ima', position: 'start' },
 ];
 
 interface FormState {
@@ -76,8 +81,7 @@ interface FormState {
   adUrl: string;
   integration: Integration;
   position: Position;
-  midrollTime: string;
-  skipOffset: string;
+  timeOffset: string;
 }
 
 function formForPreset(preset: Preset, previous: FormState): FormState {
@@ -86,9 +90,14 @@ function formForPreset(preset: Preset, previous: FormState): FormState {
     adUrl: preset.adUrl,
     integration: preset.integration,
     position: preset.position,
-    midrollTime: preset.midrollTime ?? '00:00:15',
-    skipOffset: previous.skipOffset,
+    timeOffset: preset.timeOffset ?? '00:00:15',
   };
+}
+
+function timeOffsetValue(value: string): number | string {
+  const trimmed = value.trim();
+  const numeric = Number(trimmed);
+  return trimmed !== '' && Number.isFinite(numeric) ? numeric : trimmed;
 }
 
 function mimeTypeForVideoUrl(url: string): string | undefined {
@@ -115,25 +124,22 @@ export default function AdTesterDemo(): JSX.Element {
     adUrl: presets[0].adUrl,
     integration: 'csai',
     position: 'start',
-    midrollTime: '00:00:15',
-    skipOffset: '',
+    timeOffset: '00:00:15',
   });
   const [events, setEvents] = useState<AdEventEntry[]>([]);
   const [companions, setCompanions] = useState<Companion[]>([]);
 
   const selectedPreset = presets.find((preset) => preset.id === presetId);
   const requiresIma = selectedPreset
-    ? selectedPreset.id.startsWith('ima-')
-    : form.adUrl === imaVastUrl || form.adUrl === imaNonLinearUrl || form.adUrl.includes('innovid.com');
+    ? selectedPreset.integration === 'google-ima'
+    : presets.some((preset) => preset.integration === 'google-ima' && preset.adUrl === form.adUrl);
   const integrationMismatch = requiresIma && form.integration !== 'google-ima';
 
   const adDescription = useMemo(() => {
     const ad: Record<string, unknown> = { sources: form.adUrl, integration: form.integration };
     if (form.position === 'start') ad.timeOffset = 'start';
     else if (form.position === 'end') ad.timeOffset = 'end';
-    else if (form.position === 'midroll') ad.timeOffset = form.midrollTime;
-    const skip = Number.parseFloat(form.skipOffset);
-    if (form.skipOffset.trim() !== '' && Number.isFinite(skip)) ad.skipOffset = skip;
+    else if (form.position === 'midroll') ad.timeOffset = timeOffsetValue(form.timeOffset);
     return ad;
   }, [form]);
 
@@ -260,25 +266,18 @@ export default function AdTesterDemo(): JSX.Element {
           </label>
           {form.position === 'midroll' && (
             <label className={styles.formField}>
-              Mid-roll time (HH:MM:SS)
+              Time offset
               <input
                 className={styles.input}
-                value={form.midrollTime}
+                value={form.timeOffset}
                 placeholder="00:00:15"
-                onChange={(event) => updateForm('midrollTime', event.target.value)}
+                title={
+                  'When the ad break should play: a number of seconds (e.g. 5 or 12.5), a timestamp "HH:MM:SS" or "HH:MM:SS.mmm", a percentage like "10%", or "start" / "end"'
+                }
+                onChange={(event) => updateForm('timeOffset', event.target.value)}
               />
             </label>
           )}
-          <label className={styles.formField}>
-            Skip offset (seconds, optional)
-            <input
-              className={styles.input}
-              value={form.skipOffset}
-              placeholder="none"
-              inputMode="numeric"
-              onChange={(event) => updateForm('skipOffset', event.target.value)}
-            />
-          </label>
         </div>
         {integrationMismatch && <p className={styles.hint}>This preset requires the google-ima integration to work correctly.</p>}
         <div className={styles.formActions}>

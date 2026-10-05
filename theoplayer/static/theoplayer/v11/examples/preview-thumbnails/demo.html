@@ -100,7 +100,14 @@
           player.autoplay = true;
           player.source = sources[message.kind];
         });
+        function watchTrack(track) {
+          track.addEventListener(['addcue', 'removecue', 'readystatechange'], reportTracks);
+        }
+        for (const track of player.textTracks) watchTrack(track);
         player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], reportTracks);
+        player.textTracks.addEventListener('addtrack', (event) => {
+          if (event.track) watchTrack(event.track);
+        });
         player.addEventListener('loadedmetadata', reportTracks);
 
         player.source = sources.manifest;

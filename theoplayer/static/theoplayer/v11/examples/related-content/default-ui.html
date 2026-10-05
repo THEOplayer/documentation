@@ -73,9 +73,7 @@
 
       player.addEventListener('ended', function () {
         if (!player.related.showing) {
-          setTimeout(function () {
-            player.related.show();
-          }, 1000);
+          player.related.show();
         }
       });
     </script>

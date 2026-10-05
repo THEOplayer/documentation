@@ -189,15 +189,16 @@
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: var(--ifm-global-radius);
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .networkTable {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   white-space: nowrap;
   table-layout: fixed;
   width: 100%;
-  min-width: calc(60ch + 3rem);
+  min-width: calc(55ch + 3rem);
 }
 
 .networkColTime {
@@ -213,7 +214,7 @@
 }
 
 .networkColContentType {
-  width: calc(21ch + 0.6rem);
+  width: calc(16ch + 0.6rem);
 }
 
 .networkColLength {
@@ -222,9 +223,10 @@
 
 .networkTable thead th {
   position: sticky;
-  top: -0.5rem;
-  padding: 0 0.4rem 0.15rem 0;
-  background: var(--ifm-background-color);
+  top: 0;
+  z-index: 1;
+  padding: 0.15rem 0.4rem 0.3rem 0;
+  background: var(--ifm-background-surface-color, var(--ifm-color-emphasis-100));
   text-align: left;
   white-space: normal;
   vertical-align: bottom;
