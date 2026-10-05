@@ -12,6 +12,7 @@ interface PlaylistItem {
 
 interface PlaylistState {
   active: number;
+  canCacheNext: boolean;
   items: PlaylistItem[];
 }
 
@@ -30,7 +31,7 @@ function statusLabel(item: PlaylistItem): string {
 
 export default function PlaylistAndCachingDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
-  const [state, setState] = useState<PlaylistState>({ active: 0, items: [] });
+  const [state, setState] = useState<PlaylistState>({ active: 0, canCacheNext: true, items: [] });
 
   return (
     <>
@@ -41,6 +42,7 @@ export default function PlaylistAndCachingDemo(): JSX.Element {
           if (message.type === 'playlist-state') {
             setState({
               active: typeof message.active === 'number' ? message.active : 0,
+              canCacheNext: message.canCacheNext !== false,
               items: Array.isArray(message.items) ? (message.items as PlaylistItem[]) : [],
             });
           }
@@ -55,7 +57,11 @@ export default function PlaylistAndCachingDemo(): JSX.Element {
           <button className="button button--secondary button--sm" onClick={() => exampleRef.current?.postMessage({ type: 'playlist-next' })}>
             Next
           </button>
-          <button className="button button--secondary button--sm" onClick={() => exampleRef.current?.postMessage({ type: 'playlist-cache-next' })}>
+          <button
+            className="button button--secondary button--sm"
+            disabled={!state.canCacheNext}
+            onClick={() => exampleRef.current?.postMessage({ type: 'playlist-cache-next' })}
+          >
             Cache next item now
           </button>
         </div>

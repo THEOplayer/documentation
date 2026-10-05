@@ -78,9 +78,9 @@
         onParentMessage('set-preload', (message) => {
           if (!allowedPreloads.includes(message.preload)) return;
           player.preload = message.preload;
-          // Reload the same source so the buffering effect of the new preload value is visible.
+          // Assign a fresh copy so the player treats it as a new source and resets playback.
           player.autoplay = false;
-          player.source = source;
+          player.source = structuredClone(source);
           report();
         });
 

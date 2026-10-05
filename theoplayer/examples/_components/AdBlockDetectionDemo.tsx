@@ -12,12 +12,7 @@ interface Status {
 export default function AdBlockDetectionDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [blockContentIfAdError, setBlockContentIfAdError] = useState(false);
-  const [simulateAdBlocker, setSimulateAdBlocker] = useState(false);
   const [status, setStatus] = useState<Status>({ state: 'waiting', blocked: false, message: '' });
-
-  function update(block: boolean, simulate: boolean): void {
-    exampleRef.current?.postMessage({ type: 'ad-block-config', blockContentIfAdError: block, simulateAdBlocker: simulate });
-  }
 
   let statusText = 'Waiting for playback';
   if (status.state === 'adbegin') statusText = 'Ad loaded';
@@ -49,21 +44,10 @@ export default function AdBlockDetectionDemo(): JSX.Element {
               checked={blockContentIfAdError}
               onChange={(event) => {
                 setBlockContentIfAdError(event.target.checked);
-                update(event.target.checked, simulateAdBlocker);
+                exampleRef.current?.postMessage({ type: 'ad-block-config', blockContentIfAdError: event.target.checked });
               }}
             />
             Block content if the ad fails (<code>blockContentIfAdError</code>)
-          </label>
-          <label className={styles.checkboxField}>
-            <input
-              type="checkbox"
-              checked={simulateAdBlocker}
-              onChange={(event) => {
-                setSimulateAdBlocker(event.target.checked);
-                update(blockContentIfAdError, event.target.checked);
-              }}
-            />
-            Simulate an ad blocker
           </label>
         </div>
         <table className={styles.readout}>

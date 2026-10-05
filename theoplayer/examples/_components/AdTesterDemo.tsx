@@ -120,8 +120,10 @@ export default function AdTesterDemo(): JSX.Element {
   const [events, setEvents] = useState<AdEventEntry[]>([]);
   const [companions, setCompanions] = useState<Companion[]>([]);
 
-  const selectedPreset = presets.find((preset) => preset.id === presetId) ?? presets[0];
-  const requiresIma = selectedPreset.id.startsWith('ima-');
+  const selectedPreset = presets.find((preset) => preset.id === presetId);
+  const requiresIma = selectedPreset
+    ? selectedPreset.id.startsWith('ima-')
+    : form.adUrl === imaVastUrl || form.adUrl === imaNonLinearUrl || form.adUrl.includes('innovid.com');
   const integrationMismatch = requiresIma && form.integration !== 'google-ima';
 
   const adDescription = useMemo(() => {
@@ -151,13 +153,15 @@ export default function AdTesterDemo(): JSX.Element {
   }, [form.adUrl, form.integration]);
 
   function updateForm<K extends keyof FormState>(key: K, value: FormState[K]): void {
+    setPresetId('custom');
     setForm((current) => ({ ...current, [key]: value }));
   }
 
   function selectPreset(id: string): void {
+    setPresetId(id);
+    if (id === 'custom') return;
     const preset = presets.find((entry) => entry.id === id);
     if (!preset) return;
-    setPresetId(id);
     setForm((current) => formForPreset(preset, current));
   }
 
@@ -174,14 +178,8 @@ export default function AdTesterDemo(): JSX.Element {
     });
   }
 
-  function scheduleAd(): void {
-    exampleRef.current?.postMessage({
-      type: 'schedule-ad',
-      ad: { sources: form.adUrl, integration: form.integration },
-    });
-  }
-
   function resetPreset(): void {
+    if (!selectedPreset) return;
     setForm((current) => formForPreset(selectedPreset, current));
   }
 
@@ -213,8 +211,9 @@ export default function AdTesterDemo(): JSX.Element {
         <h3 className={styles.panelTitle}>Ad configuration</h3>
         <div className={styles.formGrid}>
           <label className={styles.formField}>
-            Ad type
+            Ad templates
             <select className={styles.input} value={presetId} onChange={(event) => selectPreset(event.target.value)}>
+              <option value="custom">Custom</option>
               {presets.map((preset) => (
                 <option key={preset.id} value={preset.id}>
                   {preset.label}
@@ -281,9 +280,6 @@ export default function AdTesterDemo(): JSX.Element {
         <div className={styles.formActions}>
           <button className="button button--primary button--sm" onClick={loadSource}>
             Load source
-          </button>
-          <button className="button button--secondary button--sm" onClick={scheduleAd}>
-            Schedule ad now
           </button>
           <button className="button button--secondary button--sm" onClick={resetPreset}>
             Reset to preset

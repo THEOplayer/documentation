@@ -26,15 +26,62 @@
         background: #000;
       }
 
+      /* Make the menu cover the whole player, like the Default UI social overlay. */
+      #player-ui {
+        --theoplayer-menu-layer-padding: 0;
+        --theoplayer-menu-margin-top: 0;
+        --theoplayer-menu-margin-right: 0;
+        --theoplayer-menu-margin-bottom: 0;
+        --theoplayer-menu-margin-left: 0;
+      }
+
       #share-menu {
-        box-sizing: border-box;
-        width: min(26rem, calc(100vw - 2rem));
-        padding: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        --theoplayer-menu-min-width: 100%;
+        --theoplayer-menu-margin: 0;
+        --theoplayer-menu-margin-top: 0;
+        --theoplayer-menu-margin-right: 0;
+        --theoplayer-menu-margin-bottom: 0;
+        --theoplayer-menu-margin-left: 0;
         color: #fff;
       }
 
-      #share-menu [slot='heading'] {
+      .share-overlay {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 1rem;
+        background: rgb(0 0 0 / 85%);
+        text-align: center;
+      }
+
+      .share-overlay .share-heading {
         font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .share-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .share-content {
+        width: min(26rem, calc(100% - 1rem));
       }
 
       .share-links {
@@ -68,6 +115,7 @@
         display: grid;
         gap: 0.3rem;
         margin-top: 0.75rem;
+        text-align: left;
       }
 
       .share-field label {
@@ -81,9 +129,10 @@
       }
 
       .share-field input,
-      .share-field textarea {
+      .share-field .share-embed {
         flex: 1;
         min-width: 0;
+        margin: 0;
         padding: 0.3rem 0.5rem;
         border: 1px solid rgb(255 255 255 / 30%);
         border-radius: 0.3rem;
@@ -93,8 +142,9 @@
         font-size: 0.8rem;
       }
 
-      .share-field textarea {
-        resize: vertical;
+      .share-field .share-embed {
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
       }
 
       .share-field button {
@@ -138,24 +188,29 @@
         </svg>
       </theoplayer-menu-button>
       <theoplayer-menu id="share-menu" slot="menu" hidden>
-        <span slot="heading">Share this video</span>
-        <div class="share-links">
-          <a id="share-facebook" target="_blank" rel="noopener noreferrer"><img src="facebook.svg" alt="" />Facebook</a>
-          <a id="share-x" target="_blank" rel="noopener noreferrer"><img src="x.svg" alt="" />X</a>
-          <a id="share-linkedin" target="_blank" rel="noopener noreferrer"><img src="linkedin.svg" alt="" />LinkedIn</a>
-        </div>
-        <div class="share-field">
-          <label for="share-link">Direct link</label>
-          <div class="share-copy">
-            <input id="share-link" readonly />
-            <button type="button" data-copy="share-link">Copy</button>
-          </div>
-        </div>
-        <div class="share-field">
-          <label for="share-embed">Embed</label>
-          <div class="share-copy">
-            <textarea id="share-embed" rows="3" readonly></textarea>
-            <button type="button" data-copy="share-embed">Copy</button>
+        <div class="share-overlay">
+          <button type="button" class="share-close" aria-label="Close">×</button>
+          <div class="share-content">
+            <div class="share-heading">Share this video</div>
+            <div class="share-links">
+              <a id="share-facebook" target="_blank" rel="noopener noreferrer"><img src="facebook.svg" alt="" />Facebook</a>
+              <a id="share-x" target="_blank" rel="noopener noreferrer"><img src="x.svg" alt="" />X</a>
+              <a id="share-linkedin" target="_blank" rel="noopener noreferrer"><img src="linkedin.svg" alt="" />LinkedIn</a>
+            </div>
+            <div class="share-field">
+              <label for="share-link">Direct link</label>
+              <div class="share-copy">
+                <input id="share-link" readonly />
+                <button type="button" data-copy="share-link">Copy</button>
+              </div>
+            </div>
+            <div class="share-field">
+              <label>Embed</label>
+              <div class="share-copy">
+                <pre class="share-embed" id="share-embed"></pre>
+                <button type="button" data-copy="share-embed">Copy</button>
+              </div>
+            </div>
           </div>
         </div>
       </theoplayer-menu>
@@ -169,11 +224,15 @@
       document.querySelector('#share-x').href = `https://x.com/intent/post?url=${encodeURIComponent(shareUrl)}`;
       document.querySelector('#share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
       document.querySelector('#share-link').value = shareUrl;
-      document.querySelector('#share-embed').value = embedCode;
+      document.querySelector('#share-embed').textContent = embedCode;
+      document.querySelector('.share-close').addEventListener('click', () => {
+        document.querySelector('#share-menu').closeMenu();
+      });
 
       document.querySelectorAll('[data-copy]').forEach((button) => {
         button.addEventListener('click', () => {
           const field = document.getElementById(button.dataset.copy);
+          const text = field.value !== undefined ? field.value : field.textContent;
           const copied = () => {
             button.textContent = 'Copied';
             setTimeout(() => {
@@ -181,10 +240,10 @@
             }, 1500);
           };
           if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(field.value).then(copied, () => {
-              field.select();
+            navigator.clipboard.writeText(text).then(copied, () => {
+              if (field.select) field.select();
             });
-          } else {
+          } else if (field.select) {
             field.select();
           }
         });

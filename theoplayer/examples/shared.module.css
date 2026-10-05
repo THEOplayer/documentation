@@ -178,6 +178,39 @@
   max-width: 100%;
 }
 
+.networkLog {
+  max-height: 16rem;
+  overflow: auto;
+  padding: 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+}
+
+.networkTable {
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.networkTable thead th {
+  position: sticky;
+  top: -0.5rem;
+  padding: 0 0.75rem 0.15rem 0;
+  background: var(--ifm-background-color);
+  text-align: left;
+}
+
+.networkTable td {
+  padding: 0.1rem 0.75rem 0.1rem 0;
+}
+
+.networkLogUrl {
+  max-width: 24rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .eventLog {
   display: grid;
   gap: 0.15rem;

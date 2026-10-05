@@ -47,17 +47,15 @@
       const posterUrl = 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg';
       const adUrl =
         'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
-      const blockedAdUrl = 'https://ads.invalid/vast.xml';
 
       let blockContentIfAdError = false;
-      let simulateAdBlocker = false;
 
       function sourceFor() {
         return {
           sources: { src: contentUrl, type: 'application/x-mpegurl' },
           poster: posterUrl,
           metadata: { title: 'Big Buck Bunny' },
-          ads: [{ sources: simulateAdBlocker ? blockedAdUrl : adUrl, integration: 'csai' }],
+          ads: [{ sources: adUrl, integration: 'csai' }],
           blockContentIfAdError,
         };
       }
@@ -84,7 +82,6 @@
 
         onParentMessage('ad-block-config', (message) => {
           if (typeof message.blockContentIfAdError === 'boolean') blockContentIfAdError = message.blockContentIfAdError;
-          if (typeof message.simulateAdBlocker === 'boolean') simulateAdBlocker = message.simulateAdBlocker;
           report('waiting', false);
           player.source = sourceFor();
         });

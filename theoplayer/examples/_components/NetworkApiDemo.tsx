@@ -17,6 +17,10 @@ interface NetworkEntry {
 
 type Filter = 'all' | 'Request' | 'Response';
 
+function valueOrDash(value: string | undefined): string {
+  return value && value.trim() !== '' ? value : '—';
+}
+
 export default function NetworkApiDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [entries, setEntries] = useState<NetworkEntry[]>([]);
@@ -72,24 +76,38 @@ export default function NetworkApiDemo(): JSX.Element {
             Reverse subtitle text (response interceptor)
           </label>
         </div>
-        <div className={`${styles.eventLog} ${styles.readoutScroll}`}>
+        <div className={styles.networkLog}>
           {filtered.length === 0 ? (
             <span className={styles.eventLogEmpty}>No requests logged yet. Play the video to see network traffic.</span>
           ) : (
-            filtered.map((entry, index) => (
-              <div key={`${entry.time}-${index}`} className={styles.eventLogRow}>
-                <span>{entry.time}</span>
-                <span>{entry.kind}</span>
-                <span>
-                  {entry.kind === 'Request' ? entry.method : entry.status} {entry.type}
-                  {entry.subType && entry.subType !== '—' ? `/${entry.subType}` : ''}
-                </span>
-                <span className={styles.networkUrl}>{entry.url}</span>
-                <span>
-                  {entry.contentType} · {entry.contentLength}
-                </span>
-              </div>
-            ))
+            <table className={styles.networkTable}>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Kind</th>
+                  <th>Method / Status</th>
+                  <th>Type</th>
+                  <th>Content-Type</th>
+                  <th>Content-Length</th>
+                  <th>URL</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((entry, index) => (
+                  <tr key={`${entry.time}-${index}`}>
+                    <td>{entry.time}</td>
+                    <td>{entry.kind}</td>
+                    <td>{valueOrDash(entry.kind === 'Request' ? entry.method : entry.status)}</td>
+                    <td>{`${valueOrDash(entry.type)}${entry.subType && entry.subType !== '—' ? `/${entry.subType}` : ''}`}</td>
+                    <td>{valueOrDash(entry.contentType)}</td>
+                    <td>{valueOrDash(entry.contentLength)}</td>
+                    <td className={styles.networkLogUrl} title={entry.url}>
+                      {entry.url}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           )}
         </div>
       </div>

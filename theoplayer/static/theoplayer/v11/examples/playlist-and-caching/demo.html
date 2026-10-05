@@ -54,7 +54,7 @@
           },
         },
         {
-          title: 'Star Wars Reel',
+          title: 'Star Wars',
           poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
           source: {
             sources: {
@@ -62,7 +62,7 @@
               type: 'application/x-mpegurl',
             },
             poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
-            metadata: { title: 'Star Wars Reel' },
+            metadata: { title: 'Star Wars' },
           },
         },
         {
@@ -83,9 +83,15 @@
         const cacheProgress = playlist.map(() => 0);
         const cacheTasks = playlist.map(() => null);
 
+        function canCacheNext() {
+          const next = active + 1;
+          return next < playlist.length && cacheStatus[next] === 'none';
+        }
+
         function report() {
           sendToParent('playlist-state', {
             active,
+            canCacheNext: canCacheNext(),
             items: playlist.map((item, index) => ({
               title: item.title,
               poster: item.poster,
@@ -105,7 +111,8 @@
 
         function watchTask(task, index) {
           cacheTasks[index] = task;
-          cacheStatus[index] = 'caching';
+          cacheStatus[index] = task.status === 'done' ? 'done' : task.status === 'error' ? 'error' : 'caching';
+          cacheProgress[index] = Math.round(task.percentageCached * 100);
           report();
           task.addEventListener('progress', () => {
             cacheProgress[index] = Math.round(task.percentageCached * 100);
@@ -119,15 +126,31 @@
           });
         }
 
+        // Reuse an existing task for the same source instead of creating a duplicate.
+        // Tasks persist in THEOplayer.cache.tasks across reloads of this page.
+        function taskForSource(src) {
+          for (const task of THEOplayer.cache.tasks) {
+            const taskSrc = task.source && task.source.sources && task.source.sources.src;
+            if (taskSrc === src && task.status !== 'error' && task.status !== 'evicted') return task;
+          }
+          return null;
+        }
+
+        function cacheNext() {
+          const next = active + 1;
+          if (!canCacheNext()) return;
+          const src = playlist[next].source.sources.src;
+          const task = taskForSource(src) || THEOplayer.cache.createTask(playlist[next].source, { amount: '25%' });
+          if (cacheTasks[next] !== task) watchTask(task, next);
+          if (task.status === 'idle') task.start();
+        }
+
         // Cache the first 25% of the next item once playback passes 75%.
         function maybeCacheNext() {
-          const next = active + 1;
-          if (next >= playlist.length || cacheStatus[next] !== 'none') return;
+          if (!canCacheNext()) return;
           if (!Number.isFinite(player.duration) || player.duration <= 0) return;
           if (player.currentTime / player.duration < 0.75) return;
-          const task = THEOplayer.cache.createTask(playlist[next].source, { amount: '25%' });
-          watchTask(task, next);
-          if (task.status === 'idle') task.start();
+          cacheNext();
         }
 
         onParentMessage('playlist-load', (message) => {
@@ -140,11 +163,7 @@
           loadItem(active + 1, true);
         });
         onParentMessage('playlist-cache-next', () => {
-          const next = active + 1;
-          if (next >= playlist.length || cacheStatus[next] !== 'none') return;
-          const task = THEOplayer.cache.createTask(playlist[next].source, { amount: '25%' });
-          watchTask(task, next);
-          if (task.status === 'idle') task.start();
+          cacheNext();
         });
 
         player.addEventListener('ended', () => loadItem(active + 1, true));

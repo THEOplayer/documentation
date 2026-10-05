@@ -178,17 +178,6 @@
           player.autoplay = true;
           player.source = source;
         });
-        onParentMessage('schedule-ad', (message) => {
-          const ad = sanitizeAdDescription(message.ad);
-          if (!ad) return;
-          delete ad.timeOffset;
-          try {
-            player.ads.schedule(ad);
-            logEvent('schedule', `ad scheduled now (${ad.integration})`);
-          } catch (error) {
-            logEvent('schedule', `failed: ${error.message || error}`);
-          }
-        });
         onParentMessage('clear-ad-log', () => {
           events = [];
           reportEvents();
