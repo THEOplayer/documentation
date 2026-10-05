@@ -91,6 +91,12 @@ function formForPreset(preset: Preset, previous: FormState): FormState {
   };
 }
 
+function mimeTypeForVideoUrl(url: string): string | undefined {
+  if (/\.mpd(\?|#|$)/i.test(url)) return 'application/dash+xml';
+  if (/\.m3u8(\?|#|$)/i.test(url)) return 'application/x-mpegurl';
+  return undefined;
+}
+
 function isHttpUrl(value: string): boolean {
   try {
     const url = new URL(value);
@@ -129,8 +135,9 @@ export default function AdTesterDemo(): JSX.Element {
   }, [form]);
 
   const generatedSource = useMemo(() => {
+    const mimeType = mimeTypeForVideoUrl(form.videoUrl);
     const source = {
-      sources: { src: form.videoUrl, type: 'application/x-mpegurl' },
+      sources: mimeType ? { src: form.videoUrl, type: mimeType } : { src: form.videoUrl },
       poster: defaultPoster,
       metadata: { title: 'Big Buck Bunny' },
       ads: [adDescription],
@@ -155,10 +162,11 @@ export default function AdTesterDemo(): JSX.Element {
   }
 
   function loadSource(): void {
+    const mimeType = mimeTypeForVideoUrl(form.videoUrl);
     exampleRef.current?.postMessage({
       type: 'load-ad-source',
       source: {
-        sources: { src: form.videoUrl, type: 'application/x-mpegurl' },
+        sources: mimeType ? { src: form.videoUrl, type: mimeType } : { src: form.videoUrl },
         poster: defaultPoster,
         metadata: { title: 'Big Buck Bunny' },
         ads: [adDescription],
@@ -230,7 +238,7 @@ export default function AdTesterDemo(): JSX.Element {
               onChange={(event) => updateForm('integration', event.target.value as Integration)}
             >
               <option value="csai">THEOplayer (CSAI)</option>
-              <option value="google-ima">google-ima</option>
+              <option value="google-ima">Google IMA</option>
             </select>
           </label>
           <label className={styles.formField}>

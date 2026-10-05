@@ -95,8 +95,9 @@
         if (typeof source !== 'object' || source == null) return null;
         const src = source.sources && source.sources.src;
         if (!isSafeUrl(src)) return null;
+        const allowedTypes = ['application/dash+xml', 'application/x-mpegurl'];
         const result = {
-          sources: { src, type: typeof source.sources.type === 'string' ? source.sources.type : 'application/x-mpegurl' },
+          sources: allowedTypes.includes(source.sources.type) ? { src, type: source.sources.type } : { src },
         };
         if (isSafeUrl(source.poster)) result.poster = source.poster;
         if (source.metadata && typeof source.metadata.title === 'string') result.metadata = { title: source.metadata.title };

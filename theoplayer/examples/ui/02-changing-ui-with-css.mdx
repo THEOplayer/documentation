@@ -18,14 +18,6 @@ import ChangingUiWithCssDemo from '../_components/ChangingUiWithCssDemo';
 
 Open Video UI exposes its colors through CSS custom properties such as `--theoplayer-icon-color`, `--theoplayer-range-bar-color` and `--theoplayer-control-background-gradient-stops`, grouped below into accent, foreground and background colors. See the [Open Video UI styling example](https://optiview.dolby.com/docs/open-video-ui/web/examples/styling/) for more options.
 
-```css
-theoplayer-default-ui {
-  --theoplayer-icon-color: #ffc50f;
-  --theoplayer-range-bar-color: #ffc50f;
-  --theoplayer-control-background-gradient-stops: transparent 0%, rgb(0 0 0 / 85%) 100%;
-}
-```
-
 <details>
   <summary>Code</summary>
   <CodeBlock language="html" title="demo.html" showLineNumbers>
@@ -38,17 +30,6 @@ theoplayer-default-ui {
 <ChangingUiWithCssDemo ui="default-ui" />
 
 The [Default UI](../../ui/web/default-ui/index.mdx) groups its themed elements into six color classes: `.theo-primary-color` and `.theo-primary-background`, `.theo-secondary-color` and `.theo-secondary-background`, and `.theo-tertiary-color` and `.theo-tertiary-background`, plus `.vjs-selected` for selected menu items. Override these classes to recolor every element at once; see [UI skinning](../../ui/web/ui-skinning.mdx) for what each class affects.
-
-```css
-.theoplayer-skin .theo-primary-color,
-.theoplayer-skin .vjs-selected {
-  color: #ffc50f !important;
-}
-.theoplayer-skin .theo-primary-background {
-  color: #000000 !important;
-  background-color: #ffc50f !important;
-}
-```
 
 <details>
   <summary>Code</summary>

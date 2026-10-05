@@ -89,16 +89,22 @@
             contentType: header(response.headers, 'Content-Type'),
             contentLength: header(response.headers, 'Content-Length'),
           });
-          if (reverseSubtitles && response.url.indexOf('.vtt') !== -1 && typeof response.body === 'string') {
-            const body = response.body.replace(/\r\n/g, '\n');
-            const newBody = body.replace(/.+ --> .+\n([\s\S]*?)\n\n/g, (match, text) => {
-              const newText = text
+          if (
+            reverseSubtitles &&
+            response.url.indexOf('.vtt') !== -1 &&
+            (typeof response.body === 'string' || response.body instanceof ArrayBuffer)
+          ) {
+            const text = typeof response.body === 'string' ? response.body : new TextDecoder().decode(response.body);
+            const newText = text.replace(/\r\n/g, '\n').replace(/.+ --> .+\n([\s\S]*?)\n\n/g, (match, cueText) => {
+              const newCueText = cueText
                 .split('\n')
                 .map((line) => line.split('').reverse().join(''))
                 .join('\n');
-              return match.replace(text, newText);
+              return match.replace(cueText, newCueText);
             });
-            response.respondWith({ body: newBody });
+            response.respondWith({
+              body: typeof response.body === 'string' ? newText : new TextEncoder().encode(newText).buffer,
+            });
           }
         });
 
