@@ -97,12 +97,12 @@ export default function NetworkApiDemo(): JSX.Element {
               </colgroup>
               <thead>
                 <tr>
-                  <th>Time</th>
-                  <th>Kind</th>
-                  <th>Method/Status</th>
-                  <th>Type</th>
-                  <th>Content-Type</th>
-                  <th>Length</th>
+                  <th className={styles.networkColTime}>Time</th>
+                  <th className={styles.networkColKind}>Kind</th>
+                  <th className={styles.networkColMethod}>Method/Status</th>
+                  <th className={styles.networkColType}>Type</th>
+                  <th className={styles.networkColContentType}>Content-Type</th>
+                  <th className={styles.networkColLength}>Length</th>
                   <th>URL (file)</th>
                 </tr>
               </thead>
@@ -113,7 +113,7 @@ export default function NetworkApiDemo(): JSX.Element {
                     <td>{entry.kind === 'Request' ? 'Req' : 'Res'}</td>
                     <td>{valueOrDash(entry.kind === 'Request' ? entry.method : entry.status)}</td>
                     <td>{`${valueOrDash(entry.type)}${entry.subType && entry.subType !== '—' ? `/${entry.subType}` : ''}`}</td>
-                    <td>{valueOrDash(entry.contentType)}</td>
+                    <td>{valueOrDash(entry.contentType && entry.contentType.replace(/^application\//, ''))}</td>
                     <td>{valueOrDash(entry.contentLength)}</td>
                     <td className={styles.networkLogUrl} title={entry.url}>
                       {urlFileName(entry.url)}
