@@ -59,59 +59,84 @@
         return result;
       }
 
-      onPlayerReady((player) => {
-        function report() {
-          const buffered = ranges(player.buffered);
-          const ahead = buffered
-            .filter((range) => range.end > player.currentTime)
-            .reduce((max, range) => Math.max(max, range.end - player.currentTime), 0);
-          sendToParent('preload-state', {
-            preload: player.preload,
-            readyState: player.readyState,
-            duration: player.duration,
-            currentTime: player.currentTime,
-            buffered,
-            bufferedAhead: ahead,
-          });
+      const reportEvents = [
+        'progress',
+        'timeupdate',
+        'durationchange',
+        'sourcechange',
+        'emptied',
+        'readystatechange',
+        'loadedmetadata',
+        'loadeddata',
+        'canplay',
+        'canplaythrough',
+        'seeked',
+        'suspend',
+        'stalled',
+        'pause',
+        'playing',
+        'waiting',
+      ];
+
+      let pollInterval = null;
+
+      function createPlayer(preload) {
+        // Re-assigning player.source while a source is loaded throws
+        // "Already loaded a media source", so switching modes re-creates the player.
+        if (pollInterval) {
+          clearInterval(pollInterval);
+          pollInterval = null;
         }
+        const oldUi = document.querySelector('#player-ui');
+        const configuration = oldUi.getAttribute('configuration');
+        if (oldUi.player) {
+          oldUi.player.destroy();
+        }
+        oldUi.remove();
+        const ui = document.createElement('theoplayer-default-ui');
+        ui.id = 'player-ui';
+        ui.setAttribute('configuration', configuration);
+        document.body.appendChild(ui);
+        ui.addEventListener(
+          'theoplayerready',
+          () => {
+            const player = ui.player;
+            window.player = player;
 
-        onParentMessage('set-preload', (message) => {
-          if (!allowedPreloads.includes(message.preload)) return;
-          player.preload = message.preload;
-          // Assign a fresh copy so the player treats it as a new source and resets playback.
-          player.autoplay = false;
-          player.source = structuredClone(source);
-          report();
-        });
+            function report() {
+              const buffered = ranges(player.buffered);
+              const ahead = buffered
+                .filter((range) => range.end > player.currentTime)
+                .reduce((max, range) => Math.max(max, range.end - player.currentTime), 0);
+              sendToParent('preload-state', {
+                preload: player.preload,
+                readyState: player.readyState,
+                duration: player.duration,
+                currentTime: player.currentTime,
+                buffered,
+                bufferedAhead: ahead,
+              });
+            }
 
-        player.addEventListener(
-          [
-            'progress',
-            'timeupdate',
-            'durationchange',
-            'sourcechange',
-            'emptied',
-            'readystatechange',
-            'loadedmetadata',
-            'loadeddata',
-            'canplay',
-            'canplaythrough',
-            'seeked',
-            'suspend',
-            'stalled',
-            'pause',
-            'playing',
-            'waiting',
-          ],
-          report
+            player.addEventListener(reportEvents, report);
+            // Buffer growth is not guaranteed to fire an event while paused, so poll lightly too.
+            pollInterval = setInterval(report, 500);
+
+            player.preload = preload;
+            player.source = source;
+            report();
+            sendToParent('ready');
+          },
+          { once: true }
         );
-        // Buffer growth is not guaranteed to fire an event while paused, so poll lightly too.
-        setInterval(report, 500);
+      }
 
-        player.preload = 'auto';
-        player.source = source;
-        report();
+      onParentMessage('set-preload', (message) => {
+        if (!allowedPreloads.includes(message.preload)) return;
+        createPlayer(message.preload);
       });
+
+      createPlayer('auto');
     </script>
   </body>
 </html>

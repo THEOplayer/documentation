@@ -36,29 +36,10 @@
         --theoplayer-menu-margin-left: 0;
       }
 
-      /* Keep the heading row (built-in back button + our ×) above the overlay. */
+      /* Keep the built-in heading row (back button) above the overlay. */
       #share-menu::part(heading) {
         position: relative;
         z-index: 1;
-      }
-
-      .share-heading-bar {
-        display: flex;
-        align-items: center;
-        flex: 1;
-        min-height: 2.6rem;
-        padding: 0 0.5rem;
-      }
-
-      .share-close {
-        margin-left: auto;
-        border: 0;
-        background: transparent;
-        color: #fff;
-        font-size: 1.5rem;
-        line-height: 1;
-        cursor: pointer;
-        padding: 0.2rem 0.3rem;
       }
 
       #share-menu {
@@ -234,9 +215,6 @@
         </svg>
       </theoplayer-menu-button>
       <theoplayer-menu id="share-menu" slot="menu" hidden>
-        <div slot="heading" class="share-heading-bar">
-          <button type="button" class="share-close" aria-label="Close">×</button>
-        </div>
         <div class="share-overlay">
           <div class="share-content">
             <div class="share-heading">Share this video</div>
@@ -273,9 +251,6 @@
       document.querySelector('#share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
       document.querySelector('#share-link').value = shareUrl;
       document.querySelector('#share-embed').textContent = embedCode;
-      document.querySelector('.share-close').addEventListener('click', () => {
-        document.querySelector('#share-menu').closeMenu();
-      });
 
       document.querySelectorAll('[data-copy]').forEach((button) => {
         button.addEventListener('click', () => {
