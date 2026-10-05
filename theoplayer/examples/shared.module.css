@@ -198,7 +198,10 @@
   white-space: nowrap;
   table-layout: fixed;
   width: 100%;
-  min-width: calc(55ch + 3rem);
+  min-width: calc(52ch + 2.5rem);
+  /* Reset the global table overflow, so the log box is the only scroll
+     container and the sticky header tracks it. */
+  overflow: visible;
 }
 
 .networkColTime {
@@ -214,18 +217,18 @@
 }
 
 .networkColContentType {
-  width: calc(16ch + 0.6rem);
+  width: calc(14ch + 0.5rem);
 }
 
 .networkColLength {
-  width: calc(8ch + 0.6rem);
+  width: calc(7ch + 0.5rem);
 }
 
 .networkTable thead th {
   position: sticky;
   top: 0;
   z-index: 1;
-  padding: 0.15rem 0.4rem 0.3rem 0;
+  padding: 0.15rem 0.3rem 0.3rem 0;
   background: var(--ifm-background-surface-color, var(--ifm-color-emphasis-100));
   text-align: left;
   white-space: normal;
@@ -240,7 +243,7 @@
 
 .networkTable td {
   max-width: 0;
-  padding: 0.1rem 0.4rem 0.1rem 0;
+  padding: 0.1rem 0.3rem 0.1rem 0;
 }
 
 .networkLogUrl {
