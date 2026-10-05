@@ -109,6 +109,7 @@ function isHttpUrl(value: string): boolean {
 export default function AdTesterDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [presetId, setPresetId] = useState('vast-preroll');
+  const [lastTemplateId, setLastTemplateId] = useState('vast-preroll');
   const [form, setForm] = useState<FormState>({
     videoUrl: defaultContentUrl,
     adUrl: presets[0].adUrl,
@@ -162,6 +163,7 @@ export default function AdTesterDemo(): JSX.Element {
     if (id === 'custom') return;
     const preset = presets.find((entry) => entry.id === id);
     if (!preset) return;
+    setLastTemplateId(id);
     setForm((current) => formForPreset(preset, current));
   }
 
@@ -179,8 +181,10 @@ export default function AdTesterDemo(): JSX.Element {
   }
 
   function resetPreset(): void {
-    if (!selectedPreset) return;
-    setForm((current) => formForPreset(selectedPreset, current));
+    const template = presets.find((entry) => entry.id === lastTemplateId);
+    if (!template) return;
+    setPresetId(template.id);
+    setForm((current) => formForPreset(template, current));
   }
 
   return (
@@ -282,7 +286,7 @@ export default function AdTesterDemo(): JSX.Element {
             Load source
           </button>
           <button className="button button--secondary button--sm" onClick={resetPreset}>
-            Reset to preset
+            Reset to template
           </button>
         </div>
         <CodeBlock language="js" title="Generated code">

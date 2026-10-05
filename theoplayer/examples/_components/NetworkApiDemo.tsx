@@ -21,6 +21,11 @@ function valueOrDash(value: string | undefined): string {
   return value && value.trim() !== '' ? value : '—';
 }
 
+function urlFileName(url: string): string {
+  const last = url.split('?')[0].split('/').pop();
+  return last || url;
+}
+
 export default function NetworkApiDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [entries, setEntries] = useState<NetworkEntry[]>([]);
@@ -73,7 +78,7 @@ export default function NetworkApiDemo(): JSX.Element {
                 exampleRef.current?.postMessage({ type: 'network-reverse', enabled: event.target.checked });
               }}
             />
-            Reverse subtitle text (response interceptor)
+            <span>Reverse subtitle text (response interceptor)</span>
           </label>
         </div>
         <div className={styles.networkLog}>
@@ -81,28 +86,37 @@ export default function NetworkApiDemo(): JSX.Element {
             <span className={styles.eventLogEmpty}>No requests logged yet. Play the video to see network traffic.</span>
           ) : (
             <table className={styles.networkTable}>
+              <colgroup>
+                <col className={styles.networkColTime} />
+                <col className={styles.networkColKind} />
+                <col className={styles.networkColMethod} />
+                <col className={styles.networkColType} />
+                <col className={styles.networkColContentType} />
+                <col className={styles.networkColLength} />
+                <col />
+              </colgroup>
               <thead>
                 <tr>
                   <th>Time</th>
                   <th>Kind</th>
-                  <th>Method / Status</th>
+                  <th>Method/Status</th>
                   <th>Type</th>
                   <th>Content-Type</th>
-                  <th>Content-Length</th>
-                  <th>URL</th>
+                  <th>Length</th>
+                  <th>URL (file)</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((entry, index) => (
                   <tr key={`${entry.time}-${index}`}>
                     <td>{entry.time}</td>
-                    <td>{entry.kind}</td>
+                    <td>{entry.kind === 'Request' ? 'Req' : 'Res'}</td>
                     <td>{valueOrDash(entry.kind === 'Request' ? entry.method : entry.status)}</td>
                     <td>{`${valueOrDash(entry.type)}${entry.subType && entry.subType !== '—' ? `/${entry.subType}` : ''}`}</td>
                     <td>{valueOrDash(entry.contentType)}</td>
                     <td>{valueOrDash(entry.contentLength)}</td>
                     <td className={styles.networkLogUrl} title={entry.url}>
-                      {entry.url}
+                      {urlFileName(entry.url)}
                     </td>
                   </tr>
                 ))}

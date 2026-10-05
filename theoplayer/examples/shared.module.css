@@ -85,6 +85,10 @@
   gap: 0.5rem;
 }
 
+.checkboxField input {
+  flex-shrink: 0;
+}
+
 .formSection {
   margin: 0.75rem 0 1rem;
 }
@@ -191,6 +195,33 @@
 .networkTable {
   border-collapse: collapse;
   white-space: nowrap;
+  table-layout: fixed;
+  width: 100%;
+  min-width: 560px;
+}
+
+.networkColTime {
+  width: 6.5rem;
+}
+
+.networkColKind {
+  width: 2.8rem;
+}
+
+.networkColMethod {
+  width: 5.2rem;
+}
+
+.networkColType {
+  width: 4.5rem;
+}
+
+.networkColContentType {
+  width: 7rem;
+}
+
+.networkColLength {
+  width: 4.5rem;
 }
 
 .networkTable thead th {
@@ -206,7 +237,6 @@
 }
 
 .networkLogUrl {
-  max-width: 24rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }

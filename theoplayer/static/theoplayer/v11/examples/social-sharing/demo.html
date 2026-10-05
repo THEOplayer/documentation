@@ -56,11 +56,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         height: 100%;
         padding: 1rem;
         background: rgb(0 0 0 / 85%);
         text-align: center;
+        overflow-y: auto;
       }
 
       .share-overlay .share-heading {
@@ -82,6 +82,7 @@
 
       .share-content {
         width: min(26rem, calc(100% - 1rem));
+        margin: auto;
       }
 
       .share-links {
@@ -125,6 +126,7 @@
 
       .share-field .share-copy {
         display: flex;
+        align-items: flex-start;
         gap: 0.4rem;
       }
 
@@ -161,6 +163,34 @@
         width: 1.25rem;
         height: 1.25rem;
         vertical-align: middle;
+      }
+
+      /* Compact layout on small players so nothing is clipped. */
+      @media (max-height: 320px), (max-width: 400px) {
+        .share-overlay {
+          padding: 0.5rem;
+          font-size: 0.8rem;
+        }
+
+        .share-content {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        .share-links {
+          gap: 0.3rem;
+          margin: 0.4rem 0;
+        }
+
+        .share-links a {
+          padding: 0.2rem 0.4rem;
+          font-size: 0.75rem;
+        }
+
+        .share-field {
+          gap: 0.15rem;
+          margin-top: 0.4rem;
+        }
       }
     </style>
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
