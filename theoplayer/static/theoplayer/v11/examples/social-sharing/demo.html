@@ -36,11 +36,31 @@
         --theoplayer-menu-margin-left: 0;
       }
 
-      /* Keep the built-in heading/back row above our overlay when it renders,
-         so the × stays aligned with it instead of covering it. */
+      /* The heading row (built-in back button + our ×) sits above the overlay
+         and gets the same dimmed background, so the player stays uniformly covered. */
       #share-menu::part(heading) {
         position: relative;
         z-index: 1;
+        background: rgb(0 0 0 / 60%);
+      }
+
+      .share-heading-bar {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-height: 2.6rem;
+        padding: 0 0.5rem;
+      }
+
+      .share-close {
+        margin-left: auto;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0.2rem 0.3rem;
       }
 
       #share-menu {
@@ -76,18 +96,6 @@
       .share-overlay .share-heading {
         font-weight: 700;
         font-size: 1.05rem;
-      }
-
-      .share-close {
-        position: absolute;
-        top: 0.4rem;
-        right: 0.4rem;
-        border: 0;
-        background: transparent;
-        color: #fff;
-        font-size: 1.5rem;
-        line-height: 1;
-        cursor: pointer;
       }
 
       .share-content {
@@ -228,8 +236,10 @@
         </svg>
       </theoplayer-menu-button>
       <theoplayer-menu id="share-menu" slot="menu" hidden>
-        <div class="share-overlay">
+        <div slot="heading" class="share-heading-bar">
           <button type="button" class="share-close" aria-label="Close">×</button>
+        </div>
+        <div class="share-overlay">
           <div class="share-content">
             <div class="share-heading">Share this video</div>
             <div class="share-links">

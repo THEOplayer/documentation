@@ -200,7 +200,7 @@
   white-space: nowrap;
   table-layout: fixed;
   width: 100%;
-  min-width: calc(52ch + 2.5rem);
+  min-width: calc(56ch + 4rem);
   /* Undo the global table styles (display:block + overflow-x:auto), so the
      fixed column widths apply and the log box is the only scroll container
      for the sticky header to track. */
@@ -209,11 +209,11 @@
 }
 
 .networkColTime {
-  width: calc(8ch + 0.6rem);
+  width: calc(8ch + 1.1rem);
 }
 
 .networkColRequest {
-  width: calc(5ch + 0.6rem);
+  width: calc(7ch + 0.6rem);
 }
 
 .networkColType {
@@ -221,7 +221,7 @@
 }
 
 .networkColContentType {
-  width: calc(12ch + 0.5rem);
+  width: calc(11ch + 0.5rem);
 }
 
 .networkColLength {
