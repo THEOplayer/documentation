@@ -11,5 +11,5 @@ Thumbnails have also a second advantage: it might benefit your bandwidth usage. 
 ## Resources
 
 - [How to guide](../../how-to-guides/web/text-tracks/preview-thumbnails.mdx)
-- [Demo page](https://demo.theoplayer.com/preview-thumbnails)
+- [Demo page](../../examples/ui/06-preview-thumbnails.mdx)
 - [Blog post by THEO](https://www.theoplayer.com/blog/in-stream-thumbnail-support-dvr-dash-streams)

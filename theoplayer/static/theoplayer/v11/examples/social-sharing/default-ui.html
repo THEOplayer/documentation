@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Social sharing (Default UI)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #player {
+        position: relative;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="player" class="video-js theoplayer-skin vjs-16-9"></div>
+    <script>
+      var shareUrl = 'https://optiview.dolby.com/docs/theoplayer/examples/ui/social-sharing/';
+
+      var player = new THEOplayer.Player(document.querySelector('#player'), {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+      });
+      player.source = {
+        sources: [{ src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', type: 'application/x-mpegurl' }],
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        metadata: { title: 'Big Buck Bunny' },
+      };
+
+      // <URL> in each src is replaced with player.social.url.
+      player.social.url = shareUrl;
+      player.social.items = [
+        {
+          label: 'Facebook',
+          icon: 'facebook.svg',
+          src: 'https://www.facebook.com/sharer/sharer.php?u=<URL>',
+        },
+        {
+          label: 'X',
+          icon: 'x.svg',
+          src: 'https://x.com/intent/post?url=<URL>',
+        },
+        {
+          label: 'LinkedIn',
+          icon: 'linkedin.svg',
+          src: 'https://www.linkedin.com/sharing/share-offsite/?url=<URL>',
+        },
+        {
+          label: 'Direct link',
+          src: shareUrl,
+        },
+        {
+          label: 'Embed',
+          text: '<iframe width="640" height="360" src="' + shareUrl + '" frameborder="0" allowfullscreen>\n</iframe>',
+        },
+      ];
+    </script>
+  </body>
+</html>

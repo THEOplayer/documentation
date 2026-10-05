@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ad block detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const contentUrl = 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8';
+      const posterUrl = 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg';
+      const adUrl =
+        'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
+      const blockedAdUrl = 'https://ads.invalid/vast.xml';
+
+      let blockContentIfAdError = false;
+      let simulateAdBlocker = false;
+
+      function sourceFor() {
+        return {
+          sources: { src: contentUrl, type: 'application/x-mpegurl' },
+          poster: posterUrl,
+          metadata: { title: 'Big Buck Bunny' },
+          ads: [{ sources: simulateAdBlocker ? blockedAdUrl : adUrl, integration: 'csai' }],
+          blockContentIfAdError,
+        };
+      }
+
+      onPlayerReady((player) => {
+        function report(status, blocked, message) {
+          sendToParent('ad-block-status', { status, blocked, message: message || '' });
+        }
+
+        player.ads.addEventListener('adbegin', () => {
+          report('adbegin', false);
+        });
+        player.ads.addEventListener('aderror', (event) => {
+          const message = event.error?.message || event.error || event.message || 'Ad error';
+          report('aderror', blockContentIfAdError, String(message));
+        });
+        player.addEventListener('error', () => {
+          const error = player.errorObject;
+          report('playererror', blockContentIfAdError, error?.message || 'Player error');
+        });
+        player.addEventListener('sourcechange', () => {
+          report('waiting', false);
+        });
+
+        onParentMessage('ad-block-config', (message) => {
+          if (typeof message.blockContentIfAdError === 'boolean') blockContentIfAdError = message.blockContentIfAdError;
+          if (typeof message.simulateAdBlocker === 'boolean') simulateAdBlocker = message.simulateAdBlocker;
+          report('waiting', false);
+          player.source = sourceFor();
+        });
+
+        player.source = sourceFor();
+        report('waiting', false);
+      });
+    </script>
+  </body>
+</html>

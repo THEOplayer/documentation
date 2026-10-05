@@ -1,0 +1,44 @@
+---
+sidebar_custom_props: { icon: '📢' }
+description: Schedule VAST, VMAP and Google IMA ads at different positions, and inspect the resulting ad events.
+---
+
+# Advertisement tester
+
+Schedule ad breaks in a stream and inspect the resulting ad events and companion ads.
+
+import CodeBlock from '@theme/CodeBlock';
+import AdTesterDemo from '../_components/AdTesterDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/advertisement-tester/demo.html';
+
+<AdTesterDemo />
+
+THEOplayer supports client-side ad insertion (CSAI) of VAST and VMAP ads through the `csai` integration, and ads served through Google's IMA SDK with the `google-ima` integration. VPAID and non-linear overlay ads require `google-ima`. Ad breaks are scheduled with the `ads` array in the source, or at any time with `player.ads.schedule()`. A `timeOffset` of `'start'` schedules a pre-roll, `'end'` a post-roll, and a timestamp or percentage a mid-roll; VMAP ads carry their own offsets and ignore `timeOffset`.
+
+```js
+player.source = {
+  sources: { src: 'https://example.com/video.m3u8' },
+  ads: [
+    {
+      sources: 'https://example.com/vast.xml',
+      integration: 'csai',
+      timeOffset: 'start',
+    },
+  ],
+};
+
+// Schedule an ad break while the content is already playing:
+player.ads.schedule({
+  sources: 'https://example.com/vast.xml',
+  integration: 'csai',
+});
+```
+
+See [Set up VAST and VMAP](../../how-to-guides/web/ads/set-up-vast-and-vmap.mdx), [Google IMA](../../how-to-guides/web/ads/google-ima.mdx) and [Subscribe to ad events](../../how-to-guides/web/ads/subscribe-to-ad-events.mdx).
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

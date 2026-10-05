@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Related content</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+
+      #related-menu {
+        box-sizing: border-box;
+        max-width: min(34rem, calc(100vw - 2rem));
+        padding: 1rem;
+        color: #fff;
+      }
+
+      #related-menu [slot='heading'] {
+        font-weight: 700;
+      }
+
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+      }
+
+      .related-tile {
+        padding: 0;
+        border: 0;
+        border-radius: 0.4rem;
+        overflow: hidden;
+        background: rgb(255 255 255 / 8%);
+        color: #fff;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .related-tile:hover,
+      .related-tile:focus-visible {
+        background: rgb(255 255 255 / 18%);
+      }
+
+      .related-tile img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .related-tile span {
+        display: block;
+        padding: 0.4rem 0.5rem;
+      }
+
+      .related-tile .related-duration {
+        padding-top: 0;
+        font-size: 0.8rem;
+        opacity: 0.75;
+      }
+
+      .related-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        vertical-align: middle;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    >
+      <theoplayer-menu-button slot="bottom-control-bar" menu="related-menu" aria-label="Related content">
+        <svg class="related-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+      </theoplayer-menu-button>
+      <theoplayer-menu id="related-menu" slot="menu" hidden>
+        <span slot="heading">Up next</span>
+        <div class="related-grid" id="related-grid"></div>
+      </theoplayer-menu>
+    </theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const relatedMenu = document.querySelector('#related-menu');
+      const relatedGrid = document.querySelector('#related-grid');
+
+      const relatedItems = [
+        {
+          title: 'Tears of Steel',
+          duration: '12:14',
+          image: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+          source: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8',
+        },
+        {
+          title: 'Star Wars: The Force Awakens — Comic-Con 2015 reel',
+          duration: '3:31',
+          image: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+          source: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+        },
+        {
+          title: 'Big Buck Bunny',
+          duration: '9:56',
+          image: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster-alt1.jpg',
+          source: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+        },
+      ];
+
+      onPlayerReady((player) => {
+        for (const item of relatedItems) {
+          const tile = document.createElement('button');
+          tile.className = 'related-tile';
+          tile.type = 'button';
+          const image = document.createElement('img');
+          image.src = item.image;
+          image.alt = '';
+          tile.appendChild(image);
+          const title = document.createElement('span');
+          title.textContent = item.title;
+          tile.appendChild(title);
+          const duration = document.createElement('span');
+          duration.className = 'related-duration';
+          duration.textContent = item.duration;
+          tile.appendChild(duration);
+          tile.addEventListener('click', () => {
+            relatedMenu.closeMenu();
+            player.autoplay = true;
+            player.source = {
+              sources: { src: item.source, type: 'application/x-mpegurl' },
+              poster: item.image,
+              metadata: { title: item.title },
+            };
+          });
+          relatedGrid.appendChild(tile);
+        }
+
+        player.addEventListener('ended', () => {
+          setTimeout(() => relatedMenu.openMenu(), 1000);
+        });
+      });
+    </script>
+  </body>
+</html>

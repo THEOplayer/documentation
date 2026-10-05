@@ -1,0 +1,36 @@
+---
+sidebar_custom_props: { icon: '📃' }
+description: Build a playlist and preload upcoming items with the caching API.
+---
+
+# Playlist and caching
+
+Build a playlist and preload the next item in the background with the caching API.
+
+import CodeBlock from '@theme/CodeBlock';
+import PlaylistAndCachingDemo from '../_components/PlaylistAndCachingDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/playlist-and-caching/demo.html';
+
+<PlaylistAndCachingDemo />
+
+The playlist is just an array of source descriptions — each click assigns the next one to `player.source`. Once playback passes 75% of the current item, `THEOplayer.cache.createTask()` starts caching the first 25% of the next item, so it starts faster. You can also trigger it manually with "Cache next item now".
+
+```js
+player.addEventListener('ended', () => {
+  player.autoplay = true;
+  player.source = playlist[active + 1].source;
+});
+
+// Cache part of an upcoming item:
+const task = THEOplayer.cache.createTask(playlist[active + 1].source, { amount: '25%' });
+task.start();
+```
+
+See the [`Cache` API](pathname:///theoplayer/v11/api-reference/web/interfaces/Cache.html).
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

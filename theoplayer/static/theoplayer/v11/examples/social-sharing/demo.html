@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Social sharing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+
+      #share-menu {
+        box-sizing: border-box;
+        width: min(26rem, calc(100vw - 2rem));
+        padding: 1rem;
+        color: #fff;
+      }
+
+      #share-menu [slot='heading'] {
+        font-weight: 700;
+      }
+
+      .share-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0.75rem 0;
+      }
+
+      .share-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.3rem;
+        background: rgb(255 255 255 / 10%);
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .share-links a:hover {
+        background: rgb(255 255 255 / 20%);
+      }
+
+      .share-links img {
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+
+      .share-field {
+        display: grid;
+        gap: 0.3rem;
+        margin-top: 0.75rem;
+      }
+
+      .share-field label {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      .share-field .share-copy {
+        display: flex;
+        gap: 0.4rem;
+      }
+
+      .share-field input,
+      .share-field textarea {
+        flex: 1;
+        min-width: 0;
+        padding: 0.3rem 0.5rem;
+        border: 1px solid rgb(255 255 255 / 30%);
+        border-radius: 0.3rem;
+        background: rgb(0 0 0 / 40%);
+        color: #fff;
+        font: inherit;
+        font-size: 0.8rem;
+      }
+
+      .share-field textarea {
+        resize: vertical;
+      }
+
+      .share-field button {
+        padding: 0.3rem 0.7rem;
+        border: 0;
+        border-radius: 0.3rem;
+        background: #ffc50f;
+        color: #000;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .share-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        vertical-align: middle;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    >
+      <theoplayer-menu-button slot="top-control-bar" menu="share-menu" aria-label="Share">
+        <svg class="share-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="6" cy="12" r="2.5" />
+          <circle cx="17" cy="5.5" r="2.5" />
+          <circle cx="17" cy="18.5" r="2.5" />
+          <path d="M8.2 10.9l6.6-4M8.2 13.1l6.6 4" stroke="currentColor" stroke-width="1.8" fill="none" />
+        </svg>
+      </theoplayer-menu-button>
+      <theoplayer-menu id="share-menu" slot="menu" hidden>
+        <span slot="heading">Share this video</span>
+        <div class="share-links">
+          <a id="share-facebook" target="_blank" rel="noopener noreferrer"><img src="facebook.svg" alt="" />Facebook</a>
+          <a id="share-x" target="_blank" rel="noopener noreferrer"><img src="x.svg" alt="" />X</a>
+          <a id="share-linkedin" target="_blank" rel="noopener noreferrer"><img src="linkedin.svg" alt="" />LinkedIn</a>
+        </div>
+        <div class="share-field">
+          <label for="share-link">Direct link</label>
+          <div class="share-copy">
+            <input id="share-link" readonly />
+            <button type="button" data-copy="share-link">Copy</button>
+          </div>
+        </div>
+        <div class="share-field">
+          <label for="share-embed">Embed</label>
+          <div class="share-copy">
+            <textarea id="share-embed" rows="3" readonly></textarea>
+            <button type="button" data-copy="share-embed">Copy</button>
+          </div>
+        </div>
+      </theoplayer-menu>
+    </theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const shareUrl = 'https://optiview.dolby.com/docs/theoplayer/examples/ui/social-sharing/';
+      const embedCode = `<iframe width="640" height="360" src="${shareUrl}" frameborder="0" allowfullscreen>\n</iframe>`;
+
+      document.querySelector('#share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+      document.querySelector('#share-x').href = `https://x.com/intent/post?url=${encodeURIComponent(shareUrl)}`;
+      document.querySelector('#share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+      document.querySelector('#share-link').value = shareUrl;
+      document.querySelector('#share-embed').value = embedCode;
+
+      document.querySelectorAll('[data-copy]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const field = document.getElementById(button.dataset.copy);
+          const copied = () => {
+            button.textContent = 'Copied';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 1500);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(field.value).then(copied, () => {
+              field.select();
+            });
+          } else {
+            field.select();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

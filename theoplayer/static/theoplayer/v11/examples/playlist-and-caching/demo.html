@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Playlist and caching</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const playlist = [
+        {
+          title: 'Big Buck Bunny',
+          poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+          source: {
+            sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8', type: 'application/x-mpegurl' },
+            poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+            metadata: { title: 'Big Buck Bunny' },
+          },
+        },
+        {
+          title: 'Star Wars Reel',
+          poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+          source: {
+            sources: {
+              src: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+              type: 'application/x-mpegurl',
+            },
+            poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+            metadata: { title: 'Star Wars Reel' },
+          },
+        },
+        {
+          title: 'Tears of Steel',
+          poster: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+          source: {
+            sources: { src: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8', type: 'application/x-mpegurl' },
+            poster: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+            metadata: { title: 'Tears of Steel' },
+          },
+        },
+      ];
+
+      onPlayerReady((player) => {
+        let active = 0;
+        // Per-item cache state reported to the demo page.
+        const cacheStatus = playlist.map(() => 'none');
+        const cacheProgress = playlist.map(() => 0);
+        const cacheTasks = playlist.map(() => null);
+
+        function report() {
+          sendToParent('playlist-state', {
+            active,
+            items: playlist.map((item, index) => ({
+              title: item.title,
+              poster: item.poster,
+              status: cacheStatus[index],
+              progress: cacheProgress[index],
+            })),
+          });
+        }
+
+        function loadItem(index, autoplay) {
+          if (index < 0 || index >= playlist.length) return;
+          active = index;
+          if (autoplay) player.autoplay = true;
+          player.source = playlist[index].source;
+          report();
+        }
+
+        function watchTask(task, index) {
+          cacheTasks[index] = task;
+          cacheStatus[index] = 'caching';
+          report();
+          task.addEventListener('progress', () => {
+            cacheProgress[index] = Math.round(task.percentageCached * 100);
+            report();
+          });
+          task.addEventListener('statechange', () => {
+            if (task.status === 'done') cacheStatus[index] = 'done';
+            else if (task.status === 'error') cacheStatus[index] = 'error';
+            cacheProgress[index] = Math.round(task.percentageCached * 100);
+            report();
+          });
+        }
+
+        // Cache the first 25% of the next item once playback passes 75%.
+        function maybeCacheNext() {
+          const next = active + 1;
+          if (next >= playlist.length || cacheStatus[next] !== 'none') return;
+          if (!Number.isFinite(player.duration) || player.duration <= 0) return;
+          if (player.currentTime / player.duration < 0.75) return;
+          const task = THEOplayer.cache.createTask(playlist[next].source, { amount: '25%' });
+          watchTask(task, next);
+          if (task.status === 'idle') task.start();
+        }
+
+        onParentMessage('playlist-load', (message) => {
+          loadItem(message.index, true);
+        });
+        onParentMessage('playlist-previous', () => {
+          loadItem(active - 1, true);
+        });
+        onParentMessage('playlist-next', () => {
+          loadItem(active + 1, true);
+        });
+        onParentMessage('playlist-cache-next', () => {
+          const next = active + 1;
+          if (next >= playlist.length || cacheStatus[next] !== 'none') return;
+          const task = THEOplayer.cache.createTask(playlist[next].source, { amount: '25%' });
+          watchTask(task, next);
+          if (task.status === 'idle') task.start();
+        });
+
+        player.addEventListener('ended', () => loadItem(active + 1, true));
+        player.addEventListener('timeupdate', maybeCacheNext);
+        player.addEventListener('sourcechange', report);
+
+        // Initial item, no autoplay.
+        loadItem(0, false);
+      });
+    </script>
+  </body>
+</html>

@@ -62,7 +62,7 @@ player.ads.addEventListener(
 
 Note that when dealing with client-side advertisements, you have different types of integrations, as explained at [How to set up VAST and VMAP ads](./set-up-vast-and-vmap.mdx). The impact of this is that some events are not available throughout all integrations.
 
-For example, if you schedule `https://cdn.theoplayer.com/demos/preroll.xml`, which is a single linear VAST ad, through the "Google IMA integration" [on our advertisement tester](https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap), the above snippet will trigger the following events:
+For example, if you schedule `https://cdn.theoplayer.com/demos/preroll.xml`, which is a single linear VAST ad, through the "Google IMA integration" [on our advertisement tester](../../../examples/ads/02-advertisement-tester.mdx), the above snippet will trigger the following events:
 
 > `addad`, `updateadbreak`, `updatead`, `adloaded`, `adbreakbegin`, `adbegin`, `adimpression`, `adfirstquartile`, `admidpoint`, `adthirdquartile`, `adend`, `adbreakend`, `removeadbreak`
 
@@ -129,4 +129,4 @@ Refer to the article on [ad block detection](./block-detection.mdx) for more inf
 ## Resources
 
 - More samples are available on our GitHub repository for the [Web SDK](https://github.com/THEOplayer/samples-html5-sdk).
-- [THEOplayer advertisement tester](https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap)
+- [THEOplayer advertisement tester](../../../examples/ads/02-advertisement-tester.mdx)

@@ -1,0 +1,75 @@
+---
+sidebar_custom_props: { icon: '🎬' }
+description: Show related videos in the player and play them without leaving the page.
+---
+
+# Related content
+
+Show related videos inside the player and load them in place when the viewer picks one.
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/related-content/demo.html';
+import defaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/related-content/default-ui.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+## Open Video UI
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/related-content/demo.html')} />
+
+Open Video UI has no built-in related-content overlay, so this example fills a `theoplayer-menu` with a grid of tiles. Each tile loads its source directly in the player, and the menu opens automatically one second after the video ends.
+
+```js
+tile.addEventListener('click', () => {
+  relatedMenu.closeMenu();
+  player.autoplay = true;
+  player.source = {
+    sources: { src: item.source, type: 'application/x-mpegurl' },
+    poster: item.image,
+    metadata: { title: item.title },
+  };
+});
+
+player.addEventListener('ended', () => {
+  setTimeout(() => relatedMenu.openMenu(), 1000);
+});
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
+
+## Default UI
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/related-content/default-ui.html')} exposeGlobals={false} />
+
+The [Default UI](../../ui/web/default-ui/index.mdx) has a built-in related-content overlay driven by `player.related.sources`. Each item carries a `source` description, so clicking a tile loads it in the same player.
+
+```js
+player.related.sources = [
+  {
+    image: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+    title: 'Tears of Steel',
+    duration: '12:14',
+    source: {
+      sources: [{ src: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8', type: 'application/x-mpegurl' }],
+    },
+  },
+];
+
+player.addEventListener('ended', () => {
+  if (!player.related.showing) {
+    setTimeout(() => player.related.show(), 1000);
+  }
+});
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="default-ui.html" showLineNumbers>
+    {defaultUiSource}
+  </CodeBlock>
+</details>

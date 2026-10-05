@@ -1,0 +1,32 @@
+---
+sidebar_custom_props: { icon: '⏳' }
+description: Control how much of the video is buffered before playback starts with the preload property.
+---
+
+# Preload
+
+Control how much of the video the player buffers before playback starts.
+
+import CodeBlock from '@theme/CodeBlock';
+import PreloadDemo from '../_components/PreloadDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/preload/demo.html';
+
+<PreloadDemo />
+
+`player.preload` accepts `'none'`, `'metadata'` or `'auto'`. Switching the option reloads the source so you can compare the buffered range below the player.
+
+```js
+player.preload = 'auto';
+player.source = {
+  sources: { src: 'https://cdn.theoplayer.com/video/dash/webvtt-embedded-in-isobmff/Manifest.mpd', type: 'application/dash+xml' },
+};
+```
+
+See the [preloading guide](../../how-to-guides/web/miscellaneous/preloading.mdx).
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

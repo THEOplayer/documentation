@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Network API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg","metadata":{"title":"Tears of Steel"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      let reverseSubtitles = true;
+
+      function header(headers, name) {
+        if (!headers) return '—';
+        const key = Object.keys(headers).find((entry) => entry.toLowerCase() === name.toLowerCase());
+        return key ? headers[key] : '—';
+      }
+
+      function timestamp() {
+        const now = new Date();
+        const pad = (value, length) => String(value).padStart(length, '0');
+        return `${pad(now.getUTCHours(), 2)}:${pad(now.getUTCMinutes(), 2)}:${pad(now.getUTCSeconds(), 2)}.${pad(now.getUTCMilliseconds(), 3)}`;
+      }
+
+      function logEntry(entry) {
+        sendToParent('network-entry', { entry });
+      }
+
+      onPlayerReady((player) => {
+        // Intercept every request the player makes and report it to the demo page.
+        player.network.addRequestInterceptor((request) => {
+          logEntry({
+            kind: 'Request',
+            time: timestamp(),
+            method: request.method || '—',
+            type: request.type || '—',
+            subType: request.subType || '—',
+            url: request.url,
+            contentType: header(request.headers, 'Content-Type'),
+            contentLength: header(request.headers, 'Content-Length'),
+          });
+        });
+
+        // Intercept every response. For .vtt subtitle files, reverse each cue's text.
+        player.network.addResponseInterceptor((response) => {
+          logEntry({
+            kind: 'Response',
+            time: timestamp(),
+            status: `${response.status} ${response.statusText || ''}`.trim(),
+            type: (response.request && response.request.type) || '—',
+            subType: (response.request && response.request.subType) || '—',
+            url: response.url,
+            contentType: header(response.headers, 'Content-Type'),
+            contentLength: header(response.headers, 'Content-Length'),
+          });
+          if (reverseSubtitles && response.url.indexOf('.vtt') !== -1 && typeof response.body === 'string') {
+            const body = response.body.replace(/\r\n/g, '\n');
+            const newBody = body.replace(/.+ --> .+\n([\s\S]*?)\n\n/g, (match, text) => {
+              const newText = text
+                .split('\n')
+                .map((line) => line.split('').reverse().join(''))
+                .join('\n');
+              return match.replace(text, newText);
+            });
+            response.respondWith({ body: newBody });
+          }
+        });
+
+        onParentMessage('network-reverse', (message) => {
+          if (typeof message.enabled === 'boolean') reverseSubtitles = message.enabled;
+        });
+      });
+    </script>
+  </body>
+</html>

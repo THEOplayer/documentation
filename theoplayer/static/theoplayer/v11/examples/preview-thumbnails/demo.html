@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Preview thumbnails</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const ui = document.querySelector('#player-ui');
+
+      // Thumbnails can come from the manifest (DASH tiled thumbnails)
+      // or from a side-loaded WebVTT metadata track labelled "thumbnails".
+      const sources = {
+        manifest: {
+          sources: [
+            {
+              src: 'https://cdn.theoplayer.com/video/dash/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd',
+              type: 'application/dash+xml',
+            },
+          ],
+          poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+          metadata: { title: 'Big Buck Bunny with In-manifest Thumbnails' },
+        },
+        sideloaded: {
+          sources: [
+            {
+              src: 'https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd',
+              type: 'application/dash+xml',
+            },
+          ],
+          poster: 'https://cdn.theoplayer.com/video/posters/big_buck_bunny.jpg',
+          metadata: {
+            title: 'Big Buck Bunny with Side-loaded Thumbnails',
+            subtitle: 'DASH • Side-loaded Thumbnails',
+            mediaUri: 'https://optiview.dolby.com',
+            displayIconUri: 'https://cdn.theoplayer.com/video/posters/big_buck_bunny.jpg',
+            artist: 'Dolby',
+          },
+          textTracks: [
+            {
+              default: true,
+              src: 'https://cdn.theoplayer.com/dash/theoplayer/thumbnails/big_buck_bunny_thumbnails.vtt',
+              label: 'thumbnails',
+              kind: 'metadata',
+            },
+          ],
+        },
+      };
+
+      onPlayerReady((player) => {
+        function reportTracks() {
+          const tracks = Array.from(player.textTracks).map((track) => ({
+            kind: track.kind,
+            label: track.label,
+            mode: track.mode,
+            cues: track.cues ? track.cues.length : 0,
+          }));
+          sendToParent('thumbnail-tracks', { tracks });
+        }
+
+        onParentMessage('load-thumbnails', (message) => {
+          if (message.kind !== 'manifest' && message.kind !== 'sideloaded') return;
+          player.autoplay = true;
+          player.source = sources[message.kind];
+        });
+        player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], reportTracks);
+        player.addEventListener('loadedmetadata', reportTracks);
+
+        player.source = sources.manifest;
+      });
+    </script>
+  </body>
+</html>

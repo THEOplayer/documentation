@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advertisement tester</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"},"ads":[{"sources":"https://cdn.theoplayer.com/demos/preroll.xml","integration":"csai","timeOffset":"start"}]}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const adEventNames = [
+        'addadbreak',
+        'removeadbreak',
+        'adbreakbegin',
+        'adbegin',
+        'adloaded',
+        'adimpression',
+        'adfirstquartile',
+        'admidpoint',
+        'adthirdquartile',
+        'adskip',
+        'adend',
+        'adbreakend',
+        'aderror',
+        'adclicked',
+      ];
+
+      const allowedIntegrations = ['csai', 'google-ima'];
+
+      function isSafeUrl(value) {
+        if (typeof value !== 'string' || value.length === 0) return false;
+        try {
+          const url = new URL(value);
+          return url.protocol === 'https:' || url.protocol === 'http:' || url.protocol === 'data:';
+        } catch {
+          return false;
+        }
+      }
+
+      function sanitizeAdDescription(ad) {
+        if (typeof ad !== 'object' || ad == null || !isSafeUrl(ad.sources)) return null;
+        const description = {
+          sources: ad.sources,
+          integration: allowedIntegrations.includes(ad.integration) ? ad.integration : 'csai',
+        };
+        if (typeof ad.timeOffset === 'number' && Number.isFinite(ad.timeOffset)) {
+          description.timeOffset = ad.timeOffset;
+        } else if (typeof ad.timeOffset === 'string' && /^(start|end|\d+%|\d{1,2}:\d{2}:\d{2}(\.\d+)?)$/.test(ad.timeOffset)) {
+          description.timeOffset = ad.timeOffset;
+        }
+        if (typeof ad.skipOffset === 'number' && Number.isFinite(ad.skipOffset)) {
+          description.skipOffset = ad.skipOffset;
+        }
+        return description;
+      }
+
+      function sanitizeSource(source) {
+        if (typeof source !== 'object' || source == null) return null;
+        const src = source.sources && source.sources.src;
+        if (!isSafeUrl(src)) return null;
+        const result = {
+          sources: { src, type: typeof source.sources.type === 'string' ? source.sources.type : 'application/x-mpegurl' },
+        };
+        if (isSafeUrl(source.poster)) result.poster = source.poster;
+        if (source.metadata && typeof source.metadata.title === 'string') result.metadata = { title: source.metadata.title };
+        if (Array.isArray(source.ads)) {
+          const ads = source.ads.map(sanitizeAdDescription).filter(Boolean);
+          if (ads.length > 0) result.ads = ads;
+        }
+        return result;
+      }
+
+      onPlayerReady((player) => {
+        let events = [];
+
+        function reportEvents() {
+          sendToParent('ad-events', { events: events.slice() });
+        }
+
+        function logEvent(name, details) {
+          events = [
+            {
+              time: new Date().toLocaleTimeString('en-GB', { hour12: false }),
+              event: name,
+              details: details || '',
+            },
+            ...events,
+          ].slice(0, 100);
+          reportEvents();
+        }
+
+        function describeEvent(name, event) {
+          const details = [];
+          if (event.ad) {
+            if (event.ad.id) details.push(`ad ${event.ad.id}`);
+            if (event.ad.integration) details.push(event.ad.integration);
+            if (typeof event.ad.duration === 'number' && Number.isFinite(event.ad.duration)) {
+              details.push(`duration ${event.ad.duration.toFixed(1)} s`);
+            }
+          }
+          if (event.adBreak && typeof event.adBreak.timeOffset === 'number') {
+            details.push(`break at ${event.adBreak.timeOffset.toFixed(1)} s`);
+          }
+          const errorMessage = event.error?.message || event.error || event.message;
+          if (errorMessage) details.push(String(errorMessage));
+          logEvent(name, details.join(' · '));
+        }
+
+        function reportCompanions(companions) {
+          sendToParent('companions', {
+            companions: companions.map((companion) => ({
+              resourceURI: typeof companion.resourceURI === 'string' ? companion.resourceURI : '',
+              clickThrough: typeof companion.clickThrough === 'string' ? companion.clickThrough : '',
+              altText: typeof companion.altText === 'string' ? companion.altText : '',
+            })),
+          });
+        }
+
+        player.ads.addEventListener(adEventNames, (event) => {
+          describeEvent(event.type, event);
+          if (event.type === 'adbegin' && event.ad && Array.isArray(event.ad.companions) && event.ad.companions.length > 0) {
+            reportCompanions(event.ad.companions);
+          }
+          if (event.type === 'adbreakend') {
+            reportCompanions([]);
+          }
+        });
+        player.addEventListener('sourcechange', (event) => {
+          reportCompanions([]);
+          describeEvent('sourcechange', event);
+        });
+        player.addEventListener('error', () => {
+          const error = player.errorObject;
+          logEvent('error', error?.message || 'Player error');
+        });
+
+        onParentMessage('load-ad-source', (message) => {
+          const source = sanitizeSource(message.source);
+          if (!source) return;
+          player.autoplay = true;
+          player.source = source;
+        });
+        onParentMessage('schedule-ad', (message) => {
+          const ad = sanitizeAdDescription(message.ad);
+          if (!ad) return;
+          delete ad.timeOffset;
+          try {
+            player.ads.schedule(ad);
+            logEvent('schedule', `ad scheduled now (${ad.integration})`);
+          } catch (error) {
+            logEvent('schedule', `failed: ${error.message || error}`);
+          }
+        });
+        onParentMessage('clear-ad-log', () => {
+          events = [];
+          reportEvents();
+        });
+      });
+    </script>
+  </body>
+</html>

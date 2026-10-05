@@ -9,5 +9,5 @@ You can also find out which the source is that the player selects with the `curr
 A few additional notes:
 
 - It is of course possible to make the player attempt to play a different source if the one being played errors or never starts to play, but this is to be done in the implementation.
-- `player.source.sources` is not intended as a playlist. Playlists can also be accomplished on the implementation side. Here is a simple [example](https://www.theoplayer.com/theoplayer-demo-playlist-and-caching) for the Web SDK.
+- `player.source.sources` is not intended as a playlist. Playlists can also be accomplished on the implementation side. Here is a simple [example](../examples/playback/07-playlist-and-caching.mdx) for the Web SDK.
 - This mechanism is based on what the platform declares to support. It does not ensure that all codecs/features included in the stream are supported correctly on the current platform.

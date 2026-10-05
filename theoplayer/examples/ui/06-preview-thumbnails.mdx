@@ -1,0 +1,39 @@
+---
+sidebar_custom_props: { icon: '🖼️' }
+description: Show preview thumbnails on the seek bar from manifest or side-loaded WebVTT tracks.
+---
+
+# Preview thumbnails
+
+Show preview thumbnails when hovering the seek bar, sourced from the manifest or a side-loaded WebVTT track.
+
+import CodeBlock from '@theme/CodeBlock';
+import PreviewThumbnailsDemo from '../_components/PreviewThumbnailsDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/preview-thumbnails/demo.html';
+
+<PreviewThumbnailsDemo />
+
+DASH streams can carry tiled thumbnails inside the manifest. For streams without them, you can side-load a WebVTT file whose cues point at thumbnail images: add it as a `metadata` text track labeled `thumbnails` and the player's seek bar picks it up automatically.
+
+```js
+player.source = {
+  sources: [{ src: 'https://example.com/video.mpd', type: 'application/dash+xml' }],
+  textTracks: [
+    {
+      default: true,
+      src: 'https://example.com/thumbnails.vtt',
+      label: 'thumbnails',
+      kind: 'metadata',
+    },
+  ],
+};
+```
+
+See the [preview thumbnails guide](../../knowledge-base/03-playback/02-what-are-the-benefits-of-preview-thumbnails.md).
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
