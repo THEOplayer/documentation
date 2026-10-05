@@ -189,7 +189,7 @@
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: var(--ifm-global-radius);
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.56rem;
+  font-size: 0.7rem;
 }
 
 .networkTable {
@@ -197,7 +197,7 @@
   white-space: nowrap;
   table-layout: fixed;
   width: 100%;
-  min-width: 460px;
+  min-width: 480px;
 }
 
 .networkColTime {
@@ -205,23 +205,27 @@
 }
 
 .networkColKind {
-  width: 2.2rem;
+  width: 2rem;
 }
 
 .networkColMethod {
-  width: 5.5rem;
+  width: 3.4rem;
 }
 
 .networkColType {
-  width: 4.6rem;
+  width: 3.6rem;
 }
 
 .networkColContentType {
-  width: 5.4rem;
+  width: 4.6rem;
 }
 
 .networkColLength {
-  width: 3rem;
+  width: 2.8rem;
+}
+
+.networkColUrl {
+  width: 5rem;
 }
 
 .networkTable thead th {
@@ -230,6 +234,8 @@
   padding: 0 0.4rem 0.15rem 0;
   background: var(--ifm-background-color);
   text-align: left;
+  white-space: normal;
+  vertical-align: bottom;
 }
 
 .networkTable th,
@@ -239,6 +245,7 @@
 }
 
 .networkTable td {
+  max-width: 0;
   padding: 0.1rem 0.4rem 0.1rem 0;
 }
 

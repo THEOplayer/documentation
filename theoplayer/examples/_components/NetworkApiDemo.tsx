@@ -113,7 +113,7 @@ export default function NetworkApiDemo(): JSX.Element {
                     <td>{entry.kind === 'Request' ? 'Req' : 'Res'}</td>
                     <td>{valueOrDash(entry.kind === 'Request' ? entry.method : entry.status)}</td>
                     <td>{`${valueOrDash(entry.type)}${entry.subType && entry.subType !== '—' ? `/${entry.subType}` : ''}`}</td>
-                    <td>{valueOrDash(entry.contentType && entry.contentType.replace(/^application\//, ''))}</td>
+                    <td title={entry.contentType}>{valueOrDash(entry.contentType)}</td>
                     <td>{valueOrDash(entry.contentLength)}</td>
                     <td className={styles.networkLogUrl} title={entry.url}>
                       {urlFileName(entry.url)}
