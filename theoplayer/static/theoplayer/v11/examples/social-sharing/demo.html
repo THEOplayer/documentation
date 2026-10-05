@@ -36,6 +36,13 @@
         --theoplayer-menu-margin-left: 0;
       }
 
+      /* Keep the built-in heading/back row above our overlay when it renders,
+         so the × stays aligned with it instead of covering it. */
+      #share-menu::part(heading) {
+        position: relative;
+        z-index: 1;
+      }
+
       #share-menu {
         position: absolute;
         top: 0;
@@ -52,12 +59,14 @@
       }
 
       .share-overlay {
-        position: relative;
+        /* absolute+inset:0 — the menu's inner content part does not stretch,
+           so height:100% leaves the bottom strip of the player uncovered. */
+        position: absolute;
+        inset: 0;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100%;
         padding: 1rem;
         background: rgb(0 0 0 / 60%);
         text-align: center;
