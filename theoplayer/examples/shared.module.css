@@ -197,35 +197,27 @@
   white-space: nowrap;
   table-layout: fixed;
   width: 100%;
-  min-width: 480px;
+  min-width: calc(60ch + 3rem);
 }
 
 .networkColTime {
-  width: 5.4rem;
+  width: calc(8ch + 0.6rem);
 }
 
-.networkColKind {
-  width: 2rem;
-}
-
-.networkColMethod {
-  width: 3.4rem;
+.networkColRequest {
+  width: calc(5ch + 0.6rem);
 }
 
 .networkColType {
-  width: 3.6rem;
+  width: calc(8ch + 0.6rem);
 }
 
 .networkColContentType {
-  width: 4.6rem;
+  width: calc(21ch + 0.6rem);
 }
 
 .networkColLength {
-  width: 2.8rem;
-}
-
-.networkColUrl {
-  width: 5rem;
+  width: calc(8ch + 0.6rem);
 }
 
 .networkTable thead th {

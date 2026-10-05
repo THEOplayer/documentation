@@ -26,6 +26,11 @@ function urlFileName(url: string): string {
   return last || url;
 }
 
+function shortTime(time: string): string {
+  const match = /^\d{2}:\d{2}:\d{2}/.exec(time);
+  return match ? match[0] : time;
+}
+
 export default function NetworkApiDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
   const [entries, setEntries] = useState<NetworkEntry[]>([]);
@@ -88,8 +93,7 @@ export default function NetworkApiDemo(): JSX.Element {
             <table className={styles.networkTable}>
               <colgroup>
                 <col className={styles.networkColTime} />
-                <col className={styles.networkColKind} />
-                <col className={styles.networkColMethod} />
+                <col className={styles.networkColRequest} />
                 <col className={styles.networkColType} />
                 <col className={styles.networkColContentType} />
                 <col className={styles.networkColLength} />
@@ -98,8 +102,7 @@ export default function NetworkApiDemo(): JSX.Element {
               <thead>
                 <tr>
                   <th className={styles.networkColTime}>Time</th>
-                  <th className={styles.networkColKind}>Kind</th>
-                  <th className={styles.networkColMethod}>Method/Status</th>
+                  <th className={styles.networkColRequest}>Request</th>
                   <th className={styles.networkColType}>Type</th>
                   <th className={styles.networkColContentType}>Content-Type</th>
                   <th className={styles.networkColLength}>Length</th>
@@ -109,9 +112,8 @@ export default function NetworkApiDemo(): JSX.Element {
               <tbody>
                 {filtered.map((entry, index) => (
                   <tr key={`${entry.time}-${index}`}>
-                    <td>{entry.time}</td>
-                    <td>{entry.kind === 'Request' ? 'Req' : 'Res'}</td>
-                    <td>{valueOrDash(entry.kind === 'Request' ? entry.method : entry.status)}</td>
+                    <td>{shortTime(entry.time)}</td>
+                    <td>{`${entry.kind === 'Request' ? '→' : '←'} ${valueOrDash(entry.kind === 'Request' ? entry.method : entry.status)}`}</td>
                     <td>{`${valueOrDash(entry.type)}${entry.subType && entry.subType !== '—' ? `/${entry.subType}` : ''}`}</td>
                     <td title={entry.contentType}>{valueOrDash(entry.contentType)}</td>
                     <td>{valueOrDash(entry.contentLength)}</td>
