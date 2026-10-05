@@ -36,12 +36,10 @@
         --theoplayer-menu-margin-left: 0;
       }
 
-      /* The heading row (built-in back button + our ×) sits above the overlay
-         and gets the same dimmed background, so the player stays uniformly covered. */
+      /* Keep the heading row (built-in back button + our ×) above the overlay. */
       #share-menu::part(heading) {
         position: relative;
         z-index: 1;
-        background: rgb(0 0 0 / 60%);
       }
 
       .share-heading-bar {
