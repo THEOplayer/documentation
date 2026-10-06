@@ -31,10 +31,9 @@ tile.addEventListener('click', () => {
 });
 
 player.addEventListener('ended', () => {
-  // theoplayer-menu-group.openMenu() pushes the menu onto the group's open stack,
-  // which makes it visible — the menu element's own openMenu() only unhides it.
-  const ui = document.querySelector('#player-ui').shadowRoot.querySelector('theoplayer-ui');
-  ui.shadowRoot.querySelector('theoplayer-menu-group').openMenu('related-menu');
+  if (relatedMenu.hasAttribute('hidden')) {
+    relatedButton.click();
+  }
 });
 ```
 

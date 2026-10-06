@@ -117,6 +117,7 @@
     <script src="../utils.js"></script>
     <script>
       const relatedMenu = document.querySelector('#related-menu');
+      const relatedButton = document.querySelector('theoplayer-menu-button[menu="related-menu"]');
       const relatedGrid = document.querySelector('#related-grid');
 
       const relatedItems = [
@@ -168,11 +169,10 @@
           relatedGrid.appendChild(tile);
         }
 
-        // theoplayer-menu-group.openMenu(menuId) pushes the menu onto the group's open stack,
-        // which is what makes it visible — the menu element's own openMenu() only unhides it.
         player.addEventListener('ended', () => {
-          const ui = document.querySelector('#player-ui').shadowRoot.querySelector('theoplayer-ui');
-          ui.shadowRoot.querySelector('theoplayer-menu-group').openMenu('related-menu');
+          if (relatedMenu.hasAttribute('hidden')) {
+            relatedButton.click();
+          }
         });
       });
     </script>
