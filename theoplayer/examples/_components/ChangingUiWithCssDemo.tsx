@@ -37,6 +37,7 @@ const openVideoUiDefaults: Colors = {
   'center-play-button-icon-color': '#ffc50f',
   'text-color': '#ffffff',
   'icon-color': '#ffffff',
+  'menu-color': '#ffffff',
   'control-background-end': '#000000',
   'menu-backdrop-background': '#000000',
 };
@@ -82,6 +83,7 @@ const openVideoUiGroups: ColorGroup[] = [
     fields: [
       { key: 'text-color', label: 'Text', property: '--theoplayer-text-color' },
       { key: 'icon-color', label: 'Control icons', property: '--theoplayer-icon-color' },
+      { key: 'menu-color', label: 'Menu text', property: '--theoplayer-menu-color' },
     ],
   },
   {
@@ -124,6 +126,7 @@ function generatedCss(ui: Props['ui'], colors: Colors): string {
   --theoplayer-center-play-button-icon-color: ${colors['center-play-button-icon-color']};
   --theoplayer-text-color: ${colors['text-color']};
   --theoplayer-icon-color: ${colors['icon-color']};
+  --theoplayer-menu-color: ${colors['menu-color']};
   --theoplayer-control-background-gradient-stops: transparent 0%, ${colors['control-background-end']} 100%;
   --theoplayer-menu-backdrop-background: ${colors['menu-backdrop-background']};
 }`;
