@@ -1,0 +1,38 @@
+---
+sidebar_custom_props: { icon: '🌐' }
+description: Inspect and modify the player's HTTP requests and responses with network interceptors.
+---
+
+# Network API
+
+Inspect and modify every HTTP request and response the player performs with network interceptors.
+
+import CodeBlock from '@theme/CodeBlock';
+import NetworkApiDemo from '../_components/NetworkApiDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/network-api/demo.html';
+
+<NetworkApiDemo />
+
+`player.network.addRequestInterceptor()` fires for every outgoing request; `addResponseInterceptor()` for every incoming response. This example logs each one, and — while the checkbox is on — reverses the text of every `.vtt` subtitle response body with `response.respondWith()`, so enable subtitles to see the effect. The interceptor only affects subtitle files loaded after it runs.
+
+```js
+player.network.addRequestInterceptor((request) => {
+  console.log('Request', request.method, request.url);
+});
+
+player.network.addResponseInterceptor((response) => {
+  console.log('Response', response.status, response.url);
+  if (response.url.indexOf('.vtt') !== -1 && typeof response.body === 'string') {
+    response.respondWith({ body: transform(response.body) });
+  }
+});
+```
+
+See the [request and response interceptors guide](../../how-to-guides/web/network/request-response-interceptors.mdx).
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

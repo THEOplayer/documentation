@@ -16,21 +16,7 @@ import ChangingUiWithCssDemo from '../_components/ChangingUiWithCssDemo';
 
 <ChangingUiWithCssDemo ui="open-video-ui" />
 
-The accent color, range track, and control-bar gradient use CSS custom properties. The `::part()` selector styles the centered play button.
-See the [Open Video UI styling example](https://optiview.dolby.com/docs/open-video-ui/web/examples/styling/) for more options.
-
-```css
-theoplayer-default-ui {
-  --theoplayer-icon-color: #11cefe;
-  --theoplayer-range-bar-color: #11cefe;
-  --theoplayer-range-track-height: 6px;
-  --theoplayer-control-background-gradient-stops: transparent 0%, rgb(0 0 0 / 85%) 100%;
-}
-
-theoplayer-default-ui::part(center-play-button) {
-  outline: 2px solid #11cefe;
-}
-```
+Open Video UI exposes its colors through CSS custom properties such as `--theoplayer-icon-color`, `--theoplayer-menu-color`, `--theoplayer-range-bar-color` and `--theoplayer-control-background-gradient-stops`, grouped below into accent, foreground and background colors. See the [Open Video UI styling example](https://optiview.dolby.com/docs/open-video-ui/web/examples/styling/) for more options.
 
 <details>
   <summary>Code</summary>
@@ -43,7 +29,7 @@ theoplayer-default-ui::part(center-play-button) {
 
 <ChangingUiWithCssDemo ui="default-ui" />
 
-The [Default UI](../../ui/web/default-ui/index.mdx) marks its themed elements with color classes such as `.theo-primary-color` and `.theo-primary-background`. Override these classes to recolor every element that uses that color at once. See [UI skinning](../../ui/web/ui-skinning.mdx) for the full list of classes.
+The [Default UI](../../ui/web/default-ui/index.mdx) groups its themed elements into six color classes: `.theo-primary-color` and `.theo-primary-background`, `.theo-secondary-color` and `.theo-secondary-background`, and `.theo-tertiary-color` and `.theo-tertiary-background`, plus `.vjs-selected` for selected menu items. Override these classes to recolor every element at once; see [UI skinning](../../ui/web/ui-skinning.mdx) for what each class affects.
 
 <details>
   <summary>Code</summary>

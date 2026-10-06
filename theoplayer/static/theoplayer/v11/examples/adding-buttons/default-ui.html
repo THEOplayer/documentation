@@ -48,6 +48,17 @@
         display: none;
       }
 
+      .custom-seek-button {
+        width: 3rem;
+        cursor: pointer;
+      }
+
+      .custom-seek-button svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        vertical-align: middle;
+      }
+
       .custom-info-overlay h2 {
         margin: 0 2rem 0.5rem 0;
         font-size: 1rem;
@@ -111,6 +122,49 @@
         },
       });
       videojs.registerComponent('InfoButton', InfoButton);
+
+      // Seek back/forward 10 seconds, clamped to the content duration.
+      function registerSeekButton(name, offset, label, iconPath) {
+        var SeekButton = videojs.extend(videojs.getComponent('Button'), {
+          constructor: function (player, options) {
+            videojs.getComponent('Button').call(this, player, options);
+            this.controlText(label);
+          },
+          buildCSSClass: function () {
+            return 'custom-seek-button vjs-control vjs-button';
+          },
+          handleClick: function () {
+            player.currentTime = Math.max(0, Math.min(player.duration || Infinity, player.currentTime + offset));
+          },
+        });
+        videojs.registerComponent(name, SeekButton);
+        var button = player.ui.getChild('controlBar').addChild(name, {});
+        var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        icon.setAttribute('viewBox', '0 0 24 24');
+        icon.setAttribute('fill', 'none');
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = iconPath;
+        button.el().insertBefore(icon, button.el().firstChild);
+        button.el().setAttribute('aria-label', label);
+        return button;
+      }
+
+      var seekBack = registerSeekButton(
+        'SeekBackButton',
+        -10,
+        'Seek back 10 seconds',
+        '<path d="M12 5V2L7 7l5 5V8c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" fill="currentColor"></path>'
+      );
+      var seekForward = registerSeekButton(
+        'SeekForwardButton',
+        10,
+        'Seek forward 10 seconds',
+        '<path d="M12 5V2l5 5-5 5V8c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6h2c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8z" fill="currentColor"></path>'
+      );
+      // Place the seek buttons right after the play toggle in the control bar.
+      var controlBar = player.ui.getChild('controlBar');
+      controlBar.el().insertBefore(seekForward.el(), controlBar.el().children[1]);
+      controlBar.el().insertBefore(seekBack.el(), controlBar.el().children[1]);
 
       var infoButton = player.ui.getChild('controlBar').addChild('InfoButton', {});
       var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

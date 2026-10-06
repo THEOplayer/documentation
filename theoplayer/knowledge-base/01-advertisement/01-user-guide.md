@@ -220,7 +220,7 @@ NOTE: Please note that when adding a pre-roll when the original video is already
 
 ## Ad Block Detection
 
-THEOplayer offers the option to block the player when an adblocker is detected. This can be achieved by setting blockOnAdBlock in the configuration.ads object to true. The player will display a message saying it has detected an ad blocker and that the user will need to turn it off in order to watch the video. A more in-depth code-example can be found at [https://demo.theoplayer.com/adblock-detection](https://demo.theoplayer.com/adblock-detection).
+THEOplayer offers the option to block the player when an adblocker is detected. This can be achieved by setting blockOnAdBlock in the configuration.ads object to true. The player will display a message saying it has detected an ad blocker and that the user will need to turn it off in order to watch the video. A more in-depth code-example can be found at [Ad block detection example](../../examples/ads/03-ad-block-detection.mdx).
 
 The default message that is shown when ad-block is detected is depicted below.
 
@@ -230,5 +230,5 @@ The default message that is shown when ad-block is detected is depicted below.
 
 - [Google DAI Demo Page](https://www.theoplayer.com/theoplayer-demo-google-dai)
 - [SSAI Demo Page](https://demo.theoplayer.com/ssai)
-- [THEOplayer: Advertisements Tester (VAST, VPAID, VMAP)](https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap)
-- [Adblock detection](https://demo.theoplayer.com/adblock-detection)
+- [THEOplayer: Advertisements Tester (VAST, VPAID, VMAP)](../../examples/ads/02-advertisement-tester.mdx)
+- [Adblock detection](../../examples/ads/03-ad-block-detection.mdx)

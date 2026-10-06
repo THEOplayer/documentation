@@ -1,0 +1,37 @@
+---
+sidebar_custom_props: { icon: '🚫' }
+description: Detect ad blockers and ad errors, and choose whether to block the content.
+---
+
+# Ad block detection
+
+Detect when an ad fails to load — for example because an ad blocker is active — and decide whether the content may still play.
+
+import CodeBlock from '@theme/CodeBlock';
+import AdBlockDetectionDemo from '../_components/AdBlockDetectionDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/ad-block-detection/demo.html';
+
+<AdBlockDetectionDemo />
+
+When the ad request fails, the player fires an `aderror` event on `player.ads`. Set `blockContentIfAdError` on the source to stop content playback as well — the player then also raises a fatal `error` event. Enable an ad blocker in your browser and press play to reproduce what happens when the ad tag is unreachable — a pre-roll ad is only requested when playback starts, so the error appears after pressing play.
+
+```js
+player.ads.addEventListener('aderror', (event) => {
+  // Custom behavior when the ad could not be loaded.
+});
+
+player.source = {
+  sources: { src: 'https://example.com/video.m3u8' },
+  ads: [{ sources: 'https://example.com/vast.xml' }],
+  blockContentIfAdError: true,
+};
+```
+
+See the [ad block detection guide](../../how-to-guides/web/ads/block-detection.mdx).
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

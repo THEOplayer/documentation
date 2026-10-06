@@ -16,17 +16,43 @@
 
       .theoplayer-skin {
         width: 100%;
-        --accent-color: #11cefe;
+        --primary-color: #ffc50f;
+        --primary-background-text: #000000;
+        --primary-background: #ffc50f;
+        --secondary-color: #ffffff;
+        --secondary-background-text: #000000;
+        --secondary-background: #ffffff;
+        --tertiary-color: #000000;
+        --tertiary-background-text: #ffffff;
+        --tertiary-background: #000000;
       }
 
       .theoplayer-skin .theo-primary-color,
       .theoplayer-skin .vjs-selected {
-        color: var(--accent-color) !important;
+        color: var(--primary-color) !important;
       }
 
       .theoplayer-skin .theo-primary-background {
-        color: #000000 !important;
-        background-color: var(--accent-color) !important;
+        color: var(--primary-background-text) !important;
+        background-color: var(--primary-background) !important;
+      }
+
+      .theoplayer-skin .theo-secondary-color {
+        color: var(--secondary-color) !important;
+      }
+
+      .theoplayer-skin .theo-secondary-background {
+        color: var(--secondary-background-text) !important;
+        background-color: var(--secondary-background) !important;
+      }
+
+      .theoplayer-skin .theo-tertiary-color {
+        color: var(--tertiary-color) !important;
+      }
+
+      .theoplayer-skin .theo-tertiary-background {
+        color: var(--tertiary-background-text) !important;
+        background-color: var(--tertiary-background) !important;
       }
     </style>
   </head>
@@ -48,9 +74,28 @@
         metadata: { title: 'Big Buck Bunny' },
       };
 
-      onParentMessage('accent-color', (message) => {
-        if (typeof message.color !== 'string' || !/^#[0-9a-f]{6}$/i.test(message.color)) return;
-        document.querySelector('.theoplayer-skin').style.setProperty('--accent-color', message.color);
+      var colorKeys = [
+        'primary-color',
+        'primary-background-text',
+        'primary-background',
+        'secondary-color',
+        'secondary-background-text',
+        'secondary-background',
+        'tertiary-color',
+        'tertiary-background-text',
+        'tertiary-background',
+      ];
+
+      onParentMessage('ui-colors', (message) => {
+        var colors = message.colors;
+        if (typeof colors !== 'object' || colors == null) return;
+        var skin = document.querySelector('.theoplayer-skin');
+        colorKeys.forEach(function (key) {
+          var value = colors[key];
+          if (typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value)) {
+            skin.style.setProperty('--' + key, value);
+          }
+        });
       });
     </script>
   </body>

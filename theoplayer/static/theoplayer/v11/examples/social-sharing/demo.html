@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Social sharing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+
+      /* Make the menu cover the whole player, like the Default UI social overlay. */
+      #player-ui {
+        --theoplayer-menu-layer-padding: 0;
+        --theoplayer-menu-backdrop-background: transparent;
+        --theoplayer-menu-margin-top: 0;
+        --theoplayer-menu-margin-right: 0;
+        --theoplayer-menu-margin-bottom: 0;
+        --theoplayer-menu-margin-left: 0;
+      }
+
+      /* Keep the built-in heading row (back button) above the overlay. */
+      #share-menu::part(heading) {
+        position: relative;
+        z-index: 1;
+      }
+
+      #share-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        --theoplayer-menu-min-width: 100%;
+        --theoplayer-menu-margin: 0;
+        --theoplayer-menu-margin-top: 0;
+        --theoplayer-menu-margin-right: 0;
+        --theoplayer-menu-margin-bottom: 0;
+        --theoplayer-menu-margin-left: 0;
+        color: #fff;
+      }
+
+      .share-overlay {
+        /* absolute+inset:0 — the menu's inner content part does not stretch,
+           so height:100% leaves the bottom strip of the player uncovered. */
+        position: absolute;
+        inset: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        background: rgb(0 0 0 / 60%);
+        text-align: center;
+        overflow-y: auto;
+      }
+
+      .share-overlay .share-heading {
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .share-content {
+        width: min(26rem, calc(100% - 1rem));
+        margin: auto;
+      }
+
+      .share-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0.75rem 0;
+      }
+
+      .share-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.3rem;
+        background: rgb(255 255 255 / 10%);
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .share-links a:hover {
+        background: rgb(255 255 255 / 20%);
+      }
+
+      .share-links img {
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+
+      .share-field {
+        display: grid;
+        gap: 0.3rem;
+        margin-top: 0.75rem;
+        text-align: left;
+      }
+
+      .share-field label {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      .share-field .share-copy {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .share-field input,
+      .share-field .share-embed {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        padding: 0.3rem 0.5rem;
+        border: 1px solid rgb(255 255 255 / 30%);
+        border-radius: 0.3rem;
+        background: rgb(0 0 0 / 40%);
+        color: #fff;
+        font: inherit;
+        font-size: 0.8rem;
+      }
+
+      .share-field .share-embed {
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+      }
+
+      .share-field button {
+        padding: 0.3rem 0.7rem;
+        border: 0;
+        border-radius: 0.3rem;
+        background: #ffc50f;
+        color: #000;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .share-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+      }
+
+      /* Compact layout on small players so nothing is clipped. */
+      @media (max-height: 320px), (max-width: 400px) {
+        .share-overlay {
+          padding: 0.5rem;
+          font-size: 0.8rem;
+        }
+
+        .share-content {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        .share-links {
+          gap: 0.3rem;
+          margin: 0.4rem 0;
+        }
+
+        .share-links a {
+          padding: 0.2rem 0.4rem;
+          font-size: 0.75rem;
+        }
+
+        .share-field {
+          gap: 0.15rem;
+          margin-top: 0.4rem;
+        }
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    >
+      <theoplayer-menu-button slot="top-control-bar" menu="share-menu" aria-label="Share">
+        <svg class="share-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="6" cy="12" r="2.5" />
+          <circle cx="17" cy="5.5" r="2.5" />
+          <circle cx="17" cy="18.5" r="2.5" />
+          <path d="M8.2 10.9l6.6-4M8.2 13.1l6.6 4" stroke="currentColor" stroke-width="1.8" fill="none" />
+        </svg>
+      </theoplayer-menu-button>
+      <theoplayer-menu id="share-menu" slot="menu" hidden>
+        <div class="share-overlay">
+          <div class="share-content">
+            <div class="share-heading">Share this video</div>
+            <div class="share-links">
+              <a id="share-facebook" target="_blank" rel="noopener noreferrer"><img src="facebook.svg" alt="" />Facebook</a>
+              <a id="share-x" target="_blank" rel="noopener noreferrer"><img src="x.svg" alt="" />X</a>
+              <a id="share-linkedin" target="_blank" rel="noopener noreferrer"><img src="linkedin.svg" alt="" />LinkedIn</a>
+            </div>
+            <div class="share-field">
+              <label for="share-link">Direct link</label>
+              <div class="share-copy">
+                <input id="share-link" readonly />
+                <button type="button" data-copy="share-link">Copy</button>
+              </div>
+            </div>
+            <div class="share-field">
+              <label>Embed</label>
+              <div class="share-copy">
+                <pre class="share-embed" id="share-embed"></pre>
+                <button type="button" data-copy="share-embed">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </theoplayer-menu>
+    </theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const shareUrl = 'https://optiview.dolby.com/docs/theoplayer/examples/ui/social-sharing/';
+      const embedCode = `<iframe width="640" height="360" src="${shareUrl}" frameborder="0" allowfullscreen>\n</iframe>`;
+
+      document.querySelector('#share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+      document.querySelector('#share-x').href = `https://x.com/intent/post?url=${encodeURIComponent(shareUrl)}`;
+      document.querySelector('#share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+      document.querySelector('#share-link').value = shareUrl;
+      document.querySelector('#share-embed').textContent = embedCode;
+
+      document.querySelectorAll('[data-copy]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const field = document.getElementById(button.dataset.copy);
+          const text = field.value !== undefined ? field.value : field.textContent;
+          const copied = () => {
+            button.textContent = 'Copied';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 1500);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(copied, () => {
+              if (field.select) field.select();
+            });
+          } else if (field.select) {
+            field.select();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

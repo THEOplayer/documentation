@@ -24,20 +24,16 @@
         aspect-ratio: 16 / 9;
         font-family: 'Noto Sans', sans-serif;
         background: #000;
-        --theoplayer-icon-color: #11cefe;
-        --theoplayer-range-bar-color: #11cefe;
-        --theoplayer-range-thumb-background: #11cefe;
+        --theoplayer-range-bar-color: #ffc50f;
+        --theoplayer-range-thumb-background: #ffc50f;
+        --theoplayer-center-play-button-icon-color: #ffc50f;
+        --theoplayer-text-color: #ffffff;
+        --theoplayer-icon-color: #ffffff;
         --theoplayer-range-thumb-height: 18px;
         --theoplayer-range-thumb-width: 18px;
         --theoplayer-range-track-height: 6px;
-        --theoplayer-control-background-gradient-stops: transparent 0%, rgb(0 0 0 / 85%) 100%;
-        --theoplayer-menu-backdrop-background: rgb(8 22 30 / 85%);
-        --theoplayer-mobile-control-backdrop-background: rgb(8 22 30 / 85%);
-        --theoplayer-center-play-button-icon-color: #11cefe;
-      }
-
-      theoplayer-default-ui::part(center-play-button) {
-        outline: 2px solid #11cefe;
+        --theoplayer-control-background-gradient-stops: transparent 0%, #000000 100%;
+        --theoplayer-menu-backdrop-background: rgb(0 0 0 / 85%);
       }
     </style>
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
@@ -59,17 +55,27 @@
     <script src="../utils.js"></script>
     <script>
       const ui = document.querySelector('#player-ui');
-      const accentProperties = [
-        '--theoplayer-icon-color',
-        '--theoplayer-range-bar-color',
-        '--theoplayer-range-thumb-background',
-        '--theoplayer-center-play-button-icon-color',
-      ];
+      const hexPattern = /^#[0-9a-f]{6}$/i;
+
+      function isHex(value) {
+        return typeof value === 'string' && hexPattern.test(value);
+      }
 
       onPlayerReady(() => {
-        onParentMessage('accent-color', (message) => {
-          if (typeof message.color !== 'string' || !/^#[0-9a-f]{6}$/i.test(message.color)) return;
-          accentProperties.forEach((property) => ui.style.setProperty(property, message.color));
+        onParentMessage('ui-colors', (message) => {
+          const colors = message.colors;
+          if (typeof colors !== 'object' || colors == null) return;
+          if (isHex(colors['range-bar-color'])) ui.style.setProperty('--theoplayer-range-bar-color', colors['range-bar-color']);
+          if (isHex(colors['range-thumb-background'])) ui.style.setProperty('--theoplayer-range-thumb-background', colors['range-thumb-background']);
+          if (isHex(colors['center-play-button-icon-color']))
+            ui.style.setProperty('--theoplayer-center-play-button-icon-color', colors['center-play-button-icon-color']);
+          if (isHex(colors['text-color'])) ui.style.setProperty('--theoplayer-text-color', colors['text-color']);
+          if (isHex(colors['icon-color'])) ui.style.setProperty('--theoplayer-icon-color', colors['icon-color']);
+          if (isHex(colors['menu-color'])) ui.style.setProperty('--theoplayer-menu-color', colors['menu-color']);
+          if (isHex(colors['control-background-end']))
+            ui.style.setProperty('--theoplayer-control-background-gradient-stops', `transparent 0%, ${colors['control-background-end']} 100%`);
+          if (isHex(colors['menu-backdrop-background']))
+            ui.style.setProperty('--theoplayer-menu-backdrop-background', colors['menu-backdrop-background']);
         });
       });
     </script>

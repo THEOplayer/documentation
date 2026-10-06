@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Preload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      id="player-ui"
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      const source = {
+        sources: { src: 'https://cdn.theoplayer.com/video/dash/webvtt-embedded-in-isobmff/Manifest.mpd', type: 'application/dash+xml' },
+        poster: 'https://cdn.theoplayer.com/video/sintel.png',
+        metadata: { title: 'Sintel' },
+      };
+
+      const allowedPreloads = ['none', 'metadata', 'auto'];
+
+      function ranges(timeRanges) {
+        const result = [];
+        for (let i = 0; i < timeRanges.length; i++) {
+          result.push({ start: timeRanges.start(i), end: timeRanges.end(i) });
+        }
+        return result;
+      }
+
+      const reportEvents = [
+        'progress',
+        'timeupdate',
+        'durationchange',
+        'sourcechange',
+        'emptied',
+        'readystatechange',
+        'loadedmetadata',
+        'loadeddata',
+        'canplay',
+        'canplaythrough',
+        'seeked',
+        'suspend',
+        'stalled',
+        'pause',
+        'playing',
+        'waiting',
+      ];
+
+      let pollInterval = null;
+
+      function createPlayer(preload) {
+        // Re-assigning player.source while a source is loaded throws
+        // "Already loaded a media source", so switching modes re-creates the player.
+        if (pollInterval) {
+          clearInterval(pollInterval);
+          pollInterval = null;
+        }
+        const oldUi = document.querySelector('#player-ui');
+        const configuration = oldUi.getAttribute('configuration');
+        if (oldUi.player) {
+          oldUi.player.destroy();
+        }
+        oldUi.remove();
+        const ui = document.createElement('theoplayer-default-ui');
+        ui.id = 'player-ui';
+        ui.setAttribute('configuration', configuration);
+        document.body.appendChild(ui);
+        ui.addEventListener(
+          'theoplayerready',
+          () => {
+            const player = ui.player;
+            window.player = player;
+
+            function report() {
+              const buffered = ranges(player.buffered);
+              const ahead = buffered
+                .filter((range) => range.end > player.currentTime)
+                .reduce((max, range) => Math.max(max, range.end - player.currentTime), 0);
+              sendToParent('preload-state', {
+                preload: player.preload,
+                readyState: player.readyState,
+                duration: player.duration,
+                currentTime: player.currentTime,
+                buffered,
+                bufferedAhead: ahead,
+              });
+            }
+
+            player.addEventListener(reportEvents, report);
+            // Buffer growth is not guaranteed to fire an event while paused, so poll lightly too.
+            pollInterval = setInterval(report, 500);
+
+            player.preload = preload;
+            player.source = source;
+            report();
+            sendToParent('ready');
+          },
+          { once: true }
+        );
+      }
+
+      onParentMessage('set-preload', (message) => {
+        if (!allowedPreloads.includes(message.preload)) return;
+        createPlayer(message.preload);
+      });
+
+      createPlayer('auto');
+    </script>
+  </body>
+</html>

@@ -1,11 +1,11 @@
 ---
 sidebar_custom_props: { icon: '🧩' }
-description: Add a custom menu and Skip intro button to both player UIs.
+description: Add a custom menu, Skip intro button and seek buttons to both player UIs.
 ---
 
 # Adding buttons to the UI
 
-This example adds an Info menu and a Skip intro button to the player.
+This example adds an Info menu, a Skip intro button and seek back/forward buttons to the player.
 
 import CodeBlock from '@theme/CodeBlock';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -17,7 +17,7 @@ import defaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/a
 
 <Example src={useBaseUrl('/theoplayer/v11/examples/adding-buttons/demo.html')} />
 
-The Info button opens a menu with live player values. Skip intro seeks to 10 seconds and disappears after that point.
+The Info button opens a menu with live player values. Skip intro seeks to 10 seconds and disappears after that point. Two `<theoplayer-seek-button>` elements in the `bottom-control-bar` seek 10 seconds back and forward (hidden on mobile, where the centered seek buttons already do this).
 
 <details>
   <summary>Code</summary>
@@ -30,7 +30,7 @@ The Info button opens a menu with live player values. Skip intro seeks to 10 sec
 
 <Example src={useBaseUrl('/theoplayer/v11/examples/adding-buttons/default-ui.html')} exposeGlobals={false} />
 
-The [Default UI](../../ui/web/default-ui/index.mdx) is created with `new THEOplayer.Player()`. Its Info button toggles an overlay inside the player.
+The [Default UI](../../ui/web/default-ui/index.mdx) is created with `new THEOplayer.Player()`. Its Info button toggles an overlay inside the player, and two video.js `Button` components inserted after the play toggle seek 10 seconds back and forward, clamped to the content duration.
 
 <details>
   <summary>Code</summary>

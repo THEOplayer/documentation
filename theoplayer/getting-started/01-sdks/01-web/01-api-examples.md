@@ -21,9 +21,9 @@ If you are new to THEOplayer, please read our [Getting Started on Web](./00-gett
 
 - [http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate](http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate) — Demonstrates a use case of the _currentTime_, _played_ and _buffered_ properties.
 
-- [http://demo.theoplayer.com/adblock-detection](http://demo.theoplayer.com/adblock-detection) — Demonstrates how to use ad block detection.
+- [Ad block detection](../../../examples/ads/03-ad-block-detection.mdx) — Demonstrates how to use ad block detection.
 
-- [http://demo.theoplayer.com/schedule-ad-example](http://demo.theoplayer.com/schedule-ad-example) — Demonstrates how to schedule an advertisement.
+- [Advertisement tester](../../../examples/ads/02-advertisement-tester.mdx) — Demonstrates how to schedule an advertisement.
 
 ## Events
 
@@ -33,7 +33,7 @@ If you are new to THEOplayer, please read our [Getting Started on Web](./00-gett
 
 - [http://demo.theoplayer.com/implementing-continuous-play-with-js-cookies-theoplayer](http://demo.theoplayer.com/implementing-continuous-play-with-js-cookies-theoplayer) — Demonstrates how to save the playhead position and restore it, using cookies.
 
-- [http://demo.theoplayer.com/adblock-detection](http://demo.theoplayer.com/adblock-detection) — Demonstrates how to use ad block detection.
+- [Ad block detection](../../../examples/ads/03-ad-block-detection.mdx) — Demonstrates how to use ad block detection.
 
 ## UI
 
@@ -43,7 +43,7 @@ If you are new to THEOplayer, please read our [Getting Started on Web](./00-gett
 
 - [http://demo.theoplayer.com/chromeless-ui-js-html-css](http://demo.theoplayer.com/chromeless-ui-js-html-css) — Demonstrates how to create a minimal chromeless UI.
 
-- [http://demo.theoplayer.com/timejump-buttons](http://demo.theoplayer.com/timejump-buttons) - Demonstrates how to insert buttons which can jump back/forth in time.
+- [Adding buttons](../../../examples/ui/01-adding-buttons.mdx) - Demonstrates how to insert buttons which can jump back/forth in time.
 
 - [http://demo.theoplayer.com/language-localization](http://demo.theoplayer.com/language-localization) - Demonstrates how to configure language localization.
 
@@ -51,7 +51,7 @@ If you are new to THEOplayer, please read our [Getting Started on Web](./00-gett
 
 - [http://demo.theoplayer.com/fullscreen-social-controlbar](http://demo.theoplayer.com/fullscreen-social-controlbar) - Demonstrates how to create a custom social control bar which is only visible when the player is in fullscreen mode
 
-- [http://demo.theoplayer.com/playlist-and-caching](http://demo.theoplayer.com/playlist-and-caching) - Demonstrates how to build a playlist which can preload upcoming content
+- [Playlist and caching](../../../examples/playback/07-playlist-and-caching.mdx) - Demonstrates how to build a playlist which can preload upcoming content
 
 - [http://demo.theoplayer.com/player-background-image](http://demo.theoplayer.com/player-background-image) - Demonstrates how to set a background image for the player
 

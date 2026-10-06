@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Related content (Default UI)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #player {
+        position: relative;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="player" class="video-js theoplayer-skin vjs-16-9"></div>
+    <script>
+      var player = new THEOplayer.Player(document.querySelector('#player'), {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+      });
+      player.source = {
+        sources: [{ src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', type: 'application/x-mpegurl' }],
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        metadata: { title: 'Big Buck Bunny' },
+      };
+
+      // Each related item carries its own source description, so clicking a tile loads it in this player.
+      player.related.sources = [
+        {
+          image: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+          title: 'Tears of Steel',
+          duration: '12:14',
+          source: {
+            sources: [{ src: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8', type: 'application/x-mpegurl' }],
+            poster: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+            metadata: { title: 'Tears of Steel' },
+          },
+        },
+        {
+          image: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+          title: 'Star Wars',
+          duration: '3:31',
+          source: {
+            sources: [
+              {
+                src: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+                type: 'application/x-mpegurl',
+              },
+            ],
+            poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+            metadata: { title: 'Star Wars' },
+          },
+        },
+        {
+          image: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster-alt1.jpg',
+          title: 'Big Buck Bunny',
+          duration: '9:56',
+          source: {
+            sources: [{ src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8', type: 'application/x-mpegurl' }],
+            poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster-alt1.jpg',
+            metadata: { title: 'Big Buck Bunny' },
+          },
+        },
+      ];
+
+      player.addEventListener('ended', function () {
+        if (!player.related.showing) {
+          player.related.show();
+        }
+      });
+    </script>
+  </body>
+</html>
