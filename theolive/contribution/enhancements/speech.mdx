@@ -10,70 +10,108 @@ description: Automatically transcribe and translate live stream audio into multi
 
 OptiView Live can automatically transcribe the spoken audio of your live stream and translate it into one or more languages, delivered to your viewers as text tracks (captions) in real time and in sync with the video. This is done through the **`speech` enhancement**, configured on an ingest.
 
-> **Premium feature**
->
-> Live captions & translations is a premium feature and needs to be enabled on your account before you can use it. Get in touch with your account team to have it enabled. As long as the feature is not enabled, requests that configure a speech enhancement fail with the error code `translations_not_enabled`.
+import CalloutPremiumFeature from '../../callouts/_premium_feature.md';
+
+<CalloutPremiumFeature />
+
+As long as the feature is not enabled on your account, requests that configure a speech enhancement fail with the error code `translations_not_enabled`.
 
 ## How it works
 
-You enable the speech enhancement on an **ingest** by adding an entry with `"kind": "speech"` to its `enhancements` list. You tell us which language is spoken in the stream (`sourceLanguage`) and which languages you want captions in (`targetTextTracks`). The audio is transcribed, translated into the requested target languages and injected back into the stream as text tracks, aligned with what is being said. Optionally, a **dictionary** with domain-specific terms can be attached to improve the speech recognition.
+You enable the speech enhancement on an **ingest** by adding an entry with `"kind": "speech"` to its `enhancements` list. You tell us which language is spoken in the stream (`sourceLanguage`) and which languages you want translated captions in (`targetTextTracks`). The audio is transcribed, translated into the requested target languages and injected back into the stream as text tracks, aligned with what is being said. Optionally, a **dictionary** with domain-specific terms can be attached to improve the speech recognition.
+
+### What your viewers get
+
+- A caption track in the **source language** is always included, followed by one track per language in `targetTextTracks`, in the order you listed them.
+- On HLS, each language is exposed as a `SUBTITLES` rendition in the multivariant playlist (IMSC1 TTML, `stpp`). The source-language track comes first and is marked as the default.
+- The same tracks remain available in the DVR window and in the hourly VOD recordings of the channel.
+
+### Dashboard
+
+You don't need the API to set this up: the ingest form in the dashboard has a **Speech** toggle where you can pick the source language, target text tracks, AI context, latency mode, caption position and dictionary.
 
 ## Quick start
 
-1. Look up the supported languages:
-   - `GET /v2/enhancements/speech/supported-source-languages`
-   - `GET /v2/enhancements/speech/supported-target-languages`
-2. (Optional) Create a dictionary with domain-specific terms: `POST /v2/enhancements/speech/dictionaries`.
-3. Add a `speech` entry to the `enhancements` list when creating or updating an ingest.
+1. Make sure the ingest's `region` supports speech enhancements (see [Regions](#regions)).
+2. Look up the supported languages:
+   - [`GET /v2/enhancements/speech/supported-source-languages`](../../api/get-supported-source-languages.api.mdx)
+   - [`GET /v2/enhancements/speech/supported-target-languages`](../../api/get-supported-target-languages.api.mdx)
+3. (Optional) Create a dictionary with domain-specific terms: [`POST /v2/enhancements/speech/dictionaries`](../../api/create-speech-dictionary.api.mdx).
+4. Add a `speech` entry to the `enhancements` list when creating or updating an ingest.
 
-## Enabling translations on an ingest
+## Enabling the speech enhancement on an ingest
 
 The speech enhancement is configured per ingest, either when creating the ingest or by updating an existing one:
 
-- `POST /v2/channels/{channelId}/ingests` — create an ingest with a speech enhancement
-- `PATCH /v2/ingests/{ingestId}` — add, change or remove the speech enhancement on an existing ingest
+- [`POST /v2/channels/{channelId}/ingests`](../../api/create-channel-ingest.api.mdx) — create an ingest with a speech enhancement
+- [`PATCH /v2/ingests/{ingestId}`](../../api/update-ingest.api.mdx) — add, change or remove the speech enhancement on an existing ingest
 
 ```json
 {
   "name": "my-ingest",
   "type": "rtmp-push",
-  "region": "europe-west",
+  "region": "oke-production-lon-1",
   "enhancements": [
     {
       "kind": "speech",
       "sourceLanguage": "en",
       "targetTextTracks": ["fr", "de", "es"],
+      "latencyMode": "fast",
+      "extraPrompt": "this is a live horse race",
+      "position": { "bottom": 10 },
       "dictionary": "my-dictionary-id"
     }
   ]
 }
 ```
 
+Use a `region` id as returned by [`GET /v2/regions`](../../api/get-regions.api.mdx).
+
 ### `speech` entry fields
 
-| Field              | Type       | Required | Description                                                                                                                                                                        |
-| ------------------ | ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sourceLanguage`   | `string`   | yes      | Language spoken in the stream (must be a supported source language)                                                                                                                |
-| `targetTextTracks` | `string[]` | yes      | Languages to generate translated text tracks for (max **5**, must be supported target languages). Include the source language itself to also get captions in the original language |
-| `sourceAudioTrack` | `number`   | no       | PID of the audio track to use as translation source (non-negative integer)                                                                                                         |
-| `dictionary`       | `string`   | no       | ID of a dictionary that helps the speech recognition. The dictionary's `language` must match the enhancement's `sourceLanguage`. Set to `null` to disconnect the dictionary        |
+The full schema is documented in the API reference (`SpeechEnhancement` on [create ingest](../../api/create-channel-ingest.api.mdx) and [update ingest](../../api/update-ingest.api.mdx)). In short:
+
+| Field              | Type       | Required | Description                                                                                                                                                                                                           |
+| ------------------ | ---------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceLanguage`   | `string`   | yes      | Language spoken in the stream (must be a supported source language)                                                                                                                                                   |
+| `targetTextTracks` | `string[]` | yes      | Languages to translate into (1 to **5**, must be supported target languages). A caption track in the source language is always included, so don't list the source language or a variant of it (e.g. `en-US` for `en`) |
+| `sourceAudioTrack` | `number`   | no       | PID of the audio track to use as translation source (non-negative integer)                                                                                                                                            |
+| `dictionary`       | `string`   | no       | ID of a dictionary that helps the speech recognition. The dictionary's `language` must match the enhancement's `sourceLanguage`. Set to `null` to disconnect the dictionary                                           |
+| `latencyMode`      | `string`   | no       | Trade-off between caption delay and translation quality: `fastest`, `fast` (default), `balanced` or `highest`. `highest` waits longest for the best result                                                            |
+| `extraPrompt`      | `string`   | no       | Extra context for the AI, applied to every translation (at most 1000 characters), e.g. `"this is a live horse race"` or `"remove profane language from the output"`. Set to `null` to remove it                       |
+| `position`         | `object`   | no       | Position of the rendered captions. `position.bottom` is an integer from 0 to 90: the margin from the bottom of the viewport, in percent of the viewport height                                                        |
 
 ### Updating and disabling
 
 - On update, the `enhancements` list is replaced as a whole: always send the full list you want to keep.
-- To disable translations, update the ingest with an `enhancements` list without a `speech` entry (e.g. `[]`).
+- To disable the speech enhancement, update the ingest with an `enhancements` list without a `speech` entry (e.g. `[]`).
 - To disconnect a dictionary, resend the `speech` entry without the `dictionary` field (or with `"dictionary": null`).
+- `captions` and `enhancements` can't be changed while an engine of the ingest is running: the update fails with `409 engine_playing`. Stop the channel (or its engines) first.
 
-> **Tip:** when using an `rtmp-push` ingest with a speech enhancement, always push to the ingest URL and stream key returned by the API for that ingest — they can differ from a regular ingest's connection details.
+### Connection details
+
+With a speech enhancement, the stream is first routed through the captioning service. This affects how you connect your encoder:
+
+- **`rtmp-push`** and **`srt-push`**: always push to the ingest URL returned by the API for that ingest — it differs from a regular ingest's connection details (an `srt-push` ingest with a speech enhancement, for example, returns a URL without a stream key).
+- **`srt-pull`**: the captioning service pulls the ingest's `url` itself, so your source must be reachable from the captioning service.
+
+## Regions
+
+A speech enhancement requires a `region`, and the region must be one where speech enhancements are available:
+
+- A missing `region` fails with `invalid_value`.
+- A region that doesn't support speech enhancements fails with `speech_enhancement_not_supported`.
+
+Use [`GET /v2/regions`](../../api/get-regions.api.mdx) to list the regions available to your organization.
 
 ## Supported languages
 
 Use these endpoints to discover which languages you can translate from and to. Only languages returned by these endpoints are accepted in `sourceLanguage` and `targetTextTracks`:
 
-| Method | Path                                                 | Description                                                        |
-| ------ | ---------------------------------------------------- | ------------------------------------------------------------------ |
-| `GET`  | `/v2/enhancements/speech/supported-source-languages` | Languages the speech recognition can transcribe (`sourceLanguage`) |
-| `GET`  | `/v2/enhancements/speech/supported-target-languages` | Languages that can be translated into (`targetTextTracks`)         |
+| Method | Path                                                                                                     | Description                                                        |
+| ------ | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `GET`  | [`/v2/enhancements/speech/supported-source-languages`](../../api/get-supported-source-languages.api.mdx) | Languages the speech recognition can transcribe (`sourceLanguage`) |
+| `GET`  | [`/v2/enhancements/speech/supported-target-languages`](../../api/get-supported-target-languages.api.mdx) | Languages that can be translated into (`targetTextTracks`)         |
 
 Both return a simple list:
 
@@ -89,13 +127,13 @@ A speech dictionary is a **flat list of terms** — names, proper nouns, acronym
 
 Connect a dictionary to an ingest via the `dictionary` field of the speech enhancement entry; the dictionary's `language` must match that enhancement's `sourceLanguage`.
 
-| Method   | Path                                        | Description                                                                |
-| -------- | ------------------------------------------- | -------------------------------------------------------------------------- |
-| `GET`    | `/v2/enhancements/speech/dictionaries`      | List dictionaries (supports `cursor`, `limit` and `name` query parameters) |
-| `POST`   | `/v2/enhancements/speech/dictionaries`      | Create a dictionary                                                        |
-| `GET`    | `/v2/enhancements/speech/dictionaries/{id}` | Get a single dictionary                                                    |
-| `PATCH`  | `/v2/enhancements/speech/dictionaries/{id}` | Update a dictionary                                                        |
-| `DELETE` | `/v2/enhancements/speech/dictionaries/{id}` | Delete a dictionary                                                        |
+| Method   | Path                                                                                      | Description                                                                |
+| -------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `GET`    | [`/v2/enhancements/speech/dictionaries`](../../api/get-speech-dictionaries.api.mdx)       | List dictionaries (supports `cursor`, `limit` and `name` query parameters) |
+| `POST`   | [`/v2/enhancements/speech/dictionaries`](../../api/create-speech-dictionary.api.mdx)      | Create a dictionary                                                        |
+| `GET`    | [`/v2/enhancements/speech/dictionaries/{id}`](../../api/get-speech-dictionary.api.mdx)    | Get a single dictionary                                                    |
+| `PATCH`  | [`/v2/enhancements/speech/dictionaries/{id}`](../../api/update-speech-dictionary.api.mdx) | Update a dictionary                                                        |
+| `DELETE` | [`/v2/enhancements/speech/dictionaries/{id}`](../../api/delete-speech-dictionary.api.mdx) | Delete a dictionary                                                        |
 
 Example create request:
 
@@ -122,19 +160,36 @@ Example create request:
 - On update, the `terms` list is replaced as a whole.
 - A dictionary cannot be deleted while it is connected to an ingest that is in use by a running engine; the delete fails with `409 speech_dictionary_in_use`. Once deleted, the dictionary is automatically disconnected from all ingests that referenced it.
 
+## Usage
+
+Usage of the speech enhancement is reported in **minutes**: captioned minutes (transcription of the source audio) and translated minutes (one minute per target language per minute of audio). Use these to reconcile what you are billed:
+
+| Scope        | Captioned minutes                                                                                                        | Translated minutes                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Organization | [`GET /v2/enhancements/speech/analytics/captioned-minutes`](../../api/get-speech-captioned-minutes.api.mdx)              | [`GET /v2/enhancements/speech/analytics/translated-minutes`](../../api/get-speech-translated-minutes.api.mdx)              |
+| Channel      | [`GET /v2/channels/{id}/analytics/captions/captioned-minutes`](../../api/get-channel-captions-captioned-minutes.api.mdx) | [`GET /v2/channels/{id}/analytics/captions/translated-minutes`](../../api/get-channel-captions-translated-minutes.api.mdx) |
+| Ingest       | [`GET /v2/ingests/{id}/analytics/captions/captioned-minutes`](../../api/get-ingest-captions-captioned-minutes.api.mdx)   | [`GET /v2/ingests/{id}/analytics/captions/translated-minutes`](../../api/get-ingest-captions-translated-minutes.api.mdx)   |
+
+All of these take `start` and `end` dates (`YYYY-MM-DD`, interpreted as UTC) and an optional `resolution` (`day` or `month`).
+
 ## Limitations
 
 - Translated captions are currently only available on **HLS** streams. They are **not** available on HLS-TS or HESP.
-- `targetTextTracks` can contain at most **5** languages.
+- The ingest's `region` must support speech enhancements (see [Regions](#regions)).
+- `targetTextTracks` can contain at most **5** languages and must not include the source language (or a variant of it).
 - The `enhancements` list can contain at most **1** `speech` entry.
 - The speech enhancement is only supported on ingests of type `rtmp-push`, `srt-push` and `srt-pull`.
 - `sourceLanguage` and every language in `targetTextTracks` must be one of the supported languages (see above).
+- `captions` and `enhancements` cannot be changed while an engine of the ingest is running.
 
 ## Errors
 
-| Code                       | Meaning                                                                                            |
-| -------------------------- | -------------------------------------------------------------------------------------------------- |
-| `translations_not_enabled` | Live captions & translations is not enabled on your account — contact your account team            |
-| `invalid_value`            | Invalid configuration (wrong ingest type, missing/unsupported languages, invalid dictionary terms) |
-| `too_many_values`          | More than 5 target text tracks were provided                                                       |
-| `speech_dictionary_in_use` | The dictionary is connected to an ingest with a running engine and cannot be deleted               |
+| Code                                                                                                      | Meaning                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `translations_not_enabled`                                                                                | Live captions & translations is not enabled on your account — contact your account team                                                                     |
+| `speech_enhancement_not_supported`                                                                        | The ingest's `region` does not support speech enhancements                                                                                                  |
+| `invalid_value`                                                                                           | Invalid configuration (wrong ingest type, missing `region`, missing/unsupported languages, source language in `targetTextTracks`, invalid dictionary terms) |
+| `too_many_values`                                                                                         | More than 5 target text tracks were provided                                                                                                                |
+| `engine_playing` (409)                                                                                    | `captions` or `enhancements` were changed while an engine of the ingest is running                                                                          |
+| `speech_dictionary_in_use` (409)                                                                          | The dictionary is connected to an ingest with a running engine and cannot be deleted                                                                        |
+| `speech_dictionary_create_failed` / `speech_dictionary_update_failed` / `speech_dictionary_delete_failed` | The dictionary could not be synchronized with the captioning provider — retry, or contact support if the problem persists                                   |
