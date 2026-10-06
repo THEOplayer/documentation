@@ -64,7 +64,7 @@
     "lodash": "^4.18.1",
     "mdxlint": "^1.0.0",
     "micromatch": "^4.0.8",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.9",
     "raw-loader": "^4.0.2",
     "remark": "^15.0.1",
     "remark-directive": "^4.0.0",
