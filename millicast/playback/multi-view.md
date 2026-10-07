@@ -74,7 +74,7 @@ await millicastView.on('broadcastEvent', (event) => {
 
 Once we've captured the `sourceID` of an incoming stream, we need to signal to the Viewer node which _track_ the stream will play on. The OptiView Real-time SDKs include a function that allows you to [dynamically add a track to the Viewer node](source-and-layer-selection.md#dynamic-viewer-track) called `addRemoteTrack`.
 
-[addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) requires the media type of the incoming stream (_audio or video_) and a [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream), an interface that signals a stream of media content. `addRemoteTrack` will then return a promise that will be resolved when the [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver) is assigned a `mid` value.
+[addRemoteTrack](https://millicast.github.io/millicast-sdk/view/#addRemoteTrack) requires the media type of the incoming stream (_audio or video_) and a [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream), an interface that signals a stream of media content. `addRemoteTrack` will then return a promise that will be resolved when the [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver) is assigned a `mid` value.
 
 These newly created _Transceivers_ can be stored alongside the `sourceID`, ready for when it is time to render the feed in the app.
 
@@ -215,7 +215,7 @@ Additional features can be added, such as the ability to remove feeds once they 
 
 By allocating lower-quality layers to smaller video tiles, you can optimize bandwidth usage and ensure a smoother streaming experience. Small tiles may not require high-resolution details, so using lower-quality layers conserves resources and enables efficient distribution of the available bandwidth.
 
-Start by creating a `transceiverToSourceIdMap` variable to associate the media IDs with corresponding source IDs. After establishing a successful stream connection, listen to the `layers` [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) that is triggered whenever the state of layers in the live stream is updated. Iterate through the media IDs in the created variable; when an ID is not equal to 0, project the lowest layer.
+Start by creating a `transceiverToSourceIdMap` variable to associate the media IDs with corresponding source IDs. After establishing a successful stream connection, listen to the `layers` [broadcastEvent](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) that is triggered whenever the state of layers in the live stream is updated. Iterate through the media IDs in the created variable; when an ID is not equal to 0, project the lowest layer.
 
 ```javascript
 const updateLayers = async (layers) => {

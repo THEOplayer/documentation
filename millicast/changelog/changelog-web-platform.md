@@ -145,7 +145,7 @@ View the [0.1.44 release](https://github.com/millicast/millicast-sdk/releases/ta
 
 ### Features
 
-Introduced a new `Logger.diagnose()` function to gather debugging information from playback clients. The data includes the SDK version, user agent, media stats, and application history into a format that can be helpful for reporting player problems. The number of data samples related to stream performance can be set with the `statsCount` parameter. See below for an example of the output from [diagnose](https://millicast.github.io/millicast-sdk/module-Logger.html#~diagnose):
+Introduced a new `Logger.diagnose()` function to gather debugging information from playback clients. The data includes the SDK version, user agent, media stats, and application history into a format that can be helpful for reporting player problems. The number of data samples related to stream performance can be set with the `statsCount` parameter. See below for an example of the output from [diagnose](https://millicast.github.io/millicast-sdk/module/logger/#diagnose):
 
 ```javascript
  {
@@ -176,7 +176,7 @@ Introduced a new `Logger.diagnose()` function to gather debugging information fr
 
 ### Fixes
 
-Added missed layer information in the `view` command. For [Simulcast](/millicast/distribution/using-webrtc-simulcast) broadcasts, some options specified during `view.connect()` for configuring the available `LayerInfo` were not being configured correctly. Learn more about the available [LayerInfo properties](https://millicast.github.io/millicast-sdk/global.html#LayerInfo).
+Added missed layer information in the `view` command. For [Simulcast](/millicast/distribution/using-webrtc-simulcast) broadcasts, some options specified during `view.connect()` for configuring the available `LayerInfo` were not being configured correctly. Learn more about the available [LayerInfo properties](https://millicast.github.io/millicast-sdk/layerinfo/).
 
 ## 2024-01-22 | Web SDK [0.1.43](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.43)
 
@@ -268,7 +268,7 @@ Improved resolution settings. Now, when multiple quality options have the same r
 - Added examples to the sample application to demonstrate:
   - Multiview and switching sources
   - Quality selection when multi-bitrate (simulcast) is used for playback
-- Improved the [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) description, which now lists all event names and describes their meaning.
+- Improved the [broadcastEvent](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) description, which now lists all event names and describes their meaning.
 
 ### Fixes
 
@@ -318,7 +318,7 @@ Fixed an issue where the main source label had a wrong value when the source did
 
 ### Changes
 
-The [reconnect](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:reconnect) event is now triggered with every reconnection attempt.
+The [reconnect](https://millicast.github.io/millicast-sdk/basewebrtc/#reconnect) event is now triggered with every reconnection attempt.
 
 ---
 

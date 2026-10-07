@@ -24,7 +24,7 @@ OptiView Real-time Streaming supports scalable WebRTC streaming thanks to a "sma
 - **Publisher nodes**: These nodes manage [the ingest of multiple sources](/millicast/broadcast/multi-source-broadcasting.mdx) during the broadcast. They can then forward these feeds to the CDN for the Viewer node to manage.
 - **Viewer nodes**: Viewer nodes are created depending on the quantity and location of viewers, allowing OptiView Real-time Streaming to support large-scale global streams. When rendering streams in your app or platform, you can communicate with the viewer node to negotiate what feeds to project and simulcast layers to receive.
 
-When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/players-sdks/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/players-sdks/viewer-events.md#using-events) to it:
+When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/players-sdks/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/view/) object and [adding an event listener](/millicast/playback/players-sdks/viewer-events.md#using-events) to it:
 
 ```javascript
 const tokenGenerator = () =>
@@ -39,9 +39,9 @@ viewer.on('broadcastEvent', async (event) => {
 });
 ```
 
-A [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) is triggered whenever a feed is added to the multi-source broadcast. Hence, the platform can trigger several broadcast events as feeds are added or removed. As outlined in [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and [Broadcast](/millicast/broadcast/index.mdx) guides, each stream must be distinguished by a unique source ID. As a [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) are triggered, you can manage which broadcasts to render for the end users by their feed's source ID.
+A [broadcastEvent](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) is triggered whenever a feed is added to the multi-source broadcast. Hence, the platform can trigger several broadcast events as feeds are added or removed. As outlined in [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and [Broadcast](/millicast/broadcast/index.mdx) guides, each stream must be distinguished by a unique source ID. As a [broadcastEvent](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) are triggered, you can manage which broadcasts to render for the end users by their feed's source ID.
 
-Here is an example of an `active` [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) event, note the `sourceId`:
+Here is an example of an `active` [broadcastEvent](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) event, note the `sourceId`:
 
 ```json
 {
@@ -63,11 +63,11 @@ Here is an example of an `active` [broadcastEvent](https://millicast.github.io/m
 }
 ```
 
-An active [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) includes the `sourceId` of the stream, `trackID`, and `media` type, which are all used to establish a connection for playback. These values can be stored in an array or map.
+An active [broadcastEvent](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) includes the `sourceId` of the stream, `trackID`, and `media` type, which are all used to establish a connection for playback. These values can be stored in an array or map.
 
 ## Projecting feeds
 
-Once a feed has been published to the stream, you can project it using the viewer. The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to map a feed onto the track, signaling to the CDN you are ready to receive data via a peer connection. Once a feed is mapped to a track, it can be rendered natively or in a browser.
+Once a feed has been published to the stream, you can project it using the viewer. The [project](https://millicast.github.io/millicast-sdk/view/#project) function allows you to map a feed onto the track, signaling to the CDN you are ready to receive data via a peer connection. Once a feed is mapped to a track, it can be rendered natively or in a browser.
 
 ```javascript title="Projecting a source"
 viewer.project('uniqueSourceID', [
@@ -84,9 +84,9 @@ viewer.project('uniqueSourceID', [
 ]);
 ```
 
-The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to project only audio, only video, or both, each for multiple published sources. These sources can be projected as they are published by triggering [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) or all at once when they all arrive.
+The [project](https://millicast.github.io/millicast-sdk/view/#project) function allows you to project only audio, only video, or both, each for multiple published sources. These sources can be projected as they are published by triggering [broadcastEvent](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) or all at once when they all arrive.
 
-The viewer also supports an [unproject](https://millicast.github.io/millicast-sdk/View.html#unproject) function that lets you signal to the CDN that you want to stop receiving media from that source.
+The viewer also supports an [unproject](https://millicast.github.io/millicast-sdk/view/#unproject) function that lets you signal to the CDN that you want to stop receiving media from that source.
 
 ```javascript title="Removing projection"
 viewer.unproject([videoTransceiver.mid]);
@@ -98,7 +98,7 @@ viewer.unproject([videoTransceiver.mid]);
 By default, the OptiView Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
 :::
 
-In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/distribution/using-webrtc-simulcast) or SVC layer for each video track delivered by the OptiView Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
+In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/distribution/using-webrtc-simulcast) or SVC layer for each video track delivered by the OptiView Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/view/#project) command or using the [select](https://millicast.github.io/millicast-sdk/view/#select) command for the main video track:
 
 ```javascript title="Projecting with layer selection using project"
 viewer.project('mysource', [
@@ -121,7 +121,7 @@ async function select(layer = {}) {
 }
 ```
 
-The layer information available for each video source is provided periodically by the `layers` event as shown above. If you want to switch back to the automatic layer selection, you just need to send a [project](https://millicast.github.io/millicast-sdk/View.html#project) or [select](https://millicast.github.io/millicast-sdk/View.html#select) command without layer details.
+The layer information available for each video source is provided periodically by the `layers` event as shown above. If you want to switch back to the automatic layer selection, you just need to send a [project](https://millicast.github.io/millicast-sdk/view/#project) or [select](https://millicast.github.io/millicast-sdk/view/#select) command without layer details.
 
 To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/playback/players-sdks/web/sdk/index.mdx#broadcast-events) and then select the active layer using the following command:
 
@@ -129,7 +129,7 @@ To force layer selection, [listen to the incoming layers in the layer broadcast 
 millicastView.select({ encodingId: '1' });
 ```
 
-Where `millicastView` is the instance of the [View](https://millicast.github.io/millicast-sdk/View.html) class and `encodingId` is the field of the layer that you wan to force.
+Where `millicastView` is the instance of the [View](https://millicast.github.io/millicast-sdk/view/) class and `encodingId` is the field of the layer that you wan to force.
 
 :::info[Track limits for viewer]
 OptiView Real-time Streaming does not limit the number of tracks that a viewer can receive; it limits the maximum bitrate per viewer to a maximum of 12 Mbps across all media tracks. You should configure the Simulcast or SVC bitrate of all the sources carefully within your applications so they can receive the desired amount of video tracks in the viewer session.
@@ -137,7 +137,7 @@ OptiView Real-time Streaming does not limit the number of tracks that a viewer c
 
 ### Managing layers
 
-To avoid problems with the maximum bitrate per viewer when using multi-view with Simulcast, you can limit the quality of sources by selecting the lowest quality layers. To do it, analyze the received [broadcastEvents](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) to select a layer with the lowest bitrate and project it, as in the following example:
+To avoid problems with the maximum bitrate per viewer when using multi-view with Simulcast, you can limit the quality of sources by selecting the lowest quality layers. To do it, analyze the received [broadcastEvents](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent) to select a layer with the lowest bitrate and project it, as in the following example:
 
 ```javascript title="Layer selection"
 let lowestLayer = event.data.medias[videoTransceiver.mid].layers.reduce((min, el) => {
@@ -237,7 +237,7 @@ viewer.project('uniqueSourceID', [
 
 ## Dynamic viewer track
 
-The [addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) event with the added track and transceiver.
+The [addRemoteTrack](https://millicast.github.io/millicast-sdk/view/#addremotetrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/view/#addRemoteTrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) event with the added track and transceiver.
 
 ```javascript title="Dynamically adding a remote track on the viewer"
 // Add remote track and wait until the SDP O/A is performed

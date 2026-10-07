@@ -48,7 +48,7 @@ await millicastView.connect({
 });
 ```
 
-[By default](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent), if no event list is included, the connect function will listen for `active`, `inactive`, and `stopped` events.
+[By default](https://millicast.github.io/millicast-sdk/signaling/#broadcastevent), if no event list is included, the connect function will listen for `active`, `inactive`, and `stopped` events.
 
 Once connected, the event listener becomes available, allowing your app to listen for events and trigger accordingly:
 
