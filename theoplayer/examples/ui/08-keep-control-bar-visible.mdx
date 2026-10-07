@@ -1,0 +1,51 @@
+---
+sidebar_custom_props: { icon: '👀' }
+description: Keep the control bar visible at all times.
+---
+
+# Keep the control bar visible
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/keep-control-bar-visible/demo.html';
+import defaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/keep-control-bar-visible/default-ui.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+By default the control bar fades out after a few seconds of inactivity. These examples keep it visible at all times.
+
+## Open Video UI
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/keep-control-bar-visible/demo.html')} />
+
+Set `user-idle-timeout` to a negative value to disable idle detection, so the controls never fade out.
+
+```html
+<theoplayer-default-ui user-idle-timeout="-1">...</theoplayer-default-ui>
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
+
+## Default UI
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/keep-control-bar-visible/default-ui.html')} exposeGlobals={false} />
+
+In the [Default UI](../../ui/web/default-ui/index.mdx), override the fade-out transition with two CSS lines.
+
+```css
+.theo-secondary-color.vjs-control-bar {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="default-ui.html" showLineNumbers>
+    {defaultUiSource}
+  </CodeBlock>
+</details>

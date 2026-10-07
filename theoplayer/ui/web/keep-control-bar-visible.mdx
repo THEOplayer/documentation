@@ -7,12 +7,27 @@ sidebar_label: Keep the control bar visible
 
 The question above is typically asked by developers who want to be able to see the control bar at all times without having to continuously move the cursor over it (or tap the screen).
 
-## Implementation
+## Open Video UI
 
-The following CSS line is aimed at overwriting the opacity transition and have the control bar always visible.
+Set the `user-idle-timeout` attribute (or the `userIdleTimeout` property) to a negative value. This disables idle detection, so the control bar never fades out.
+
+```html
+<theoplayer-default-ui user-idle-timeout="-1"></theoplayer-default-ui>
+```
+
+```js
+ui.userIdleTimeout = -1;
+```
+
+## Default UI
+
+The following CSS lines overwrite the fade-out transition and keep the control bar always visible.
 
 ```css
 .theo-secondary-color.vjs-control-bar {
   opacity: 1 !important;
+  visibility: visible !important;
 }
 ```
+
+See the [Keep the control bar visible](../../examples/ui/08-keep-control-bar-visible.mdx) example for a working demo of both UIs.
