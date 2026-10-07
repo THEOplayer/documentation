@@ -1,0 +1,62 @@
+---
+sidebar_custom_props: { icon: '🌈' }
+description: Detect and play Dolby Vision video.
+---
+
+# Dolby Vision
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/dolby-vision/demo.html';
+import DetectionDemo from '../_components/DetectionDemo';
+
+<DetectionDemo
+  src="/theoplayer/v11/examples/dolby-vision/demo.html"
+  sources={[
+    {
+      label: 'DASH',
+      source: {
+        sources: { src: 'https://ott.dolby.com/OTTEP/prod/v1_1/dovi/11/ta/clear/p8.4/60fps/hvc1/hvc1_supp.mpd', type: 'application/dash+xml' },
+        metadata: { title: 'Dolby Vision (profile 8.4)' },
+      },
+    },
+    {
+      label: 'HLS',
+      source: {
+        sources: { src: 'https://ott.dolby.com/OTTEP/prod/v1_1/dovi/11/ta/clear/p8.4/60fps/hev1/hev1.m3u8', type: 'application/x-mpegurl' },
+        metadata: { title: 'Dolby Vision (profile 8.4)' },
+      },
+    },
+  ]}
+/>
+
+This example plays a Dolby Vision profile 8.4 stream (an HLG-compatible base layer with a Dolby Vision
+enhancement, signaled via supplemental codecs: `dvhe.08.xx` for DASH and HLS). It probes the browser with
+[`MediaCapabilities.decodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API)
+for the Dolby Vision codec and the HEVC Main10 HLG base layer, and checks for an HDR display with
+`matchMedia('(dynamic-range: high)')`, re-checking when the display capability changes.
+
+```js
+await navigator.mediaCapabilities.decodingInfo({
+  type: 'media-source',
+  video: {
+    contentType: 'video/mp4; codecs="dvhe.08.09"',
+    bitrate: 18000000,
+    width: 3840,
+    height: 2160,
+    framerate: 60,
+    transferFunction: 'hlg',
+  },
+});
+
+const hdrDisplay = matchMedia('(dynamic-range: high)').matches;
+```
+
+The status box is green when Dolby Vision decoding and an HDR display are both present, yellow when the
+stream plays only as HLG or the display is not HDR, and red when the browser cannot decode the stream.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

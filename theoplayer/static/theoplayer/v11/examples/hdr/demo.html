@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HDR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://dash.akamaized.net/dash264/TestCasesVP9/vp9-hd-hdr/sintel-vp9-hd-hdr.mpd","type":"application/dash+xml"},"metadata":{"title":"Sintel (VP9 HDR)"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Detect HDR support: VP9 profile 2 decoding with PQ transfer + Rec. 2020 gamut, plus an HDR display.
+      async function probeVideo(contentType) {
+        const video = { contentType, bitrate: 8000000, width: 1920, height: 1080, framerate: 30, transferFunction: 'pq', colorGamut: 'rec2020' };
+        if (navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo) {
+          try {
+            const result = await navigator.mediaCapabilities.decodingInfo({ type: 'media-source', video });
+            return { status: result.supported ? 'supported' : 'unsupported' };
+          } catch (e) {
+            return { status: 'unsupported' };
+          }
+        }
+        if (window.MediaSource) {
+          // MediaSource.isTypeSupported cannot probe the transfer function or color gamut.
+          return { status: MediaSource.isTypeSupported(contentType) ? 'supported' : 'unsupported', fallback: true };
+        }
+        return { status: 'unavailable' };
+      }
+
+      function hdrDisplay() {
+        if (!window.matchMedia) return { status: 'unavailable' };
+        return { status: window.matchMedia('(dynamic-range: high)').matches ? 'supported' : 'unsupported' };
+      }
+
+      function reportActiveCodecs(player) {
+        const videoTrack = Array.from(player.videoTracks).find((track) => track.enabled);
+        const audioTrack = Array.from(player.audioTracks).find((track) => track.enabled);
+        const codecs = [
+          videoTrack && videoTrack.activeQuality && videoTrack.activeQuality.codecs,
+          audioTrack && audioTrack.activeQuality && audioTrack.activeQuality.codecs,
+        ]
+          .filter(Boolean)
+          .join(', ');
+        if (codecs) sendToParent('playing-codecs', { codecs });
+      }
+
+      onPlayerReady(async (player) => {
+        async function report() {
+          const vp9 = await probeVideo('video/mp4; codecs="vp09.02.40.10"');
+          const hdr = hdrDisplay();
+          const checks = [
+            {
+              label: 'VP9 profile 2 HDR decode (vp09.02.40.10, PQ / Rec. 2020)' + (vp9.fallback ? ' — via MediaSource.isTypeSupported' : ''),
+              status: vp9.status,
+            },
+            { label: 'HDR display (dynamic-range: high)', status: hdr.status },
+          ];
+          const level = vp9.status !== 'supported' ? 'danger' : hdr.status !== 'supported' ? 'warning' : 'success';
+          const summary =
+            level === 'success'
+              ? 'HDR playback is supported on this device and display.'
+              : level === 'warning'
+                ? 'The codec decodes, but the display is not HDR — the video will be tone-mapped.'
+                : 'This browser cannot decode VP9 HDR video — the stream will not play here.';
+          sendToParent('detection-status', { level, summary, checks });
+        }
+
+        await report();
+        if (window.matchMedia) {
+          window.matchMedia('(dynamic-range: high)').addEventListener('change', report);
+        }
+
+        player.videoTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => reportActiveCodecs(player))
+        );
+        player.audioTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => reportActiveCodecs(player))
+        );
+      });
+    </script>
+  </body>
+</html>

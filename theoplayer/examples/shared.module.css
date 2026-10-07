@@ -413,3 +413,8 @@
     width: 25%;
   }
 }
+
+.detectionChecks {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+}

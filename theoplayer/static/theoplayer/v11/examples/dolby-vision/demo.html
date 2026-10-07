@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dolby Vision</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://ott.dolby.com/OTTEP/prod/v1_1/dovi/11/ta/clear/p8.4/60fps/hvc1/hvc1_supp.mpd","type":"application/dash+xml"},"metadata":{"title":"Dolby Vision (profile 8.4)"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Detect Dolby Vision support: a Dolby Vision codec (dvhe/dvh1, profile 8) plus an HDR display.
+      // The HLS base layer uses hev1, the DASH base layer hvc1; both carry HLG (transferFunction 'hlg').
+      async function probeVideo(contentType, transferFunction) {
+        const video = { contentType, bitrate: 18000000, width: 3840, height: 2160, framerate: 60, transferFunction };
+        if (navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo) {
+          try {
+            const result = await navigator.mediaCapabilities.decodingInfo({ type: 'media-source', video });
+            return { status: result.supported ? 'supported' : 'unsupported' };
+          } catch (e) {
+            return { status: 'unsupported' };
+          }
+        }
+        if (window.MediaSource) {
+          // MediaSource.isTypeSupported cannot probe the transfer function.
+          return { status: MediaSource.isTypeSupported(contentType) ? 'supported' : 'unsupported', fallback: true };
+        }
+        return { status: 'unavailable' };
+      }
+
+      function hdrDisplay() {
+        if (!window.matchMedia) return { status: 'unavailable' };
+        return { status: window.matchMedia('(dynamic-range: high)').matches ? 'supported' : 'unsupported' };
+      }
+
+      function reportActiveCodecs(player) {
+        const videoTrack = Array.from(player.videoTracks).find((track) => track.enabled);
+        const audioTrack = Array.from(player.audioTracks).find((track) => track.enabled);
+        const codecs = [
+          videoTrack && videoTrack.activeQuality && videoTrack.activeQuality.codecs,
+          audioTrack && audioTrack.activeQuality && audioTrack.activeQuality.codecs,
+        ]
+          .filter(Boolean)
+          .join(', ');
+        if (codecs) sendToParent('playing-codecs', { codecs });
+      }
+
+      onPlayerReady(async (player) => {
+        async function report() {
+          const [dv, hevc] = await Promise.all([
+            probeVideo('video/mp4; codecs="dvhe.08.09"', 'hlg'),
+            probeVideo('video/mp4; codecs="hev1.2.4.L153.90"', 'hlg'),
+          ]);
+          const hdr = hdrDisplay();
+          const checks = [
+            { label: 'Dolby Vision codec (dvhe.08.09, HLG)' + (dv.fallback ? ' — via MediaSource.isTypeSupported' : ''), status: dv.status },
+            {
+              label: 'HEVC Main10 HLG base layer (hev1.2.4.L153.90)' + (hevc.fallback ? ' — via MediaSource.isTypeSupported' : ''),
+              status: hevc.status,
+            },
+            { label: 'HDR display (dynamic-range: high)', status: hdr.status },
+          ];
+          const level = dv.status !== 'supported' ? 'danger' : hevc.status !== 'supported' || hdr.status !== 'supported' ? 'warning' : 'success';
+          const summary =
+            level === 'success'
+              ? 'Dolby Vision is supported on this device and display.'
+              : level === 'warning'
+                ? 'Dolby Vision decodes here, but the display is not HDR (or only the HLG base layer decodes) — it plays without full Dolby Vision.'
+                : 'This browser cannot decode the stream — HEVC / Dolby Vision is not supported.';
+          sendToParent('detection-status', { level, summary, checks });
+        }
+
+        await report();
+        if (window.matchMedia) {
+          window.matchMedia('(dynamic-range: high)').addEventListener('change', report);
+        }
+
+        player.videoTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => reportActiveCodecs(player))
+        );
+        player.audioTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => reportActiveCodecs(player))
+        );
+
+        onParentMessage('load-source', (message) => {
+          player.autoplay = true;
+          player.source = message.source;
+        });
+      });
+    </script>
+  </body>
+</html>

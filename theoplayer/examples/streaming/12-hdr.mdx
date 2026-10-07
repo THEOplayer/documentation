@@ -1,0 +1,45 @@
+---
+sidebar_custom_props: { icon: '✨' }
+description: Detect and play HDR video.
+---
+
+# HDR
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/hdr/demo.html';
+import DetectionDemo from '../_components/DetectionDemo';
+
+<DetectionDemo src="/theoplayer/v11/examples/hdr/demo.html" />
+
+This example plays an HDR VP9 (profile 2, PQ / Rec. 2020) DASH stream and probes the browser with
+[`MediaCapabilities.decodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API)
+for HDR decoding, plus `matchMedia('(dynamic-range: high)')` for an HDR display — re-checking when
+the display capability changes. When `navigator.mediaCapabilities` is unavailable it falls back to
+`MediaSource.isTypeSupported`.
+
+```js
+await navigator.mediaCapabilities.decodingInfo({
+  type: 'media-source',
+  video: {
+    contentType: 'video/mp4; codecs="vp09.02.40.10"',
+    bitrate: 8000000,
+    width: 1920,
+    height: 1080,
+    framerate: 30,
+    transferFunction: 'pq',
+    colorGamut: 'rec2020',
+  },
+});
+
+const hdrDisplay = matchMedia('(dynamic-range: high)').matches;
+```
+
+The status box is green when the codec decodes and the display is HDR, yellow when the video decodes
+but will be tone-mapped on a non-HDR display, and red when the browser cannot decode the stream.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

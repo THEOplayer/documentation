@@ -1,0 +1,63 @@
+---
+sidebar_custom_props: { icon: '🔊' }
+description: Detect and play Dolby Atmos audio.
+---
+
+# Dolby Atmos
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/dolby-atmos/demo.html';
+import DetectionDemo from '../_components/DetectionDemo';
+
+<DetectionDemo
+  src="/theoplayer/v11/examples/dolby-atmos/demo.html"
+  sources={[
+    {
+      label: 'DASH',
+      source: {
+        sources: { src: 'https://ott.dolby.com/OTTEP/ddp/clear_cmaf/16JOC/dash.mpd', type: 'application/dash+xml' },
+        metadata: { title: 'Dolby Atmos (16/JOC)' },
+      },
+    },
+    {
+      label: 'HLS',
+      source: {
+        sources: { src: 'https://ott.dolby.com/OTTEP/ddp/clear_cmaf/16JOC/master.m3u8', type: 'application/x-mpegurl' },
+        metadata: { title: 'Dolby Atmos (16/JOC)' },
+      },
+    },
+  ]}
+/>
+
+This example plays a Dolby Atmos (ec-3, 16/JOC) stream and probes the browser for Atmos support with
+[`MediaCapabilities.decodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API):
+once for plain Dolby Digital Plus decoding, and once with `spatialRendering: true` for Atmos.
+When `navigator.mediaCapabilities` is unavailable it falls back to `MediaSource.isTypeSupported`.
+
+```js
+await navigator.mediaCapabilities.decodingInfo({
+  type: 'media-source',
+  audio: {
+    contentType: 'audio/mp4; codecs="ec-3"',
+    channels: '16',
+    bitrate: 768000,
+    samplerate: 48000,
+  },
+  spatialRendering: true,
+});
+```
+
+The status box above the player is green when both checks pass, yellow when the stream plays but
+without Atmos spatial rendering, and red when the browser cannot decode ec-3 at all.
+
+:::note
+Browsers cannot report whether the connected speakers or headphones are Atmos-capable —
+the check only covers decoding, not the output device.
+:::
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
