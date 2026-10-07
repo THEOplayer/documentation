@@ -12,12 +12,18 @@ import ConvivaDemo from '../_components/ConvivaDemo';
 <ConvivaDemo />
 
 This example reports playback to [Conviva](https://pulse.conviva.com/) using the
-[Conviva connector for THEOplayer](https://www.npmjs.com/package/@theoplayer/conviva-connector-web).
+[Conviva connector for THEOplayer](https://www.npmjs.com/package/@theoplayer/conviva-connector-web)
+([API reference](https://theoplayer.github.io/web-connectors/api/modules/Conviva_Connector.html)).
 The connector bridges player events to the Conviva SDK: it starts a session when playback begins
 and reports content metadata, buffering and errors automatically.
+The connector must be created before any source is set on the player.
 
 ```js
-const convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(player, convivaMetadata, convivaConfig);
+const convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(player, convivaMetadata, {
+  debug: true,
+  customerKey,
+  gatewayUrl,
+});
 
 // Source-specific metadata does not carry over to the next source,
 // so set it again after every sourcechange.
@@ -30,9 +36,12 @@ player.addEventListener('sourcechange', () => {
 });
 ```
 
-The `convivaConfig` in this demo uses a Conviva test customer key and Touchstone gateway URL —
-replace them with your own credentials (and omit `gatewayUrl` for production).
-Use the stream templates to switch between HLS/DASH and VOD/live sources; the metadata is updated on each `sourcechange`.
+The Customer key and Gateway URL inputs accept your own credentials; an empty input falls back to
+the demo's test values (omit `gatewayUrl` for production). Pressing **Load stream** calls
+`convivaIntegration.destroy()` to close the previous session, creates a new `ConvivaConnector`
+with the entered credentials, and then sets the selected source.
+Use the stream templates to switch between HLS/DASH and VOD/live sources; the content metadata is
+updated on each `sourcechange`.
 
 :::note
 With `debug: true`, Conviva SDK debug logs are printed in the browser's DevTools console.
