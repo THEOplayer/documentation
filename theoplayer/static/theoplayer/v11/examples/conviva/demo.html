@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Conviva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+    <!-- Conviva core SDK (exposes the global Conviva object) -->
+    <script src="https://unpkg.com/@convivainc/conviva-js-coresdk@4.9.0/conviva-core-sdk.js"></script>
+    <!-- THEOplayer Conviva connector (exposes THEOplayerConvivaConnector) -->
+    <script src="https://unpkg.com/@theoplayer/conviva-connector-web@3.3.2/dist/conviva-connector.umd.js"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Replace these with your own Conviva credentials.
+      // `gatewayUrl` points to the Touchstone (test) backend; omit it for production.
+      const convivaConfig = {
+        debug: true,
+        customerKey: '876a2328cc34e791190d855daf389567c96d1e86',
+        gatewayUrl: 'https://876a2328cc34e791190d855daf389567c96d1e86.ts-testonly.conviva.com',
+      };
+
+      function makeConvivaMetadata(assetName, streamUrl, streamType) {
+        return {
+          ['Conviva.assetName']: assetName,
+          ['Conviva.streamUrl']: streamUrl,
+          ['Conviva.streamType']: streamType,
+          ['Conviva.applicationName']: 'THEOplayer Conviva example',
+          ['Conviva.viewerId']: 'theoplayer-conviva-demo-viewer',
+        };
+      }
+
+      const events = [];
+
+      function logEvent(event, details) {
+        events.push({ time: new Date().toLocaleTimeString(), event, details: details || '' });
+        if (events.length > 200) events.shift();
+        sendToParent('conviva-events', { events });
+      }
+
+      onPlayerReady((player) => {
+        // Create the connector before setting any source.
+        let convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(
+          player,
+          makeConvivaMetadata('Big Buck Bunny (HLS)', 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8', 'VOD'),
+          convivaConfig
+        );
+        window.convivaIntegration = convivaIntegration;
+
+        // Source-specific metadata must be set again after every sourcechange,
+        // as it does not carry over between sources.
+        let pendingContentInfo = null;
+        player.addEventListener('sourcechange', () => {
+          if (pendingContentInfo) {
+            convivaIntegration.setContentInfo(pendingContentInfo);
+            pendingContentInfo = null;
+          }
+        });
+
+        for (const type of [
+          'sourcechange',
+          'loadedmetadata',
+          'play',
+          'playing',
+          'pause',
+          'seeking',
+          'seeked',
+          'waiting',
+          'ended',
+          'error',
+          'ratechange',
+          'volumechange',
+        ]) {
+          player.addEventListener(type, (event) => {
+            logEvent(type, event.error ? String(event.error) : '');
+          });
+        }
+
+        onParentMessage('load-source', (message) => {
+          const stream = message.stream;
+          const src = stream.source.sources.src;
+          const streamType = stream.streamType === 'LIVE' ? 'LIVE' : 'VOD';
+          pendingContentInfo = {
+            ['Conviva.assetName']: stream.assetName,
+            ['Conviva.streamUrl']: src,
+            ['Conviva.streamType']: streamType,
+          };
+          player.autoplay = true;
+          player.source = stream.source;
+        });
+      });
+    </script>
+  </body>
+</html>

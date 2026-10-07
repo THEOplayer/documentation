@@ -1,0 +1,46 @@
+---
+sidebar_custom_props: { icon: '📊' }
+description: Monitor playback with the Conviva connector.
+---
+
+# Conviva
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/conviva/demo.html';
+import ConvivaDemo from '../_components/ConvivaDemo';
+
+<ConvivaDemo />
+
+This example reports playback to [Conviva](https://pulse.conviva.com/) using the
+[Conviva connector for THEOplayer](https://www.npmjs.com/package/@theoplayer/conviva-connector-web).
+The connector bridges player events to the Conviva SDK: it starts a session when playback begins
+and reports content metadata, buffering and errors automatically.
+
+```js
+const convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(player, convivaMetadata, convivaConfig);
+
+// Source-specific metadata does not carry over to the next source,
+// so set it again after every sourcechange.
+player.addEventListener('sourcechange', () => {
+  convivaIntegration.setContentInfo({
+    ['Conviva.assetName']: 'Big Buck Bunny',
+    ['Conviva.streamUrl']: source.sources.src,
+    ['Conviva.streamType']: 'VOD',
+  });
+});
+```
+
+The `convivaConfig` in this demo uses a Conviva test customer key and Touchstone gateway URL —
+replace them with your own credentials (and omit `gatewayUrl` for production).
+Use the stream templates to switch between HLS/DASH and VOD/live sources; the metadata is updated on each `sourcechange`.
+
+:::note
+With `debug: true`, Conviva SDK debug logs are printed in the browser's DevTools console.
+:::
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
