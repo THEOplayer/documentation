@@ -1,0 +1,8 @@
+{
+  "label": "Enhancements",
+  "position": 5,
+  "description": "Enrich your ingest with automatic enhancements like live captions and translations.",
+  "customProps": {
+    "icon": "✨"
+  }
+}
