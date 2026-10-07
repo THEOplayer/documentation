@@ -20,6 +20,7 @@
       }
 
       theoplayer-ui {
+        display: block;
         width: 100%;
         /* Collapse the video area: this player renders audio controls only. */
         --theoplayer-aspect-ratio: none;
@@ -76,18 +77,18 @@
 
       licenseUrl: Point this to your license file, or replace it with a license property.
 
-      user-idle-timeout="-1": keep the controls visible instead of auto-hiding them.
+      no-auto-hide on the controls: keep them visible instead of letting them
+      fade out when the player is idle.
     -->
     <theoplayer-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
       source='{"sources":{"src":"https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8","type":"application/x-mpegurl"},"metadata":{"title":"Elephants Dream"}}'
-      user-idle-timeout="-1"
     >
       <div slot="top-chrome" class="track-info" no-auto-hide>
-        <img src="https://cdn.theoplayer.com/video/elephants-dream/poster.jpg" alt="" />
+        <img src="https://cdn.theoplayer.com/video/posters/elephants_dream.jpg" alt="" />
         <div>
           <div class="title">Elephants Dream</div>
-          <div class="artist">Open Movie Project &middot; Soundtrack</div>
+          <div class="artist">Blender Foundation</div>
         </div>
       </div>
       <theoplayer-control-bar no-auto-hide>
