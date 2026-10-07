@@ -107,7 +107,7 @@ export default function ConvivaDemo(): JSX.Element {
         }}
       />
       <div className={styles.panel}>
-        <div className={styles.controls}>
+        <div className={styles.controlsColumn}>
           <label className={styles.formField}>
             <strong>Stream template</strong>
             <select className={styles.input} value={templateId} onChange={(event) => setTemplateId(event.target.value)}>
@@ -138,7 +138,7 @@ export default function ConvivaDemo(): JSX.Element {
               onChange={(event) => setGatewayUrl(event.target.value)}
             />
           </label>
-          <button className="button button--primary button--sm" onClick={loadStream}>
+          <button className="button button--primary" onClick={loadStream}>
             Load stream
           </button>
         </div>

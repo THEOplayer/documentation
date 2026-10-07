@@ -68,6 +68,13 @@
         flex: 1;
         min-width: 4rem;
       }
+
+      /* On narrow screens drop the volume slider so the time display fits; the mute button stays. */
+      @media (max-width: 480px) {
+        theoplayer-volume-range {
+          display: none;
+        }
+      }
     </style>
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
     <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
