@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Audio-only player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-ui {
+        width: 100%;
+        /* Collapse the video area: this player renders audio controls only. */
+        --theoplayer-aspect-ratio: none;
+        --theoplayer-video-height: 0;
+        --theoplayer-video-width: 0;
+        --theoplayer-height: 6.5rem;
+        --theoplayer-control-height: 32px;
+        font-family: 'Noto Sans', sans-serif;
+        background: linear-gradient(135deg, #2b1055, #7597de);
+      }
+
+      .track-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        color: #fff;
+      }
+
+      .track-info img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.4rem;
+        object-fit: cover;
+      }
+
+      .track-info .title {
+        font-weight: 700;
+      }
+
+      .track-info .artist {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      theoplayer-control-bar {
+        display: flex;
+        align-items: center;
+      }
+
+      theoplayer-time-range {
+        flex: 1;
+        min-width: 4rem;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+
+      user-idle-timeout="-1": keep the controls visible instead of auto-hiding them.
+    -->
+    <theoplayer-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8","type":"application/x-mpegurl"},"metadata":{"title":"Elephants Dream"}}'
+      user-idle-timeout="-1"
+    >
+      <div slot="top-chrome" class="track-info" no-auto-hide>
+        <img src="https://cdn.theoplayer.com/video/elephants-dream/poster.jpg" alt="" />
+        <div>
+          <div class="title">Elephants Dream</div>
+          <div class="artist">Open Movie Project &middot; Soundtrack</div>
+        </div>
+      </div>
+      <theoplayer-control-bar no-auto-hide>
+        <theoplayer-play-button></theoplayer-play-button>
+        <theoplayer-time-range></theoplayer-time-range>
+        <theoplayer-time-display show-duration></theoplayer-time-display>
+        <theoplayer-mute-button></theoplayer-mute-button>
+        <theoplayer-volume-range></theoplayer-volume-range>
+      </theoplayer-control-bar>
+    </theoplayer-ui>
+    <script src="../utils.js"></script>
+  </body>
+</html>
