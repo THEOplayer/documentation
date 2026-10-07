@@ -54,8 +54,8 @@ const hdrDisplay = matchMedia('(dynamic-range: high)').matches;
 ```
 
 The status box is green when Dolby Vision decoding and an HDR display are both present, yellow when the
-stream plays only as HLG or the display is not HDR, and red when the browser cannot decode the HEVC
-base layer at all.
+browser can decode only the HEVC HLG base layer and not Dolby Vision, or when the display does not
+support HDR, and red when the browser cannot decode the HEVC base layer at all.
 
 <details>
   <summary>Code</summary>

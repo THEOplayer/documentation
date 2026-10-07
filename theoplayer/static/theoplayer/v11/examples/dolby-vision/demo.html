@@ -123,8 +123,8 @@
               : level === 'danger'
                 ? 'This browser cannot decode HEVC video.'
                 : dv.status !== 'supported'
-                  ? 'HEVC HLG plays here, but without Dolby Vision.'
-                  : 'Dolby Vision decodes, but this display is not HDR.';
+                  ? 'This browser cannot decode Dolby Vision, only the HEVC HLG base layer.'
+                  : 'This browser can decode Dolby Vision, but this display does not support HDR.';
           sendToParent('detection-status', { level, summary, checks });
         }
 
