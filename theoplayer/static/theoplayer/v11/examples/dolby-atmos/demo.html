@@ -86,7 +86,7 @@
             ? 'Dolby Atmos is supported on this device.'
             : level === 'warning'
               ? 'Dolby Digital Plus plays, but without Atmos spatial rendering.'
-              : 'This browser cannot decode ec-3 audio — the stream will not play here.';
+              : 'This browser cannot decode Dolby Digital Plus (ec-3) audio.';
         sendToParent('detection-status', { level, summary, checks });
 
         player.videoTracks.addEventListener('addtrack', (event) =>
