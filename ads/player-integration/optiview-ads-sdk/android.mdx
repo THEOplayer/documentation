@@ -10,7 +10,7 @@ On Android and Android TV, the OptiView Ads SDK is a native Kotlin library that 
 ## Prerequisites
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
-2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
+2. Check which [ad workflows](./index.mdx#ad-workflows) your breaks use. On Android, static assets, VAST, and Google Pod Serving all work with the installation below; nothing extra is needed.
 3. Install the SDK together with the adapter for your player (see [Installation](#installation) and the player sections below).
 
 ## Installation
@@ -27,7 +27,7 @@ dependencyResolutionManagement {
 }
 ```
 
-Then add the runtime to your app module. It brings in the core and SDK layers, Media3 and the Google IMA SDK transitively; replace `<version>` with the SDK release you want to use:
+Then add the runtime to your app module. It brings in the core and SDK layers, Media3, and the Google IMA SDK (used to play [VAST](./ad-workflows/vast.mdx) and [Google Pod Serving](./ad-workflows/google-pod-serving.mdx) breaks) transitively; replace `<version>` with the SDK release you want to use:
 
 ```kotlin
 dependencies {
