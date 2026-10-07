@@ -45,12 +45,10 @@
     <script>
       // Detect Dolby Atmos support: ec-3 (Dolby Digital Plus) decoding with spatial rendering.
       async function probeAudio(contentType, channels, spatialRendering) {
-        const audio = { contentType, channels, bitrate: 768000, samplerate: 48000 };
+        const audio = { contentType, channels, bitrate: 768000, samplerate: 48000, spatialRendering };
         if (navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo) {
           try {
-            const config = { type: 'media-source', audio };
-            if (spatialRendering) config.spatialRendering = true;
-            const result = await navigator.mediaCapabilities.decodingInfo(config);
+            const result = await navigator.mediaCapabilities.decodingInfo({ type: 'media-source', audio });
             return { status: result.supported ? 'supported' : 'unsupported' };
           } catch (e) {
             return { status: 'unsupported' };
