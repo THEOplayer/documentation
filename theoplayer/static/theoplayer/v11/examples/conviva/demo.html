@@ -43,7 +43,6 @@
     -->
     <theoplayer-default-ui
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
-      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
@@ -81,6 +80,13 @@
           convivaConfig
         );
         window.convivaIntegration = convivaIntegration;
+
+        // Set the initial source after the connector exists.
+        player.source = {
+          sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8', type: 'application/x-mpegurl' },
+          poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+          metadata: { title: 'Big Buck Bunny' },
+        };
 
         // Source-specific metadata must be set again after every sourcechange,
         // as it does not carry over between sources.
