@@ -46,20 +46,18 @@
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
-      // Replace these with your own Conviva credentials.
+      // Default Conviva credentials; the page's inputs can override them.
       // `gatewayUrl` points to the Touchstone (test) backend; omit it for production.
-      const convivaConfig = {
-        debug: true,
-        customerKey: '876a2328cc34e791190d855daf389567c96d1e86',
-        gatewayUrl: 'https://876a2328cc34e791190d855daf389567c96d1e86.ts-testonly.conviva.com',
-      };
+      const defaultCustomerKey = '876a2328cc34e791190d855daf389567c96d1e86';
+      const defaultGatewayUrl = `https://${defaultCustomerKey}.ts-testonly.conviva.com`;
 
-      function makeConvivaMetadata(assetName, streamUrl, streamType) {
+      function makeConvivaMetadata(template) {
         return {
-          ['Conviva.assetName']: assetName,
-          ['Conviva.streamUrl']: streamUrl,
-          ['Conviva.streamType']: streamType,
+          ['Conviva.assetName']: template.assetName,
+          ['Conviva.streamUrl']: template.source.sources.src,
+          ['Conviva.streamType']: template.streamType,
           ['Conviva.applicationName']: 'THEOplayer Conviva example',
+          ['Conviva.applicationVersion']: '1.0.0',
           ['Conviva.viewerId']: 'theoplayer-conviva-demo-viewer',
         };
       }
@@ -67,68 +65,95 @@
       const events = [];
 
       function logEvent(event, details) {
-        events.push({ time: new Date().toLocaleTimeString(), event, details: details || '' });
+        events.push({ time: new Date().toLocaleTimeString(), event, details });
         if (events.length > 200) events.shift();
         sendToParent('conviva-events', { events });
       }
 
+      function formatCurrentTime(player) {
+        return `at ${player.currentTime.toFixed(1)} s`;
+      }
+
       onPlayerReady((player) => {
+        let convivaIntegration = null;
+        let currentTemplate = null;
+
         // Create the connector before setting any source.
-        let convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(
-          player,
-          makeConvivaMetadata('Big Buck Bunny (HLS)', 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8', 'VOD'),
-          convivaConfig
-        );
-        window.convivaIntegration = convivaIntegration;
+        function createConnector(template, customerKey, gatewayUrl) {
+          if (convivaIntegration) {
+            convivaIntegration.destroy();
+            logEvent('destroy', 'Previous Conviva session closed');
+          }
+          convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(player, makeConvivaMetadata(template), {
+            debug: true,
+            customerKey,
+            gatewayUrl,
+          });
+          window.convivaIntegration = convivaIntegration;
+          logEvent('connector', `ConvivaConnector created (customer key ${customerKey.slice(0, 8)}…, gateway ${gatewayUrl})`);
+          currentTemplate = template;
+        }
 
-        // Set the initial source after the connector exists.
-        player.source = {
-          sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8', type: 'application/x-mpegurl' },
-          poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
-          metadata: { title: 'Big Buck Bunny' },
-        };
-
-        // Source-specific metadata must be set again after every sourcechange,
-        // as it does not carry over between sources.
-        let pendingContentInfo = null;
+        // Source-specific metadata does not carry over between sources,
+        // so set it again after every sourcechange.
         player.addEventListener('sourcechange', () => {
-          if (pendingContentInfo) {
-            convivaIntegration.setContentInfo(pendingContentInfo);
-            pendingContentInfo = null;
+          if (convivaIntegration && currentTemplate) {
+            convivaIntegration.setContentInfo({
+              ['Conviva.assetName']: currentTemplate.assetName,
+              ['Conviva.streamUrl']: currentTemplate.source.sources.src,
+              ['Conviva.streamType']: currentTemplate.streamType,
+            });
+          }
+          if (currentTemplate) {
+            logEvent('sourcechange', `setContentInfo: assetName=${currentTemplate.assetName}, streamType=${currentTemplate.streamType}`);
           }
         });
 
-        for (const type of [
-          'sourcechange',
-          'loadedmetadata',
-          'play',
-          'playing',
-          'pause',
-          'seeking',
-          'seeked',
-          'waiting',
-          'ended',
-          'error',
-          'ratechange',
-          'volumechange',
-        ]) {
-          player.addEventListener(type, (event) => {
-            logEvent(type, event.error ? String(event.error) : '');
-          });
-        }
-
-        onParentMessage('load-source', (message) => {
-          const stream = message.stream;
-          const src = stream.source.sources.src;
-          const streamType = stream.streamType === 'LIVE' ? 'LIVE' : 'VOD';
-          pendingContentInfo = {
-            ['Conviva.assetName']: stream.assetName,
-            ['Conviva.streamUrl']: src,
-            ['Conviva.streamType']: streamType,
-          };
-          player.autoplay = true;
-          player.source = stream.source;
+        player.addEventListener('loadedmetadata', () => {
+          logEvent('loadedmetadata', player.duration === Infinity ? 'LIVE' : `duration ${player.duration.toFixed(1)} s`);
         });
+        for (const type of ['play', 'playing', 'pause', 'seeking', 'seeked', 'waiting']) {
+          player.addEventListener(type, () => logEvent(type, formatCurrentTime(player)));
+        }
+        player.addEventListener('ended', () => logEvent('ended', formatCurrentTime(player)));
+        player.addEventListener('error', () => logEvent('error', player.errorObject ? player.errorObject.message : 'unknown'));
+        player.addEventListener('volumechange', () => logEvent('volumechange', `volume ${player.volume.toFixed(2)}, muted ${player.muted}`));
+        player.addEventListener('ratechange', () => logEvent('ratechange', `playbackRate ${player.playbackRate}`));
+        player.videoTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => {
+            const quality = event.track.activeQuality;
+            if (quality) {
+              const bitrate = quality.bandwidth ? `${(quality.bandwidth / 1e6).toFixed(2)} Mbps` : '';
+              const size = quality.width ? `${quality.width}×${quality.height}` : '';
+              logEvent('activequalitychanged', [bitrate, size].filter(Boolean).join(', '));
+            }
+          })
+        );
+
+        onParentMessage('load-stream', (message) => {
+          events.length = 0;
+          createConnector(message.template, message.customerKey, message.gatewayUrl);
+          player.autoplay = true;
+          player.source = message.template.source;
+          logEvent('source', `Source set: ${message.template.source.sources.src}`);
+        });
+
+        // Initial load: default credentials, HLS VOD source, no autoplay.
+        createConnector(
+          {
+            assetName: 'Big Buck Bunny (HLS)',
+            streamType: 'VOD',
+            source: {
+              sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8', type: 'application/x-mpegurl' },
+              poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+              metadata: { title: 'Big Buck Bunny', subtitle: 'HLS • VOD' },
+            },
+          },
+          defaultCustomerKey,
+          defaultGatewayUrl
+        );
+        player.source = currentTemplate.source;
+        logEvent('source', `Source set: ${currentTemplate.source.sources.src}`);
       });
     </script>
   </body>

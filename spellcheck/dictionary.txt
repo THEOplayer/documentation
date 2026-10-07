@@ -1023,5 +1023,4 @@ Youbora
 Zettabyte
 HLG
 HLG-compatible
-PQ
 UIs
