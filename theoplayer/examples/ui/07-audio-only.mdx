@@ -17,14 +17,18 @@ With Open Video UI you compose a player from only the controls you need. This ex
 a play button, a seek bar, a time display, a mute button and a volume slider — no video area,
 center play button or fullscreen button.
 
-The video area is collapsed with CSS custom properties, so no `display: none` overrides are needed:
+The video is hidden by styling the `media-layer` shadow part with
+[`::part`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part), and the aspect-ratio box is removed
+with a CSS custom property, so no `display: none` overrides of individual controls are needed:
 
 ```css
 theoplayer-ui {
   --theoplayer-aspect-ratio: none;
-  --theoplayer-video-height: 0;
-  --theoplayer-video-width: 0;
-  --theoplayer-height: 6.5rem;
+  --theoplayer-height: 7.25rem;
+}
+
+theoplayer-ui::part(media-layer) {
+  visibility: hidden;
 }
 ```
 

@@ -22,14 +22,17 @@
       theoplayer-ui {
         display: block;
         width: 100%;
-        /* Collapse the video area: this player renders audio controls only. */
+        /* This player renders audio controls only: no aspect-ratio box, fixed height. */
         --theoplayer-aspect-ratio: none;
-        --theoplayer-video-height: 0;
-        --theoplayer-video-width: 0;
-        --theoplayer-height: 6.5rem;
+        --theoplayer-height: 7.25rem;
         --theoplayer-control-height: 32px;
         font-family: 'Noto Sans', sans-serif;
         background: linear-gradient(135deg, #2b1055, #7597de);
+      }
+
+      /* Hide the media layer: nothing renders the <video>, the player is audio-only. */
+      theoplayer-ui::part(media-layer) {
+        visibility: hidden;
       }
 
       .track-info {
