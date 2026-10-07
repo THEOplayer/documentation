@@ -30,16 +30,18 @@ import DetectionDemo from '../_components/DetectionDemo';
 />
 
 This example plays a Dolby Vision profile 8.4 stream (an HLG-compatible base layer with a Dolby Vision
-enhancement, signaled via supplemental codecs: `dvhe.08.xx` for DASH and HLS). It probes the browser with
+enhancement layer, signaled via supplemental codecs: `dvh1.08.xx` in DASH via `scte214:supplementalCodecs`,
+and `dvhe.08.xx` in HLS via `SUPPLEMENTAL-CODECS`). It probes the browser with
 [`MediaCapabilities.decodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capabilities_API)
-for the Dolby Vision codec and the HEVC Main10 HLG base layer, and checks for an HDR display with
+for the Dolby Vision codec (`dvh1.08.09` or `dvhe.08.09`) and the HEVC Main10 HLG base layer
+(`hvc1.2.4.L153.90` or `hev1.2.4.L153.90`), and checks for an HDR display with
 `matchMedia('(dynamic-range: high)')`, re-checking when the display capability changes.
 
 ```js
 await navigator.mediaCapabilities.decodingInfo({
   type: 'media-source',
   video: {
-    contentType: 'video/mp4; codecs="dvhe.08.09"',
+    contentType: 'video/mp4; codecs="dvh1.08.09"',
     bitrate: 18000000,
     width: 3840,
     height: 2160,
@@ -52,7 +54,8 @@ const hdrDisplay = matchMedia('(dynamic-range: high)').matches;
 ```
 
 The status box is green when Dolby Vision decoding and an HDR display are both present, yellow when the
-stream plays only as HLG or the display is not HDR, and red when the browser cannot decode the stream.
+stream plays only as HLG or the display is not HDR, and red when the browser cannot decode the HEVC
+base layer at all.
 
 <details>
   <summary>Code</summary>

@@ -43,8 +43,8 @@
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
-      // Detect Dolby Vision support: a Dolby Vision codec (dvhe/dvh1, profile 8) plus an HDR display.
-      // The HLS base layer uses hev1, the DASH base layer hvc1; both carry HLG (transferFunction 'hlg').
+      // Detect Dolby Vision support: a Dolby Vision codec (dvh1/dvhe, profile 8) plus an HDR display.
+      // The DASH manifest signals dvh1.08.xx, the HLS manifest dvhe.08.xx; base layer is hvc1/hev1 HLG.
       async function probeVideo(contentType, transferFunction) {
         const video = { contentType, bitrate: 18000000, width: 3840, height: 2160, framerate: 60, transferFunction };
         if (navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo) {
@@ -81,26 +81,50 @@
 
       onPlayerReady(async (player) => {
         async function report() {
-          const [dv, hevc] = await Promise.all([
+          const [dvh1, dvhe, hvc1, hev1] = await Promise.all([
+            probeVideo('video/mp4; codecs="dvh1.08.09"', 'hlg'),
             probeVideo('video/mp4; codecs="dvhe.08.09"', 'hlg'),
+            probeVideo('video/mp4; codecs="hvc1.2.4.L153.90"', 'hlg'),
             probeVideo('video/mp4; codecs="hev1.2.4.L153.90"', 'hlg'),
           ]);
+          // Either codec string is enough: dvh1 (DASH) or dvhe (HLS) for Dolby Vision,
+          // hvc1 (DASH) or hev1 (HLS) for the HEVC HLG base layer.
+          const dv =
+            dvh1.status === 'supported' || dvhe.status === 'supported'
+              ? { status: 'supported', fallback: dvh1.fallback && dvhe.fallback }
+              : {
+                  status: dvh1.status === 'unavailable' && dvhe.status === 'unavailable' ? 'unavailable' : 'unsupported',
+                  fallback: dvh1.fallback || dvhe.fallback,
+                };
+          const hevc =
+            hvc1.status === 'supported' || hev1.status === 'supported'
+              ? { status: 'supported', fallback: hvc1.fallback && hev1.fallback }
+              : {
+                  status: hvc1.status === 'unavailable' && hev1.status === 'unavailable' ? 'unavailable' : 'unsupported',
+                  fallback: hvc1.fallback || hev1.fallback,
+                };
           const hdr = hdrDisplay();
           const checks = [
-            { label: 'Dolby Vision codec (dvhe.08.09, HLG)' + (dv.fallback ? ' — via MediaSource.isTypeSupported' : ''), status: dv.status },
             {
-              label: 'HEVC Main10 HLG base layer (hev1.2.4.L153.90)' + (hevc.fallback ? ' — via MediaSource.isTypeSupported' : ''),
+              label: 'Dolby Vision codec (dvh1.08.09 or dvhe.08.09, HLG)' + (dv.fallback ? ' — via MediaSource.isTypeSupported' : ''),
+              status: dv.status,
+            },
+            {
+              label:
+                'HEVC Main10 HLG base layer (hvc1.2.4.L153.90 or hev1.2.4.L153.90)' + (hevc.fallback ? ' — via MediaSource.isTypeSupported' : ''),
               status: hevc.status,
             },
             { label: 'HDR display (dynamic-range: high)', status: hdr.status },
           ];
-          const level = dv.status !== 'supported' ? 'danger' : hevc.status !== 'supported' || hdr.status !== 'supported' ? 'warning' : 'success';
+          const level = hevc.status !== 'supported' ? 'danger' : dv.status !== 'supported' || hdr.status !== 'supported' ? 'warning' : 'success';
           const summary =
             level === 'success'
               ? 'Dolby Vision is supported on this device and display.'
-              : level === 'warning'
-                ? 'Dolby Vision decodes here, but the display is not HDR (or only the HLG base layer decodes) — it plays without full Dolby Vision.'
-                : 'This browser cannot decode the stream — HEVC / Dolby Vision is not supported.';
+              : level === 'danger'
+                ? 'This browser cannot decode HEVC — the stream will not play here.'
+                : dv.status !== 'supported'
+                  ? 'HEVC HLG plays here, but without Dolby Vision.'
+                  : 'Dolby Vision decodes, but this display is not HDR.';
           sendToParent('detection-status', { level, summary, checks });
         }
 
