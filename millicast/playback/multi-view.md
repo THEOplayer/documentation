@@ -74,7 +74,7 @@ await millicastView.on('broadcastEvent', (event) => {
 
 Once we've captured the `sourceID` of an incoming stream, we need to signal to the Viewer node which _track_ the stream will play on. The OptiView Real-time SDKs include a function that allows you to [dynamically add a track to the Viewer node](source-and-layer-selection.md#dynamic-viewer-track) called `addRemoteTrack`.
 
-[addRemoteTrack](https://millicast.github.io/millicast-sdk/view/#addRemoteTrack) requires the media type of the incoming stream (_audio or video_) and a [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream), an interface that signals a stream of media content. `addRemoteTrack` will then return a promise that will be resolved when the [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver) is assigned a `mid` value.
+[addRemoteTrack](https://millicast.github.io/millicast-sdk/view/#addremotetrack) requires the media type of the incoming stream (_audio or video_) and a [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream), an interface that signals a stream of media content. `addRemoteTrack` will then return a promise that will be resolved when the [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver) is assigned a `mid` value.
 
 These newly created _Transceivers_ can be stored alongside the `sourceID`, ready for when it is time to render the feed in the app.
 

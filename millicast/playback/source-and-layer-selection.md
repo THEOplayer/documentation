@@ -237,7 +237,7 @@ viewer.project('uniqueSourceID', [
 
 ## Dynamic viewer track
 
-The [addRemoteTrack](https://millicast.github.io/millicast-sdk/view/#addremotetrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/view/#addRemoteTrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) event with the added track and transceiver.
+The [addRemoteTrack](https://millicast.github.io/millicast-sdk/view/#addremotetrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/view/#addremotetrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/peerconnection/#track) event with the added track and transceiver.
 
 ```javascript title="Dynamically adding a remote track on the viewer"
 // Add remote track and wait until the SDP O/A is performed
