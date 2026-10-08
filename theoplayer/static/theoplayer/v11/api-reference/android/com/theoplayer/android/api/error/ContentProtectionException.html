@@ -120,7 +120,7 @@ var pathtoroot = "../../../../../";
 public final class <span class="typeNameLabel"><a href=ContentProtectionException.html>ContentProtectionException</a></span>
 extends <a href=THEOplayerException.html>THEOplayerException</a>
                     </pre>
-                    <div class="block"><p>A THEOplayer exception that gives an informative description of the content-protection error that occurred.</p></div>
+                    <div class="block"><p>A THEOplayer exception that gives an informative description of the content-protection error that occurred.</p><p>The HTTP details (<a href=ContentProtectionException.html#url>url</a>, <a href=ContentProtectionException.html#status>status</a>, <a href=ContentProtectionException.html#statusText>statusText</a> and <a href=ContentProtectionException.html#response>response</a>) are filled in when a certificate, provisioning or license server answered the request with an error status. That includes <a href=ErrorCode.html#CONTENT_PROTECTION_DEVICE_REVOKED>ErrorCode.CONTENT_PROTECTION_DEVICE_REVOKED</a> when the license server itself reports that the device's CDM was revoked.</p></div>
 
                     <dl>
 
@@ -472,7 +472,7 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                     <li class="blockList">
                                         <h4>getUrl</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getUrl()>getUrl</a>()</pre>
-                                        <div class="block"><p>The URL that was used in the request.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
+                                        <div class="block"><p>The URL that was used in the request.</p><ul><li><p>Only available when the error originates from an HTTP request, such as <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a>, <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a> or a <a href=ErrorCode.html#CONTENT_PROTECTION_DEVICE_REVOKED>ErrorCode.CONTENT_PROTECTION_DEVICE_REVOKED</a> reported by the license server.</p></li></ul></div>
 
                                         <dl>
 
@@ -495,7 +495,7 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                     <li class="blockList">
                                         <h4>getStatus</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a> <a href=ContentProtectionException.html#getStatus()>getStatus</a>()</pre>
-                                        <div class="block"><p>The status code from the HTTP response.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
+                                        <div class="block"><p>The status code from the HTTP response.</p><ul><li><p>Only available when the error originates from an HTTP request, see <a href=ContentProtectionException.html#url>url</a>.</p></li></ul></div>
 
                                         <dl>
 
@@ -518,7 +518,7 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                     <li class="blockList">
                                         <h4>getStatusText</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getStatusText()>getStatusText</a>()</pre>
-                                        <div class="block"><p>A textual description regarding the status from the HTTP response.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
+                                        <div class="block"><p>A textual description regarding the status from the HTTP response.</p><ul><li><p>Only available when the error originates from an HTTP request, see <a href=ContentProtectionException.html#url>url</a>.</p></li></ul></div>
 
                                         <dl>
 
@@ -541,7 +541,7 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                     <li class="blockList">
                                         <h4>getResponse</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getResponse()>getResponse</a>()</pre>
-                                        <div class="block"><p>A textual representation of the body of the HTTP response.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
+                                        <div class="block"><p>A textual representation of the body of the HTTP response.</p><ul><li><p>Only available when the error originates from an HTTP request, see <a href=ContentProtectionException.html#url>url</a>.</p></li></ul></div>
 
                                         <dl>
 

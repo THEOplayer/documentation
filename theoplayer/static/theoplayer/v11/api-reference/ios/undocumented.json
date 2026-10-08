@@ -373,133 +373,133 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 137,
+      "line": 151,
       "symbol": "FairPlayDRMConfigurationProtocol.fairplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 142,
+      "line": 156,
       "symbol": "WidevineDRMConfigurationProtocol.widevine",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 147,
+      "line": 161,
       "symbol": "LicenseType.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 148,
+      "line": 162,
       "symbol": "LicenseType.temporary",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 149,
+      "line": 163,
       "symbol": "LicenseType.persistent",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 202,
+      "line": 216,
       "symbol": "DRMIntegration.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 203,
+      "line": 217,
       "symbol": "DRMIntegration.azure",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 204,
+      "line": 218,
       "symbol": "DRMIntegration.uplynk",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 205,
+      "line": 219,
       "symbol": "DRMIntegration.vimond",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 206,
+      "line": 220,
       "symbol": "DRMIntegration.ezdrm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 207,
+      "line": 221,
       "symbol": "DRMIntegration.axinom",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 208,
+      "line": 222,
       "symbol": "DRMIntegration.keyos",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 209,
+      "line": 223,
       "symbol": "DRMIntegration.verimatrix",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 210,
+      "line": 224,
       "symbol": "DRMIntegration.comcast",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 211,
+      "line": 225,
       "symbol": "DRMIntegration.irdeto",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 212,
+      "line": 226,
       "symbol": "DRMIntegration.drmtoday",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 213,
+      "line": 227,
       "symbol": "DRMIntegration.xstream",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 214,
+      "line": 228,
       "symbol": "DRMIntegration.vudrm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 215,
+      "line": 229,
       "symbol": "DRMIntegration.custom",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"

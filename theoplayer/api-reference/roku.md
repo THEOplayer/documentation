@@ -155,8 +155,40 @@ The following key/value pairs are supported on the `widevine` and `playready` at
 | Name                  | Type               | Description                                                                                                                                                                                                          |
 | --------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | licenseAcquisitionURL | string             | The license acquisition URL.                                                                                                                                                                                         |
-| certificate           | string             | Optional. The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel.                                                                                              |
+| certificate           | string             | Optional. The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. It can be either base64 or hex encoded.                                                      |
 | headers               | roAssociativeArray | Optional. A key-value dictionary that contains additional HTTP headers that will be sent for DRM key/license requests. The keys represent the HTTP header names and the values represent their corresponding values. |
+
+### DRM Today Configuration
+
+A `DRMTodayDRMConfiguration` extends Content Protection with the following properties. Set `integration` to `"drmtoday"` to enable this behavior.
+
+| Name      | Type   | Description                                                                                  |
+| --------- | ------ | -------------------------------------------------------------------------------------------- |
+| merchant  | string | Optional. The DRM Today merchant identifier used to generate license-request custom data.    |
+| userId    | string | Optional. The DRM Today user identifier included in generated custom data when non-empty.    |
+| sessionId | string | Optional. The DRM Today session identifier included in generated custom data when non-empty. |
+
+When a non-empty `merchant` and a Widevine configuration are supplied without an existing DRM Today authentication header, the SDK adds an `x-dt-custom-data` header containing base64-encoded JSON with the merchant and optional user/session identifiers. Existing `x-dt-auth-token`, `x-dt-custom-data`, and `dt-custom-data` headers take precedence and are not replaced. Other configured headers are preserved.
+
+The Widevine license URL is updated with `specConform=true` so Roku's native CDM receives an unwrapped license response. To use DRM Today's token authentication, provide `x-dt-auth-token` through `contentProtection.widevine.headers`; Roku does not expose a separate `token` property.
+
+```brightscript
+drmTodaySource = {
+  sources: {
+    src: "https://example.com/stream.m3u8",
+    type: "application/x-mpegurl",
+    contentProtection: {
+      integration: "drmtoday",
+      merchant: "your-merchant-id",
+      userId: "your-user-id",
+      sessionId: "your-session-id",
+      widevine: {
+        licenseAcquisitionURL: "https://lic.drmtoday.com/license-proxy-widevine/cenc/"
+      }
+    }
+  }
+}
+```
 
 **Example DRM source with VuDRM specific headers**
 
@@ -193,7 +225,7 @@ The `drmParams` attribute of the `contentProtection` is an associative array tha
 | licenseRenewURL  | string | Optional. A URL location for sending license renewal requests. If not specified, the Roku OS will send renewal requests to the URL specified in the licenseServerURL. This only works with Widevine.                                                                                                                                                                         |
 | licenseServerURL | string | A URL location of a license server. This URL may include CGI parameters.                                                                                                                                                                                                                                                                                                     |
 | serializationURL | string | Optional. A server address used for device provisioning.                                                                                                                                                                                                                                                                                                                     |
-| serviceCert      | string | Optional. The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. Leave this unset unless Widevine is used for DRM.                                                                                                                                                                                                    |
+| serviceCert      | string | Optional. The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. Leave this unset unless Widevine is used for DRM. If used, this must be hex-encoded.                                                                                                                                                                 |
 | lic_acq_window   | string | Optional. The maximum amount of time (in milliseconds) that a channel waits before rotating its Widevine DRM keys. The channel can generate a random wait time between 0 and the value specified in the **lic_acq_window** field, and use the random wait time to instruct when the Video node should make its next Widevine license request. _Available since Roku OS 10.5_ |
 
 ### Ads API

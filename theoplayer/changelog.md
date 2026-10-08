@@ -9,6 +9,93 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.13.0 (2026/10/07)
+
+### Web
+
+#### ✨ Features
+
+- Added `ABRConfiguration.preferredMaximumResolution`, which allows to dynamically cap the resolution selected for Millicast streams.
+- Added support for using `SourceAbrConfiguration.restrictToPlayerSize` with Millicast streams.
+
+#### ⚡ Improvements
+
+- The player now always wraps its media elements in container elements inside the player element, instead of only for OptiView Ads sources.
+  - The `theo-ads-sgai-container`, `theo-ads-sgai-content-player` and `theo-ads-sgai-ad-player` classes are still applied while an OptiView Ads source is active.
+  - When using `ChromelessPlayer`, CSS or scripts that expect the `<video>` element to be a direct child of the player element (for example `.my-player > video`) should use a descendant selector instead.
+- Added the `theoLive.discoveryUrl` and `theoLive.discoveryUrls` player configuration options to the public API, to override the discovery URLs that are tried before the built-in THEOlive discovery URLs. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `theoLive.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- `THEOplayer.features` now lists the features that are actually loaded, in a fixed order.
+
+#### 🐛 Issues
+
+- Fixed an issue where transient network errors on OptiView Live media requests were retried for less than a second before falling back to HLS. Such requests are now retried for about five seconds, and the failure count starts over after each successful request.
+- Fixed `currentProgramDateTime` advancing too quickly or exposing ad timestamps during OptiView Ads interstitials. When the ad break does not replace content, `currentProgramDateTime` is `undefined` during the ad break.
+- Fixed an issue where a Widevine license request rejected by EZDRM because the browser's CDM is revoked was reported as a generic `CONTENT_PROTECTION_LICENSE_ERROR` (7007). It is now reported as `CONTENT_PROTECTION_DEVICE_REVOKED` (7013), with the CDM version and EZDRM's reason in the error message and the EZDRM response body in `error.response`.
+- Fixed an issue where seeking past multiple individually scheduled Google IMA VAST ad breaks would play all of them back-to-back. Only the first seeked-over ad break is played now, restoring the expected behavior from before version 11.9.0.
+- Fixed an issue where a Google IMA VAST post-roll could play in the background, detached from the player controls, after seeking past multiple ad breaks of which the last one was a non-linear VAST ad.
+- Fixed an issue where delayed OptiView Ads watermark responses could leave overlapping image overlays visible after seeking.
+- Fixed an issue where a low-latency HLS stream stayed behind the live edge after playback was paused and resumed outside of the player, for example when the browser tab of a muted stream had been in the background, or from the picture-in-picture window.
+- Fixed an issue where frozen OptiView Live playback could unnecessarily switch to HLS instead of first attempting to recover with a seek to live. Streams that stop receiving data now switch to another endpoint sooner.
+- Fixed an issue where OptiView Ads would not play any ad break after the first one when ad breaks are signalled through ID3 or EMSG cues.
+
+### Android
+
+#### ✨ Features
+
+- Added `InterceptableHTTPResponse.observeBody()` and `.observeChunk()` methods to inspect the HTTP response body without modifying it.
+- Added `ChunkInterceptor.onEnd()`, which will be called after the last chunk of the HTTP response body has been received.
+
+#### ⚡ Improvements
+
+- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOLiveConfig.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/android/theolive/discovery-urls/) for more information.
+- The CMCD video codec now reports the codec that is actually decoded when a Dolby Vision stream falls back to its base layer.
+- The Widevine service certificate provided by OptiView Live channel discovery will now be used when starting playback, saving the certificate request. An empty certificate from discovery no longer overrides one configured on the source.
+- When provided, `KeySystemConfiguration.certificate` will now be applied as the Widevine service certificate for DRM playback.
+
+#### 🐛 Issues
+
+- Fixed an issue where the OptiView Ads integration did not dispatch `adimpression`, `adclicked` and `adtapped` events, and `adloaded` for VAST ads.
+- Fixed an issue where a Widevine license request rejected by EZDRM because the device's CDM is revoked was reported as a generic `CONTENT_PROTECTION_LICENSE_ERROR` (7007). It is now reported as `CONTENT_PROTECTION_DEVICE_REVOKED` (7013), with the CDM version and EZDRM's reason in the error message and the license server's URL, status and response body on the `ContentProtectionException`.
+- Fixed an issue where CMCD data was missing from HLS media segment requests when CMCD was reported through request headers, leaving those requests without session information.
+- Fixed an issue where the player-level CMCD configuration was not forwarded to the Chromecast receiver when casting.
+- Fixed an issue where TTML subtitles in fragmented MP4 (`stpp`) HLS streams were not rendered.
+- Fixed the Learn more button not appearing during OptiView Ads VAST ads.
+
+### iOS
+
+#### ⚡ Improvements
+
+- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOliveConfiguration.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/ios/theolive/discovery-urls/) for more information.
+- OptiView Streaming (THEOlive) sources now use the FairPlay certificate returned by the discovery response instead of downloading it from the certificate URL. Added `certificate` to `KeySystemConfiguration` and `FairPlayDRMConfiguration` to provide the FairPlay certificate directly; when it is missing or empty, the certificate URL is still used. A non-empty certificate is used as-is, also with a custom `ContentProtectionIntegration`: its `onCertificateRequest` and `onCertificateResponse` handlers are then not called. A certificate from the discovery response takes precedence over one configured on the source.
+
+#### 🐛 Issues
+
+- Fixed an issue where the OptiView Live HESP fallback cooldown was not started, resulting in the player recovering on HESP instead of HLS.
+- Fixed an issue in OptiView Streaming (THEOlive) where HLS playback would stay stalled, instead of falling back to another endpoint after 15 seconds without progress.
+- Fixed an issue where setting a new HLS source containing an IMA preroll, while in PiP presentation mode, would close PiP.
+- Fixed an issue where the source-level CMCD configuration was forwarded to the Chromecast receiver under a key the THEOplayer receivers do not recognise, so casting never reported CMCD for the source.
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added CMCD (Common Media Client Data) event-mode reporting to the Chromecast CAF receiver. When the sender's player or source configuration contains a `cmcd` configuration, the receiver reports its own CMCD session (platform `theoplayer-caf`), including the Dolby Vision and Dolby Atmos capability and active codec fields.
+
+### Roku
+
+#### ✨ Features
+
+- Added the x-tv3-user-engagement-data header to all MediaKind client beacons, including Base64-encoded session identifiers and the current playing, paused, or buffering state.
+- Added program boundary events for MediaKind streams.
+- Added support for Castlabs DRMtoday Widevine configuration (merchant/userId/sessionId), including on THEOlive sources.
+
+#### 🐛 Issues
+
+- Added X-LocationDetails to MediaKind DRM and beacon requests when client location details are configured, together with an MKUtils helper for encoding location details.
+- Fixed issue where stall detection could fire during OptiView live fallback if endpoint selection took a long while.
+- Fixed an issue where a Widevine service certificate configured in `contentProtection.widevine.certificate` (or delivered by OptiView Live discovery) made playback fail with a `setServiceCertificate` DRM error. The certificate is now handed to the Roku CDM as a hex string; base64 and hex certificates are both accepted.
+
 ## 🚀 11.12.1 (2026/09/25)
 
 ### Android

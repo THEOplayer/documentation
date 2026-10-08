@@ -265,7 +265,7 @@ public interface <span class="typeNameLabel"><a href=THEOLiveConfig.html>THEOLiv
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOLiveConfig.html#getAnalyticsDisabled()>getAnalyticsDisabled</a>() </code>
                                             </th>
-                                            <td class="colLast">Returns whether the Analytics is supported or not.</td>
+                                            <td class="colLast">Whether OptiView Live analytics is disabled.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
@@ -273,7 +273,7 @@ public interface <span class="typeNameLabel"><a href=THEOLiveConfig.html>THEOLiv
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOLiveConfig.html#getDiscoveryUrl()>getDiscoveryUrl</a>() </code>
                                             </th>
-                                            <td class="colLast">Override for the discovery URL.</td>
+                                            <td class="colLast">A discovery URL that is tried before the built-in discovery URLs.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -352,7 +352,7 @@ public interface <span class="typeNameLabel"><a href=THEOLiveConfig.html>THEOLiv
                                     <li class="blockList">
                                         <h4>getAnalyticsDisabled</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=THEOLiveConfig.html#getAnalyticsDisabled()>getAnalyticsDisabled</a>()</pre>
-                                        <div class="block"><p>Returns whether the Analytics is supported or not.</p></div>
+                                        <div class="block"><p>Whether OptiView Live analytics is disabled. Defaults to <code>false</code>.</p></div>
 
                                         <dl>
 
@@ -375,7 +375,7 @@ public interface <span class="typeNameLabel"><a href=THEOLiveConfig.html>THEOLiv
                                     <li class="blockList">
                                         <h4>getDiscoveryUrl</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=THEOLiveConfig.html#getDiscoveryUrl()>getDiscoveryUrl</a>()</pre>
-                                        <div class="block"><p>Override for the discovery URL.</p></div>
+                                        <div class="block"><p>A discovery URL that is tried before the built-in discovery URLs. Defaults to <code>null</code>.</p><p>The API version is derived from the URL: a URL that contains <code>/v3/</code> is V3, a URL that contains <code>/v2/distributions/</code> is V2, and any other URL is V1.</p></div>
 
                                         <dl>
 
