@@ -407,7 +407,7 @@ public interface <span class="typeNameLabel"><a href=HTTPResponse.html>HTTPRespo
                                     <li class="blockList">
                                         <h4>getStatus</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a> <a href=HTTPResponse.html#getStatus()>getStatus</a>()</pre>
-                                        <div class="block"><p>The status code from the HTTP response message received from the request.</p><p>From responses like HTTP/1.0 200 OK, extracts the number 200.</p></div>
+                                        <div class="block"><p>The status code from the HTTP response message received from the request.</p><p>From responses like <code>HTTP/1.0 200 OK</code>, extracts the number 200.</p></div>
 
                                         <dl>
 
@@ -430,7 +430,7 @@ public interface <span class="typeNameLabel"><a href=HTTPResponse.html>HTTPRespo
                                     <li class="blockList">
                                         <h4>getStatusText</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=HTTPResponse.html#getStatusText()>getStatusText</a>()</pre>
-                                        <div class="block"><p>The HTTP response message, if any, returned from a server.</p><p>From responses like HTTP/1.0 200 OK, extracts the Strings &quot;OK&quot;.</p><p>Returns null if none could be discerned from the responses (the result was not valid HTTP).</p></div>
+                                        <div class="block"><p>The HTTP response message, if any, returned from a server.</p><p>From responses like <code>HTTP/1.0 200 OK</code>, extracts the string <code>&quot;OK&quot;</code>.</p><p>Returns null if none could be discerned from the responses (the result was not valid HTTP).</p></div>
 
                                         <dl>
 

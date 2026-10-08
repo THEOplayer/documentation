@@ -1152,9 +1152,44 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headers15queryParametersACSSSg_AiA07LicenseJ0OSgSDyS2SGSgANtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(licenseAcquisitionURL:certificateURL:licenseType:headers:queryParameters:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headers15queryParametersACSSSg_AiA07LicenseJ0OSgSDyS2SGSgANtcfc">init(licenseAcquisitionURL:<wbr>certificateURL:<wbr>licenseType:<wbr>headers:<wbr>queryParameters:<wbr>)</a>
+                    <a name="/s:13THEOplayerSDK22KeySystemConfigurationC11certificate10Foundation4DataVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/certificate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK22KeySystemConfigurationC11certificate10Foundation4DataVSgvp">certificate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The FairPlay application certificate, as DER encoded bytes.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>When a non-empty certificate is provided it is used directly and no request is sent to <code><a href="../Classes/KeySystemConfiguration.html#/s:13THEOplayerSDK22KeySystemConfigurationC14certificateURL10Foundation0G0VSgvp">certificateURL</a></code>, so the <code>ContentProtectionIntegration.onCertificateRequest</code> and <code>onCertificateResponse</code> handlers are not called.</li>
+<li>When nil or empty, the certificate is fetched from <code><a href="../Classes/KeySystemConfiguration.html#/s:13THEOplayerSDK22KeySystemConfigurationC14certificateURL10Foundation0G0VSgvp">certificateURL</a></code>.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">certificate</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headers15queryParameters0I0ACSSSg_AjA07LicenseJ0OSgSDyS2SGSgAO10Foundation4DataVSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(licenseAcquisitionURL:certificateURL:licenseType:headers:queryParameters:certificate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headers15queryParameters0I0ACSSSg_AjA07LicenseJ0OSgSDyS2SGSgAO10Foundation4DataVSgtcfc">init(licenseAcquisitionURL:<wbr>certificateURL:<wbr>licenseType:<wbr>headers:<wbr>queryParameters:<wbr>certificate:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1169,7 +1204,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">licenseAcquisitionURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">certificateURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">licenseType</span><span class="p">:</span> <span class="kt"><a href="../Enums/LicenseType.html">LicenseType</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">queryParameters</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">licenseAcquisitionURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">certificateURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">licenseType</span><span class="p">:</span> <span class="kt"><a href="../Enums/LicenseType.html">LicenseType</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">queryParameters</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1222,6 +1257,18 @@
                               <td>
                                 <div>
                                   <p>record of query parameters for the licence acquisition request. Each entry contains a query parameter name with associated value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>certificate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The FairPlay application certificate as DER encoded bytes, defaults to nil. When provided, no request is sent to <code><a href="../Classes/KeySystemConfiguration.html#/s:13THEOplayerSDK22KeySystemConfigurationC14certificateURL10Foundation0G0VSgvp">certificateURL</a></code>.</p>
                                 </div>
                               </td>
                             </tr>

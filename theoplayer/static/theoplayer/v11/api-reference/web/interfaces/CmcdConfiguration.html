@@ -18,10 +18,12 @@
 <h4 class="tsd-anchor-link" id="Remarks">Remarks<a href="#Remarks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v11.4.0.
 <br/> - This configuration is only used for event mode reporting only, for now. For request mode, you should use the
 CMCD connector on GitHub (<a href="https://github.com/THEOplayer/web-connectors/tree/main/cmcd" target="_blank" class="external">https://github.com/THEOplayer/web-connectors/tree/main/cmcd</a>).
-<br/> - This configuration is set at the player level. For source-level configuration, see <a href="CmcdSourceConfiguration.html" class="tsd-kind-interface">CmcdSourceConfiguration</a>.</p>
+<br/> - This configuration is set at the player level. For source-level configuration, see <a href="CmcdSourceConfiguration.html" class="tsd-kind-interface">CmcdSourceConfiguration</a>.
+<br/> - When casting to a THEOplayer Chromecast CAF receiver, this configuration is forwarded to the receiver, which then
+reports its own CMCD session for the cast media in event mode (with platform <code>theoplayer-caf</code>). Available since v11.13.0.</p>
 </div></div></section>
 <div class="tsd-signature"><span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">CmcdConfiguration</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#eventEndpoints">eventEndpoints</a><span class="tsd-signature-symbol">?:</span> <a href="CmcdEndpointConfiguration.html" class="tsd-signature-type tsd-kind-interface">CmcdEndpointConfiguration</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#externalSessionId">externalSessionId</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#userId">userId</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div>
-<section class="tsd-panel tsd-hierarchy" data-refl="3206">
+<section class="tsd-panel tsd-hierarchy" data-refl="3210">
 <h4>Hierarchy (<a href="../hierarchy.html#CmcdConfiguration">View Summary</a>)</h4>
 <ul class="tsd-hierarchy">
 <li class="tsd-hierarchy-item"><span class="tsd-hierarchy-target">CmcdConfiguration</span>

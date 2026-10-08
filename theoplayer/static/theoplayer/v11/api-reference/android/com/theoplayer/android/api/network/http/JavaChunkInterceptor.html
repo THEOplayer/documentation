@@ -257,11 +257,27 @@ public interface <span class="typeNameLabel"><a href=JavaChunkInterceptor.html>J
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=JavaChunkInterceptor.html#onEndAsync(com.theoplayer.android.api.util.JavaCallback)>onEndAsync</a>(<a href=../../util/JavaCallback.html>JavaCallback</a>&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a>&gt; callback) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=JavaChunkInterceptor.html#onChunk(kotlin.ByteArray)>onChunk</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> chunk) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Called when a byte chunk is received from the HTTP response body.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=JavaChunkInterceptor.html#onEnd()>onEnd</a>() </code>
+                                            </th>
+                                            <td class="colLast">Called after the last chunk of the HTTP response body has been received.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -331,21 +347,80 @@ public interface <span class="typeNameLabel"><a href=JavaChunkInterceptor.html>J
                                     </li>
                                 </ul>
                                 
-                                <a id="onChunk(kotlin.ByteArray)">
+                                <a id="onEndAsync(com.theoplayer.android.api.util.JavaCallback)">
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>onChunk</h4>
-                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> <a href=JavaChunkInterceptor.html#onChunk(kotlin.ByteArray)>onChunk</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> chunk)</pre>
+                                        <h4>onEndAsync</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=JavaChunkInterceptor.html#onEndAsync(com.theoplayer.android.api.util.JavaCallback)>onEndAsync</a>(<a href=../../util/JavaCallback.html>JavaCallback</a>&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a>&gt; callback)</pre>
                                         <div class="block"></div>
 
                                         <dl>
 
                                         
 
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="onChunk(kotlin.ByteArray)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onChunk</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> <a href=JavaChunkInterceptor.html#onChunk(kotlin.ByteArray)>onChunk</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> chunk)</pre>
+                                        <div class="block"><p>Called when a byte chunk is received from the HTTP response body.</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>chunk</code> - The received byte chunk.</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>A byte chunk that will be appended to the modified response body. This can be the original chunk, or a modified chunk.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="onEnd()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onEnd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> <a href=JavaChunkInterceptor.html#onEnd()>onEnd</a>()</pre>
+                                        <div class="block"><p>Called after the last chunk of the HTTP response body has been received.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>An (optional) additional byte chunk that will be appended to the modified response body.</p></dd>
                                         
 
                                         

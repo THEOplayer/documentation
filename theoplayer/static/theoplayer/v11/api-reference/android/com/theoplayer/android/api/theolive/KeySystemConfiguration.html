@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../";
 public final class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>KeySystemConfiguration</a></span>
 
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>Key-system configuration provided by THEOlive discovery.</p></div>
 
                     <dl>
 
@@ -178,6 +178,12 @@ public final class <span class="typeNameLabel"><a href=KeySystemConfiguration.ht
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=KeySystemConfiguration.html#certificate>certificate</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -204,7 +210,7 @@ public final class <span class="typeNameLabel"><a href=KeySystemConfiguration.ht
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#KeySystemConfiguration(java.lang.String)">KeySystemConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> licenseUrl)</code></th>
+                                                        href="#KeySystemConfiguration(java.lang.String,java.lang.String)">KeySystemConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> licenseUrl, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> certificate)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -265,6 +271,14 @@ public final class <span class="typeNameLabel"><a href=KeySystemConfiguration.ht
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=KeySystemConfiguration.html#getCertificate()>getCertificate</a>() </code>
+                                            </th>
+                                            <td class="colLast">The optional Base64-encoded certificate string supplied by discovery.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -296,11 +310,11 @@ public final class <span class="typeNameLabel"><a href=KeySystemConfiguration.ht
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="KeySystemConfiguration(java.lang.String)"></a>
+                                <a name="KeySystemConfiguration(java.lang.String,java.lang.String)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>KeySystemConfiguration</h4>
-                                        <pre>KeySystemConfiguration(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> licenseUrl)</pre>
+                                        <pre>KeySystemConfiguration(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> licenseUrl, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> certificate)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -323,12 +337,35 @@ public final class <span class="typeNameLabel"><a href=KeySystemConfiguration.ht
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getLicenseUrl</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=KeySystemConfiguration.html#getLicenseUrl()>getLicenseUrl</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCertificate()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCertificate</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=KeySystemConfiguration.html#getCertificate()>getCertificate</a>()</pre>
+                                        <div class="block"><p>The optional Base64-encoded certificate string supplied by discovery.</p></div>
 
                                         <dl>
 
