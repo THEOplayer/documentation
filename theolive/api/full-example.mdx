@@ -252,6 +252,10 @@ curl -X POST https://api.theo.live/v2/channels/ch_abc123/stop \
   -H "Authorization: Basic $AUTH"
 ```
 
+The engines shut down gracefully: the stream is ended for viewers (the HLS playlists are closed) and the engines are torn down. The channel status transitions through `stopping` → `stopped`, which typically takes 10–20 seconds. Transcoding time stops counting as soon as the stop is requested.
+
+If you need the engines gone immediately, call the same endpoint again while the channel is `stopping`: this **force stops** the engines, which tears them down right away. Engines in `error` are always force stopped.
+
 ## Next steps
 
 - Add [redundancy](../distribution/redundancy.md) with a second ingest and engine

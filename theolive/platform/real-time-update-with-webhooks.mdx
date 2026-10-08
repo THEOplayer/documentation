@@ -40,23 +40,23 @@ Events are grouped by resource type:
 
 ### Engine events
 
-| Event              | Triggered when                 |
-| ------------------ | ------------------------------ |
-| `engine.created`   | An engine is created           |
-| `engine.updated`   | An engine is updated           |
-| `engine.deploying` | An engine starts deploying     |
-| `engine.waiting`   | An engine is waiting for input |
-| `engine.starting`  | An engine is starting up       |
-| `engine.playing`   | An engine begins playing       |
-| `engine.ingesting` | An engine begins ingesting     |
-| `engine.stopping`  | An engine begins stopping      |
-| `engine.stopped`   | An engine has fully stopped    |
-| `engine.deleting`  | An engine is being deleted     |
-| `engine.deleted`   | An engine has been deleted     |
-| `engine.error`     | An engine encounters an error  |
-| `engine.log.info`  | An engine emits an info log    |
-| `engine.log.warn`  | An engine emits a warning log  |
-| `engine.log.error` | An engine emits an error log   |
+| Event              | Triggered when                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| `engine.created`   | An engine is created                                                                             |
+| `engine.updated`   | An engine is updated                                                                             |
+| `engine.deploying` | An engine starts deploying                                                                       |
+| `engine.waiting`   | An engine is waiting for input                                                                   |
+| `engine.starting`  | An engine is starting up                                                                         |
+| `engine.playing`   | An engine begins playing                                                                         |
+| `engine.ingesting` | An engine begins ingesting                                                                       |
+| `engine.stopping`  | An engine begins its graceful shutdown (the stream is ended for viewers)                         |
+| `engine.stopped`   | An engine has fully stopped and been torn down (typically 10–20 seconds after `engine.stopping`) |
+| `engine.deleting`  | An engine is being deleted                                                                       |
+| `engine.deleted`   | An engine has been deleted                                                                       |
+| `engine.error`     | An engine encounters an error                                                                    |
+| `engine.log.info`  | An engine emits an info log                                                                      |
+| `engine.log.warn`  | An engine emits a warning log                                                                    |
+| `engine.log.error` | An engine emits an error log                                                                     |
 
 ### Ingest events
 
