@@ -23,8 +23,8 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - The player now always wraps its media elements in container elements inside the player element, instead of only for OptiView Ads sources.
   - The `theo-ads-sgai-container`, `theo-ads-sgai-content-player` and `theo-ads-sgai-ad-player` classes are still applied while an OptiView Ads source is active.
   - When using `ChromelessPlayer`, CSS or scripts that expect the `<video>` element to be a direct child of the player element (for example `.my-player > video`) should use a descendant selector instead.
-- Added the `theoLive.discoveryUrl` and `theoLive.discoveryUrls` player configuration options to the public API, to override the discovery URLs that are tried before the built-in THEOlive discovery URLs. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
-- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `theoLive.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- Added the `theoLive.discoveryUrl` and `theoLive.discoveryUrls` player configuration options to the public API, to override the discovery URLs that are tried before the built-in THEOlive discovery URLs. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `theoLive.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
 - `THEOplayer.features` now lists the features that are actually loaded, in a fixed order.
 
 #### 🐛 Issues
@@ -48,7 +48,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ⚡ Improvements
 
-- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOLiveConfig.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/theolive/discovery-urls/) for more information.
+- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOLiveConfig.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/android/theolive/discovery-urls/) for more information.
 - The CMCD video codec now reports the codec that is actually decoded when a Dolby Vision stream falls back to its base layer.
 - The Widevine service certificate provided by OptiView Live channel discovery will now be used when starting playback, saving the certificate request. An empty certificate from discovery no longer overrides one configured on the source.
 - When provided, `KeySystemConfiguration.certificate` will now be applied as the Widevine service certificate for DRM playback.
@@ -66,7 +66,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ⚡ Improvements
 
-- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOliveConfiguration.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/ios/theolive/discovery-urls/) for more information.
+- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOliveConfiguration.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/ios/theolive/discovery-urls/) for more information.
 - OptiView Streaming (THEOlive) sources now use the FairPlay certificate returned by the discovery response instead of downloading it from the certificate URL. Added `certificate` to `KeySystemConfiguration` and `FairPlayDRMConfiguration` to provide the FairPlay certificate directly; when it is missing or empty, the certificate URL is still used. A non-empty certificate is used as-is, also with a custom `ContentProtectionIntegration`: its `onCertificateRequest` and `onCertificateResponse` handlers are then not called. A certificate from the discovery response takes precedence over one configured on the source.
 
 #### 🐛 Issues
@@ -826,7 +826,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
+- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
 - Added support for DRM-protected OptiView Live Streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
 
 #### 🐛 Issues
@@ -993,7 +993,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -1006,7 +1006,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.
