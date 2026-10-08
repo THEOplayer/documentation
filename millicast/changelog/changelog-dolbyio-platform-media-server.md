@@ -2,6 +2,26 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-10-08
+
+### Media Server
+
+{/* 3.7.0 */}
+
+#### Features
+
+- Improved Adaptive Bitrate (ABR) for multiview playback. A view that is newly projected into a multiview layout now starts playing without being muted first, and ABR probing for higher layers now works when several video tracks share one connection.
+- ABR now applies the `maxWidth`, `maxHeight` and maximum layer limits of a view in all cases: when it selects the first layer, when it probes for more bandwidth, and when the view is attached to a new source. ABR no longer probes for a layer that the view is not allowed to receive.
+- ABR stops probing for more bandwidth when the view is already at the highest layer allowed by its maximum bitrate and other filters.
+
+#### Fixes
+
+- Fixed an issue where a viewer could receive no media for a source when a multiview projection referenced a layer (encoding id) that the source does not have.
+- Fixed an issue where a layer that did not yet report a bitrate could be selected as the starting layer.
+- Fixed an issue where multiview playback could stop sending video for a source after a temporary drop in bandwidth and not recover. When bandwidth is below the lowest layers, sources keep playing on their lowest layer instead of being muted, unless they exceed the view's maximum bitrate.
+- Fixed an issue where ABR probing could not raise the bandwidth estimate when the gap between layers was more than 5 Mbps.
+- General stability and reliability improvements.
+
 ## 2026-09-30
 
 ### Media Server
