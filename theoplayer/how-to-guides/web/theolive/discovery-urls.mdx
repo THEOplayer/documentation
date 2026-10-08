@@ -1,0 +1,56 @@
+---
+title: Discovery URLs
+sidebar_position: 4
+---
+
+# Discovery URLs
+
+import Intro from '../../shared/theolive/_discovery-urls-intro.mdx';
+
+<Intro />
+
+## Configure the discovery URL
+
+Set the discovery URL in the `theoLive` property of the player configuration.
+For example, for a channel served by V2:
+
+```javascript
+const player = new THEOplayer.Player(element, {
+  libraryLocation: '/path/to/theoplayer/',
+  license: 'your-license',
+  theoLive: {
+    discoveryUrl: 'https://discovery.theo.live/v2/distributions/',
+  },
+});
+```
+
+If your channels are served by different API versions, list the discovery URLs in the order you want the player to try them:
+
+```javascript
+const player = new THEOplayer.Player(element, {
+  libraryLocation: '/path/to/theoplayer/',
+  license: 'your-license',
+  theoLive: {
+    discoveryUrls: ['https://discovery.theo.live/v2/distributions/', 'https://discovery.theo.live/'],
+  },
+});
+```
+
+On Web, the player ignores a trailing `channels/` or `distributions/` segment in the discovery URL.
+This means that `https://discovery.theo.live/v2/` and `https://discovery.theo.live/v2/distributions/` are the same V2 discovery URL.
+A URL without a version segment, such as `https://discovery.theo.live/`, is a V1 discovery URL.
+
+## Configuration reference
+
+All properties of [`TheoLiveConfiguration`](pathname:///theoplayer/v11/api-reference/web/interfaces/TheoLiveConfiguration.html) are optional.
+
+| Property            | Type       | Description                                                                                                                                                                                                                     |
+| ------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `discoveryUrl`      | `string`   | A discovery URL that the player tries before the built-in discovery URLs. Takes precedence over `discoveryUrls`.                                                                                                                |
+| `discoveryUrls`     | `string[]` | A list of discovery URLs that the player tries in order, after `discoveryUrl` and before the built-in discovery URLs.                                                                                                           |
+| `discoveryHeader`   | `string`   | A value that the player sends in the `x-theolive-discovery` HTTP header of every discovery request. Only use this if a discovery URL that you configured expects this header, for example your own proxy in front of discovery. |
+| `fallbackEnabled`   | `boolean`  | Whether the player plays the fallback stream when a V1 channel has a fallback configured. Defaults to `true`.                                                                                                                   |
+| `externalSessionId` | `string`   | Deprecated. An ID used to report usage analytics. Use `cmcd.externalSessionId` in the player configuration instead.                                                                                                             |
+
+The default discovery order V2, V1, V3 applies from THEOplayer 11.13.0.
+Earlier versions try V1 first.

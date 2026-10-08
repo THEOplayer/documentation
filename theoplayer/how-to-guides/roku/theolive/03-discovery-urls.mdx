@@ -1,0 +1,58 @@
+---
+sidebar_position: 3
+sidebar_label: Discovery URLs
+---
+
+# Discovery URLs
+
+import Intro from '../../shared/theolive/_discovery-urls-intro.mdx';
+
+<Intro />
+
+## Configure the discovery URL
+
+Set the discovery URL in the `theoLive` property of the player configuration.
+For example, for a channel served by V2:
+
+```brightscript
+playerConfiguration = {
+  license: "<YOUR_LICENSE_HERE>",
+  theoLive: {
+    discoveryUrl: "https://discovery.theo.live/v2/distributions/"
+  }
+}
+m.player.callFunc("configure", playerConfiguration)
+```
+
+If your channels are served by different API versions, list the discovery URLs in the order you want the player to try them:
+
+```brightscript
+playerConfiguration = {
+  license: "<YOUR_LICENSE_HERE>",
+  theoLive: {
+    discoveryUrls: [
+      "https://discovery.theo.live/v2/distributions/",
+      "https://discovery.theo.live/v2/publications/"
+    ]
+  }
+}
+m.player.callFunc("configure", playerConfiguration)
+```
+
+The player derives the API version from the URL path:
+
+- A URL that contains `/v3/` is a V3 discovery URL.
+- A URL that contains `/v2/distributions/` is a V2 discovery URL.
+- Any other URL, including `https://discovery.theo.live/v2/publications/`, is a V1 discovery URL.
+
+## Configuration reference
+
+All properties of the [`theoLive` configuration](/theoplayer/api-reference/roku/#theolive-configuration) are optional.
+
+| Property            | Type               | Description                                                                                                           |
+| ------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `discoveryUrl`      | string             | A discovery URL that the player tries before the built-in discovery URLs. Takes precedence over `discoveryUrls`.      |
+| `discoveryUrls`     | roArray of strings | A list of discovery URLs that the player tries in order, after `discoveryUrl` and before the built-in discovery URLs. |
+| `externalSessionId` | string             | A session ID for your THEOlens session. Use it to link an application session to a THEOlens session.                  |
+
+The default discovery order V2, V1, V3 applies from THEOplayer 11.5.0.
