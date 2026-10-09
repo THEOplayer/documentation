@@ -1,0 +1,121 @@
+---
+sidebar_label: Getting started
+sidebar_custom_props: { icon: '🚀' }
+---
+
+# Getting started with the MediaKind Connector for the Roku SDK
+
+Here's how to get started integrating the MediaKind Connector with the THEOplayer Roku SDK.
+
+## Prerequisites
+
+In order to set up the MediaKind Connector in your Roku application, you'll need the following:
+
+- OptiView Live integration
+- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
+
+## Integration
+
+1. First you must download the THEO MediaKind Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOMediaKindConnector` and providing the URI for the THEOMediaKindConnector.pkg. Replace the `{SDK_VERSION}` tag with the version of the THEO Roku SDK you're using. The earliest version of the connector is 10.9.0:
+
+```xml
+<ComponentLibrary id="THEOMediaKindConnector" uri="https://cdn.myth.theoplayer.com/roku/{SDK_VERSION}/THEOMediaKindConnector.pkg" />
+```
+
+2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+
+```brightscript
+sub Init()
+    THEOMediaKindNode = m.top.findNode("THEOMediaKindConnector")
+    THEOMediaKindNode.observeField("loadStatus", "onLibraryLoadStatusChanged")
+end sub
+
+sub onLibraryLoadStatusChanged(event as object)
+    THEOMediaKindNode = event.getROSGNode()
+
+    if THEOMediaKindNode = invalid
+        return
+    end if
+
+    if THEOMediaKindNode.loadStatus = "ready"
+		' Success
+    else if THEOMediaKindNode.loadStatus = "failed"
+		? "Failed to load component library, please check URL. "; THEOMediaKindNode.uri
+	end if
+end sub
+```
+
+3. Add the THEOMediaKindConnector component to the SceneGraph file where your THEOPlayer is defined.
+
+```xml
+<THEOsdk:THEOplayer id="THEOplayer" controls="true" />
+<THEOMediaKindConnector:THEOMediaKindConnector id="THEOMediaKindConnector" />
+```
+
+4. Then in the Brightscript file, configure the connector by calling the configure method, passing the player instance and your MediaKind configuration.
+
+```brightscript
+m.player = m.top.findNode("THEOPlayer")
+m.mediaKindConnector = m.top.findNode("THEOMediaKindConnector")
+mediaKindConfig = {
+    requestBaseUrl: "<MY_MK_BASE_URL>",
+    AuthorizationToken: "<MY_MK_STS_TOKEN>",
+    AzukiIMC: "<MY_MK_AZUKI_IMC>",
+    DeviceProfile: "<BASE64_ENCODED_DEVICE_INFO>",
+    key_id: "<MY_MK_DRM_KEY>",
+}
+m.mediaKindConnector.callFunc("configure", m.player, mediaKindConfig)
+```
+
+5. Next, make your roll call to MediaKind to get the response for the media you're playing
+
+```brightscript
+rollCallResponse = makeMyMediaKindRollCall()
+```
+
+6. Construct your source description for playback. The player needs to be provided with a `theolive`-type stream description, which will initiate Dolby’s discovery and failover logic.
+   Currently, while still depending on OptiView ≤ v11.3 player SDK versions, the player needs to be configured with this Discovery v2-style URL:
+
+```brightscript
+sourceDescription = {
+  sources: [
+    {
+      ' v2-support
+      src: "channel-1",
+
+      ' v3-support; replace when supported on all platforms (v11.X)
+      ' src: '1f17631a-861d-42c2-9105-d97de0ab9c06/channel-1',
+
+      type: 'theolive',
+    }
+  ]
+}
+```
+
+7. Next, before you start playing the asset, call the `startSession` method and pass it the metadata for the asset you're playing, including information from the roll call response:
+
+```brightscript
+mediaKindSession = {
+    mediaId: "<MY_VIDEO_ID>",
+    ApplicationToken: "<MY_MK_TOKEN>",
+    sessionId: "<MY_SESSION_ID>",
+    ownerUid: "<MY_OWNER_ID>",
+    manifest_uri: rollCallResponse.manifest_uri,
+    cdns: rollCallResponse.cdns,
+}
+
+m.mediaKindConnector.callFunc("startSession", mediaKindSession)
+m.player.source = sourceDescription
+```
+
+There are more properties available to add to the metadata, but `mediaId`, `ApplicationToken`, `sessionId`, and `ownerUid` are required. See [the THEOMediaKindConnector API docs](02-API-reference.mdx) for more properties that are available for MediaKind.
+
+8. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the player:
+
+```brightscript
+m.mediaKindConnector.callFunc("destroy")
+m.mediaKindConnector = invalid
+
+m.player.callFunc("destroy")
+m.player = invalid
+```
