@@ -15,6 +15,15 @@ updates:
       interval: weekly
     cooldown:
       default-days: 7
+    allow:
+      - dependency-type: 'production'
+      # Keep Docusaurus packages in sync, even for patch updates
+      - dependency-name: '@docusaurus*'
+      # Skip patch updates for development dependencies
+      - dependency-type: 'development'
+        update-types:
+          - 'version-update:semver-major'
+          - 'version-update:semver-minor'
     groups:
       docusaurus:
         patterns:
@@ -30,13 +39,14 @@ updates:
         exclude-patterns:
           - '@docusaurus*'
           - 'docusaurus*'
-        update-types:
-          - major
-          - minor
   - package-ecosystem: gitsubmodule
     directory: /
     schedule:
       interval: daily
+    # Always update submodules to the latest commit
+    cooldown:
+      exclude:
+        - '*'
     groups:
       submodules:
         patterns:
