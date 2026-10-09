@@ -27,7 +27,7 @@ To opt-in to with the Millicast JS SDK, call the setEndpoint method on the Direc
 millicast.Director.setEndpoint('https://director-ipv6.millicast.com');
 ```
 
-See also: https://millicast.github.io/millicast-sdk/module-Director.html#~setEndpoint
+See also: https://millicast.github.io/millicast-sdk/module/director/#setendpoint
 
 ### Millicast iOS SDK
 

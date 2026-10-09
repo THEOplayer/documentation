@@ -203,7 +203,7 @@ To change the default for every publish token on the account, open the OptiView 
 
 ## Web SDK
 
-When using the [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
+When using the [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/publish/#connect) and [View](https://millicast.github.io/millicast-sdk/view/#connect) connections..
 
 ### How-to Publish Frame Metadata
 
