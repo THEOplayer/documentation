@@ -81,13 +81,14 @@
   default): `splice_insert` cues in an MPEG-TS ingest are exposed in every media playlist as
   `EXT-X-DATERANGE` tags carrying the `SCTE35-OUT` / `SCTE35-IN` payloads, and segments are cut at the
   splice points so an ad decision server can splice on segment boundaries. When off, the SCTE-35 PID of
-  the ingest is left unparsed
+  the ingest is ignored
 - Added SCTE-35 `time_signal` cues from an MPEG-TS ingest to the `EXT-X-DATERANGE` tags of every
   HLS media playlist, alongside the `splice_insert` cues. Advertisement, placement opportunity and
   promo segmentation descriptors open a range with `SCTE35-OUT` and `PLANNED-DURATION` and close it
   with `SCTE35-IN`, `END-DATE` and `DURATION`, paired by their segmentation event id; other
   segmentation descriptors and time signals without any mark their time with `SCTE35-CMD`. A segment
-  boundary is cut at every time signal that carries an avail, DTMF or segmentation descriptor
+  boundary is cut at every time signal that carries an `avail_descriptor`, `DTMF_descriptor` or
+  `segmentation_descriptor`
 - `EXT-X-DATERANGE` `START-DATE` and `END-DATE` attributes are now written in the same form as
   `EXT-X-PROGRAM-DATE-TIME`: UTC with a `Z` suffix and millisecond precision, instead of `+00:00` with
   a varying number of fraction digits
@@ -104,8 +105,8 @@
   crashes the engine
 - Fixed renditions whose aspect ratio differs from the source (such as a portrait 9:16 ladder fed by a
   16:9 ingest) being encoded with non-square pixels, which Chrome rendered squeezed while Safari
-  rendered it correctly. Such renditions now keep square pixels and are letterboxed to fit, so they
-  render identically in every browser
+  rendered it correctly. Such renditions now keep square pixels and are padded with black bars to
+  fit, so they render identically in every browser
 
 ## [11.9.0] - 2026-09-03
 
@@ -117,8 +118,8 @@
   multivariant playlist, matching Apple's validation guidance
 - Improved the quality of GPU-encoded H.264 renditions at 720p and above, which were encoded with the
   H.264 Main profile while CPU-encoded renditions of the same rung used High. All renditions at 720p and
-  above now use High at the same bitrate, worth around 1 VMAF point at a 1080p 6.5 Mbps rung and more at
-  lower bitrates. Renditions below 720p stay on Main for decoder compatibility, and the `CODECS`
+  above now use High at the same bitrate, a small quality gain at a 1080p 6.5 Mbps rung and a larger one
+  at lower bitrates. Renditions below 720p stay on Main for decoder compatibility, and the `CODECS`
   attribute in HLS manifests changes accordingly for the affected renditions
 - Fixed H.265 and H.264 ingests the GPU decoder cannot handle (such as 4:2:2 chroma subsampling)
   leaving the channel stuck in a reconnect loop; those streams now fall back to software decoding
