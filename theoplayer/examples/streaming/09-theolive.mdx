@@ -1,0 +1,36 @@
+---
+sidebar_custom_props: { icon: '📺' }
+description: Play a THEOlive real-time stream and see the current latency.
+---
+
+# THEOlive
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/theolive/demo.html';
+import TheoLiveDemo from '../_components/TheoLiveDemo';
+
+<TheoLiveDemo />
+
+[THEOlive](../../how-to-guides/web/theolive/getting-started.mdx) delivers real-time video at sub-second latency.
+Set the source `type` to `"theolive"` and `src` to your channel or distribution ID.
+
+```js
+player.source = {
+  sources: {
+    type: 'theolive',
+    src: 'ar5c53uzm3si4h4zgkzrju44h',
+  },
+};
+```
+
+The readout above shows `player.latency.currentLatency`, the end-to-end latency in seconds,
+updated on every `timeupdate` event.
+See the [`TheoLiveSource`](pathname:///theoplayer/v11/api-reference/web/interfaces/TheoLiveSource.html)
+API reference for all available fields.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

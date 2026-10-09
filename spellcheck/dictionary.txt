@@ -1021,3 +1021,6 @@ yospace-connector-web
 Yottabyte
 Youbora
 Zettabyte
+HLG
+HLG-compatible
+UIs

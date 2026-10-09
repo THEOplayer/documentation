@@ -1,0 +1,12 @@
+.searchInput {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+}

@@ -1,0 +1,56 @@
+---
+sidebar_custom_props: { icon: '🎧' }
+description: Build an audio-only player with Open Video UI.
+---
+
+# Audio-only player
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/audio-only/demo.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/audio-only/demo.html')} style={{ aspectRatio: 'auto', height: '120px' }} />
+
+With Open Video UI you compose a player from only the controls you need. This example uses a bare
+`<theoplayer-ui>` element with a track info area in the top chrome and a control bar containing just
+a play button, a seek bar, a time display, a mute button and a volume slider — no video area,
+center play button or fullscreen button.
+
+The video is hidden by styling the `media-layer` shadow part with
+[`::part`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part), and the aspect-ratio box is removed
+with a CSS custom property, so no `display: none` overrides of individual controls are needed:
+
+```css
+theoplayer-ui {
+  --theoplayer-aspect-ratio: none;
+  --theoplayer-height: 7.25rem;
+}
+
+theoplayer-ui::part(media-layer) {
+  visibility: hidden;
+}
+```
+
+```html
+<theoplayer-ui configuration="..." source="...">
+  <div slot="top-chrome" class="track-info" no-auto-hide>...</div>
+  <theoplayer-control-bar no-auto-hide>
+    <theoplayer-play-button></theoplayer-play-button>
+    <theoplayer-time-range></theoplayer-time-range>
+    <theoplayer-time-display show-duration></theoplayer-time-display>
+    <theoplayer-mute-button></theoplayer-mute-button>
+    <theoplayer-volume-range></theoplayer-volume-range>
+  </theoplayer-control-bar>
+</theoplayer-ui>
+```
+
+`no-auto-hide` on the controls keeps them visible at all times instead of letting them
+fade out when the player is idle, since there is no video to tap when the controls fade out.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

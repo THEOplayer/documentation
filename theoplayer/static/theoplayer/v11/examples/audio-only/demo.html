@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Audio-only player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-ui {
+        display: block;
+        width: 100%;
+        /* This player renders audio controls only: no aspect-ratio box, fixed height. */
+        --theoplayer-aspect-ratio: none;
+        --theoplayer-height: 7.25rem;
+        --theoplayer-control-height: 32px;
+        font-family: 'Noto Sans', sans-serif;
+        background: linear-gradient(135deg, #2b1055, #7597de);
+      }
+
+      /* Hide the media layer: nothing renders the <video>, the player is audio-only. */
+      theoplayer-ui::part(media-layer) {
+        visibility: hidden;
+      }
+
+      .track-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        color: #fff;
+      }
+
+      .track-info img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.4rem;
+        object-fit: cover;
+      }
+
+      .track-info .title {
+        font-weight: 700;
+      }
+
+      .track-info .artist {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      theoplayer-control-bar {
+        display: flex;
+        align-items: center;
+      }
+
+      theoplayer-time-range {
+        flex: 1;
+        min-width: 4rem;
+      }
+
+      /* On narrow screens drop the volume slider so the time display fits; the mute button stays. */
+      @media (max-width: 480px) {
+        theoplayer-volume-range {
+          display: none;
+        }
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+
+      no-auto-hide on the controls: keep them visible instead of letting them
+      fade out when the player is idle.
+    -->
+    <theoplayer-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8","type":"application/x-mpegurl"},"metadata":{"title":"Elephants Dream"}}'
+    >
+      <div slot="top-chrome" class="track-info" no-auto-hide>
+        <img src="https://cdn.theoplayer.com/video/posters/elephants_dream.jpg" alt="" />
+        <div>
+          <div class="title">Elephants Dream</div>
+          <div class="artist">Blender Foundation</div>
+        </div>
+      </div>
+      <theoplayer-control-bar no-auto-hide>
+        <theoplayer-play-button></theoplayer-play-button>
+        <theoplayer-time-range></theoplayer-time-range>
+        <theoplayer-time-display show-duration></theoplayer-time-display>
+        <theoplayer-mute-button></theoplayer-mute-button>
+        <theoplayer-volume-range></theoplayer-volume-range>
+      </theoplayer-control-bar>
+    </theoplayer-ui>
+    <script src="../utils.js"></script>
+  </body>
+</html>
