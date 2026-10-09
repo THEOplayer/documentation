@@ -39,10 +39,6 @@ The example uses the US region (`https://us.markers.optiview.dolby.com`). For th
 
 Responses carry a `Cache-Control` header aligned with the channel's active polling interval, so a cached copy is never held longer than the fastest polling cadence the channel advertises.
 
-:::tip[Serve it from your own domain]
-You can serve the Break Manifest from your own CDN domain, next to your stream, by forwarding a path to this endpoint. See [Serve the Break Manifest from your CDN](../how-to-guides/serve-break-manifest-from-your-cdn.mdx).
-:::
-
 ## Manifest envelope
 
 The Break Manifest document contains the following top-level properties:
