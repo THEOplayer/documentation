@@ -43,6 +43,10 @@ updates:
     directory: /
     schedule:
       interval: daily
+    # Always update submodules to the latest commit
+    cooldown:
+      exclude:
+        - '*'
     groups:
       submodules:
         patterns:
