@@ -106,6 +106,20 @@ connectOptions.disableAudio = true
 MillicastSource(src: ..., streamAccountId: ..., connectOptions: connectOptions)
 ```
 
+### Limit the maximum resolution
+
+Since THEOplayer 11.5.0, you can cap the resolution of a Millicast stream through [`abr.preferredMaximumResolution`](pathname:///theoplayer/v11/api-reference/ios/Protocols/ABRConfiguration.html#/s:13THEOplayerSDK16ABRConfigurationP26preferredMaximumResolutionSo6CGSizeVvp). You can set it before playback starts, or change it during playback, for example when the device rotates between portrait and landscape. Changes are applied without reconnecting to the stream, and the media server keeps switching between the layers within that limit when network conditions change.
+
+```swift
+// Limit playback to layers of at most 1280x720
+theoplayer.abr.preferredMaximumResolution = CGSize(width: 1280, height: 720)
+
+// Remove the limit and use the full ABR range again
+theoplayer.abr.preferredMaximumResolution = .zero
+```
+
+Automatically limiting the resolution to the player size (`restrictToPlayerSize`) is currently only supported for Millicast on Web.
+
 ### Background playback
 
 In order to play Millicast sources in the background, ensure you've configured a `backgroundPlaybackDelegate` on the player. A simple example for always allowing background playback is shown below:
