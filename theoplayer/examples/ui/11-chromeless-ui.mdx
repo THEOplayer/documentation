@@ -17,15 +17,15 @@ import Example from '@site/src/components/Example';
 A [`ChromelessPlayer`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html) plays the video and renders subtitles, but has no controls.
 This example doesn't load a UI library: every control is a regular HTML element that calls the player API and listens to player events to stay up to date.
 
-| Control           | Player API                                                                        |
-| ----------------- | --------------------------------------------------------------------------------- |
-| Play and pause    | `play()`, `pause()`, `paused`, and the `play`, `pause` and `ended` events         |
-| Scrubber and time | `currentTime`, `duration`, `buffered`, and the `timeupdate` and `progress` events |
-| Buffering spinner | the `waiting` and `playing` events                                                |
-| Subtitles         | `textTracks`, with `mode = 'showing'` for the selected track                      |
-| Audio             | `audioTracks`, with `enabled = true` for the selected track                       |
-| Mute              | `muted` and the `volumechange` event                                              |
-| Fullscreen        | `presentation.requestMode('fullscreen')` and the `presentationmodechange` event   |
+| Control           | Player API                                                                                     |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| Play and pause    | `play()`, `pause()`, `paused`, and the `play`, `pause` and `ended` events                      |
+| Scrubber and time | `currentTime`, `duration`, `buffered`, and the `timeupdate` and `progress` events              |
+| Buffering spinner | the `waiting` and `playing` events                                                             |
+| Subtitles         | `textTracks`, with `mode = 'showing'` for the selected track                                   |
+| Audio             | `audioTracks`, with `enabled = true` for the selected track                                    |
+| Mute              | `muted` and the `volumechange` event                                                           |
+| Fullscreen        | `requestFullscreen()` on the container, `presentation.requestMode('fullscreen')` as a fallback |
 
 ```js
 const container = document.querySelector('.player');

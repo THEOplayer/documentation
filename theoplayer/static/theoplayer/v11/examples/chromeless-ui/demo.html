@@ -68,15 +68,22 @@
         border-radius: 50%;
         background: rgb(0 0 0 / 50%);
         opacity: 0;
-        transition:
-          opacity 0.6s,
-          transform 0.6s;
       }
 
       .center-icon.flash {
-        opacity: 1;
-        transform: scale(1.15);
-        transition: none;
+        animation: flash 1.2s ease-out;
+      }
+
+      @keyframes flash {
+        0%,
+        40% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.3);
+        }
       }
 
       .center-icon svg {
@@ -341,9 +348,12 @@
 
       function flashCenterIcon() {
         centerIcon.querySelector('path').setAttribute('d', player.paused ? PAUSE_ICON : PLAY_ICON);
+        // Restart the animation, also when it is still running.
+        centerIcon.classList.remove('flash');
+        void centerIcon.offsetWidth;
         centerIcon.classList.add('flash');
-        requestAnimationFrame(() => requestAnimationFrame(() => centerIcon.classList.remove('flash')));
       }
+      centerIcon.addEventListener('animationend', () => centerIcon.classList.remove('flash'));
 
       playButton.addEventListener('click', togglePlay);
       player.addEventListener(['play', 'pause', 'ended'], updatePlayState);
@@ -451,14 +461,29 @@
       player.addEventListener('volumechange', updateMuteButton);
 
       // Fullscreen
+      // Put the whole container in fullscreen, so our own controls stay visible.
+      // Where an element can't go fullscreen (iPhone), let the player show its video in fullscreen instead.
+      const fullscreenElement = () => document.fullscreenElement ?? document.webkitFullscreenElement;
+      const isFullscreen = () => fullscreenElement() === container || player.presentation.currentMode === 'fullscreen';
       fullscreenButton.addEventListener('click', () => {
-        const fullscreen = player.presentation.currentMode === 'fullscreen';
-        player.presentation.requestMode(fullscreen ? 'inline' : 'fullscreen');
+        if (fullscreenElement() === container) {
+          (document.exitFullscreen ?? document.webkitExitFullscreen).call(document);
+        } else if (player.presentation.currentMode === 'fullscreen') {
+          player.presentation.requestMode('inline');
+        } else if (container.requestFullscreen) {
+          container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+          container.webkitRequestFullscreen();
+        } else {
+          player.presentation.requestMode('fullscreen');
+        }
       });
-      player.presentation.addEventListener('presentationmodechange', () => {
-        const fullscreen = player.presentation.currentMode === 'fullscreen';
-        fullscreenButton.setAttribute('aria-label', fullscreen ? 'Exit fullscreen' : 'Fullscreen');
-      });
+      function updateFullscreenButton() {
+        fullscreenButton.setAttribute('aria-label', isFullscreen() ? 'Exit fullscreen' : 'Fullscreen');
+      }
+      document.addEventListener('fullscreenchange', updateFullscreenButton);
+      document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+      player.presentation.addEventListener('presentationmodechange', updateFullscreenButton);
 
       // Hide the controls after 3 seconds without activity while playing.
       let idleTimer;
