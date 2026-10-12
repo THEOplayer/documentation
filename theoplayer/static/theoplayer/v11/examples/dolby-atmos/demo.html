@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dolby Atmos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://ott.dolby.com/OTTEP/ddp/clear_cmaf/16JOC/dash.mpd","type":"application/dash+xml"},"metadata":{"title":"Dolby Atmos (16/JOC)"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Detect Dolby Atmos support: ec-3 (Dolby Digital Plus) decoding with spatial rendering.
+      async function probeAudio(contentType, channels, spatialRendering) {
+        const audio = { contentType, channels, bitrate: 768000, samplerate: 48000, spatialRendering };
+        if (navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo) {
+          try {
+            const result = await navigator.mediaCapabilities.decodingInfo({ type: 'media-source', audio });
+            return { status: result.supported ? 'supported' : 'unsupported' };
+          } catch (e) {
+            return { status: 'unsupported' };
+          }
+        }
+        if (window.MediaSource) {
+          // MediaSource.isTypeSupported cannot probe channel count or spatial rendering.
+          return { status: MediaSource.isTypeSupported(contentType) ? 'supported' : 'unsupported', fallback: true };
+        }
+        return { status: 'unavailable' };
+      }
+
+      function reportActiveCodecs(player) {
+        const videoTrack = Array.from(player.videoTracks).find((track) => track.enabled);
+        const audioTrack = Array.from(player.audioTracks).find((track) => track.enabled);
+        const codecs = [
+          videoTrack && videoTrack.activeQuality && videoTrack.activeQuality.codecs,
+          audioTrack && audioTrack.activeQuality && audioTrack.activeQuality.codecs,
+        ]
+          .filter(Boolean)
+          .join(', ');
+        if (codecs) sendToParent('playing-codecs', { codecs });
+      }
+
+      onPlayerReady(async (player) => {
+        const ec3 = 'audio/mp4; codecs="ec-3"';
+        const [ddp, atmos] = await Promise.all([probeAudio(ec3, '16', false), probeAudio(ec3, '16', true)]);
+        const checks = [
+          { label: 'Dolby Digital Plus (ec-3, 16 channels)' + (ddp.fallback ? ' — via MediaSource.isTypeSupported' : ''), status: ddp.status },
+          { label: 'Dolby Atmos (ec-3 spatial rendering)' + (atmos.fallback ? ' — via MediaSource.isTypeSupported' : ''), status: atmos.status },
+        ];
+        const level = ddp.status === 'supported' && atmos.status === 'supported' ? 'success' : ddp.status === 'supported' ? 'warning' : 'danger';
+        const summary =
+          level === 'success'
+            ? 'Dolby Atmos is supported on this device.'
+            : level === 'warning'
+              ? 'Dolby Digital Plus plays, but without Atmos spatial rendering.'
+              : 'This browser cannot decode Dolby Digital Plus (ec-3) audio.';
+        sendToParent('detection-status', { level, summary, checks });
+
+        player.videoTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => reportActiveCodecs(player))
+        );
+        player.audioTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => reportActiveCodecs(player))
+        );
+
+        onParentMessage('load-source', (message) => {
+          player.autoplay = true;
+          player.source = message.source;
+        });
+      });
+    </script>
+  </body>
+</html>

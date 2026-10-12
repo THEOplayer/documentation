@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Keep control bar visible (Default UI)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #player {
+        position: relative;
+        width: 100%;
+      }
+
+      /* Keep the control bar visible by overriding the fade-out transition. */
+      .theo-secondary-color.vjs-control-bar {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="player" class="video-js theoplayer-skin vjs-16-9"></div>
+    <script>
+      var player = new THEOplayer.Player(document.querySelector('#player'), {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+        mutedAutoplay: 'all',
+      });
+      player.source = {
+        sources: [{ src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', type: 'application/x-mpegurl' }],
+        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+        metadata: { title: 'Big Buck Bunny' },
+      };
+    </script>
+  </body>
+</html>

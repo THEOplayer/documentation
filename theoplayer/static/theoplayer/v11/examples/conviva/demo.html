@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Conviva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+    <!-- Conviva core SDK (exposes the global Conviva object) -->
+    <script src="https://unpkg.com/@convivainc/conviva-js-coresdk@4.9.0/conviva-core-sdk.js"></script>
+    <!-- THEOplayer Conviva connector (exposes THEOplayerConvivaConnector) -->
+    <script src="https://unpkg.com/@theoplayer/conviva-connector-web@3.3.2/dist/conviva-connector.umd.js"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Default Conviva credentials; the page's inputs can override them.
+      // `gatewayUrl` points to the Touchstone (test) backend; omit it for production.
+      const defaultCustomerKey = '876a2328cc34e791190d855daf389567c96d1e86';
+      const defaultGatewayUrl = `https://${defaultCustomerKey}.ts-testonly.conviva.com`;
+
+      function makeConvivaMetadata(template) {
+        return {
+          ['Conviva.assetName']: template.assetName,
+          ['Conviva.streamUrl']: template.source.sources.src,
+          ['Conviva.streamType']: template.streamType,
+          ['Conviva.applicationName']: 'THEOplayer Conviva example',
+          ['Conviva.applicationVersion']: '1.0.0',
+          ['Conviva.viewerId']: 'theoplayer-conviva-demo-viewer',
+        };
+      }
+
+      const events = [];
+
+      function logEvent(event, details) {
+        events.push({ time: new Date().toLocaleTimeString(), event, details });
+        if (events.length > 200) events.shift();
+        sendToParent('conviva-events', { events });
+      }
+
+      function formatCurrentTime(player) {
+        return `at ${player.currentTime.toFixed(1)} s`;
+      }
+
+      onPlayerReady((player) => {
+        let convivaIntegration = null;
+        let currentTemplate = null;
+
+        // Create the connector before setting any source.
+        function createConnector(template, customerKey, gatewayUrl) {
+          if (convivaIntegration) {
+            convivaIntegration.destroy();
+            logEvent('destroy', 'Previous Conviva session closed');
+          }
+          convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(player, makeConvivaMetadata(template), {
+            debug: true,
+            customerKey,
+            gatewayUrl,
+          });
+          window.convivaIntegration = convivaIntegration;
+          logEvent('connector', `ConvivaConnector created (customer key ${customerKey.slice(0, 8)}…, gateway ${gatewayUrl})`);
+          currentTemplate = template;
+        }
+
+        // Source-specific metadata does not carry over between sources,
+        // so set it again after every sourcechange.
+        player.addEventListener('sourcechange', () => {
+          if (convivaIntegration && currentTemplate) {
+            convivaIntegration.setContentInfo({
+              ['Conviva.assetName']: currentTemplate.assetName,
+              ['Conviva.streamUrl']: currentTemplate.source.sources.src,
+              ['Conviva.streamType']: currentTemplate.streamType,
+            });
+          }
+          if (currentTemplate) {
+            logEvent('sourcechange', `setContentInfo: assetName=${currentTemplate.assetName}, streamType=${currentTemplate.streamType}`);
+          }
+        });
+
+        player.addEventListener('loadedmetadata', () => {
+          logEvent('loadedmetadata', player.duration === Infinity ? 'LIVE' : `duration ${player.duration.toFixed(1)} s`);
+        });
+        for (const type of ['play', 'playing', 'pause', 'seeking', 'seeked', 'waiting']) {
+          player.addEventListener(type, () => logEvent(type, formatCurrentTime(player)));
+        }
+        player.addEventListener('ended', () => logEvent('ended', formatCurrentTime(player)));
+        player.addEventListener('error', () => logEvent('error', player.errorObject ? player.errorObject.message : 'unknown'));
+        player.addEventListener('volumechange', () => logEvent('volumechange', `volume ${player.volume.toFixed(2)}, muted ${player.muted}`));
+        player.addEventListener('ratechange', () => logEvent('ratechange', `playbackRate ${player.playbackRate}`));
+        player.videoTracks.addEventListener('addtrack', (event) =>
+          event.track.addEventListener('activequalitychanged', () => {
+            const quality = event.track.activeQuality;
+            if (quality) {
+              const bitrate = quality.bandwidth ? `${(quality.bandwidth / 1e6).toFixed(2)} Mbps` : '';
+              const size = quality.width ? `${quality.width}×${quality.height}` : '';
+              logEvent('activequalitychanged', [bitrate, size].filter(Boolean).join(', '));
+            }
+          })
+        );
+
+        onParentMessage('load-stream', (message) => {
+          events.length = 0;
+          createConnector(message.template, message.customerKey, message.gatewayUrl);
+          player.autoplay = true;
+          player.source = message.template.source;
+          logEvent('source', `Source set: ${message.template.source.sources.src}`);
+        });
+
+        // Initial load: default credentials, HLS VOD source, no autoplay.
+        createConnector(
+          {
+            assetName: 'Big Buck Bunny (HLS)',
+            streamType: 'VOD',
+            source: {
+              sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_corrected.m3u8', type: 'application/x-mpegurl' },
+              poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+              metadata: { title: 'Big Buck Bunny', subtitle: 'HLS • VOD' },
+            },
+          },
+          defaultCustomerKey,
+          defaultGatewayUrl
+        );
+        player.source = currentTemplate.source;
+        logEvent('source', `Source set: ${currentTemplate.source.sources.src}`);
+      });
+    </script>
+  </body>
+</html>

@@ -1,31 +1,23 @@
-import { Fragment } from 'react';
+import type { JSX } from 'react';
 import { useDoc, useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
-import DocCardList, { type Props as DocCardListProps } from '@theme/DocCardList';
-import { PropSidebarItem, PropSidebarItemCategory } from '@docusaurus/plugin-content-docs';
-import Heading, { type HeadingType } from '@theme/Heading';
+import type { Props as DocCardListProps } from '@theme/DocCardList';
+import type { HeadingType } from '@theme/Heading';
+import SearchableDocCardGroups, { isCategory } from '../DocCardListSearch';
 
 export interface Props extends Omit<DocCardListProps, 'items'> {
   headingLevel?: HeadingType;
+  searchable?: boolean;
+  searchPlaceholder?: string;
 }
 
-function isCategory(item: PropSidebarItem): item is PropSidebarItemCategory {
-  return item.type === 'category';
-}
-
-export default function SidebarDocCardList({ headingLevel, ...props }: Props) {
+export default function SidebarDocCardList({ headingLevel, searchable = false, searchPlaceholder, ...props }: Props): JSX.Element {
   const doc = useDoc();
   const sidebar = useDocsSidebar();
   const items = (sidebar?.items ?? [])
     // Hide the current doc page from list
     .filter((item) => !(item.type === 'link' && item.docId === doc.metadata.id));
-  if (headingLevel) {
-    const subcategories = items.filter(isCategory);
-    return subcategories.map((subcategory) => (
-      <Fragment key={subcategory.label}>
-        <Heading as={headingLevel}>{subcategory.label}</Heading>
-        <DocCardList items={subcategory.items} {...props} />
-      </Fragment>
-    ));
-  }
-  return <DocCardList items={items} {...props} />;
+  const groups = headingLevel ? items.filter(isCategory).map((subcategory) => ({ label: subcategory.label, items: subcategory.items })) : [{ items }];
+  return (
+    <SearchableDocCardGroups groups={groups} headingLevel={headingLevel} searchable={searchable} searchPlaceholder={searchPlaceholder} {...props} />
+  );
 }
