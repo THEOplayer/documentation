@@ -123,8 +123,6 @@
       .upnext-panel {
         position: absolute;
         inset: 0;
-        display: grid;
-        grid-template-rows: auto 1fr;
         background: center / cover no-repeat;
         pointer-events: auto;
       }
@@ -152,8 +150,10 @@
       }
 
       .upnext-play {
-        position: relative;
-        place-self: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: clamp(72px, 18%, 120px);
         aspect-ratio: 1;
         padding: 0;
