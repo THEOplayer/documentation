@@ -25,6 +25,9 @@ millicast/api/
 theolive/api/
 theolive_versioned_docs/*/api/
 
+# Third-party code
+theoplayer/static/theoplayer/*/examples/peak-limiter/lookahead-limiter-*.mjs
+
 # Submodules
 theoplayer/external/
 theoplayer_versioned_docs/*/external/

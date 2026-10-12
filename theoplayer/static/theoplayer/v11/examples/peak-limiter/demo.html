@@ -128,9 +128,9 @@
     </div>
     <script src="../utils.js"></script>
     <script type="module">
-      // For demonstration purposes, we load the limiter from a CDN.
-      // For production use, install @synthlet/lookahead-limiter from npm and bundle it with your app.
-      import { registerLookaheadLimiterWorklet, LookaheadLimiter } from 'https://unpkg.com/@synthlet/lookahead-limiter@0.2.0/dist/index.mjs';
+      // A copy of @synthlet/lookahead-limiter 0.2.0 from npm, stored next to this example.
+      // In your app, install @synthlet/lookahead-limiter from npm and import it from there.
+      import { registerLookaheadLimiterWorklet, LookaheadLimiter } from './lookahead-limiter-0.2.0.mjs';
 
       onPlayerReady(async (player) => {
         const context = new AudioContext();
