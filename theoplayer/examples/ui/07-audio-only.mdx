@@ -14,7 +14,7 @@ import Example from '@site/src/components/Example';
 
 With Open Video UI you compose a player from only the controls you need. This example uses a bare
 `<theoplayer-ui>` element with a track info area in the top chrome and a control bar containing just
-a play button, a seek bar, a time display, a mute button and a volume slider — no video area,
+a play button, the current time, a seek bar, the remaining time, a mute button and a volume slider — no video area,
 center play button or fullscreen button.
 
 The video is hidden by styling the `media-layer` shadow part with
@@ -37,8 +37,11 @@ theoplayer-ui::part(media-layer) {
   <div slot="top-chrome" class="track-info" no-auto-hide>...</div>
   <theoplayer-control-bar no-auto-hide>
     <theoplayer-play-button></theoplayer-play-button>
-    <theoplayer-time-range></theoplayer-time-range>
-    <theoplayer-time-display show-duration></theoplayer-time-display>
+    <theoplayer-time-display></theoplayer-time-display>
+    <theoplayer-time-range>
+      <div slot="preview"></div>
+    </theoplayer-time-range>
+    <theoplayer-time-display remaining></theoplayer-time-display>
     <theoplayer-mute-button></theoplayer-mute-button>
     <theoplayer-volume-range></theoplayer-volume-range>
   </theoplayer-control-bar>
@@ -47,6 +50,8 @@ theoplayer-ui::part(media-layer) {
 
 `no-auto-hide` on the controls keeps them visible at all times instead of letting them
 fade out when the player is idle, since there is no video to tap when the controls fade out.
+The empty element in the seek bar's `preview` slot replaces the default time preview that pops up
+while hovering or dragging the seek bar.
 
 <details>
   <summary>Code</summary>

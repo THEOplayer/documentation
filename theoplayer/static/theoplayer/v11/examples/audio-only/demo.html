@@ -103,8 +103,12 @@
       </div>
       <theoplayer-control-bar no-auto-hide>
         <theoplayer-play-button></theoplayer-play-button>
-        <theoplayer-time-range></theoplayer-time-range>
-        <theoplayer-time-display show-duration></theoplayer-time-display>
+        <theoplayer-time-display></theoplayer-time-display>
+        <theoplayer-time-range>
+          <!-- An empty preview slot replaces the default time preview above the seek bar. -->
+          <div slot="preview"></div>
+        </theoplayer-time-range>
+        <theoplayer-time-display remaining></theoplayer-time-display>
         <theoplayer-mute-button></theoplayer-mute-button>
         <theoplayer-volume-range></theoplayer-volume-range>
       </theoplayer-control-bar>
