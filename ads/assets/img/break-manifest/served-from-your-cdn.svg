@@ -1,0 +1,26 @@
+<svg width="900" height="280" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Served from your CDN: your CDN at example.com forwards the media stream from your origin and the Break Manifest from us.markers.optiview.dolby.com, so the player fetches both from example.com">
+  <rect x="0" y="0" width="100%" height="100%" rx="8" fill="#f4f4fb"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#4800c4"/>
+    </marker>
+  </defs>
+  <rect x="20" y="40" width="230" height="56" rx="7" fill="#cfd0ff" stroke="#4800c4" stroke-width="2"/>
+  <text x="135" y="64" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4800c4">Origin</text>
+  <text x="135" y="83" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">origin.example.com</text>
+  <rect x="20" y="184" width="230" height="56" rx="7" fill="#cfd0ff" stroke="#4800c4" stroke-width="2"/>
+  <text x="135" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4800c4">OptiView Ads</text>
+  <text x="135" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">us.markers.optiview.dolby.com</text>
+  <rect x="350" y="108" width="170" height="64" rx="7" fill="#cfd0ff" stroke="#4800c4" stroke-width="2"/>
+  <text x="435" y="136" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4800c4">Your CDN</text>
+  <text x="435" y="156" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">example.com</text>
+  <rect x="700" y="116" width="180" height="48" rx="7" fill="#6d19ff" stroke="#4800c4" stroke-width="2"/>
+  <text x="790" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">Player + Ads SDK</text>
+  <line x1="250" y1="68" x2="350" y2="122" stroke="#4800c4" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="300" y="88" text-anchor="middle" transform="rotate(28.37 300 88)" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">media stream</text>
+  <line x1="250" y1="212" x2="350" y2="158" stroke="#4800c4" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="300" y="178" text-anchor="middle" transform="rotate(-28.37 300 178)" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">break manifest</text>
+  <line x1="520" y1="140" x2="700" y2="140" stroke="#4800c4" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="610" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">/channel-5/index.m3u8</text>
+  <text x="610" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">/channel-5/manifest/…</text>
+</svg>
