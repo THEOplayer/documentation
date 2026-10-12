@@ -106,7 +106,7 @@ theoplayerView.player.abr.preferredMaximumResolution = Size(1280, 720)
 theoplayerView.player.abr.preferredMaximumResolution = null
 ```
 
-If you select a specific video quality through the video track's `targetQuality`, that selection takes precedence over this limit.
+Selecting a specific video quality through `targetQuality` pins playback to that layer and turns off ABR. While a quality is pinned, `preferredMaximumResolution` is ignored.
 
 Automatically limiting the resolution to the player size (`restrictToPlayerSize`) is currently only supported for Millicast on Web.
 
