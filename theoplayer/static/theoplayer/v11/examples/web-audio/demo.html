@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web Audio API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #111;
+        color: #eee;
+        font-family: 'Noto Sans', sans-serif;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+
+      .audio-panel {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px 20px;
+        padding: 12px 16px;
+      }
+
+      .audio-panel label {
+        display: grid;
+        gap: 4px;
+        font-size: 14px;
+      }
+
+      .audio-panel output {
+        font-variant-numeric: tabular-nums;
+        color: #aaa;
+      }
+
+      .audio-panel input[type='range'] {
+        width: 100%;
+        min-height: 28px;
+        touch-action: none;
+        accent-color: #ffc50f;
+      }
+
+      .audio-panel .toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .audio-panel .toggle input {
+        width: 20px;
+        height: 20px;
+        accent-color: #ffc50f;
+      }
+
+      .audio-panel button {
+        justify-self: start;
+        padding: 6px 14px;
+        border: 1px solid #666;
+        border-radius: 4px;
+        background: #222;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .spectrum {
+        display: block;
+        width: 100%;
+        height: 100px;
+        background: #000;
+      }
+
+      .hint {
+        margin: 0;
+        padding: 0 16px 12px;
+        font-size: 13px;
+        color: #aaa;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    ></theoplayer-default-ui>
+    <canvas class="spectrum" aria-label="Audio spectrum"></canvas>
+    <div class="audio-panel">
+      <label>
+        <span>Pan <output data-for="pan">0</output></span>
+        <input type="range" name="pan" min="-1" max="1" step="0.05" value="0" />
+      </label>
+      <label>
+        <span>Bass <output data-for="bass">0 dB</output></span>
+        <input type="range" name="bass" min="-12" max="12" step="1" value="0" />
+      </label>
+      <label>
+        <span>Mid <output data-for="mid">0 dB</output></span>
+        <input type="range" name="mid" min="-12" max="12" step="1" value="0" />
+      </label>
+      <label>
+        <span>Treble <output data-for="treble">0 dB</output></span>
+        <input type="range" name="treble" min="-12" max="12" step="1" value="0" />
+      </label>
+      <label>
+        <span>Volume <output data-for="volume">100%</output></span>
+        <input type="range" name="volume" min="0" max="1" step="0.01" value="1" />
+      </label>
+      <label class="toggle"><input type="checkbox" name="bypass" /> Bypass effects</label>
+      <button type="button" class="reset">Reset</button>
+    </div>
+    <p class="hint">Press play, then move the sliders. The audio context starts after you interact with the page.</p>
+    <script src="../utils.js"></script>
+    <script>
+      onPlayerReady((player) => {
+        const context = new AudioContext();
+
+        // Route the player's audio into the audio graph:
+        // source -> panner -> bass -> mid -> treble -> volume -> analyser -> speakers
+        const source = player.audio.createAudioSourceNode(context);
+        const panner = new StereoPannerNode(context);
+        const bass = new BiquadFilterNode(context, { type: 'lowshelf', frequency: 250 });
+        const mid = new BiquadFilterNode(context, { type: 'peaking', frequency: 1000, Q: 1 });
+        const treble = new BiquadFilterNode(context, { type: 'highshelf', frequency: 4000 });
+        const volume = new GainNode(context);
+        const analyser = new AnalyserNode(context, { fftSize: 256 });
+
+        panner.connect(bass).connect(mid).connect(treble).connect(volume).connect(analyser);
+        analyser.connect(context.destination);
+
+        function connectSource(bypass) {
+          source.disconnect();
+          source.connect(bypass ? analyser : panner);
+        }
+        connectSource(false);
+
+        // Browsers start an AudioContext suspended until the user interacts with the page.
+        // While it's suspended, the player's audio is silent, so resume it on playback and on any interaction.
+        function resumeContext() {
+          if (context.state === 'suspended') context.resume();
+        }
+        player.addEventListener('play', resumeContext);
+        document.addEventListener('pointerdown', resumeContext);
+        document.addEventListener('keydown', resumeContext);
+
+        // Change parameters smoothly with setTargetAtTime to avoid audible clicks.
+        const params = {
+          pan: { param: panner.pan, format: (value) => value.toFixed(2) },
+          bass: { param: bass.gain, format: (value) => `${value} dB` },
+          mid: { param: mid.gain, format: (value) => `${value} dB` },
+          treble: { param: treble.gain, format: (value) => `${value} dB` },
+          volume: { param: volume.gain, format: (value) => `${Math.round(value * 100)}%` },
+        };
+
+        const panel = document.querySelector('.audio-panel');
+        for (const [name, { param, format }] of Object.entries(params)) {
+          const input = panel.querySelector(`input[name="${name}"]`);
+          const output = panel.querySelector(`output[data-for="${name}"]`);
+          input.addEventListener('input', () => {
+            const value = Number(input.value);
+            param.setTargetAtTime(value, context.currentTime, 0.02);
+            output.textContent = format(value);
+          });
+        }
+
+        panel.querySelector('input[name="bypass"]').addEventListener('change', (event) => connectSource(event.target.checked));
+
+        panel.querySelector('.reset').addEventListener('click', () => {
+          for (const input of panel.querySelectorAll('input[type="range"]')) {
+            input.value = input.defaultValue;
+            input.dispatchEvent(new Event('input'));
+          }
+        });
+
+        // Draw the frequency spectrum from the analyser.
+        const canvas = document.querySelector('.spectrum');
+        const canvasContext = canvas.getContext('2d');
+        const data = new Uint8Array(analyser.frequencyBinCount);
+
+        function draw() {
+          requestAnimationFrame(draw);
+          const width = (canvas.width = canvas.clientWidth * devicePixelRatio);
+          const height = (canvas.height = canvas.clientHeight * devicePixelRatio);
+          analyser.getByteFrequencyData(data);
+          const barWidth = width / data.length;
+          canvasContext.fillStyle = '#ffc50f';
+          data.forEach((value, index) => {
+            const barHeight = (value / 255) * height;
+            canvasContext.fillRect(index * barWidth, height - barHeight, Math.max(1, barWidth - 1), barHeight);
+          });
+        }
+        draw();
+      });
+    </script>
+  </body>
+</html>

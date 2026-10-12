@@ -1,0 +1,44 @@
+---
+sidebar_custom_props: { icon: '🎚️' }
+description: Route the player's audio through the Web Audio API to pan, equalize and visualize it.
+---
+
+# Web Audio API
+
+Route the player's audio through the Web Audio API to pan it, change its tone with an equalizer, and draw its spectrum.
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/web-audio/demo.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/web-audio/demo.html')} style={{ aspectRatio: '16 / 14' }} />
+
+`player.audio.createAudioSourceNode(context)` returns an audio node with the player's audio. Connect it to other nodes of the same [`AudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
+Once the player's audio goes through the audio graph, you only hear it if the graph ends at `context.destination`.
+
+```js
+const context = new AudioContext();
+const source = player.audio.createAudioSourceNode(context);
+const panner = new StereoPannerNode(context);
+const bass = new BiquadFilterNode(context, { type: 'lowshelf', frequency: 250 });
+const volume = new GainNode(context);
+const analyser = new AnalyserNode(context, { fftSize: 256 });
+
+source.connect(panner).connect(bass).connect(volume).connect(analyser).connect(context.destination);
+
+// Change values smoothly to avoid audible clicks.
+bass.gain.setTargetAtTime(6, context.currentTime, 0.02);
+```
+
+Browsers start an `AudioContext` in the `suspended` state until the viewer interacts with the page, and the player is silent while the context is suspended.
+Call `context.resume()` when playback starts or after a click or key press, as this example does.
+
+See the [`Audio` API](pathname:///theoplayer/v11/api-reference/web/interfaces/Audio.html) and the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) documentation on MDN.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
