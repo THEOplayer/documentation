@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
-import { GlobExcludeDefault } from '@docusaurus/utils';
+import { GlobExcludeDefault, parseMarkdownContentTitle } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { ThemeConfig as DocSearchThemeConfig } from '@docsearch/docusaurus-adapter';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
@@ -629,6 +629,12 @@ const config: Config = {
           }
         }
         frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
+      }
+      if (!frontMatter.title && !path.basename(params.filePath).startsWith('_') && !parseMarkdownContentTitle(result.content).contentTitle) {
+        // Docusaurus only detects the h1 as the page title if it's at the very top (only imports may come before it)
+        throw new Error(
+          `${params.filePath}: Missing page title. Move the h1 heading to the top of the document (above any components such as <RebrandingNotice />), or set a title in the front matter.`
+        );
       }
       return result;
     },
