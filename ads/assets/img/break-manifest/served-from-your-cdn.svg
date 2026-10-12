@@ -22,5 +22,5 @@
   <text x="300" y="178" text-anchor="middle" transform="rotate(-28.37 300 178)" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">break manifest</text>
   <line x1="520" y1="140" x2="700" y2="140" stroke="#4800c4" stroke-width="2" marker-end="url(#arrow)"/>
   <text x="610" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">/channel-5/index.m3u8</text>
-  <text x="610" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">/channel-5/timeline/…</text>
+  <text x="610" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4800c4">/channel-5/manifest/…</text>
 </svg>

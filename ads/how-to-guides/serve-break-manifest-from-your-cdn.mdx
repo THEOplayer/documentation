@@ -7,10 +7,10 @@ sidebar_label: Serve the Break Manifest from your CDN
 
 By default, your player fetches your stream from your CDN, while the OptiView Ads SDK fetches the [Break Manifest](../concepts/break-manifest.mdx) from the OptiView Ads domain of your region. This guide shows how to serve the Break Manifest from **your own domain** instead, by letting your CDN forward a path to OptiView Ads. Your app then fetches everything from one domain you control:
 
-| Resource       | Default                                                                        | Served from your CDN                                                            |
-| -------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
-| Stream         | `https://example.com/channel-5/index.m3u8`                                     | `https://example.com/channel-5/index.m3u8`                                      |
-| Break Manifest | `https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID` | `https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID` |
+| Resource       | Default                                                                        | Served from your CDN                                                   |
+| -------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| Stream         | `https://example.com/channel-5/index.m3u8`                                     | `https://example.com/channel-5/index.m3u8`                             |
+| Break Manifest | `https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID` | `https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID` |
 
 No change is needed on the OptiView Ads side: the setup is a routing rule on your CDN and a different `manifestUrl` in your player.
 
@@ -38,31 +38,29 @@ You need:
   | US     | `us.markers.optiview.dolby.com` |
   | EU     | `eu.markers.optiview.dolby.com` |
 
-- **Access to your CDN's routing configuration.** Your CDN must be able to route a path to a different origin and remove a path prefix on the way. Most CDNs support this through path rewrite rules or edge functions.
+- **Access to your CDN's routing configuration.** Your CDN must be able to route a path to a different origin. For the recommended approach in step 1, it must also remove a path prefix on the way, which most CDNs support through path rewrite rules or edge functions.
 
 ## Step 1: Choose the Break Manifest URL
 
-Pick the URL the SDK will use for the Break Manifest. In both approaches below, the OptiView Ads path (`/manifest/v1/ORG-ID/channels/CHANNEL-ID`) is kept as is at the end of the URL. Your CDN forwards it unchanged, so one rule serves every channel and future versions of the endpoint need no CDN change.
+Pick the URL the SDK will use for the Break Manifest. In both approaches below, the URL ends with the OptiView Ads path (`/manifest/v1/ORG-ID/channels/CHANNEL-ID`). Your CDN forwards that path unchanged, so one rule serves every channel and future versions of the endpoint need no CDN change.
 
-| Approach                                  | Example                                                                         | CDN rule                                                             |
-| ----------------------------------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| **Next to each stream** (recommended)     | `https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID` | Remove everything up to and including `/timeline`, forward the rest. |
-| **One domain for all channels** (simpler) | `https://timeline.example.com/manifest/v1/ORG-ID/channels/CHANNEL-ID`           | Forward every request on this domain unchanged.                      |
-
-`timeline` is only an example: choose any name for the segment or the domain. Keep these points in mind:
+| Approach                                | Example                                                                | CDN rule                                                               |
+| --------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **Next to each stream** (recommended)   | `https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID` | Drop everything before `/manifest/`, forward the rest.                 |
+| **One path for all channels** (simpler) | `https://example.com/manifest/v1/ORG-ID/channels/CHANNEL-ID`           | Forward every request under `/manifest/` unchanged, without a rewrite. |
 
 - **Next to each stream** places the Break Manifest under the same path as the stream it belongs to, so both share your stream's routing and logging.
-- **Choose a neutral name.** Avoid recognizable words such as `ad`, `ads`, or `break`.
-- **Keep it stable.** The URL goes into your player configuration, so choose a name you do not need to change.
+- **One path for all channels** keeps the CDN configuration to a single rule without any path rewrite.
+- In both cases, make sure none of your own content is served under a `/manifest/` path on the same domain, so the rule only matches Break Manifest requests.
 
 ## Step 2: Forward the path to OptiView Ads
 
 Add a rule on your CDN that sends the Break Manifest requests to OptiView Ads, with everything from `/manifest/v1` onwards forwarded unchanged:
 
-| Approach                        | Incoming request                                                                | Forwarded to                                                                   |
-| ------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| **Next to each stream**         | `https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID` | `https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID` |
-| **One domain for all channels** | `https://timeline.example.com/manifest/v1/ORG-ID/channels/CHANNEL-ID`           | `https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID` |
+| Approach                      | Incoming request                                                       | Forwarded to                                                                   |
+| ----------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Next to each stream**       | `https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID` | `https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID` |
+| **One path for all channels** | `https://example.com/manifest/v1/ORG-ID/channels/CHANNEL-ID`           | `https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID` |
 
 Configure the OptiView Ads origin in your CDN as follows:
 
@@ -94,7 +92,7 @@ import TabItem from '@theme/TabItem';
 
 ```typescript
 await sdk.startSession({
-  manifestUrl: 'https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  manifestUrl: 'https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID',
 });
 ```
 
@@ -104,7 +102,7 @@ await sdk.startSession({
 ```kotlin
 sdk.startSession(
     SessionConfig(
-        manifestUrl = "https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        manifestUrl = "https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID",
     )
 )
 ```
@@ -115,7 +113,7 @@ sdk.startSession(
 ```swift
 try await sdk.startSession(
     SessionConfig(
-        manifestUrl: "https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID"
+        manifestUrl: "https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID"
     )
 )
 ```
@@ -125,7 +123,7 @@ try await sdk.startSession(
 
 ```typescript
 await ads.startSession({
-  manifestUrl: 'https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  manifestUrl: 'https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID',
 });
 ```
 
@@ -137,7 +135,7 @@ await ads.startSession({
 Request the Break Manifest through your CDN and check the response headers:
 
 ```bash
-curl -s -D - -o /dev/null -H 'Origin: https://www.example.com' 'https://example.com/channel-5/timeline/manifest/v1/ORG-ID/channels/CHANNEL-ID'
+curl -s -D - -o /dev/null -H 'Origin: https://www.example.com' 'https://example.com/channel-5/manifest/v1/ORG-ID/channels/CHANNEL-ID'
 ```
 
 A working setup returns:
