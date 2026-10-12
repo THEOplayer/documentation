@@ -1,0 +1,51 @@
+---
+sidebar_custom_props: { icon: '🧵' }
+description: Play Yospace server-side ad insertion (SSAI) streams with the Yospace connector.
+---
+
+# Yospace SSAI
+
+Play a Yospace stream with server-side ad insertion (SSAI) and follow its ad breaks in the event log.
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/yospace/demo.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/yospace/demo.html')} style={{ aspectRatio: '16 / 15' }} />
+
+With SSAI, the Yospace server stitches the ads into the stream itself, so the player plays one continuous stream.
+The Yospace Ad Management SDK reads the ad information that comes with the stream, and the [Yospace connector](https://github.com/THEOplayer/web-connectors/tree/main/yospace)
+reports the ad breaks and ads through the player's [`Ads`](pathname:///theoplayer/v11/api-reference/web/interfaces/Ads.html) API.
+This example uses Yospace validation streams, which have a short ad break at regular intervals.
+
+Load the Yospace Ad Management SDK (3.10.0 or newer) and the connector, then create the connector and set up a Yospace session.
+The connector creates the session and sets the stream it gets back from Yospace as the player source.
+
+```js
+const yospace = new THEOplayerYospaceConnector.YospaceConnector(player);
+await yospace.setupYospaceSession({
+  sources: [
+    {
+      src: 'https://csm-e-sdk-validation-eb.bln1.yospace.com/csm/extlive/yosdk02,hls-ts-pre.m3u8?yo.av=5',
+      ssai: {
+        integration: 'yospace',
+        streamType: 'live', // 'vod', 'live', 'livepause' or 'nonlinear'
+      },
+    },
+  ],
+});
+
+player.ads.addEventListener('adbreakbegin', (event) => {
+  console.log('Ad break with', event.adBreak.ads.length, 'ad(s)');
+});
+```
+
+The Yospace Ad Management SDK isn't available on npm: get it from Yospace and host it yourself.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
