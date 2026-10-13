@@ -9,10 +9,9 @@ Route the player's audio through the Web Audio API to pan it, change its tone wi
 
 import CodeBlock from '@theme/CodeBlock';
 import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/web-audio/demo.html';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import Example from '@site/src/components/Example';
+import WebAudioDemo from '../_components/WebAudioDemo';
 
-<Example src={useBaseUrl('/theoplayer/v11/examples/web-audio/demo.html')} style={{ aspectRatio: '16 / 14' }} />
+<WebAudioDemo />
 
 `player.audio.createAudioSourceNode(context)` returns an audio node with the player's audio. Connect it to other nodes of the same [`AudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
 Once the player's audio goes through the audio graph, you only hear it if the graph ends at `context.destination`.

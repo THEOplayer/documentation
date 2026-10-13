@@ -12,8 +12,6 @@
       body {
         margin: 0;
         padding: 0;
-        background: #111;
-        color: #eee;
         font-family: 'Noto Sans', sans-serif;
       }
 
@@ -27,73 +25,6 @@
         aspect-ratio: 16 / 9;
         font-family: 'Noto Sans', sans-serif;
         background: #000;
-      }
-
-      .limiter-panel {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 12px 20px;
-        padding: 12px 16px;
-      }
-
-      .limiter-panel label {
-        display: grid;
-        gap: 4px;
-        font-size: 14px;
-      }
-
-      .limiter-panel output {
-        font-variant-numeric: tabular-nums;
-        color: #aaa;
-      }
-
-      .limiter-panel input[type='range'] {
-        width: 100%;
-        min-height: 28px;
-        touch-action: none;
-        accent-color: #ffc50f;
-      }
-
-      .limiter-panel .toggle {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .limiter-panel .toggle input {
-        width: 20px;
-        height: 20px;
-        accent-color: #ffc50f;
-      }
-
-      .meter {
-        display: grid;
-        gap: 4px;
-        padding: 0 16px 12px;
-        font-size: 14px;
-      }
-
-      .meter-bar {
-        position: relative;
-        height: 12px;
-        background: #333;
-        border-radius: 2px;
-        overflow: hidden;
-      }
-
-      .meter-level {
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: 0;
-        background: #4caf50;
-      }
-
-      .meter-level.clipping {
-        background: #f44336;
-      }
-
-      .meter-peak {
-        font-variant-numeric: tabular-nums;
       }
     </style>
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
@@ -118,21 +49,6 @@
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
       source='{"sources":{"src":"https://cdn.theoplayer.com/video/sintel.mp4","type":"video/mp4","crossOrigin":"anonymous"},"poster":"https://cdn.theoplayer.com/video/posters/sintel.jpg","metadata":{"title":"Sintel"}}'
     ></theoplayer-default-ui>
-    <div class="limiter-panel">
-      <label>
-        <span>Boost <output data-for="boost">+18 dB</output></span>
-        <input type="range" name="boost" min="0" max="24" step="1" value="18" />
-      </label>
-      <label>
-        <span>Ceiling <output data-for="ceiling">-1 dB</output></span>
-        <input type="range" name="ceiling" min="-24" max="0" step="1" value="-1" />
-      </label>
-      <label class="toggle"><input type="checkbox" name="limiter" checked /> Limiter on</label>
-    </div>
-    <div class="meter">
-      <span>Output peak: <span class="meter-peak">-∞ dB</span></span>
-      <div class="meter-bar"><div class="meter-level"></div></div>
-    </div>
     <script src="../utils.js"></script>
     <script type="module">
       import { registerLookaheadLimiterWorklet, LookaheadLimiter } from '@synthlet/lookahead-limiter';
@@ -141,19 +57,18 @@
         const context = new AudioContext();
         await registerLookaheadLimiterWorklet(context);
 
-        const panel = document.querySelector('.limiter-panel');
-        const boostInput = panel.querySelector('input[name="boost"]');
-        const ceilingInput = panel.querySelector('input[name="ceiling"]');
-        const limiterInput = panel.querySelector('input[name="limiter"]');
+        let boostDecibels = 18;
+        let ceilingDecibels = -1;
+        let limiterEnabled = true;
 
         // With the limiter on:  source -> limiter (boost + ceiling) -> meter -> speakers
         // With the limiter off: source -> boost -> meter -> speakers
         const source = player.audio.createAudioSourceNode(context);
         const limiter = LookaheadLimiter(context, {
-          gain: Number(boostInput.value),
-          threshold: Number(ceilingInput.value),
+          gain: boostDecibels,
+          threshold: ceilingDecibels,
         });
-        const boost = new GainNode(context, { gain: decibelsToGain(Number(boostInput.value)) });
+        const boost = new GainNode(context, { gain: decibelsToGain(boostDecibels) });
         const meter = new AnalyserNode(context, { fftSize: 2048 });
 
         limiter.connect(meter);
@@ -162,7 +77,7 @@
 
         function connectSource() {
           source.disconnect();
-          source.connect(limiterInput.checked ? limiter : boost);
+          source.connect(limiterEnabled ? limiter : boost);
         }
         connectSource();
 
@@ -175,45 +90,40 @@
         document.addEventListener('pointerdown', resumeContext);
         document.addEventListener('keydown', resumeContext);
 
-        boostInput.addEventListener('input', () => {
-          const decibels = Number(boostInput.value);
+        onParentMessage('limiter-boost', ({ decibels }) => {
           limiter.gain.setTargetAtTime(decibels, context.currentTime, 0.02);
           boost.gain.setTargetAtTime(decibelsToGain(decibels), context.currentTime, 0.02);
-          panel.querySelector('output[data-for="boost"]').textContent = `+${decibels} dB`;
         });
 
-        ceilingInput.addEventListener('input', () => {
-          const decibels = Number(ceilingInput.value);
+        onParentMessage('limiter-ceiling', ({ decibels }) => {
           limiter.threshold.setTargetAtTime(decibels, context.currentTime, 0.02);
-          panel.querySelector('output[data-for="ceiling"]').textContent = `${decibels} dB`;
         });
 
-        limiterInput.addEventListener('change', () => {
+        onParentMessage('limiter-enabled', ({ enabled }) => {
+          limiterEnabled = enabled;
           connectSource();
-          ceilingInput.disabled = !limiterInput.checked;
         });
 
-        // Show the highest sample of the output. Above 0 dB, the audio clips.
-        const peakLabel = document.querySelector('.meter-peak');
-        const level = document.querySelector('.meter-level');
+        // Report the highest sample of the output a few times per second. Above 0 dB, the audio clips.
         const samples = new Float32Array(meter.fftSize);
         let peakHold = 0;
         let peakHoldUntil = 0;
+        let lastReport = 0;
 
-        function drawMeter(now) {
-          requestAnimationFrame(drawMeter);
+        function measurePeak(now) {
+          requestAnimationFrame(measurePeak);
           meter.getFloatTimeDomainData(samples);
           const peak = samples.reduce((max, sample) => Math.max(max, Math.abs(sample)), 0);
           if (peak >= peakHold || now > peakHoldUntil) {
             peakHold = peak;
             peakHoldUntil = now + 1000;
           }
+          if (now - lastReport < 100) return;
+          lastReport = now;
           const decibels = 20 * Math.log10(peakHold);
-          peakLabel.textContent = Number.isFinite(decibels) ? `${decibels.toFixed(1)} dB` : '-∞ dB';
-          level.style.width = `${Math.min(100, Math.max(0, (decibels + 48) / 54) * 100)}%`;
-          level.classList.toggle('clipping', decibels > 0);
+          sendToParent('limiter-peak', { decibels: Number.isFinite(decibels) ? decibels : null });
         }
-        requestAnimationFrame(drawMeter);
+        requestAnimationFrame(measurePeak);
       });
 
       function decibelsToGain(decibels) {

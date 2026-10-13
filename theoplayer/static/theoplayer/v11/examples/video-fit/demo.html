@@ -15,27 +15,6 @@
         font-family: 'Noto Sans', sans-serif;
       }
 
-      .fit-options {
-        display: flex;
-        gap: 0.5rem;
-        padding: 0.5rem 0;
-      }
-
-      .fit-options button {
-        padding: 0.25rem 0.75rem;
-        border: 1px solid #888;
-        border-radius: 4px;
-        background: #fff;
-        font: inherit;
-        cursor: pointer;
-      }
-
-      .fit-options button[aria-pressed='true'] {
-        border-color: #000;
-        background: #000;
-        color: #fff;
-      }
-
       theoplayer-default-ui:not(:defined) {
         display: inline-block;
         box-sizing: border-box;
@@ -56,11 +35,6 @@
     <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
   </head>
   <body>
-    <div class="fit-options" role="group" aria-label="Video fit">
-      <button type="button" data-fit="contain" aria-pressed="true">contain</button>
-      <button type="button" data-fit="cover" aria-pressed="false">cover</button>
-      <button type="button" data-fit="fill" aria-pressed="false">fill</button>
-    </div>
     <!--
       libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
       For production use, host the library yourself and update this URL and the script above.
@@ -74,15 +48,9 @@
     <script src="../utils.js"></script>
     <script>
       const ui = document.querySelector('theoplayer-default-ui');
-      const buttons = document.querySelectorAll('.fit-options button');
-      for (const button of buttons) {
-        button.addEventListener('click', () => {
-          ui.style.setProperty('--theoplayer-video-object-fit', button.dataset.fit);
-          for (const other of buttons) {
-            other.setAttribute('aria-pressed', String(other === button));
-          }
-        });
-      }
+      onParentMessage('video-fit', ({ fit }) => {
+        ui.style.setProperty('--theoplayer-video-object-fit', fit);
+      });
     </script>
   </body>
 </html>

@@ -14,27 +14,6 @@
         font-family: sans-serif;
       }
 
-      .fit-options {
-        display: flex;
-        gap: 0.5rem;
-        padding: 0.5rem 0;
-      }
-
-      .fit-options button {
-        padding: 0.25rem 0.75rem;
-        border: 1px solid #888;
-        border-radius: 4px;
-        background: #fff;
-        font: inherit;
-        cursor: pointer;
-      }
-
-      .fit-options button[aria-pressed='true'] {
-        border-color: #000;
-        background: #000;
-        color: #fff;
-      }
-
       /* Make the player wider than the 16:9 video, so the effect of each fit is visible. */
       .player-container {
         position: relative;
@@ -54,14 +33,10 @@
     </style>
   </head>
   <body>
-    <div class="fit-options" role="group" aria-label="Video fit">
-      <button type="button" data-fit="contain" aria-pressed="true">contain</button>
-      <button type="button" data-fit="cover" aria-pressed="false">cover</button>
-      <button type="button" data-fit="fill" aria-pressed="false">fill</button>
-    </div>
     <div class="player-container">
       <div id="player" class="video-js theoplayer-skin"></div>
     </div>
+    <script src="../utils.js"></script>
     <script>
       var player = new THEOplayer.Player(document.querySelector('#player'), {
         libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
@@ -74,15 +49,9 @@
         metadata: { title: 'Big Buck Bunny' },
       };
 
-      var buttons = document.querySelectorAll('.fit-options button');
-      buttons.forEach(function (button) {
-        button.addEventListener('click', function () {
-          document.querySelectorAll('.theoplayer-skin video').forEach(function (video) {
-            video.style.objectFit = button.dataset.fit;
-          });
-          buttons.forEach(function (other) {
-            other.setAttribute('aria-pressed', String(other === button));
-          });
+      onParentMessage('video-fit', function (message) {
+        document.querySelectorAll('.theoplayer-skin video').forEach(function (video) {
+          video.style.objectFit = message.fit;
         });
       });
     </script>

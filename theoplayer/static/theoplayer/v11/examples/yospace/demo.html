@@ -27,46 +27,6 @@
         font-family: 'Noto Sans', sans-serif;
         background: #000;
       }
-
-      .controls {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 0;
-      }
-
-      .controls button {
-        padding: 6px 12px;
-        border: 1px solid #888;
-        border-radius: 4px;
-        background: #fff;
-        font: inherit;
-        cursor: pointer;
-      }
-
-      .controls button[aria-pressed='true'] {
-        background: #000;
-        border-color: #000;
-        color: #fff;
-      }
-
-      .status {
-        margin: 0 0 8px;
-      }
-
-      .log {
-        height: 160px;
-        margin: 0;
-        padding: 8px;
-        overflow-y: auto;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #f6f6f6;
-        font-family: monospace;
-        font-size: 13px;
-        list-style: none;
-      }
     </style>
     <!--
       The Yospace Ad Management SDK (3.10.0 or newer) defines the YospaceAdManagement global.
@@ -90,14 +50,6 @@
       configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
     ></theoplayer-default-ui>
 
-    <div class="controls" role="group" aria-label="Yospace stream">
-      <button type="button" data-stream="hls" aria-pressed="false">HLS live</button>
-      <button type="button" data-stream="hlsPause" aria-pressed="false">HLS live-pause</button>
-      <button type="button" data-stream="dash" aria-pressed="false">DASH live-pause</button>
-    </div>
-    <p class="status" aria-live="polite">Current ad break: none</p>
-    <ul class="log" aria-label="Ad event log"></ul>
-
     <script src="../utils.js"></script>
     <script>
       // Yospace validation streams. The ad breaks are stitched into these streams by the Yospace server.
@@ -116,14 +68,15 @@
         },
       };
 
-      const buttons = document.querySelectorAll('.controls button');
-      const status = document.querySelector('.status');
-      const log = document.querySelector('.log');
+      const events = [];
 
-      function addLogLine(text) {
-        const line = document.createElement('li');
-        line.textContent = `${new Date().toLocaleTimeString()} ${text}`;
-        log.prepend(line);
+      function addLogLine(event, details = '') {
+        events.unshift({ time: new Date().toLocaleTimeString(), event, details });
+        sendToParent('yospace-events', { events: events.slice(0, 100) });
+      }
+
+      function setAdBreak(adBreak) {
+        sendToParent('yospace-adbreak', { adBreak });
       }
 
       onPlayerReady((player) => {
@@ -131,12 +84,9 @@
 
         async function loadStream(name) {
           const stream = streams[name];
-          for (const button of buttons) {
-            button.setAttribute('aria-pressed', String(button.dataset.stream === name));
-            button.disabled = true;
-          }
-          status.textContent = 'Current ad break: none';
-          addLogLine(`Setting up a Yospace session (${stream.streamType})`);
+          sendToParent('yospace-stream', { stream: name, loading: true });
+          setAdBreak(null);
+          addLogLine('session', `Setting up a Yospace session (${stream.streamType})`);
           player.autoplay = true;
           try {
             // The connector creates a Yospace session and sets the stream it returns as the player source.
@@ -151,38 +101,34 @@
                 },
               ],
             });
-            addLogLine('Yospace session ready');
+            addLogLine('session', 'Yospace session ready');
           } catch (error) {
-            addLogLine(`Yospace session failed: ${error.message ?? error}`);
+            addLogLine('session', `Yospace session failed: ${error.message ?? error}`);
           } finally {
-            for (const button of buttons) {
-              button.disabled = false;
-            }
+            sendToParent('yospace-stream', { stream: name, loading: false });
           }
         }
 
         // The connector reports the stitched ad breaks and ads through the player's ads API.
         player.ads.addEventListener(['addadbreak', 'removeadbreak'], (event) => {
-          addLogLine(`${event.type}: ad break at ${event.adBreak.timeOffset} s`);
+          addLogLine(event.type, `Ad break at ${event.adBreak.timeOffset} s`);
         });
         player.ads.addEventListener('adbreakbegin', (event) => {
-          status.textContent = `Current ad break: ${event.adBreak.ads.length} ad(s), at ${event.adBreak.timeOffset} s`;
-          addLogLine('adbreakbegin');
+          setAdBreak({ ads: event.adBreak.ads.length, timeOffset: event.adBreak.timeOffset });
+          addLogLine(event.type);
         });
-        player.ads.addEventListener('adbreakend', () => {
-          status.textContent = 'Current ad break: none';
-          addLogLine('adbreakend');
+        player.ads.addEventListener('adbreakend', (event) => {
+          setAdBreak(null);
+          addLogLine(event.type);
         });
         player.ads.addEventListener(['adbegin', 'adend'], (event) => {
-          addLogLine(`${event.type}: ad ${event.ad.id ?? ''} (${event.ad.duration ?? '?'} s)`);
+          addLogLine(event.type, `Ad ${event.ad.id ?? ''} (${event.ad.duration ?? '?'} s)`);
         });
         player.addEventListener('error', (event) => {
-          addLogLine(`error: ${event.errorObject?.message ?? 'unknown'}`);
+          addLogLine(event.type, event.errorObject?.message ?? 'unknown');
         });
 
-        for (const button of buttons) {
-          button.addEventListener('click', () => loadStream(button.dataset.stream));
-        }
+        onParentMessage('yospace-stream', ({ stream }) => loadStream(stream));
 
         loadStream('hls');
       });

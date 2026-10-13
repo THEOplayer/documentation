@@ -30,10 +30,6 @@
         aspect-ratio: auto;
       }
 
-      .player:focus-visible {
-        box-shadow: inset 0 0 0 3px #fff;
-      }
-
       .player video {
         width: 100%;
         height: 100%;
@@ -266,6 +262,12 @@
         font-size: 15px;
         text-align: left;
         backdrop-filter: none;
+      }
+
+      .controls .track-menu button:hover,
+      .controls .track-menu button:focus-visible {
+        background: rgb(255 255 255 / 10%);
+        color: rgb(255 255 255 / 70%);
       }
 
       .controls .track-menu button::before {
