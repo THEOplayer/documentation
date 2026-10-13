@@ -14,9 +14,6 @@ import Example from '@site/src/components/Example';
 
 <Example src={useBaseUrl('/theoplayer/v11/examples/web-audio/demo.html')} style={{ aspectRatio: '16 / 14' }} />
 
-This example plays an MP4 file. In Safari, the Web Audio API gets no audio from HLS or DASH streams (WebKit [bug 266922](https://bugs.webkit.org/show_bug.cgi?id=266922)), so the effects would do nothing there.
-The source sets `crossOrigin: 'anonymous'`, because browsers only pass audio from another domain to the Web Audio API if it was loaded with CORS.
-
 `player.audio.createAudioSourceNode(context)` returns an audio node with the player's audio. Connect it to other nodes of the same [`AudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
 Once the player's audio goes through the audio graph, you only hear it if the graph ends at `context.destination`.
 
