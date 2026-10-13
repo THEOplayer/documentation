@@ -71,12 +71,12 @@
       }
 
       .center-icon.flash {
-        animation: flash 1.2s ease-out;
+        animation: flash 1.8s ease-out;
       }
 
       @keyframes flash {
         0%,
-        40% {
+        45% {
           opacity: 1;
           transform: scale(1);
         }
@@ -110,7 +110,7 @@
         }
       }
 
-      /* Bottom panel with the title, buttons, scrubber and times, like the tvOS player. */
+      /* Bottom panel with the title, buttons, scrubber and times. */
       .controls {
         position: absolute;
         inset: auto 0 0 0;
@@ -228,6 +228,55 @@
         font-variant-numeric: tabular-nums;
       }
 
+      /* Subtitle selection pop-up, above the buttons. */
+      .subtitles-menu {
+        position: absolute;
+        right: 4%;
+        bottom: calc(100% - 40px);
+        min-width: 180px;
+        max-height: 60vh;
+        overflow-y: auto;
+        padding: 6px;
+        border-radius: 12px;
+        background: rgb(30 30 30 / 85%);
+        backdrop-filter: blur(12px);
+      }
+
+      .subtitles-menu[hidden] {
+        display: none;
+      }
+
+      .subtitles-menu p {
+        margin: 4px 10px 6px;
+        font-size: 13px;
+        font-weight: 700;
+        opacity: 0.7;
+      }
+
+      .controls .subtitles-menu button {
+        display: flex;
+        justify-content: flex-start;
+        gap: 8px;
+        width: 100%;
+        height: auto;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: none;
+        font: inherit;
+        font-size: 15px;
+        text-align: left;
+        backdrop-filter: none;
+      }
+
+      .controls .subtitles-menu button::before {
+        content: '';
+        width: 1em;
+      }
+
+      .controls .subtitles-menu button[aria-checked='true']::before {
+        content: '\2713';
+      }
+
       @media (max-width: 480px) {
         .controls button {
           width: 32px;
@@ -252,7 +301,15 @@
           <button type="button" class="play-button" aria-label="Play">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
           </button>
-          <button type="button" class="subtitles-button" aria-label="Subtitles: off" aria-pressed="false" hidden>
+          <button
+            type="button"
+            class="subtitles-button"
+            aria-label="Subtitles: off"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="subtitles-menu"
+            hidden
+          >
             <svg viewBox="0 0 24 24">
               <path
                 d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
@@ -269,6 +326,7 @@
             <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" /></svg>
           </button>
         </div>
+        <div class="subtitles-menu" id="subtitles-menu" role="menu" aria-label="Subtitles" hidden></div>
         <div class="scrubber">
           <div class="track"></div>
           <div class="buffered"></div>
@@ -291,6 +349,7 @@
       const container = document.querySelector('.player');
       const playButton = container.querySelector('.play-button');
       const subtitlesButton = container.querySelector('.subtitles-button');
+      const subtitlesMenu = container.querySelector('.subtitles-menu');
       const audioButton = container.querySelector('.audio-button');
       const muteButton = container.querySelector('.mute-button');
       const fullscreenButton = container.querySelector('.fullscreen-button');
@@ -367,6 +426,11 @@
       });
       container.addEventListener('click', (event) => {
         if (event.target.closest('.controls') || controlsWereHidden) return;
+        // A click outside the open subtitle menu only closes it.
+        if (!subtitlesMenu.hidden) {
+          closeSubtitlesMenu();
+          return;
+        }
         togglePlay();
       });
 
@@ -411,26 +475,87 @@
       player.addEventListener(['timeupdate', 'durationchange', 'seeking'], updateTime);
       player.addEventListener(['progress', 'timeupdate', 'durationchange'], updateBuffered);
 
-      // Subtitles: cycle through "off" and each subtitle track.
+      // Subtitles: a pop-up menu with "Off" and each subtitle track.
       function subtitleTracks() {
         return Array.from(player.textTracks).filter((track) => track.kind === 'subtitles' || track.kind === 'captions');
+      }
+
+      function selectSubtitles(selected) {
+        subtitleTracks().forEach((track) => {
+          track.mode = track === selected ? 'showing' : 'disabled';
+        });
+      }
+
+      function renderSubtitlesMenu() {
+        const tracks = subtitleTracks();
+        const showing = tracks.find((track) => track.mode === 'showing');
+        const heading = document.createElement('p');
+        heading.textContent = 'Subtitles';
+        const items = [null, ...tracks].map((track) => {
+          const item = document.createElement('button');
+          item.type = 'button';
+          item.setAttribute('role', 'menuitemradio');
+          item.setAttribute('aria-checked', String((showing ?? null) === track));
+          item.textContent = track ? track.label || track.language : 'Off';
+          item.addEventListener('click', () => {
+            selectSubtitles(track);
+            closeSubtitlesMenu({ focusButton: true });
+          });
+          return item;
+        });
+        subtitlesMenu.replaceChildren(heading, ...items);
+      }
+
+      function openSubtitlesMenu() {
+        renderSubtitlesMenu();
+        subtitlesMenu.hidden = false;
+        subtitlesButton.setAttribute('aria-expanded', 'true');
+        (subtitlesMenu.querySelector('[aria-checked="true"]') ?? subtitlesMenu.querySelector('button')).focus();
+        updateIdle();
+      }
+
+      function closeSubtitlesMenu({ focusButton = false } = {}) {
+        subtitlesMenu.hidden = true;
+        subtitlesButton.setAttribute('aria-expanded', 'false');
+        if (focusButton) subtitlesButton.focus();
+        updateIdle();
       }
 
       function updateSubtitlesButton() {
         const tracks = subtitleTracks();
         const showing = tracks.find((track) => track.mode === 'showing');
         subtitlesButton.hidden = tracks.length === 0;
-        subtitlesButton.setAttribute('aria-pressed', String(!!showing));
         subtitlesButton.setAttribute('aria-label', `Subtitles: ${showing ? showing.label || showing.language : 'off'}`);
+        if (!subtitlesMenu.hidden) renderSubtitlesMenu();
       }
 
       subtitlesButton.addEventListener('click', () => {
-        const tracks = subtitleTracks();
-        const current = tracks.findIndex((track) => track.mode === 'showing');
-        tracks.forEach((track, index) => {
-          track.mode = index === current + 1 ? 'showing' : 'disabled';
-        });
-        updateSubtitlesButton();
+        if (subtitlesMenu.hidden) {
+          openSubtitlesMenu();
+        } else {
+          closeSubtitlesMenu();
+        }
+      });
+
+      // Up and down move through the menu, Escape closes it.
+      subtitlesMenu.addEventListener('keydown', (event) => {
+        const items = Array.from(subtitlesMenu.querySelectorAll('button'));
+        const index = items.indexOf(document.activeElement);
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          const next = (index + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+          items[next].focus();
+        } else if (event.key === 'Escape') {
+          event.preventDefault();
+          closeSubtitlesMenu({ focusButton: true });
+        }
+      });
+
+      // Close the menu when the focus or a click goes somewhere else.
+      document.addEventListener('pointerdown', (event) => {
+        if (!subtitlesMenu.hidden && !event.target.closest('.subtitles-menu, .subtitles-button, .player')) {
+          closeSubtitlesMenu();
+        }
       });
       player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], updateSubtitlesButton);
 
@@ -491,7 +616,8 @@
       function updateIdle() {
         clearTimeout(idleTimer);
         container.classList.remove('idle');
-        if (!player.paused) {
+        // Keep the controls visible while paused or while the subtitle menu is open.
+        if (!player.paused && subtitlesMenu.hidden) {
           idleTimer = setTimeout(() => container.classList.add('idle'), 3000);
         }
       }
