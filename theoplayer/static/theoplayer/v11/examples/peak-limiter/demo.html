@@ -99,6 +99,13 @@
     <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
     <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
     <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@synthlet/lookahead-limiter": "https://unpkg.com/@synthlet/lookahead-limiter@0.2.0/dist/index.mjs"
+        }
+      }
+    </script>
   </head>
   <body>
     <!--
@@ -128,9 +135,7 @@
     </div>
     <script src="../utils.js"></script>
     <script type="module">
-      // A copy of @synthlet/lookahead-limiter 0.2.0 from npm, stored next to this example.
-      // In your app, install @synthlet/lookahead-limiter from npm and import it from there.
-      import { registerLookaheadLimiterWorklet, LookaheadLimiter } from './lookahead-limiter-0.2.0.mjs';
+      import { registerLookaheadLimiterWorklet, LookaheadLimiter } from '@synthlet/lookahead-limiter';
 
       onPlayerReady(async (player) => {
         const context = new AudioContext();
