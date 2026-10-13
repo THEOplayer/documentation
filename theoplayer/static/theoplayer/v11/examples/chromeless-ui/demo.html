@@ -228,8 +228,8 @@
         font-variant-numeric: tabular-nums;
       }
 
-      /* Subtitle selection pop-up, above the buttons. */
-      .subtitles-menu {
+      /* Subtitle and audio selection pop-ups, above the buttons. */
+      .track-menu {
         position: absolute;
         right: 4%;
         bottom: calc(100% - 40px);
@@ -242,18 +242,18 @@
         backdrop-filter: blur(12px);
       }
 
-      .subtitles-menu[hidden] {
+      .track-menu[hidden] {
         display: none;
       }
 
-      .subtitles-menu p {
+      .track-menu p {
         margin: 4px 10px 6px;
         font-size: 13px;
         font-weight: 700;
         opacity: 0.7;
       }
 
-      .controls .subtitles-menu button {
+      .controls .track-menu button {
         display: flex;
         justify-content: flex-start;
         gap: 8px;
@@ -268,12 +268,12 @@
         backdrop-filter: none;
       }
 
-      .controls .subtitles-menu button::before {
+      .controls .track-menu button::before {
         content: '';
         width: 1em;
       }
 
-      .controls .subtitles-menu button[aria-checked='true']::before {
+      .controls .track-menu button[aria-checked='true']::before {
         content: '\2713';
       }
 
@@ -316,7 +316,7 @@
               />
             </svg>
           </button>
-          <button type="button" class="audio-button" aria-label="Audio" hidden>
+          <button type="button" class="audio-button" aria-label="Audio" aria-haspopup="menu" aria-expanded="false" aria-controls="audio-menu" hidden>
             <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" /></svg>
           </button>
           <button type="button" class="mute-button" aria-label="Mute">
@@ -326,7 +326,8 @@
             <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" /></svg>
           </button>
         </div>
-        <div class="subtitles-menu" id="subtitles-menu" role="menu" aria-label="Subtitles" hidden></div>
+        <div class="track-menu" id="subtitles-menu" role="menu" aria-label="Subtitles" hidden></div>
+        <div class="track-menu" id="audio-menu" role="menu" aria-label="Audio" hidden></div>
         <div class="scrubber">
           <div class="track"></div>
           <div class="buffered"></div>
@@ -349,7 +350,6 @@
       const container = document.querySelector('.player');
       const playButton = container.querySelector('.play-button');
       const subtitlesButton = container.querySelector('.subtitles-button');
-      const subtitlesMenu = container.querySelector('.subtitles-menu');
       const audioButton = container.querySelector('.audio-button');
       const muteButton = container.querySelector('.mute-button');
       const fullscreenButton = container.querySelector('.fullscreen-button');
@@ -426,9 +426,9 @@
       });
       container.addEventListener('click', (event) => {
         if (event.target.closest('.controls') || controlsWereHidden) return;
-        // A click outside the open subtitle menu only closes it.
-        if (!subtitlesMenu.hidden) {
-          closeSubtitlesMenu();
+        // A click outside an open menu only closes it.
+        if (isAnyMenuOpen()) {
+          closeMenus();
           return;
         }
         togglePlay();
@@ -475,103 +475,140 @@
       player.addEventListener(['timeupdate', 'durationchange', 'seeking'], updateTime);
       player.addEventListener(['progress', 'timeupdate', 'durationchange'], updateBuffered);
 
-      // Subtitles: a pop-up menu with "Off" and each subtitle track.
+      // Subtitles and audio: each button opens a pop-up menu to pick a track.
+      const trackMenus = [];
+
+      function createTrackMenu({ button, heading, options }) {
+        const menu = document.getElementById(button.getAttribute('aria-controls'));
+
+        // options() returns one { label, checked, select } entry per menu item.
+        function render() {
+          const title = document.createElement('p');
+          title.textContent = heading;
+          const items = options().map((option) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.setAttribute('role', 'menuitemradio');
+            item.setAttribute('aria-checked', String(option.checked));
+            item.textContent = option.label;
+            item.addEventListener('click', () => {
+              option.select();
+              close({ focusButton: true });
+            });
+            return item;
+          });
+          menu.replaceChildren(title, ...items);
+        }
+
+        function open() {
+          trackMenus.forEach((other) => other.close());
+          render();
+          menu.hidden = false;
+          button.setAttribute('aria-expanded', 'true');
+          (menu.querySelector('[aria-checked="true"]') ?? menu.querySelector('button')).focus();
+          updateIdle();
+        }
+
+        function close({ focusButton = false } = {}) {
+          if (menu.hidden) return;
+          menu.hidden = true;
+          button.setAttribute('aria-expanded', 'false');
+          if (focusButton) button.focus();
+          updateIdle();
+        }
+
+        button.addEventListener('click', () => (menu.hidden ? open() : close()));
+
+        // Up and down move through the menu, Escape closes it.
+        menu.addEventListener('keydown', (event) => {
+          const items = Array.from(menu.querySelectorAll('button'));
+          const index = items.indexOf(document.activeElement);
+          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            const next = (index + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+            items[next].focus();
+          } else if (event.key === 'Escape') {
+            event.preventDefault();
+            close({ focusButton: true });
+          }
+        });
+
+        const trackMenu = {
+          close,
+          isOpen: () => !menu.hidden,
+          refresh: () => {
+            if (!menu.hidden) render();
+          },
+        };
+        trackMenus.push(trackMenu);
+        return trackMenu;
+      }
+
+      function isAnyMenuOpen() {
+        return trackMenus.some((trackMenu) => trackMenu.isOpen());
+      }
+
+      function closeMenus() {
+        trackMenus.forEach((trackMenu) => trackMenu.close());
+      }
+
+      // Close the menus when a click goes outside the player.
+      document.addEventListener('pointerdown', (event) => {
+        if (!event.target.closest('.player')) closeMenus();
+      });
+
+      // Subtitles: "Off" and each subtitle track.
       function subtitleTracks() {
         return Array.from(player.textTracks).filter((track) => track.kind === 'subtitles' || track.kind === 'captions');
       }
 
-      function selectSubtitles(selected) {
-        subtitleTracks().forEach((track) => {
-          track.mode = track === selected ? 'showing' : 'disabled';
-        });
-      }
-
-      function renderSubtitlesMenu() {
-        const tracks = subtitleTracks();
-        const showing = tracks.find((track) => track.mode === 'showing');
-        const heading = document.createElement('p');
-        heading.textContent = 'Subtitles';
-        const items = [null, ...tracks].map((track) => {
-          const item = document.createElement('button');
-          item.type = 'button';
-          item.setAttribute('role', 'menuitemradio');
-          item.setAttribute('aria-checked', String((showing ?? null) === track));
-          item.textContent = track ? track.label || track.language : 'Off';
-          item.addEventListener('click', () => {
-            selectSubtitles(track);
-            closeSubtitlesMenu({ focusButton: true });
-          });
-          return item;
-        });
-        subtitlesMenu.replaceChildren(heading, ...items);
-      }
-
-      function openSubtitlesMenu() {
-        renderSubtitlesMenu();
-        subtitlesMenu.hidden = false;
-        subtitlesButton.setAttribute('aria-expanded', 'true');
-        (subtitlesMenu.querySelector('[aria-checked="true"]') ?? subtitlesMenu.querySelector('button')).focus();
-        updateIdle();
-      }
-
-      function closeSubtitlesMenu({ focusButton = false } = {}) {
-        subtitlesMenu.hidden = true;
-        subtitlesButton.setAttribute('aria-expanded', 'false');
-        if (focusButton) subtitlesButton.focus();
-        updateIdle();
-      }
+      const subtitlesMenu = createTrackMenu({
+        button: subtitlesButton,
+        heading: 'Subtitles',
+        options: () => {
+          const tracks = subtitleTracks();
+          const showing = tracks.find((track) => track.mode === 'showing') ?? null;
+          return [null, ...tracks].map((selected) => ({
+            label: selected ? selected.label || selected.language : 'Off',
+            checked: selected === showing,
+            select: () =>
+              tracks.forEach((track) => {
+                track.mode = track === selected ? 'showing' : 'disabled';
+              }),
+          }));
+        },
+      });
 
       function updateSubtitlesButton() {
         const tracks = subtitleTracks();
         const showing = tracks.find((track) => track.mode === 'showing');
         subtitlesButton.hidden = tracks.length === 0;
         subtitlesButton.setAttribute('aria-label', `Subtitles: ${showing ? showing.label || showing.language : 'off'}`);
-        if (!subtitlesMenu.hidden) renderSubtitlesMenu();
+        subtitlesMenu.refresh();
       }
-
-      subtitlesButton.addEventListener('click', () => {
-        if (subtitlesMenu.hidden) {
-          openSubtitlesMenu();
-        } else {
-          closeSubtitlesMenu();
-        }
-      });
-
-      // Up and down move through the menu, Escape closes it.
-      subtitlesMenu.addEventListener('keydown', (event) => {
-        const items = Array.from(subtitlesMenu.querySelectorAll('button'));
-        const index = items.indexOf(document.activeElement);
-        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-          event.preventDefault();
-          const next = (index + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
-          items[next].focus();
-        } else if (event.key === 'Escape') {
-          event.preventDefault();
-          closeSubtitlesMenu({ focusButton: true });
-        }
-      });
-
-      // Close the menu when the focus or a click goes somewhere else.
-      document.addEventListener('pointerdown', (event) => {
-        if (!subtitlesMenu.hidden && !event.target.closest('.subtitles-menu, .subtitles-button, .player')) {
-          closeSubtitlesMenu();
-        }
-      });
       player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], updateSubtitlesButton);
 
-      // Audio: cycle through the audio tracks, if there are several.
+      // Audio: each audio track, if there are several.
+      const audioMenu = createTrackMenu({
+        button: audioButton,
+        heading: 'Audio',
+        options: () =>
+          Array.from(player.audioTracks).map((track) => ({
+            label: track.label || track.language,
+            checked: track.enabled,
+            select: () => {
+              track.enabled = true;
+            },
+          })),
+      });
+
       function updateAudioButton() {
         const tracks = Array.from(player.audioTracks);
         const enabled = tracks.find((track) => track.enabled);
         audioButton.hidden = tracks.length < 2;
         audioButton.setAttribute('aria-label', `Audio: ${enabled ? enabled.label || enabled.language : 'default'}`);
+        audioMenu.refresh();
       }
-
-      audioButton.addEventListener('click', () => {
-        const tracks = Array.from(player.audioTracks);
-        const current = tracks.findIndex((track) => track.enabled);
-        tracks[(current + 1) % tracks.length].enabled = true;
-      });
       player.audioTracks.addEventListener(['addtrack', 'removetrack', 'change'], updateAudioButton);
 
       // Mute
@@ -616,8 +653,8 @@
       function updateIdle() {
         clearTimeout(idleTimer);
         container.classList.remove('idle');
-        // Keep the controls visible while paused or while the subtitle menu is open.
-        if (!player.paused && subtitlesMenu.hidden) {
+        // Keep the controls visible while paused or while a menu is open.
+        if (!player.paused && !isAnyMenuOpen()) {
           idleTimer = setTimeout(() => container.classList.add('idle'), 3000);
         }
       }
