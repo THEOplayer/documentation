@@ -2,6 +2,53 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-09-04 | REST APIs
+
+### Improvements
+
+- Added a new API version for querying viewer records, with clearer date-range filtering by session start time or completion time.
+
+### Fixes
+
+- Fixed an issue where a Cloud Transcoder instance could get stuck in a "shutting down" state and could not be restarted properly.
+
+## 2026-08-27 | REST APIs
+
+### Fixes
+
+- Fixed publish/subscribe token verification being slow for accounts with a large number of tokens, and corrected webhook delivery so an integration-linked token's events are no longer misattributed account-wide.
+
+## 2026-08-17 | REST APIs
+
+### Features
+
+- Added the ability to enable UTC timestamp insertion per publish token, with an account-wide default setting.
+
+### Fixes
+
+- Fixed bandwidth data in tracking-series analytics collapsing into the first time bucket.
+- Fixed the live-streams monitoring endpoint occasionally returning misleading all-zero statistics.
+- Added clearer validation errors for invalid tracking IDs in analytics queries.
+
+## 2026-07-21 | REST APIs
+
+### Fixes
+
+- Fixed an issue affecting refreshing of v2 publish/subscribe tokens.
+- Fixed bandwidth analytics data occasionally being missing or malformed.
+
+## 2026-07-14 | REST APIs
+
+### Features
+
+- Introduced new Analytics API endpoints for clip, storage, and transcoder usage series data.
+
+## 2026-07-01 | REST APIs
+
+### Fixes
+
+- Fixed the legacy Analytics streams-list endpoint being very slow for accounts with a large number of streams.
+
 ## 2026-05-25 | REST APIs
 
 ### Features
