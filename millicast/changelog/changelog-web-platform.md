@@ -6,6 +6,52 @@ Updates to the [JavaScript Web SDK](https://github.com/millicast/millicast-sdk) 
 You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
 :::
 
+## 2026-10-13 | Web SDK [0.9.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.9.0)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- Added `isConnecting()` to `View` and `Publish` to check whether a `connect()` call is still in progress.
+- `stop()` now cancels a `connect()` call that is still in progress. The pending call rejects with an `AbortError`, its connection is closed, and you can call `connect()` again straight away.
+
+🐛 **Issues**
+
+- Fixed simulcast publishing on Chrome 154 and later, which sent all three layers at full resolution.
+- Fixed a `connect()` call with `metadata: true` that failed leaving its metadata worker running until `stop()`.
+
+💥 **Breaking Changes**
+
+- Calling `connect()` on a `View` or `Publish` instance while an earlier `connect()` on the same instance is still in progress now rejects with `Viewer connection already in progress` or `Broadcast connection already in progress`. Previously it opened a second connection, and depending on timing one of the two connections was leaked. This now matches the behavior of an instance that is already connected, which rejects new `connect()` calls until `stop()` is called. If your application calls `connect()` or `reconnect()` from a `connect()` error handler, make sure it does not treat this rejection as fatal.
+
+## 2026-09-03 | Web SDK [0.8.1](https://github.com/millicast/millicast-sdk/releases/tag/v0.8.1)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- Updated stats to v1.3.0.
+
+🐛 **Issues**
+
+- Fixed the layout and links of the [API reference](https://millicast.github.io/millicast-sdk/).
+
+## 2026-09-03 | Web SDK [0.8.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.8.0)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- Updated dependencies, including `jwt-decode` v4.
+
+## 2025-10-23 | Web SDK [0.6.1](https://github.com/millicast/millicast-sdk/releases/tag/v0.6.1)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- `Director.setEndpoint()` now accepts a URL that includes a path. The SDK then uses that URL as is, instead of appending `/api/director/publish` or `/api/director/subscribe`.
+
 ## 2025-09-04 | Web SDK [0.6.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.6.0)
 
 This release includes some minor updates:
