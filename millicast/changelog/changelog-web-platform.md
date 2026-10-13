@@ -22,7 +22,7 @@ This release includes some minor updates:
 
 💥 **Breaking Changes**
 
-- Calling `connect()` on a `View` or `Publish` instance while an earlier `connect()` on the same instance is still in progress now rejects with `Viewer connection already in progress` or `Broadcast connection already in progress`. Previously it opened a second connection. If your application calls `connect()` or `reconnect()` from a `connect()` error handler, make sure it does not treat this rejection as fatal.
+- Calling `connect()` on a `View` or `Publish` instance while an earlier `connect()` on the same instance is still in progress now rejects with `Viewer connection already in progress` or `Broadcast connection already in progress`. Previously it opened a second connection, and depending on timing one of the two connections was leaked. This now matches the behavior of an instance that is already connected, which rejects new `connect()` calls until `stop()` is called. If your application calls `connect()` or `reconnect()` from a `connect()` error handler, make sure it does not treat this rejection as fatal.
 
 ## 2026-09-03 | Web SDK [0.8.1](https://github.com/millicast/millicast-sdk/releases/tag/v0.8.1)
 
