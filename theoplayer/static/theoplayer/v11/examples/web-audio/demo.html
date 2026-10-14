@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web Audio API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans', sans-serif;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+
+      .spectrum {
+        display: block;
+        width: 100%;
+        height: 100px;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/elephants-dream.mp4","type":"video/mp4","crossOrigin":"anonymous"},"poster":"https://cdn.theoplayer.com/video/posters/elephants_dream.jpg","metadata":{"title":"Elephants Dream"}}'
+    ></theoplayer-default-ui>
+    <canvas class="spectrum" aria-label="Audio spectrum"></canvas>
+    <script src="../utils.js"></script>
+    <script>
+      onPlayerReady((player) => {
+        const context = new AudioContext();
+
+        // Route the player's audio into the audio graph:
+        // source -> panner -> bass -> mid -> treble -> volume -> analyser -> speakers
+        const source = player.audio.createAudioSourceNode(context);
+        const panner = new StereoPannerNode(context);
+        const bass = new BiquadFilterNode(context, { type: 'lowshelf', frequency: 250 });
+        const mid = new BiquadFilterNode(context, { type: 'peaking', frequency: 1000, Q: 1 });
+        const treble = new BiquadFilterNode(context, { type: 'highshelf', frequency: 4000 });
+        const volume = new GainNode(context);
+        const analyser = new AnalyserNode(context, { fftSize: 256 });
+
+        panner.connect(bass).connect(mid).connect(treble).connect(volume).connect(analyser);
+        analyser.connect(context.destination);
+
+        function connectSource(bypass) {
+          source.disconnect();
+          source.connect(bypass ? analyser : panner);
+        }
+        connectSource(false);
+
+        // Browsers start an AudioContext suspended until the user interacts with the page.
+        // While it's suspended, the player's audio is silent, so resume it on playback and on any interaction.
+        function resumeContext() {
+          if (context.state === 'suspended') context.resume();
+        }
+        player.addEventListener('play', resumeContext);
+        document.addEventListener('pointerdown', resumeContext);
+        document.addEventListener('keydown', resumeContext);
+
+        // Change parameters smoothly with setTargetAtTime to avoid audible clicks.
+        const params = {
+          pan: panner.pan,
+          bass: bass.gain,
+          mid: mid.gain,
+          treble: treble.gain,
+          volume: volume.gain,
+        };
+
+        onParentMessage('web-audio-param', ({ name, value }) => {
+          params[name].setTargetAtTime(value, context.currentTime, 0.02);
+        });
+
+        onParentMessage('web-audio-bypass', ({ bypass }) => connectSource(bypass));
+
+        // Draw the frequency spectrum from the analyser.
+        const canvas = document.querySelector('.spectrum');
+        const canvasContext = canvas.getContext('2d');
+        const data = new Uint8Array(analyser.frequencyBinCount);
+
+        function draw() {
+          requestAnimationFrame(draw);
+          const width = (canvas.width = canvas.clientWidth * devicePixelRatio);
+          const height = (canvas.height = canvas.clientHeight * devicePixelRatio);
+          analyser.getByteFrequencyData(data);
+          const barWidth = width / data.length;
+          canvasContext.fillStyle = '#ffc50f';
+          data.forEach((value, index) => {
+            const barHeight = (value / 255) * height;
+            canvasContext.fillRect(index * barWidth, height - barHeight, Math.max(1, barWidth - 1), barHeight);
+          });
+        }
+        draw();
+      });
+    </script>
+  </body>
+</html>

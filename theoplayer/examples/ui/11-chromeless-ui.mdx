@@ -1,0 +1,53 @@
+---
+sidebar_custom_props: { icon: '🧩' }
+description: Build your own player controls from scratch on top of a ChromelessPlayer.
+---
+
+# Chromeless UI
+
+Build player controls from scratch with plain HTML, CSS and JavaScript on top of a `ChromelessPlayer`.
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/chromeless-ui/demo.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/chromeless-ui/demo.html')} />
+
+A [`ChromelessPlayer`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html) plays the video and renders subtitles, but has no controls.
+This example doesn't load a UI library: every control is a regular HTML element that calls the player API and listens to player events to stay up to date.
+
+| Control           | Player API                                                                                     |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| Play and pause    | `play()`, `pause()`, `paused`, and the `play`, `pause` and `ended` events                      |
+| Scrubber and time | `currentTime`, `duration`, `buffered`, and the `timeupdate` and `progress` events              |
+| Buffering spinner | the `waiting` and `playing` events                                                             |
+| Subtitles         | `textTracks`, with `mode = 'showing'` for the selected track                                   |
+| Audio             | `audioTracks`, with `enabled = true` for the selected track                                    |
+| Mute and volume   | `muted`, `volume` and the `volumechange` event                                                 |
+| Fullscreen        | `requestFullscreen()` on the container, `presentation.requestMode('fullscreen')` as a fallback |
+
+```js
+const container = document.querySelector('.player');
+const player = new THEOplayer.ChromelessPlayer(container, {
+  libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+  license: 'your_license_here',
+});
+
+playButton.addEventListener('click', () => (player.paused ? player.play() : player.pause()));
+player.addEventListener(['play', 'pause'], () => {
+  playButton.setAttribute('aria-label', player.paused ? 'Play' : 'Pause');
+});
+```
+
+The controls are placed inside the player's container, so they stay visible in fullscreen.
+They hide after 3 seconds without activity while playing. The player can also be used with the keyboard: Tab moves between the controls, Space or Enter plays and pauses, and the left and right arrows skip 10 seconds.
+
+See [Getting started with a chromeless UI](../../ui/web/build-chromeless-ui.mdx) for a step-by-step guide.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

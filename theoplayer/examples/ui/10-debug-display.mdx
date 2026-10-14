@@ -1,0 +1,58 @@
+---
+sidebar_custom_props: { icon: '🐞' }
+description: Show playback diagnostics in an overlay with the Open Video UI debug display.
+---
+
+# Debug display
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/debug-display/demo.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/debug-display/demo.html')} />
+
+The debug display is an overlay panel in Open Video UI that shows playback diagnostics, such as the current source,
+the playing quality, buffer health and live latency. Start playback and click the debug button in the control bar to show or hide it.
+
+The debug display is a separate entry point of `@theoplayer/web-ui`, available from version 2.6.0 and only as an ES module.
+Import it next to the main Open Video UI module:
+
+```js
+import '@theoplayer/web-ui';
+import '@theoplayer/web-ui/debug';
+```
+
+Then place a `<theoplayer-debug-display>` in the `overlay` slot, and optionally a `<theoplayer-debug-button>` in the control bar to toggle it.
+Leave out the `hidden` attribute to show the panel from the start.
+
+```html
+<theoplayer-default-ui configuration="..." source="...">
+  <theoplayer-debug-display slot="overlay" hidden></theoplayer-debug-display>
+  <theoplayer-debug-button slot="bottom-control-bar"></theoplayer-debug-button>
+</theoplayer-default-ui>
+```
+
+This example loads the packages from a CDN with an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap).
+In your application, install `@theoplayer/web-ui` from npm and bundle it instead.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
+
+## Bookmarklet
+
+To inspect an Open Video UI player on any website without changing its code, create a bookmark with the following URL:
+
+```text
+javascript:(()=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@theoplayer/web-ui@2/dist/THEOplayerUI.debug.bookmarklet.js';document.head.append(s)})()
+```
+
+Click the bookmark on a page with an Open Video UI player to show the debug display, and click it again to hide it.
+The bookmarklet doesn't work on pages whose [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) blocks scripts from other origins,
+or on players inside a cross-origin iframe.
+
+See the [debug display guide](../../external/web-ui/docs/guides/debug-display.md) of Open Video UI for more details.

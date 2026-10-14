@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Up Next (Default UI)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css" />
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .player-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+
+      .player-container .video-js {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="player-container">
+      <div id="player" class="video-js theoplayer-skin"></div>
+    </div>
+    <script>
+      // libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      // For production use, host the library yourself and update this URL and the script above.
+      // licenseUrl: Point this to your license file, or replace it with a license property.
+      var player = new THEOplayer.Player(document.querySelector('#player'), {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+        mutedAutoplay: 'all',
+      });
+      window.player = player;
+
+      player.source = {
+        sources: [{ src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8', type: 'application/x-mpegurl' }],
+        poster: 'https://cdn.theoplayer.com/video/posters/elephants_dream.jpg',
+        metadata: { title: "Elephant's Dream" },
+      };
+
+      // Up Next opens the link when the viewer clicks the bar or the play button, or when the countdown ends.
+      player.upnext.source = {
+        title: 'Big Buck Bunny',
+        image: 'https://cdn.theoplayer.com/video/posters/big_buck_bunny.jpg',
+        duration: '9:56',
+        link: 'next-default-ui.html',
+      };
+      // Show the Up Next bar 106 seconds before the end of the video.
+      player.upnext.bar.offset = 106;
+      // Show the Up Next screen for 10 seconds after the video ends.
+      player.upnext.panel.countdownDuration = 10;
+    </script>
+  </body>
+</html>

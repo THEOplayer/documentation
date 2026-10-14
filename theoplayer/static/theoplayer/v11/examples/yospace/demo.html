@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yospace SSAI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 14px;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <!--
+      The Yospace Ad Management SDK (3.10.0 or newer) defines the YospaceAdManagement global.
+      Get the SDK from Yospace and host it yourself in production.
+    -->
+    <script src="https://cdn.theoplayer.com/demos/yospace/admanagement-sdk-3.11.3.min.js"></script>
+    <!-- THEOplayer library and Open Video UI. For production use, host these yourself. -->
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script type="module" src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+    <!-- The Yospace connector. For production use, install @theoplayer/yospace-connector-web from npm. -->
+    <script src="https://unpkg.com/@theoplayer/yospace-connector-web@3.0.0/dist/yospace-connector.umd.js"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+    ></theoplayer-default-ui>
+
+    <script src="../utils.js"></script>
+    <script>
+      // Yospace validation streams. The ad breaks are stitched into these streams by the Yospace server.
+      const streams = {
+        dash: {
+          src: 'https://csm-e-sdk-validation-eb.bln1.yospace.com/csm/extlive/yosdk02,dash-mp4-pre.mpd?yo.br=false&yo.av=5&yo.lpa=dur',
+          streamType: 'livepause',
+        },
+        hls: {
+          src: 'https://csm-e-sdk-validation-eb.bln1.yospace.com/csm/extlive/yosdk02,hls-ts-pre.m3u8?yo.av=5',
+          streamType: 'live',
+        },
+        hlsPause: {
+          src: 'https://csm-e-sdk-validation-eb.bln1.yospace.com/csm/extlive/yosdk02,hls-ts-pre.m3u8?yo.br=false&yo.av=5&yo.lpa=dur',
+          streamType: 'livepause',
+        },
+      };
+
+      const events = [];
+
+      function addLogLine(event, details = '') {
+        events.unshift({ time: new Date().toLocaleTimeString(), event, details });
+        sendToParent('yospace-events', { events: events.slice(0, 100) });
+      }
+
+      function setAdBreak(adBreak) {
+        sendToParent('yospace-adbreak', { adBreak });
+      }
+
+      onPlayerReady((player) => {
+        const yospace = new THEOplayerYospaceConnector.YospaceConnector(player);
+
+        async function loadStream(name) {
+          const stream = streams[name];
+          sendToParent('yospace-stream', { stream: name, loading: true });
+          setAdBreak(null);
+          addLogLine('session', `Setting up a Yospace session (${stream.streamType})`);
+          player.autoplay = true;
+          try {
+            // The connector creates a Yospace session and sets the stream it returns as the player source.
+            await yospace.setupYospaceSession({
+              sources: [
+                {
+                  src: stream.src,
+                  ssai: {
+                    integration: 'yospace',
+                    streamType: stream.streamType,
+                  },
+                },
+              ],
+            });
+            addLogLine('session', 'Yospace session ready');
+          } catch (error) {
+            addLogLine('session', `Yospace session failed: ${error.message ?? error}`);
+          } finally {
+            sendToParent('yospace-stream', { stream: name, loading: false });
+          }
+        }
+
+        // The connector reports the stitched ad breaks and ads through the player's ads API.
+        player.ads.addEventListener(['addadbreak', 'removeadbreak'], (event) => {
+          addLogLine(event.type, `Ad break at ${event.adBreak.timeOffset} s`);
+        });
+        player.ads.addEventListener('adbreakbegin', (event) => {
+          setAdBreak({ ads: event.adBreak.ads.length, timeOffset: event.adBreak.timeOffset });
+          addLogLine(event.type);
+        });
+        player.ads.addEventListener('adbreakend', (event) => {
+          setAdBreak(null);
+          addLogLine(event.type);
+        });
+        player.ads.addEventListener(['adbegin', 'adend'], (event) => {
+          addLogLine(event.type, `Ad ${event.ad.id ?? ''} (${event.ad.duration ?? '?'} s)`);
+        });
+        player.addEventListener('error', (event) => {
+          addLogLine(event.type, event.errorObject?.message ?? 'unknown');
+        });
+
+        onParentMessage('yospace-stream', ({ stream }) => loadStream(stream));
+
+        loadStream('hls');
+      });
+    </script>
+  </body>
+</html>

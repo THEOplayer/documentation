@@ -13,3 +13,4 @@ The following resources provide more information:
 - [Preloading - How to](../how-to-guides/web/miscellaneous/preloading.mdx)
 - [What are the benefits of preloading?](38-what-are-the-benefits-of-preloading.md)
 - [PreloadType API reference](pathname:///theoplayer/v11/api-reference/web/types/PreloadType.html)
+- [Online demo: preview thumbnails](../examples/ui/06-preview-thumbnails.mdx)
