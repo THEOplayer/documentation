@@ -91,4 +91,4 @@ var sourceDescription = SourceDescription(source: TypedSource(src: "https://cdn.
 
 ## Sample application
 
-This demo illustrates the use of chapter markers in production: [https://demo.theoplayer.com/chapters](https://demo.theoplayer.com/chapters).
+This demo shows chapter markers in Open Video UI: [Chapter markers](../../../examples/ui/13-chapter-markers.mdx).
