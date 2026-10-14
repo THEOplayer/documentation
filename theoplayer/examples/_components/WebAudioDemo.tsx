@@ -30,29 +30,23 @@ export default function WebAudioDemo(): JSX.Element {
       <Example ref={exampleRef} src={useBaseUrl('/theoplayer/v11/examples/web-audio/demo.html')} style={{ aspectRatio: '16 / 10.9' }} />
       <div className={styles.panel}>
         <p className={styles.hint}>Press play, then move the sliders. The audio context starts after you interact with the player.</p>
-        <table className={`${styles.readout} ${styles.parameterTable}`}>
-          <tbody>
-            {params.map(({ name, label, min, max, step, format }) => (
-              <tr key={name}>
-                <th>
-                  <label htmlFor={`web-audio-${name}`}>{label}</label>
-                </th>
-                <td>
-                  <input
-                    id={`web-audio-${name}`}
-                    type="range"
-                    min={min}
-                    max={max}
-                    step={step}
-                    value={values[name]}
-                    onChange={(event) => setParam(name, Number(event.target.value))}
-                  />
-                </td>
-                <td>{format(values[name])}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className={styles.sliderGrid}>
+          {params.map(({ name, label, min, max, step, format }) => (
+            <label key={name} className={styles.slider}>
+              <span>
+                {label} <output>{format(values[name])}</output>
+              </span>
+              <input
+                type="range"
+                min={min}
+                max={max}
+                step={step}
+                value={values[name]}
+                onChange={(event) => setParam(name, Number(event.target.value))}
+              />
+            </label>
+          ))}
+        </div>
         <div className={styles.controls}>
           <label>
             <input

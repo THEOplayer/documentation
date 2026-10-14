@@ -224,6 +224,47 @@
         font-variant-numeric: tabular-nums;
       }
 
+      /* Volume slider pop-up, above the volume button while it's hovered or focused. */
+      .volume {
+        position: relative;
+        display: flex;
+      }
+
+      .volume-popup {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        padding-bottom: 8px;
+        transform: translateX(-50%);
+        /* Hide with opacity, so the slider stays reachable with the Tab key. */
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .volume:hover .volume-popup,
+      .volume:has(:focus-visible) .volume-popup {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .volume-popup div {
+        display: flex;
+        padding: 12px 8px;
+        border-radius: 20px;
+        background: rgb(30 30 30 / 85%);
+        backdrop-filter: blur(12px);
+      }
+
+      .volume-popup input {
+        width: 24px;
+        height: 100px;
+        margin: 0;
+        writing-mode: vertical-lr;
+        direction: rtl;
+        accent-color: #fff;
+        cursor: pointer;
+      }
+
       /* Subtitle and audio selection pop-ups, above the buttons. */
       .track-menu {
         position: absolute;
@@ -321,9 +362,14 @@
           <button type="button" class="audio-button" aria-label="Audio" aria-haspopup="menu" aria-expanded="false" aria-controls="audio-menu" hidden>
             <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" /></svg>
           </button>
-          <button type="button" class="mute-button" aria-label="Mute">
-            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z" /></svg>
-          </button>
+          <div class="volume">
+            <button type="button" class="mute-button" aria-label="Mute">
+              <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z" /></svg>
+            </button>
+            <div class="volume-popup">
+              <div><input type="range" class="volume-slider" min="0" max="1" step="0.05" value="1" aria-label="Volume" /></div>
+            </div>
+          </div>
           <button type="button" class="fullscreen-button" aria-label="Fullscreen">
             <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" /></svg>
           </button>
@@ -354,6 +400,7 @@
       const subtitlesButton = container.querySelector('.subtitles-button');
       const audioButton = container.querySelector('.audio-button');
       const muteButton = container.querySelector('.mute-button');
+      const volumeSlider = container.querySelector('.volume-slider');
       const fullscreenButton = container.querySelector('.fullscreen-button');
       const seekInput = container.querySelector('.scrubber input');
       const bufferedBar = container.querySelector('.buffered');
@@ -613,14 +660,24 @@
       }
       player.audioTracks.addEventListener(['addtrack', 'removetrack', 'change'], updateAudioButton);
 
-      // Mute
+      // Mute and volume
       function updateMuteButton() {
-        setIcon(muteButton, player.muted ? MUTED_ICON : UNMUTED_ICON);
+        const silent = player.muted || player.volume === 0;
+        setIcon(muteButton, silent ? MUTED_ICON : UNMUTED_ICON);
         muteButton.setAttribute('aria-label', player.muted ? 'Unmute' : 'Mute');
+        volumeSlider.value = player.muted ? 0 : player.volume;
+        volumeSlider.setAttribute('aria-valuetext', `${Math.round(volumeSlider.value * 100)}%`);
       }
 
       muteButton.addEventListener('click', () => {
         player.muted = !player.muted;
+        // Unmuting at volume 0 would stay silent, so go back to full volume.
+        if (!player.muted && player.volume === 0) player.volume = 1;
+      });
+
+      volumeSlider.addEventListener('input', () => {
+        player.volume = Number(volumeSlider.value);
+        player.muted = player.volume === 0;
       });
       player.addEventListener('volumechange', updateMuteButton);
 
