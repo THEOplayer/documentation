@@ -6,6 +6,18 @@ Updates to the [JavaScript Web SDK](https://github.com/millicast/millicast-sdk) 
 You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
 :::
 
+## 2026-10-14 | Web SDK [0.9.1](https://github.com/millicast/millicast-sdk/releases/tag/v0.9.1)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- The SDK now sends its name and version (`sdk=millicast-sdk-js/<version>`) as a query parameter on the signaling WebSocket URL.
+
+🐛 **Issues**
+
+- Fixed a `View` or `Publish` instance stored in a reactive proxy, such as Vue or Vuex state, staying in the connecting state after `connect()`. `isConnecting()` kept returning `true` and automatic reconnection never started after a connection failure or drop.
+
 ## 2026-10-13 | Web SDK [0.9.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.9.0)
 
 This release includes some minor updates:
