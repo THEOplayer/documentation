@@ -254,7 +254,16 @@ curl -X POST https://api.theo.live/v2/channels/ch_abc123/stop \
 
 The engines shut down gracefully: the stream is ended for viewers (the HLS playlists are closed) and the engines are torn down. The channel status transitions through `stopping` → `stopped`, which typically takes 10–20 seconds. Transcoding time stops counting as soon as the stop is requested.
 
-If you need the engines gone immediately, call the same endpoint again while the channel is `stopping`: this **force stops** the engines, which tears them down right away. Engines in `error` are always force stopped.
+If you need the engines gone immediately, **force stop** the channel instead. This skips the graceful shutdown and tears the engines down right away — viewers may see playback fail rather than the stream ending cleanly, so prefer the regular stop unless the engines really have to go now.
+
+`POST https://api.theo.live/v2/channels/{channelId}/force-stop`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels/ch_abc123/force-stop \
+  -H "Authorization: Basic $AUTH"
+```
+
+Force stop works from any state, including while the channel is already `stopping` after a regular stop. Calling the regular stop endpoint again while the channel is `stopping` force stops it as well, and engines in `error` are always force stopped.
 
 ## Next steps
 
