@@ -42,18 +42,25 @@ An engine that stays `waiting` for longer than the channel's `timeout` is stoppe
 
 You can stop an engine, or all engines of a channel at once, in two ways:
 
-- **Stop** ends the stream for viewers and then shuts the engine down gracefully. This is the default, and the right choice in almost every case.
-- **Force stop** tears the engine down immediately, without ending the stream cleanly. Use it when the engine has to be gone at once, or to cut short a stop that is still in progress.
+- **Stop** ends the stream for viewers and then shuts the engine down gracefully. This is the right choice when you are done streaming.
+- **Force stop** tears the engine down immediately, without ending the stream cleanly. Use it to move viewers over to a backup engine, when the engine has to be gone at once, or to cut short a stop that is still in progress.
 
 ### Stop
 
 A stop ends the stream before the engine goes away. The engine closes its playlists (an HLS media playlist gets an `EXT-X-ENDLIST` tag), so players reach the end of the stream instead of running into a playback error. The engine then shuts down: it reports `stopping` for about 10–20 seconds, then `stopped`.
 
+Because the stream ends cleanly, players treat it as finished: they do not fall back to another engine of the distribution. To take one engine of a [redundant setup](../distribution/redundancy.md) out of service while viewers keep watching, force stop it instead.
+
 [Schedulers](./scheduler.mdx) and the auto-stop timeout stop engines the same way.
 
 ### Force stop
 
-A force stop skips the graceful shutdown: the engine is torn down right away, without closing its playlists. Players keep waiting for new segments that never come, so viewers may see playback stall or fail instead of the stream ending. The engine reports `stopping` for a few seconds, then `stopped`.
+A force stop skips the graceful shutdown: the engine is torn down right away, without closing its playlists. The engine reports `stopping` for a few seconds, then `stopped`.
+
+From the moment of the force stop, playlist requests for the engine intentionally start failing, so players detect that the engine is gone:
+
+- **With redundancy:** when the distribution has other engines, players fall back to the next available engine, as in any [failover](../distribution/redundancy.md). Viewers may see a brief interruption but keep watching.
+- **Without redundancy:** when the engine was the only one of the distribution, playback fails.
 
 A force stop works from any state except `stopped`, including while the engine is still `stopping` after a regular stop.
 
