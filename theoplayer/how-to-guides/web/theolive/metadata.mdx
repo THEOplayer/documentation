@@ -97,7 +97,7 @@ import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
 
 Timecode events surface on the same `'id3'` text track as the metadata above, as [ID3Cue](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3Cue.html)s whose `content` is an [ID3UserDefinedText](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3UserDefinedText.html) frame with `id` equal to `'TXXX'` and `description` equal to `'optiview.live:timecode'`. The frame's `text` holds the timecode.
 
-Each cue lasts exactly one frame, so `entercue` fires when that frame is presented and `exitcue` when the next one is. Add these listeners where the `'id3'` track is found in the example above:
+`entercue` fires when the frame carrying the timecode is presented, and `exitcue` when the next timecode cue starts. Add these listeners where the `'id3'` track is found in the example above:
 
 ```javascript
 // By default, metadata tracks are disabled and do not fire cue events

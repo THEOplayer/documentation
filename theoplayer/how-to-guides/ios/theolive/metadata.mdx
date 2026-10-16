@@ -57,7 +57,7 @@ import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
 
 Timecode events surface on the same `"id3"` text track as the metadata above, as an `Id3Cue` whose `contentDictionary` has `id` equal to `"TXXX"` and `description` equal to `"optiview.live:timecode"`. The frame's `text` holds the timecode.
 
-Each cue lasts exactly one frame, so `TextTrackEventTypes.ENTER_CUE` fires when that frame is presented and `TextTrackEventTypes.EXIT_CUE` when the next one is:
+`TextTrackEventTypes.ENTER_CUE` fires when the frame carrying the timecode is presented, and `TextTrackEventTypes.EXIT_CUE` when the next timecode cue starts:
 
 ```swift
 _ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: { (addTrackEvent) in

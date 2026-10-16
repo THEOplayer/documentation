@@ -57,7 +57,7 @@ import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
 
 Timecode events surface on the same `TextTrackType.ID3` text track as the metadata above, as an `ID3Cue` whose `frame` is an [ID3Frame.Text](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Text.html) with `id` equal to `"TXXX"` and `description` equal to `"optiview.live:timecode"`. The frame's `text` holds the timecode.
 
-Each cue lasts exactly one frame, so `TextTrackEventTypes.ENTERCUE` fires when that frame is presented and `TextTrackEventTypes.EXITCUE` when the next one is:
+`TextTrackEventTypes.ENTERCUE` fires when the frame carrying the timecode is presented, and `TextTrackEventTypes.EXITCUE` when the next timecode cue starts:
 
 ```kotlin
 val enterCueListener = EventListener<EnterCueEvent> { event ->
