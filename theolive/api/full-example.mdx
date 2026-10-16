@@ -263,7 +263,7 @@ curl -X POST https://api.theo.live/v2/channels/ch_abc123/force-stop \
   -H "Authorization: Basic $AUTH"
 ```
 
-Force stop works from any state, including while the channel is already `stopping` after a regular stop. Calling the regular stop endpoint again while the channel is `stopping` force stops it as well, and engines in `error` are always force stopped.
+Force stop works from any state, including while the channel is already `stopping` after a regular stop. Calling the regular stop endpoint again while the channel is `stopping` force stops it as well, and engines in `error` are always force stopped. See [Stopping engines and channels](../platform/stopping-engines-and-channels.mdx) for when to use which.
 
 ## Next steps
 

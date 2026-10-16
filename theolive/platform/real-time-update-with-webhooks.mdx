@@ -30,13 +30,13 @@ Events are grouped by resource type:
 
 ### Channel events
 
-| Event               | Triggered when              |
-| ------------------- | --------------------------- |
-| `channel.created`   | A channel is created        |
-| `channel.updated`   | A channel is updated        |
-| `channel.deploying` | A channel starts deploying  |
-| `channel.stopped`   | A channel has fully stopped |
-| `channel.deleted`   | A channel is deleted        |
+| Event               | Triggered when                                                                |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `channel.created`   | A channel is created                                                          |
+| `channel.updated`   | A channel is updated                                                          |
+| `channel.deploying` | A channel starts deploying                                                    |
+| `channel.stopped`   | A stop or force stop of a channel is accepted (engines may still be stopping) |
+| `channel.deleted`   | A channel is deleted                                                          |
 
 ### Engine events
 
@@ -57,6 +57,8 @@ Events are grouped by resource type:
 | `engine.log.info`  | An engine emits an info log                                                                      |
 | `engine.log.warn`  | An engine emits a warning log                                                                    |
 | `engine.log.error` | An engine emits an error log                                                                     |
+
+When `engine.stopping` and `engine.stopped` arrive depends on how the engine is stopped: see [Stopping engines and channels](./stopping-engines-and-channels.mdx#webhooks).
 
 ### Ingest events
 

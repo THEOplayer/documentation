@@ -122,3 +122,5 @@ For production use cases, you should connect [OptiView Player](./playback/optivi
 ## 5. Stop the channel
 
 When you are done streaming, make sure to stop your channel to avoid unnecessary transcoding costs.
+
+The stop dialog offers two options. **Stop all** ends the stream for viewers, so their players reach the end of the stream, and then shuts the engines down gracefully in about 10–20 seconds. **Force stop all** tears the engines down immediately without ending the stream cleanly, so viewers may see playback fail. Use **Stop all** unless the engines have to be gone at once. See [Stopping engines and channels](./platform/stopping-engines-and-channels.mdx) for the details.
