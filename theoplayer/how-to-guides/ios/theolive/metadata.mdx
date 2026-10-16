@@ -46,3 +46,13 @@ _ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRA
 ```
 
 Here the `frame["data"]` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
+
+## Source timecode
+
+import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
+
+<TimecodeIntro />
+
+### Reading the timecode with the iOS SDK
+
+Timecode events surface on the same `"id3"` text track as the metadata above, as an `Id3Cue` whose `contentDictionary` has `id` equal to `"TXXX"`. Check that the frame's description is `optiview.live:timecode` before reading the timecode from its text. The cue's `startTime` is the presentation time of the frame the timecode belongs to, and `endTime - startTime` the frame duration.

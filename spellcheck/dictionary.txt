@@ -778,6 +778,7 @@ signup
 Silverlight
 skippable
 SMIL
+SMPTE
 SMTP
 snapback
 snapshotted
