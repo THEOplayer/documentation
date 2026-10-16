@@ -220,7 +220,7 @@ curl -X POST https://api.theo.live/v2/channels/ch_abc123/start \
   -H "Authorization: Basic $AUTH"
 ```
 
-This starts all engines on the channel. The channel status will transition through `deploying` → `starting` → `ingesting` → `playing`.
+This starts all engines on the channel. The channel status will transition through `deploying` → `provisioning` → `starting` → `waiting`, then to `ingesting` → `playing` once your encoder's stream arrives. See [Starting and stopping](../platform/starting-and-stopping.mdx#engine-states) for what each state means.
 
 ## 7. Verify and play
 
@@ -251,6 +251,8 @@ When done, stop the channel to avoid unnecessary transcoding costs.
 curl -X POST https://api.theo.live/v2/channels/ch_abc123/stop \
   -H "Authorization: Basic $AUTH"
 ```
+
+The engines shut down gracefully: players stop playback at the end of the stream, and the channel status goes to `stopping` for about 10–20 seconds, then `stopped`. To tear the engines down at once instead, so OptiView Player falls back to another engine, use `POST https://api.theo.live/v2/channels/{channelId}/force-stop`. See [Starting and stopping](../platform/starting-and-stopping.mdx#stopping) for when to use which.
 
 ## Next steps
 

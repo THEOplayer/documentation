@@ -103,9 +103,9 @@ A distribution represents an output media stream from an engine. Create a new di
 
 ## 3. Start the channel
 
-When you're all set, you can start your channel from the channel details page by clicking the `Start all` button. This will start all engines at once. Starting your channel means your transcoding time will start counting for billing purposes, even if a stream is not connected.
+When you're all set, you can start your channel from the channel details page by clicking **Start channel**. This will start all engines at once. Starting your channel means your transcoding time will start counting for billing purposes, even if a stream is not connected.
 
-For advanced use cases such as production updates, you can start and stop individual engines separately. However, for most use cases all engines will be started and stopped at the same time.
+For advanced use cases such as production updates, you can start and stop individual engines separately. However, for most use cases all engines will be started and stopped at the same time. See [Starting and stopping](./platform/starting-and-stopping.mdx) for the states an engine goes through.
 
 <div className="center-container">![](assets/img/start-channel.png)</div>
 
@@ -120,3 +120,5 @@ For production use cases, you should connect [OptiView Player](./playback/optivi
 ## 5. Stop the channel
 
 When you are done streaming, make sure to stop your channel to avoid unnecessary transcoding costs.
+
+The stop dialog offers **Stop all**, which ends the stream so players stop playback, and **Force stop all**, which tears the engines down at once so OptiView Player falls back to another engine, if there is one. See [Starting and stopping](./platform/starting-and-stopping.mdx#stopping) for when to use which.

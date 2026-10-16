@@ -196,5 +196,10 @@ The intended way to start and stop streaming remains the same — you start and 
 |---|---|
 | `POST /channels/{id}/start` | `POST /v2/channels/{id}/start` |
 | `POST /channels/{id}/stop` | `POST /v2/channels/{id}/stop` |
+| — | `POST /v2/channels/{id}/force-stop` (new, see below) |
 
 In addition, V2 gives you the option to start or stop **individual engines** via `POST /v2/engines/{id}/start` and `POST /v2/engines/{id}/stop`. This is useful for live operations — for example, stopping a failing engine while keeping the rest of the channel running.
+
+### Graceful stop and force stop
+
+In V2, a stop is **graceful**: the stream is ended, so players stop playback, before the engines shut down in about 10–20 seconds. To tear engines down immediately instead, **force stop** them with `POST /v2/channels/{id}/force-stop` or `POST /v2/engines/{id}/force-stop`. See [Starting and stopping](../platform/starting-and-stopping.mdx#stopping) for the differences and the rules.
