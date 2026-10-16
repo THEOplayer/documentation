@@ -42,8 +42,8 @@ An engine that stays `waiting` for longer than the channel's `timeout` is stoppe
 
 You can stop an engine, or all engines of a channel at once, in two ways:
 
-- **Stop** ends the stream for viewers and then shuts the engine down gracefully. This is the right choice when you are done streaming.
-- **Force stop** tears the engine down immediately, without ending the stream cleanly. Use it to move viewers over to a backup engine, when the engine has to be gone at once, or to cut short a stop that is still in progress.
+- **Stop** ends the stream and then shuts the engine down gracefully: players stop playback at the end of the stream. This is the right choice when you are done streaming.
+- **Force stop** tears the engine down immediately, without ending the stream: players fall back to another engine of the distribution, or playback fails when there is none. Use it to move viewers over to a backup engine, when the engine has to be gone at once, or to cut short a stop that is still in progress.
 
 ### Stop
 
