@@ -70,7 +70,7 @@ val addCueListener = EventListener<AddCueEvent> { event ->
 ## Picture timing SEI
 
 :::note
-The `TextTrackType.TIMECODE` text track described here is fed by the deprecated HESP output. HESP-3, Low-Latency HLS and HLS (CMAF) output carry the source timecode as ID3 events instead, see [Source timecode](#source-timecode).
+The `TextTrackType.TIMECODE` text track described here is fed by the HESP output. Low-Latency HLS and HLS (CMAF) output carry the source timecode as ID3 events instead, see [Source timecode](#source-timecode).
 :::
 
 Picture timing SEI cues surface on a text track with [`TextTrack.type`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html#getType()>) equal to `TextTrackType.TIMECODE`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
