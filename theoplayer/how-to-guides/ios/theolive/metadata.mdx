@@ -46,3 +46,37 @@ _ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRA
 ```
 
 Here the `frame["data"]` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
+
+## Source timecode
+
+import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
+
+<TimecodeIntro />
+
+### Reading the timecode with the iOS SDK
+
+Timecode events surface on the same `"id3"` text track as the metadata above, as an `Id3Cue` whose `contentDictionary` has `id` equal to `"TXXX"` and `description` equal to `"optiview.live:timecode"`. The frame's `text` holds the timecode.
+
+`TextTrackEventTypes.ENTER_CUE` fires when the frame carrying the timecode is presented, and `TextTrackEventTypes.EXIT_CUE` when the next timecode cue starts:
+
+```swift
+_ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: { (addTrackEvent) in
+  guard let track = addTrackEvent.track as? TextTrack,
+        track.type == "id3"
+        else { return }
+  _ = track.addEventListener(type: TextTrackEventTypes.ENTER_CUE, listener: { (enterCueEvent) in
+      guard let frame = (enterCueEvent.cue as? Id3Cue)?.contentDictionary,
+            frame["id"] == "TXXX",
+            frame["description"] == "optiview.live:timecode"
+            else { return }
+      print("Timecode: \(frame["text"] ?? "")")
+  })
+  _ = track.addEventListener(type: TextTrackEventTypes.EXIT_CUE, listener: { (exitCueEvent) in
+      guard let frame = (exitCueEvent.cue as? Id3Cue)?.contentDictionary,
+            frame["id"] == "TXXX",
+            frame["description"] == "optiview.live:timecode"
+            else { return }
+      print("Timecode ended: \(frame["text"] ?? "")")
+  })
+})
+```

@@ -47,6 +47,40 @@ theoplayerView.player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRA
 
 Here the `frame.data` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
 
+## Source timecode
+
+import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
+
+<TimecodeIntro />
+
+### Reading the timecode with the Android SDK
+
+Timecode events surface on the same `TextTrackType.ID3` text track as the metadata above, as an `ID3Cue` whose `frame` is an [ID3Frame.Text](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Text.html) with `id` equal to `"TXXX"` and `description` equal to `"optiview.live:timecode"`. The frame's `text` holds the timecode.
+
+`TextTrackEventTypes.ENTERCUE` fires when the frame carrying the timecode is presented, and `TextTrackEventTypes.EXITCUE` when the next timecode cue starts:
+
+```kotlin
+val enterCueListener = EventListener<EnterCueEvent> { event ->
+    val frame = (event.cue as? ID3Cue)?.frame as? ID3Frame.Text ?: return@EventListener
+    if (frame.id == "TXXX" && frame.description == "optiview.live:timecode") {
+        Log.d("MyApp", "Timecode: ${frame.text}")
+    }
+}
+val exitCueListener = EventListener<ExitCueEvent> { event ->
+    val frame = (event.cue as? ID3Cue)?.frame as? ID3Frame.Text ?: return@EventListener
+    if (frame.id == "TXXX" && frame.description == "optiview.live:timecode") {
+        Log.d("MyApp", "Timecode ended: ${frame.text}")
+    }
+}
+theoplayerView.player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRACK) { event ->
+    val track = event.track as TextTrack
+    if (track.type == TextTrackType.ID3) {
+        track.addEventListener(TextTrackEventTypes.ENTERCUE, enterCueListener)
+        track.addEventListener(TextTrackEventTypes.EXITCUE, exitCueListener)
+    }
+}
+```
+
 ## Picture timing SEI
 
 Picture timing SEI cues surface on a text track with [`TextTrack.type`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html#getType()>) equal to `TextTrackType.TIMECODE`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.

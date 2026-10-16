@@ -1,0 +1,26 @@
+When the video you ingest carries SMPTE timecode in its picture timing SEI, the Low-Latency HLS and HLS (CMAF) output passes it on as ID3 timed metadata, so players can read the timecode of every frame without parsing the video bitstream. No channel configuration is needed. Channels whose source carries no timecode get no timecode events, and HLS (MPEG-TS) output does not carry them.
+
+Timecode events travel the same way as the metadata above: an ID3 v2.4 tag in an `emsg` box with scheme `https://aomedia.org/emsg/ID3`, carried by the CMAF segments of the stream. The tag holds a `TXXX` (user defined text) frame:
+
+- The description of the `TXXX` frame is `optiview.live:timecode`.
+- Its value is the timecode as `HH:MM:SS:FF`, for example `10:00:00:12`. A drop-frame timecode has `;` before the frames instead: `10:00:00;12`.
+
+(See [section 4.2.6 of the ID3 v2.4 Native Frames specification](https://id3.org/id3v2.4.0-frames) for the `TXXX` frame.)
+
+### Where the events sit
+
+There is one timecode event per segment and per partial segment. The event sits on the frame of that segment or partial segment that is presented first, and its `emsg` box declares a duration of exactly one frame. OptiView Player starts the cue at that frame's presentation time and keeps it active until the next timecode cue starts.
+
+A segment and its first partial segment open on the same frame, so they carry the same event, with the same `emsg` id. If your player reports it twice, the two cues are identical.
+
+### Timecode of any other frame
+
+Only the first-presented frame of each segment or partial segment carries an event. To find the timecode of any other frame:
+
+1. Take the latest timecode event that starts at or before the presentation time of the frame.
+2. Count the frames presented since that event: multiply the time between the start of the event and the presentation time of the frame by the frame rate, which the multivariant playlist declares for each rendition as `FRAME-RATE`.
+3. Add that many frames to the timecode of the event, counting with the frame rate rounded to a whole number (30 for 29.97 fps). For a drop-frame timecode, skip the frame numbers that drop-frame timecode leaves out: frames `00` and `01` at the start of every minute except every tenth minute at 29.97 fps, and frames `00` to `03` at 59.94 fps.
+
+This assumes the rendition has the frame rate of the source. Every frame carries the timecode of the source frame it was encoded from, so on a rendition with a lower frame rate than the source, such as a 30 fps rendition of a 60 fps source, count at the frame rate of the source instead.
+
+A jump in the source timecode, for example when the source switches to another timecode generator, only shows from the next segment or partial segment on. Until then, counting on from the previous event continues the old sequence.
