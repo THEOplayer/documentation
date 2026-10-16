@@ -43,7 +43,9 @@ An engine that stays `waiting` for longer than the channel's `timeout` is stoppe
 You can stop an engine, or all engines of a channel at once, in two ways:
 
 - **Stop** ends the stream and then shuts the engine down gracefully: players stop playback at the end of the stream. This is the right choice when you are done streaming.
-- **Force stop** tears the engine down immediately, without ending the stream: players fall back to another engine of the distribution, or playback fails when there is none. Use it to move viewers over to a backup engine, when the engine has to be gone at once, or to cut short a stop that is still in progress.
+- **Force stop** tears the engine down immediately, without ending the stream: [OptiView Player](../playback/optiview-player.mdx) falls back to another engine of the distribution, or playback fails when there is none. Use it to move viewers over to a backup engine, when the engine has to be gone at once, or to cut short a stop that is still in progress.
+
+Either way, the engine's transcoding time stops counting as soon as the stop is requested, not when the engine reaches `stopped`.
 
 ### Stop
 
@@ -59,8 +61,10 @@ A force stop skips the graceful shutdown: the engine is torn down right away, wi
 
 From the moment of the force stop, playlist requests for the engine intentionally start failing, so players detect that the engine is gone:
 
-- **With redundancy:** when the distribution has other engines, players fall back to the next available engine, as in any [failover](../distribution/redundancy.md). Viewers may see a brief interruption but keep watching.
+- **With redundancy:** when the distribution has other engines, [OptiView Player](../playback/optiview-player.mdx) falls back to the next available engine, as in any [failover](../distribution/redundancy.md). Viewers may see a brief interruption but keep watching.
 - **Without redundancy:** when the engine was the only one of the distribution, playback fails.
+
+A third-party player that loads the HLS URL of the distribution directly (see [Other HLS player](../playback/other-hls-player.mdx)) may not fall back to another engine: for its viewers, playback may fail even with redundancy.
 
 A force stop works from any state except `stopped`, including while the engine is still `stopping` after a regular stop.
 

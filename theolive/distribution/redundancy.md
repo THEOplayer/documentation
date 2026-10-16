@@ -51,6 +51,6 @@ Consider a sports broadcaster streaming a live match from a stadium in London. T
 
 **Engine A recovers:** Once Engine A is healthy again, new viewer sessions will connect to Engine A because it has the higher precedence (lower priority number). Existing sessions remain on Engine B and will only switch back to Engine A if Engine B also experiences issues.
 
-**Engine A is taken out of service** (e.g. for maintenance): [Force stop](../platform/starting-and-stopping.mdx#force-stop) Engine A. Its playlist requests start failing, so players fail over to Engine B just as they would on a failure. A regular stop would instead end the stream cleanly, and players would treat it as finished rather than fall back.
+**Engine A is taken out of service** (e.g. for maintenance): [Force stop](../platform/starting-and-stopping.mdx#force-stop) Engine A. Its playlist requests start failing, so OptiView Player fails over to Engine B just as it would on a failure. A regular stop would instead end the stream cleanly, and players would treat it as finished rather than fall back.
 
 This setup provides both **geographic redundancy** — the two engines run in separate locations, protecting against regional outages — and **priority-based failover** — the platform always prefers the highest-precedence engine that is available.

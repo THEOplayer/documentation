@@ -202,8 +202,4 @@ In addition, V2 gives you the option to start or stop **individual engines** via
 
 ### Graceful stop and force stop
 
-In V2, a stop is **graceful**: the stream is ended (the HLS playlists are closed), so players stop playback, before the engine is torn down. The engine reports `stopping` until the teardown has completed — typically 10–20 seconds — and then `stopped`. Transcoding time stops counting when the stop is requested, not when the engine reaches `stopped`.
-
-To skip the graceful shutdown, **force stop** the engine or channel with `POST /v2/engines/{id}/force-stop` or `POST /v2/channels/{id}/force-stop`: the engines are torn down immediately, without closing their playlists first, so players fall back to another engine of the distribution, or playback fails when there is none. Force stop works from any non-stopped state, including while an engine is already `stopping` after a regular stop (useful when an engine seems stuck). Calling the regular stop endpoint again while the engine is `stopping` force stops it as well, and engines in `error` are always force stopped.
-
-An engine can only be started again once it is `stopped`; a start while it is `stopping` is rejected with `409 already_playing`. See [Starting and stopping](../platform/starting-and-stopping.mdx).
+In V2, a stop is **graceful**: the stream is ended, so players stop playback, before the engines shut down in about 10–20 seconds. To tear engines down immediately instead, **force stop** them with `POST /v2/channels/{id}/force-stop` or `POST /v2/engines/{id}/force-stop`. See [Starting and stopping](../platform/starting-and-stopping.mdx#stopping) for the differences and the rules.

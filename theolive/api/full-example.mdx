@@ -252,18 +252,7 @@ curl -X POST https://api.theo.live/v2/channels/ch_abc123/stop \
   -H "Authorization: Basic $AUTH"
 ```
 
-The engines shut down gracefully: the stream is ended (the HLS playlists are closed), so players stop playback, and the engines are torn down. The channel status transitions through `stopping` → `stopped`, which typically takes 10–20 seconds. Transcoding time stops counting as soon as the stop is requested.
-
-If you need the engines gone immediately, **force stop** the channel instead. This skips the graceful shutdown and tears the engines down right away, without ending the stream: players fall back to another engine of the distribution, or playback fails when there is none. Prefer the regular stop when you are done streaming.
-
-`POST https://api.theo.live/v2/channels/{channelId}/force-stop`
-
-```bash
-curl -X POST https://api.theo.live/v2/channels/ch_abc123/force-stop \
-  -H "Authorization: Basic $AUTH"
-```
-
-Force stop works from any state, including while the channel is already `stopping` after a regular stop. Calling the regular stop endpoint again while the channel is `stopping` force stops it as well, and engines in `error` are always force stopped. See [Starting and stopping](../platform/starting-and-stopping.mdx#stopping) for when to use which.
+The engines shut down gracefully: players stop playback at the end of the stream, and the channel status goes to `stopping` for about 10–20 seconds, then `stopped`. To tear the engines down at once instead, so OptiView Player falls back to another engine, use `POST https://api.theo.live/v2/channels/{channelId}/force-stop`. See [Starting and stopping](../platform/starting-and-stopping.mdx#stopping) for when to use which.
 
 ## Next steps
 
