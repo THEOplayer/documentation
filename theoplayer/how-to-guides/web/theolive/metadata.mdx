@@ -95,80 +95,28 @@ import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
 
 ### Reading the timecode with the Web SDK
 
-Timecode events surface on the same `'id3'` text track as the metadata above, as [ID3Cue](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3Cue.html)s whose `content` is an [ID3UserDefinedText](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3UserDefinedText.html) frame with `id` equal to `'TXXX'` and `description` equal to `'optiview.live:timecode'`. The frame's `text` holds the timecode, `cue.startTime` the presentation time of the frame it belongs to, and `cue.endTime - cue.startTime` the frame duration.
+Timecode events surface on the same `'id3'` text track as the metadata above, as [ID3Cue](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3Cue.html)s whose `content` is an [ID3UserDefinedText](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3UserDefinedText.html) frame with `id` equal to `'TXXX'` and `description` equal to `'optiview.live:timecode'`. The frame's `text` holds the timecode.
 
-The following example keeps the `'id3'` track around and works out the timecode of the frame presented at any playback position from the cues on that track:
+Each cue lasts exactly one frame, so `entercue` fires when that frame is presented and `exitcue` when the next one is. Add these listeners where the `'id3'` track is found in the example above:
 
 ```javascript
-let id3Track;
-player.textTracks.addEventListener('addtrack', function trackListener(event) {
-  const track = event.track;
-  if (track.type === 'id3') {
-    id3Track = track;
-    track.removeEventListener('typechange', trackListener);
-  } else if (track.type === '') {
-    track.addEventListener('typechange', trackListener);
-  } else {
-    track.removeEventListener('typechange', trackListener);
+// By default, metadata tracks are disabled and do not fire cue events
+track.mode = 'hidden';
+track.addEventListener('entercue', (e) => {
+  const frame = e.cue.content;
+  if (frame.id === 'TXXX' && frame.description === 'optiview.live:timecode') {
+    console.log('timecode', frame.text);
   }
 });
-
-function isTimecodeCue(cue) {
-  return cue.content.id === 'TXXX' && cue.content.description === 'optiview.live:timecode';
-}
-
-function timecodeAt(time) {
-  let latest;
-  for (const cue of id3Track?.cues ?? []) {
-    if (isTimecodeCue(cue) && cue.startTime <= time && (!latest || cue.startTime > latest.startTime)) {
-      latest = cue;
-    }
-  }
-  if (!latest) return undefined;
-  const frameDuration = latest.endTime - latest.startTime;
-  // The small margin keeps floating-point error from landing a frame's own presentation time in the previous frame.
-  const frames = Math.floor((time - latest.startTime) / frameDuration + 1e-3);
-  return addFrames(latest.content.text, frames, Math.round(1 / frameDuration));
-}
-
-// `frameRate` is the timecode's whole-number frame rate: 30 for 29.97 fps, 60 for 59.94 fps.
-function addFrames(timecode, count, frameRate) {
-  const [, hh, mm, ss, separator, ff] = /^(\d+):(\d\d):(\d\d)([:;])(\d+)$/.exec(timecode);
-  // Drop-frame timecode skips 2 frame numbers per minute at 29.97 fps and 4 at 59.94 fps, except every tenth minute.
-  const dropped = separator === ';' ? frameRate / 15 : 0;
-  const framesPerMinute = frameRate * 60 - dropped;
-  const framesPer10Minutes = framesPerMinute * 10 + dropped;
-  const framesPerDay = framesPer10Minutes * 6 * 24;
-  const minutes = Number(hh) * 60 + Number(mm);
-  const start = (minutes * 60 + Number(ss)) * frameRate + Number(ff) - dropped * (minutes - Math.floor(minutes / 10));
-  let frame = (((start + count) % framesPerDay) + framesPerDay) % framesPerDay;
-  const remainder = frame % framesPer10Minutes;
-  frame += dropped * 9 * Math.floor(frame / framesPer10Minutes);
-  if (remainder > dropped) frame += dropped * Math.floor((remainder - dropped) / framesPerMinute);
-  const pad = (n) => String(n).padStart(2, '0');
-  const hours = pad(Math.floor(frame / (frameRate * 3600)));
-  const mins = pad(Math.floor(frame / (frameRate * 60)) % 60);
-  const secs = pad(Math.floor(frame / frameRate) % 60);
-  return `${hours}:${mins}:${secs}${separator}${pad(frame % frameRate)}`;
-}
-```
-
-You can then look up the timecode of the frame on screen whenever you need it, for example on every `timeupdate`:
-
-```javascript
-player.addEventListener('timeupdate', () => {
-  const timecode = timecodeAt(player.currentTime);
-  if (timecode) {
-    console.log('timecode', timecode);
+track.addEventListener('exitcue', (e) => {
+  const frame = e.cue.content;
+  if (frame.id === 'TXXX' && frame.description === 'optiview.live:timecode') {
+    console.log('timecode ended', frame.text);
   }
 });
 ```
 
 ## Picture timing SEI
-
-:::note
-The `'timecode'` text track described here is fed by the HESP output. Low-Latency HLS and HLS (CMAF) output carry the source timecode as ID3 events instead, see [Source timecode](#source-timecode).
-:::
 
 Picture timing SEI cues surface on a text track with [`TextTrack.id`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#id) equal to `'timecode'`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
 

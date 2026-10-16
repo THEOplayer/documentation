@@ -55,4 +55,4 @@ import TimecodeIntro from '../../shared/theolive/_metadata-timecode-intro.mdx';
 
 ### Reading the timecode with the iOS SDK
 
-Timecode events surface on the same `"id3"` text track as the metadata above, as an `Id3Cue` whose `contentDictionary` has `id` equal to `"TXXX"`. Check that the frame's description is `optiview.live:timecode` before reading the timecode from its text. The cue's `startTime` is the presentation time of the frame the timecode belongs to, and `endTime - startTime` the frame duration.
+Timecode events surface on the same `"id3"` text track as the metadata above, as an `Id3Cue` whose `contentDictionary` has `id` equal to `"TXXX"`. Check that the frame's description is `optiview.live:timecode` before reading the timecode from its text. Each cue lasts exactly one frame, so `TextTrackEventTypes.ENTER_CUE` fires when that frame is presented and `TextTrackEventTypes.EXIT_CUE` when the next one is.
