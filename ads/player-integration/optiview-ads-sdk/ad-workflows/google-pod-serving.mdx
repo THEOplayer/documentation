@@ -1,0 +1,120 @@
+---
+sidebar_position: 3
+sidebar_label: Google Pod Serving
+---
+
+# Google Pod Serving
+
+With Google Pod Serving, Google Ad Manager decides which ads fill each break. OptiView Ads announces upcoming breaks to Google, Google assembles the ads into a pod, and the SDK plays the pod when the break starts. Use this workflow when you sell your inventory through Google Ad Manager 360.
+
+This page covers your app. Setting up Google Ad Manager, configuring the channel, and scheduling pod breaks are described in [Google Pod Serving](../../../integrations/google/pod-serving.mdx) in the Integrations section.
+
+## Before you start
+
+- The [Google Ad Manager prerequisites](../../../integrations/google/index.mdx) are in place for your organization.
+- Your channel is [configured for Google Pod Serving](../../../integrations/google/pod-serving.mdx#configure-your-channel) with the custom asset key of your Google live stream.
+
+## What your app needs
+
+The SDK reads the Google settings — your network code and the channel's custom asset key — from the channel's Break Manifest, and starts the Google stream session automatically when the session starts. You do not configure them in the app, so your app and the backend always agree on which Google live stream the pods belong to.
+
+| Platform     | Requirement                                                                                                                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Web          | Load Google's IMA DAI SDK on the page, before your application script (see below).                                                                                           |
+| Android      | Nothing extra: the SDK runtime includes the Google IMA SDK.                                                                                                                  |
+| iOS and tvOS | Nothing extra: the runtime pod includes the Google IMA SDK. With Swift Package Manager, add the Google IMA packages as described in [iOS](../ios.mdx#swift-package-manager). |
+| React Native | Nothing extra: the native SDKs include the Google IMA SDK.                                                                                                                   |
+
+On Web, add the IMA DAI loader to your page:
+
+```html
+<script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+```
+
+If your channel also uses [VAST](./vast.mdx) breaks, load `ima3.js` as well; the two scripts work side by side.
+
+:::note[Upgrading from an earlier integration]
+Earlier versions of this guide set a `networkCode` in the `gam` configuration and a `customAssetKey` in the session configuration. The SDK no longer accepts them: remove both, and the SDK takes the values from the Break Manifest.
+:::
+
+### Turn Google off for a session
+
+To keep Google out of a session — for example until the viewer gives consent, or in a build that must not contact Google — set `enabled` to `false` in the `gam` configuration. The SDK then skips the Google breaks in that session and reports `DA-GAM-CONFIG-MISSING`.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="platform" queryString>
+  <TabItem value="web" label="Web">
+
+```typescript
+const sdk = new OptiViewAds({
+  player: new THEOplayerAdapter(player, container),
+  container: document.getElementById('container'),
+  gam: { enabled: false },
+});
+```
+
+  </TabItem>
+  <TabItem value="android" label="Android">
+
+```kotlin
+val sdk = OptiViewAds(
+    config = OptiViewAdsConfig(
+        player = THEOplayerAdapter(theoPlayerView.player),
+        gam = GamConfig(enabled = false),
+    ),
+    renderer = OverlayAdRenderer(adContainer),
+)
+```
+
+  </TabItem>
+  <TabItem value="ios" label="iOS">
+
+```swift
+let sdk = OptiViewAds(
+    config: OptiViewAdsConfig(
+        player: THEOplayerAdapter(player: theoplayer),
+        gam: GamConfig(enabled: false)
+    ),
+    renderer: OverlayAdRenderer(container: adContainer)
+)
+```
+
+  </TabItem>
+  <TabItem value="react-native" label="React Native">
+
+```typescript
+const ads = createOptiViewAds(player, { gam: { enabled: false } });
+```
+
+  </TabItem>
+</Tabs>
+
+## Ad targeting parameters
+
+For Google, `assetParameters` are sent as Google [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`). As a rule of thumb:
+
+- Set the values that describe your content on the break, such as `description_url` and `plcmt`. See [Required Google parameters](../../../integrations/google/pod-serving.mdx#required-google-parameters).
+- Set the values that depend on the playback environment in the SDK, such as `vpa` and `vpmute` and, in apps, the [device and app identity parameters](../../../integrations/google/pod-serving.mdx#additional-parameters-for-app-inventory).
+
+When the same key is set in both places, the value on the break wins. See [Ad targeting parameters](../../../how-to-guides/ad-tag-parameters.mdx) for the merge rules and platform examples.
+
+## Troubleshooting
+
+| Diagnostic               | What it means                                                                                                                     | What to do                                                                                    |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `DA-GAM-CONFIG-RESOLVED` | Informational: the Google stream session uses the network code and custom asset key in the diagnostic.                            | Check that they match your Google live stream.                                                |
+| `DA-GAM-CONFIG-MISSING`  | The Break Manifest carries Google breaks but no usable Google configuration, or Google is turned off with `gam` `enabled: false`. | Check that the channel is configured for Google Pod Serving, or remove the opt-out.           |
+| `DA-GAM-SESSION-FAILED`  | The Google stream session could not be started.                                                                                   | On Web, load `ima3_dai.js` on the page. Otherwise, check the error message in the diagnostic. |
+
+Breaks that fail in the backend, for example because Google could not decision them in time, end up in the `ERROR` state and never reach the SDK. See [Troubleshooting](../../../integrations/google/pod-serving.mdx#troubleshooting) on the Google Pod Serving integration page.
+
+## Related resources
+
+| Resource                                                                       | Description                                                         |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| [Google Ad Manager](../../../integrations/google/index.mdx)                    | Organization-level prerequisites: network code and service account. |
+| [Google Pod Serving integration](../../../integrations/google/pod-serving.mdx) | Google Ad Manager setup, channel configuration, and pod breaks.     |
+| [Ad targeting parameters](../../../how-to-guides/ad-tag-parameters.mdx)        | Passing ad tag parameters to Google.                                |
+| [VAST](./vast.mdx)                                                             | Play VAST tags from your own ad server, without Google Ad Manager.  |

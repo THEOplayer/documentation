@@ -84,9 +84,11 @@ await sdk.startSession({
 
 Follow the platform guide for [Web](/ads/player-integration/optiview-ads-sdk/web), [Android](/ads/player-integration/optiview-ads-sdk/android), [iOS](/ads/player-integration/optiview-ads-sdk/ios), or [React Native](/ads/player-integration/optiview-ads-sdk/react-native). If you use the OptiView Player, the legacy [OptiView Player integration](/ads/player-integration/optiview-player/) is also available.
 
+This integration plays every [ad workflow](/ads/player-integration/optiview-ads-sdk/#ad-workflows): static assets from your CDN, VAST tags from your ad server, and Google Pod Serving. Static assets need nothing more; for VAST or Google Pod Serving on Web, the workflow page lists the Google IMA script to add to your page.
+
 ## 4. Schedule a break
 
-A [break](/ads/concepts/breaks) describes an ad opportunity: when it starts, how long it lasts, and which ad experience plays. The simplest break plays a single full-screen ad from a VAST tag.
+A [break](/ads/concepts/breaks) describes an ad opportunity: when it starts, how long it lasts, and which ad experience plays. The simplest break plays a single full-screen video ad from your CDN, as a [static asset](/ads/player-integration/optiview-ads-sdk/ad-workflows/static-assets).
 
 Dashboard: open the channel → **Breaks → Schedule now**. Or via the API, scheduling a 30-second break a few minutes from now:
 
@@ -102,16 +104,18 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/bre
       "format": "single",
       "assets": [
         {
-          "type": "vast",
+          "type": "static",
           "mediaType": "video",
-          "uri": "https://cdn.example.com/vast.xml"
+          "uri": "https://cdn.example.com/ads/spot.m3u8"
         }
       ]
     }
   }'
 ```
 
-Replace `<start-time>` with an ISO 8601 UTC timestamp a few minutes in the future, for example `2026-01-01T12:00:00.000Z`.
+Replace `<start-time>` with an ISO 8601 UTC timestamp a few minutes in the future, for example `2026-01-01T12:00:00.000Z`, and the `uri` with the URL of an ad video on your CDN.
+
+To let an ad server choose the ad instead, use a [VAST](/ads/player-integration/optiview-ads-sdk/ad-workflows/vast) asset or [Google Pod Serving](/ads/player-integration/optiview-ads-sdk/ad-workflows/google-pod-serving).
 
 Once you schedule breaks regularly, [templates](/ads/concepts/templates) let you preconfigure the break payload so scheduling becomes a one-liner.
 
@@ -121,16 +125,17 @@ Start playback of your stream on your device. Shortly before the scheduled start
 
 You can follow along on both sides:
 
-- **In the dashboard or API:** the break's [lifecycle status](/ads/concepts/breaks#break-lifecycle) moves from `PREPARING` to `READY`, and to `SIGNALED` once it is announced to players.
+- **In the dashboard or API:** the break's [lifecycle status](/ads/concepts/breaks#break-lifecycle) is `READY` (a Google pod break passes through `PREPARING` first), and moves to `SIGNALED` once it is announced to players.
 - **In the player:** the ad plays at the scheduled time and your content resumes afterwards.
 
 If the break does not play, verify that the Break Manifest URL from step 2 returns the break, and that your stream carries the time metadata required by the channel's timebase.
 
 ## Next steps
 
-| Resource                                                      | Description                                                       |
-| ------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [Player integration](/ads/player-integration/)                | The full integration guides for the SDK and the OptiView Player.  |
-| [Breaks](/ads/concepts/breaks)                                | Everything a break can do: layouts, variants, controls, punching. |
-| [Origins and Break Detection](/ads/concepts/marker-detection) | Turn the ad markers in your stream into breaks automatically.     |
-| [Google Ad Manager](/ads/integrations/google/)                | Let Google Ad Manager decision the ads that fill your breaks.     |
+| Resource                                                               | Description                                                       |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [Player integration](/ads/player-integration/)                         | The full integration guides for the SDK and the OptiView Player.  |
+| [Ad workflows](/ads/player-integration/optiview-ads-sdk/#ad-workflows) | Static assets, VAST, and Google Pod Serving with the SDK.         |
+| [Breaks](/ads/concepts/breaks)                                         | Everything a break can do: layouts, variants, controls, punching. |
+| [Origins and Break Detection](/ads/concepts/marker-detection)          | Turn the ad markers in your stream into breaks automatically.     |
+| [Google Ad Manager](/ads/integrations/google/)                         | Let Google Ad Manager decision the ads that fill your breaks.     |

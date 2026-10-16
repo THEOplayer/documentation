@@ -10,7 +10,7 @@ On Web, the OptiView Ads SDK works with any HLS-capable player through a player 
 ## Prerequisites
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
-2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
+2. Check which [ad workflows](./index.mdx#ad-workflows) your breaks use. Static assets need nothing extra; [VAST](./ad-workflows/vast.mdx) and [Google Pod Serving](./ad-workflows/google-pod-serving.mdx) each need a Google IMA script on the page.
 3. Install the SDK together with the adapter for your player (see the player sections below).
 
 ## Integration
@@ -24,7 +24,6 @@ import { THEOplayerAdapter } from '@dolby-optiview/ads-sdk-adapter-theoplayer';
 const sdk = new OptiViewAds({
   player: new THEOplayerAdapter(player, container),
   container: document.getElementById('container'),
-  gam: { networkCode: 'NETWORK-CODE' },
 });
 
 await sdk.startSession({
@@ -33,6 +32,8 @@ await sdk.startSession({
 ```
 
 From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
+
+This integration is the same for every ad workflow. If your breaks use VAST or Google Pod Serving, also load the Google IMA script that the [VAST](./ad-workflows/vast.mdx#what-your-app-needs) or [Google Pod Serving](./ad-workflows/google-pod-serving.mdx#what-your-app-needs) page lists.
 
 All configuration options, session settings, and ad events are documented in the [Web API reference](pathname:///ads/v2/api-reference/web/), starting from the [`OptiViewAds`](pathname:///ads/v2/api-reference/web/classes/OptiViewAds.html) class.
 

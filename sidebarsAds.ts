@@ -35,6 +35,16 @@ const sidebars: SidebarsConfig = {
             'player-integration/optiview-ads-sdk/android',
             'player-integration/optiview-ads-sdk/ios',
             'player-integration/optiview-ads-sdk/react-native',
+            {
+              type: 'category',
+              label: 'Ad workflows',
+              description: 'Static assets, VAST, and Google Pod Serving.',
+              items: [
+                'player-integration/optiview-ads-sdk/ad-workflows/static-assets',
+                'player-integration/optiview-ads-sdk/ad-workflows/vast',
+                'player-integration/optiview-ads-sdk/ad-workflows/google-pod-serving',
+              ],
+            },
           ],
         },
         {

@@ -10,7 +10,7 @@ On React Native, the OptiView Ads SDK bridges the native Android and iOS SDKs be
 ## Prerequisites
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
-2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
+2. Check which [ad workflows](./index.mdx#ad-workflows) your breaks use. On React Native, static assets, VAST, and Google Pod Serving all work with the installation below; nothing extra is needed.
 3. Install the SDK and make its native dependencies resolvable for your platforms (see [Installation](#installation)).
 
 ## Installation
@@ -57,7 +57,7 @@ import { createOptiViewAds } from '@dolby-optiview/ads-sdk-react-native';
 
 const onPlayerReady = async (player) => {
   player.source = { sources: [{ src: CONTENT_URL, type: 'application/x-mpegurl' }] };
-  const ads = createOptiViewAds(player, { gam: { networkCode: 'NETWORK-CODE' } });
+  const ads = createOptiViewAds(player, {});
   await ads.startSession({
     manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
   });
@@ -92,7 +92,7 @@ const { player, onVideoEvent } = useReactVideoHandle();
 
 useEffect(() => {
   if (!player) return;
-  const ads = createOptiViewAds(player, { gam: { networkCode: 'NETWORK-CODE' } });
+  const ads = createOptiViewAds(player, {});
   void ads.startSession({ manifestUrl: MANIFEST_URL });
   return () => void ads.destroy();
 }, [player]);

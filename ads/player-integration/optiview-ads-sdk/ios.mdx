@@ -10,7 +10,7 @@ On iOS and tvOS, the OptiView Ads SDK is a native Swift library that works with 
 ## Prerequisites
 
 1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
-2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
+2. Check which [ad workflows](./index.mdx#ad-workflows) your breaks use. On iOS and tvOS, static assets, VAST, and Google Pod Serving all work with the installation below; nothing extra is needed.
 3. Install the SDK together with the adapter for your player (see [Installation](#installation) and the player sections below).
 
 ## Installation
@@ -30,11 +30,11 @@ target 'MyApp' do
 end
 ```
 
-The runtime pod also brings in the Google IMA SDK.
+The runtime pod also brings in the Google IMA SDK, which the SDK uses to play [VAST](./ad-workflows/vast.mdx) and [Google Pod Serving](./ad-workflows/google-pod-serving.mdx) breaks.
 
 ### Swift Package Manager
 
-Add the package from [https://github.com/Dolby-OptiView/optiview-ads-sdk-spm](https://github.com/Dolby-OptiView/optiview-ads-sdk-spm) and link the `OptiViewAdsRuntime` product. Because the frameworks are binary targets, also add the Google IMA package for each platform you build for:
+Add the package from [https://github.com/Dolby-OptiView/optiview-ads-sdk-spm](https://github.com/Dolby-OptiView/optiview-ads-sdk-spm) and link the `OptiViewAdsRuntime` product. Because the frameworks are binary targets, also add the Google IMA package for each platform you build for. The runtime always links against Google IMA, so the package is required even if your breaks only use static assets:
 
 ```swift
 dependencies: [
