@@ -206,4 +206,4 @@ In V2, a stop is **graceful**: the stream is ended for viewers (the HLS playlist
 
 To skip the graceful shutdown, **force stop** the engine or channel with `POST /v2/engines/{id}/force-stop` or `POST /v2/channels/{id}/force-stop`: the engines are torn down immediately, without closing their playlists first, so viewers may see playback fail instead of the stream ending cleanly. Force stop works from any non-stopped state, including while an engine is already `stopping` after a regular stop (useful when an engine seems stuck). Calling the regular stop endpoint again while the engine is `stopping` force stops it as well, and engines in `error` are always force stopped.
 
-An engine can only be started again once it is `stopped`; a start while it is `stopping` is rejected with `409 already_playing`. See [Stopping engines and channels](../platform/stopping-engines-and-channels.mdx).
+An engine can only be started again once it is `stopped`; a start while it is `stopping` is rejected with `409 already_playing`. See [Starting and stopping](../platform/starting-and-stopping.mdx).

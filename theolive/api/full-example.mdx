@@ -220,7 +220,7 @@ curl -X POST https://api.theo.live/v2/channels/ch_abc123/start \
   -H "Authorization: Basic $AUTH"
 ```
 
-This starts all engines on the channel. The channel status will transition through `deploying` → `starting` → `ingesting` → `playing`.
+This starts all engines on the channel. The channel status will transition through `deploying` → `provisioning` → `starting` → `waiting`, then to `ingesting` → `playing` once your encoder's stream arrives. See [Starting and stopping](../platform/starting-and-stopping.mdx#engine-states) for what each state means.
 
 ## 7. Verify and play
 
@@ -263,7 +263,7 @@ curl -X POST https://api.theo.live/v2/channels/ch_abc123/force-stop \
   -H "Authorization: Basic $AUTH"
 ```
 
-Force stop works from any state, including while the channel is already `stopping` after a regular stop. Calling the regular stop endpoint again while the channel is `stopping` force stops it as well, and engines in `error` are always force stopped. See [Stopping engines and channels](../platform/stopping-engines-and-channels.mdx) for when to use which.
+Force stop works from any state, including while the channel is already `stopping` after a regular stop. Calling the regular stop endpoint again while the channel is `stopping` force stops it as well, and engines in `error` are always force stopped. See [Starting and stopping](../platform/starting-and-stopping.mdx#stopping) for when to use which.
 
 ## Next steps
 

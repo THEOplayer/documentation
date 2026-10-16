@@ -107,7 +107,7 @@ When you're all set, you can start your channel from the channel details page by
 
 For advanced use cases such as production updates, you can start and stop individual engines separately. However, for most use cases all engines will be started and stopped at the same time.
 
-Stopping is graceful: the stream is ended for viewers and the engines are torn down, which shows as `stopping` for about 10–20 seconds before the engine is `stopped`. While an engine is stopping, the stop button becomes a `Force stop` button that tears the engine down immediately. An engine can be started again once it is `stopped`.
+Stopping is graceful: the stream is ended for viewers and the engines are torn down, which shows as `stopping` for about 10–20 seconds before the engine is `stopped`. While an engine is stopping, the stop button becomes a `Force stop` button that tears the engine down immediately. An engine can be started again once it is `stopped`. See [Starting and stopping](./platform/starting-and-stopping.mdx) for the states an engine goes through.
 
 <div className="center-container">![](assets/img/start-channel.png)</div>
 
@@ -123,4 +123,4 @@ For production use cases, you should connect [OptiView Player](./playback/optivi
 
 When you are done streaming, make sure to stop your channel to avoid unnecessary transcoding costs.
 
-The stop dialog offers two options. **Stop all** ends the stream for viewers, so their players reach the end of the stream, and then shuts the engines down gracefully in about 10–20 seconds. **Force stop all** tears the engines down immediately without ending the stream cleanly, so viewers may see playback fail. Use **Stop all** unless the engines have to be gone at once. See [Stopping engines and channels](./platform/stopping-engines-and-channels.mdx) for the details.
+The stop dialog offers two options. **Stop all** ends the stream for viewers, so their players reach the end of the stream, and then shuts the engines down gracefully in about 10–20 seconds. **Force stop all** tears the engines down immediately without ending the stream cleanly, so viewers may see playback fail. Use **Stop all** unless the engines have to be gone at once. See [Starting and stopping](./platform/starting-and-stopping.mdx#stopping) for the details.
