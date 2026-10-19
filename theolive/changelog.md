@@ -1,5 +1,33 @@
 # Changelog
 
+## [11.13.0] - 2026-10-16
+
+- Fixed channels with S3 DVR and VOD output keeping the previous session's media in memory at every
+  ingest reconnect, so the engine's memory grew for as long as the channel ran. The last hourly VOD
+  playlist on S3 now also ends with `EXT-X-ENDLIST` when the channel or its file ingest ends, or the
+  channel reconnects in a later hour, instead of staying open
+- Fixed S3 DVR and hourly VOD playlists leaving out the SCTE-35 `EXT-X-DATERANGE` tags, so players
+  of a distribution with DVR enabled never saw the channel's ad breaks; each tag now stays listed for
+  as long as the media it describes is in the playlist, also across channel restarts
+- Fixed Low-Latency HLS playback on Apple devices failing with an HTTP 400 error, mostly when
+  joining over a slow network: playlist requests asking for a partial segment a few parts ahead of
+  the live edge, as the HLS specification allows, were refused
+- Fixed Low-Latency HLS playlist requests that the stream could not satisfy within three target
+  durations, such as during an ingest interruption, returning an outdated playlist that CDNs could
+  keep serving for up to three more target durations after the stream recovered; they now fail with
+  HTTP 503 instead
+- Fixed Low-Latency HLS playlist requests for media past the end of an ended stream failing with an
+  HTTP 400 error instead of returning the final playlist
+- Fixed playback freezes during low-latency HLS bitrate switches on Apple devices
+- Added the DRM keys to the HLS multivariant playlist of protected channels, so players can request
+  licenses before loading a media playlist
+- Fixed SRT channels that stopped producing output, while still shown as playing, when the source
+  changed its track layout mid-stream; the channel now recovers on its own within seconds
+- Extended caching of ended HLS media playlists to one hour
+- Carried the source timecode of ingested video into Low-Latency HLS and HLS (CMAF) output: the first
+  frame of every segment and partial segment carries the timecode of its source frame as an ID3 timed
+  metadata event (`TXXX` frame `optiview.live:timecode`, formatted `HH:MM:SS:FF`)
+
 ## [11.12.0] - 2026-09-30
 
 - Fixed a channel waiting for its RTMP contribution leaving a connection open on the RTMP server at
