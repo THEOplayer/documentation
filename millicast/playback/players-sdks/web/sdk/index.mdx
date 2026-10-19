@@ -322,7 +322,11 @@ The `track` event is only emitted after the first `active` broadcast event, and 
 
 ```javascript
 millicastView.on('track', (event) => {
-  addStreamToYourVideoTag(event.streams[0]); // Manage the track event.
+  // Fired once per audio and video track; both carry the same stream.
+  if (!videoElement.srcObject) {
+    videoElement.srcObject = event.streams[0];
+    videoElement.play(); // Or set videoElement.autoplay = true
+  }
 });
 ```
 
