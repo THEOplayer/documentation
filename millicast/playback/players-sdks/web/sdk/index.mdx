@@ -318,15 +318,11 @@ More information here:
 
 In case the mediaElement parameter is not specified when creating a View instance a [track event](https://millicast.github.io/millicast-sdk/peerconnection/#track) will be emitted when the stream starts containing the media track.
 
-The `track` event is only emitted after the first `active` broadcast event, and it can arrive before or after the `connected` connection state. Attach the stream to your video element and start playback in the `track` handler rather than on `connected` or `active`.
+The `track` event is only emitted after the first `active` broadcast event, and it can arrive before or after the `connected` connection state. Attach the stream to your video element in the `track` handler rather than on `connected` or `active`: `connected` does not mean a source is active, and on `active` the media has not reached the element yet. The event fires once per audio and video track, both carrying the same stream. With `autoplay` set on the element (and `muted`, unless the user has already interacted with the page), playback starts as soon as frames arrive. If you call `play()` yourself instead, call it right after assigning `srcObject` in this handler and handle the returned promise.
 
 ```javascript
 millicastView.on('track', (event) => {
-  // Fired once per audio and video track; both carry the same stream.
-  if (!videoElement.srcObject) {
-    videoElement.srcObject = event.streams[0];
-    videoElement.play(); // Or set videoElement.autoplay = true
-  }
+  videoElement.srcObject = event.streams[0]; // videoElement has the autoplay attribute set.
 });
 ```
 
