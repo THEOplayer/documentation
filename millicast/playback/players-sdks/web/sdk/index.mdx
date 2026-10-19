@@ -318,6 +318,8 @@ More information here:
 
 In case the mediaElement parameter is not specified when creating a View instance a [track event](https://millicast.github.io/millicast-sdk/peerconnection/#track) will be emitted when the stream starts containing the media track.
 
+The `track` event is only emitted after the first `active` broadcast event, and it can arrive before or after the `connected` connection state. Attach the stream to your video element and start playback in the `track` handler rather than on `connected` or `active`.
+
 ```javascript
 millicastView.on('track', (event) => {
   addStreamToYourVideoTag(event.streams[0]); // Manage the track event.
