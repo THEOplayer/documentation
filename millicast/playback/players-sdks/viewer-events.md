@@ -75,5 +75,5 @@ millicastView.on('broadcastEvent', (event) => {
 ```
 
 :::note[Event ordering]
-Broadcast events are sent by the server and are independent of the peer connection state reported by the `connectionStateChange` event. In particular, `connected` and the first `active` event can arrive in either order. Do not treat `connected` as a sign that a source is active, and do not start playback from either event. The Web SDK only emits the `track` event after the first `active` event, so attach the stream to your video element and start playback in the `track` handler.
+Broadcast events are sent by the server and are independent of the peer connection state reported by the `connectionStateChange` event. In particular, `connected` and the first `active` event can arrive in either order. Do not treat `connected` as a sign that a source is active, and do not start playback from either event. Attach the stream to your video element and start playback in the `track` handler.
 :::
