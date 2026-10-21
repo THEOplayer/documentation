@@ -682,6 +682,9 @@
                 <a class="nav-group-task-link" href="../Protocols/AVPlayerError.html">AVPlayerError</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/GenericSwiftError.html">GenericSwiftError</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/THEOErrorCode.html">THEOErrorCode</a>
               </li>
               <li class="nav-group-task">
@@ -981,7 +984,7 @@
                 <a class="nav-group-task-link" href="../Structs/CMCDSourceConfiguration.html">CMCDSourceConfiguration</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a>
+                <a class="nav-group-task-link" href="../Structs/SourceLatencyConfiguration.html">SourceLatencyConfiguration</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/THEOAdDescription.html">THEOAdDescription</a>
@@ -1109,6 +1112,16 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The underlying cause of this error, if known.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    For errors from Apple&rsquo;s frameworks (for example AVFoundation, CoreMedia or URL loading), cast it to <code><a href="../Structs/GenericSwiftError.html">GenericSwiftError</a></code> to get Apple&rsquo;s original error:
+<code>
+if let appleCause = theoError.cause as? GenericSwiftError {
+let appleError = appleCause.error as NSError
+}
+</code>
+
+</div>
 
                       </div>
                       <div class="declaration">

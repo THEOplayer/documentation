@@ -61,6 +61,8 @@ $dokka.location:com.theoplayer.android.api.source/GoogleDaiTypedSource.Builder//
 $dokka.location:com.theoplayer.android.api.source/SourceDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/SourceDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TextTrackDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TextTrackDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TypedSource.Builder.html
+$dokka.location:com.theoplayer.android.api.theolive/EndpointSource.Millicast///PointingToDeclaration/com/theoplayer/android/api/theolive/EndpointSource.Millicast.html
+$dokka.location:com.theoplayer.android.api.theolive/EndpointSource.Url///PointingToDeclaration/com/theoplayer/android/api/theolive/EndpointSource.Url.html
 $dokka.location:com.theoplayer.android.api.theolive/THEOLiveConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/theolive/THEOLiveConfig.Builder.html
 $dokka.location:com.theoplayer.android.api.util/Logger.Companion///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Companion.html
 $dokka.location:com.theoplayer.android.api.util/Logger.Listener///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Listener.html

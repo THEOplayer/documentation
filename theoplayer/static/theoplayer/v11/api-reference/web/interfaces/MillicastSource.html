@@ -11,10 +11,10 @@
 <li><a href="" aria-current="page">MillicastSource</a></li></ul>
 <h1>Interface MillicastSource</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Represents a source for a <a href="https://dolby.io/products/real-time-streaming/">Millicast</a> live stream.</p>
+<div class="tsd-comment tsd-typography"><p>Represents a source for a <a href="https://optiview.dolby.com/docs/millicast/">Millicast</a> live stream.</p>
 </div></section>
 <div class="tsd-signature"><span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">MillicastSource</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#abr">abr</a><span class="tsd-signature-symbol">?:</span> <a href="SourceAbrConfiguration.html" class="tsd-signature-type tsd-kind-interface">SourceAbrConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#apiUrl">apiUrl</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#c2paMetadata">c2paMetadata</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#connectOptions">connectOptions</a><span class="tsd-signature-symbol">?:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type" class="tsd-signature-type external" target="_blank">Record</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#contentProtection">contentProtection</a><span class="tsd-signature-symbol">?:</span> <a href="DRMConfiguration.html" class="tsd-signature-type tsd-kind-interface">DRMConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#crossOrigin">crossOrigin</a><span class="tsd-signature-symbol">?:</span> <a href="../types/CrossOriginSetting.html" class="tsd-signature-type tsd-kind-type-alias">CrossOriginSetting</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#dash">dash</a><span class="tsd-signature-symbol">?:</span> <a href="DashPlaybackConfiguration.html" class="tsd-signature-type tsd-kind-interface">DashPlaybackConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#drm">drm</a><span class="tsd-signature-symbol">?:</span> <a href="DRMConfiguration.html" class="tsd-signature-type tsd-kind-interface">DRMConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#hls">hls</a><span class="tsd-signature-symbol">?:</span> <a href="HlsPlaybackConfiguration.html" class="tsd-signature-type tsd-kind-interface">HlsPlaybackConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#hlsDateRange">hlsDateRange</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#ignoreEmbeddedTextTrackTypes">ignoreEmbeddedTextTrackTypes</a><span class="tsd-signature-symbol">?:</span> <a href="../types/TextTrackType.html" class="tsd-signature-type tsd-kind-type-alias">TextTrackType</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#integration">integration</a><span class="tsd-signature-symbol">?:</span> <a href="../types/SourceIntegrationId.html" class="tsd-signature-type tsd-kind-type-alias">SourceIntegrationId</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#latencyConfiguration">latencyConfiguration</a><span class="tsd-signature-symbol">?:</span> <a href="SourceLatencyConfiguration.html" class="tsd-signature-type tsd-kind-interface">SourceLatencyConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#lcevc">lcevc</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#liveOffset">liveOffset</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#lowLatency">lowLatency</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#retryConfiguration">retryConfiguration</a><span class="tsd-signature-symbol">?:</span> <a href="RetryConfiguration.html" class="tsd-signature-type tsd-kind-interface">RetryConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#seamlessSwitchStrategy">seamlessSwitchStrategy</a><span class="tsd-signature-symbol">?:</span> <a href="../types/SeamlessSwitchStrategy.html" class="tsd-signature-type tsd-kind-type-alias">SeamlessSwitchStrategy</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#src">src</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#ssai">ssai</a><span class="tsd-signature-symbol">?:</span> <a href="ServerSideAdInsertionConfiguration.html" class="tsd-signature-type tsd-kind-interface">ServerSideAdInsertionConfiguration</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#statsIntervalMs">statsIntervalMs</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#streamAccountId">streamAccountId</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#subscriberToken">subscriberToken</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#timeServer">timeServer</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#type">type</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;millicast&quot;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#useCredentials">useCredentials</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#useManagedMediaSource">useManagedMediaSource</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#useNativePlayback">useNativePlayback</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div>
-<section class="tsd-panel tsd-hierarchy" data-refl="1443">
+<section class="tsd-panel tsd-hierarchy" data-refl="1445">
 <h4>Hierarchy (<a href="../hierarchy.html#MillicastSource">View Summary</a>)</h4>
 <ul class="tsd-hierarchy">
 <li class="tsd-hierarchy-item"><a href="TypedSource.html" class="tsd-signature-type tsd-kind-interface">TypedSource</a>
@@ -100,11 +100,16 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 <h3 class="tsd-anchor-link" id="connectOptions"><code class="tsd-tag">Optional</code><span>connect<wbr/>Options</span><a href="#connectOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">connectOptions</span><span class="tsd-signature-symbol">?:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type" class="tsd-signature-type external" target="_blank">Record</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 <div class="tsd-comment tsd-typography"><p>An optional configuration object to set additional subscriber options.</p>
-<ul>
-<li>The available options are listed in the link below.</li>
-</ul>
 </div>
 <div class="tsd-comment tsd-typography">
+<div class="tsd-tag-remarks">
+<h4 class="tsd-anchor-link" id="Remarks-2">Remarks<a href="#Remarks-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>The available options are listed in the link below.</li>
+<li><code>events</code>: the player always subscribes to the events it needs (<code>active</code>, <code>inactive</code>, <code>stopped</code>, <code>layers</code> and <code>migrate</code>).
+Optional events such as <code>'viewercount'</code> are not subscribed by default and must be added explicitly,
+e.g. <code>connectOptions: { events: ['viewercount'] }</code>.</li>
+</ul>
+</div>
 <div class="tsd-tag-see">
 <h4 class="tsd-anchor-link" id="See-1">See<a href="#See-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><a href="https://millicast.github.io/millicast-sdk/view/#connect" target="_blank" class="external">https://millicast.github.io/millicast-sdk/view/#connect</a></p>
 </div></div></section>
@@ -115,7 +120,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-2">Remarks<a href="#Remarks-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.15.0.</p>
+<h4 class="tsd-anchor-link" id="Remarks-3">Remarks<a href="#Remarks-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.15.0.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#contentProtection">contentProtection</a></p></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
@@ -128,7 +133,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 <h4 class="tsd-anchor-link" id="Default-Value-1">Default Value<a href="#Default-Value-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><code>''</code></p>
 </div>
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-3">Remarks<a href="#Remarks-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.9.0.</p>
+<h4 class="tsd-anchor-link" id="Remarks-4">Remarks<a href="#Remarks-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.9.0.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#crossOrigin">crossOrigin</a></p></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
@@ -138,7 +143,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-4">Remarks<a href="#Remarks-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.79.0.
+<h4 class="tsd-anchor-link" id="Remarks-5">Remarks<a href="#Remarks-5" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.79.0.
 <br/> - Ignored for non-DASH streams.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#dash">dash</a></p></aside></section>
@@ -159,7 +164,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-5">Remarks<a href="#Remarks-5" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.82.0.
+<h4 class="tsd-anchor-link" id="Remarks-6">Remarks<a href="#Remarks-6" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.82.0.
 <br/> - Ignored for non-HLS streams.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#hls">hls</a></p></aside></section>
@@ -173,7 +178,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 <h4 class="tsd-anchor-link" id="Default-Value-2">Default Value<a href="#Default-Value-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><code>false</code></p>
 </div>
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-6">Remarks<a href="#Remarks-6" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.61.0.</p>
+<h4 class="tsd-anchor-link" id="Remarks-7">Remarks<a href="#Remarks-7" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.61.0.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#hlsDateRange">hlsDateRange</a></p></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
@@ -183,7 +188,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-7">Remarks<a href="#Remarks-7" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v5.9.0
+<h4 class="tsd-anchor-link" id="Remarks-8">Remarks<a href="#Remarks-8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v5.9.0
 <br/> - Only 'cea608' and 'emsg' can currently be ignored.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#ignoreEmbeddedTextTrackTypes">ignoreEmbeddedTextTrackTypes</a></p></aside></section>
@@ -194,7 +199,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-8">Remarks<a href="#Remarks-8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - This can be used to signal that a source is specific to an integration.</p>
+<h4 class="tsd-anchor-link" id="Remarks-9">Remarks<a href="#Remarks-9" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - This can be used to signal that a source is specific to an integration.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#integration">integration</a></p></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
@@ -204,7 +209,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-9">Remarks<a href="#Remarks-9" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v7.4.0.
+<h4 class="tsd-anchor-link" id="Remarks-10">Remarks<a href="#Remarks-10" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v7.4.0.
 <br/> - Ignored for VOD playback.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#latencyConfiguration">latencyConfiguration</a></p></aside></section>
@@ -215,7 +220,7 @@ Ignored for native playback (see <a href="BaseSource.html#useNativePlayback" cla
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-10">Remarks<a href="#Remarks-10" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Requires the LCEVC feature to be enabled.
+<h4 class="tsd-anchor-link" id="Remarks-11">Remarks<a href="#Remarks-11" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Requires the LCEVC feature to be enabled.
 <br/> - Requires the V-Nova LCEVC SDK to be loaded on the page.
 <br/> - Only available for DASH and HLS streams.</p>
 </div></div><aside class="tsd-sources">
@@ -228,7 +233,7 @@ This live point is the end of the manifest minus the provided offset.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-11">Remarks<a href="#Remarks-11" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.35.0.
+<h4 class="tsd-anchor-link" id="Remarks-12">Remarks<a href="#Remarks-12" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.35.0.
 <br/> - Will be overridden by <a href="SourceLatencyConfiguration.html#targetOffset" class="tsd-kind-property">SourceLatencyConfiguration.targetOffset</a> if it is specified.</p>
 </div>
 <div class="tsd-tag-defaultValue">
@@ -245,7 +250,7 @@ This live point is the end of the manifest minus the provided offset.</p>
 <h4 class="tsd-anchor-link" id="Default-Value-4">Default Value<a href="#Default-Value-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><code>false</code></p>
 </div>
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-12">Remarks<a href="#Remarks-12" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - This setting must be <code>true</code> when using Low-Latency CMAF with ABR.
+<h4 class="tsd-anchor-link" id="Remarks-13">Remarks<a href="#Remarks-13" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - This setting must be <code>true</code> when using Low-Latency CMAF with ABR.
 <br/> - Available since v2.62.0.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#lowLatency">lowLatency</a></p></aside></section>
@@ -256,7 +261,7 @@ This live point is the end of the manifest minus the provided offset.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-13">Remarks<a href="#Remarks-13" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - When specified, this configuration overrides the player-level <a href="PlayerConfiguration.html#retryConfiguration" class="tsd-kind-property">PlayerConfiguration.retryConfiguration</a> for this source.
+<h4 class="tsd-anchor-link" id="Remarks-14">Remarks<a href="#Remarks-14" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - When specified, this configuration overrides the player-level <a href="PlayerConfiguration.html#retryConfiguration" class="tsd-kind-property">PlayerConfiguration.retryConfiguration</a> for this source.
 <br/> - If not specified, falls back to the global player retry configuration.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#retryConfiguration">retryConfiguration</a></p></aside></section>
@@ -267,7 +272,7 @@ This live point is the end of the manifest minus the provided offset.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-14">Remarks<a href="#Remarks-14" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>The player supports two strategies for handling a switch between two discontinuities in an HLS stream or two periods in an MPEG-DASH stream:
+<h4 class="tsd-anchor-link" id="Remarks-15">Remarks<a href="#Remarks-15" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>The player supports two strategies for handling a switch between two discontinuities in an HLS stream or two periods in an MPEG-DASH stream:
 <br/> - <strong>Seamless</strong>: Once the player is done buffering the current discontinuity/period, it immediately starts buffering the next
 discontinuity/period. This requires that the current discontinuity/period and the next discontinuity/period have compatible codecs and content protection,
 or that the platform supports buffering different codecs in a single player.
@@ -301,7 +306,7 @@ problem to THEOplayer support, so we can improve the player's default behavior a
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-15">Remarks<a href="#Remarks-15" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.12.0.</p>
+<h4 class="tsd-anchor-link" id="Remarks-16">Remarks<a href="#Remarks-16" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.12.0.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="TypedSource.html">TypedSource</a>.<a href="TypedSource.html#ssai">ssai</a></p></aside></section>
 <section class="tsd-panel tsd-member">
@@ -341,7 +346,7 @@ problem to THEOplayer support, so we can improve the player's default behavior a
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-16">Remarks<a href="#Remarks-16" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.47.0.
+<h4 class="tsd-anchor-link" id="Remarks-17">Remarks<a href="#Remarks-17" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.47.0.
 <br/> - The time server should return time in ISO-8601 format.
 <br/> - Overrides the time server provided the DASH manifest's <code>&lt;UTCTiming&gt;</code>.
 <br/> - Only this source will use the time server. Alternatively, for all source use <a href="SourceConfiguration.html#timeServer" class="tsd-kind-property">SourceConfiguration.timeServer</a>.</p>
@@ -361,7 +366,7 @@ problem to THEOplayer support, so we can improve the player's default behavior a
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-17">Remarks<a href="#Remarks-17" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Credentials are cookies, authorization headers or TLS client certificates.</p>
+<h4 class="tsd-anchor-link" id="Remarks-18">Remarks<a href="#Remarks-18" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Credentials are cookies, authorization headers or TLS client certificates.</p>
 </div>
 <div class="tsd-tag-defaultValue">
 <h4 class="tsd-anchor-link" id="Default-Value-7">Default Value<a href="#Default-Value-7" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><code>false</code></p>
@@ -377,7 +382,7 @@ problem to THEOplayer support, so we can improve the player's default behavior a
 <h4 class="tsd-anchor-link" id="Default-Value-8">Default Value<a href="#Default-Value-8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><code>false</code></p>
 </div>
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-18">Remarks<a href="#Remarks-18" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v6.2.0.
+<h4 class="tsd-anchor-link" id="Remarks-19">Remarks<a href="#Remarks-19" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v6.2.0.
 <br/> - At the moment, this requires iOS 17.1 beta 2 or higher, with the &quot;Managed Media Source API&quot; feature flag
 turned on in the Advanced settings of Safari.
 <br/> - Ignored if <a href="BaseSource.html#useNativePlayback" class="tsd-kind-property">BaseSource.useNativePlayback</a> is <code>true</code>.</p>
@@ -396,7 +401,7 @@ turned on in the Advanced settings of Safari.
 <h4 class="tsd-anchor-link" id="Default-Value-9">Default Value<a href="#Default-Value-9" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><code>false</code></p>
 </div>
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-19">Remarks<a href="#Remarks-19" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.68.0.
+<h4 class="tsd-anchor-link" id="Remarks-20">Remarks<a href="#Remarks-20" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><br/> - Available since v2.68.0.
 <br/> - Ignored for DASH streams.
 <br/> - Only supported on browsers that can play HLS streams natively, will error otherwise.</p>
 </div></div><aside class="tsd-sources">
