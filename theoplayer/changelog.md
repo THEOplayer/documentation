@@ -9,22 +9,131 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.14.0 (2026/10/20)
+
+### Web
+
+#### ✨ Features
+
+- Added experimental `player.recreateMediaSource()` to rebuild the media pipeline in place, for example after an external ad engine used the decoder on VIZIO.
+- Added the `adSystem` property to the OptiView Live Streaming (THEOlive) `Endpoint` API.
+
+#### ⚡ Improvements
+
+- Improved the transitions of OptiView Ads between back-to-back ad breaks with different layouts, such as from a double box to an L-shape.
+- Improved the startup time of OptiView Live Streaming DRM streams on Tizen by preferring PlayReady over Widevine when `contentProtection.preferredKeySystems` is not set.
+- Improved the performance of the extraction of embedded CEA-608/708 closed captions in HLS and DASH streams.
+- HLS variant streams that declare `CLOSED-CAPTIONS=NONE` are no longer scanned for embedded CEA-608/708 closed captions.
+- Improved the startup time of DRM-protected HLS streams whose `EXT-X-KEY` or `EXT-X-SESSION-KEY` tags carry the PSSH in a base64 `data:` URI, which is now decoded directly instead of being requested over `fetch` or `XMLHttpRequest`.
+- Improved CMCD reporting for Dolby Atmos.
+- Made the list of subscribed OptiView Real-time Streaming (Millicast) broadcast events configurable through `connectOptions.events` (and `TheoLiveSource.webrtc.events` for OptiView Live Streaming WebRTC sources). The player always subscribes to the events it needs (`active`, `inactive`, `stopped`, `layers`, `migrate`). Optional events such as `viewercount` and `vad` are no longer subscribed by default; add them from the application when needed, e.g. `connectOptions: { events: ['viewercount'] }`.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player could collapse to a height of 0 when playing an OptiView Ads source. If the size of the player is not determined by its parent element (for example, when only its width is set), the player now sizes to the intrinsic size of the video that is currently playing, either the content or the ad.
+- Fixed an issue where TTML `begin` and `end` time expressions on an element inside a timed parent container (e.g. a `<p>` inside a `<div begin=...>`) were resolved as absolute media times instead of relative to the parent's begin, as required by the TTML specification. Fractional offset-time expressions such as `2.5s` are now also resolved exactly instead of being truncated to whole units.
+- Fixed an issue where, after a Google IMA mid-roll, the content resumed at the wrong position, equal to the last ad's duration, on iOS Safari with `allowNativeFullscreen` enabled.
+- Fixed an issue where the content kept playing after a blocking ad error when `blockContentIfAdError` is enabled.
+- Fixed an issue where `fatalError()` on custom server-side ad integrations would not stop playback.
+- Fixed an issue where CEA-608 caption rows could overlap, for example on a small player with a large `textTrackStyle.marginBottom` or on a player wider than 16:9. Captions now move only as far as needed to stay clear of the margins, and the text only gets smaller when the rows would otherwise overlap or not fit between the margins.
+- Fixed an issue where seeking to the live point of an LL-HLS stream could cause the latency manager to stop adjusting the latency.
+
+#### ⚠ Known Limitations
+
+- When the size of the player is not determined by its parent element, the player keeps the intrinsic size of the content during OptiView Ads ad breaks that are played through Google IMA (VAST ads), rather than sizing to the ad.
+
+### Android
+
+#### ✨ Features
+
+- Added support for OptiView Live Streaming (THEOlive) distributions protected with Castlabs DRMtoday Widevine.
+- Added `src` and `srcType` properties to the OptiView Live Streaming (THEOlive) `Endpoint` API.
+- Added `Player.errorObject`, which returns the last error that occurred for the current source as a `THEOplayerException`.
+
+#### ⚡ Improvements
+
+- Improved CMCD reporting for Dolby Atmos.
+- Enable adjusting playback rate for low-latency HLS streams provided through OptiView Live sources.
+
+#### 🐛 Issues
+
+- Fixed an issue where casting a DRM-protected source to the OptiView Streaming (THEOplayer) CAF Chromecast receiver failed. The source's DRM configuration is now also sent under the `contentProtection` key, alongside `drm`.
+- Fixed an issue where switching rendering targets during playback could cause a decoding error.
+- Fixed a `ClassCastException` when creating a `THEOplayerView` in Android Studio's layout editor or a Compose preview.
+- Fixed an issue where `TextTrackCue.content` was malformed due to `endTime` being `Double.POSITIVE_INFINITY` for ID3 cues.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for OptiView Live Streaming (THEOlive) distributions protected with Castlabs DRMtoday FairPlay.
+- Added `src`, `srcType`, `provider` and `adSystem` properties to the OptiView Live Streaming (THEOlive) `EndpointAPI`.
+- Added `errorObject` instance property to `THEOplayer`, which returns the player error for the current source as a `THEOError`.
+
+#### ⚡ Improvements
+
+- Exposed the getter for `SourceLatencyConfiguration.targetOffset`.
+- Errors caused by Apple's frameworks now keep Apple's original error as their `cause`, in a `GenericSwiftError`, and their message includes Apple's error domain, code and description. `GenericSwiftError.name` is now `Swift error`.
+- The error `AVPlayerItem failed to play to end time.` now includes Apple's error in its message, and keeps Apple's error as its `cause`.
+- A failed DRM key request is now always reported as a `ContentProtectionError`, together with a `ContentProtectionErrorEvent`. When a custom DRM integration reports an error for a certificate or license response, the error includes that response's URL, HTTP status, status text and body.
+- The error `Something went wrong while trying to play the content.` now includes Apple's error in its message, and keeps Apple's error as its `cause`.
+- Improved CMCD reporting for Dolby Atmos.
+- The OptiView Player iOS and tvOS SDKs and their integrations are now built with Xcode 26.6 (Swift 6.3) instead of Xcode 26.3 (Swift 6.2.3). This is a build tool update only: the public API, SDK behavior and the minimum supported iOS and tvOS version (15.0) are unchanged. This change is backward compatible with apps built with Xcode 26.3.
+- The stall error (`Stalled for more than 10 seconds with N errors.`) now includes the newest fatal error from Apple's error log in its message, and keeps that error as its `cause`.
+- Network errors (6000) now include the URL and HTTP status of the request that failed, and Apple's error in their message, and keep Apple's error as their `cause`.
+- Errors now use the most precise error code for Apple's error, instead of 5003 for most failures: a playlist that can't be parsed or isn't HLS gives 4002 (`MANIFEST_PARSE_ERROR`), a timeout gives 6001 (`NETWORK_TIMEOUT`), an HTTP or other connection error gives 6000 (`NETWORK_ERROR`), broken media data gives 5002 (`MEDIA_DECODE_ERROR`), an unsupported format gives 5000 (`MEDIA_NOT_SUPPORTED`), and a media services reset or running out of memory gives 5005 (`MEDIA_INTERNAL_ERROR`). Every 6000 error is now a `NetworkError`.
+- DRM errors now use the code of the step that failed instead of 7000: 7005 for the certificate, 7004 for the content ID or the license request, 7007 for getting the license, and 7008 when the license isn't accepted. The message says which step failed, for example `Content key error: Failed to get the license.`
+- `ErrorEvent.error`, `ErrorEvent.errorObject.message` and `THEOplayer.error` now contain the same, more detailed message.
+
+#### 🐛 Issues
+
+- Fixed a runtime warning on iOS 27 related to the orientation API.
+- Fixed casting DRM-protected OptiView Live Streaming (THEOlive) channels to Chromecast CAF receiver from iOS.
+- Fixed an issue where one failure could send two or more fatal `ErrorEvent`s. Only the first fatal error for a source is sent now. A network error the player recovers from no longer sets `THEOplayer.error`.
+- Fixed an issue where the `ErrorEvent` for a source that failed to load had no `errorObject`. It now has one, with Apple's error as its `cause`.
+- Fixed an issue where a failed FairPlay key request was reported as error 7000 without the reason. The error now includes Apple's or the DRM integration's error in its message, and keeps that error as its `cause`.
+- Fixed an issue where the FairPlay certificate and license requests made by the SDK accepted a response with HTTP status 400 or higher. The request now fails right away, and the `ContentProtectionError` includes the URL, HTTP status and response.
+- Fixed an issue where a playback error on the Chromecast receiver was reported with the unclear message `CC died` and without an error object. It is now reported as error 5001 (`MEDIA_LOAD_ERROR`) with a message that describes the problem, and the Cast details (idle reason and media session ID) are available in the error object's `cause`.
+
+#### 👎 Deprecations
+
+- `ErrorEvent.error` is deprecated, use `ErrorEvent.errorObject.message` instead.
+- `ErrorEvent.errorObject` will become non-optional in a future major release.
+- `THEOplayer.error` is deprecated, use `THEOplayer.errorObject?.message` instead.
+
+### Chromecast CAF
+
+#### ⚡ Improvements
+
+- Improved CMCD reporting for Dolby Atmos.
+
+### Roku
+
+#### ✨ Features
+
+- The MediaKind connector's session beacon error event now includes all available response details.
+- Added support for program end tags for MediaKind streams, filling in previously missing program information for the previous program.
+
+#### ⚡ Improvements
+
+- Improved CMCD reporting for Dolby Atmos.
+
 ## 🚀 11.13.0 (2026/10/07)
 
 ### Web
 
 #### ✨ Features
 
-- Added `ABRConfiguration.preferredMaximumResolution`, which allows to dynamically cap the resolution selected for Millicast streams.
-- Added support for using `SourceAbrConfiguration.restrictToPlayerSize` with Millicast streams.
+- Added `ABRConfiguration.preferredMaximumResolution`, which allows to dynamically cap the resolution selected for OptiView Real-time streams.
+- Added support for using `SourceAbrConfiguration.restrictToPlayerSize` with OptiView Real-time streams.
 
 #### ⚡ Improvements
 
 - The player now always wraps its media elements in container elements inside the player element, instead of only for OptiView Ads sources.
   - The `theo-ads-sgai-container`, `theo-ads-sgai-content-player` and `theo-ads-sgai-ad-player` classes are still applied while an OptiView Ads source is active.
   - When using `ChromelessPlayer`, CSS or scripts that expect the `<video>` element to be a direct child of the player element (for example `.my-player > video`) should use a descendant selector instead.
-- Added the `theoLive.discoveryUrl` and `theoLive.discoveryUrls` player configuration options to the public API, to override the discovery URLs that are tried before the built-in THEOlive discovery URLs. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
-- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `theoLive.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- Added the `theoLive.discoveryUrl` and `theoLive.discoveryUrls` player configuration options to the public API, to override the discovery URLs that are tried before the built-in OptiView Live Streaming discovery URLs. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `theoLive.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
 - `THEOplayer.features` now lists the features that are actually loaded, in a fixed order.
 
 #### 🐛 Issues
@@ -48,7 +157,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ⚡ Improvements
 
-- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOLiveConfig.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/android/theolive/discovery-urls/) for more information.
+- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOLiveConfig.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/theolive/discovery-urls/) for more information.
 - The CMCD video codec now reports the codec that is actually decoded when a Dolby Vision stream falls back to its base layer.
 - The Widevine service certificate provided by OptiView Live channel discovery will now be used when starting playback, saving the certificate request. An empty certificate from discovery no longer overrides one configured on the source.
 - When provided, `KeySystemConfiguration.certificate` will now be applied as the Widevine service certificate for DRM playback.
@@ -66,13 +175,13 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ⚡ Improvements
 
-- OptiView Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOliveConfiguration.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/ios/theolive/discovery-urls/) for more information.
-- OptiView Streaming (THEOlive) sources now use the FairPlay certificate returned by the discovery response instead of downloading it from the certificate URL. Added `certificate` to `KeySystemConfiguration` and `FairPlayDRMConfiguration` to provide the FairPlay certificate directly; when it is missing or empty, the certificate URL is still used. A non-empty certificate is used as-is, also with a custom `ContentProtectionIntegration`: its `onCertificateRequest` and `onCertificateResponse` handlers are then not called. A certificate from the discovery response takes precedence over one configured on the source.
+- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOliveConfiguration.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/ios/theolive/discovery-urls/) for more information.
+- OptiView Live Streaming (THEOlive) sources now use the FairPlay certificate returned by the discovery response instead of downloading it from the certificate URL. Added `certificate` to `KeySystemConfiguration` and `FairPlayDRMConfiguration` to provide the FairPlay certificate directly; when it is missing or empty, the certificate URL is still used. A non-empty certificate is used as-is, also with a custom `ContentProtectionIntegration`: its `onCertificateRequest` and `onCertificateResponse` handlers are then not called. A certificate from the discovery response takes precedence over one configured on the source.
 
 #### 🐛 Issues
 
 - Fixed an issue where the OptiView Live HESP fallback cooldown was not started, resulting in the player recovering on HESP instead of HLS.
-- Fixed an issue in OptiView Streaming (THEOlive) where HLS playback would stay stalled, instead of falling back to another endpoint after 15 seconds without progress.
+- Fixed an issue in OptiView Live Streaming (THEOlive) where HLS playback would stay stalled, instead of falling back to another endpoint after 15 seconds without progress.
 - Fixed an issue where setting a new HLS source containing an IMA preroll, while in PiP presentation mode, would close PiP.
 - Fixed an issue where the source-level CMCD configuration was forwarded to the Chromecast receiver under a key the THEOplayer receivers do not recognise, so casting never reported CMCD for the source.
 
@@ -88,7 +197,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 - Added the x-tv3-user-engagement-data header to all MediaKind client beacons, including Base64-encoded session identifiers and the current playing, paused, or buffering state.
 - Added program boundary events for MediaKind streams.
-- Added support for Castlabs DRMtoday Widevine configuration (merchant/userId/sessionId), including on THEOlive sources.
+- Added support for Castlabs DRMtoday Widevine configuration (merchant/userId/sessionId), including on OptiView Live sources.
 
 #### 🐛 Issues
 
@@ -110,7 +219,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for restricting Millicast playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
+- Added support for restricting OptiView Real-time Streaming playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
 
 #### ⚡ Improvements
 
@@ -125,7 +234,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - Fixed an issue where the `textTrackStyle` margins were ignored for CEA-608 captions.
 - Fixed an issue where an endpoint in an OptiView Live stream that fails the player's license check could prevent the player from falling back to a different endpoint.
 - Fixed `player.autoplay = true` when the page is in the background. The player now waits until the page is brought to the foreground before attempting autoplay.
-- Fixed an issue where a "Cannot read properties from undefined" error was thrown when attempting to play an OptiView Real-time (Millicast) stream when this feature isn't enabled in the player's license. The player now correctly reports a `LICENSE_INVALID_SOURCE` error instead.
+- Fixed an issue where a "Cannot read properties from undefined" error was thrown when attempting to play an OptiView Real-time stream when this feature isn't enabled in the player's license. The player now correctly reports a `LICENSE_INVALID_SOURCE` error instead.
 - Fixed an issue where Dolby Vision (HEVC) content did not play on Edge for Windows when `preferredKeySystems` was omitted.
 - Fixed an issue where the player would fire an early `playing` event with `PlayingEvent.currentTime = Infinity` when seeking to live on a paused HLS livestream. The `playing` event now fires after the seek completes, with the resolved `currentTime`.
 - Fixed an issue where an OptiView Ads double box ad break would get stuck when closely followed by an L-shape ad break.
@@ -138,7 +247,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for restricting Millicast playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
+- Added support for restricting OptiView Real-time Streaming playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
 
 #### 🐛 Issues
 
@@ -150,7 +259,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for restricting Millicast playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
+- Added support for restricting OptiView Real-time Streaming playback to specific accounts through `millicast://<streamAccountId>` source domain entries and implicitly allowed OptiView delivery domains.
 
 #### 🐛 Issues
 
@@ -189,7 +298,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 #### 🐛 Issues
 
 - Fixed an issue where playback would fail when the selected DRM key system (e.g. Widevine) failed after selection, instead of falling back to an alternative configured key system (e.g. PlayReady).
-- Fixed an issue where latency management stayed disabled for low-latency HLS streams without an explicit `latencyConfiguration` on the source, such as the LL-HLS playback of a THEOlive channel, causing playback to never catch up with the live edge.
+- Fixed an issue where latency management stayed disabled for low-latency HLS streams without an explicit `latencyConfiguration` on the source, such as the LL-HLS playback of an OptiView Live channel, causing playback to never catch up with the live edge.
 - Fixed an issue where playback of a low-latency HLS stream could fail with an 'attempted to download an incomplete segment' error.
 - Fixed an issue where the player would keep targeting the primary channel's latency after switching to the backup channel.
 - Fixed an issue where an HLS stream with a Dolby Vision enhancement layer failed to play on webOS devices without Dolby Vision support, instead of falling back to its base layer.
@@ -206,13 +315,13 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 #### 🐛 Issues
 
 - Fixed a stray `pause` event being dispatched when switching between two back-to-back OptiView ad breaks.
-- Fixed unbounded memory growth during THEOlive playback when the network delivers data faster than the player consumes it, which could cause `OutOfMemoryError` crashes.
+- Fixed unbounded memory growth during OptiView Live Streaming playback when the network delivers data faster than the player consumes it, which could cause `OutOfMemoryError` crashes.
 - Fixed a NullPointerException that could occur when Google IMA delivered a null AdMediaInfo to the ad player.
 - Fixed an issue where the player would keep targeting the primary channel's latency after switching to the backup channel.
 - Fixed an issue where Google DAI live streams could fail to start with a `MANIFEST_LOAD_ERROR` after a 15 second timeout, caused by a bug in Google IMA SDK 3.39.0. The Google IMA SDK dependency was updated to 3.40.0, which requires `minSdk` 24 or higher for applications that use the Google IMA or Google DAI integration.
 - The `MANIFEST_LOAD_ERROR` that is dispatched when a Google DAI stream request fails now contains the original Google IMA `AdError` as its cause.
 - Report fatal player errors through CMCD when they occur before the first media request.
-- Fixed missing CMCD headers and playback state reporting on THEOlive HLS segment requests since 11.8.0.
+- Fixed missing CMCD headers and playback state reporting on HLS segment requests for OptiView Live streams since 11.8.0.
 
 ### iOS
 
@@ -423,7 +532,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 - Content protection errors now name the selected key system, and a clear error is reported when none of the configured key systems are supported by the device instead of failing with an unrelated Widevine error.
 - The player now prefers Dolby Vision and HEVC variants over other codecs by default on streams with a mixed-codec ladder, when the platform supports them. Set `SourceAbrConfiguration.preferredVideoCodecs` to an empty list to disable this preference.
-- Playback errors during THEOlive playback now report their own error code instead of `THEO_LIVE_UNKNOWN_ERROR`, so content protection failures can be told apart from stalls and manifest errors.
+- Playback errors during OptiView Live Streaming playback now report their own error code instead of `THEO_LIVE_UNKNOWN_ERROR`, so content protection failures can be told apart from stalls and manifest errors.
 - Added the `CONTENT_PROTECTION_PROVISIONING_ERROR` and `CONTENT_PROTECTION_DEVICE_REVOKED` error codes. A Widevine provisioning failure and a revoked device are now reported with their own code instead of the generic `CONTENT_PROTECTION_ERROR`.
 - Added the `MEDIA_INTERNAL_ERROR` error code. An unexpected internal failure is now reported with its own code instead of `MEDIA_DECODE_ERROR`.
 
@@ -441,7 +550,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### 💥 Breaking Changes
 
-- Removed the deprecated Service Worker-based playback pipeline for HESP sources on iOS Safari. HESP playback on iOS Safari now requires the `ManagedMediaSource` API, which is available on iOS 17.1 and higher. On older iOS versions, OptiView Streaming (THEOlive) sources fall back to their HLS endpoint instead. The `theoplayer.sw.js` file is still shipped as an intentionally empty file so that existing build pipelines keep working, and it is safe to stop serving it.
+- Removed the deprecated Service Worker-based playback pipeline for HESP sources on iOS Safari. HESP playback on iOS Safari now requires the `ManagedMediaSource` API, which is available on iOS 17.1 and higher. On older iOS versions, OptiView Live Streaming (THEOlive) sources fall back to their HLS endpoint instead. The `theoplayer.sw.js` file is still shipped as an intentionally empty file so that existing build pipelines keep working, and it is safe to stop serving it.
 
 #### ✨ Features
 
@@ -460,9 +569,9 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - Fixed several CMCD reporting issues: VOD sessions now correctly report stream type as `st=v`, the startup flag (`su`) is no longer incorrectly reported as `false`, and bitrate fields are no longer reported when no valid value is available.
 - Fixed an issue where requesting picture-in-picture could hang indefinitely on iOS/iPadOS Safari 26+ when another player was already in picture-in-picture, causing the player state to become incorrect.
 - Fixed an issue where the `adTagParameters` from the ad source configuration were not reported in the CMCD interstitial events for OptiView Ads ad breaks.
-- Fixed an issue where the THEOads DOUBLE/L-shape layout animation would still activate even when both the backdrop and the ad failed to load during preloading (e.g. due to a DNS blocker). The player now correctly skips the layout transition when a preload error has already been reported.
+- Fixed an issue where the OptiView Ads DOUBLE/L-shape layout animation would still activate even when both the backdrop and the ad failed to load during preloading (e.g. due to a DNS blocker). The player now correctly skips the layout transition when a preload error has already been reported.
 - Fixed an issue where the player did not always correctly switch back to the content after playing a Google IMA ad on iOS Safari with `allowNativeFullscreen` enabled.
-- Fixed an issue for OptiView Streaming (THEOlive) where HESP endpoints would be attempted on platforms that cannot play HESP, such as iOS Safari without `ManagedMediaSource` support, resulting in a delayed fallback to HLS.
+- Fixed an issue for OptiView Live Streaming (THEOlive) where HESP endpoints would be attempted on platforms that cannot play HESP, such as iOS Safari without `ManagedMediaSource` support, resulting in a delayed fallback to HLS.
 - Fixed an issue where captions could be rendered twice while in native picture-in-picture on Chromium-based browsers.
 - Fixed an issue where playback of a DRM-protected HLS stream with a mixed-codec ladder (e.g. HEVC and AVC) failed on platforms that support only some of those codecs for encrypted playback.
 - Fixed an issue where CEA-608 closed captions were not shown when playing an HLS stream with HEVC video.
@@ -697,7 +806,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added `Abr.preferredMaximumResolution` to cap the maximum video resolution selected at runtime. Also `player.abr.abrStrategy` is now used for  Millicast playback when `MillicastSource.connectOptions` is not set. 
+- Added `Abr.preferredMaximumResolution` to cap the maximum video resolution selected at runtime. Also `player.abr.abrStrategy` is now used for OptiView Real-time Streaming playback when `MillicastSource.connectOptions` is not set. 
 - Added `hlsDateRange` property to `THEOplayerConfig` to enable HLS date range parsing at the player level.
 
 #### ⚡ Improvements
@@ -721,7 +830,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 #### ✨ Features
 
 - Added support for OptiView Discovery V3 distributions.
-- Introduce configuring ABR strategy and maximum resolution for Millicast sources.
+- Introduce configuring ABR strategy and maximum resolution for OptiView Real-time sources.
 
 #### 🐛 Issues
 
@@ -793,8 +902,8 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ⚡ Improvements
 
-- Improved OptiView Streaming (THEOlive) endpoint fallback selection logic.
-- Improved fallback recovery speed for OptiView Streaming (THEOlive) on iOS 26.
+- Improved OptiView Live Streaming (THEOlive) endpoint fallback selection logic.
+- Improved fallback recovery speed for OptiView Live Streaming (THEOlive) on iOS 26.
 
 #### 🐛 Issues
 
@@ -826,19 +935,19 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
-- Added support for DRM-protected OptiView Live Streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
+- Added support for OptiView Live streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
+- Added support for DRM-protected OptiView Live streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
 
 #### 🐛 Issues
 
 - Fixed an issue where date range cues were not correctly created when playing an HLS media playlist (without multi-variant playlist) on iOS Safari.
-- Fixed an issue where the player would still switch to an ad layout when seeking into the ad while the ad is not available for an OptiView Ads Stream.
+- Fixed an issue where the player would still switch to an ad layout when seeking into the ad while the ad is not available for an OptiView Ads stream.
 
 ### Android
 
 #### ⚡ Improvements
 
-- Modify the Millicast SDK dependency in the Millicast Integration to start accepting patch version updates (2.5.x)
+- Modify the Millicast SDK dependency in the OptiView Real-time Streaming integration to start accepting patch version updates (2.5.x)
 
 #### 🐛 Issues
 
@@ -848,7 +957,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ⚡ Improvements
 
-- Modify the Millicast SDK dependency in THEOplayerMillicastIntegration to allow patch version updates (2.5.x).
+- Modify the Millicast SDK dependency in `THEOplayerMillicastIntegration` to allow patch version updates (2.5.x).
 
 ### Roku
 
@@ -925,7 +1034,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added in support for DRM on THEOlive streams. Also added new configuration options for content protection.
+- Added in support for DRM on OptiView Live streams. Also added new configuration options for content protection.
 
 #### 🐛 Issues
 
@@ -993,21 +1102,21 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
 #### 💥 Breaking Changes
 
-- Removed `preloadPublications` in THEOlive API.
+- Removed `player.theoLive.preloadPublications`.
 
 ### Android
 
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
-- Removed `preloadChannels` in THEOlive API.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
+- Removed `TheoLive.preloadChannels`.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.
 - Removed `TheoAdsEventTypes.THEOADS_ERROR`, use `AdsEventTypes.AD_ERROR` instead.
@@ -1044,7 +1153,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 - Removed deprecated `MediaTrack.activeQualityBandwidth` property in favor of `MediaTrack.activeQuality.bandwidth`.
 - Removed deprecated `SourceDescription.enableStreamingDVR` property.
 - Errors in `CachingTaskErrorStateChangeEvent` now dispatch cache related error codes instead of `NETWORK_ERROR` code. For more details, check the `cause` property of the error.
-- Removed `preloadPublications` in THEOlive API.
+- Removed `THEOliveAPI.preloadPublications`.
 
 #### ✨ Features
 
