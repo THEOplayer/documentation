@@ -52,7 +52,7 @@ The `uri` can also be a list of URLs targeted per device type. See [Static asset
 ### Live
 
 - Schedule the break ahead of time with a UTC `start`, prepare it without a start and [punch](../concepts/breaks.mdx#break-punching) it, or let [break detection](../concepts/marker-detection.mdx) create it from the ad markers in your stream — with a [template](../concepts/templates.mdx) that holds the static assets.
-- The SDK receives the break shortly before it starts, within the channel's [ad prefetch window](../concepts/channels.mdx#ad-prefetch-window), and prefetches the creative so the ad starts without delay.
+- The SDK receives the break shortly before it starts, within the channel's [ad prefetch window](../concepts/channels.mdx#ad-prefetch-window), and loads the creative ahead of time so the ad starts without delay.
 - Static assets always play server-guided. On a channel that steers some devices to SSAI, those devices still play the static [event-triggered breaks](../concepts/breaks.mdx#event-based-triggers) — pre-roll, pause, and post-roll — but not the breaks on the timeline.
 
 ### VOD

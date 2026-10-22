@@ -25,7 +25,7 @@ The [timebase of the channel](./channels.mdx#timebase) defines how a break is sc
 
 - **`wallclock`** — the break's `start` is a UTC ISO 8601 timestamp (for example `"2026-07-16T12:15:00.000Z"`). Players match it against the wallclock timeline carried by the stream. `start` is optional on wallclock channels: omitting it creates a [cued break](#cued-breaks).
 - **`pts`** — the break's `start` is a non-negative number: a presentation timestamp on the encoder's timeline. `start` is required on PTS channels.
-- **`mediatime`** — the break's `start` is a non-negative number of seconds from the start of the asset (for example `600`). `start` is required on mediatime channels, which are always [VOD](../workflows/vod.mdx) channels.
+- **`mediatime`** — the break's `start` is a non-negative number of seconds from the start of the asset (for example `600`). `start` is required on `mediatime` channels, which are always [VOD](../workflows/vod.mdx) channels.
 
 `duration` is always required and is expressed in seconds. It is the **maximum** duration of the break.
 
