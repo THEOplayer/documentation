@@ -6,11 +6,13 @@ description: How OptiView Ads monetizes live and VOD content with static assets,
 
 # Ad workflows
 
-OptiView Ads is a **hybrid ad insertion platform**: the same channel and the same breaks can be delivered server-guided (SGAI) or server-side (SSAI), for live streams and for video-on-demand (VOD) assets. This page explains the three choices that together make up your ad workflow:
+OptiView Ads is a **hybrid ad insertion platform**: the same channel and the same breaks can be delivered server-guided (SGAI) or server-side (SSAI), for live streams and for video-on-demand (VOD) assets. Your ad workflow comes down to three choices:
 
-1. **Use case** — are you monetizing a [live stream](./live.mdx) or a [VOD asset](./vod.mdx)?
-2. **Ad source** — where do the ads come from: [static assets](./static-assets.mdx) from your CDN, [VAST](./vast.mdx) tags from your ad server, or [Google Ad Manager](./google-ad-manager.mdx)?
+1. **Use case** — are you monetizing a [live stream](./live/index.mdx) or a [VOD asset](./vod/index.mdx)?
+2. **Ad source** — where do the ads come from: static assets from your CDN, your ad server through VAST tags, or Google Ad Manager?
 3. **Delivery mode** — does the player insert the ads (SGAI), or are they stitched into the stream (SSAI)?
+
+Pick your use case and ad source in the [table below](#supported-workflows): each combination has its own page with everything you need to set it up.
 
 ## Hybrid ad insertion: SGAI and SSAI
 
@@ -23,13 +25,13 @@ Both modes share the same model: you create a [channel](../concepts/channels.mdx
 
 A channel can **steer the delivery mode per device**: for example SGAI on web and mobile, and SSAI on a specific connected TV platform. The Break Manifest then carries the delivery rules, and the SDK picks the mode for the device it runs on when the session starts. In SSAI mode, the SDK still plays the [event-triggered breaks](../concepts/breaks.mdx#event-based-triggers) — pre-roll, pause, and post-roll — on the device, because they depend on what the individual viewer does.
 
-SSAI is available with [Google Ad Manager](./google-ad-manager.mdx), through Google DAI. Static assets and VAST tags are always played server-guided.
+SSAI is available with Google Ad Manager, through Google DAI. Static assets and VAST tags are always played server-guided.
 
 ## Live and VOD
 
 Live and VOD are different use cases, and a channel is created for one of them. The difference is mainly in how breaks are placed on the timeline and how players receive them:
 
-|                     | [Live](./live.mdx)                                                                                                               | [VOD](./vod.mdx)                                                                                               |
+|                     | [Live](./live/index.mdx)                                                                                                         | [VOD](./vod/index.mdx)                                                                                         |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | Channel             | `streamType: "live"` (the default)                                                                                               | `streamType: "vod"`                                                                                            |
 | Break start         | A moment on the live timeline: a UTC timestamp (`wallclock`) or a presentation timestamp (`pts`)                                 | A position in the asset: seconds from the start (`mediatime`), or a UTC timestamp (`wallclock`)                |
@@ -41,16 +43,16 @@ Live and VOD are different use cases, and a channel is created for one of them. 
 
 Every ad source works for both live and VOD. One channel, and even one break, can mix ad sources.
 
-| Ad source                                    | What the break carries                                | Live        | VOD         | What your app needs                                                        |
-| -------------------------------------------- | ----------------------------------------------------- | ----------- | ----------- | -------------------------------------------------------------------------- |
-| [Static assets](./static-assets.mdx)         | Direct URLs to video or image creatives on your CDN.  | SGAI        | SGAI        | Nothing beyond the SDK integration.                                        |
-| [VAST](./vast.mdx)                           | A VAST tag URL on your ad server, or an advertiser's. | SGAI        | SGAI        | On Web, Google's client-side IMA SDK (`ima3.js`).                          |
-| [Google Ad Manager](./google-ad-manager.mdx) | An ad pod decisioned by Google Ad Manager 360.        | SGAI + SSAI | SGAI + SSAI | On Web, Google's IMA DAI SDK (`ima3_dai.js`). Google Ad Manager 360 setup. |
+| Ad source             | What the break carries                                | Live                                        | VOD                                        | What your app needs                                                        |
+| --------------------- | ----------------------------------------------------- | ------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------- |
+| Static assets         | Direct URLs to video or image creatives on your CDN.  | [SGAI](./live/static-assets.mdx)            | [SGAI](./vod/static-assets.mdx)            | Nothing beyond the SDK integration.                                        |
+| Your ad server (VAST) | A VAST tag URL on your ad server, or an advertiser's. | [SGAI](./live/vast.mdx)                     | [SGAI](./vod/vast.mdx)                     | On Web, Google's client-side IMA SDK (`ima3.js`).                          |
+| Google Ad Manager     | An ad pod decisioned by Google Ad Manager 360.        | [SGAI + SSAI](./live/google-ad-manager.mdx) | [SGAI + SSAI](./vod/google-ad-manager.mdx) | On Web, Google's IMA DAI SDK (`ima3_dai.js`). Google Ad Manager 360 setup. |
 
 ### Which ad source should I use?
 
 - **Static assets** when you know which creative to show: direct-sold campaigns, sponsorships, promos, branded overlays. No ad server is involved.
-- **VAST** when your own ad server, or a partner's, decides which ad plays. Any VAST-compliant ad server works, Google Ad Manager tags included.
+- **Your ad server (VAST)** when your own ad server, or a partner's, decides which ad plays. Any VAST-compliant ad server works, Google Ad Manager tags included.
 - **Google Ad Manager** when you sell your inventory through Google Ad Manager 360 and want Google to fill complete ad pods, or need server-side insertion through Google DAI.
 
 ## Next steps

@@ -24,7 +24,22 @@ const sidebars: SidebarsConfig = {
         icon: '🔀',
       },
       link: { type: 'doc', id: 'workflows/index' },
-      items: ['workflows/live', 'workflows/vod', 'workflows/static-assets', 'workflows/vast', 'workflows/google-ad-manager'],
+      items: [
+        {
+          type: 'category',
+          label: 'Live',
+          description: 'Monetize live streams and live events.',
+          link: { type: 'doc', id: 'workflows/live/index' },
+          items: ['workflows/live/static-assets', 'workflows/live/vast', 'workflows/live/google-ad-manager'],
+        },
+        {
+          type: 'category',
+          label: 'VOD',
+          description: 'Monetize on-demand assets.',
+          link: { type: 'doc', id: 'workflows/vod/index' },
+          items: ['workflows/vod/static-assets', 'workflows/vod/vast', 'workflows/vod/google-ad-manager'],
+        },
+      ],
     },
     {
       type: 'category',

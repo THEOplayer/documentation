@@ -6,9 +6,9 @@ sidebar_position: 3
 
 When an ad server decides which ad fills a break, you can pass key-value parameters with the ad request to personalize the ads — for example the content genre, the placement type, or custom targeting values. In OptiView Ads, these parameters are called **`assetParameters`**. How they reach the ad server depends on the [ad workflow](../workflows/index.mdx):
 
-- **[VAST](../workflows/vast.mdx):** the SDK appends them to the VAST tag URL as URL-encoded query parameters.
-- **[Google Ad Manager](../workflows/google-ad-manager.mdx):** they are sent to Google as [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`).
-- **[Static assets](../workflows/static-assets.mdx)** involve no ad request, so they do not use `assetParameters`.
+- **[VAST](../workflows/live/vast.mdx):** the SDK appends them to the VAST tag URL as URL-encoded query parameters.
+- **[Google Ad Manager](../workflows/live/google-ad-manager.mdx):** they are sent to Google as [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`).
+- **[Static assets](../workflows/live/static-assets.mdx)** involve no ad request, so they do not use `assetParameters`.
 
 You can set `assetParameters` in two places: on the break in the **backend**, and in the **OptiView Ads SDK** on the client.
 
@@ -153,8 +153,8 @@ ads.updateAssetParameters({ cust_params: 'sport=basketball' });
 
 | Resource                                                             | Description                                     |
 | -------------------------------------------------------------------- | ----------------------------------------------- |
-| [VAST](../workflows/vast.mdx)                                        | Playing VAST tags with the SDK.                 |
-| [Google Ad Manager](../workflows/google-ad-manager.mdx)              | Playing Google pods with the SDK.               |
+| [VAST](../workflows/live/vast.mdx)                                   | Playing VAST tags with the SDK.                 |
+| [Google Ad Manager](../workflows/live/google-ad-manager.mdx)         | Playing Google pods with the SDK.               |
 | [Google Pod Serving](../integrations/google/pod-serving.mdx)         | Required Google parameters and pod decisioning. |
 | [Breaks](../concepts/breaks.mdx)                                     | Scheduling breaks with VAST and vendor assets.  |
 | [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) | Integrating the SDK with your player.           |

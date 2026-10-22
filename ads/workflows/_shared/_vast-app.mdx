@@ -1,0 +1,20 @@
+The SDK requests and plays VAST tags on the device, through Google's client-side IMA SDK. IMA processes the VAST response — it follows wrappers, picks a media file, and fires the tracking URLs. IMA works with any VAST-compliant ad server: you do not need a Google Ad Manager account, although a Google Ad Manager VAST tag works too.
+
+| Platform     | Requirement                                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Web          | Load Google's client-side IMA SDK on the page, before your application script (see below).                                                                                                                          |
+| Android      | Nothing extra: the SDK runtime includes the Google IMA SDK.                                                                                                                                                         |
+| iOS and tvOS | Nothing extra: the runtime pod includes the Google IMA SDK. With Swift Package Manager, add the Google IMA packages as described in [iOS](../../player-integration/optiview-ads-sdk/ios.mdx#swift-package-manager). |
+| React Native | Nothing extra: the native SDKs include the Google IMA SDK.                                                                                                                                                          |
+
+On Web, add the IMA loader to your page:
+
+```html
+<script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+```
+
+Without it, the SDK cannot play VAST breaks: it reports `DA-VAST-IMA-SDK-MISSING` and returns to your content. If your channel also has Google Ad Manager breaks, load `ima3_dai.js` as well; the two scripts work side by side.
+
+:::caution[Web: include an MP4 media file]
+The IMA SDK for HTML5 plays the ad through the browser's own video element, which cannot play HLS outside Safari. Make sure your VAST responses include a progressive MP4 media file, or the ad fails to play in Chrome, Edge, and Firefox.
+:::

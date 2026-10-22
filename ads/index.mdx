@@ -21,13 +21,10 @@ By logically redistributing responsibilities in the advertisement workflow, Opti
 
 OptiView Ads models each live stream or VOD asset as a **channel**. A channel schedules **breaks**, or detects them from the ad markers in the stream or asset on its **origins**, and can use reusable **templates** for consistent ad experiences. It generates a **Break Manifest** for the OptiView Ads SDK to read and render.
 
-| Workflow                                               | What it is for                                                                                 |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| [Live](./workflows/live.mdx)                           | Linear channels and live events: breaks on the live timeline, scheduled, punched, or detected. |
-| [VOD](./workflows/vod.mdx)                             | On-demand assets: pre-roll, mid-rolls at positions in the asset, post-roll, and pause ads.     |
-| [Static assets](./workflows/static-assets.mdx)         | Play creatives from your own CDN, without an ad server.                                        |
-| [VAST](./workflows/vast.mdx)                           | Let your ad server, or a partner's, decide the ads through VAST tags.                          |
-| [Google Ad Manager](./workflows/google-ad-manager.mdx) | Let Google Ad Manager 360 fill your breaks, server-guided (Pod Serving) or server-side (DAI).  |
+| Use case                           | What it is for                                                                                 | Ad sources                                                                                                                                                           |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Live](./workflows/live/index.mdx) | Linear channels and live events: breaks on the live timeline, scheduled, punched, or detected. | [Static assets](./workflows/live/static-assets.mdx), [Your ad server (VAST)](./workflows/live/vast.mdx), [Google Ad Manager](./workflows/live/google-ad-manager.mdx) |
+| [VOD](./workflows/vod/index.mdx)   | On-demand assets: pre-roll, mid-rolls at positions in the asset, post-roll, and pause ads.     | [Static assets](./workflows/vod/static-assets.mdx), [Your ad server (VAST)](./workflows/vod/vast.mdx), [Google Ad Manager](./workflows/vod/google-ad-manager.mdx)    |
 
 <ThemedImage
   alt="OptiView Ads architecture"

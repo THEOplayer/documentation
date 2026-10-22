@@ -1,0 +1,110 @@
+---
+sidebar_position: 3
+sidebar_label: Google Ad Manager
+description: Let Google Ad Manager 360 fill the breaks of on-demand assets, server-guided or server-side.
+---
+
+# Google Ad Manager on VOD
+
+import AppNeeds from '../_shared/_gam-app.mdx';
+import SsaiSession from '../_shared/_gam-ssai-session.mdx';
+import TurnOff from '../_shared/_gam-turn-off.mdx';
+import Targeting from '../_shared/_gam-targeting.mdx';
+import Troubleshooting from '../_shared/_gam-troubleshooting.mdx';
+
+With Google Ad Manager 360, Google decides which ads fill the breaks of your on-demand assets. Google assembles the ads for each break into a pod, and the pod plays when the viewer reaches the break. Use this workflow when you sell your VOD inventory through Google Ad Manager 360, and to reach platforms that need server-side ad insertion.
+
+|                | Google Ad Manager on VOD                                                   |
+| -------------- | -------------------------------------------------------------------------- |
+| Delivery mode  | Server-guided (SGAI), server-side (SSAI), or both                          |
+| Ad decisioning | Google Ad Manager, per viewer session                                      |
+| Break creation | Scheduled at positions in the asset, or detected from the ad markers in it |
+| Your app needs | The OptiView Ads SDK; on Web also Google's IMA DAI SDK                     |
+
+Contact your Dolby OptiView account team to enable Google Ad Manager on your VOD channels.
+
+## Choose a delivery mode
+
+| Delivery mode | How it works                                                                                                       | Use it for                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| Server-guided | Google decisions the pods; the SDK inserts them at the break positions of your untouched asset.                    | Web, mobile, and most connected TV apps. Required for the double box, L-shape, and overlay layouts. |
+| Server-side   | Google stitches the ads for the asset's breaks into the on-demand stream, and the player plays the stitched asset. | Platforms where a client-side SDK is not an option, such as Roku and older connected TV devices.    |
+
+One channel can serve both: the channel steers the [delivery mode per device](../index.mdx#hybrid-ad-insertion-sgai-and-ssai), and the SDK picks it up from the Break Manifest.
+
+## Before you start
+
+- The [Google Ad Manager prerequisites](../../integrations/google/index.mdx) — network code and service account — are in place for your organization.
+- A [VOD channel](./index.mdx#set-up-a-vod-channel), connected to Google. The examples use the `mediatime` timebase.
+- The OptiView Ads SDK in your app: [Web](../../player-integration/optiview-ads-sdk/web.mdx), [Android](../../player-integration/optiview-ads-sdk/android.mdx), [iOS](../../player-integration/optiview-ads-sdk/ios.mdx), or [React Native](../../player-integration/optiview-ads-sdk/react-native.mdx).
+
+## Schedule a break
+
+A Google break carries a [vendor asset](../../concepts/breaks.mdx#vendor-assets) with `vendor` set to `gam` and `vendorParameters.type` set to `pod`. Google performs the decisioning, so the asset needs no URI. On a `mediatime` channel, `start` is the position in the asset, in seconds:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "start": 600,
+    "duration": 60,
+    "controls": { "snapback": true },
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "vendor",
+          "vendor": "gam",
+          "vendorParameters": { "type": "pod" },
+          "assetParameters": {
+            "description_url": "https://www.example.com/movies/the-big-match.html",
+            "plcmt": "1"
+          }
+        }
+      ]
+    }
+  }'
+```
+
+### Detect the breaks
+
+Instead of scheduling every break, add the asset as an [origin](../../concepts/origins.mdx) and configure a [marker rule](../../concepts/marker-detection.mdx) whose [template](../../concepts/templates.mdx) holds the Google vendor asset. Every matching ad marker in the asset becomes a break at its position.
+
+## How the break plays
+
+- **Server-guided:** the SDK fetches the channel's [Break Manifest](../../concepts/break-manifest.mdx) once when the session starts, and inserts Google's pods at the break positions as the viewer reaches them.
+- **Server-side:** Google stitches the ads into the asset, and the player plays the stitched stream.
+- Ads are decisioned per viewer session rather than per break moment, because every viewer watches from their own position: there is no audience-wide peak at a break start.
+- With `snapback`, a viewer who seeks past a break is taken back to the break first. See [Seeking and snapback](./index.mdx#seeking-and-snapback).
+
+## What your app needs
+
+<AppNeeds />
+
+### Server-side sessions
+
+<SsaiSession />
+
+### Turn Google off for a session
+
+<TurnOff />
+
+## Ad targeting parameters
+
+<Targeting />
+
+## Troubleshooting
+
+<Troubleshooting />
+
+## Related resources
+
+| Resource                                                             | Description                                                         |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [VOD](./index.mdx)                                                   | VOD channels: timebase, seeking, and delivery modes.                |
+| [Google Ad Manager](../../integrations/google/index.mdx)             | Organization-level prerequisites: network code and service account. |
+| [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx) | Passing ad tag parameters to Google.                                |
+| [Your ad server (VAST) on VOD](./vast.mdx)                           | Play VAST tags from your own ad server, without Google Ad Manager.  |
+| [Google Ad Manager on live](../live/google-ad-manager.mdx)           | The same workflow for live streams.                                 |

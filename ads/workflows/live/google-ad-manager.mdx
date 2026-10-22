@@ -1,0 +1,106 @@
+---
+sidebar_position: 3
+sidebar_label: Google Ad Manager
+description: Let Google Ad Manager 360 fill the breaks of a live stream, server-guided (Pod Serving) or server-side (DAI).
+---
+
+# Google Ad Manager on live
+
+import AppNeeds from '../_shared/_gam-app.mdx';
+import SsaiSession from '../_shared/_gam-ssai-session.mdx';
+import TurnOff from '../_shared/_gam-turn-off.mdx';
+import Targeting from '../_shared/_gam-targeting.mdx';
+import Troubleshooting from '../_shared/_gam-troubleshooting.mdx';
+
+With Google Ad Manager 360, Google decides which ads fill each break of your live stream. OptiView Ads announces the breaks to Google ahead of time, Google assembles the ads into a pod, and the pod plays when the break starts. Use this workflow when you sell your inventory through Google Ad Manager 360, and to reach platforms that need server-side ad insertion.
+
+|                | Google Ad Manager on live                                                                 |
+| -------------- | ----------------------------------------------------------------------------------------- |
+| Delivery mode  | Server-guided with Google Pod Serving (SGAI), server-side with Google DAI (SSAI), or both |
+| Ad decisioning | Google Ad Manager, ahead of the break                                                     |
+| Break creation | Scheduled, punched, or detected from the ad markers in your stream                        |
+| Your app needs | The OptiView Ads SDK; on Web also Google's IMA DAI SDK                                    |
+
+## Choose a delivery mode
+
+| Delivery mode                                                          | How it works                                                                                                                  | Use it for                                                                                          |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [Google Pod Serving](../../integrations/google/pod-serving.mdx) (SGAI) | Google decisions the pod; the SDK inserts it into your untouched stream, guided by the Break Manifest.                        | Web, mobile, and most connected TV apps. Required for the double box, L-shape, and overlay layouts. |
+| [Google DAI](../../integrations/google/dai.mdx) (SSAI)                 | The Dolby Ads Proxy inserts the break cues into the stream Google reads; Google stitches the ads into the stream for viewers. | Platforms where a client-side SDK is not an option, such as Roku and older connected TV devices.    |
+
+One channel can serve both: the channel steers the [delivery mode per device](../index.mdx#hybrid-ad-insertion-sgai-and-ssai), and the SDK picks it up from the Break Manifest.
+
+## Before you start
+
+- The [Google Ad Manager prerequisites](../../integrations/google/index.mdx) — network code and service account — are in place for your organization.
+- A [live channel](./index.mdx#set-up-a-live-channel), connected to Google: with the custom asset key of your Google live stream for [Google Pod Serving](../../integrations/google/pod-serving.mdx#configure-your-channel), and with the DAI asset key for [Google DAI](../../integrations/google/dai.mdx#configure-your-channel).
+- The OptiView Ads SDK in your app: [Web](../../player-integration/optiview-ads-sdk/web.mdx), [Android](../../player-integration/optiview-ads-sdk/android.mdx), [iOS](../../player-integration/optiview-ads-sdk/ios.mdx), or [React Native](../../player-integration/optiview-ads-sdk/react-native.mdx).
+
+## Schedule a break
+
+A Google break carries a [vendor asset](../../concepts/breaks.mdx#vendor-assets) with `vendor` set to `gam` and `vendorParameters.type` set to `pod`. Google performs the decisioning, so the asset needs no URI. The same break serves both delivery modes.
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "start": "2026-07-16T12:15:00.000Z",
+    "duration": 60,
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "vendor",
+          "vendor": "gam",
+          "vendorParameters": { "type": "pod" },
+          "assetParameters": {
+            "description_url": "https://www.example.com/sports/live.html",
+            "plcmt": "1"
+          }
+        }
+      ]
+    }
+  }'
+```
+
+- OptiView Ads announces the break to Google within the [look-forward time](../../integrations/google/index.mdx#look-forward-time) before its start, so Google can decision the pod in time.
+- Create the break at least the [decisioning margin](../../integrations/google/index.mdx#decisioning-margin) before its start, or it is rejected.
+- The break starts in the `PREPARING` state, and becomes `READY` once Google has decisioned it. See [How pod decisioning works](../../integrations/google/pod-serving.mdx#how-pod-decisioning-works).
+
+### Other ways to create the break
+
+- **Punch it live.** Create the break without a `start`. Google decisions it ahead of time, and the break waits in the `CUED` state until you [punch](../../concepts/breaks.mdx#break-punching) it.
+- **Detect it.** Add your stream as an [origin](../../concepts/origins.mdx) and configure a [marker rule](../../concepts/marker-detection.mdx) whose [template](../../concepts/templates.mdx) holds the Google vendor asset.
+
+## What your app needs
+
+<AppNeeds />
+
+### Server-side sessions
+
+<SsaiSession />
+
+### Turn Google off for a session
+
+<TurnOff />
+
+## Ad targeting parameters
+
+<Targeting />
+
+## Troubleshooting
+
+<Troubleshooting />
+
+## Related resources
+
+| Resource                                                                    | Description                                                           |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [Live](./index.mdx)                                                         | Live channels: timebase, break creation, and delivery modes.          |
+| [Google Ad Manager](../../integrations/google/index.mdx)                    | Organization-level prerequisites: network code and service account.   |
+| [Google Pod Serving integration](../../integrations/google/pod-serving.mdx) | Google Ad Manager setup, channel configuration, and pod breaks.       |
+| [Google DAI integration](../../integrations/google/dai.mdx)                 | Server-side insertion: proxy, live stream, and channel configuration. |
+| [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx)        | Passing ad tag parameters to Google.                                  |
+| [Google Ad Manager on VOD](../vod/google-ad-manager.mdx)                    | The same workflow for on-demand assets.                               |

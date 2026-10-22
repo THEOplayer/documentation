@@ -10,7 +10,7 @@ import RebrandingNotice from '../callouts/_rebranding_notice.md';
 
 <RebrandingNotice />
 
-OptiView Ads monetizes your live stream with Server-Guided Ad Insertion (SGAI): you schedule ad breaks on a channel, and the player renders them on top of your content — without touching your media stream. This guide takes you from an empty organization to seeing your first ad break play out on your device. It uses a live channel; to monetize on-demand assets, the same steps apply to a [VOD channel](/ads/workflows/vod) with breaks at positions in the asset.
+OptiView Ads monetizes your live stream with Server-Guided Ad Insertion (SGAI): you schedule ad breaks on a channel, and the player renders them on top of your content — without touching your media stream. This guide takes you from an empty organization to seeing your first ad break play out on your device. It uses a live channel; to monetize on-demand assets, the same steps apply to a [VOD channel](/ads/workflows/vod/) with breaks at positions in the asset.
 
 The examples use the US region (`https://us.ads.optiview.dolby.com` and `https://us.markers.optiview.dolby.com`). For the EU region, replace `us.` with `eu.`.
 
@@ -88,7 +88,7 @@ This integration plays every [ad workflow](/ads/workflows/): static assets from 
 
 ## 4. Schedule a break
 
-A [break](/ads/concepts/breaks) describes an ad opportunity: when it starts, how long it lasts, and which ad experience plays. The simplest break plays a single full-screen video ad from your CDN, as a [static asset](/ads/workflows/static-assets).
+A [break](/ads/concepts/breaks) describes an ad opportunity: when it starts, how long it lasts, and which ad experience plays. The simplest break plays a single full-screen video ad from your CDN, as a [static asset](/ads/workflows/live/static-assets).
 
 Dashboard: open the channel → **Breaks → Schedule now**. Or via the API, scheduling a 30-second break a few minutes from now:
 
@@ -115,7 +115,7 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/bre
 
 Replace `<start-time>` with an ISO 8601 UTC timestamp a few minutes in the future, for example `2026-01-01T12:00:00.000Z`, and the `uri` with the URL of an ad video on your CDN.
 
-To let an ad server choose the ad instead, use a [VAST](/ads/workflows/vast) asset or [Google Ad Manager](/ads/workflows/google-ad-manager).
+To let an ad server choose the ad instead, use a [VAST](/ads/workflows/live/vast) asset or [Google Ad Manager](/ads/workflows/live/google-ad-manager).
 
 Once you schedule breaks regularly, [templates](/ads/concepts/templates) let you preconfigure the break payload so scheduling becomes a one-liner.
 

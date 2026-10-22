@@ -1,0 +1,10 @@
+VAST describes a linear (video) ad, so VAST assets work in the layouts where an ad video plays:
+
+| Layout                      | VAST asset                                                                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `single`                    | Supported.                                                                                                                                             |
+| `double`, `lshape_ad`       | Supported. The VAST ad plays in the ad box, and the asset's `companion` fills the background.                                                          |
+| `lshape_content`, `overlay` | Not supported. The SDK does not play the asset and reports `DA-VAST-UNSUPPORTED-FORMAT`. Use a static asset instead.                                   |
+| Pause ad                    | Supported. The SDK reads the image from the VAST companion ads, or a progressive MP4 from the linear ad, and fires its impression tracking when shown. |
+
+VAST breaks play in server-guided (SGAI) sessions only.

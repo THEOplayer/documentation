@@ -19,13 +19,13 @@ The SDK never talks to your player directly. All player interaction goes through
 
 ## Ad workflows
 
-The SDK plays whatever the breaks on your channel carry, for [live](../../workflows/live.mdx) and [VOD](../../workflows/vod.mdx) channels alike, and picks the [delivery mode](../../workflows/index.mdx#hybrid-ad-insertion-sgai-and-ssai) — server-guided or server-side — that the channel sets for the device. Each [asset](../../concepts/breaks.mdx#asset-model) in a break uses one of three ad sources, and one channel can mix them:
+The SDK plays whatever the breaks on your channel carry, for [live](../../workflows/live/index.mdx) and [VOD](../../workflows/vod/index.mdx) channels alike, and picks the [delivery mode](../../workflows/index.mdx#hybrid-ad-insertion-sgai-and-ssai) — server-guided or server-side — that the channel sets for the device. Each [asset](../../concepts/breaks.mdx#asset-model) in a break uses one of three ad sources, and one channel can mix them:
 
-| Ad source                                                  | What the break carries                                       | What your app needs on top of the platform integration                                               |
-| ---------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| [Static assets](../../workflows/static-assets.mdx)         | Direct URLs to video or image creatives, hosted on your CDN. | Nothing.                                                                                             |
-| [VAST](../../workflows/vast.mdx)                           | A VAST tag URL from your ad server.                          | On Web, Google's client-side IMA SDK (`ima3.js`) on the page. Nothing on Android, iOS, React Native. |
-| [Google Ad Manager](../../workflows/google-ad-manager.mdx) | An ad pod decisioned by Google Ad Manager.                   | On Web, Google's IMA DAI SDK (`ima3_dai.js`) on the page. Nothing on Android, iOS, React Native.     |
+| Ad source             | Live                                               | VOD                                              | What the break carries                                       | What your app needs on top of the platform integration                                               |
+| --------------------- | -------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| Static assets         | [Live](../../workflows/live/static-assets.mdx)     | [VOD](../../workflows/vod/static-assets.mdx)     | Direct URLs to video or image creatives, hosted on your CDN. | Nothing.                                                                                             |
+| Your ad server (VAST) | [Live](../../workflows/live/vast.mdx)              | [VOD](../../workflows/vod/vast.mdx)              | A VAST tag URL from your ad server.                          | On Web, Google's client-side IMA SDK (`ima3.js`) on the page. Nothing on Android, iOS, React Native. |
+| Google Ad Manager     | [Live](../../workflows/live/google-ad-manager.mdx) | [VOD](../../workflows/vod/google-ad-manager.mdx) | An ad pod decisioned by Google Ad Manager.                   | On Web, Google's IMA DAI SDK (`ima3_dai.js`) on the page. Nothing on Android, iOS, React Native.     |
 
 The platform guides cover the integration that every workflow shares: installing the SDK, wrapping your player, and starting a session. The [Ad workflows](../../workflows/index.mdx) section describes how to set up breaks for each ad source on live and VOD, which layouts it supports, and how to troubleshoot it.
 
@@ -36,7 +36,7 @@ Configuration is split into two levels:
 - **SDK configuration** is provided once, when you create the SDK instance. It describes your player and how ads should be presented.
 - **Session configuration** is provided per channel, when you start a monetization session. It identifies the channel to monetize.
 
-Neither level holds ad server URLs or accounts. What to play, and where to fetch it from, comes from the channel's Break Manifest — including the delivery mode and the settings for [Google Ad Manager](../../workflows/google-ad-manager.mdx).
+Neither level holds ad server URLs or accounts. What to play, and where to fetch it from, comes from the channel's Break Manifest — including the delivery mode and the settings for [Google Ad Manager](../../workflows/live/google-ad-manager.mdx).
 
 ### SDK configuration
 
@@ -45,7 +45,7 @@ Neither level holds ad server URLs or accounts. What to play, and where to fetch
 | `player`    | The adapter that wraps your content player. **Required.**                                                                                                                                                                                                                                              |
 | `container` | The element or view in which the SDK renders ads, stacked above your content player. **Required.**                                                                                                                                                                                                     |
 | `mode`      | Optional. The ad insertion model: `sgai` (server-guided) or `ssai` (server-side, for streams where the ads are stitched into the media stream). By default the SDK uses the mode the channel's delivery rules set for the device, and `sgai` when there are none; set it only to override the channel. |
-| `gam`       | Optional. Google Ad Manager starts automatically when the Break Manifest carries a Google configuration; set `enabled` to `false` to keep Google out of a session. See [Google Ad Manager](../../workflows/google-ad-manager.mdx#turn-google-off-for-a-session).                                       |
+| `gam`       | Optional. Google Ad Manager starts automatically when the Break Manifest carries a Google configuration; set `enabled` to `false` to keep Google out of a session. See [Google Ad Manager](../../workflows/live/google-ad-manager.mdx#turn-google-off-for-a-session).                                  |
 | `debug`     | Enables verbose logging during development.                                                                                                                                                                                                                                                            |
 
 The SDK also exposes optional presentation settings — such as ad preloading, break chaining, and tune-in behavior — with sensible defaults. The platform pages describe the platform-specific options.

@@ -1,0 +1,102 @@
+---
+sidebar_position: 2
+sidebar_label: Your ad server (VAST)
+description: Let your own ad server, or a partner's, decide the ads in a live stream through VAST tags.
+---
+
+# Your ad server (VAST) on live
+
+import AppNeeds from '../_shared/_vast-app.mdx';
+import Layouts from '../_shared/_vast-layouts.mdx';
+import Targeting from '../_shared/_vast-targeting.mdx';
+import Tracking from '../_shared/_vast-tracking.mdx';
+import Troubleshooting from '../_shared/_vast-troubleshooting.mdx';
+
+With VAST, each break points at a VAST tag: a URL on your ad server, or an advertiser's, that returns a [VAST](https://iabtechlab.com/standards/vast/) XML document. The ad server decides which creative to play, and its response carries the media files and the tracking URLs. Use this workflow on live streams when you run your own ad server, or buy from partners that deliver their ads through VAST tags.
+
+|                | Your ad server (VAST) on live                                      |
+| -------------- | ------------------------------------------------------------------ |
+| Delivery mode  | Server-guided (SGAI)                                               |
+| Ad decisioning | Your ad server, per viewer, when the SDK requests the tag          |
+| Break creation | Scheduled, punched, or detected from the ad markers in your stream |
+| Your app needs | The OptiView Ads SDK; on Web also Google's client-side IMA SDK     |
+
+## Before you start
+
+- A [live channel](./index.mdx#set-up-a-live-channel). The examples use the `wallclock` timebase.
+- The OptiView Ads SDK in your app: [Web](../../player-integration/optiview-ads-sdk/web.mdx), [Android](../../player-integration/optiview-ads-sdk/android.mdx), [iOS](../../player-integration/optiview-ads-sdk/ios.mdx), or [React Native](../../player-integration/optiview-ads-sdk/react-native.mdx).
+- A VAST tag URL from your ad server, or an advertiser's.
+
+## What your app needs
+
+<AppNeeds />
+
+## Schedule a break
+
+A VAST asset sets `type` to `vast` and `uri` to the VAST tag URL. On a `wallclock` channel, `start` is the UTC moment in your stream when the break begins:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "start": "2026-07-16T12:15:00.000Z",
+    "duration": 30,
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "vast",
+          "mediaType": "video",
+          "mimeType": "application/xml",
+          "uri": "https://adserver.example.com/vast?slot=midroll",
+          "assetParameters": {
+            "content_genre": "sports"
+          }
+        }
+      ]
+    }
+  }'
+```
+
+The `uri` can also be a list of tag URLs targeted per device type. See [VAST assets](../../concepts/breaks.mdx#vast-assets) and [Asset URI targeting](../../concepts/breaks.mdx#asset-uri-targeting) for the full asset model.
+
+### Other ways to create the break
+
+- **Punch it live.** Create the break without a `start`, and [punch](../../concepts/breaks.mdx#break-punching) it when the moment comes.
+- **Detect it.** Add your stream as an [origin](../../concepts/origins.mdx) and configure a [marker rule](../../concepts/marker-detection.mdx) whose [template](../../concepts/templates.mdx) holds the VAST asset. Every matching ad marker in the stream becomes a break.
+- **Trigger it on a player event.** Set `start` to `{ "type": "event", "event": "start" }` for a pre-roll when the viewer tunes in, `"pause"` for a pause ad, or `"end"` for a post-roll. See [Event based triggers](../../concepts/breaks.mdx#event-based-triggers).
+
+## How the break plays
+
+- The SDK receives the break through the channel's [Break Manifest](../../concepts/break-manifest.mdx) shortly before it starts, and requests the VAST tag on the device. Every viewer gets an individual ad decision.
+- Many viewers reach a live break at the same moment, so your ad server receives a peak of requests at every break start. Make sure it is sized for your concurrent audience.
+- On a channel that steers some devices to [SSAI](../index.mdx#hybrid-ad-insertion-sgai-and-ssai), VAST breaks on the timeline are not played on those devices.
+
+## Supported layouts
+
+<Layouts />
+
+## Ad targeting parameters
+
+<Targeting />
+
+## Tracking and reporting
+
+<Tracking />
+
+## Troubleshooting
+
+<Troubleshooting />
+
+## Related resources
+
+| Resource                                                             | Description                                                  |
+| -------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [Live](./index.mdx)                                                  | Live channels: timebase, break creation, and delivery modes. |
+| [Breaks](../../concepts/breaks.mdx)                                  | Layouts, variants, controls, and the asset model.            |
+| [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx) | Passing targeting parameters to your ad server.              |
+| [Static assets on live](./static-assets.mdx)                         | Play creatives from your CDN without an ad server.           |
+| [Google Ad Manager on live](./google-ad-manager.mdx)                 | Let Google Ad Manager fill your breaks.                      |
+| [Your ad server (VAST) on VOD](../vod/vast.mdx)                      | The same workflow for on-demand assets.                      |
