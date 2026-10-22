@@ -120,6 +120,12 @@ const sidebars: SidebarsConfig = {
           customProps: { icon: '🧩' },
           href: 'pathname:///ads/v2/api-reference/react-native/',
         },
+        {
+          type: 'link',
+          label: 'Ads SDK Roku API',
+          customProps: { icon: '🧩' },
+          href: 'pathname:///ads/v2/api-reference/roku/',
+        },
       ],
     },
   ],
