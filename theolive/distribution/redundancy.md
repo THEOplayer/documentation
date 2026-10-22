@@ -53,4 +53,6 @@ Consider a sports broadcaster streaming a live match from a stadium in London. T
 
 **Engine A is taken out of service** (e.g. for maintenance): [Force stop](../platform/starting-and-stopping.mdx#force-stop) Engine A. Its playlist requests start failing, so OptiView Player fails over to Engine B just as it would on a failure. A regular stop would instead end the stream cleanly, and players would treat it as finished rather than fall back.
 
+**Engine A is restarted by us** (in one of your [maintenance windows](../platform/maintenance-windows.mdx)): the engines of a channel are maintained one at a time, so Engine B stays up while Engine A is restarted. The maintenance restart ends Engine A's stream cleanly, so its viewers see the stream end rather than fall back to Engine B; they can rejoin once Engine A is back, typically within one to two minutes.
+
 This setup provides both **geographic redundancy** — the two engines run in separate locations, protecting against regional outages — and **priority-based failover** — the platform always prefers the highest-precedence engine that is available.
