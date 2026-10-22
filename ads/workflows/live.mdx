@@ -1,0 +1,66 @@
+---
+sidebar_position: 1
+sidebar_label: Live
+description: Monetize a live stream with OptiView Ads.
+---
+
+# Live
+
+A live channel monetizes a linear stream or a live event. Breaks are placed on the live timeline, and players watching the stream — at the live edge or behind it in the DVR window — receive them through the channel's [Break Manifest](../concepts/break-manifest.mdx).
+
+## Set up a live channel
+
+A channel is live by default. Choose the [timebase](../concepts/channels.mdx#timebase) that matches the timing information in your stream:
+
+- **`wallclock`** — breaks start at a UTC timestamp, matched against the stream's own wallclock timeline (`EXT-X-PROGRAM-DATE-TIME` in HLS, the segment timeline in DASH). This is the recommended timebase.
+- **`pts`** — breaks start at a presentation timestamp on the encoder's timeline.
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "name": "Sports main",
+    "streamType": "live",
+    "timebase": "wallclock"
+  }'
+```
+
+The [DVR window](../concepts/channels.mdx#dvr-window), [live offset](../concepts/channels.mdx#live-offset), and [ad prefetch window](../concepts/channels.mdx#ad-prefetch-window) settings tune which breaks the Break Manifest contains at any moment.
+
+## How breaks are created
+
+On a live stream, breaks can be created in three ways, and you can combine them on one channel:
+
+- **Scheduled** — create a break with a start time, ahead of time or on the spot. See [Scheduling](../concepts/breaks.mdx#scheduling).
+- **Punched** — prepare a break without a start time, and fire it when the moment comes, for example from your production control room. See [Break punching](../concepts/breaks.mdx#break-punching).
+- **Detected** — add your stream as an [origin](../concepts/origins.mdx), and OptiView Ads turns the ad markers in the stream, such as SCTE-35 signals, into breaks. See [Break detection](../concepts/marker-detection.mdx). This replaces the ad breaks already in your stream (Dynamic Ad Replacement).
+
+[Events](../concepts/events.mdx) let you prepare the breaks of a live event, such as a match or a show, upfront. [Templates](../concepts/templates.mdx) store a break configuration once, so scheduling becomes a one-liner.
+
+Besides breaks on the timeline, a live channel can carry [event-triggered breaks](../concepts/breaks.mdx#event-based-triggers): a pre-roll when the viewer starts watching, a pause ad, and a post-roll.
+
+## How players receive the breaks
+
+The SDK polls the Break Manifest during the whole session. A break appears in the manifest shortly before it starts — within the ad prefetch window — so the SDK can prepare the ads, and it stays there while viewers in the DVR window can still reach it. Changes to a break, such as an earlier end, reach the players on the next poll.
+
+## Delivery modes
+
+Live channels support both delivery modes of the [hybrid platform](./index.mdx#hybrid-ad-insertion-sgai-and-ssai):
+
+| Ad source                                    | SGAI                                                                   | SSAI                                                   |
+| -------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------ |
+| [Static assets](./static-assets.mdx)         | Yes                                                                    | No                                                     |
+| [VAST](./vast.mdx)                           | Yes                                                                    | No                                                     |
+| [Google Ad Manager](./google-ad-manager.mdx) | Yes, with [Google Pod Serving](../integrations/google/pod-serving.mdx) | Yes, with [Google DAI](../integrations/google/dai.mdx) |
+
+## Related resources
+
+| Resource                                            | Description                                                 |
+| --------------------------------------------------- | ----------------------------------------------------------- |
+| [Getting started](../getting-started/index.mdx)     | Create a live channel and play your first break end to end. |
+| [Channels](../concepts/channels.mdx)                | Timebase, DVR window, live offset, and prefetch settings.   |
+| [Breaks](../concepts/breaks.mdx)                    | Scheduling, punching, layouts, and the asset model.         |
+| [Break detection](../concepts/marker-detection.mdx) | Turn the ad markers in your stream into breaks.             |
+| [VOD](./vod.mdx)                                    | Monetize on-demand assets instead.                          |

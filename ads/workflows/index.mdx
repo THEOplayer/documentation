@@ -1,0 +1,60 @@
+---
+sidebar_position: 0
+sidebar_label: Ad workflows
+description: How OptiView Ads monetizes live and VOD content with static assets, VAST, and Google Ad Manager.
+---
+
+# Ad workflows
+
+OptiView Ads is a **hybrid ad insertion platform**: the same channel and the same breaks can be delivered server-guided (SGAI) or server-side (SSAI), for live streams and for video-on-demand (VOD) assets. This page explains the three choices that together make up your ad workflow:
+
+1. **Use case** — are you monetizing a [live stream](./live.mdx) or a [VOD asset](./vod.mdx)?
+2. **Ad source** — where do the ads come from: [static assets](./static-assets.mdx) from your CDN, [VAST](./vast.mdx) tags from your ad server, or [Google Ad Manager](./google-ad-manager.mdx)?
+3. **Delivery mode** — does the player insert the ads (SGAI), or are they stitched into the stream (SSAI)?
+
+## Hybrid ad insertion: SGAI and SSAI
+
+| Delivery mode                         | How it works                                                                                                                                                                                                                                  | Use it for                                                                                                                                              |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Server-Guided Ad Insertion (SGAI)** | The OptiView Ads backend publishes the breaks in a side-loaded [Break Manifest](../concepts/break-manifest.mdx). The [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) reads it, and plays the ads on top of your content. | Web, mobile, and most connected TV apps. Required for the advanced [layouts](../concepts/breaks.mdx#layouts) such as double box, L-shape, and overlays. |
+| **Server-Side Ad Insertion (SSAI)**   | The ads are stitched into the media stream before it reaches the player. The player plays one continuous stream.                                                                                                                              | Platforms where a client-side SDK is not an option, such as Roku and older connected TV devices.                                                        |
+
+Both modes share the same model: you create a [channel](../concepts/channels.mdx), schedule or detect [breaks](../concepts/breaks.mdx) on it, and OptiView Ads delivers them. You do not maintain two ad setups.
+
+A channel can **steer the delivery mode per device**: for example SGAI on web and mobile, and SSAI on a specific connected TV platform. The Break Manifest then carries the delivery rules, and the SDK picks the mode for the device it runs on when the session starts. In SSAI mode, the SDK still plays the [event-triggered breaks](../concepts/breaks.mdx#event-based-triggers) — pre-roll, pause, and post-roll — on the device, because they depend on what the individual viewer does.
+
+SSAI is available with [Google Ad Manager](./google-ad-manager.mdx), through Google DAI. Static assets and VAST tags are always played server-guided.
+
+## Live and VOD
+
+Live and VOD are different use cases, and a channel is created for one of them. The difference is mainly in how breaks are placed on the timeline and how players receive them:
+
+|                     | [Live](./live.mdx)                                                                                                               | [VOD](./vod.mdx)                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Channel             | `streamType: "live"` (the default)                                                                                               | `streamType: "vod"`                                                                             |
+| Break start         | A moment on the live timeline: a UTC timestamp (`wallclock`) or a presentation timestamp (`pts`)                                 | A position in the asset: seconds from the start (`mediatime`), or a UTC timestamp (`wallclock`) |
+| How breaks are made | Scheduled ahead or on the spot, [punched](../concepts/breaks.mdx#break-punching) live, or detected from ad markers in the stream | Scheduled upfront, for example as pre-roll, mid-rolls, and post-roll                            |
+| Break Manifest      | Polled continuously; breaks appear as they become relevant                                                                       | Fetched once at the start of playback; it lists all breaks                                      |
+| Events              | [Events](../concepts/events.mdx) group the breaks of a live event                                                                | Not used                                                                                        |
+
+## Supported workflows
+
+Every ad source works for both live and VOD. One channel, and even one break, can mix ad sources.
+
+| Ad source                                    | What the break carries                                | Live        | VOD         | What your app needs                                                        |
+| -------------------------------------------- | ----------------------------------------------------- | ----------- | ----------- | -------------------------------------------------------------------------- |
+| [Static assets](./static-assets.mdx)         | Direct URLs to video or image creatives on your CDN.  | SGAI        | SGAI        | Nothing beyond the SDK integration.                                        |
+| [VAST](./vast.mdx)                           | A VAST tag URL on your ad server, or an advertiser's. | SGAI        | SGAI        | On Web, Google's client-side IMA SDK (`ima3.js`).                          |
+| [Google Ad Manager](./google-ad-manager.mdx) | An ad pod decisioned by Google Ad Manager 360.        | SGAI + SSAI | SGAI + SSAI | On Web, Google's IMA DAI SDK (`ima3_dai.js`). Google Ad Manager 360 setup. |
+
+### Which ad source should I use?
+
+- **Static assets** when you know which creative to show: direct-sold campaigns, sponsorships, promos, branded overlays. No ad server is involved.
+- **VAST** when your own ad server, or a partner's, decides which ad plays. Any VAST-compliant ad server works, Google Ad Manager tags included.
+- **Google Ad Manager** when you sell your inventory through Google Ad Manager 360 and want Google to fill complete ad pods, or need server-side insertion through Google DAI.
+
+## Next steps
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

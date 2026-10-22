@@ -17,6 +17,17 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Ad workflows',
+      description: 'Live and VOD, SGAI and SSAI, with static assets, VAST, or Google Ad Manager.',
+      collapsed: false,
+      customProps: {
+        icon: '🔀',
+      },
+      link: { type: 'doc', id: 'workflows/index' },
+      items: ['workflows/live', 'workflows/vod', 'workflows/static-assets', 'workflows/vast', 'workflows/google-ad-manager'],
+    },
+    {
+      type: 'category',
       label: 'Player integration',
       description: 'Connect OptiView Ads to a player.',
       collapsed: false,
