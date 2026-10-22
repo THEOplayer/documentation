@@ -92,6 +92,22 @@ theoplayerView.player.source = SourceDescription.Builder(
 ).build()
 ```
 
+### Limit the maximum resolution
+
+Since THEOplayer 11.5.0, you can cap the resolution of a Millicast stream through [`abr.preferredMaximumResolution`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/abr/Abr.html#setPreferredMaximumResolution(android.util.Size)>). You can set it before playback starts, or change it during playback, for example when the device rotates between portrait and landscape. Changes are applied without reconnecting to the stream, and the media server keeps switching between the layers within that limit when network conditions change.
+
+```kotlin
+import android.util.Size
+
+// Limit playback to layers of at most 1280x720
+theoplayerView.player.abr.preferredMaximumResolution = Size(1280, 720)
+
+// Remove the limit and use the full ABR range again
+theoplayerView.player.abr.preferredMaximumResolution = null
+```
+
+Selecting a specific video quality through `targetQuality` pins playback to that layer and turns off ABR. While a quality is pinned, `preferredMaximumResolution` is ignored.
+
 ### Background playback
 
 :::info[Known issue on Android Millicast background playback]

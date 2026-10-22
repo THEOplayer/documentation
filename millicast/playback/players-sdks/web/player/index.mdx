@@ -101,6 +101,45 @@ connectOptions: {
 
 Setting a `maxHeight` of `0` will use the full ABR range available. Setting the `maxHeight` to an arbitrarily low value, such as `20`, will force the user onto the layer with the lowest resolution.
 
+These values are applied when the player connects to the stream. To change the maximum resolution during playback without reconnecting, use [`player.abr.preferredMaximumResolution`](#change-the-maximum-resolution-during-playback) instead.
+
+#### Change the maximum resolution during playback
+
+Since THEOplayer 11.13.0, you can cap the resolution of a Millicast stream at any time through [`player.abr.preferredMaximumResolution`](pathname:///theoplayer/v11/api-reference/web/interfaces/ABRConfiguration.html#preferredMaximumResolution), for example when the player is shown in a smaller view or the viewport is rotated between portrait and landscape. The new limit is applied without reconnecting to the stream, and the media server keeps switching between the layers within that limit when network conditions change.
+
+```javascript
+// Limit playback to layers of at most 1280x720
+player.abr.preferredMaximumResolution = { width: 1280, height: 720 };
+
+// Remove the limit and use the full ABR range again
+player.abr.preferredMaximumResolution = undefined;
+```
+
+#### Restrict the resolution to the player size
+
+Since THEOplayer 11.13.0, you can also let the player limit the resolution to the size at which it is displayed, by setting [`abr.restrictToPlayerSize`](pathname:///theoplayer/v11/api-reference/web/interfaces/SourceAbrConfiguration.html#restrictToPlayerSize) to `true` on the source description. The player then caps the stream to the smallest available layer that still covers the player's rendered size, and updates that cap when the player is resized.
+
+```javascript
+player.source = {
+  sources: {
+    type: 'millicast',
+    src: 'multiview',
+    streamAccountId: 'k9Mwad',
+  },
+  abr: {
+    restrictToPlayerSize: true,
+  },
+};
+```
+
+For Millicast sources, this restriction is only applied when `restrictToPlayerSize` is explicitly set to `true`.
+
+When `restrictToPlayerSize` is combined with `preferredMaximumResolution`, the most restrictive limit wins: the player uses the smallest width and the smallest height of both limits.
+
+:::note
+While `preferredMaximumResolution` or `restrictToPlayerSize` limits the resolution, that limit replaces the `maxWidth` and `maxHeight` values of `connectOptions.layer`. When the limit is removed, the player goes back to the full ABR range, not to the `connectOptions.layer` values. Avoid combining both approaches.
+:::
+
 #### Playout Delay
 
 Because of the complexities of last-mile delivery, some packets for video playback may arrive late. In higher-latency streaming protocols such as HESP or HLS, a client buffer helps smooth out playback so that these minor fluctuations are unnoticeable. Dolby's real-time streaming solution supports adding a playout buffer, which can similarly assist with these fluctuations. The `forcePlayoutDelay` buffer uses a `min` and a `max` value measured in milliseconds (ms) to specify the range the playout buffer should occupy. The player buffer will then dynamically shift between the `min` and `max` values depending on client conditions.
