@@ -61,7 +61,8 @@ Other unresolved <code>$NAME$</code> tokens stay literal without a diagnostic. <
 is unchanged.
 Callbacks are evaluated per ad request and cleared when the session ends.
 Session-scoped parameters are sent to IMA DAI with
-built-in and customer macros resolved; break-duration macros are omitted.</p>
+built-in and customer macros resolved; break-duration macros stay literal and are
+reported as <code>DA-ASSET-MACRO-UNKNOWN</code>.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-see">
