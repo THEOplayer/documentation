@@ -57,7 +57,7 @@ The `uri` can also be a list of URLs targeted per device type. See [Static asset
 
 ### VOD
 
-- Set `start` to the position in the asset, in seconds, on a `mediatime` channel — for example `"start": 600` — or use an event trigger for a pre-roll or post-roll.
+- Set `start` to the position in the asset, in seconds, on a `mediatime` channel — for example `"start": 600` — or use an event trigger for a pre-roll or post-roll. [Break detection](../concepts/marker-detection.mdx) can also create the breaks from the ad markers in the asset, with a [template](../concepts/templates.mdx) that holds the static assets.
 - The SDK receives all breaks when the session starts, and prepares each creative shortly before its break.
 - Enable [snapback](./vod.mdx#seeking-and-snapback) on breaks that viewers must not skip by seeking.
 

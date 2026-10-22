@@ -80,7 +80,7 @@ The SDK requests the VAST tag on the device, shortly before the break starts. Ev
 
 ### VOD
 
-- Set `start` to the position in the asset, in seconds, on a `mediatime` channel, or use an event trigger for a pre-roll, a post-roll, or a pause ad.
+- Set `start` to the position in the asset, in seconds, on a `mediatime` channel, or use an event trigger for a pre-roll, a post-roll, or a pause ad. For breaks that [break detection](../concepts/marker-detection.mdx) creates from the ad markers in the asset, put the VAST asset in the rule's [template](../concepts/templates.mdx).
 - Viewers reach the breaks at different moments, so the requests to your ad server are spread over time.
 - Use a VAST tag that returns the right ad length for the break: the break's `duration` is the maximum, and the SDK returns to your content when it is reached.
 

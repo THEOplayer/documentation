@@ -29,13 +29,13 @@ SSAI is available with [Google Ad Manager](./google-ad-manager.mdx), through Goo
 
 Live and VOD are different use cases, and a channel is created for one of them. The difference is mainly in how breaks are placed on the timeline and how players receive them:
 
-|                     | [Live](./live.mdx)                                                                                                               | [VOD](./vod.mdx)                                                                                |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Channel             | `streamType: "live"` (the default)                                                                                               | `streamType: "vod"`                                                                             |
-| Break start         | A moment on the live timeline: a UTC timestamp (`wallclock`) or a presentation timestamp (`pts`)                                 | A position in the asset: seconds from the start (`mediatime`), or a UTC timestamp (`wallclock`) |
-| How breaks are made | Scheduled ahead or on the spot, [punched](../concepts/breaks.mdx#break-punching) live, or detected from ad markers in the stream | Scheduled upfront, for example as pre-roll, mid-rolls, and post-roll                            |
-| Break Manifest      | Polled continuously; breaks appear as they become relevant                                                                       | Fetched once at the start of playback; it lists all breaks                                      |
-| Events              | [Events](../concepts/events.mdx) group the breaks of a live event                                                                | Not used                                                                                        |
+|                     | [Live](./live.mdx)                                                                                                               | [VOD](./vod.mdx)                                                                                               |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Channel             | `streamType: "live"` (the default)                                                                                               | `streamType: "vod"`                                                                                            |
+| Break start         | A moment on the live timeline: a UTC timestamp (`wallclock`) or a presentation timestamp (`pts`)                                 | A position in the asset: seconds from the start (`mediatime`), or a UTC timestamp (`wallclock`)                |
+| How breaks are made | Scheduled ahead or on the spot, [punched](../concepts/breaks.mdx#break-punching) live, or detected from ad markers in the stream | Scheduled upfront, for example as pre-roll, mid-rolls, and post-roll, or detected from ad markers in the asset |
+| Break Manifest      | Polled continuously; breaks appear as they become relevant                                                                       | Fetched once at the start of playback; it lists all breaks                                                     |
+| Events              | [Events](../concepts/events.mdx) group the breaks of a live event                                                                | Not used                                                                                                       |
 
 ## Supported workflows
 

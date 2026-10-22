@@ -32,7 +32,7 @@ Prefer SGAI on every platform that runs the OptiView Ads SDK: the media stream s
 
 ### VOD
 
-- **SGAI** — schedule the Google breaks at their positions in the asset, in seconds, on a `mediatime` channel. Google decisions the pods when the viewer's session starts, and the SDK inserts them at the break positions.
+- **SGAI** — schedule the Google breaks at their positions in the asset, in seconds, on a `mediatime` channel, or let [break detection](../concepts/marker-detection.mdx) create them from the ad markers in the asset. Google decisions the pods when the viewer's session starts, and the SDK inserts them at the break positions.
 - **SSAI** — Google stitches the ads for the asset's breaks into the on-demand stream, and the player plays the stitched asset.
 - Because every viewer watches from their own position, ads are decisioned per viewer session rather than per break moment: there is no audience-wide peak at a break start.
 

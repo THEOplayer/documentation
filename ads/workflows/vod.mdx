@@ -31,7 +31,12 @@ The `streamType` and the `timebase` are set when you create the channel and cann
 
 ## Schedule breaks
 
-On a VOD channel you schedule all breaks upfront. With the `mediatime` timebase, `start` is a number of seconds:
+On a VOD channel, breaks are known before playback starts. Create them in one of two ways, or combine them:
+
+- **Scheduled** — create each break with its position in the asset, as below.
+- **Detected** — add the asset as an [origin](../concepts/origins.mdx), and OptiView Ads turns the ad markers in the asset, such as SCTE-35 signals, into breaks at their positions. See [Break detection](../concepts/marker-detection.mdx).
+
+With the `mediatime` timebase, `start` is a number of seconds:
 
 ```bash
 curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
@@ -83,7 +88,6 @@ Your app integrates the SDK in the same way as for live: [Web](../player-integra
 
 The live-only features do not apply to VOD channels:
 
-- **No break detection.** VOD channels do not monitor origins for ad markers; you schedule the breaks.
 - **No events.** [Events](../concepts/events.mdx) group the breaks of a live event; a VOD asset has no live moment to prepare for.
 - **No `pts` timebase.** Use `mediatime` or `wallclock`.
 
