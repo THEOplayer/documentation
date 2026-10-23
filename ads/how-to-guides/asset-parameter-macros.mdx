@@ -251,7 +251,8 @@ What is left out depends on the value:
 | A plain value, such as `"gdpr_consent": "$CONSENT$"`                        | The whole parameter.                                                                                                                 |
 | Google Ad Manager `cust_params`, such as `"genre=sports&consent=$CONSENT$"` | Only the `&`-separated pair with the empty macro: `cust_params=genre=sports` is still sent. If no pair is left, the whole parameter. |
 | A static asset value with `&`-separated pairs                               | Only the pairs with the empty macro, as for `cust_params`.                                                                           |
-| A VAST `cust_params` value                                                  | The whole parameter.                                                                                                                 |
+
+For VAST, every value counts as a plain value, also one with `&`-separated pairs: the whole parameter is left out.
 
 ## Tokens the SDK cannot fill in
 
