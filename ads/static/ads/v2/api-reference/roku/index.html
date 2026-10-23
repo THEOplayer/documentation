@@ -18,15 +18,14 @@ th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; vertical-a
 th { background: #f5f5f7; }
 code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
 pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
-.badge { font-size: 12px; background: #fff4e5; color: #8a4b00; padding: 1px 6px; border-radius: 4px; }
 .meta, .version { color: #555; }
 </style>
 </head>
 <body>
 <header>
-<h1>OptiViewAds <span class="badge">experimental</span></h1>
+<h1>OptiViewAds</h1>
 <p class="version">OptiView Ads SDK for Roku, version 1.2.0</p>
-<p>Experimental SceneGraph component that inserts OptiView Ads breaks into clear live HLS on Roku through one application-owned Video node: client-side stitching of Google Ad Manager pods (SGAI), or the channel's Google DAI live stream when the break manifest selects server-side ad insertion for TV devices (SSAI). The API and the Roku-only diagnostics may still change.</p>
+<p>SceneGraph component that inserts OptiView Ads breaks into clear live HLS on Roku through one application-owned Video node: client-side stitching of Google Ad Manager pods (SGAI), or the channel's Google DAI live stream when the break manifest selects server-side ad insertion for TV devices (SSAI).</p>
 <nav>
 <a href="#fields">Fields</a>
 <a href="#functions">Functions</a>
@@ -80,7 +79,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <p class="meta">Operation statuses: <code>updated</code>, <code>error</code></p>
 <h3 id="function-getAdBreakStatus"><code>getAdBreakStatus</code></h3>
 <pre><code>getAdBreakStatus() as Object</code></pre>
-<p>Snapshot of the break state: <code>phase</code>, <code>state</code>, <code>generation</code>, <code>ticking</code>, the selected <code>break</code> and its countdown, all known <code>breaks</code> (<code>breakId</code>, <code>occurrence</code>, <code>state</code>, <code>reason</code>, <code>reasonDetail</code>) and <code>deliveryMode</code>. After a fenced reload it adds <code>recoveryRequired</code>, <code>reloadRequired</code>, <code>reloadReason</code> and <code>bookmark</code>.</p>
+<p>Snapshot of the break state: <code>phase</code>, <code>state</code>, <code>generation</code>, <code>ticking</code>, the selected <code>break</code> and its countdown, all known <code>breaks</code> (<code>breakId</code>, <code>occurrence</code>, <code>state</code>, <code>reason</code>, <code>reasonDetail</code>) and <code>deliveryMode</code>. When playback must be restarted it adds <code>recoveryRequired</code>, <code>reloadRequired</code> and <code>reloadReason</code>.</p>
 
 <h3 id="function-isSessionActive"><code>isSessionActive</code></h3>
 <pre><code>isSessionActive() as Boolean</code></pre>
@@ -88,7 +87,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 
 <h3 id="function-getSessionInfo"><code>getSessionInfo</code></h3>
 <pre><code>getSessionInfo() as Object</code></pre>
-<p>Snapshot of the session: <code>generation</code>, <code>active</code>, <code>destroyed</code> and, during a session, <code>state</code>, <code>playbackEpoch</code>, <code>recoveryRequired</code>, <code>reloadRequired</code>, <code>resumePending</code>, <code>resumeFailed</code>, <code>bookmark</code>, <code>channelId</code>, <code>deliveryMode</code>, <code>deliveryModeSource</code> and <code>publishedSourceEnd</code> (UTC, ISO 8601) when available.</p>
+<p>Snapshot of the session: <code>generation</code>, <code>active</code>, <code>destroyed</code> and, during a session, <code>state</code>, <code>playbackEpoch</code>, <code>recoveryRequired</code>, <code>reloadRequired</code>, <code>channelId</code>, <code>deliveryMode</code>, <code>deliveryModeSource</code> and <code>publishedSourceEnd</code> (UTC, ISO 8601) when available.</p>
 
 <h3 id="function-getCapabilities"><code>getCapabilities</code></h3>
 <pre><code>getCapabilities() as Object</code></pre>
@@ -98,10 +97,6 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <pre><code>resolveGateway(result as Object) as Boolean</code></pre>
 <p>Answers a <code>gatewayRequest</code>: <code>{ requestId, generation, status, value }</code> with <code>status</code> <code>&quot;ok&quot;</code> or <code>&quot;error&quot;</code>. Returns <code>false</code> for an unknown or stale request. Without an answer within two seconds the SDK uses the original request, response or registered macro values and reports a diagnostic.</p>
 
-<h3 id="function-reloadAfterSeek"><code>reloadAfterSeek</code> <span class="badge">experimental</span></h3>
-<pre><code>reloadAfterSeek(arguments as Object) as Integer</code></pre>
-<p>Experimental DVR: after the app stops and detaches the same Video, reloads at a viewer-requested position (<code>position</code>, <code>generation</code>, optional <code>resumeStrategy: &quot;startup&quot;</code> or <code>&quot;seek&quot;</code>). Reports <code>reloading</code>, <code>ready</code> (with <code>resume</code> details) and <code>resumed</code>, or <code>resume-ready</code> before <code>resumed</code> with the <code>seek</code> strategy. Not supported in SSAI. Ads after a seek are not part of the supported scope.</p>
-<p class="meta">Operation statuses: <code>reloading</code>, <code>ready</code>, <code>resume-ready</code>, <code>resumed</code>, <code>error</code>, <code>cancelled</code></p>
 <h2 id="start-config">Start configuration</h2>
 <p>Keys of the object passed to <code>startSession</code>. Built-in macros: <code>$OPTIVIEW_USER_AGENT$</code>, <code>$OPTIVIEW_PLAYER_WIDTH$</code>, <code>$OPTIVIEW_PLAYER_HEIGHT$</code>, <code>$OPTIVIEW_BREAK_DURATION_SECONDS$</code>, <code>$OPTIVIEW_BREAK_DURATION_MS$</code>.</p>
 <table>
@@ -122,23 +117,19 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code id="config-mode">mode</code></td><td>String</td><td><code>&quot;sgai&quot;</code> or <code>&quot;ssai&quot;</code>: overrides the break manifest's delivery rules (<code>DA-DELIVERY-MODE-OVERRIDDEN</code>).</td></tr>
 <tr><td><code id="config-raf">raf</code></td><td>Object</td><td>SSAI: <code>{ contentId, contentGenre, kidsContent, contentLength }</code> for Roku Advertising Framework measurement.</td></tr>
 <tr><td><code id="config-streamActivityMonitorId">streamActivityMonitorId</code></td><td>String</td><td>SSAI: passed to the Google DAI stream request.</td></tr>
-<tr><td><code id="config-proxyPort">proxyPort</code></td><td>Integer</td><td>SGAI: port of the local HLS proxy, <code>1024</code> to <code>65535</code>. Default <code>8889</code>.</td></tr>
 </tbody>
 </table>
 <h2 id="operation-results">Operation results</h2>
 <table>
 <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
 <tbody>
-<tr><td><code>ready</code></td><td>The session (or a reload) is ready; the result carries <code>playbackUrl</code> and <code>deliveryMode</code>.</td></tr>
+<tr><td><code>ready</code></td><td>The session is ready; the result carries <code>playbackUrl</code> and <code>deliveryMode</code>.</td></tr>
 <tr><td><code>error</code></td><td>The call failed; <code>reason</code> names why (for example <code>missing-session-url</code>, <code>invalid-configuration</code>, <code>invalid-video-binding</code>, <code>invalid-alignment-tolerance</code>, <code>invalid-delivery-mode</code>, <code>invalid-raf-metadata</code>, <code>invalid-stream-activity-monitor-id</code>, <code>invalid-parameters</code>, <code>invalid-macros</code>, <code>playback-detach-required</code>, <code>unsupported-state</code>, <code>no-session</code>, <code>destroyed</code>).</td></tr>
-<tr><td><code>cancelled</code></td><td>Superseded by a newer call or ended with the session (<code>superseded</code>, <code>superseded-by-seek</code>, <code>session-ended</code>).</td></tr>
+<tr><td><code>cancelled</code></td><td>Superseded by a newer call or ended with the session (<code>superseded</code>, <code>session-ended</code>).</td></tr>
 <tr><td><code>draining</code></td><td><code>endSession</code> while playback is attached; detach to finish.</td></tr>
 <tr><td><code>ended</code></td><td>The session ended.</td></tr>
 <tr><td><code>destroyed</code></td><td>The component released its workers.</td></tr>
 <tr><td><code>updated</code></td><td>A parameter, macro or RAF update was applied.</td></tr>
-<tr><td><code>reloading</code></td><td>Experimental DVR reload started.</td></tr>
-<tr><td><code>resume-ready</code></td><td>Experimental DVR reload (<code>seek</code> strategy): apply <code>resume.requestedPlayerPosition</code>.</td></tr>
-<tr><td><code>resumed</code></td><td>Experimental DVR reload: playback was confirmed at the requested position.</td></tr>
 </tbody>
 </table>
 <h2 id="events">Events</h2>
@@ -157,12 +148,12 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code id="event-adbreakskipped">adbreakskipped</code></td><td>A break was refused before anything was shown and content kept playing. <code>reason</code>: <code>late</code>, <code>not-ready</code>, <code>preparation-failed</code>, <code>unsupported</code>, <code>overlap</code>, <code>start-delay</code>, <code>removed</code>, <code>insufficient-remaining</code> or <code>resource-limit</code>; <code>reasonDetail</code> names the specific cause, with <code>podEvidence</code> or <code>preparationEvidence</code> where available.</td></tr>
 <tr><td><code id="event-adbreakstatus">adbreakstatus</code></td><td>Break state and countdown updates (same shape as <code>getAdBreakStatus</code>).</td></tr>
 <tr><td><code id="event-adchannelchange">adchannelchange</code></td><td>The break manifest moved to another ads channel; carries <code>previousChannelId</code>, <code>channelId</code>, <code>previousDeliveryMode</code> and <code>deliveryMode</code>.</td></tr>
-<tr><td><code id="event-playbackreloadrequired">playbackreloadrequired</code></td><td>Playback must be restarted in a new session (for example <code>delivery-mode-changed</code>, <code>ssai-stream-changed</code>, or a viewer seek that fenced tracking); may carry a verified <code>bookmark</code>.</td></tr>
+<tr><td><code id="event-playbackreloadrequired">playbackreloadrequired</code></td><td>Playback must be restarted in a new session (for example <code>delivery-mode-changed</code>, <code>ssai-stream-changed</code>, or a viewer seek that fenced tracking).</td></tr>
 <tr><td><code id="event-adinteractiveexit">adinteractiveexit</code></td><td>SSAI: the viewer left a Roku Advertising Framework interactive ad; stop playback and restore focus.</td></tr>
 </tbody>
 </table>
 <h2 id="diagnostics">Diagnostics</h2>
-<p>Delivered on <code>diagnosticEvent</code>. Roku-only codes are provisional.</p>
+<p>Delivered on <code>diagnosticEvent</code>.</p>
 <h3>Roku-only codes</h3>
 <table>
 <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
@@ -191,8 +182,6 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code id="ROKU-PLAYER-CLOCK-INVALID">ROKU-PLAYER-CLOCK-INVALID</code></td><td>A supplied <code>playerClockAnchor</code> was rejected; it needs a verified source Program Date Time.</td></tr>
 <tr><td><code id="ROKU-PLAYBACK-EPOCH-CHANGED">ROKU-PLAYBACK-EPOCH-CHANGED</code></td><td>Playback jumped (for example a viewer seek); old tracking is fenced and a reload is required.</td></tr>
 <tr><td><code id="ROKU-VIDEO-BINDING-CHANGED">ROKU-VIDEO-BINDING-CHANGED</code></td><td><code>videoNode</code> changed during a session; start a new session.</td></tr>
-<tr><td><code id="ROKU-SEEK-RESUME-FAILED">ROKU-SEEK-RESUME-FAILED</code></td><td>Experimental DVR reload could not resume at the requested position.</td></tr>
-<tr><td><code id="ROKU-SEEK-REFILL-NOT-READY">ROKU-SEEK-REFILL-NOT-READY</code></td><td>Experimental DVR reload: ads for the new position were not prepared in time.</td></tr>
 </tbody>
 </table>
 <h3>Shared codes emitted on Roku</h3>
@@ -226,7 +215,6 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code>ssaiVendor</code></td><td><code>&quot;gam-dai-full-service&quot;</code></td><td>SSAI vendor integration.</td></tr>
 <tr><td><code>ssaiStreamTypes</code></td><td><code>[&quot;live&quot;]</code></td><td>SSAI stream types.</td></tr>
 <tr><td><code>ssaiFormats</code></td><td><code>[&quot;hls&quot;]</code></td><td>SSAI stream formats.</td></tr>
-<tr><td><code>ssaiDvr</code></td><td><code>false</code></td><td>Whether DVR is supported in SSAI.</td></tr>
 <tr><td><code>ssaiClientBreaks</code></td><td><code>false</code></td><td>Whether event-triggered manifest breaks render in SSAI.</td></tr>
 <tr><td><code>rafMeasurement</code></td><td><code>true</code></td><td>Roku Advertising Framework measurement in SSAI.</td></tr>
 <tr><td><code>rafInteractiveAds</code></td><td><code>true</code></td><td>Roku Advertising Framework interactive ads in SSAI.</td></tr>
@@ -250,15 +238,6 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code>shutdownRequiresDetachedPlayback</code></td><td><code>true</code></td><td>Playback must be detached before <code>destroy</code>.</td></tr>
 <tr><td><code>nativeUtcClock</code></td><td><code>true</code></td><td>Native <code>Video.positionInfo</code> UTC is used as the player clock.</td></tr>
 <tr><td><code>externalClockAnchorSupported</code></td><td><code>true</code></td><td><code>playerClockAnchor</code> is accepted as a fallback.</td></tr>
-<tr><td><code>dvrReplayRequiresNewSession</code></td><td><code>true</code></td><td>Replaying after a fenced seek needs a new session.</td></tr>
-<tr><td><code>explicitSeekReload</code></td><td><code>true</code></td><td><code>reloadAfterSeek</code> is available (experimental).</td></tr>
-<tr><td><code>startupResume</code></td><td><code>true</code></td><td>Startup resume for DVR reloads (experimental).</td></tr>
-<tr><td><code>preferredDvrResumeStrategy</code></td><td><code>&quot;startup&quot;</code></td><td>Preferred <code>resumeStrategy</code> for DVR reloads.</td></tr>
-<tr><td><code>startupPlayStartTimebase</code></td><td><code>&quot;roku-hls-pdt-2004&quot;</code></td><td>Timebase of <code>resume.contentPlayStart</code>.</td></tr>
-<tr><td><code>nativeInPlaceDvrSeekSupported</code></td><td><code>false</code></td><td>Whether a native in-place DVR seek is supported.</td></tr>
-<tr><td><code>seekReloadRequiresDetachedPlayback</code></td><td><code>true</code></td><td>DVR reloads need detached playback.</td></tr>
-<tr><td><code>seekReloadRequiresPublishedSourcePdt</code></td><td><code>true</code></td><td>DVR reloads need a published source Program Date Time.</td></tr>
-<tr><td><code>resumeSeekRequiresNewGenerationClock</code></td><td><code>true</code></td><td>A resumed reload needs a clock from the new generation.</td></tr>
 <tr><td><code>initialTuneInPolicy</code></td><td><code>&quot;content-until-prepared&quot;</code></td><td>Content plays first; ads join once prepared.</td></tr>
 <tr><td><code>lateOpportunityPolicy</code></td><td><code>&quot;skip&quot;</code></td><td>Breaks already exposed without a ready pod are skipped.</td></tr>
 <tr><td><code>alignmentToleranceSeconds</code></td><td><code>0.250</code></td><td>Default <code>alignmentToleranceSeconds</code>.</td></tr>

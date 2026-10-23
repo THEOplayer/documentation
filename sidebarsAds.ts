@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
             'player-integration/optiview-ads-sdk/android',
             'player-integration/optiview-ads-sdk/ios',
             'player-integration/optiview-ads-sdk/react-native',
+            'player-integration/optiview-ads-sdk/roku',
           ],
         },
         {
