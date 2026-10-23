@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
             'player-integration/optiview-ads-sdk/android',
             'player-integration/optiview-ads-sdk/ios',
             'player-integration/optiview-ads-sdk/react-native',
+            'player-integration/optiview-ads-sdk/roku',
           ],
         },
         {
@@ -119,6 +120,12 @@ const sidebars: SidebarsConfig = {
           label: 'Ads SDK React Native API',
           customProps: { icon: '🧩' },
           href: 'pathname:///ads/v2/api-reference/react-native/',
+        },
+        {
+          type: 'link',
+          label: 'Ads SDK Roku API',
+          customProps: { icon: '🧩' },
+          href: 'pathname:///ads/v2/api-reference/roku/',
         },
       ],
     },
