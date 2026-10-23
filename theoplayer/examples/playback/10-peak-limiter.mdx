@@ -1,0 +1,44 @@
+---
+sidebar_custom_props: { icon: '🔊' }
+description: Boost the player's audio without clipping by routing it through a lookahead peak limiter.
+---
+
+# Peak limiter
+
+Make quiet audio louder without clipping: boost the player's audio and keep its peaks under a ceiling with a lookahead limiter.
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/peak-limiter/demo.html';
+import PeakLimiterDemo from '../_components/PeakLimiterDemo';
+
+<PeakLimiterDemo />
+
+Turn the limiter off to hear the boosted audio clip: in loud scenes, the output peak goes above 0 dB and the meter turns red.
+
+The Web Audio API has no built-in peak limiter. Its `DynamicsCompressorNode` adds makeup gain automatically, so it can't guarantee that peaks stay under a ceiling.
+This example uses [`@synthlet/lookahead-limiter`](https://www.npmjs.com/package/@synthlet/lookahead-limiter), an open source (MIT) limiter that runs in an `AudioWorklet`.
+It looks 2 ms ahead, so it lowers the gain before a peak arrives, and it also catches peaks between samples (true peaks).
+
+```js
+import { registerLookaheadLimiterWorklet, LookaheadLimiter } from '@synthlet/lookahead-limiter';
+
+const context = new AudioContext();
+await registerLookaheadLimiterWorklet(context);
+
+const source = player.audio.createAudioSourceNode(context);
+const limiter = LookaheadLimiter(context, {
+  gain: 12, // boost in dB, applied before limiting
+  threshold: -1, // ceiling in dB
+});
+source.connect(limiter).connect(context.destination);
+```
+
+The limiter delays the audio by about 2 ms. Browsers start an `AudioContext` in the `suspended` state until the viewer interacts with the page, so call `context.resume()` when playback starts.
+See the [Web Audio API](./09-web-audio-api.mdx) example for more about routing the player's audio.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

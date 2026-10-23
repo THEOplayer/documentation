@@ -59,3 +59,7 @@ For example, on Desktop Chrome, video players leverage the [Media Source Extensi
 That being said, a video player might still be the one to blame when your viewers aren't seeing the beautiful 4K representation of your stream. Your video player should be able to correctly parse, extract and leverage the 4K stream from your HLS or MPEG-DASH manifest when your 4K representation can be applied. This functionality might not be implemented in your video player.
 
 THEOplayer supports 4K streaming out of the box. For specific devices, specific configuration recommendations can apply in order to achieve 4K streaming efficiently.
+
+## Resources
+
+- [Online demo: 4K streaming](../examples/streaming/01-4k-streaming.mdx)

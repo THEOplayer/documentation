@@ -9,6 +9,6 @@ For more details regarding preload and how to implement it, please visit the res
 The following resources provide more information:
 
 - [Preloading - how to](../how-to-guides/web/miscellaneous/preloading.mdx)
-- [Demo page](https://demo.theoplayer.com/preloading-vod)
+- [Demo page](../examples/playback/06-preload.mdx)
 - [What are the benefits of preloading](38-what-are-the-benefits-of-preloading.md)
 - [API reference - PreloadType](pathname:///theoplayer/v11/api-reference/web/types/PreloadType.html)

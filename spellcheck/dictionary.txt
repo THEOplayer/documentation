@@ -1025,3 +1025,5 @@ Zettabyte
 HLG
 HLG-compatible
 UIs
+bookmarklet
+lookahead

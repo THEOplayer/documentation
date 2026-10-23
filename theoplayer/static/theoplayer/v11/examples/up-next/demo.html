@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Up Next</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+
+      /* The overlay covers the whole player: only the bar and the end screen take clicks. */
+      .upnext {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        color: #fff;
+      }
+
+      /* Bar in the bottom right corner */
+      .upnext-bar {
+        position: absolute;
+        right: 12px;
+        bottom: 64px;
+        display: flex;
+        max-width: calc(100% - 24px);
+        background: rgb(0 0 0 / 85%);
+        border-radius: 4px;
+        overflow: hidden;
+        pointer-events: auto;
+        transform: translateX(calc(100% + 12px));
+        transition: transform 0.4s ease;
+      }
+
+      .upnext-bar.visible {
+        transform: none;
+      }
+
+      .upnext-open {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        padding: 8px 4px 8px 8px;
+        border: 0;
+        background: none;
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .upnext-thumbnail {
+        position: relative;
+        flex-shrink: 0;
+        width: 112px;
+        aspect-ratio: 16 / 9;
+        background: center / cover no-repeat;
+      }
+
+      .upnext-thumbnail span {
+        position: absolute;
+        right: 4px;
+        bottom: 4px;
+        padding: 0 4px;
+        background: rgb(0 0 0 / 75%);
+        font-size: 12px;
+      }
+
+      .upnext-text {
+        display: grid;
+        min-width: 0;
+        font-size: 14px;
+      }
+
+      .upnext-text strong {
+        font-size: 15px;
+      }
+
+      .upnext-text span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .upnext-close {
+        align-self: flex-start;
+        width: 32px;
+        height: 32px;
+        border: 0;
+        background: none;
+        color: inherit;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .upnext-open:focus-visible,
+      .upnext-close:focus-visible,
+      .upnext-play:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: -2px;
+      }
+
+      /* End screen with the poster of the next video */
+      .upnext-panel {
+        position: absolute;
+        inset: 0;
+        background: center / cover no-repeat;
+        pointer-events: auto;
+      }
+
+      .upnext-panel[hidden] {
+        display: none;
+      }
+
+      .upnext-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgb(0 0 0 / 60%);
+      }
+
+      .upnext-header {
+        position: relative;
+        padding: 4% 5% 0;
+        font-size: clamp(14px, 3vw, 22px);
+      }
+
+      .upnext-header strong {
+        display: block;
+        font-size: clamp(18px, 4.5vw, 34px);
+      }
+
+      .upnext-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: clamp(72px, 18%, 120px);
+        aspect-ratio: 1;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: rgb(0 0 0 / 40%);
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .upnext-play svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* The ring around the play button fills up during the countdown. */
+      .upnext-ring {
+        fill: none;
+        stroke: var(--theoplayer-primary-color, #ffc50f);
+        stroke-width: 4;
+        stroke-dasharray: 289;
+        stroke-dashoffset: 289;
+        transform: rotate(-90deg);
+        transform-origin: center;
+      }
+
+      .upnext-panel.counting .upnext-ring {
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset var(--countdown-duration) linear;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/posters/elephants_dream.jpg","metadata":{"title":"Elephant&apos;s Dream"}}'
+    >
+      <div class="upnext" slot="overlay">
+        <div class="upnext-bar">
+          <button type="button" class="upnext-open" aria-label="Play next: Big Buck Bunny">
+            <span class="upnext-thumbnail"><span class="upnext-duration"></span></span>
+            <span class="upnext-text">
+              <strong>Up Next</strong>
+              <span class="upnext-title"></span>
+            </span>
+          </button>
+          <button type="button" class="upnext-close" aria-label="Close">×</button>
+        </div>
+        <div class="upnext-panel" hidden>
+          <div class="upnext-header">
+            Up Next
+            <strong class="upnext-title"></strong>
+          </div>
+          <button type="button" class="upnext-play" aria-label="Play next: Big Buck Bunny">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="upnext-ring" cx="50" cy="50" r="46" />
+              <path d="M40 30v40l32-20z" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Up Next opens another page that plays the next video.
+      const upNext = {
+        title: 'Big Buck Bunny',
+        image: 'https://cdn.theoplayer.com/video/posters/big_buck_bunny.jpg',
+        duration: '9:56',
+        link: 'next.html',
+      };
+      // Show the bar this many seconds before the end of the video.
+      const BAR_OFFSET = 106;
+      // Show the end screen this many seconds before opening the next page.
+      const COUNTDOWN_DURATION = 10;
+
+      const bar = document.querySelector('.upnext-bar');
+      const panel = document.querySelector('.upnext-panel');
+
+      document.querySelector('.upnext-thumbnail').style.backgroundImage = `url("${upNext.image}")`;
+      document.querySelector('.upnext-duration').textContent = upNext.duration;
+      document.querySelectorAll('.upnext-title').forEach((element) => (element.textContent = upNext.title));
+      panel.style.backgroundImage = `url("${upNext.image}")`;
+      panel.style.setProperty('--countdown-duration', `${COUNTDOWN_DURATION}s`);
+
+      function playNext() {
+        window.location.href = upNext.link;
+      }
+
+      document.querySelector('.upnext-open').addEventListener('click', playNext);
+      document.querySelector('.upnext-play').addEventListener('click', playNext);
+
+      onPlayerReady((player) => {
+        let dismissed = false;
+        let countdownTimer;
+
+        function updateBar() {
+          const remaining = player.duration - player.currentTime;
+          const visible = !dismissed && panel.hidden && Number.isFinite(remaining) && remaining <= BAR_OFFSET;
+          bar.classList.toggle('visible', visible);
+          bar.inert = !visible;
+        }
+
+        function showPanel() {
+          bar.classList.remove('visible');
+          bar.inert = true;
+          panel.hidden = false;
+          // Start the ring animation on the next frame, so the transition runs from empty to full.
+          requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('counting')));
+          countdownTimer = setTimeout(playNext, COUNTDOWN_DURATION * 1000);
+        }
+
+        function hidePanel() {
+          if (panel.hidden) return;
+          clearTimeout(countdownTimer);
+          panel.classList.remove('counting');
+          panel.hidden = true;
+          updateBar();
+        }
+
+        document.querySelector('.upnext-close').addEventListener('click', () => {
+          dismissed = true;
+          updateBar();
+        });
+
+        player.addEventListener(['timeupdate', 'durationchange'], updateBar);
+        player.addEventListener('ended', showPanel);
+        // Seeking back or replaying cancels the countdown.
+        player.addEventListener(['seeking', 'play'], hidePanel);
+        player.addEventListener('sourcechange', () => {
+          dismissed = false;
+          hidePanel();
+        });
+
+        updateBar();
+      });
+    </script>
+  </body>
+</html>

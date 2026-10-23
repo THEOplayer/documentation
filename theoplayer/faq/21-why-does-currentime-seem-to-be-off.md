@@ -58,3 +58,7 @@ function AbsoluteTimeline(player) {
 
 var timeline = AbsoluteTimeline(player);
 ```
+
+## Resources
+
+- [Online demo: keeping track of time](../examples/playback/03-keeping-track-of-time.mdx)

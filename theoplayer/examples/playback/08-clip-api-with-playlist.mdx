@@ -1,0 +1,42 @@
+---
+sidebar_custom_props: { icon: '✂️' }
+description: Play only a part of each item in a playlist with the Clip API.
+---
+
+# Clip API with playlist
+
+Play only a part of each video in a playlist with the Clip API, and continue with the next item when a clip ends.
+
+import CodeBlock from '@theme/CodeBlock';
+import ClipApiWithPlaylistDemo from '../_components/ClipApiWithPlaylistDemo';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/clip-api-with-playlist/demo.html';
+
+<ClipApiWithPlaylistDemo />
+
+Set `player.clip.startTime` and `player.clip.endTime` (in seconds) to limit playback to a part of the stream.
+The player then starts at the clip's start, limits seeking to the clip, and fires `ended` at the clip's end.
+
+Changing the source resets the clip to the whole stream. To clip each playlist item, apply its clip again on `durationchange`, after you set the new source:
+
+```js
+player.addEventListener('durationchange', () => {
+  player.clip.startTime = playlist[active].clip.startTime;
+  player.clip.endTime = playlist[active].clip.endTime;
+});
+
+player.addEventListener('ended', () => {
+  active++;
+  player.autoplay = true;
+  player.source = playlist[active].source;
+});
+```
+
+See the [Clipping](../../how-to-guides/web/miscellaneous/clipping.mdx) guide and the [`Clip` API](pathname:///theoplayer/v11/api-reference/web/interfaces/Clip.html).
+To build a playlist without clips, see the [Playlist and caching](07-playlist-and-caching.mdx) example.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

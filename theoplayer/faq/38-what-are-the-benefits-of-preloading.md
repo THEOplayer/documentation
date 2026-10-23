@@ -17,3 +17,4 @@ The following resources provide more information:
 - [API reference: preloading](pathname:///theoplayer/v11/api-reference/web/types/PreloadType.html)
 - [API reference: Cache API](pathname:///theoplayer/v11/api-reference/web/interfaces/Cache.html)
 - [API reference: Canvas API](pathname:///theoplayer/v11/api-reference/web/interfaces/Canvas.html)
+- [Online demo: preload](../examples/playback/06-preload.mdx)

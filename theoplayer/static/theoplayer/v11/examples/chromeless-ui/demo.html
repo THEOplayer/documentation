@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chromeless UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+      }
+
+      .player {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: #000;
+        color: #fff;
+        font-family: 'Noto Sans', sans-serif;
+        outline: none;
+      }
+
+      .player:fullscreen {
+        aspect-ratio: auto;
+      }
+
+      .player video {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* The player hides other elements in its container and shows its poster on top of the video:
+         make our own controls visible and put them above the poster. */
+      .player > .center-icon,
+      .player > .spinner,
+      .player > .controls {
+        z-index: 2;
+        visibility: visible;
+      }
+
+      .player.idle {
+        cursor: none;
+      }
+
+      /* Big play/pause icon that flashes when the playback state changes, and the buffering spinner. */
+      .center-icon,
+      .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 72px;
+        height: 72px;
+        margin: -36px 0 0 -36px;
+        pointer-events: none;
+      }
+
+      .center-icon {
+        border-radius: 50%;
+        background: rgb(0 0 0 / 50%);
+        opacity: 0;
+      }
+
+      .center-icon.flash {
+        animation: flash 1.8s ease-out;
+      }
+
+      @keyframes flash {
+        0%,
+        45% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.3);
+        }
+      }
+
+      .center-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .spinner {
+        display: none;
+        box-sizing: border-box;
+        border: 6px solid rgb(255 255 255 / 25%);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+      }
+
+      .player.buffering .spinner {
+        display: block;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Bottom panel with the title, buttons, scrubber and times. */
+      .controls {
+        position: absolute;
+        inset: auto 0 0 0;
+        padding: 48px 4% 3%;
+        background: linear-gradient(transparent, rgb(0 0 0 / 75%));
+        transition: opacity 0.4s;
+      }
+
+      .player.idle .controls {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .top-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        flex: 1;
+        margin: 0;
+        overflow: hidden;
+        font-size: clamp(14px, 3vw, 24px);
+        font-weight: 700;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .controls button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        border: 0;
+        border-radius: 50%;
+        background: rgb(255 255 255 / 18%);
+        color: #fff;
+        cursor: pointer;
+        backdrop-filter: blur(12px);
+      }
+
+      .controls button:hover,
+      .controls button:focus-visible {
+        background: #fff;
+        color: #000;
+        outline: none;
+      }
+
+      .controls button[hidden] {
+        display: none;
+      }
+
+      .controls button svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+      }
+
+      .controls button[aria-pressed='true'] {
+        box-shadow: inset 0 0 0 2px #fff;
+      }
+
+      .scrubber {
+        position: relative;
+        height: 20px;
+      }
+
+      .track,
+      .buffered,
+      .played {
+        position: absolute;
+        top: 7px;
+        left: 0;
+        height: 6px;
+        border-radius: 3px;
+        pointer-events: none;
+      }
+
+      .track {
+        right: 0;
+        background: rgb(255 255 255 / 25%);
+      }
+
+      .buffered {
+        background: rgb(255 255 255 / 45%);
+      }
+
+      .played {
+        background: #fff;
+      }
+
+      .scrubber input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .scrubber:focus-within .track {
+        outline: 2px solid #fff;
+        outline-offset: 3px;
+      }
+
+      .times {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6px;
+        font-size: clamp(11px, 2vw, 15px);
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Volume slider pop-up, above the volume button while it's hovered or focused. */
+      .volume {
+        position: relative;
+        display: flex;
+      }
+
+      .volume-popup {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        padding-bottom: 8px;
+        transform: translateX(-50%);
+        /* Hide with opacity, so the slider stays reachable with the Tab key. */
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .volume:hover .volume-popup,
+      .volume:has(:focus-visible) .volume-popup {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .volume-popup div {
+        display: flex;
+        padding: 12px 8px;
+        border-radius: 20px;
+        background: rgb(30 30 30 / 85%);
+        backdrop-filter: blur(12px);
+      }
+
+      .volume-popup input {
+        width: 24px;
+        height: 100px;
+        margin: 0;
+        writing-mode: vertical-lr;
+        direction: rtl;
+        accent-color: #fff;
+        cursor: pointer;
+      }
+
+      /* Subtitle and audio selection pop-ups, above the buttons. */
+      .track-menu {
+        position: absolute;
+        right: 4%;
+        bottom: calc(100% - 40px);
+        min-width: 180px;
+        max-height: 60vh;
+        overflow-y: auto;
+        padding: 6px;
+        border-radius: 12px;
+        background: rgb(30 30 30 / 85%);
+        backdrop-filter: blur(12px);
+      }
+
+      .track-menu[hidden] {
+        display: none;
+      }
+
+      .track-menu p {
+        margin: 4px 10px 6px;
+        font-size: 13px;
+        font-weight: 700;
+        opacity: 0.7;
+      }
+
+      .controls .track-menu button {
+        display: flex;
+        justify-content: flex-start;
+        gap: 8px;
+        width: 100%;
+        height: auto;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: none;
+        font: inherit;
+        font-size: 15px;
+        text-align: left;
+        backdrop-filter: none;
+      }
+
+      .controls .track-menu button:hover,
+      .controls .track-menu button:focus-visible {
+        background: rgb(255 255 255 / 10%);
+        color: rgb(255 255 255 / 70%);
+      }
+
+      .controls .track-menu button::before {
+        content: '';
+        width: 1em;
+      }
+
+      .controls .track-menu button[aria-checked='true']::before {
+        content: '\2713';
+      }
+
+      @media (max-width: 480px) {
+        .controls button {
+          width: 32px;
+          height: 32px;
+          padding: 6px;
+        }
+      }
+    </style>
+    <!-- For production use, host the THEOplayer library yourself and update this URL and the libraryLocation below. -->
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.chromeless.js"></script>
+  </head>
+  <body>
+    <!-- Keyboard: Space or Enter plays and pauses, the left and right arrows skip 10 seconds. -->
+    <div class="player" tabindex="0" aria-label="Video player">
+      <div class="center-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#fff"><path class="center-path" d="M8 5v14l11-7z" /></svg>
+      </div>
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="controls">
+        <div class="top-row">
+          <p class="title">Tears of Steel</p>
+          <button type="button" class="play-button" aria-label="Play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          </button>
+          <button
+            type="button"
+            class="subtitles-button"
+            aria-label="Subtitles: off"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="subtitles-menu"
+            hidden
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
+              />
+            </svg>
+          </button>
+          <button type="button" class="audio-button" aria-label="Audio" aria-haspopup="menu" aria-expanded="false" aria-controls="audio-menu" hidden>
+            <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" /></svg>
+          </button>
+          <div class="volume">
+            <button type="button" class="mute-button" aria-label="Mute">
+              <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z" /></svg>
+            </button>
+            <div class="volume-popup">
+              <div><input type="range" class="volume-slider" min="0" max="1" step="0.05" value="1" aria-label="Volume" /></div>
+            </div>
+          </div>
+          <button type="button" class="fullscreen-button" aria-label="Fullscreen">
+            <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" /></svg>
+          </button>
+        </div>
+        <div class="track-menu" id="subtitles-menu" role="menu" aria-label="Subtitles" hidden></div>
+        <div class="track-menu" id="audio-menu" role="menu" aria-label="Audio" hidden></div>
+        <div class="scrubber">
+          <div class="track"></div>
+          <div class="buffered"></div>
+          <div class="played"></div>
+          <input type="range" min="0" max="0" step="0.1" value="0" aria-label="Seek" />
+        </div>
+        <div class="times">
+          <span class="elapsed">0:00</span>
+          <span class="remaining">-0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const PLAY_ICON = 'M8 5v14l11-7z';
+      const PAUSE_ICON = 'M6 19h4V5H6v14zm8-14v14h4V5h-4z';
+      const MUTED_ICON = 'M3 9v6h4l5 5V4L7 9H3zm13.6 3 2.7-2.7-1.4-1.4-2.7 2.7-2.7-2.7-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4z';
+      const UNMUTED_ICON = 'M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z';
+
+      const container = document.querySelector('.player');
+      const playButton = container.querySelector('.play-button');
+      const subtitlesButton = container.querySelector('.subtitles-button');
+      const audioButton = container.querySelector('.audio-button');
+      const muteButton = container.querySelector('.mute-button');
+      const volumeSlider = container.querySelector('.volume-slider');
+      const fullscreenButton = container.querySelector('.fullscreen-button');
+      const seekInput = container.querySelector('.scrubber input');
+      const bufferedBar = container.querySelector('.buffered');
+      const playedBar = container.querySelector('.played');
+      const elapsedLabel = container.querySelector('.elapsed');
+      const remainingLabel = container.querySelector('.remaining');
+      const centerIcon = container.querySelector('.center-icon');
+
+      // A ChromelessPlayer renders only the video (and subtitles): every control on top of it is our own HTML.
+      // libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      // licenseUrl: Point this to your license file, or replace it with a license property.
+      const player = new THEOplayer.ChromelessPlayer(container, {
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+        licenseUrl: '../../../../theoplayer-license.txt',
+      });
+      window.player = player;
+
+      player.source = {
+        sources: { src: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8', type: 'application/x-mpegurl' },
+        poster: 'https://cdn.theoplayer.com/video/posters/tears_of_steel.jpg',
+      };
+
+      // Keep our controls on top of the video elements the player added to the container.
+      container.append(centerIcon, container.querySelector('.spinner'), container.querySelector('.controls'));
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return '0:00';
+        seconds = Math.max(0, Math.floor(seconds));
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = String(seconds % 60).padStart(2, '0');
+        return hours > 0 ? `${hours}:${String(minutes).padStart(2, '0')}:${secs}` : `${minutes}:${secs}`;
+      }
+
+      function setIcon(button, path) {
+        button.querySelector('path').setAttribute('d', path);
+      }
+
+      // Play and pause
+      function togglePlay() {
+        if (player.paused) {
+          player.play();
+        } else {
+          player.pause();
+        }
+      }
+
+      function updatePlayState() {
+        setIcon(playButton, player.paused ? PLAY_ICON : PAUSE_ICON);
+        playButton.setAttribute('aria-label', player.paused ? 'Play' : 'Pause');
+        updateIdle();
+      }
+
+      function flashCenterIcon() {
+        centerIcon.querySelector('path').setAttribute('d', player.paused ? PAUSE_ICON : PLAY_ICON);
+        // Restart the animation, also when it is still running.
+        centerIcon.classList.remove('flash');
+        void centerIcon.offsetWidth;
+        centerIcon.classList.add('flash');
+      }
+      centerIcon.addEventListener('animationend', () => centerIcon.classList.remove('flash'));
+
+      playButton.addEventListener('click', togglePlay);
+      player.addEventListener(['play', 'pause', 'ended'], updatePlayState);
+      player.addEventListener(['play', 'pause'], flashCenterIcon);
+
+      // Clicking the video plays or pauses, like on a native player.
+      // While the controls are hidden, the first tap only shows them again.
+      let controlsWereHidden = false;
+      container.addEventListener('pointerdown', () => {
+        controlsWereHidden = container.classList.contains('idle');
+      });
+      container.addEventListener('click', (event) => {
+        if (event.target.closest('.controls') || controlsWereHidden) return;
+        // A click outside an open menu only closes it.
+        if (isAnyMenuOpen()) {
+          closeMenus();
+          return;
+        }
+        togglePlay();
+      });
+
+      // Buffering spinner
+      player.addEventListener('waiting', () => container.classList.add('buffering'));
+      player.addEventListener(['playing', 'pause', 'ended', 'error'], () => container.classList.remove('buffering'));
+
+      // Scrubber and times
+      let seeking = false;
+
+      function updateTime() {
+        const duration = player.duration;
+        const time = seeking ? Number(seekInput.value) : player.currentTime;
+        if (Number.isFinite(duration) && duration > 0) {
+          seekInput.max = String(duration);
+          if (!seeking) seekInput.value = String(time);
+          playedBar.style.width = `${(time / duration) * 100}%`;
+          seekInput.setAttribute('aria-valuetext', `${formatTime(time)} of ${formatTime(duration)}`);
+        }
+        elapsedLabel.textContent = formatTime(time);
+        remainingLabel.textContent = `-${formatTime(duration - time)}`;
+      }
+
+      function updateBuffered() {
+        const duration = player.duration;
+        const buffered = player.buffered;
+        let end = 0;
+        for (let i = 0; i < buffered.length; i++) {
+          if (buffered.start(i) <= player.currentTime + 0.5) end = Math.max(end, buffered.end(i));
+        }
+        bufferedBar.style.width = Number.isFinite(duration) && duration > 0 ? `${(end / duration) * 100}%` : '0';
+      }
+
+      seekInput.addEventListener('input', () => {
+        seeking = true;
+        updateTime();
+      });
+      seekInput.addEventListener('change', () => {
+        player.currentTime = Number(seekInput.value);
+        seeking = false;
+      });
+      player.addEventListener(['timeupdate', 'durationchange', 'seeking'], updateTime);
+      player.addEventListener(['progress', 'timeupdate', 'durationchange'], updateBuffered);
+
+      // Subtitles and audio: each button opens a pop-up menu to pick a track.
+      const trackMenus = [];
+
+      function createTrackMenu({ button, heading, options }) {
+        const menu = document.getElementById(button.getAttribute('aria-controls'));
+
+        // options() returns one { label, checked, select } entry per menu item.
+        function render() {
+          const title = document.createElement('p');
+          title.textContent = heading;
+          const items = options().map((option) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.setAttribute('role', 'menuitemradio');
+            item.setAttribute('aria-checked', String(option.checked));
+            item.textContent = option.label;
+            item.addEventListener('click', () => {
+              option.select();
+              close({ focusButton: true });
+            });
+            return item;
+          });
+          menu.replaceChildren(title, ...items);
+        }
+
+        function open() {
+          trackMenus.forEach((other) => other.close());
+          render();
+          menu.hidden = false;
+          button.setAttribute('aria-expanded', 'true');
+          (menu.querySelector('[aria-checked="true"]') ?? menu.querySelector('button')).focus();
+          updateIdle();
+        }
+
+        function close({ focusButton = false } = {}) {
+          if (menu.hidden) return;
+          menu.hidden = true;
+          button.setAttribute('aria-expanded', 'false');
+          if (focusButton) button.focus();
+          updateIdle();
+        }
+
+        button.addEventListener('click', () => (menu.hidden ? open() : close()));
+
+        // Up and down move through the menu, Escape closes it.
+        menu.addEventListener('keydown', (event) => {
+          const items = Array.from(menu.querySelectorAll('button'));
+          const index = items.indexOf(document.activeElement);
+          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            const next = (index + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+            items[next].focus();
+          } else if (event.key === 'Escape') {
+            event.preventDefault();
+            close({ focusButton: true });
+          }
+        });
+
+        const trackMenu = {
+          close,
+          isOpen: () => !menu.hidden,
+          refresh: () => {
+            if (!menu.hidden) render();
+          },
+        };
+        trackMenus.push(trackMenu);
+        return trackMenu;
+      }
+
+      function isAnyMenuOpen() {
+        return trackMenus.some((trackMenu) => trackMenu.isOpen());
+      }
+
+      function closeMenus() {
+        trackMenus.forEach((trackMenu) => trackMenu.close());
+      }
+
+      // Close the menus when a click goes outside the player.
+      document.addEventListener('pointerdown', (event) => {
+        if (!event.target.closest('.player')) closeMenus();
+      });
+
+      // Subtitles: "Off" and each subtitle track.
+      function subtitleTracks() {
+        return Array.from(player.textTracks).filter((track) => track.kind === 'subtitles' || track.kind === 'captions');
+      }
+
+      const subtitlesMenu = createTrackMenu({
+        button: subtitlesButton,
+        heading: 'Subtitles',
+        options: () => {
+          const tracks = subtitleTracks();
+          const showing = tracks.find((track) => track.mode === 'showing') ?? null;
+          return [null, ...tracks].map((selected) => ({
+            label: selected ? selected.label || selected.language : 'Off',
+            checked: selected === showing,
+            select: () =>
+              tracks.forEach((track) => {
+                track.mode = track === selected ? 'showing' : 'disabled';
+              }),
+          }));
+        },
+      });
+
+      function updateSubtitlesButton() {
+        const tracks = subtitleTracks();
+        const showing = tracks.find((track) => track.mode === 'showing');
+        subtitlesButton.hidden = tracks.length === 0;
+        subtitlesButton.setAttribute('aria-label', `Subtitles: ${showing ? showing.label || showing.language : 'off'}`);
+        subtitlesMenu.refresh();
+      }
+      player.textTracks.addEventListener(['addtrack', 'removetrack', 'change'], updateSubtitlesButton);
+
+      // Audio: each audio track, if there are several.
+      const audioMenu = createTrackMenu({
+        button: audioButton,
+        heading: 'Audio',
+        options: () =>
+          Array.from(player.audioTracks).map((track) => ({
+            label: track.label || track.language,
+            checked: track.enabled,
+            select: () => {
+              track.enabled = true;
+            },
+          })),
+      });
+
+      function updateAudioButton() {
+        const tracks = Array.from(player.audioTracks);
+        const enabled = tracks.find((track) => track.enabled);
+        audioButton.hidden = tracks.length < 2;
+        audioButton.setAttribute('aria-label', `Audio: ${enabled ? enabled.label || enabled.language : 'default'}`);
+        audioMenu.refresh();
+      }
+      player.audioTracks.addEventListener(['addtrack', 'removetrack', 'change'], updateAudioButton);
+
+      // Mute and volume
+      function updateMuteButton() {
+        const silent = player.muted || player.volume === 0;
+        setIcon(muteButton, silent ? MUTED_ICON : UNMUTED_ICON);
+        muteButton.setAttribute('aria-label', player.muted ? 'Unmute' : 'Mute');
+        volumeSlider.value = player.muted ? 0 : player.volume;
+        volumeSlider.setAttribute('aria-valuetext', `${Math.round(volumeSlider.value * 100)}%`);
+      }
+
+      muteButton.addEventListener('click', () => {
+        player.muted = !player.muted;
+        // Unmuting at volume 0 would stay silent, so go back to full volume.
+        if (!player.muted && player.volume === 0) player.volume = 1;
+      });
+
+      volumeSlider.addEventListener('input', () => {
+        player.volume = Number(volumeSlider.value);
+        player.muted = player.volume === 0;
+      });
+      player.addEventListener('volumechange', updateMuteButton);
+
+      // Fullscreen
+      // Put the whole container in fullscreen, so our own controls stay visible.
+      // Where an element can't go fullscreen (iPhone), let the player show its video in fullscreen instead.
+      const fullscreenElement = () => document.fullscreenElement ?? document.webkitFullscreenElement;
+      const isFullscreen = () => fullscreenElement() === container || player.presentation.currentMode === 'fullscreen';
+      fullscreenButton.addEventListener('click', () => {
+        if (fullscreenElement() === container) {
+          (document.exitFullscreen ?? document.webkitExitFullscreen).call(document);
+        } else if (player.presentation.currentMode === 'fullscreen') {
+          player.presentation.requestMode('inline');
+        } else if (container.requestFullscreen) {
+          container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+          container.webkitRequestFullscreen();
+        } else {
+          player.presentation.requestMode('fullscreen');
+        }
+      });
+      function updateFullscreenButton() {
+        fullscreenButton.setAttribute('aria-label', isFullscreen() ? 'Exit fullscreen' : 'Fullscreen');
+      }
+      document.addEventListener('fullscreenchange', updateFullscreenButton);
+      document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+      player.presentation.addEventListener('presentationmodechange', updateFullscreenButton);
+
+      // Hide the controls after 3 seconds without activity while playing.
+      let idleTimer;
+
+      function updateIdle() {
+        clearTimeout(idleTimer);
+        container.classList.remove('idle');
+        // Keep the controls visible while paused or while a menu is open.
+        if (!player.paused && !isAnyMenuOpen()) {
+          idleTimer = setTimeout(() => container.classList.add('idle'), 3000);
+        }
+      }
+
+      container.addEventListener('pointermove', updateIdle);
+      container.addEventListener('pointerup', updateIdle);
+      container.addEventListener('focusin', updateIdle);
+
+      // Keyboard, like a remote: Space or Enter plays and pauses, the arrows skip 10 seconds.
+      container.addEventListener('keydown', (event) => {
+        updateIdle();
+        if (event.target !== container && event.target !== seekInput) return;
+        if (event.key === ' ' || (event.key === 'Enter' && event.target === container)) {
+          event.preventDefault();
+          togglePlay();
+        } else if (event.target === container && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+          event.preventDefault();
+          player.currentTime += event.key === 'ArrowLeft' ? -10 : 10;
+        }
+      });
+
+      updatePlayState();
+      updateMuteButton();
+      updateTime();
+    </script>
+  </body>
+</html>
