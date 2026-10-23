@@ -8,9 +8,14 @@ description: Configure failover and redundancy for high-availability streaming.
 
 # Redundancy
 
-Redundancy ensures that viewers can continue watching even if part of the streaming pipeline fails. By connecting multiple engines to a single distribution, the platform can automatically fail over to a healthy engine when one becomes unavailable.
+Redundancy ensures that viewers can continue watching even if part of the streaming pipeline fails. The platform offers two complementary levels of failover:
 
-## How it works
+- **Engine redundancy** (recommended) — connect multiple engines to a single distribution, so the player fails over to a healthy engine when one becomes unavailable.
+- **Backup ingest** — give an engine a second ingest to fall back to, so the engine itself keeps running when its primary source drops.
+
+## Engine redundancy
+
+### How it works
 
 A distribution can have multiple engines attached to it. Each engine processes the stream independently from its own ingest. When the player connects to a distribution, it receives the stream from the active engine. If that engine goes down, the player automatically fails over to the next available engine — without the viewer having to take any action.
 
@@ -19,7 +24,7 @@ This approach protects the entire path from ingest to delivery:
 - **Ingest failure** — if an ingest source drops, only the engine connected to it is affected. The other engine, fed by a separate ingest, continues to serve the stream.
 - **Engine failure** — if an engine fails during transcoding or packaging, the player switches to the other engine on the same distribution.
 
-## Setting up redundancy
+### Setting up engine redundancy
 
 To set up a redundant channel:
 
@@ -29,11 +34,11 @@ To set up a redundant channel:
 
 The engine **priority** determines which engine is active. A lower priority number means higher precedence. The platform serves the stream from the highest-priority engine that is available, and automatically falls back to the next one when needed.
 
-## What the viewer experiences
+### What the viewer experiences
 
 When a failover occurs, the player detects that the current engine is no longer available and switches to the other engine on the distribution. Viewers may see a brief interruption but do not need to reload or take any action.
 
-### Example: geo-redundant setup with priorities
+#### Example: geo-redundant setup with priorities
 
 Consider a sports broadcaster streaming a live match from a stadium in London. To protect against failures, they set up the following:
 
@@ -54,3 +59,95 @@ Consider a sports broadcaster streaming a live match from a stadium in London. T
 **Engine A is taken out of service** (e.g. for maintenance): [Force stop](../platform/starting-and-stopping.mdx#force-stop) Engine A. Its playlist requests start failing, so OptiView Player fails over to Engine B just as it would on a failure. A regular stop would instead end the stream cleanly, and players would treat it as finished rather than fall back.
 
 This setup provides both **geographic redundancy** — the two engines run in separate locations, protecting against regional outages — and **priority-based failover** — the platform always prefers the highest-precedence engine that is available.
+
+## Backup ingest
+
+Engine redundancy protects against engine failures, but it doubles the transcoding cost: every engine runs its own transcode. When your main concern is the **contribution feed** — a flaky encoder, a congested network or a cut connection — a **backup ingest** is a lighter alternative. You give a single engine a second ingest to fall back to, and the engine switches sources by itself while it keeps running.
+
+Engine redundancy remains the recommended setup. Both options can be combined: each engine of a redundant setup can have its own backup ingest.
+
+### How it works
+
+An engine always has a **primary ingest** (`ingestId`). Optionally, you can set a **backup ingest** (`backupIngestId`) on it. The engine then behaves as follows:
+
+- **At start**, the engine pulls from the primary ingest. If the primary cannot be reached or is not delivering a stream, the engine switches to the backup within seconds instead of waiting for the primary.
+- **While streaming**, if the primary ingest drops, the engine switches to the backup ingest and stays on it, even when the primary comes back.
+- If **neither** ingest delivers a stream, the engine keeps retrying until one does or the channel's [auto-stop timeout](../platform/starting-and-stopping.mdx#auto-stop-timeout) expires, exactly as it does with a single ingest.
+
+The switch happens inside the engine, so it is handled like any ingest reconnect: viewers may notice a brief interruption, but they stay on the same engine and the same distribution. Nothing changes for the player, the CDN or your webhooks — the engine remains `playing` and no engine failover takes place.
+
+:::info
+The engine does not switch away from a source that is still delivering media. If you want to move viewers to the backup feed while the primary is still up, stop the primary encoder.
+:::
+
+### Setting up a backup ingest
+
+1. Create **two ingests** on your channel, both receiving the same live source (e.g. a main and a backup encoder).
+2. Create an **engine** connected to the first ingest, and pass the second one as `backupIngestId`.
+
+The backup ingest can be set when creating an engine or added later with an update. Pass `null` to remove it again.
+
+`POST https://api.theo.live/v2/channels/{channelId}/engines`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels/ch_abc123/engines \
+  -H "Authorization: Basic $AUTH" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Engine with backup ingest",
+    "ingestId": "ing_primary",
+    "backupIngestId": "ing_backup",
+    "region": "europe-west",
+    "quality": {
+      "abrLadderId": "abr_abc123"
+    },
+    "outputs": {
+      "hls": true
+    }
+  }'
+```
+
+`PATCH https://api.theo.live/v2/engines/{engineId}`
+
+```bash
+curl -X PATCH https://api.theo.live/v2/engines/eng_ghi789 \
+  -H "Authorization: Basic $AUTH" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "backupIngestId": "ing_backup"
+  }'
+```
+
+The engine response includes `backupIngestId` when one is set. Like the primary ingest, the backup ingest can only be changed while the engine is `stopped`.
+
+:::note
+When you create a channel with nested ingests and engines in a single request, the engines are bound to the ingest they are listed under and cannot reference a backup yet. Set `backupIngestId` with an engine update once the channel exists.
+:::
+
+### Requirements
+
+The primary and backup ingest form a pair, and the API validates the pair whenever you create or update the engine or either ingest:
+
+- The backup must be **another ingest of the same channel** — it cannot be the engine's primary ingest.
+- Both ingests must be of type `srt-pull`, `srt-push`, `rtmp-pull` or `rtmp-push`. Other ingest types (such as SDI, NDI, RTSP, HLS or DASH) cannot take part in a pair.
+- The backup ingest must be in the **same region** as the engine, like the primary.
+- The backup ingest cannot have a [speech enhancement](../contribution/enhancements/speech.mdx) configured; live captioning and translation always follow the primary ingest.
+
+Requests that break one of these rules are rejected with a `400` error (`backup_ingest_not_supported` or `invalid_region`), and a `backupIngestId` that does not exist on the channel yields a `404`. This also applies to ingest updates: for example, changing the type of an ingest that is the backup of an engine to `sdi-pull` fails.
+
+An ingest that serves as the backup of an engine is treated like a connected ingest:
+
+- It **cannot be deleted** while an engine still references it (`409 engines_connected`). Unset or change the engine's `backupIngestId` first.
+- Its **source settings** (`type`, `url`, `region`, `tracks`, `captions`, `enhancements`, `restream`) cannot be changed while any engine using it — as primary or as backup — is running.
+
+### Choosing between the two
+
+|                    | Engine redundancy                    | Backup ingest                   |
+| ------------------ | ------------------------------------ | ------------------------------- |
+| Protects against   | Ingest, engine and regional failures | Ingest (contribution) failures  |
+| Transcoding cost   | One transcode per engine             | One transcode                   |
+| Who switches       | The player, to another engine        | The engine, to another source   |
+| Viewer impact      | Brief interruption, new engine       | Brief interruption, same engine |
+| Returns to primary | New sessions only                    | No                              |
+
+Engine redundancy is the recommended setup.
