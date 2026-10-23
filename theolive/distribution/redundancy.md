@@ -10,7 +10,7 @@ description: Configure failover and redundancy for high-availability streaming.
 
 Redundancy ensures that viewers can continue watching even if part of the streaming pipeline fails. The platform offers two complementary levels of failover:
 
-- **Engine redundancy** — connect multiple engines to a single distribution, so the player fails over to a healthy engine when one becomes unavailable.
+- **Engine redundancy** (recommended) — connect multiple engines to a single distribution, so the player fails over to a healthy engine when one becomes unavailable.
 - **Backup ingest** — give an engine a second ingest to fall back to, so the engine itself keeps running when its primary source drops.
 
 ## Engine redundancy
