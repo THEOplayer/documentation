@@ -38,7 +38,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">1.0.0
+        <div class="library-version" id="library-version">1.2.1
         </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
@@ -93,24 +93,24 @@
   <div class="breadcrumbs"><a href="../../index.html">ads-sdk-core</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.core</a><span class="delimiter">/</span><span class="current">Targeting</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Targeting</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Targeting</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>deviceType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><p class="paragraph">Targeting criteria attached to an <a href="../-asset-uri/index.html">AssetUri</a> (mirrors the TS <code class="lang-kotlin">Targeting</code>).</p><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-targeting/--root--.html">deviceType</a> is a raw <code class="lang-kotlin">String</code>, NOT the <a href="../-device-type/index.html">DeviceType</a> enum, and that is deliberate. The TS <code class="lang-kotlin">DeviceType</code> is a string enum, so at runtime an unrecognised value such as <code class="lang-kotlin">"foldable"</code> stays a plain string: it does not equal the detected device, and it is not <code class="lang-kotlin">undefined</code>, so <code class="lang-kotlin">resolveTargetedUri</code> treats the entry as targeted-but-unmatched and skips it rather than adopting it as the untargeted default. Parsing into a nullable enum would collapse "unknown value" and "no value" into the same <code class="lang-kotlin">null</code> and silently promote a foreign entry to the fallback — a real behavioural divergence on exactly the manifests a forward-compatible parser is supposed to tolerate.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Targeting</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>deviceType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>platform<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>os<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>osVersion<span class="token operator">: </span><a href="../-os-version-range/index.html">OsVersionRange</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>unknownFields<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()</span></span><span class="token punctuation">)</span></div><p class="paragraph">Targeting criteria attached to an <a href="../-asset-uri/index.html">AssetUri</a> (mirrors the TS <code class="lang-kotlin">Targeting</code>).</p><p class="paragraph"><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-targeting/--root--.html">deviceType</a> is a raw <code class="lang-kotlin">String</code>, NOT the <a href="../-device-type/index.html">DeviceType</a> enum, and that is deliberate. The TS <code class="lang-kotlin">DeviceType</code> is a string enum, so at runtime an unrecognised value such as <code class="lang-kotlin">"foldable"</code> stays a plain string: it does not equal the detected device, and it is not <code class="lang-kotlin">undefined</code>, so <code class="lang-kotlin">resolveTargetedUri</code> treats the entry as targeted-but-unmatched and skips it rather than adopting it as the untargeted default. Parsing into a nullable enum would collapse "unknown value" and "no value" into the same <code class="lang-kotlin">null</code> and silently promote a foreign entry to the fallback — a real behavioural divergence on exactly the manifests a forward-compatible parser is supposed to tolerate.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="tableheader">Constructors</h2>
-        <div class="table"><a data-name="1889366091%2FConstructors%2F1791126223" anchor-label="Targeting" id="1889366091%2FConstructors%2F1791126223" data-filterable-set=":ads-sdk-core/main"></a>
+        <div class="table"><a data-name="2130995536%2FConstructors%2F1791126223" anchor-label="Targeting" id="2130995536%2FConstructors%2F1791126223" data-filterable-set=":ads-sdk-core/main"></a>
           <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":ads-sdk-core/main" data-filterable-set=":ads-sdk-core/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-targeting.html"><span><span>Targeting</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1889366091%2FConstructors%2F1791126223"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2130995536%2FConstructors%2F1791126223"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">deviceType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">deviceType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">platform<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">os<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">osVersion<span class="token operator">: </span><a href="../-os-version-range/index.html">OsVersionRange</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">unknownFields<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()</span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -129,7 +129,67 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="device-type.html">deviceType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The targeted device class as written in the manifest (<code class="lang-kotlin">desktop</code>, <code class="lang-kotlin">mobile</code>, <code class="lang-kotlin">tablet</code>, <code class="lang-kotlin">tv</code>); null targets every device.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="device-type.html">deviceType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The targeted device class as written in the manifest (<code class="lang-kotlin">console</code>, <code class="lang-kotlin">desktop</code>, <code class="lang-kotlin">mobile</code>, <code class="lang-kotlin">tablet</code>, <code class="lang-kotlin">tv</code>); null targets every device.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="235193273%2FProperties%2F1791126223" anchor-label="os" id="235193273%2FProperties%2F1791126223" data-filterable-set=":ads-sdk-core/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-core/main" data-filterable-set=":ads-sdk-core/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="os.html"><span><span>os</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="235193273%2FProperties%2F1791126223"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="os.html">os</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Target operating system as written in the manifest.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-432383351%2FProperties%2F1791126223" anchor-label="osVersion" id="-432383351%2FProperties%2F1791126223" data-filterable-set=":ads-sdk-core/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-core/main" data-filterable-set=":ads-sdk-core/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="os-version.html"><span>os</span><wbr><span><span>Version</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-432383351%2FProperties%2F1791126223"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="os-version.html">osVersion</a><span class="token operator">: </span><a href="../-os-version-range/index.html">OsVersionRange</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Inclusive version bounds for the target operating system.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1692102646%2FProperties%2F1791126223" anchor-label="platform" id="-1692102646%2FProperties%2F1791126223" data-filterable-set=":ads-sdk-core/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-core/main" data-filterable-set=":ads-sdk-core/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="platform.html"><span><span>platform</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1692102646%2FProperties%2F1791126223"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="platform.html">platform</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Target platform as written in the manifest.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1427531750%2FProperties%2F1791126223" anchor-label="unknownFields" id="-1427531750%2FProperties%2F1791126223" data-filterable-set=":ads-sdk-core/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk-core/main" data-filterable-set=":ads-sdk-core/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="unknown-fields.html"><span>unknown</span><wbr><span><span>Fields</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1427531750%2FProperties%2F1791126223"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="unknown-fields.html">unknownFields</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Names of targeting keys not recognized by this SDK version.</p></div></div></div>
                 </div>
               </div>
             </div>
