@@ -83,6 +83,32 @@ player.source = {
 };
 ```
 
+#### Subscribed Broadcast Events
+
+The player subscribes to the Millicast broadcast events it needs to function (`active`, `inactive`, `stopped`,
+`layers` and `migrate`). Optional events such as `viewercount` and `vad` are not subscribed by default, so the
+server does not send those messages over the WebSocket connection. To receive them, list them in the `events`
+property of `connectOptions`; the player adds them to the events it already needs.
+
+For example, to receive viewer count updates:
+
+```javascript
+player.source = {
+  sources: {
+    type: 'millicast',
+    /* ... */
+    // highlight-start
+    connectOptions: {
+      events: ['viewercount'],
+    },
+    // highlight-end
+  },
+};
+```
+
+For THEOlive sources that play out over WebRTC, pass the same `events` list through the `webrtc` property of the
+source: `webrtc: { events: ['viewercount'] }`.
+
 ### Recommended Connection Configurations
 
 #### ABR Range Control
