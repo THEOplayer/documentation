@@ -35,7 +35,7 @@ A channel can have **multiple engines**, enabling different levels of redundancy
 
 In both cases, the engine **priority** setting determines which engine is active. A lower priority number means higher precedence, so the platform automatically falls back to the next engine when the primary one becomes unavailable.
 
-An engine can also be given a **backup ingest**: when its primary ingest stops delivering, the engine switches to the backup source by itself and stays on it. This protects the contribution feed without running a second transcode, but not against engine or regional failures, so multiple engines remain the recommended setup. See [Redundancy](./distribution/redundancy.md#backup-ingest) for the details and how it compares to multiple engines.
+An engine can also be given a **backup ingest**: when its primary ingest stops delivering, the engine switches to the backup source by itself and stays on it. This protects the contribution feed without running a second transcode; multiple engines remain the recommended setup. See [Redundancy](./distribution/redundancy.md#backup-ingest) for the details and how it compares to multiple engines.
 
 ## Distribution
 

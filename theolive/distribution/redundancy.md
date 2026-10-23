@@ -64,14 +64,14 @@ This setup provides both **geographic redundancy** — the two engines run in se
 
 Engine redundancy protects against engine failures, but it doubles the transcoding cost: every engine runs its own transcode. When your main concern is the **contribution feed** — a flaky encoder, a congested network or a cut connection — a **backup ingest** is a lighter alternative. You give a single engine a second ingest to fall back to, and the engine switches sources by itself while it keeps running.
 
-A backup ingest only protects the contribution feed. It does not help when the engine itself or its region fails, so **engine redundancy remains the recommended setup** for production streams. Both options can be combined: each engine of a redundant setup can have its own backup ingest.
+Engine redundancy remains the recommended setup. Both options can be combined: each engine of a redundant setup can have its own backup ingest.
 
 ### How it works
 
 An engine always has a **primary ingest** (`ingestId`). Optionally, you can set a **backup ingest** (`backupIngestId`) on it. The engine then behaves as follows:
 
 - **At start**, the engine pulls from the primary ingest. If the primary cannot be reached or is not delivering a stream, the engine switches to the backup within seconds instead of waiting for the primary.
-- **While streaming**, if the primary ingest drops, the engine switches to the backup ingest. Once on the backup, it **stays on the backup** — it does not switch back to the primary when the primary comes back, so viewers are not interrupted a second time. To return to the primary ingest, restart the engine.
+- **While streaming**, if the primary ingest drops, the engine switches to the backup ingest and stays on it, even when the primary comes back.
 - If **neither** ingest delivers a stream, the engine keeps retrying until one does or the channel's [auto-stop timeout](../platform/starting-and-stopping.mdx#auto-stop-timeout) expires, exactly as it does with a single ingest.
 
 The switch happens inside the engine, so it is handled like any ingest reconnect: viewers may notice a brief interruption, but they stay on the same engine and the same distribution. Nothing changes for the player, the CDN or your webhooks — the engine remains `playing` and no engine failover takes place.
@@ -142,12 +142,12 @@ An ingest that serves as the backup of an engine is treated like a connected ing
 
 ### Choosing between the two
 
-|                    | Engine redundancy                    | Backup ingest                            |
-| ------------------ | ------------------------------------ | ---------------------------------------- |
-| Protects against   | Ingest, engine and regional failures | Ingest (contribution) failures           |
-| Transcoding cost   | One transcode per engine             | One transcode                            |
-| Who switches       | The player, to another engine        | The engine, to another source            |
-| Viewer impact      | Brief interruption, new engine       | Brief interruption, same engine          |
-| Returns to primary | New sessions only                    | No — stays on the backup until restarted |
+|                    | Engine redundancy                    | Backup ingest                   |
+| ------------------ | ------------------------------------ | ------------------------------- |
+| Protects against   | Ingest, engine and regional failures | Ingest (contribution) failures  |
+| Transcoding cost   | One transcode per engine             | One transcode                   |
+| Who switches       | The player, to another engine        | The engine, to another source   |
+| Viewer impact      | Brief interruption, new engine       | Brief interruption, same engine |
+| Returns to primary | New sessions only                    | No                              |
 
-Engine redundancy is still the recommended way to protect a production stream, because it is the only option that also covers engine and regional failures. Use a backup ingest on its own when you accept that risk in exchange for a single transcode, or add one to each engine of a redundant setup to make the contribution feed more resilient as well.
+Engine redundancy is the recommended setup.
