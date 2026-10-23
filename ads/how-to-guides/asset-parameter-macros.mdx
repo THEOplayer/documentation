@@ -1,0 +1,270 @@
+---
+sidebar_position: 3.5
+sidebar_label: Asset parameter macros
+---
+
+# Asset parameter macros
+
+A break is defined once in the backend, but some targeting values are only known on the viewer's device: the size of the player, the length of the ad slot, the viewer's team, or a consent string. **Macros** bridge that gap. A macro is a placeholder token inside an [asset parameter](./ad-tag-parameters.mdx) value. The OptiView Ads SDK replaces it with the actual value on the device, at the moment it builds the ad request.
+
+## How macros work
+
+A macro is a token of the form `$NAME$`: a `$`, a name made of letters, digits, and underscores, and a closing `$`. Put one or more tokens anywhere in a parameter value, on the break, in the session configuration, or in an `updateAssetParameters()` call:
+
+```json
+{
+  "type": "vast",
+  "mediaType": "video",
+  "uri": "https://adserver.example.com/vast?slot=midroll",
+  "assetParameters": {
+    "size": "$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$",
+    "team": "$TEAM$"
+  }
+}
+```
+
+When the SDK requests this VAST tag on a 1920×1080 player, for a viewer whose app registered `$TEAM$` as `ajax`, the request becomes:
+
+```text
+https://adserver.example.com/vast?slot=midroll&size=1920x1080&team=ajax
+```
+
+The rules:
+
+- **Resolved per ad request.** The SDK fills in the macros every time it builds an ad request, so a value that changes during the session, such as the player size, is always current.
+- **Whole tokens only.** Matching is case-sensitive and uses the full token: `$APP$` never matches inside `$APP_NAME$`.
+- **Several tokens per value.** A value can combine text and any number of tokens, as `size` does above.
+- **A lone `$` is left alone.** A `$` without a closing `$`, and forms such as `$$` or `${NAME}`, are not macros and are sent unchanged.
+
+## Where macros apply
+
+The SDK resolves macros in every asset parameter it sends, for every ad source:
+
+| Ad source         | Where the resolved parameters go                                                                                                                                                        |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Static assets     | Appended as query parameters to the URL the SDK requests: the asset's `uri`, a static companion, or a pause ad. For HLS and DASH, only the master playlist or MPD request carries them. |
+| VAST              | Appended as query parameters to the VAST tag URL.                                                                                                                                       |
+| Google Ad Manager | Sent to Google as ad tag parameters (`adTagParameters`).                                                                                                                                |
+
+:::caution[Signed static asset URLs]
+Do not use asset parameters on a static asset with a signed URL or a URL that carries an access token. The added query parameters can invalidate the signature. Parameters set in the SDK are added to every static asset request in the session.
+:::
+
+## Built-in macros
+
+The SDK provides these macros on every platform, unless noted:
+
+| Macro                               | Value                                                                                 |
+| ----------------------------------- | ------------------------------------------------------------------------------------- |
+| `$OPTIVIEW_PLAYER_WIDTH$`           | Width of the ad container, in logical pixels.                                         |
+| `$OPTIVIEW_PLAYER_HEIGHT$`          | Height of the ad container, in logical pixels.                                        |
+| `$OPTIVIEW_BREAK_DURATION_SECONDS$` | Duration of the ad, in seconds: the asset's `duration`, otherwise the break's.        |
+| `$OPTIVIEW_BREAK_DURATION_MS$`      | The same duration, in whole milliseconds.                                             |
+| `$OPTIVIEW_USER_AGENT$`             | The user agent of the device. Not available on iOS and tvOS: register your own value. |
+
+The names are also exported by the SDK, so you do not have to type them: `OPTIVIEW_ASSET_PARAMETER_MACROS` on Web and React Native, `OptiViewAssetParameterMacros` on Android, iOS, and tvOS.
+
+## Register your own macros
+
+Register your own macros with `assetParameterMacros` in the session configuration. Each macro is keyed by its full token, including both `$` signs, and its value is either fixed or a callback. The SDK calls a callback each time it builds an ad request, so it can return the current value.
+
+To override a built-in macro, register the same name: your value wins.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="platform" queryString>
+  <TabItem value="web" label="Web">
+
+```typescript
+await sdk.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  assetParameterMacros: {
+    $SEGMENT$: 'sports',
+    $TEAM$: () => currentTeam(),
+  },
+});
+```
+
+  </TabItem>
+  <TabItem value="android" label="Android">
+
+```kotlin
+sdk.startSession(
+    SessionConfig(
+        manifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        assetParameterMacros = mapOf(
+            "\$SEGMENT\$" to { "sports" },
+            "\$TEAM\$" to { currentTeam() },
+        ),
+    )
+)
+```
+
+A fixed value is a callback that always returns the same string.
+
+  </TabItem>
+  <TabItem value="ios" label="iOS">
+
+```swift
+try await sdk.startSession(
+    SessionConfig(
+        manifestUrl: "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        assetParameterMacros: [
+            "$SEGMENT$": { "sports" },
+            "$TEAM$": { currentTeam() },
+            "$OPTIVIEW_USER_AGENT$": { userAgent },
+        ]
+    )
+)
+```
+
+A fixed value is a closure that always returns the same string. iOS and tvOS have no built-in user agent, so register `$OPTIVIEW_USER_AGENT$` yourself if your ad server needs it.
+
+  </TabItem>
+  <TabItem value="react-native" label="React Native">
+
+```typescript
+await ads.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  assetParameterMacros: {
+    $SEGMENT$: 'sports',
+    $TEAM$: () => currentTeam(),
+  },
+});
+```
+
+  </TabItem>
+</Tabs>
+
+Registered macros are cleared when the session ends.
+
+### Update macros during a session
+
+Call `updateAssetParameterMacros()` to change macros while the session runs, for example when the viewer switches teams. The call merges the given names into the session's macros; names you leave out keep their current value. The new values apply to the next ad request: an ad that has already been requested is not requested again.
+
+<Tabs groupId="platform" queryString>
+  <TabItem value="web" label="Web">
+
+```typescript
+sdk.updateAssetParameterMacros({ $TEAM$: 'psv' });
+```
+
+  </TabItem>
+  <TabItem value="android" label="Android">
+
+```kotlin
+sdk.updateAssetParameterMacros(mapOf("\$TEAM\$" to { "psv" }))
+```
+
+  </TabItem>
+  <TabItem value="ios" label="iOS">
+
+```swift
+sdk.updateAssetParameterMacros(["$TEAM$": { "psv" }])
+```
+
+  </TabItem>
+  <TabItem value="react-native" label="React Native">
+
+```typescript
+await ads.updateAssetParameterMacros({ $TEAM$: 'psv' });
+```
+
+  </TabItem>
+</Tabs>
+
+To remove a macro you registered, pass `undefined` for it on Web and React Native, or `null` on Android and `nil` on iOS. A built-in macro with the same name then applies again.
+
+## Leave out a parameter with an empty macro
+
+Sometimes a parameter must not be sent at all, for example a consent string before the viewer has given consent. Mark the macro **empty**, and the SDK leaves out every parameter that uses it:
+
+<Tabs groupId="platform" queryString>
+  <TabItem value="web" label="Web">
+
+```typescript
+await sdk.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  assetParameterMacros: {
+    $CONSENT$: () => (hasConsent() ? consentString() : null),
+  },
+});
+```
+
+On Web and React Native, `null` marks a macro empty.
+
+  </TabItem>
+  <TabItem value="android" label="Android">
+
+```kotlin
+sdk.startSession(
+    SessionConfig(
+        manifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        assetParameterMacroValues = mapOf(
+            "\$CONSENT\$" to {
+                if (hasConsent()) AssetParameterMacroValue.Text(consentString())
+                else AssetParameterMacroValue.Empty
+            },
+        ),
+    )
+)
+```
+
+On Android, register the macro in `assetParameterMacroValues` and return `AssetParameterMacroValue.Empty`. Use `updateAssetParameterMacroValues()` to change such a macro during the session.
+
+  </TabItem>
+  <TabItem value="ios" label="iOS">
+
+```swift
+try await sdk.startSession(
+    SessionConfig(
+        manifestUrl: "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        assetParameterMacroValues: [
+            "$CONSENT$": { hasConsent() ? .text(consentString()) : .empty },
+        ]
+    )
+)
+```
+
+On iOS and tvOS, register the macro in `assetParameterMacroValues` and return `.empty`. Use `updateAssetParameterMacros(values:)` to change such a macro during the session.
+
+  </TabItem>
+  <TabItem value="react-native" label="React Native">
+
+```typescript
+await ads.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  assetParameterMacros: {
+    $CONSENT$: () => (hasConsent() ? consentString() : null),
+  },
+});
+```
+
+  </TabItem>
+</Tabs>
+
+What is left out depends on the value:
+
+| Parameter value                                                             | What the SDK leaves out                                                                                                              |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| A plain value, such as `"gdpr_consent": "$CONSENT$"`                        | The whole parameter.                                                                                                                 |
+| Google Ad Manager `cust_params`, such as `"genre=sports&consent=$CONSENT$"` | Only the `&`-separated pair with the empty macro: `cust_params=genre=sports` is still sent. If no pair is left, the whole parameter. |
+| A static asset value with `&`-separated pairs                               | Only the pairs with the empty macro, as for `cust_params`.                                                                           |
+| A VAST `cust_params` value                                                  | The whole parameter.                                                                                                                 |
+
+## Tokens the SDK cannot fill in
+
+A token without a value is never removed: the SDK sends the parameter with the token as it is.
+
+- **Your ad server's own macros.** A token that is neither built in nor registered, such as `$PUBLISHER_ID$`, is sent unchanged. Your ad server can then expand it on its side.
+- **A built-in macro without a value**, such as `$OPTIVIEW_USER_AGENT$` on iOS, an unknown `$OPTIVIEW_*` name, or a registered macro whose callback returns no value, is also sent unchanged. The SDK reports it with the `DA-ASSET-MACRO-UNKNOWN` diagnostic, so you can spot a missing value during development.
+
+## Related resources
+
+| Resource                                                             | Description                                                    |
+| -------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [Ad targeting parameters](./ad-tag-parameters.mdx)                   | Where asset parameters are set, and how the layers are merged. |
+| [Static assets on live](../workflows/live/static-assets.mdx)         | Playing creatives from your CDN.                               |
+| [Your ad server (VAST) on live](../workflows/live/vast.mdx)          | Playing VAST tags with the SDK.                                |
+| [Google Ad Manager on live](../workflows/live/google-ad-manager.mdx) | Playing Google pods with the SDK.                              |

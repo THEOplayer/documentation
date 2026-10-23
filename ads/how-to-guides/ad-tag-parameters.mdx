@@ -7,8 +7,8 @@ sidebar_position: 3
 When an ad server decides which ad fills a break, you can pass key-value parameters with the ad request to personalize the ads — for example the content genre, the placement type, or custom targeting values. In OptiView Ads, these parameters are called **`assetParameters`**. How they reach the ad server depends on the [ad workflow](../workflows/index.mdx):
 
 - **[VAST](../workflows/live/vast.mdx):** the SDK appends them to the VAST tag URL as URL-encoded query parameters.
-- **[Google Ad Manager](../workflows/live/google-ad-manager.mdx):** they are sent to Google as [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`).
-- **[Static assets](../workflows/live/static-assets.mdx)** involve no ad request, so they do not use `assetParameters`.
+- **[Google Ad Manager](../workflows/live/google-ad-manager.mdx):** they are sent to Google as ad tag parameters (`adTagParameters`). See Google's [list of all recognized ad tag parameters](https://support.google.com/admanager/answer/10678356#expand-all).
+- **[Static assets](../workflows/live/static-assets.mdx):** the SDK appends them as query parameters to the URL of the creative it requests.
 
 You can set `assetParameters` in two places: on the break in the **backend**, and in the **OptiView Ads SDK** on the client.
 
@@ -71,17 +71,9 @@ As a rule of thumb:
 
 ## Macros
 
-A parameter value can contain macros: `$NAME$` tokens that the SDK replaces when it builds the ad request. Macros let a value on the break carry information that is only known on the device. The SDK provides these built-in macros:
+A parameter value can contain macros: `$NAME$` tokens that the SDK replaces with a value from the device when it builds the ad request. For example, `"size": "$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$"` is sent as `size=1920x1080`. The SDK has built-in macros for the player size, the ad duration, and the user agent, and your app can register its own.
 
-| Macro                               | Value                                                                        |
-| ----------------------------------- | ---------------------------------------------------------------------------- |
-| `$OPTIVIEW_PLAYER_WIDTH$`           | Width of the ad container, in logical pixels.                                |
-| `$OPTIVIEW_PLAYER_HEIGHT$`          | Height of the ad container, in logical pixels.                               |
-| `$OPTIVIEW_BREAK_DURATION_SECONDS$` | Duration of the ad, in seconds: the asset's `duration`, else the break's.    |
-| `$OPTIVIEW_BREAK_DURATION_MS$`      | The same duration, in whole milliseconds.                                    |
-| `$OPTIVIEW_USER_AGENT$`             | The user agent of the device. Not available on iOS; register your own value. |
-
-For example, `"size": "$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$"` is sent as `size=1920x1080`. You can register your own macros, or override a built-in one, with `assetParameterMacros` in the session configuration. Tokens the SDK does not know, such as `$PUBLISHER_ID$`, are sent unchanged, so your ad server can still expand its own macros. See `SessionConfig` in the API reference of your platform for the details.
+See [Asset parameter macros](./asset-parameter-macros.mdx) for how macros work, the built-in macros, registering and updating your own, and leaving out a parameter with an empty macro.
 
 ## Platform examples
 
@@ -153,6 +145,7 @@ ads.updateAssetParameters({ cust_params: 'sport=basketball' });
 
 | Resource                                                             | Description                                     |
 | -------------------------------------------------------------------- | ----------------------------------------------- |
+| [Asset parameter macros](./asset-parameter-macros.mdx)               | Device values in parameter values.              |
 | [VAST](../workflows/live/vast.mdx)                                   | Playing VAST tags with the SDK.                 |
 | [Google Ad Manager](../workflows/live/google-ad-manager.mdx)         | Playing Google pods with the SDK.               |
 | [Google Pod Serving](../integrations/google/pod-serving.mdx)         | Required Google parameters and pod decisioning. |

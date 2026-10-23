@@ -125,7 +125,7 @@ Start playback of your stream on your device. Shortly before the scheduled start
 
 You can follow along on both sides:
 
-- **In the dashboard or API:** the break's [lifecycle status](/ads/concepts/breaks#break-lifecycle) is `READY` (a Google pod break passes through `PREPARING` first), and moves to `SIGNALED` once it is announced to players.
+- **In the dashboard or API:** the break's [lifecycle status](/ads/concepts/breaks#break-lifecycle) is `READY`, and moves to `SIGNALED` once it is announced to players.
 - **In the player:** the ad plays at the scheduled time and your content resumes afterwards.
 
 If the break does not play, verify that the Break Manifest URL from step 2 returns the break, and that your stream carries the time metadata required by the channel's timebase.
