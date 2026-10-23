@@ -12,7 +12,7 @@ OptiView Ads is a **hybrid ad insertion platform**: the same channel and the sam
 2. **Ad source** — where do the ads come from: static assets from your CDN, your ad server through VAST tags, or Google Ad Manager?
 3. **Delivery mode** — does the player insert the ads (SGAI), or are they stitched into the stream (SSAI)?
 
-Pick your use case and ad source in the [table below](#supported-workflows): each combination has its own page with everything you need to set it up.
+Start from your use case, [Live](./live/index.mdx) or [VOD](./vod/index.mdx): each has a page per ad source with everything you need to set it up.
 
 ## Hybrid ad insertion: SGAI and SSAI
 
@@ -43,11 +43,11 @@ Live and VOD are different use cases, and a channel is created for one of them. 
 
 Every ad source works for both live and VOD. One channel, and even one break, can mix ad sources.
 
-| Ad source             | What the break carries                                | Live                                        | VOD                                        | What your app needs                                                        |
-| --------------------- | ----------------------------------------------------- | ------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------- |
-| Static assets         | Direct URLs to video or image creatives on your CDN.  | [SGAI](./live/static-assets.mdx)            | [SGAI](./vod/static-assets.mdx)            | Nothing beyond the SDK integration.                                        |
-| Your ad server (VAST) | A VAST tag URL on your ad server, or an advertiser's. | [SGAI](./live/vast.mdx)                     | [SGAI](./vod/vast.mdx)                     | On Web, Google's client-side IMA SDK (`ima3.js`).                          |
-| Google Ad Manager     | An ad pod decisioned by Google Ad Manager 360.        | [SGAI + SSAI](./live/google-ad-manager.mdx) | [SGAI + SSAI](./vod/google-ad-manager.mdx) | On Web, Google's IMA DAI SDK (`ima3_dai.js`). Google Ad Manager 360 setup. |
+| Ad source             | What the break carries                                | Delivery mode | What your app needs                                                        |
+| --------------------- | ----------------------------------------------------- | ------------- | -------------------------------------------------------------------------- |
+| Static assets         | Direct URLs to video or image creatives on your CDN.  | SGAI          | Nothing beyond the SDK integration.                                        |
+| Your ad server (VAST) | A VAST tag URL on your ad server, or an advertiser's. | SGAI          | On Web, Google's client-side IMA SDK (`ima3.js`).                          |
+| Google Ad Manager     | An ad pod decisioned by Google Ad Manager 360.        | SGAI + SSAI   | On Web, Google's IMA DAI SDK (`ima3_dai.js`). Google Ad Manager 360 setup. |
 
 ### Which ad source should I use?
 

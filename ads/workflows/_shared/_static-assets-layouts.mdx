@@ -1,11 +1,13 @@
-Static assets work in every [layout](../../concepts/breaks.mdx#layouts) and as [pause ads](../../concepts/breaks.mdx#pause):
+Static assets work in every [layout](../../concepts/breaks.mdx#layouts):
 
-| Layout                | Static asset                                                                             |
-| --------------------- | ---------------------------------------------------------------------------------------- |
-| `single`              | A video that replaces the content.                                                       |
-| `double`, `lshape_ad` | A video, with an image or video `companion` that fills the background.                   |
-| `lshape_content`      | An image that fills the L-shaped backdrop while your content keeps playing.              |
-| `overlay`             | An image or video on top of your content.                                                |
-| Pause ad              | An image, or a progressive MP4 video that plays muted, shown while the viewer is paused. |
+| Layout          | Static asset                                                                  |
+| --------------- | ----------------------------------------------------------------------------- |
+| Single          | A video that replaces the content.                                            |
+| Double box      | A video next to your content, with an image or video `companion` behind both. |
+| L-shape ad      | A video, with an image or video `companion` that fills the L-shaped backdrop. |
+| L-shape content | An image that fills the L-shaped backdrop while your content keeps playing.   |
+| Overlay         | An image or video on top of your content.                                     |
 
 An image stays on screen for the asset's `duration`, or for the break's `duration` when the asset has none.
+
+Static assets can also be used for [pause ads](../../concepts/breaks.mdx#pause): an image, or a progressive MP4 video that plays muted, shown while the viewer is paused.
