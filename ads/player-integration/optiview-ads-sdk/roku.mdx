@@ -1,0 +1,103 @@
+---
+sidebar_position: 6
+sidebar_label: Roku
+---
+
+# OptiView Ads SDK on Roku
+
+On Roku, the OptiView Ads SDK is a SceneGraph component, `OptiViewAds`, for clear live HLS streams. Instead of a player adapter, it works with one `Video` node that your channel owns and never changes that node's source at an ad boundary:
+
+- **Client-side stitching (SGAI):** the component replaces content segments with the Google Ad Manager pod at the break times in the channel's [Break Manifest](../../concepts/break-manifest.mdx). The player plays one continuous stream.
+- **Server-side insertion (SSAI):** when the Break Manifest's delivery rule for TV devices selects SSAI, the component plays the channel's Google DAI live stream instead.
+
+## Prerequisites
+
+1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
+2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), configure the Google Ad Manager `networkCode` and `customAssetKey` on the channel. The Roku SDK reads them from the Break Manifest.
+3. The content must be clear (not DRM-protected) live HLS with `EXT-X-PROGRAM-DATE-TIME` tags, in MPEG-TS or CMAF, with up to eight renditions.
+
+## Installation
+
+The SDK is published on npm as `@dolby-optiview/ads-sdk-roku`. Install it with [ropm](https://github.com/rokucommunity/ropm), the Roku package manager, and list it in `ropm.noprefix` so the component keeps the name `OptiViewAds`:
+
+```bash
+npm install ropm --save-dev
+npx ropm install @dolby-optiview/ads-sdk-roku
+```
+
+```json
+{
+  "dependencies": { "@dolby-optiview/ads-sdk-roku": "<version>" },
+  "ropm": { "noprefix": ["@dolby-optiview/ads-sdk-roku"] }
+}
+```
+
+Without `noprefix`, ropm prefixes every component and function of the package; create the node as `dolbyoptiview_adssdkroku_OptiViewAds` then. The package includes a Google IMA task component named `IMASDKTask`; if your channel already has a component with that name, install with the prefix.
+
+Without ropm, install the package with npm and copy its `channel/` folder into your channel root:
+
+```bash
+npm install @dolby-optiview/ads-sdk-roku
+cp -R node_modules/@dolby-optiview/ads-sdk-roku/channel/. <your-channel-root>/
+```
+
+The package is a component library, not a stand-alone channel. It adds `components/OptiViewAds/`, the Google IMA task under `components/Player/`, helpers under `source/` and the Break Manifest verification keys under `manifest-keys/`. Declare the Roku libraries it needs in your channel's `manifest`:
+
+```properties
+bs_libs_required=googleima3,roku_ads_lib
+```
+
+## Integration
+
+Create the component, bind your `Video` node and a node for the Google IMA ad UI, observe the result and event fields, then start a session with the channel's Break Manifest URL:
+
+```brightscript
+m.ads = CreateObject("roSGNode", "OptiViewAds")
+m.top.AppendChild(m.ads)
+m.ads.videoNode = m.top.FindNode("video")
+m.ads.adUiNode = m.top.FindNode("adUi")
+m.ads.ObserveField("operationResult", "OnAdsOperation")
+m.ads.ObserveField("sdkEvent", "OnAdsEvent")
+m.ads.ObserveField("diagnosticEvent", "OnAdsDiagnostic")
+m.ads.CallFunc("startSession", {
+    contentUrl: "https://cdn.example.com/live/master.m3u8"
+    manifestUrl: "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID"
+})
+```
+
+`startSession` returns an operation ID. When `operationResult` reports `status: "ready"` for it, play **its `playbackUrl`** on your `Video` node; the SDK never sets the source itself:
+
+```brightscript
+sub OnAdsOperation(event as Object)
+    result = event.GetData()
+    if result.status = "ready"
+        content = CreateObject("roSGNode", "ContentNode")
+        content.url = result.playbackUrl
+        content.streamFormat = "hls"
+        m.video.content = content
+        m.video.control = "play"
+    end if
+end sub
+```
+
+From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), inserts the breaks at their scheduled times, and reports the ad events and impressions from Google IMA. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
+
+To stop, call `endSession`, stop and detach playback, then call `destroy`.
+
+All fields, functions, start configuration options, events, diagnostics and capabilities are documented in the [Roku API reference](pathname:///ads/v2/api-reference/roku/).
+
+## Supported players
+
+### Roku Video node
+
+The SDK binds the channel's own `Video` node, as shown above.
+
+**Limitations:**
+
+- Breaks need the stream's `EXT-X-PROGRAM-DATE-TIME`; a break that starts between segment boundaries starts at the nearest boundary.
+- DRM, VOD, low-latency HLS parts, pre-rolls, post-rolls, pause ads and VAST are not supported.
+- A break that fails after its ads were published ends playback; start a new session to continue.
+
+### OptiView Player (THEOplayer) for Roku
+
+THEOplayer owns its `Video` node. Bind that node (`player.callFunc("getVideoNode")`) to `videoNode`, then load the `playbackUrl` through THEOplayer's own source API instead of setting the `Video` content directly.
