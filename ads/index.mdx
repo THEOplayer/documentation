@@ -9,7 +9,7 @@ import SidebarDocCardList from '@site/src/components/SidebarDocCardList';
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-OptiView Ads is an ad insertion service for LIVE content (VOD support coming soon), utilizing Server-Guided Ad Insertion (SGAI) as well as Server-Side Ad Insertion (SSAI). On these pages, you'll learn how to get started with OptiView Ads, model your live streams, schedule ad breaks, and configure the OptiView Ads SDK — the recommended integration approach.
+OptiView Ads is a hybrid ad insertion platform for **live** streams and **video-on-demand (VOD)** assets: the same channel and the same breaks can be delivered with Server-Guided Ad Insertion (SGAI) or Server-Side Ad Insertion (SSAI). Ads come from creatives on your own CDN, from VAST tags on your ad server, or from Google Ad Manager. On these pages, you'll learn how to get started with OptiView Ads, choose the [ad workflow](./workflows/index.mdx) that fits your content, schedule ad breaks, and configure the OptiView Ads SDK.
 
 By logically redistributing responsibilities in the advertisement workflow, OptiView Ads:
 
@@ -19,7 +19,12 @@ By logically redistributing responsibilities in the advertisement workflow, Opti
 - Maximizes workflow efficiency by reducing prefetching and over-allocation of inventory.
 - Enables more relevant ads through a high degree of personalization.
 
-OptiView Ads models each live stream as a **channel**. A channel monitors one or more **origins**, detects or schedules **breaks**, and can use reusable **templates** for consistent ad experiences. It generates a **Break Manifest** for the OptiView Ads SDK to poll and render.
+OptiView Ads models each live stream or VOD asset as a **channel**. A channel schedules **breaks**, or detects them from the ad markers in the stream or asset on its **origins**, and can use reusable **templates** for consistent ad experiences. It generates a **Break Manifest** for the OptiView Ads SDK to read and render.
+
+| Use case                           | What it is for                                                                                 | Ad sources                                                                                                                                                           |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Live](./workflows/live/index.mdx) | Linear channels and live events: breaks on the live timeline, scheduled, punched, or detected. | [Static assets](./workflows/live/static-assets.mdx), [Your ad server (VAST)](./workflows/live/vast.mdx), [Google Ad Manager](./workflows/live/google-ad-manager.mdx) |
+| [VOD](./workflows/vod/index.mdx)   | On-demand assets: pre-roll, mid-rolls at positions in the asset, post-roll, and pause ads.     | [Static assets](./workflows/vod/static-assets.mdx), [Your ad server (VAST)](./workflows/vod/vast.mdx), [Google Ad Manager](./workflows/vod/google-ad-manager.mdx)    |
 
 <ThemedImage
   alt="OptiView Ads architecture"
@@ -51,6 +56,6 @@ OptiView Ads enables innovative ad formats through the OptiView Ads SDK, providi
   }}
 />
 
-Besides mid-roll breaks on the live timeline, breaks can also be [triggered by player events](./concepts/breaks.mdx#event-based-triggers): **pre-roll** (when playback starts), **pause** (while the viewer is paused), and **post-roll** (when playback ends) — each with an optional delay.
+Besides mid-roll breaks on the live timeline or at positions in a VOD asset, breaks can also be [triggered by player events](./concepts/breaks.mdx#event-based-triggers): **pre-roll** (when playback starts), **pause** (while the viewer is paused), and **post-roll** (when playback ends) — each with an optional delay.
 
 <SidebarDocCardList />

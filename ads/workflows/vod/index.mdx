@@ -1,0 +1,111 @@
+---
+sidebar_position: 2
+sidebar_label: VOD
+description: Monetize video-on-demand assets with OptiView Ads.
+---
+
+# VOD
+
+A VOD channel monetizes an on-demand asset: a movie, an episode, a replay, or a clip. Every viewer watches the asset from its own position, so breaks are placed at positions in the asset rather than at moments in time, and the player receives all of them at once when playback starts.
+
+## Set up a VOD channel
+
+Create the channel with `streamType` set to `vod`, and choose a timebase:
+
+- **`mediatime`** — breaks start at a position in the asset, in seconds from its start. For example, `600` is 10 minutes into the asset. This is the recommended timebase for VOD, and it is only available on VOD channels.
+- **`wallclock`** — breaks start at a UTC timestamp, matched against the asset's `EXT-X-PROGRAM-DATE-TIME` timeline. Use it for replays of a live stream that keep their original program date-time. Unlike on a live channel, the timestamp may lie in the past.
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "name": "Movie: The Big Match",
+    "streamType": "vod",
+    "timebase": "mediatime"
+  }'
+```
+
+The `streamType` and the `timebase` are set when you create the channel and cannot be changed afterwards. Create one VOD channel per asset, or per group of assets that share the same break positions.
+
+## Schedule breaks
+
+On a VOD channel, breaks are known before playback starts. Create them in one of two ways, or combine them:
+
+- **Scheduled** — create each break with its position in the asset, as below.
+- **Detected** — add the asset as an [origin](../../concepts/origins.mdx), and OptiView Ads turns the ad markers in the asset, such as SCTE-35 signals, into breaks at their positions. See [Break detection](../../concepts/marker-detection.mdx).
+
+With the `mediatime` timebase, `start` is a number of seconds:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "start": 600,
+    "duration": 30,
+    "controls": { "snapback": true },
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "static",
+          "mediaType": "video",
+          "uri": "https://cdn.example.com/ads/spot.m3u8"
+        }
+      ]
+    }
+  }'
+```
+
+A typical VOD ad plan combines:
+
+- **Pre-roll** — a break triggered when playback starts, with an [event trigger](../../concepts/breaks.mdx#start) instead of a start position.
+- **Mid-rolls** — breaks at positions in the asset, such as `600` and `1800`.
+- **Post-roll** — a break triggered when playback ends, with an [end trigger](../../concepts/breaks.mdx#end).
+- **Pause ads** — shown while the viewer is paused, with a [pause trigger](../../concepts/breaks.mdx#pause).
+
+Breaks on a VOD channel cannot overlap.
+
+### Seeking and snapback
+
+VOD viewers seek freely, so decide per break what happens when they skip over it, with the break's [controls](../../concepts/breaks.mdx#controls):
+
+- With `snapback` enabled, a viewer who seeks past a break is taken back to the break first. After the break, playback continues at the position the viewer was seeking to.
+- Without `snapback`, the viewer can skip the break.
+
+A break plays at most once per session: seeking back over a break that has already played does not play it again.
+
+## How players receive the breaks
+
+A VOD Break Manifest lists all breaks of the channel, and carries no polling interval. The SDK fetches it once when the session starts, and schedules every break against the playback position of the asset. Changes you make to the breaks apply to the next playback session.
+
+Your app integrates the SDK in the same way as for live: [Web](../../player-integration/optiview-ads-sdk/web.mdx), [Android](../../player-integration/optiview-ads-sdk/android.mdx), [iOS](../../player-integration/optiview-ads-sdk/ios.mdx), or [React Native](../../player-integration/optiview-ads-sdk/react-native.mdx). Start a session with the Break Manifest URL of the VOD channel when you load the asset.
+
+## What is different from live
+
+The live-only features do not apply to VOD channels:
+
+- **No events.** [Events](../../concepts/events.mdx) group the breaks of a live event; a VOD asset has no live moment to prepare for.
+- **No `pts` timebase.** Use `mediatime` or `wallclock`.
+
+## Choose an ad source
+
+Each ad source has its own page with everything you need for VOD: the break setup, what your app needs, the supported layouts, and troubleshooting. VOD channels support both delivery modes of the [hybrid platform](../index.mdx#hybrid-ad-insertion-sgai-and-ssai):
+
+| Ad source                                    | SGAI | SSAI |
+| -------------------------------------------- | ---- | ---- |
+| [Static assets](./static-assets.mdx)         | Yes  | No   |
+| [Your ad server (VAST)](./vast.mdx)          | Yes  | No   |
+| [Google Ad Manager](./google-ad-manager.mdx) | Yes  | Yes  |
+
+## Related resources
+
+| Resource                                            | Description                                             |
+| --------------------------------------------------- | ------------------------------------------------------- |
+| [Breaks](../../concepts/breaks.mdx)                 | Event triggers, controls, layouts, and the asset model. |
+| [Channels](../../concepts/channels.mdx)             | Stream type and timebase.                               |
+| [Break Manifest](../../concepts/break-manifest.mdx) | How breaks are delivered to players.                    |
+| [Live](../live/index.mdx)                           | Monetize live streams instead.                          |

@@ -17,6 +17,32 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Ad workflows',
+      description: 'Live and VOD, SGAI and SSAI, with static assets, VAST, or Google Ad Manager.',
+      collapsed: false,
+      customProps: {
+        icon: '🔀',
+      },
+      link: { type: 'doc', id: 'workflows/index' },
+      items: [
+        {
+          type: 'category',
+          label: 'Live',
+          description: 'Monetize live streams and live events.',
+          link: { type: 'doc', id: 'workflows/live/index' },
+          items: ['workflows/live/static-assets', 'workflows/live/vast', 'workflows/live/google-ad-manager'],
+        },
+        {
+          type: 'category',
+          label: 'VOD',
+          description: 'Monetize on-demand assets.',
+          link: { type: 'doc', id: 'workflows/vod/index' },
+          items: ['workflows/vod/static-assets', 'workflows/vod/vast', 'workflows/vod/google-ad-manager'],
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Player integration',
       description: 'Connect OptiView Ads to a player.',
       collapsed: false,

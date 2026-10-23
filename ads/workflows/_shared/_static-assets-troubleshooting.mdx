@@ -1,0 +1,3 @@
+- **The break does not play.** Check that the channel's [Break Manifest](../../concepts/break-manifest.mdx) contains the break, and that the creative URL is publicly reachable.
+- **Web: the creative fails to load.** The SDK downloads HLS creatives with HTTP requests from your page, so your CDN must allow cross-origin requests (CORS) from your app's origin.
+- **A creative cannot be played.** The SDK emits an `aderror` event for the asset, continues with the next asset in the break if there is one, and otherwise returns to your content.

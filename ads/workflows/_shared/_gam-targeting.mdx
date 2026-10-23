@@ -1,0 +1,6 @@
+For Google, `assetParameters` are sent as Google [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`). As a rule of thumb:
+
+- Set the values that describe your content on the break, such as `description_url` and `plcmt`. See [Required Google parameters](../../integrations/google/pod-serving.mdx#required-google-parameters).
+- Set the values that depend on the playback environment in the SDK, such as `vpa` and `vpmute` and, in apps, the [device and app identity parameters](../../integrations/google/pod-serving.mdx#additional-parameters-for-app-inventory).
+
+When the same key is set in both places, the value on the break wins. See [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx) for the merge rules and platform examples.

@@ -25,6 +25,7 @@ The [timebase of the channel](./channels.mdx#timebase) defines how a break is sc
 
 - **`wallclock`** — the break's `start` is a UTC ISO 8601 timestamp (for example `"2026-07-16T12:15:00.000Z"`). Players match it against the wallclock timeline carried by the stream. `start` is optional on wallclock channels: omitting it creates a [cued break](#cued-breaks).
 - **`pts`** — the break's `start` is a non-negative number: a presentation timestamp on the encoder's timeline. `start` is required on PTS channels.
+- **`mediatime`** — the break's `start` is a non-negative number of seconds from the start of the asset (for example `600`). `start` is required on `mediatime` channels, which are always [VOD](../workflows/vod/index.mdx) channels.
 
 `duration` is always required and is expressed in seconds. It is the **maximum** duration of the break.
 
@@ -396,6 +397,8 @@ A `static` asset is a media resource the player retrieves directly — a video o
 }
 ```
 
+See [Static assets](../workflows/live/static-assets.mdx) for the supported creative formats and layouts in the OptiView Ads SDK.
+
 #### VAST assets
 
 A `vast` asset points to an ad server that responds with a VAST XML document describing how the ad should be played. The `uri` is the VAST tag URL, and the `mimeType` should be `application/xml` or `text/xml`:
@@ -408,6 +411,8 @@ A `vast` asset points to an ad server that responds with a VAST XML document des
   "uri": "https://adserver.example.com/vast/creative-001.xml"
 }
 ```
+
+A `vast` asset can also carry `assetParameters`, which the player appends to the VAST tag URL as query parameters. See [VAST](../workflows/live/vast.mdx) for how the OptiView Ads SDK plays VAST tags, and the layouts they support.
 
 #### Vendor assets
 

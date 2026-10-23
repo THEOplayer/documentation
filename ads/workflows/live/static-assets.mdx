@@ -1,0 +1,96 @@
+---
+sidebar_position: 1
+sidebar_label: Static assets
+description: Play ad creatives from your own CDN in a live stream, without an ad server.
+---
+
+# Static assets on live
+
+import Layouts from '../_shared/_static-assets-layouts.mdx';
+import Formats from '../_shared/_static-assets-formats.mdx';
+import Troubleshooting from '../_shared/_static-assets-troubleshooting.mdx';
+
+With static assets, each break points directly at its ad creatives: video or image files that you host on your own CDN. No ad server is involved — the SDK fetches the creative from the URL on the break and plays it when the break starts. Use this workflow on live streams for direct-sold campaigns, sponsorships, promos, and branded overlays where you already know which creative to show.
+
+|                | Static assets on live                                              |
+| -------------- | ------------------------------------------------------------------ |
+| Delivery mode  | Server-guided (SGAI)                                               |
+| Ad decisioning | None: the break names the creative                                 |
+| Break creation | Scheduled, punched, or detected from the ad markers in your stream |
+| Your app needs | The OptiView Ads SDK for your platform; nothing else               |
+
+## Before you start
+
+- A [live channel](./index.mdx#set-up-a-live-channel). The examples use the `wallclock` timebase.
+- The OptiView Ads SDK in your app: [Web](../../player-integration/optiview-ads-sdk/web.mdx), [Android](../../player-integration/optiview-ads-sdk/android.mdx), [iOS](../../player-integration/optiview-ads-sdk/ios.mdx), or [React Native](../../player-integration/optiview-ads-sdk/react-native.mdx). Static assets need no ad server, no Google Ad Manager account, and no extra configuration in the app.
+- Your creatives on a CDN that the viewers' devices can reach.
+
+## Schedule a break
+
+A static asset sets `type` to `static` and `uri` to the URL of the creative. On a `wallclock` channel, `start` is the UTC moment in your stream when the break begins:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "start": "2026-07-16T12:15:00.000Z",
+    "duration": 30,
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "static",
+          "mediaType": "video",
+          "mimeType": "application/x-mpegurl",
+          "uri": "https://cdn.example.com/ads/spot.m3u8",
+          "interaction": { "clickThrough": "https://www.example.com/offer" }
+        }
+      ]
+    }
+  }'
+```
+
+The `uri` can also be a list of URLs targeted per device type. See [Static assets](../../concepts/breaks.mdx#static-assets) and [Asset URI targeting](../../concepts/breaks.mdx#asset-uri-targeting) for the full asset model.
+
+### Other ways to create the break
+
+- **Punch it live.** Create the break without a `start`, and [punch](../../concepts/breaks.mdx#break-punching) it when the moment comes, for example from your production control room.
+- **Detect it.** Add your stream as an [origin](../../concepts/origins.mdx) and configure a [marker rule](../../concepts/marker-detection.mdx) whose [template](../../concepts/templates.mdx) holds the static assets. Every matching ad marker in the stream, such as an SCTE-35 signal, becomes a break.
+- **Trigger it on a player event.** Set `start` to `{ "type": "event", "event": "start" }` for a pre-roll when the viewer tunes in, `"pause"` for a pause ad, or `"end"` for a post-roll. See [Event based triggers](../../concepts/breaks.mdx#event-based-triggers).
+
+## How the break plays
+
+- The SDK receives the break through the channel's [Break Manifest](../../concepts/break-manifest.mdx) shortly before it starts, within the channel's [ad prefetch window](../../concepts/channels.mdx#ad-prefetch-window), and loads the creative ahead of time so the ad starts without delay.
+- Viewers behind the live edge, in the [DVR window](../../concepts/channels.mdx#dvr-window), play the break when their playhead reaches it.
+- Static assets always play server-guided. On a channel that steers some devices to [SSAI](../index.mdx#hybrid-ad-insertion-sgai-and-ssai), those devices still play the static event-triggered breaks — pre-roll, pause, and post-roll — but not the breaks on the timeline.
+
+## Supported layouts
+
+<Layouts />
+
+## Creative formats
+
+<Formats />
+
+## Tracking and reporting
+
+The SDK reports an OptiView Ads [impression](../../how-to-guides/ad-impressions.md) for every break it presents, and emits ad events — such as the start and end of each break and ad — that your app can listen to. See the API reference of your platform for the full list of events.
+
+Static assets carry no third-party tracking URLs. If an advertiser needs to count impressions in their own ad server, deliver the creative through a [VAST tag](./vast.mdx) instead: the VAST response carries the advertiser's tracking URLs, which are fired while the ad plays.
+
+## Troubleshooting
+
+<Troubleshooting />
+
+## Related resources
+
+| Resource                                                        | Description                                                   |
+| --------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Live](./index.mdx)                                             | Live channels: timebase, break creation, and delivery modes.  |
+| [Breaks](../../concepts/breaks.mdx)                             | Layouts, variants, controls, and the asset model.             |
+| [Templates](../../concepts/templates.mdx)                       | Store a break with its static assets once, and reuse it.      |
+| [Your ad server (VAST) on live](./vast.mdx)                     | Let your ad server decide which creative to play.             |
+| [Static assets on VOD](../vod/static-assets.mdx)                | The same workflow for on-demand assets.                       |
+| [Ad impression tracking](../../how-to-guides/ad-impressions.md) | How OptiView Ads counts the breaks presented to your viewers. |
