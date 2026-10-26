@@ -2,6 +2,22 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-10-27
+
+### Media Server
+
+{/* 3.8.0 */}
+
+#### Features
+
+- Improved Adaptive Bitrate (ABR) for WebRTC publishers that send keyframes only on request (browsers / Web SDK). ABR no longer waits for the next keyframe before probing for a higher layer, so viewers reach higher quality faster on streams with long keyframe intervals.
+
+#### Fixes
+
+- Fixed an issue where a viewer could stay on the previous simulcast layer after ABR selected a new one, when the keyframe request for the new layer was lost.
+- Fixed an issue that could cause a media server to restart while streams were being stopped.
+- General stability and reliability improvements.
+
 ## 2026-09-30
 
 ### Media Server
