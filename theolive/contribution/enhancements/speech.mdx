@@ -37,7 +37,7 @@ You don't need the API to set this up: the ingest form in the dashboard has a **
    - [`GET /v2/enhancements/speech/supported-source-languages`](../../api/get-supported-source-languages.api.mdx)
    - [`GET /v2/enhancements/speech/supported-target-languages`](../../api/get-supported-target-languages.api.mdx)
 3. (Optional) Create a speech dictionary with domain-specific terms: [`POST /v2/enhancements/speech/dictionaries`](../../api/create-speech-dictionary.api.mdx).
-4. (Optional) Create a postprocessing dictionary with find/replace rules for the transcript: [`POST /v2/enhancements/speech/postprocessing-dictionaries`](../../api/create-speech-postprocessing-dictionary.api.mdx).
+4. (Optional) Create a postprocessing dictionary with find/replace rules for the transcript: `POST /v2/enhancements/speech/postprocessing-dictionaries`.
 5. Add a `speech` entry to the `enhancements` list when creating or updating an ingest.
 
 ## Enabling the speech enhancement on an ingest
@@ -180,13 +180,13 @@ A postprocessing dictionary is a list of **find/replace rules** applied to the s
 
 Connect a postprocessing dictionary to an ingest via the `postprocessingDictionary` field of the speech enhancement entry; its `language` must match that enhancement's `sourceLanguage`.
 
-| Method   | Path                                                                                                                    | Description                                                                |
-| -------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `GET`    | [`/v2/enhancements/speech/postprocessing-dictionaries`](../../api/get-speech-postprocessing-dictionaries.api.mdx)       | List dictionaries (supports `cursor`, `limit` and `name` query parameters) |
-| `POST`   | [`/v2/enhancements/speech/postprocessing-dictionaries`](../../api/create-speech-postprocessing-dictionary.api.mdx)      | Create a dictionary                                                        |
-| `GET`    | [`/v2/enhancements/speech/postprocessing-dictionaries/{id}`](../../api/get-speech-postprocessing-dictionary.api.mdx)    | Get a single dictionary                                                    |
-| `PATCH`  | [`/v2/enhancements/speech/postprocessing-dictionaries/{id}`](../../api/update-speech-postprocessing-dictionary.api.mdx) | Update a dictionary                                                        |
-| `DELETE` | [`/v2/enhancements/speech/postprocessing-dictionaries/{id}`](../../api/delete-speech-postprocessing-dictionary.api.mdx) | Delete a dictionary                                                        |
+| Method   | Path                                                       | Description                                                                |
+| -------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `GET`    | `/v2/enhancements/speech/postprocessing-dictionaries`      | List dictionaries (supports `cursor`, `limit` and `name` query parameters) |
+| `POST`   | `/v2/enhancements/speech/postprocessing-dictionaries`      | Create a dictionary                                                        |
+| `GET`    | `/v2/enhancements/speech/postprocessing-dictionaries/{id}` | Get a single dictionary                                                    |
+| `PATCH`  | `/v2/enhancements/speech/postprocessing-dictionaries/{id}` | Update a dictionary                                                        |
+| `DELETE` | `/v2/enhancements/speech/postprocessing-dictionaries/{id}` | Delete a dictionary                                                        |
 
 Example create request:
 
