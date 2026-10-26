@@ -11,6 +11,12 @@ import CodeBlock from '@theme/CodeBlock';
 import AdTesterDemo from '../_components/AdTesterDemo';
 import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/advertisement-tester/demo.html';
 
+:::note
+
+Disable ad blocker extensions in your browser, otherwise this demo can't work properly.
+
+:::
+
 <AdTesterDemo />
 
 THEOplayer supports client-side ad insertion (CSAI) of VAST and VMAP ads through the `csai` integration, and ads served through Google's IMA SDK with the `google-ima` integration. VPAID and non-linear overlay ads require `google-ima`. Ad breaks are scheduled with the `ads` array in the source, or at any time with `player.ads.schedule()`. A `timeOffset` of `'start'` schedules a pre-roll, `'end'` a post-roll, and a timestamp or percentage a mid-roll; VMAP ads carry their own offsets and ignore `timeOffset`.
