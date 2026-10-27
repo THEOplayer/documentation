@@ -51,6 +51,7 @@ The Break Manifest document contains the following top-level properties:
 | `polling`             | How often the player should refresh the manifest. See [Polling](#polling).                                                                                                                                   |
 | `vendorConfiguration` | Session-level configuration per vendor integration — for example, the Google Ad Manager network code and custom asset key the player needs to create the stream session.                                     |
 | `breaks`              | The breaks currently relevant for the channel. Each entry carries the break's schedule, controls, and variants — see [Breaks](./breaks.mdx) for what a break contains.                                       |
+| `events`              | The channel's events in and ahead of the DVR window, with the ad configuration in effect during each. See [Events](#events).                                                                                 |
 
 Everything inside a break entry — `start`, `duration`, `resumeOffset`, `controls`, and `variant` — is described on the [Breaks](./breaks.mdx) page.
 
@@ -62,6 +63,12 @@ The `polling` object advertises how often the player should refresh the manifest
 - **`polling.active`** — the interval to poll at while a break is active. A faster cadence lets the player react quickly to duration changes, an early return, or late additions. Default: `1` second.
 
 Both cadences are configured on the channel through its `pollingIdleSeconds` and `pollingActiveSeconds` settings.
+
+### Events
+
+The top-level configuration is always the channel's. An [event](./events.mdx) that overrides it is listed in `events`, with its `start` (inclusive) and `end` (exclusive) and only the properties it replaces — `vendorConfiguration` when the event [overrides the channel integrations](./events.mdx#integrations-during-an-event), `delivery`, and `adStartDelay`. The player applies them while its playback position is inside the event, so it switches configuration at the event boundaries without waiting for the next poll, and viewers watching behind live keep the configuration of what they are watching.
+
+The `events` list was added in Break Manifest version 1.9.0. It is omitted when the channel has no current or upcoming events.
 
 ### Which breaks are included
 
