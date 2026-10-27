@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Clip API with playlist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
+    <script nomodule src="https://unpkg.com/@theoplayer/web-ui@2/polyfills"></script>
+    <script async src="https://unpkg.com/@theoplayer/web-ui@2"></script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the script above.
+
+      licenseUrl: Point this to your license file, or replace it with a license property.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+    <script>
+      // Each playlist item plays only the part between clip.startTime and clip.endTime (in seconds).
+      const playlist = [
+        {
+          title: 'Big Buck Bunny',
+          poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+          clip: { startTime: 30, endTime: 80 },
+          source: {
+            sources: { src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', type: 'application/x-mpegurl' },
+            poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+            metadata: { title: 'Big Buck Bunny' },
+          },
+        },
+        {
+          title: 'Star Wars',
+          poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+          clip: { startTime: 10, endTime: 40 },
+          source: {
+            sources: {
+              src: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+              type: 'application/x-mpegurl',
+            },
+            poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+            metadata: { title: 'Star Wars' },
+          },
+        },
+        {
+          title: 'Tears of Steel',
+          poster: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+          clip: { startTime: 50, endTime: 100 },
+          source: {
+            sources: { src: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8', type: 'application/x-mpegurl' },
+            poster: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+            metadata: { title: 'Tears of Steel' },
+          },
+        },
+      ];
+
+      onPlayerReady((player) => {
+        let active = 0;
+
+        function report() {
+          sendToParent('playlist-state', {
+            active,
+            items: playlist.map((item) => ({ title: item.title, poster: item.poster, clip: item.clip })),
+          });
+        }
+
+        function loadItem(index, autoplay) {
+          if (index < 0 || index >= playlist.length) return;
+          active = index;
+          if (autoplay) player.autoplay = true;
+          player.source = playlist[index].source;
+          report();
+        }
+
+        // Changing the source resets the clip to the whole stream,
+        // so apply the clip of the active item again once the new source has a duration.
+        player.addEventListener('durationchange', () => {
+          player.clip.startTime = playlist[active].clip.startTime;
+          player.clip.endTime = playlist[active].clip.endTime;
+        });
+
+        // 'ended' fires at the end of the clip: continue with the next item.
+        player.addEventListener('ended', () => loadItem(active + 1, true));
+
+        onParentMessage('playlist-load', (message) => loadItem(message.index, true));
+        onParentMessage('playlist-previous', () => loadItem(active - 1, true));
+        onParentMessage('playlist-next', () => loadItem(active + 1, true));
+        onParentMessage('playlist-add', (message) => {
+          playlist.push({
+            title: message.title,
+            poster: '',
+            clip: { startTime: message.startTime, endTime: message.endTime },
+            source: { sources: { src: message.src }, metadata: { title: message.title } },
+          });
+          loadItem(playlist.length - 1, true);
+        });
+
+        // Initial item, no autoplay.
+        loadItem(0, false);
+      });
+    </script>
+  </body>
+</html>

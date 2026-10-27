@@ -13,3 +13,7 @@ player.addEventListener('play', () => {
   player.currentTime = player.seekable.end() - player.currentTime > 60 ? player.seekable.end() - 30 : player.currentTime;
 });
 ```
+
+## Resources
+
+- [Online demo: DVR](../examples/streaming/03-dvr.mdx)

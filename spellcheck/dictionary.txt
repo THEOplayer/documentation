@@ -628,6 +628,8 @@ polyfill
 polyfills
 polymorphism
 postfix
+postprocessing
+Postprocessing
 postroll
 postrolls
 Pre
@@ -1025,3 +1027,5 @@ Zettabyte
 HLG
 HLG-compatible
 UIs
+bookmarklet
+lookahead

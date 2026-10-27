@@ -13,6 +13,25 @@ import Intro from '../shared/_change-video-fit-intro.mdx';
 
 The CSS [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) property serves this use-case.
 
+### Open Video UI
+
+Set the `--theoplayer-video-object-fit` CSS custom property on the UI element.
+
+```css
+theoplayer-default-ui {
+  --theoplayer-video-object-fit: contain; /* default */
+  /* --theoplayer-video-object-fit: cover; // content outside of the player is cut off */
+  /* --theoplayer-video-object-fit: fill; // all content is inside the player, but it might be deformed */
+}
+```
+
+```javascript
+const ui = document.querySelector('theoplayer-default-ui');
+ui.style.setProperty('--theoplayer-video-object-fit', 'cover');
+```
+
+### Default UI
+
 ```css
 .theoplayer-skin video {
   object-fit: contain; /* default */
@@ -40,3 +59,5 @@ for (let i = 0; i < videos.length; i++) {
   videos[i].style.objectFit = 'cover';
 }
 ```
+
+See the [Video fit](../../examples/ui/09-video-fit.mdx) example for a working demo.

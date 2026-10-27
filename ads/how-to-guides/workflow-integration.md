@@ -41,7 +41,7 @@ Ready-made adapters are available for the OptiView Player (THEOplayer), HLS.js, 
 2. OptiView Ads reads the stream, detects the markers, and publishes the breaks in the channel's Break Manifest.
 3. The OptiView Ads SDK polls the Break Manifest and renders the breaks in your player.
 
-That is the whole integration for server-guided ad insertion (SGAI). For platforms where a client-side SDK is not an option — such as Roku or older connected TV devices — OptiView Ads also supports server-side ad insertion (SSAI) through [Google DAI](../integrations/google/dai.mdx).
+That is the whole integration for server-guided ad insertion (SGAI). For platforms where a client-side SDK is not an option — such as Roku or older connected TV devices — OptiView Ads also supports server-side ad insertion (SSAI) through [Google DAI](../integrations/google/dai.mdx). See [Ad workflows](../workflows/index.mdx) for how SGAI and SSAI combine on one channel, and how live and VOD differ.
 
 For an end-to-end walkthrough — from creating a channel to seeing a break play out — follow the [Getting started](../getting-started/index.mdx) guide.
 

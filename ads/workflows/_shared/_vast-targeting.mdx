@@ -1,0 +1,12 @@
+To personalize the ad request, add `assetParameters`. The SDK appends them to the VAST tag URL as URL-encoded query parameters when it requests the tag. For the break above, with a session-level parameter `device_id` set in the SDK, the request becomes:
+
+```text
+https://adserver.example.com/vast?slot=midroll&content_genre=sports&device_id=abc123
+```
+
+Set the parameters in one of two places:
+
+- **On the break**, for values that are the same for every viewer, such as the content genre.
+- **In the SDK**, with `assetParameters` in the session configuration or `updateAssetParameters()`, for values that depend on the viewer or the device.
+
+When the same key is set in both places, the value on the break wins. Parameter values can also contain macros, such as `$OPTIVIEW_PLAYER_WIDTH$`, that the SDK fills in when it builds the request. See [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx) for the merge rules, the macros, and platform examples.

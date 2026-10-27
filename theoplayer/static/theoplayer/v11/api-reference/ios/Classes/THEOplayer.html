@@ -682,6 +682,9 @@
                 <a class="nav-group-task-link" href="../Protocols/AVPlayerError.html">AVPlayerError</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/GenericSwiftError.html">GenericSwiftError</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/THEOErrorCode.html">THEOErrorCode</a>
               </li>
               <li class="nav-group-task">
@@ -981,7 +984,7 @@
                 <a class="nav-group-task-link" href="../Structs/CMCDSourceConfiguration.html">CMCDSourceConfiguration</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a>
+                <a class="nav-group-task-link" href="../Structs/SourceLatencyConfiguration.html">SourceLatencyConfiguration</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/THEOAdDescription.html">THEOAdDescription</a>
@@ -2123,14 +2126,54 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns the last encountered player error.</p>
+                        <p>Returns the message of the last encountered player error.</p>
+<div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    Deprecated: use <code>errorObject?.message</code>, which contains the same message.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="s">"Use errorObject?.message instead."</span><span class="p">)</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C11errorObjectAA9THEOError_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/errorObject" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C11errorObjectAA9THEOError_pSgvp">errorObject</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the last encountered player error as a <code><a href="../Protocols/THEOError.html">THEOError</a></code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>Same as the <code>errorObject</code> of the last dispatched <code><a href="../Classes/ErrorEvent.html">ErrorEvent</a></code>.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">errorObject</span><span class="p">:</span> <span class="kt"><a href="../Protocols/THEOError.html">THEOError</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>

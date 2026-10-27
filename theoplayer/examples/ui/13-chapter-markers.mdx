@@ -1,0 +1,53 @@
+---
+sidebar_custom_props: { icon: '📑' }
+description: Show chapter markers on the seek bar and the current chapter title with Open Video UI.
+---
+
+# Chapter markers
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/chapter-markers/demo.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/chapter-markers/demo.html')} />
+
+Add a side-loaded text track of kind `chapters` to your source. Open Video UI shows a marker on the seek bar for each chapter,
+and the title of the current chapter above the seek bar. When you hover the seek bar, it shows the title of the chapter under the pointer.
+
+```js
+player.source = {
+  sources: { src: 'https://cdn.theoplayer.com/video/sintel/nosubs.m3u8' },
+  textTracks: [
+    {
+      kind: 'chapters',
+      src: 'https://cdn.theoplayer.com/video/sintel/chapters.vtt',
+      format: 'webvtt',
+      srclang: 'en',
+      label: 'Chapters',
+      default: true,
+    },
+  ],
+};
+```
+
+`<theoplayer-default-ui>` shows chapters by default from Open Video UI version 2.7.0.
+In a custom layout with `<theoplayer-ui>`, add the `show-chapter-markers` attribute to `<theoplayer-time-range>`,
+and add a `<theoplayer-chapter-display>` to show the current chapter title. See the [custom UI guide](../../external/web-ui/docs/guides/custom-ui.md) for more on building a layout.
+
+```html
+<theoplayer-ui configuration="..." source="...">
+  <theoplayer-chapter-display></theoplayer-chapter-display>
+  <theoplayer-control-bar>
+    <theoplayer-time-range show-chapter-markers></theoplayer-time-range>
+  </theoplayer-control-bar>
+  ...
+</theoplayer-ui>
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

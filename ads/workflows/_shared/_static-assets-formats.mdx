@@ -1,0 +1,5 @@
+- **HLS (`.m3u8`)** is the recommended format for video creatives on every platform. On connected TVs in particular, the SDK can load an HLS creative ahead of the break, so the ad starts faster.
+- **Progressive MP4** also works. On Web, the SDK plays MP4 creatives through the browser's own video element.
+- **Images** are used for overlays, companions, L-shape backdrops, and pause ads.
+
+Set `mimeType` on the asset when you know it. The SDK then knows upfront how to play the creative, instead of having to find out, which makes ad preparation faster.

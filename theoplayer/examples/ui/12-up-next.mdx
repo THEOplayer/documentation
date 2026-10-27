@@ -1,0 +1,80 @@
+---
+sidebar_custom_props: { icon: '⏭️' }
+description: Announce the next video near the end of the current one, and open its page when the video ends.
+---
+
+# Up Next
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/up-next/demo.html';
+import defaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/up-next/default-ui.html';
+import nextSource from '!!raw-loader!../../static/theoplayer/v11/examples/up-next/next.html';
+import nextDefaultUiSource from '!!raw-loader!../../static/theoplayer/v11/examples/up-next/next-default-ui.html';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Example from '@site/src/components/Example';
+
+Near the end of a video, show a small bar in the bottom right corner that announces the next video.
+When the video ends, an Up Next screen counts down and then opens the page of the next video, unless the viewer clicks the play button first.
+To try it, seek to the last two minutes of the video.
+
+:::info
+
+Up Next takes viewers to a different web page. To switch to another source in the same player, see the [Playlist and caching](../playback/07-playlist-and-caching.mdx) example.
+
+:::
+
+## Open Video UI
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/up-next/demo.html')} />
+
+Open Video UI doesn't have a built-in Up Next feature, so this example builds it in the `overlay` slot of the UI:
+
+- On `timeupdate`, the bar slides in when the remaining time is less than 106 seconds. Clicking it opens the next page, and the × button closes it.
+- On `ended`, the Up Next screen shows the poster of the next video and starts a 10 second countdown around the play button.
+- Seeking or playing again cancels the countdown.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>
+
+## Default UI
+
+<Example src={useBaseUrl('/theoplayer/v11/examples/up-next/default-ui.html')} exposeGlobals={false} />
+
+The [Default UI](../../ui/web/default-ui/index.mdx) has a built-in [Up Next](../../how-to-guides/web/miscellaneous/up-next.mdx) feature.
+Set `player.upnext.source`, with the page to open in `link`:
+
+```js
+player.upnext.source = {
+  title: 'Big Buck Bunny',
+  image: 'https://cdn.theoplayer.com/video/posters/big_buck_bunny.jpg',
+  duration: '9:56',
+  link: 'next-default-ui.html',
+};
+player.upnext.bar.offset = 106;
+player.upnext.panel.countdownDuration = 10;
+```
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="default-ui.html" showLineNumbers>
+    {defaultUiSource}
+  </CodeBlock>
+</details>
+
+## Next pages
+
+Each example opens a page with the same UI, which plays the next video.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="next.html (Open Video UI)" showLineNumbers>
+    {nextSource}
+  </CodeBlock>
+  <CodeBlock language="html" title="next-default-ui.html (Default UI)" showLineNumbers>
+    {nextDefaultUiSource}
+  </CodeBlock>
+</details>
