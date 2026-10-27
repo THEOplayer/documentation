@@ -1,5 +1,22 @@
 # Changelog
 
+## [11.14.0] - 2026-10-23
+
+- Fixed engine memory growing with every restart of the channel's processing after an ingest
+  interruption, and with every retry while waiting for a contribution, until the engine reached its
+  memory limit and restarted, briefly interrupting the stream
+- Fixed SCTE-35 ad breaks missing from HLS playlists when their cue arrives just after the splice
+  time, which dropped about every other break of some sources; such breaks now start at the next
+  segment boundary and still end at their scheduled time
+- Fixed SCTE-35 ad breaks in HLS playlists getting a second, different end when a return cue arrived
+  after the break had already ended, and ad breaks scheduled at the same moment going missing when
+  one of them was canceled or moved
+- Fixed Low-Latency HLS audio playlists listing one more partial segment per segment than configured,
+  the last only a few frames long: audio parts now hold whole audio frames, and the part target grows
+  to fit them, such as 0.405334 s instead of 0.4 s for 2-second segments split into 5 parts
+- Fixed the SCTE-35 `EXT-X-DATERANGE` tag that ends an ad break in HLS playlists sometimes having an
+  `END-DATE` 1 ms later than its `START-DATE` plus `DURATION`
+
 ## [11.13.0] - 2026-10-16
 
 - Fixed channels with S3 DVR and VOD output keeping the previous session's media in memory at every
