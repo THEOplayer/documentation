@@ -185,6 +185,18 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#isChunklessPreparationAllowed()>isChunklessPreparationAllowed</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#preacquireDrmFromSessionKeys>preacquireDrmFromSessionKeys</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -211,7 +223,25 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean,java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preacquireDrmFromSessionKeys)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
                                                         href="#HlsPlaybackConfiguration(java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#HlsPlaybackConfiguration()">HlsPlaybackConfiguration</a></span>()</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -272,6 +302,22 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                             <td class="colLast">Flag for delaying preloading of subtitles until after video/audio for HLS streams, intended to be used for MediaTailor streams.</td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#isChunklessPreparationAllowed()>isChunklessPreparationAllowed</a>() </code>
+                                            </th>
+                                            <td class="colLast">Flag for allowing chunkless preparation of HLS streams.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#getPreacquireDrmFromSessionKeys()>getPreacquireDrmFromSessionKeys</a>() </code>
+                                            </th>
+                                            <td class="colLast">Flag for pre-acquiring the DRM session from the session keys (<code>EXT-X-SESSION-KEY</code>) of the multivariant playlist.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -303,11 +349,41 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean,java.lang.Boolean)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>HlsPlaybackConfiguration</h4>
+                                        <pre>HlsPlaybackConfiguration(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preacquireDrmFromSessionKeys)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>HlsPlaybackConfiguration</h4>
+                                        <pre>HlsPlaybackConfiguration(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                                 <a name="HlsPlaybackConfiguration(java.lang.Boolean)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>HlsPlaybackConfiguration</h4>
                                         <pre>HlsPlaybackConfiguration(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="HlsPlaybackConfiguration()"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>HlsPlaybackConfiguration</h4>
+                                        <pre>HlsPlaybackConfiguration()</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -330,12 +406,58 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>isDelaySubtitlePreload</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=HlsPlaybackConfiguration.html#isDelaySubtitlePreload()>isDelaySubtitlePreload</a>()</pre>
                                         <div class="block"><p>Flag for delaying preloading of subtitles until after video/audio for HLS streams, intended to be used for MediaTailor streams.</p><p>A bug on the MediaTailor server side is currently causing them to return manifests without ads if the subtitle request is handled before video/audio. Enabling this flag will cause the player to delay starting subtitle loading until after video/audio manifests have successfully been requested, in order to work around the issue.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isChunklessPreparationAllowed()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isChunklessPreparationAllowed</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=HlsPlaybackConfiguration.html#isChunklessPreparationAllowed()>isChunklessPreparationAllowed</a>()</pre>
+                                        <div class="block"><p>Flag for allowing chunkless preparation of HLS streams.</p><p>With chunkless preparation, the player prepares the stream from the multivariant playlist alone, without downloading media of every rendition first. This avoids downloading (and discarding) the initialization and first media segment of the audio rendition twice at start-up, which reduces the video start-up time.</p><p>This flag only allows chunkless preparation: the player uses it when the multivariant playlist provides sufficient information (a <code>CODECS</code> attribute on every variant), and still prepares from the media segments otherwise.</p><p>Chunkless preparation relies on the multivariant playlist declaring every track. In-band closed captions (CEA-608/708) that are not declared through an <code>EXT-X-MEDIA:TYPE=CLOSED-CAPTIONS</code> entry are not exposed as a text track when this flag is enabled.</p><p>Default: <code>false</code>. THEOlive sources enable this flag, as the THEOlive engine declares its closed captions.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPreacquireDrmFromSessionKeys()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPreacquireDrmFromSessionKeys</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=HlsPlaybackConfiguration.html#getPreacquireDrmFromSessionKeys()>getPreacquireDrmFromSessionKeys</a>()</pre>
+                                        <div class="block"><p>Flag for pre-acquiring the DRM session from the session keys (<code>EXT-X-SESSION-KEY</code>) of the multivariant playlist.</p><p>By default, the player only opens the DRM session (and requests its license) when it parses the first encrypted media sample, i.e. after it has downloaded the multivariant playlist, the media playlist and the first media segment. With this flag enabled, the player uses the <code>EXT-X-SESSION-KEY</code> tags of the multivariant playlist and opens the DRM session as soon as that playlist is loaded, so the license request runs in parallel with the media playlist and media segment requests. This reduces the start-up time of DRM-protected streams.</p><p>This assumes that any single session key of the multivariant playlist can be used to obtain all keys required for playback, i.e. the media playlists use the same key information as the session key. Do not enable this flag for streams where this is not the case. A license request that fails during pre-acquisition is reported like any other failed license request, through a <a href=../../event/player/ContentProtectionErrorEvent.html>ContentProtectionErrorEvent</a>.</p><p>Multivariant playlists without <code>EXT-X-SESSION-KEY</code> tags are not affected by this flag.</p><p>Default: <code>false</code>. THEOlive sources enable this flag.</p></div>
 
                                         <dl>
 
