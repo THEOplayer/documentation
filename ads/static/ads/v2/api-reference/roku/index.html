@@ -76,7 +76,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <p class="meta">Operation statuses: <code>updated</code>, <code>error</code></p>
 <h3 id="function-updateAssetParameterMacros"><code>updateAssetParameterMacros</code></h3>
 <pre><code>updateAssetParameterMacros(update as Object) as Integer</code></pre>
-<p>Sets or removes macro values: <code>{ set: { NAME: value }, remove: [&quot;NAME&quot;] }</code>. Requires an active session.</p>
+<p>Sets or removes macro values, keyed by the full token including both <code>$</code> delimiters: <code>{ set: { &quot;$NAME$&quot;: value }, remove: [&quot;$NAME$&quot;] }</code>. An empty string or <code>invalid</code> value omits the parameters that use the macro. Requires an active session.</p>
 <p class="meta">Operation statuses: <code>updated</code>, <code>error</code></p>
 <h3 id="function-updateRafMetadata"><code>updateRafMetadata</code></h3>
 <pre><code>updateRafMetadata(metadata as Object) as Integer</code></pre>
@@ -111,7 +111,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code id="config-manifestUrl">manifestUrl</code> <strong>required</strong></td><td>String</td><td>Break manifest URL. Network manifests must carry a valid detached signature.</td></tr>
 <tr><td><code id="config-contentHeaders">contentHeaders</code></td><td>Object</td><td>HTTP headers sent with content playlist and segment requests.</td></tr>
 <tr><td><code id="config-assetParameters">assetParameters</code></td><td>Object</td><td>Ad tag parameters added to Google Ad Manager requests, merged with the manifest's parameters.</td></tr>
-<tr><td><code id="config-assetParameterMacros">assetParameterMacros</code></td><td>Object</td><td>Initial values for <code>$NAME$</code> macros in asset parameters.</td></tr>
+<tr><td><code id="config-assetParameterMacros">assetParameterMacros</code></td><td>Object</td><td>Initial values for macros in asset parameters, keyed by the full token: <code>{ &quot;$SEGMENT$&quot;: &quot;sports&quot; }</code>. An empty string or <code>invalid</code> value omits the parameters that use the macro.</td></tr>
 <tr><td><code id="config-userAgent">userAgent</code></td><td>String</td><td>Value of the built-in <code>$OPTIVIEW_USER_AGENT$</code> macro.</td></tr>
 <tr><td><code id="config-playerWidth">playerWidth</code></td><td>Integer</td><td>Value of the built-in <code>$OPTIVIEW_PLAYER_WIDTH$</code> macro.</td></tr>
 <tr><td><code id="config-playerHeight">playerHeight</code></td><td>Integer</td><td>Value of the built-in <code>$OPTIVIEW_PLAYER_HEIGHT$</code> macro.</td></tr>
@@ -155,7 +155,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code id="event-aderror">aderror</code></td><td>An ad or break failed. A failure after publication also sets <code>recoveryRequired</code>; start a new session.</td></tr>
 <tr><td><code id="event-adbreakskipped">adbreakskipped</code></td><td>A break was refused before anything was shown and content kept playing. <code>reason</code>: <code>late</code>, <code>not-ready</code>, <code>preparation-failed</code>, <code>unsupported</code>, <code>overlap</code>, <code>start-delay</code>, <code>removed</code>, <code>insufficient-remaining</code> or <code>resource-limit</code>; <code>reasonDetail</code> names the specific cause, with <code>podEvidence</code> or <code>preparationEvidence</code> where available.</td></tr>
 <tr><td><code id="event-adbreakstatus">adbreakstatus</code></td><td>Break state and countdown updates (same shape as <code>getAdBreakStatus</code>).</td></tr>
-<tr><td><code id="event-adchannelchange">adchannelchange</code></td><td>The break manifest moved to another ads channel; carries <code>previousChannelId</code>, <code>channelId</code>, <code>previousDeliveryMode</code> and <code>deliveryMode</code>.</td></tr>
+<tr><td><code id="event-adchannelchange">adchannelchange</code></td><td>The break manifest moved to another ads channel; carries <code>previousChannelId</code>, <code>channelId</code>, <code>reason</code> (<code>channel-id-added</code>, <code>channel-id-changed</code>, <code>channel-id-removed</code>, <code>vendor-configuration-changed</code> or <code>timebase-changed</code>), <code>manifestUrl</code>, <code>previousDeliveryMode</code> and <code>deliveryMode</code>.</td></tr>
 <tr><td><code id="event-playbackreloadrequired">playbackreloadrequired</code></td><td>Playback must be restarted in a new session (for example <code>delivery-mode-changed</code>, <code>ssai-stream-changed</code>, or a viewer seek that fenced tracking).</td></tr>
 <tr><td><code id="event-adinteractiveexit">adinteractiveexit</code></td><td>SSAI: the viewer left a Roku Advertising Framework interactive ad; stop playback and restore focus.</td></tr>
 </tbody>
