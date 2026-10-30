@@ -17,11 +17,18 @@ You do not need an integration to play [static assets](../workflows/live/static-
 
 The vendor model is extensible. When another vendor is supported, its documentation will be added as a separate page in this section and listed in the Integrations sidebar.
 
+## Channel and event integrations
+
+Integrations are configured on a [channel](../concepts/channels.mdx), at most one per `type` and `vendor`. They are the channel's defaults and apply around the clock.
+
+An [event](../concepts/events.mdx) can replace them for its duration with integrations of its own, for example to run one game on a dedicated Google Ad Manager live stream. See [Integrations during an event](../concepts/events.mdx#integrations-during-an-event).
+
 ## Related resources
 
-| Resource                                | Relationship                                                                       |
-| --------------------------------------- | ---------------------------------------------------------------------------------- |
-| [Channels](../concepts/channels.mdx)    | Hold the channel-level `customAssetKey` used for Google server-guided pod serving. |
-| [Breaks](../concepts/breaks.mdx)        | Carry the vendor asset in a break variant.                                         |
-| [Templates](../concepts/templates.mdx)  | Reusable break presets that can include vendor assets.                             |
-| [Google Ad Manager](./google/index.mdx) | The first supported vendor: Google Pod Serving (SGAI) and Google DAI (SSAI).       |
+| Resource                                | Relationship                                                                    |
+| --------------------------------------- | ------------------------------------------------------------------------------- |
+| [Channels](../concepts/channels.mdx)    | Hold the default integrations, such as the Google Pod Serving custom asset key. |
+| [Events](../concepts/events.mdx)        | Can replace the channel integrations for their duration.                        |
+| [Breaks](../concepts/breaks.mdx)        | Carry the vendor asset in a break variant.                                      |
+| [Templates](../concepts/templates.mdx)  | Reusable break presets that can include vendor assets.                          |
+| [Google Ad Manager](./google/index.mdx) | The first supported vendor: Google Pod Serving (SGAI) and Google DAI (SSAI).    |
