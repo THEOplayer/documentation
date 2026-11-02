@@ -7,6 +7,8 @@ sidebar_label: Events
 
 An event is a channel-scoped time window that groups the ad breaks belonging to one scheduled occurrence, such as a live game, a show, or a tournament. It gives you a single handle for the breaks around that occurrence: an event lists the breaks that fall inside its window. Breaks are not tied to an event by id, so creating, moving, or deleting an event never changes a break.
 
+An event can also [replace the channel's integrations](#integrations-during-an-event) for its duration, for example to send the breaks of one game to its own Google Ad Manager live stream while the rest of the 24/7 channel keeps the channel's.
+
 Events also anchor the [break punching](./breaks.mdx#break-punching) workflow: ahead of a live occurrence you prepare a break without a start time, and during the broadcast you fire it at the exact moment.
 
 ## Event identity
@@ -15,7 +17,7 @@ Every event has an `id` that is unique within its channel. The `id` is optional 
 
 ## Time window
 
-An event is defined by a `startDate` and an `endDate`, both UTC ISO 8601 timestamps. `startDate` must be before `endDate`, and the events of a channel cannot overlap.
+An event is defined by a `startDate` and an `endDate`, both UTC ISO 8601 timestamps. `startDate` must be before `endDate`, and the events of a channel cannot overlap. Events are only available on live channels with the `wallclock` [timebase](./channels.mdx#timebase).
 
 The window is how an event finds its breaks: `GET /channels/{channelId}/events/{eventId}/breaks` returns the breaks of the channel whose start falls inside the window — `startDate` inclusive, `endDate` exclusive. The window is not enforced on breaks: a break is never validated against an event, and a break that starts inside the window may run past the event's `endDate`.
 
@@ -23,7 +25,7 @@ The window is how an event finds its breaks: `GET /channels/{channelId}/events/{
 
 Breaks carry no reference to an event. An event resolves its breaks from its time window:
 
-- A break scheduled on the timeline belongs to the event whose window contains its start. On **wallclock** channels this is the break's `start`; on **PTS** channels, where a break has no wall-clock start, the time the break was created is used instead.
+- A break scheduled on the timeline belongs to the event whose window contains its `start`.
 - A [cued break](./breaks.mdx#cued-breaks) has no start yet. While it waits to be punched, it is listed under the event that is in progress at the time of your request. Once punched, it belongs to the event whose window contains its start.
 - [Event-triggered breaks](./breaks.mdx#event-based-triggers) — pre-roll, pause, and post-roll — have no position on the timeline and are listed under every event of the channel.
 
@@ -33,9 +35,80 @@ Because the lookup is purely time-based, a break can exist on the channel withou
 Deleting an event removes only the event. Its breaks stay on the channel and keep being served to players; they simply no longer appear under that event.
 :::
 
-## Templates for an event
+## Integrations during an event
 
-[Templates](./templates.mdx) can be linked to one or more events through their `eventIds`, so a reusable break preset can be surfaced for quick scheduling under those events. Instead of creating your breaks before the event, prepare templates ahead of time and schedule breaks from them during the event.
+The [integrations](../integrations/index.mdx) of a channel are its defaults: they apply around the clock. An event can replace them with integrations of its own for the duration of its window — for example a different Google Ad Manager live stream, or no integration at all.
+
+Event integrations take the same body as channel integrations and are managed under the event:
+
+```text
+/channels/{channelId}/events/{eventId}/integrations
+```
+
+The event's `overridesIntegrations` decides which integrations apply while the event is active:
+
+- **`false`** (default) — the channel integrations apply. Integrations stored on the event are kept but have no effect.
+- **`true`** — the event integrations replace the channel integrations as a whole. Nothing is taken from the channel: an event without integrations runs without any.
+
+Like a channel, an event holds at most one integration per `type` and `vendor`. Google asset keys only have to be unique across channel integrations, so event integrations may reuse them — every game of a season can point at the same Google live stream.
+
+Event integrations are copies, not references: changing the channel integrations does not affect an event that overrides them. Deleting an event deletes its integrations.
+
+A break uses the integrations in effect at its `start`, so a break that starts inside the event's window uses the event's. A [cued break](./breaks.mdx#cued-breaks) has no start yet and uses the integrations in effect when it is cued, so cue it once the event has started. Players switch configuration at the event's boundaries on their own: the [Break Manifest](./break-manifest.mdx#events) announces each event ahead of time.
+
+### Delivery and ad start delay
+
+An event can also replace two channel settings for its window. Both fall back to the channel's value when omitted.
+
+- **`delivery`** — the [delivery rules](../workflows/index.mdx#hybrid-ad-insertion-sgai-and-ssai) that steer devices to SGAI or SSAI, replacing the channel's rules as a whole.
+- **`adStartDelay`** — the seconds of playback before any break may start, for sessions that start during the event.
+
+## Event templates
+
+An event template is an organization-level preset for events you run repeatedly, such as every game of a season. It holds the ad configuration of an event — its integrations, `delivery`, and `adStartDelay` — and is managed under `/templates/events`.
+
+The integrations of an event template are referenced through `integrationTemplateIds`. An integration template, managed under `/templates/integrations`, is a named integration body that can be reused across event templates:
+
+```json
+{
+  "id": "season-pod-serving",
+  "name": "Season pod serving",
+  "type": "SGAI",
+  "vendor": "GOOGLE",
+  "customAssetKey": "season-2026-games"
+}
+```
+
+```json
+{
+  "id": "league-game",
+  "name": "League game",
+  "integrationTemplateIds": ["season-pod-serving"]
+}
+```
+
+Create an event from the template by passing its `templateId`:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a56-b1d4-3f8a2c9d6e01/events' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "templateId": "league-game",
+    "name": "Week 5",
+    "startDate": "2026-11-01T18:00:00.000Z",
+    "endDate": "2026-11-01T21:30:00.000Z"
+  }'
+```
+
+Each integration template is copied onto the event as an event integration, and `overridesIntegrations` is set to `true` when the template lists integration templates. Omit `integrationTemplateIds` to create events that keep the channel integrations, or set it to `[]` for events that run without any. Fields in the request win over the template.
+
+Like [break templates](./templates.mdx#snapshot-semantics), an event template is a snapshot: editing it later does not change events already created from it. Its optional `channelIds` only filter the template list; any channel can create events from it.
+
+## Break templates for an event
+
+[Break templates](./templates.mdx) can be linked to one or more events through their `eventIds`, so a reusable break preset can be surfaced for quick scheduling under those events. Instead of creating your breaks before the event, prepare templates ahead of time and schedule breaks from them during the event.
 
 ## Break punching during an event
 
@@ -53,9 +126,10 @@ Because a punch uses the current time as the break's start, punch a cued break w
 
 ## Related resources
 
-| Resource                                         | Relationship                                                                                        |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| [Channels](./channels.mdx)                       | The parent of an event. An event always belongs to one channel.                                     |
-| [Breaks](./breaks.mdx)                           | Resolved from the event's window: the breaks that start inside it, plus all event-triggered breaks. |
-| [Templates](./templates.mdx)                     | Reusable break presets that can be linked to events for quick scheduling.                           |
-| [Integrations](../integrations/google/index.mdx) | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI.              |
+| Resource                                      | Relationship                                                                                        |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)                    | The parent of an event. An event always belongs to one channel.                                     |
+| [Breaks](./breaks.mdx)                        | Resolved from the event's window: the breaks that start inside it, plus all event-triggered breaks. |
+| [Templates](./templates.mdx)                  | Reusable break presets that can be linked to events for quick scheduling.                           |
+| [Integrations](../integrations/index.mdx)     | The channel's default integrations, which an event can replace for its duration.                    |
+| [Break Manifest](./break-manifest.mdx#events) | Announces each event with the ad configuration in effect during it.                                 |
