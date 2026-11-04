@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OptiViewAds — Roku API reference (1.3.0)</title>
+<title>OptiViewAds — Roku API reference (1.4.0)</title>
 <style>
 body { font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; color: #1d1d1f; }
 header, main { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
@@ -24,7 +24,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <body>
 <header>
 <h1>OptiViewAds</h1>
-<p class="version">OptiView Ads SDK for Roku, version 1.3.0</p>
+<p class="version">OptiView Ads SDK for Roku, version 1.4.0</p>
 <p>SceneGraph component that inserts OptiView Ads breaks into clear live HLS on Roku through one application-owned Video node: client-side stitching of Google Ad Manager pods (SGAI), or the channel's Google DAI live stream when the break manifest selects server-side ad insertion for TV devices (SSAI).</p>
 <nav>
 <a href="#fields">Fields</a>
@@ -34,6 +34,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <a href="#events">Events</a>
 <a href="#diagnostics">Diagnostics</a>
 <a href="#capabilities">Capabilities</a>
+<a href="#components">Other components</a>
 </nav>
 </header>
 <main>
@@ -253,6 +254,27 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code>lateOpportunityPolicy</code></td><td><code>&quot;skip&quot;</code></td><td>Breaks already exposed without a ready pod are skipped.</td></tr>
 <tr><td><code>alignmentToleranceSeconds</code></td><td><code>0.250</code></td><td>Default <code>alignmentToleranceSeconds</code>.</td></tr>
 <tr><td><code>supportedAlignmentToleranceSeconds</code></td><td><code>[0.002, 0.250]</code></td><td>Accepted range of <code>alignmentToleranceSeconds</code>.</td></tr>
+</tbody>
+</table>
+<h2 id="components">Other components</h2>
+<p>Further public components of the <code>OptiViewAds</code> library. Only the fields listed are for application use; their interface functions are called by the player.</p>
+<h3 id="component-OptiViewAdsSDKIntegration"><code>OptiViewAds:OptiViewAdsSDKIntegration</code></h3>
+<p>Custom ad integration for the OptiView Player (THEOplayer Roku SDK). Register it with the player and the player's <code>ads</code> API dispatches the Ads SDK's break and ad events (<code>adloaded</code>, <code>adbreakbegin</code>, <code>adimpression</code>, <code>adbegin</code>, the quartiles, <code>adend</code>, <code>adbreakend</code>, <code>aderror</code>) with <code>player.ads.playing</code>, <code>currentAdBreak</code> and <code>currentAds</code> kept in step, so channels and analytics connectors that already listen on <code>player.ads</code> need no second event source. The Ads SDK itself keeps emitting its own events.</p>
+<pre><code>integration = createObject(&quot;roSGNode&quot;, &quot;OptiViewAds:OptiViewAdsSDKIntegration&quot;)
+integration.adsSdk = ads ' the OptiViewAds node
+player.ads.callFunc(&quot;registerServerSideIntegration&quot;, integration.integrationKind, integration)
+' On the &quot;ready&quot; result of startSession:
+player.source = { sources: [{ src: result.playbackUrl, type: &quot;application/x-mpegurl&quot;, ssai: { integration: integration.integrationKind } }], live: true }</code></pre>
+<ul>
+<li>The player only starts registered integrations for sources that carry an ad description: the source must set <code>ssai: { integration: integration.integrationKind }</code>. The integration accepts the source once the Ads SDK session is active (<code>startSession</code> succeeded and the session was not ended or destroyed).</li>
+<li>Register it once per player. <code>player.callFunc(&quot;destroy&quot;)</code> tears it down; destroy the <code>OptiViewAds</code> node afterwards.</li>
+<li>Do not call the node's functions: they implement the player's ad integration contract and are invoked by the player. The player prints <code>There was an issue scheduling the ad.</code> once per source because the integration has nothing to schedule in the Roku Ads Framework.</li>
+</ul>
+<table>
+<thead><tr><th>Field</th><th>Type</th><th>Use</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code id="OptiViewAdsSDKIntegration-field-adsSdk">adsSdk</code></td><td>node</td><td>write</td><td>The <code>OptiViewAds</code> node whose events the player should dispatch. Bind it before registering the integration; set to <code>invalid</code> to detach.</td></tr>
+<tr><td><code id="OptiViewAdsSDKIntegration-field-integrationKind">integrationKind</code></td><td>string</td><td>read</td><td>The integration kind, <code>optiview-ads-sdk</code>: pass it to <code>registerServerSideIntegration</code> and set it as <code>ssai.integration</code> on the source the player plays.</td></tr>
 </tbody>
 </table>
 </main>
