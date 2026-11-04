@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.15.0] - 2026-11-04
+
+- Fixed crushed or lifted blacks for full-range SDR video sources
+- Fixed channels with an image overlay failing to start when they encode on an NVIDIA GPU
+- Fixed Low-Latency HLS playback on Apple devices falling back to standard latency
+- Fixed S3 DVR playback failing on channels whose ingest ran without a reconnect for longer than the
+  bucket's expiry period
+
 ## [11.14.0] - 2026-10-23
 
 - Fixed engine memory growing with every restart of the channel's processing after an ingest
