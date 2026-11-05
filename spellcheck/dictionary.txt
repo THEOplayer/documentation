@@ -708,6 +708,13 @@ repos
 reprioritize
 Rescale
 Rescaling
+restream
+Restream
+restreamed
+restreaming
+Restreaming
+restreams
+Restreams
 resync
 Resync
 retargeted

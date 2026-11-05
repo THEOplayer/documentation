@@ -1,0 +1,123 @@
+---
+sidebar_position: 7
+sidebar_label: Restream
+sidebar_custom_props:
+  icon: 📡
+description: Push the stream of an ingest or engine to an external RTMP(S) or SRT destination.
+---
+
+# Restream
+
+A restream pushes the stream of a channel to an external destination over RTMP, RTMPS or SRT, next to the regular HESP and HLS delivery to your viewers. Use it to syndicate a channel to a partner platform, feed a captioning or monitoring service, or hand the stream to a secondary CDN.
+
+:::info
+Restreaming must be enabled on your account by a Dolby administrator. Contact your account manager to get started. As long as the feature is not enabled, every restream request fails with `403 feature_not_enabled`.
+:::
+
+## How it works
+
+A restream belongs to a channel and has three settings:
+
+| Field    | Type                 | Description                                                                                                                                                                                                               |
+| -------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`   | `ingest` \| `engine` | What is pushed: the **incoming** stream of an ingest, as received, or the **transcoded output** of an engine.                                                                                                             |
+| `src`    | `string`             | Id of the ingest or engine to restream. It must be connected to the same channel as the restream.                                                                                                                         |
+| `target` | `string`             | Push URL of the destination: `rtmp://`, `rtmps://` or `srt://`. The target is a single URL, so anything the destination needs — an RTMP stream key, an SRT `streamid` — must be part of it, as the destination documents. |
+
+A restream is either `stopped` or `active`. A newly created restream is `stopped`; you start it by hand, or let it start together with its channel. While `active` the platform pushes the source stream to the target.
+
+### Ingest restream
+
+An ingest restream forwards the stream exactly as your encoder sends it: no transcoding, same codecs, same bitrate. It is available for **push** ingests only, and the target must speak the same protocol as the ingest:
+
+| Ingest type | Allowed targets         |
+| ----------- | ----------------------- |
+| `rtmp-push` | `rtmp://` or `rtmps://` |
+| `srt-push`  | `srt://`                |
+
+Pull ingests (`rtmp-pull`, `srt-pull`), as well as SDI, NDI, RTSP, HLS and DASH ingests, cannot be restreamed. Because the ingest's stream exists independently of the channel's engines, an ingest restream keeps pushing for as long as your encoder is connected — also while the engines are stopped.
+
+### Engine restream
+
+An engine restream forwards the transcoded output of an engine. It only supports `rtmp://` and `rtmps://` targets. An engine restream can only run while its engine runs: starting it while the engine is `stopped` fails with `409 engine_not_running`, and it is stopped automatically when the engine stops.
+
+## Setting up a restream
+
+Restreams are managed through the API. The source and target are validated when you create or update a restream, and again every time it starts.
+
+### Create a restream
+
+`POST https://api.theo.live/v2/channels/{channelId}/restreams`
+
+```json
+{
+  "type": "ingest",
+  "src": "ing_abc123",
+  "target": "srt://partner.example.com:9000?streamid=my-stream"
+}
+```
+
+```json
+{
+  "type": "engine",
+  "src": "eng_def456",
+  "target": "rtmps://live.example.com/app/my-stream-key"
+}
+```
+
+The response contains the restream with its `id` and `status: "stopped"`.
+
+### Start and stop a restream
+
+`POST https://api.theo.live/v2/restreams/{restreamId}/start`
+
+`POST https://api.theo.live/v2/restreams/{restreamId}/stop`
+
+Both return `204` on success. Starting an active restream returns `409 already_active`; stopping a stopped one `409 already_stopped`.
+
+### List, update and delete
+
+- `GET https://api.theo.live/v2/channels/{channelId}/restreams` lists the restreams of a channel, oldest first, with the usual [pagination](../api/pagination.mdx).
+- `GET https://api.theo.live/v2/restreams/{restreamId}` returns a single restream.
+- `PATCH https://api.theo.live/v2/restreams/{restreamId}` changes `type`, `src` and/or `target`. The resulting combination is validated as on creation.
+- `DELETE https://api.theo.live/v2/restreams/{restreamId}` removes it.
+
+A restream can only be updated or deleted while it is `stopped` (`409 not_stopped` otherwise).
+
+## Restreams and the channel lifecycle
+
+- **Channel start** — `POST /channels/{id}/start` starts every `stopped` restream of the channel once its engines are starting. A restream that cannot be started at that moment (for example because its source is no longer valid) is skipped and stays `stopped`; the channel start itself still succeeds. Check the restream status after starting a channel and start it by hand if needed.
+- **Starting a single engine** — `POST /engines/{id}/start` does not start restreams. Start the engine's restreams explicitly, or start the channel.
+- **Engine stop** — when an engine reaches `stopped` (regular stop, force stop, idle timeout or failure), its engine restreams are set to `stopped` as well.
+- **Channel stop** — ingest restreams are **not** stopped by a channel stop; they keep pushing while your encoder is connected. Stop them explicitly when you want the destination to stop receiving the stream.
+- **Deleting the source** — a restream is not deleted with its ingest or engine; it just fails to start with `restream_source_not_found`. Point it to a new source with an update, or delete it.
+- **Deleting the channel** — deletes its restreams.
+
+## Current constraints
+
+- **Push only.** The platform always connects to the destination. There is no pull restream (SRT listener or RTMP pull endpoint) for a third party to connect to.
+- **Available on request, and not in every region.** Restreaming must be enabled on your account, and sources must run in a region that supports it. A source in an unsupported region is rejected with `400 restream_source_not_supported`; an account without support with `400 restream_not_supported`. Contact your account manager to confirm the regions available to you.
+- **Ingest restreams: push ingests only, same protocol as the ingest.** Only `rtmp-push` and `srt-push` ingests can be restreamed, over RTMP(S) resp. SRT. Pull, SDI, NDI, RTSP, HLS and DASH ingests cannot.
+- **Engine restreams: RTMP(S) only.** An SRT target for an engine restream is rejected with `400 restream_target_not_supported`.
+- **Engine restreams need a running engine.** Start the engine (or the channel) first. They stop with the engine and must be started again after a restart.
+- **Ingest restreams outlive the channel's engines.** Stopping the channel does not stop them.
+- **Same channel only.** `src` must be an ingest or engine of the channel the restream belongs to.
+- **One target per restream.** To push to several destinations, create one restream per destination.
+- **Status is not a delivery report.** `active` means the platform is pushing to the target; it does not confirm that the destination accepts or plays the stream. Verify reception on the destination side.
+- **No changes while active.** Stop a restream before updating or deleting it.
+- **Target credentials live in the URL.** Stream keys and SRT stream IDs are part of `target`. Treat the restream configuration as sensitive, and use `rtmps://` where the destination supports it.
+
+## Errors
+
+| Code                                 | Status | Meaning                                                                                                                   |
+| ------------------------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------- |
+| `feature_not_enabled`                | 403    | Restreaming is not enabled on your account — contact your account manager                                                 |
+| `restream_not_supported`             | 400    | Restreams are not available for your account                                                                              |
+| `restream_source_not_found`          | 400    | `src` is not an ingest or engine of this channel (or has been deleted)                                                    |
+| `restream_source_not_supported`      | 400    | The ingest type cannot be restreamed, or the ingest or engine runs in a region without restream support                   |
+| `restream_target_not_supported`      | 400    | `target` is not an `rtmp://`, `rtmps://` or `srt://` URL, or its protocol does not match the source                       |
+| `engine_not_running`                 | 409    | The engine of an engine restream is stopped — start it first                                                              |
+| `already_active` / `already_stopped` | 409    | The restream is already in the requested state                                                                            |
+| `not_stopped`                        | 409    | The restream must be stopped before it can be updated or deleted                                                          |
+| `service_unavailable`                | 503    | Region information is temporarily unavailable — retry the request                                                         |
+| `unknown_error`                      | 400    | The restream could not be started or stopped; its status is unchanged — retry, or contact support if the problem persists |
