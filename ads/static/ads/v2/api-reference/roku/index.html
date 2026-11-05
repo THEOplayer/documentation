@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OptiViewAds — Roku API reference (1.4.0)</title>
+<title>OptiViewAds — Roku API reference (1.5.0)</title>
 <style>
 body { font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; color: #1d1d1f; }
 header, main { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
@@ -24,7 +24,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <body>
 <header>
 <h1>OptiViewAds</h1>
-<p class="version">OptiView Ads SDK for Roku, version 1.4.0</p>
+<p class="version">OptiView Ads SDK for Roku, version 1.5.0</p>
 <p>SceneGraph component that inserts OptiView Ads breaks into clear live HLS on Roku through one application-owned Video node: client-side stitching of Google Ad Manager pods (SGAI), or the channel's Google DAI live stream when the break manifest selects server-side ad insertion for TV devices (SSAI).</p>
 <nav>
 <a href="#fields">Fields</a>
@@ -108,7 +108,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <table>
 <thead><tr><th>Key</th><th>Type</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code id="config-contentUrl">contentUrl</code> <strong>required</strong></td><td>String</td><td>Live HLS master playlist.</td></tr>
+<tr><td><code id="config-contentUrl">contentUrl</code> <strong>required</strong></td><td>String</td><td>Live HLS master playlist. With <code>OptiViewAdsInterceptor</code> and the OptiView Player's THEOlive source, pass the THEOlive channel ID instead: a value that is not an <code>http(s)</code> URL declares an SSAI-only session (nothing is stitched; the start fails with <code>content-url-required</code> if the break manifest selects SGAI).</td></tr>
 <tr><td><code id="config-manifestUrl">manifestUrl</code> <strong>required</strong></td><td>String</td><td>Break manifest URL. Network manifests must carry a valid detached signature.</td></tr>
 <tr><td><code id="config-contentHeaders">contentHeaders</code></td><td>Object</td><td>HTTP headers sent with content playlist and segment requests.</td></tr>
 <tr><td><code id="config-assetParameters">assetParameters</code></td><td>Object</td><td>Ad tag parameters added to Google Ad Manager requests, merged with the manifest's parameters.</td></tr>
@@ -130,7 +130,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
 <tbody>
 <tr><td><code>ready</code></td><td>The session is ready; the result carries <code>playbackUrl</code> and <code>deliveryMode</code>.</td></tr>
-<tr><td><code>error</code></td><td>The call failed; <code>reason</code> names why (for example <code>missing-session-url</code>, <code>invalid-configuration</code>, <code>invalid-video-binding</code>, <code>invalid-alignment-tolerance</code>, <code>invalid-delivery-mode</code>, <code>invalid-raf-metadata</code>, <code>invalid-stream-activity-monitor-id</code>, <code>invalid-parameters</code>, <code>invalid-macros</code>, <code>playback-detach-required</code>, <code>unsupported-state</code>, <code>no-session</code>, <code>destroyed</code>).</td></tr>
+<tr><td><code>error</code></td><td>The call failed; <code>reason</code> names why (for example <code>missing-session-url</code>, <code>invalid-configuration</code>, <code>invalid-video-binding</code>, <code>invalid-alignment-tolerance</code>, <code>invalid-delivery-mode</code>, <code>invalid-raf-metadata</code>, <code>invalid-stream-activity-monitor-id</code>, <code>invalid-parameters</code>, <code>invalid-macros</code>, <code>playback-detach-required</code>, <code>unsupported-state</code>, <code>content-url-required</code>, <code>no-session</code>, <code>destroyed</code>).</td></tr>
 <tr><td><code>cancelled</code></td><td>Superseded by a newer call or ended with the session (<code>superseded</code>, <code>session-ended</code>).</td></tr>
 <tr><td><code>draining</code></td><td><code>endSession</code> while playback is attached; detach to finish.</td></tr>
 <tr><td><code>ended</code></td><td>The session ended.</td></tr>
@@ -275,6 +275,26 @@ player.source = { sources: [{ src: result.playbackUrl, type: &quot;application/x
 <tbody>
 <tr><td><code id="OptiViewAdsSDKIntegration-field-adsSdk">adsSdk</code></td><td>node</td><td>write</td><td>The <code>OptiViewAds</code> node whose events the player should dispatch. Bind it before registering the integration; set to <code>invalid</code> to detach.</td></tr>
 <tr><td><code id="OptiViewAdsSDKIntegration-field-integrationKind">integrationKind</code></td><td>string</td><td>read</td><td>The integration kind, <code>optiview-ads-sdk</code>: pass it to <code>registerServerSideIntegration</code> and set it as <code>ssai.integration</code> on the source the player plays.</td></tr>
+</tbody>
+</table>
+<h3 id="component-OptiViewAdsInterceptor"><code>OptiViewAds:OptiViewAdsInterceptor</code></h3>
+<p>THEOlive discovery response interceptor for the OptiView Player (THEOplayer Roku SDK). In an SSAI session it rewrites the distribution the player discovers so the Google DAI stream the Ads SDK obtained becomes the only priority-0 endpoint (<code>src</code> the DAI URL, <code>srcType: &quot;hls&quot;</code>, <code>adSystem: &quot;none&quot;</code>, <code>provider: &quot;external&quot;</code>, <code>weight: 100</code>); the DAI endpoint of the session's asset key is removed and every other endpoint at priority 0 moves to priority 1 as fallback. Both the V2 and V3 discovery shapes are handled. Without a ready SSAI session (including SGAI sessions) the response passes through unchanged.</p>
+<pre><code>interceptor = createObject(&quot;roSGNode&quot;, &quot;OptiViewAds:OptiViewAdsInterceptor&quot;)
+interceptor.adsSdk = ads ' the OptiViewAds node, bound before startSession
+player.theoLive.discoveryResponseInterceptor = interceptor
+ads.callFunc(&quot;startSession&quot;, { contentUrl: theoLiveChannelId, manifestUrl: breakManifestUrl })
+' On the &quot;ready&quot; result of startSession:
+player.source = { sources: [{ src: theoLiveChannelId, type: &quot;theolive&quot;, ssai: { integration: integration.integrationKind } }] }</code></pre>
+<ul>
+<li>Bind <code>adsSdk</code> before calling <code>startSession</code>: the interceptor learns the DAI stream from the <code>startSession</code> <code>ready</code> result (<code>playbackUrl</code>, <code>ssaiStream.assetKey</code>, <code>deliveryMode: &quot;ssai&quot;</code>) and forgets it when the start fails, is superseded, or the session ends or is destroyed.</li>
+<li>Pass the THEOlive channel ID as <code>contentUrl</code> so the Ads SDK does not stitch content before the delivery mode is known; the player resolves the content through discovery. SGAI with THEOlive is not supported yet.</li>
+<li>Set <code>player.theoLive.discoveryResponseInterceptor = invalid</code> and <code>interceptor.adsSdk = invalid</code> when tearing the player down.</li>
+<li>Do not call the node's functions: <code>onDiscoveryResponse</code> is invoked by the player and <code>onAdsOperation</code> by the Ads SDK.</li>
+</ul>
+<table>
+<thead><tr><th>Field</th><th>Type</th><th>Use</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code id="OptiViewAdsInterceptor-field-adsSdk">adsSdk</code></td><td>node</td><td>write</td><td>The <code>OptiViewAds</code> node whose SSAI stream the discovery response should carry. Bind it before <code>startSession</code>; set to <code>invalid</code> to detach.</td></tr>
 </tbody>
 </table>
 </main>
