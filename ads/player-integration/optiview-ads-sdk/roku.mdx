@@ -87,6 +87,33 @@ end sub
 
 The channel's Break Manifest selects SGAI or SSAI for the device. In SGAI, `playbackUrl` is the SDK's local proxy URL. In SSAI, it is the Google DAI stream URL.
 
+## Using OptiView Player
+
+If your channel plays content with the OptiView Player Roku SDK, register the `OptiViewAds:OptiViewAdsSDKIntegration` component with the player. The player's ads API then dispatches the SDK's ad break and ad events and keeps `player.ads.playing`, `currentAdBreak` and `currentAds` up to date, so code that already listens on `player.ads` needs no second event source. The SDK keeps emitting its own events as well.
+
+Register the integration once per player, before loading the source:
+
+```brightscript
+m.integration = createObject("roSGNode", "OptiViewAds:OptiViewAdsSDKIntegration")
+m.integration.adsSdk = m.ads
+m.player.ads.callFunc("registerServerSideIntegration", m.integration.integrationKind, m.integration)
+```
+
+On the `ready` result of `startSession`, load `playbackUrl` into the player instead of the `Video` node, and reference the integration in the source's `ssai` description:
+
+```brightscript
+m.player.source = {
+    sources: [{
+        src: result.playbackUrl
+        type: "application/x-mpegurl"
+        ssai: { integration: m.integration.integrationKind }
+    }]
+    live: true
+}
+```
+
+The player only starts the integration for sources with this `ssai` description, and the integration accepts the source only while the SDK session is active. Do not call the integration's functions yourself; the player invokes them. Destroying the player with `player.callFunc("destroy")` tears the integration down; destroy the `OptiViewAds` node afterwards. See the [Roku API reference](pathname:///ads/v2/api-reference/roku/#component-OptiViewAdsSDKIntegration) for details.
+
 ## Events and configuration
 
 Subscribe to ad and diagnostic events with the same `addEventListener` pattern. Each listener owner must expose its callback as an interface function. Remove a listener with `removeEventListener`, using the same event type, owner, and function name.
