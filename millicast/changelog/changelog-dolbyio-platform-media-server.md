@@ -2,6 +2,21 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-11-04
+
+### Media Server
+
+{/* 3.9.0 */}
+
+#### Fixes
+
+- Fixed an issue where a broadcast could keep sending media to a viewer node that had shut down unexpectedly, which could cause packet loss for other viewers of the stream.
+- Fixed an issue where a viewer connection that failed during setup could prevent a viewer node from shutting down cleanly.
+- WebSocket signaling requests sent without an `Upgrade` header now get `426 Upgrade Required` instead of `400 Bad Request`.
+- Performance improvements for media servers with many viewers.
+- Applied operating system, Node.js and dependency security updates to the media server images.
+- General stability and reliability improvements.
+
 ## 2026-10-08
 
 ### Media Server
