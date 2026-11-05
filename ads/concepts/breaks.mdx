@@ -248,7 +248,7 @@ The layout (`format`) of a variant determines how the ad and your content share 
 
 ![L-shape ad format](../assets/img/breaks/format-lshape-ad.svg)
 
-`format: "lshape_ad"` squeezes the content into a corner and **replaces it with an ad**: the ad plays in the main window while a **companion** asset (image or video) fills the L-shaped backdrop. Like Double Box, every entry in `assets` requires a `companion`.
+`format: "lshape_ad"` squeezes the content into a corner and **replaces it with an ad**: the ad plays in the main window while a **companion** asset (image or video) fills the L-shaped backdrop. Like Double Box, every entry in `assets` requires a `companion`. The corner is set with [`anchor`](#l-shape-anchor).
 
 ```json
 {
@@ -279,6 +279,37 @@ This is the key difference between the two L-shapes: with `lshape_ad` the viewer
 ```json
 {
   "format": "lshape_content",
+  "assets": [
+    {
+      "type": "static",
+      "mediaType": "image",
+      "uri": "https://cdn.example.com/ads/lshape-ad.png"
+    }
+  ]
+}
+```
+
+#### L-shape anchor
+
+![L-shape anchors](../assets/img/breaks/lshape-anchors.svg)
+
+Both L-shapes accept an optional `anchor`: the corner of the picture the video box is placed in. In `lshape_ad` the video box holds the ad; in `lshape_content` it holds your content. The backdrop fills the two opposite edges. Pick the corner that suits your production, for example to match where on-screen graphics such as scoreboards or clocks sit in your content.
+
+| `anchor`             | Video box    | Backdrop         |
+| -------------------- | ------------ | ---------------- |
+| `top_left` (default) | Top left     | Right and bottom |
+| `top_right`          | Top right    | Left and bottom  |
+| `bottom_left`        | Bottom left  | Right and top    |
+| `bottom_right`       | Bottom right | Left and top     |
+
+The video box is 65% of the width and height of the content picture (black bars excluded), 5% from the two edges of its corner. A break or template created without `anchor` is stored with `top_left`, which is the layout L-shape breaks have always had. An unknown value is rejected with a `400`. Other layouts have no `anchor`.
+
+The OptiView Ads SDK supports `anchor` from version 1.5.0. Older SDK versions ignore it and place the video box in the top left corner.
+
+```json
+{
+  "format": "lshape_content",
+  "anchor": "top_right",
   "assets": [
     {
       "type": "static",
