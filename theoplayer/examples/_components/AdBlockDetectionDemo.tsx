@@ -11,7 +11,7 @@ interface Status {
 
 export default function AdBlockDetectionDemo(): JSX.Element {
   const exampleRef = useRef<ExampleController>(null);
-  const [blockContentIfAdError, setBlockContentIfAdError] = useState(false);
+  const [blockContentIfAdError, setBlockContentIfAdError] = useState(true);
   const [status, setStatus] = useState<Status>({ state: 'waiting', blocked: false, message: '' });
 
   const blockedText = status.blocked ? 'Content is blocked until the ad blocker is disabled' : 'Content continues without ads';

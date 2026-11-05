@@ -21,8 +21,8 @@ The documentation site publishes the following plain-text files, following the
 | [`/docs/theoplayer/llms-full.txt`](pathname:///theoplayer/llms-full.txt) | Full text of the THEOplayer documentation in a single file                                                                                                                       |
 | `/docs/<page>.md`                                                        | Markdown version of every page, for example [`/docs/theoplayer/getting-started/sdks/web/getting-started.md`](pathname:///theoplayer/getting-started/sdks/web/getting-started.md) |
 
-The same `llms.txt` and `llms-full.txt` files exist for the other products: `open-video-ui`, `ads`,
-`ad-engine`, `millicast` and `theolive`.
+The same `llms.txt` and `llms-full.txt` files exist for the other products: `ads`, `ad-engine`,
+`millicast` and `theolive`. The Open Video UI pages are part of the THEOplayer files.
 
 The `llms-full.txt` files are large. Most assistants work best when you point them at `llms.txt` and
 let them fetch the individual `.md` pages when needed.

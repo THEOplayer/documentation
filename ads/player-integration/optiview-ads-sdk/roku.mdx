@@ -1,0 +1,107 @@
+---
+sidebar_position: 6
+sidebar_label: Roku
+---
+
+# OptiView Ads SDK on Roku
+
+On Roku, the OptiView Ads SDK is a SceneGraph component that works with an application-owned `Video` node. It supports Google Ad Manager ads in clear live HLS streams through server-guided ad insertion (SGAI) or Google DAI live streams through server-side ad insertion (SSAI).
+
+Unlike the other platform integrations, Roku does not use a player adapter. Your application binds its `Video` node to the SDK and loads the playback URL returned by the session.
+
+## Prerequisites
+
+1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values). Network Break Manifests must carry a valid detached signature.
+2. Provide a clear live HLS content URL. SGAI requires `EXT-X-PROGRAM-DATE-TIME` tags and compatible content and ad renditions.
+3. Obtain the signed Roku SDK component-library package for your SDK version.
+
+:::note[Supported workflows]
+Roku supports live Google Ad Manager workflows. VOD, standalone VAST tags, static assets, DRM, low-latency HLS parts, and nonlinear layouts are not supported. In SSAI mode, the SDK uses Google DAI full-service live HLS and does not render client-side manifest breaks. See the [Roku API reference](pathname:///ads/v2/api-reference/roku/#capabilities) for the supported capabilities.
+:::
+
+## Installation
+
+Copy the signed SDK package into your channel as `components/OptiViewAds.pkg`. Add the required libraries to your channel's `manifest`:
+
+```ini
+bs_libs_required=roku_ads_lib,googleima3
+```
+
+Load the package with a `ComponentLibrary` node in your scene:
+
+```xml
+<ComponentLibrary id="OptiViewAds" uri="pkg:/components/OptiViewAds.pkg" />
+```
+
+Wait until the library's `loadStatus` is `ready` before creating `OptiViewAds:OptiViewAds`. Handle a failed library load before starting a session.
+
+## Integration
+
+Expose the SDK listener as an interface function on your application component, and provide the content player and a group for Google IMA's ad UI:
+
+```xml
+<interface>
+  <function name="onAdsOperation" />
+</interface>
+<children>
+  <Video id="video" width="1920" height="1080" />
+  <Group id="adUi" />
+</children>
+```
+
+After the library is ready, call `startAds` from your component's BrightScript code. Register listeners before calling `startSession`, because validation failures can be reported immediately:
+
+```brightscript
+sub startAds()
+    m.video = m.top.findNode("video")
+    m.ads = createObject("roSGNode", "OptiViewAds:OptiViewAds")
+    m.top.appendChild(m.ads)
+    m.ads.videoNode = m.video
+    m.ads.adUiNode = m.top.findNode("adUi")
+    m.ads.callFunc("addEventListener", m.ads.events.operationresult, m.top, "onAdsOperation")
+    m.startOperation = m.ads.callFunc("startSession", {
+        contentUrl: "https://content.example.com/live/master.m3u8"
+        manifestUrl: "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID"
+    })
+end sub
+
+sub onAdsOperation(result as object)
+    if result.operation <> "startSession" or result.operationId <> m.startOperation then return
+    if result.status = "error"
+        print "OptiView Ads session failed: "; result.reason
+        return
+    end if
+    if result.status <> "ready" then return
+
+    content = createObject("roSGNode", "ContentNode")
+    content.url = result.playbackUrl
+    content.streamFormat = "hls"
+    content.live = true
+    content.playStart = -1
+    m.video.content = content
+    m.video.control = "play"
+end sub
+```
+
+`startSession` returns an operation ID, not a playback URL. The matching `operationresult` event with status `ready` carries `playbackUrl` and the selected `deliveryMode`. Always load that URL rather than the original content URL. The SDK never sets the `Video` node's source itself.
+
+The channel's Break Manifest selects SGAI or SSAI for the device. In SGAI, `playbackUrl` is the SDK's local proxy URL. In SSAI, it is the Google DAI stream URL.
+
+## Events and configuration
+
+Subscribe to ad and diagnostic events with the same `addEventListener` pattern. Each listener owner must expose its callback as an interface function. Remove a listener with `removeEventListener`, using the same event type, owner, and function name.
+
+The SDK also exposes session configuration, ad targeting updates, status snapshots, and capability information. See the [Roku API reference](pathname:///ads/v2/api-reference/roku/) for the full interface.
+
+## Ending a session
+
+End the session, stop and detach playback, then destroy the SDK component:
+
+```brightscript
+m.ads.callFunc("endSession")
+m.video.control = "stop"
+m.video.content = invalid
+m.ads.callFunc("destroy")
+```
+
+While playback is still attached, `endSession` reports `draining` and keeps the published stream available. `destroy` refuses to release the component while the `Video` node still uses the SDK's playback URL.

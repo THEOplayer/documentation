@@ -38,7 +38,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">1.0.0
+        <div class="library-version" id="library-version">1.3.0
         </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
@@ -93,7 +93,7 @@
   <div class="breadcrumbs"><a href="../../index.html">ads-sdk-core</a><span class="delimiter">/</span><a href="../index.html">com.dolby.optiview.ads.core</a><span class="delimiter">/</span><span class="current">PlayerAdapterEvent</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Player</span><wbr><span>Adapter</span><wbr><span><span>Event</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">PlayerAdapterEvent</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="index.html">PlayerAdapterEvent</a><span class="token operator">&gt; </span></div><p class="paragraph">Event types a <a href="../-player-adapter/index.html">PlayerAdapter</a> must forward (mirrors the TS <code class="lang-kotlin">PlayerAdapterEvent</code>).</p><p class="paragraph"><code class="lang-kotlin">TIMEDMETADATA</code> is optional/capability-style: content adapters used for SSAI playback emit it for each in-stream timed-metadata marker (HLS ID3 / EXT-X-DATERANGE) with a <a href="../-timed-metadata-cue/index.html">TimedMetadataCue</a> payload, so the SDK can forward markers to IMA for ad tracking. Adapters that cannot surface metadata never emit it.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">PlayerAdapterEvent</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="index.html">PlayerAdapterEvent</a><span class="token operator">&gt; </span></div><p class="paragraph">Event types a <a href="../-player-adapter/index.html">PlayerAdapter</a> must forward (mirrors the TS <code class="lang-kotlin">PlayerAdapterEvent</code>).</p><p class="paragraph"><code class="lang-kotlin">TIMEDMETADATA</code> is optional/capability-style: content adapters used for SSAI playback emit it for each in-stream timed-metadata marker (HLS ID3 / EXT-X-DATERANGE) with a <a href="../-timed-metadata-cue/index.html">TimedMetadataCue</a> payload, so the SDK can forward markers to IMA for ad tracking. Adapters that cannot surface metadata never emit it.</p><p class="paragraph"><code class="lang-kotlin">EXTERNALPLAYBACKCHANGE</code> is capability-style too: adapters that can detect external (AirPlay) playback emit an <a href="../-external-playback-change/index.html">ExternalPlaybackChange</a> whenever the state changes. Adapters that cannot never emit it.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="ENTRY">Entries</button></div>
@@ -231,6 +231,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><div class="block"><a href="-t-i-m-e-d-m-e-t-a-d-a-t-a/index.html">TIMEDMETADATA</a></div></div><div class="brief "><p class="paragraph">An in-stream timed-metadata marker; the payload is a <a href="../-timed-metadata-cue/index.html">TimedMetadataCue</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="92468234%2FClasslikes%2F1791126223" anchor-label="EXTERNALPLAYBACKCHANGE" id="92468234%2FClasslikes%2F1791126223" data-filterable-set=":ads-sdk-core/main"></a>
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":ads-sdk-core/main" data-filterable-set=":ads-sdk-core/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-x-t-e-r-n-a-l-p-l-a-y-b-a-c-k-c-h-a-n-g-e/index.html">EXTERNALPLAYBACKCHANGE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="92468234%2FClasslikes%2F1791126223"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk-core/main"><div class="symbol monospace"><div class="block"><a href="-e-x-t-e-r-n-a-l-p-l-a-y-b-a-c-k-c-h-a-n-g-e/index.html">EXTERNALPLAYBACKCHANGE</a></div></div><div class="brief "><p class="paragraph">The content player's external (AirPlay) playback state changed; the payload is an <a href="../-external-playback-change/index.html">ExternalPlaybackChange</a>.</p></div></div></div>
                 </div>
               </div>
             </div>

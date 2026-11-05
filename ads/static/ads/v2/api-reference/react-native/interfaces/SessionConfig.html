@@ -52,16 +52,18 @@ string or a zero-argument callback per macro name, e.g.
 manifest / session / update value is replaced when the ad request is built,
 so <code>&quot;$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$&quot;</code> becomes <code>&quot;1920x1080&quot;</code>.
 Customer macros are consulted before the built-in <code>$OPTIVIEW_*</code> set, so a built-in can be
-overridden. A string replaces the token. <code>null</code> omits the parameter; for GAM <code>cust_params</code>,
-only the containing pair is dropped and the key is omitted if no pair remains. For VAST,
-the whole <code>cust_params</code> parameter is omitted. <code>undefined</code> leaves an unresolved token literal
-and sends the parameter. <code>DA-ASSET-MACRO-UNKNOWN</code> reports
-unresolved built-in or registered macros; <code>DA-ASSET-PARAMETER-OMITTED</code> reports null omissions.
+overridden. A string replaces the token. <code>&quot;&quot;</code>, <code>null</code>, or a registered callback's <code>undefined</code>
+result omits the parameter, or only the containing pair when its value has a literal <code>&amp;</code>;
+<code>DA-ASSET-PARAMETER-OMITTED</code> reports the omission. An <code>undefined</code> map entry is not registered.
+<code>updateAssetParameterMacros</code> uses <code>undefined</code> to unregister a name. A throwing callback warns
+and is unresolved, falling back to a built-in when one exists. <code>DA-ASSET-MACRO-UNKNOWN</code> reports
+unresolved built-in or registered macros.
 Other unresolved <code>$NAME$</code> tokens stay literal without a diagnostic. <code>$</code> without a closing <code>$</code>
 is unchanged.
 Callbacks are evaluated per ad request and cleared when the session ends.
 Session-scoped parameters are sent to IMA DAI with
-built-in and customer macros resolved; break-duration macros are omitted.</p>
+built-in and customer macros resolved; break-duration macros stay literal and are
+reported as <code>DA-ASSET-MACRO-UNKNOWN</code>.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-see">

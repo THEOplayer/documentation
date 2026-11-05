@@ -14,7 +14,7 @@ You can set `assetParameters` in two places: on the break in the **backend**, an
 
 ## Asset parameters in the backend
 
-When you [schedule a break](../concepts/breaks.mdx#scheduling) with a VAST or vendor asset, you can add an `assetParameters` map to the asset. For a VAST asset:
+When you [schedule a break](../concepts/breaks.mdx#scheduling) with a static, VAST or vendor asset, you can add an `assetParameters` map to the asset. For a VAST asset:
 
 ```json
 {
@@ -26,6 +26,27 @@ When you [schedule a break](../concepts/breaks.mdx#scheduling) with a VAST or ve
   }
 }
 ```
+
+For a static asset:
+
+```json
+{
+  "type": "static",
+  "mediaType": "video",
+  "mimeType": "application/x-mpegurl",
+  "uri": "https://cdn.example.com/ads/spot.m3u8",
+  "assetParameters": {
+    "campaign": "summer-sale",
+    "size": "$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$"
+  }
+}
+```
+
+The SDK appends the parameters of a static asset to the URL it requests: the asset's `uri`, or the entry it selects when the `uri` is a list of [targeted URLs](../concepts/breaks.mdx#asset-uri-targeting). A static companion carries its own `assetParameters`. For HLS and DASH creatives, only the master playlist or MPD request carries them, not the variant playlists or segments.
+
+:::caution[Signed static asset URLs]
+Do not use asset parameters on a static asset with a signed URL or a URL that carries an access token. The added query parameters can invalidate the signature. Parameters set in the SDK are added to every static asset request in the session.
+:::
 
 For a Google Pod Serving vendor asset:
 
@@ -44,6 +65,10 @@ For a Google Pod Serving vendor asset:
 ```
 
 OptiView Ads delivers these parameters to the player through the [Break Manifest](../concepts/break-manifest.mdx), so they are included on the ad request. For Google, they are also forwarded to Google when the break is announced; see [Google Pod Serving](../integrations/google/pod-serving.mdx#required-google-parameters) for the parameters Google requires.
+
+### In the dashboard
+
+When you edit a static, VAST or Google Ad Manager asset of a break or template in the dashboard, enter its parameters under **Asset Parameters**, one key and value per row. To reuse a set of parameters, use **Copy as JSON** to copy all of them, and **Import parameters** on the other asset to paste them back. The import also accepts a query string or a full ad tag URL, whose query parameters become the asset parameters. Choose **Merge** to add them to the existing parameters, or **Replace** to replace them. Imported parameters are saved together with the rest of the form.
 
 ## Asset parameters in the OptiView Ads SDK
 
@@ -143,11 +168,11 @@ ads.updateAssetParameters({ cust_params: 'sport=basketball' });
 
 ## Related resources
 
-| Resource                                                             | Description                                     |
-| -------------------------------------------------------------------- | ----------------------------------------------- |
-| [Asset parameter macros](./asset-parameter-macros.mdx)               | Device values in parameter values.              |
-| [VAST](../workflows/live/vast.mdx)                                   | Playing VAST tags with the SDK.                 |
-| [Google Ad Manager](../workflows/live/google-ad-manager.mdx)         | Playing Google pods with the SDK.               |
-| [Google Pod Serving](../integrations/google/pod-serving.mdx)         | Required Google parameters and pod decisioning. |
-| [Breaks](../concepts/breaks.mdx)                                     | Scheduling breaks with VAST and vendor assets.  |
-| [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) | Integrating the SDK with your player.           |
+| Resource                                                             | Description                                            |
+| -------------------------------------------------------------------- | ------------------------------------------------------ |
+| [Asset parameter macros](./asset-parameter-macros.mdx)               | Device values in parameter values.                     |
+| [VAST](../workflows/live/vast.mdx)                                   | Playing VAST tags with the SDK.                        |
+| [Google Ad Manager](../workflows/live/google-ad-manager.mdx)         | Playing Google pods with the SDK.                      |
+| [Google Pod Serving](../integrations/google/pod-serving.mdx)         | Required Google parameters and pod decisioning.        |
+| [Breaks](../concepts/breaks.mdx)                                     | Scheduling breaks with static, VAST and vendor assets. |
+| [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) | Integrating the SDK with your player.                  |

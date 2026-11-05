@@ -11,9 +11,15 @@ import CodeBlock from '@theme/CodeBlock';
 import AdBlockDetectionDemo from '../_components/AdBlockDetectionDemo';
 import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/ad-block-detection/demo.html';
 
+:::note
+
+After enabling or disabling an ad blocker extension, refresh the page fully for the change to take effect.
+
+:::
+
 <AdBlockDetectionDemo />
 
-When the ad request fails, the player fires an `aderror` event on `player.ads`. Set `blockContentIfAdError` on the source to stop content playback as well — the player then also raises a fatal `error` event. Enable an ad blocker in your browser and press play to reproduce what happens when the ad tag is unreachable — a pre-roll ad is only requested when playback starts, so the error appears after pressing play.
+When the ad request fails, the player fires an `aderror` event on `player.ads`. Set `blockContentIfAdError` on the source to stop content playback as well — the player then also raises a fatal `error` event. An empty VAST or VMAP response is a valid answer from the ad server, so it never blocks the content: the player continues without ads. Enable an ad blocker in your browser and press play to reproduce what happens when the ad tag is unreachable — a pre-roll ad is only requested when playback starts, so the error appears after pressing play.
 
 ```js
 player.ads.addEventListener('aderror', (event) => {

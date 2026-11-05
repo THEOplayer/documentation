@@ -13,6 +13,8 @@ The OptiView Ads SDK is the recommended way to integrate OptiView Ads into your 
 
 The SDK is available for [Web](./web.mdx), [Android](./android.mdx), [iOS](./ios.mdx), and [React Native](./react-native.mdx).
 
+For [Roku](./roku.mdx), the SDK provides a SceneGraph component for live Google Ad Manager workflows with an application-owned `Video` node. It does not use the player adapter or overlay integration described below; see the Roku guide for its supported workflows and configuration.
+
 ## How the SDK works with your player
 
 The SDK never talks to your player directly. All player interaction goes through a small **player adapter** interface, which exposes the playback state the SDK needs — most importantly the stream's timing information that breaks are scheduled against: the `EXT-X-PROGRAM-DATE-TIME` position on a live HLS stream, or the playback position in a VOD asset. The SDK ships ready-made adapters for popular players on each platform, and you can implement the adapter interface yourself for any other player.

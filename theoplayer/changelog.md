@@ -9,6 +9,21 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.14.1 (2026/10/28)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where FairPlay-protected HLS streams in Safari 18 and later stopped with an HDCP output protection error, for example while screen mirroring an iPhone or iPad.
+
+### Android
+
+#### ⚡ Improvements
+
+- Improved the start-up time of OptiView Live Streaming (THEOlive) HLS streams by preparing playback directly from the multivariant playlist. Other HLS sources can opt in with `HlsPlaybackConfiguration.isChunklessPreparationAllowed`.
+- Added `HlsPlaybackConfiguration.preacquireDrmFromSessionKeys` to start the DRM license request from the `EXT-X-SESSION-KEY` tags in the multivariant playlist, which can reduce startup time of protected HLS streams. This is always enabled for OptiView Live Streaming.
+
 ## 🚀 11.14.0 (2026/10/20)
 
 ### Web

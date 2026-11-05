@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OptiViewAds — Roku API reference (1.3.0)</title>
+<style>
+body { font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; color: #1d1d1f; }
+header, main { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+header { padding-top: 32px; }
+nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 12px 0 8px; }
+nav a, a { color: #0b57d0; text-decoration: none; }
+h1 { font-size: 28px; margin: 0 0 4px; }
+h2 { margin-top: 40px; border-bottom: 1px solid #ddd; padding-bottom: 6px; }
+h3 { margin-top: 28px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: #f5f5f7; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
+.meta, .version { color: #555; }
+</style>
+</head>
+<body>
+<header>
+<h1>OptiViewAds</h1>
+<p class="version">OptiView Ads SDK for Roku, version 1.3.0</p>
+<p>SceneGraph component that inserts OptiView Ads breaks into clear live HLS on Roku through one application-owned Video node: client-side stitching of Google Ad Manager pods (SGAI), or the channel's Google DAI live stream when the break manifest selects server-side ad insertion for TV devices (SSAI).</p>
+<nav>
+<a href="#fields">Fields</a>
+<a href="#functions">Functions</a>
+<a href="#start-config">Start configuration</a>
+<a href="#operation-results">Operation results</a>
+<a href="#events">Events</a>
+<a href="#diagnostics">Diagnostics</a>
+<a href="#capabilities">Capabilities</a>
+</nav>
+</header>
+<main>
+<h2 id="fields">Fields</h2>
+<p>SceneGraph fields on the <code>OptiViewAds</code> node: inputs the application binds, plus the read-only <code>events</code> constants.</p>
+<table>
+<thead><tr><th>Field</th><th>Type</th><th>Use</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code id="field-videoNode">videoNode</code></td><td>node</td><td>write</td><td>The application's <code>Video</code> node. Bind it before <code>startSession</code>; changing it during a session requires a new session (<code>ROKU-VIDEO-BINDING-CHANGED</code>). The SDK never sets this node's source.</td></tr>
+<tr><td><code id="field-adUiNode">adUiNode</code></td><td>node</td><td>write</td><td>The node Google IMA draws its ad UI into (for example the skip button or ad countdown).</td></tr>
+<tr><td><code id="field-events">events</code></td><td>assocarray</td><td>read</td><td>Event type constants for <code>addEventListener</code>, keyed by name: <code>m.ads.events.adbreakbegin</code> is <code>&quot;adbreakbegin&quot;</code> (see Events).</td></tr>
+<tr><td><code id="field-playerClockAnchor">playerClockAnchor</code></td><td>assocarray</td><td>write</td><td>Optional, externally verified clock anchor used only when native <code>Video.positionInfo</code> UTC is unavailable: <code>generation</code>, <code>source: &quot;program-date-time&quot;</code>, <code>verified: true</code>, <code>position</code> (seconds on the Video) and <code>pdt</code> (source Program Date Time, epoch seconds). Set <code>{ generation, invalidate: true }</code> to withdraw it. A rejected anchor reports <code>ROKU-PLAYER-CLOCK-INVALID</code>.</td></tr>
+</tbody>
+</table>
+<h2 id="functions">Functions</h2>
+<p>Call with <code>CallFunc</code>. Asynchronous calls return an operation ID and report through <code>operationresult</code> events; getters return snapshots. Register listeners with <code>addEventListener(eventType, listenerOwner, listenerName)</code>: the owner is the application's node and the listener one of its interface functions, invoked with the event as its argument.</p>
+<h3 id="function-addEventListener"><code>addEventListener</code></h3>
+<pre><code>addEventListener(eventType as String, listenerOwner as Object, listenerName as String)</code></pre>
+<p>Subscribes <code>listenerOwner.listenerName</code> to an event type (see Events). <code>listenerOwner</code> is the application's node (usually <code>m.top</code>) and <code>listenerName</code> one of its interface <code>&lt;function&gt;</code>s, invoked with the event as its single argument: <code>m.ads.callFunc(&quot;addEventListener&quot;, m.ads.events.adbreakbegin, m.top, &quot;onAdBreakBegin&quot;)</code>.</p>
+
+<h3 id="function-removeEventListener"><code>removeEventListener</code></h3>
+<pre><code>removeEventListener(eventType as String, listenerOwner as Object, listenerName as String)</code></pre>
+<p>Removes a listener added with <code>addEventListener</code> (same event type, owner and function name). Unknown listeners are ignored.</p>
+
+<h3 id="function-startSession"><code>startSession</code></h3>
+<pre><code>startSession(config as Object) as Integer</code></pre>
+<p>Starts a session for one channel and returns an operation ID. Results arrive as <code>operationresult</code> events; on <code>ready</code>, load its <code>playbackUrl</code> into a <code>ContentNode</code> (<code>streamFormat: &quot;hls&quot;</code>) on the bound Video. <code>ready</code> waits until the first break manifest has decided the delivery mode; if that manifest fails, the session continues content-first in SGAI. A new <code>startSession</code> supersedes the previous session.</p>
+<p class="meta">Operation statuses: <code>ready</code>, <code>error</code>, <code>cancelled</code></p>
+<h3 id="function-endSession"><code>endSession</code></h3>
+<pre><code>endSession() as Integer</code></pre>
+<p>Ends ad insertion. While playback is still attached it reports <code>draining</code> (<code>playback-detach-required</code>) and keeps the published stream available; stop and detach the Video, then the session reports <code>ended</code>.</p>
+<p class="meta">Operation statuses: <code>ended</code>, <code>draining</code></p>
+<h3 id="function-destroy"><code>destroy</code></h3>
+<pre><code>destroy() as Integer</code></pre>
+<p>Releases the component's workers. Refuses with <code>playback-detach-required</code> while the Video still uses the SDK's URL; stop and detach playback first. Listeners stay registered so later calls still report <code>error</code> (<code>destroyed</code>).</p>
+<p class="meta">Operation statuses: <code>destroyed</code>, <code>error</code></p>
+<h3 id="function-updateAssetParameters"><code>updateAssetParameters</code></h3>
+<pre><code>updateAssetParameters(parameters as Object) as Integer</code></pre>
+<p>Replaces the runtime ad tag parameters used for future breaks (merged with the start config and manifest parameters). A break already committed is not changed. Requires an active session.</p>
+<p class="meta">Operation statuses: <code>updated</code>, <code>error</code></p>
+<h3 id="function-updateAssetParameterMacros"><code>updateAssetParameterMacros</code></h3>
+<pre><code>updateAssetParameterMacros(update as Object) as Integer</code></pre>
+<p>Sets or removes macro values, keyed by the full token including both <code>$</code> delimiters: <code>{ set: { &quot;$NAME$&quot;: value }, remove: [&quot;$NAME$&quot;] }</code>. An empty string or <code>invalid</code> value omits the parameters that use the macro. Requires an active session.</p>
+<p class="meta">Operation statuses: <code>updated</code>, <code>error</code></p>
+<h3 id="function-updateRafMetadata"><code>updateRafMetadata</code></h3>
+<pre><code>updateRafMetadata(metadata as Object) as Integer</code></pre>
+<p>SSAI: updates the Roku Advertising Framework content metadata <code>{ contentId, contentGenre, kidsContent, contentLength }</code>.</p>
+<p class="meta">Operation statuses: <code>updated</code>, <code>error</code></p>
+<h3 id="function-getAdBreakStatus"><code>getAdBreakStatus</code></h3>
+<pre><code>getAdBreakStatus() as Object</code></pre>
+<p>Snapshot of the break state: <code>phase</code>, <code>state</code>, <code>generation</code>, <code>ticking</code>, the selected <code>break</code> and its countdown, all known <code>breaks</code> (<code>breakId</code>, <code>occurrence</code>, <code>state</code>, <code>reason</code>, <code>reasonDetail</code>) and <code>deliveryMode</code>. When playback must be restarted it adds <code>recoveryRequired</code>, <code>reloadRequired</code> and <code>reloadReason</code>.</p>
+
+<h3 id="function-isSessionActive"><code>isSessionActive</code></h3>
+<pre><code>isSessionActive() as Boolean</code></pre>
+<p>Whether ad insertion is starting or active. It does not report whether the Video is playing.</p>
+
+<h3 id="function-getSessionInfo"><code>getSessionInfo</code></h3>
+<pre><code>getSessionInfo() as Object</code></pre>
+<p>Snapshot of the session: <code>generation</code>, <code>active</code>, <code>destroyed</code> and, during a session, <code>state</code>, <code>playbackEpoch</code>, <code>recoveryRequired</code>, <code>reloadRequired</code>, <code>channelId</code>, <code>deliveryMode</code>, <code>deliveryModeSource</code> and <code>publishedSourceEnd</code> (UTC, ISO 8601) when available.</p>
+
+<h3 id="function-getCapabilities"><code>getCapabilities</code></h3>
+<pre><code>getCapabilities() as Object</code></pre>
+<p>Describes what the installed version implements (see Capabilities). Check it instead of assuming a feature.</p>
+
+<h3 id="function-resolveGateway"><code>resolveGateway</code></h3>
+<pre><code>resolveGateway(result as Object) as Boolean</code></pre>
+<p>Answers a <code>gatewayrequest</code> event: <code>{ requestId, generation, status, value }</code> with <code>status</code> <code>&quot;ok&quot;</code> or <code>&quot;error&quot;</code>. Returns <code>false</code> for an unknown or stale request. Without an answer within two seconds the SDK uses the original request, response or registered macro values and reports a diagnostic.</p>
+
+<h2 id="start-config">Start configuration</h2>
+<p>Keys of the object passed to <code>startSession</code>. Built-in macros: <code>$OPTIVIEW_USER_AGENT$</code>, <code>$OPTIVIEW_PLAYER_WIDTH$</code>, <code>$OPTIVIEW_PLAYER_HEIGHT$</code>, <code>$OPTIVIEW_BREAK_DURATION_SECONDS$</code>, <code>$OPTIVIEW_BREAK_DURATION_MS$</code>.</p>
+<table>
+<thead><tr><th>Key</th><th>Type</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code id="config-contentUrl">contentUrl</code> <strong>required</strong></td><td>String</td><td>Live HLS master playlist.</td></tr>
+<tr><td><code id="config-manifestUrl">manifestUrl</code> <strong>required</strong></td><td>String</td><td>Break manifest URL. Network manifests must carry a valid detached signature.</td></tr>
+<tr><td><code id="config-contentHeaders">contentHeaders</code></td><td>Object</td><td>HTTP headers sent with content playlist and segment requests.</td></tr>
+<tr><td><code id="config-assetParameters">assetParameters</code></td><td>Object</td><td>Ad tag parameters added to Google Ad Manager requests, merged with the manifest's parameters.</td></tr>
+<tr><td><code id="config-assetParameterMacros">assetParameterMacros</code></td><td>Object</td><td>Initial values for macros in asset parameters, keyed by the full token: <code>{ &quot;$SEGMENT$&quot;: &quot;sports&quot; }</code>. An empty string or <code>invalid</code> value omits the parameters that use the macro.</td></tr>
+<tr><td><code id="config-userAgent">userAgent</code></td><td>String</td><td>Value of the built-in <code>$OPTIVIEW_USER_AGENT$</code> macro.</td></tr>
+<tr><td><code id="config-playerWidth">playerWidth</code></td><td>Integer</td><td>Value of the built-in <code>$OPTIVIEW_PLAYER_WIDTH$</code> macro.</td></tr>
+<tr><td><code id="config-playerHeight">playerHeight</code></td><td>Integer</td><td>Value of the built-in <code>$OPTIVIEW_PLAYER_HEIGHT$</code> macro.</td></tr>
+<tr><td><code id="config-requestInterceptor">requestInterceptor</code></td><td>Boolean</td><td>Route each manifest request through a <code>gatewayrequest</code> event (<code>manifest-request</code>).</td></tr>
+<tr><td><code id="config-responseInterceptor">responseInterceptor</code></td><td>Boolean</td><td>Route each manifest response through a <code>gatewayrequest</code> event (<code>manifest-response</code>).</td></tr>
+<tr><td><code id="config-macroResolver">macroResolver</code></td><td>Boolean</td><td>Resolve macro values through a <code>gatewayrequest</code> event (<code>asset-parameter-macros</code>).</td></tr>
+<tr><td><code id="config-alignmentToleranceSeconds">alignmentToleranceSeconds</code></td><td>Float</td><td>Allowed alignment difference between renditions and at the return to content, <code>0.002</code> to <code>0.250</code> seconds. Default <code>0.250</code>.</td></tr>
+<tr><td><code id="config-mode">mode</code></td><td>String</td><td><code>&quot;sgai&quot;</code> or <code>&quot;ssai&quot;</code>: overrides the break manifest's delivery rules (<code>DA-DELIVERY-MODE-OVERRIDDEN</code>).</td></tr>
+<tr><td><code id="config-raf">raf</code></td><td>Object</td><td>SSAI: <code>{ contentId, contentGenre, kidsContent, contentLength }</code> for Roku Advertising Framework measurement.</td></tr>
+<tr><td><code id="config-streamActivityMonitorId">streamActivityMonitorId</code></td><td>String</td><td>SSAI: passed to the Google DAI stream request.</td></tr>
+</tbody>
+</table>
+<h2 id="operation-results">Operation results</h2>
+<table>
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>ready</code></td><td>The session is ready; the result carries <code>playbackUrl</code> and <code>deliveryMode</code>.</td></tr>
+<tr><td><code>error</code></td><td>The call failed; <code>reason</code> names why (for example <code>missing-session-url</code>, <code>invalid-configuration</code>, <code>invalid-video-binding</code>, <code>invalid-alignment-tolerance</code>, <code>invalid-delivery-mode</code>, <code>invalid-raf-metadata</code>, <code>invalid-stream-activity-monitor-id</code>, <code>invalid-parameters</code>, <code>invalid-macros</code>, <code>playback-detach-required</code>, <code>unsupported-state</code>, <code>no-session</code>, <code>destroyed</code>).</td></tr>
+<tr><td><code>cancelled</code></td><td>Superseded by a newer call or ended with the session (<code>superseded</code>, <code>session-ended</code>).</td></tr>
+<tr><td><code>draining</code></td><td><code>endSession</code> while playback is attached; detach to finish.</td></tr>
+<tr><td><code>ended</code></td><td>The session ended.</td></tr>
+<tr><td><code>destroyed</code></td><td>The component released its workers.</td></tr>
+<tr><td><code>updated</code></td><td>A parameter, macro or RAF update was applied.</td></tr>
+</tbody>
+</table>
+<h2 id="events">Events</h2>
+<p>Event types for <code>addEventListener</code>. Every event carries <code>type</code> and <code>generation</code>; ad, break, status and <code>diagnostic</code> events also carry a <code>sequence</code>, <code>operationresult</code> an <code>operationId</code> and <code>gatewayrequest</code> a <code>requestId</code>. Tracking events come only from genuine IMA callbacks.</p>
+<table>
+<thead><tr><th>Type</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code id="event-operationresult">operationresult</code></td><td>Result of an asynchronous call: <code>operationId</code>, <code>operation</code> (<code>startSession</code>, <code>endSession</code>, <code>destroy</code>, <code>updateAssetParameters</code>, <code>updateAssetParameterMacros</code>, <code>updateRafMetadata</code>), <code>generation</code>, <code>status</code> and an optional <code>reason</code>. A <code>ready</code> result of <code>startSession</code> carries <code>playbackUrl</code>, <code>deliveryMode</code> and, in SSAI, <code>ssaiStream</code>. See Operation results.</td></tr>
+<tr><td><code id="event-diagnostic">diagnostic</code></td><td>Diagnostics with <code>code</code>, an optional <code>reason</code> and code-specific context (see Diagnostics).</td></tr>
+<tr><td><code id="event-gatewayrequest">gatewayrequest</code></td><td>Interception and macro requests (<code>kind</code>: <code>manifest-request</code>, <code>manifest-response</code> or <code>asset-parameter-macros</code>) with <code>requestId</code>, <code>generation</code>, <code>value</code> and <code>context</code>. Answer each with <code>resolveGateway</code> within two seconds.</td></tr>
+<tr><td><code id="event-adbreakbegin">adbreakbegin</code></td><td>A break started playing at its actual splice point.</td></tr>
+<tr><td><code id="event-adbegin">adbegin</code></td><td>An ad in the pod started (from a genuine IMA callback).</td></tr>
+<tr><td><code id="event-adfirstquartile">adfirstquartile</code></td><td>First quartile of the current ad.</td></tr>
+<tr><td><code id="event-admidpoint">admidpoint</code></td><td>Midpoint of the current ad.</td></tr>
+<tr><td><code id="event-adthirdquartile">adthirdquartile</code></td><td>Third quartile of the current ad.</td></tr>
+<tr><td><code id="event-adend">adend</code></td><td>The current ad completed.</td></tr>
+<tr><td><code id="event-adbreakend">adbreakend</code></td><td>The break completed.</td></tr>
+<tr><td><code id="event-aderror">aderror</code></td><td>An ad or break failed. A failure after publication also sets <code>recoveryRequired</code>; start a new session.</td></tr>
+<tr><td><code id="event-adbreakskipped">adbreakskipped</code></td><td>A break was refused before anything was shown and content kept playing. <code>reason</code>: <code>late</code>, <code>not-ready</code>, <code>preparation-failed</code>, <code>unsupported</code>, <code>overlap</code>, <code>start-delay</code>, <code>removed</code>, <code>insufficient-remaining</code> or <code>resource-limit</code>; <code>reasonDetail</code> names the specific cause, with <code>podEvidence</code> or <code>preparationEvidence</code> where available.</td></tr>
+<tr><td><code id="event-adbreakstatus">adbreakstatus</code></td><td>Break state and countdown updates (same shape as <code>getAdBreakStatus</code>).</td></tr>
+<tr><td><code id="event-adchannelchange">adchannelchange</code></td><td>The break manifest moved to another ads channel; carries <code>previousChannelId</code>, <code>channelId</code>, <code>reason</code> (<code>channel-id-added</code>, <code>channel-id-changed</code>, <code>channel-id-removed</code>, <code>vendor-configuration-changed</code> or <code>timebase-changed</code>), <code>manifestUrl</code>, <code>previousDeliveryMode</code> and <code>deliveryMode</code>.</td></tr>
+<tr><td><code id="event-playbackreloadrequired">playbackreloadrequired</code></td><td>Playback must be restarted in a new session (for example <code>delivery-mode-changed</code>, <code>ssai-stream-changed</code>, or a viewer seek that fenced tracking).</td></tr>
+<tr><td><code id="event-adinteractiveexit">adinteractiveexit</code></td><td>SSAI: the viewer left a Roku Advertising Framework interactive ad; stop playback and restore focus.</td></tr>
+</tbody>
+</table>
+<h2 id="diagnostics">Diagnostics</h2>
+<p>Delivered as <code>diagnostic</code> events with <code>code</code> and an optional <code>reason</code>.</p>
+<h3>Roku-only codes</h3>
+<table>
+<thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code id="ROKU-BREAK-START-SHIFTED">ROKU-BREAK-START-SHIFTED</code></td><td>A break's start moved to a segment boundary. <code>reason</code> (<code>earlier</code>/<code>later</code>), signed <code>shiftSeconds</code>, <code>requestedStart</code>, <code>spliceStart</code>.</td></tr>
+<tr><td><code id="ROKU-RESUME-SHIFTED">ROKU-RESUME-SHIFTED</code></td><td>The return to content moved content by more than 1 ms. <code>reason</code> (<code>delayed</code>/<code>advanced</code>), signed <code>shiftSeconds</code>, <code>nearestBoundary</code>.</td></tr>
+<tr><td><code id="ROKU-BREAK-HELD">ROKU-BREAK-HELD</code></td><td>Publication waited for a pod that was still preparing. <code>reason</code> (<code>pod-ready</code>/<code>skipped</code>), <code>heldSeconds</code>.</td></tr>
+<tr><td><code id="ROKU-PREPARATION-RETRY">ROKU-PREPARATION-RETRY</code></td><td>A failed pod download is being retried. <code>reason</code>, <code>attempt</code>.</td></tr>
+<tr><td><code id="ROKU-PREPARATION-FAILED">ROKU-PREPARATION-FAILED</code></td><td>A pod could not be prepared; the break is skipped, or ends if it was already published. <code>reason</code> and optional evidence.</td></tr>
+<tr><td><code id="ROKU-MEDIA-FAILED">ROKU-MEDIA-FAILED</code></td><td>Content or ad publication failed. Before startup completes it fails the start; after publication it ends playback.</td></tr>
+<tr><td><code id="ROKU-PUBLICATION-FAILED">ROKU-PUBLICATION-FAILED</code></td><td>The local playlist snapshot was invalid.</td></tr>
+<tr><td><code id="ROKU-PROXY-ERROR">ROKU-PROXY-ERROR</code></td><td>The local HLS proxy failed or did not stop in time.</td></tr>
+<tr><td><code id="ROKU-SOURCE-EVIDENCE">ROKU-SOURCE-EVIDENCE</code></td><td>Informational: content verification is waiting for evidence (for example a slow segment). Playback continues.</td></tr>
+<tr><td><code id="ROKU-MANIFEST-FAILED">ROKU-MANIFEST-FAILED</code></td><td>A break manifest request failed.</td></tr>
+<tr><td><code id="ROKU-MANIFEST-INVALID">ROKU-MANIFEST-INVALID</code></td><td>A break manifest failed validation; it is not used and is polled again after 5 s.</td></tr>
+<tr><td><code id="ROKU-MANIFEST-UNSUPPORTED">ROKU-MANIFEST-UNSUPPORTED</code></td><td>The manifest cannot be used for Roku insertion (for example its timebase is not <code>wallclock</code>).</td></tr>
+<tr><td><code id="ROKU-POLLING-INVALID">ROKU-POLLING-INVALID</code></td><td>The manifest's polling instructions were invalid; the manifest is polled again after 5 s.</td></tr>
+<tr><td><code id="ROKU-RESOURCE-LIMIT">ROKU-RESOURCE-LIMIT</code></td><td>Too many breaks: a manifest over the limit is not used; a full session ledger stops ad insertion for the session.</td></tr>
+<tr><td><code id="ROKU-IMA-FAILED">ROKU-IMA-FAILED</code></td><td>IMA pod serving could not be set up; it is retried after 10 s and breaks due meanwhile are skipped.</td></tr>
+<tr><td><code id="ROKU-IMA-STOP-TIMEOUT">ROKU-IMA-STOP-TIMEOUT</code></td><td>The IMA pod-serving task did not stop in time during cleanup.</td></tr>
+<tr><td><code id="ROKU-DAI-STOP-TIMEOUT">ROKU-DAI-STOP-TIMEOUT</code></td><td>SSAI: the IMA DAI task did not stop in time during cleanup.</td></tr>
+<tr><td><code id="ROKU-PARAMETERS-FAILED">ROKU-PARAMETERS-FAILED</code></td><td>Updating the ad tag parameters failed or timed out; the break is skipped.</td></tr>
+<tr><td><code id="ROKU-SSAI-PARAMETERS-FAILED">ROKU-SSAI-PARAMETERS-FAILED</code></td><td>SSAI: updating the DAI ad tag parameters failed or timed out.</td></tr>
+<tr><td><code id="ROKU-SSAI-CLIENT-BREAKS-IGNORED">ROKU-SSAI-CLIENT-BREAKS-IGNORED</code></td><td>SSAI: event-triggered manifest breaks are not rendered.</td></tr>
+<tr><td><code id="ROKU-MACRO-FAILED">ROKU-MACRO-FAILED</code></td><td>The application's macro resolver failed or timed out; registered values are used.</td></tr>
+<tr><td><code id="ROKU-PLAYER-CLOCK-INVALID">ROKU-PLAYER-CLOCK-INVALID</code></td><td>A supplied <code>playerClockAnchor</code> was rejected; it needs a verified source Program Date Time.</td></tr>
+<tr><td><code id="ROKU-PLAYBACK-EPOCH-CHANGED">ROKU-PLAYBACK-EPOCH-CHANGED</code></td><td>Playback jumped (for example a viewer seek); old tracking is fenced and a reload is required.</td></tr>
+<tr><td><code id="ROKU-VIDEO-BINDING-CHANGED">ROKU-VIDEO-BINDING-CHANGED</code></td><td><code>videoNode</code> changed during a session; start a new session.</td></tr>
+</tbody>
+</table>
+<h3>Shared codes emitted on Roku</h3>
+<table>
+<thead><tr><th>Code</th><th>Level</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>DA-MANIFEST-POLLED</code></td><td>info</td><td>A manifest poll refresh succeeded (cadence follows the manifest polling config).</td></tr>
+<tr><td><code>DA-MANIFEST-CHANNEL-CHANGED</code></td><td>info</td><td>A polled manifest describes a different ads channel (channelId, GAM identity or timebase changed); the SDK re-aligned its ad setup and resolved delivery mode again while the session and content playback continued. context: previousChannelId, channelId, reason, manifestUrl.</td></tr>
+<tr><td><code>DA-MANIFEST-INTERCEPT-FAILED</code></td><td>warn</td><td>The customer manifest-response interceptor threw; the un-modified parsed manifest was used instead.</td></tr>
+<tr><td><code>DA-MANIFEST-REQUEST-INTERCEPT-FAILED</code></td><td>warn</td><td>The customer manifest-request interceptor threw; the normal network fetch of the original URL was used instead.</td></tr>
+<tr><td><code>DA-DELIVERY-MODE-RESOLVED</code></td><td>info</td><td>Delivery mode (sgai/ssai/ssb) resolved for the session at start and again on an ads-channel switch from the manifest's delivery rules (or the explicit client config), with the detected device profile; context.source is external-playback or external-playback-ended when AirPlay switched the session to the SSB stream and back.</td></tr>
+<tr><td><code>DA-DELIVERY-MODE-UNKNOWN</code></td><td>warn</td><td>The matching delivery rule carried an unrecognized mode value; sgai is used (forward compatibility).</td></tr>
+<tr><td><code>DA-DELIVERY-MODE-OVERRIDDEN</code></td><td>info</td><td>The manifest's delivery rules resolved a different mode, but the explicit client config takes precedence.</td></tr>
+<tr><td><code>DA-DELIVERY-MODE-CHANGE-IGNORED</code></td><td>warn</td><td>An ordinary manifest poll resolves a different delivery mode; the mode pinned for the session stays in force. An ads-channel switch resolves the mode again.</td></tr>
+<tr><td><code>DA-GAM-CONFIG-MISSING</code></td><td>error</td><td>The break manifest carries no usable &quot;gam&quot; vendorConfiguration entry; GAM assets are skipped.</td></tr>
+<tr><td><code>DA-GAM-START-DEFERRED</code></td><td>info</td><td>The SGAI IMA stream request is deferred until the configured ad start delay has been played; context includes adStartDelaySec.</td></tr>
+<tr><td><code>DA-ASSET-PARAMETERS-UPDATED</code></td><td>info</td><td>The break manifest's session-level asset parameters changed; the merged parameters were pushed to the active GAM stream. context: source ('manifest'), keys (parameter names only, never values).</td></tr>
+<tr><td><code>DA-ASSET-MACRO-UNKNOWN</code></td><td>warn</td><td>An asset parameter value contained a macro the SDK has no value for (an unknown or unavailable OptiView macro, or a registered customer macro that returned no value); the parameter was still sent, with the macro kept as its literal token. Raised once per parameter key and macro. context: key, macro, breakId, assetId.</td></tr>
+<tr><td><code>DA-SSAI-UNAVAILABLE</code></td><td>error</td><td>The manifest selected ssai delivery but no vendor configuration can provide a stitched stream (no gam entry with an assetKey); at start the session fails, while on a channel switch the session stays in sgai.</td></tr>
+<tr><td><code>DA-SSAI-SESSION-FAILED</code></td><td>error</td><td>The SSAI session failed to start (IMA stream init, stream id, or stitched-stream load).</td></tr>
+<tr><td><code>DA-SSAI-IMA-ERROR</code></td><td>error</td><td>IMA reported an error during the SSAI stream session.</td></tr>
+<tr><td><code>DA-BREAK-ABANDONED</code></td><td>warn</td><td>A break was still in flight when the session was torn down (endSession, destroy, or a startSession over an active session). context: breakId, cause, phase, unbalancedAdBegin, adIndex, totalAds, assetId.</td></tr>
+<tr><td><code>DA-TARGETING-FIELD-UNKNOWN</code></td><td>warn</td><td>A targeting field is not recognized and the targeted entry does not match.</td></tr>
+<tr><td><code>DA-TARGETING-INVALID</code></td><td>warn</td><td>A targeting constraint is malformed or incomplete and the targeted entry does not match.</td></tr>
+<tr><td><code>DA-TARGETING-VALUE-UNKNOWN</code></td><td>warn</td><td>A targeting value is not recognized and the targeted entry does not match.</td></tr>
+</tbody>
+</table>
+<h2 id="capabilities">Capabilities</h2>
+<p>Returned by <code>getCapabilities()</code> for this version.</p>
+<table>
+<thead><tr><th>Key</th><th>Value</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>deliveryModes</code></td><td><code>[&quot;sgai&quot;, &quot;ssai&quot;]</code></td><td>Supported delivery modes.</td></tr>
+<tr><td><code>ssaiVendor</code></td><td><code>&quot;gam-dai-full-service&quot;</code></td><td>SSAI vendor integration.</td></tr>
+<tr><td><code>ssaiStreamTypes</code></td><td><code>[&quot;live&quot;]</code></td><td>SSAI stream types.</td></tr>
+<tr><td><code>ssaiFormats</code></td><td><code>[&quot;hls&quot;]</code></td><td>SSAI stream formats.</td></tr>
+<tr><td><code>ssaiClientBreaks</code></td><td><code>false</code></td><td>Whether event-triggered manifest breaks render in SSAI.</td></tr>
+<tr><td><code>rafMeasurement</code></td><td><code>true</code></td><td>Roku Advertising Framework measurement in SSAI.</td></tr>
+<tr><td><code>rafInteractiveAds</code></td><td><code>true</code></td><td>Roku Advertising Framework interactive ads in SSAI.</td></tr>
+<tr><td><code>readyAwaitsDeliveryMode</code></td><td><code>true</code></td><td><code>ready</code> waits for the first manifest to decide the delivery mode.</td></tr>
+<tr><td><code>timebase</code></td><td><code>&quot;wallclock&quot;</code></td><td>Break manifest timebase supported for insertion.</td></tr>
+<tr><td><code>sourceProgramDateTimeRequired</code></td><td><code>true</code></td><td>SGAI needs <code>EXT-X-PROGRAM-DATE-TIME</code> on the content.</td></tr>
+<tr><td><code>insertionMode</code></td><td><code>&quot;replace&quot;</code></td><td>Ads replace content for their duration.</td></tr>
+<tr><td><code>appOwnedVideo</code></td><td><code>true</code></td><td>The application owns the <code>Video</code> node.</td></tr>
+<tr><td><code>signedManifests</code></td><td><code>true</code></td><td>Network break manifests must be signed.</td></tr>
+<tr><td><code>clearMuxedTs</code></td><td><code>true</code></td><td>Clear muxed MPEG-TS content.</td></tr>
+<tr><td><code>cmaf</code></td><td><code>true</code></td><td>CMAF (fMP4) content and ads.</td></tr>
+<tr><td><code>demuxed</code></td><td><code>true</code></td><td>Separate audio and video renditions.</td></tr>
+<tr><td><code>abr</code></td><td><code>true</code></td><td>Adaptive bitrate across several renditions.</td></tr>
+<tr><td><code>maxRenditions</code></td><td><code>8</code></td><td>Maximum number of renditions stitched together.</td></tr>
+<tr><td><code>compatibleTopologyRequired</code></td><td><code>true</code></td><td>Ad renditions must be compatible with the content.</td></tr>
+<tr><td><code>drm</code></td><td><code>false</code></td><td>Encrypted content.</td></tr>
+<tr><td><code>lowLatencyParts</code></td><td><code>false</code></td><td>Low-latency HLS parts.</td></tr>
+<tr><td><code>sourceHoldBack</code></td><td><code>true</code></td><td>Publication honours the stream's <code>HOLD-BACK</code>.</td></tr>
+<tr><td><code>unalignedBreakStart</code></td><td><code>&quot;nearest-segment-boundary&quot;</code></td><td>How a break start between segment boundaries is handled.</td></tr>
+<tr><td><code>sourceChangesAtBreaks</code></td><td><code>false</code></td><td>Whether the Video source changes at ad boundaries.</td></tr>
+<tr><td><code>shutdownRequiresDetachedPlayback</code></td><td><code>true</code></td><td>Playback must be detached before <code>destroy</code>.</td></tr>
+<tr><td><code>nativeUtcClock</code></td><td><code>true</code></td><td>Native <code>Video.positionInfo</code> UTC is used as the player clock.</td></tr>
+<tr><td><code>externalClockAnchorSupported</code></td><td><code>true</code></td><td><code>playerClockAnchor</code> is accepted as a fallback.</td></tr>
+<tr><td><code>initialTuneInPolicy</code></td><td><code>&quot;content-until-prepared&quot;</code></td><td>Content plays first; ads join once prepared.</td></tr>
+<tr><td><code>lateOpportunityPolicy</code></td><td><code>&quot;skip&quot;</code></td><td>Breaks already exposed without a ready pod are skipped.</td></tr>
+<tr><td><code>alignmentToleranceSeconds</code></td><td><code>0.250</code></td><td>Default <code>alignmentToleranceSeconds</code>.</td></tr>
+<tr><td><code>supportedAlignmentToleranceSeconds</code></td><td><code>[0.002, 0.250]</code></td><td>Accepted range of <code>alignmentToleranceSeconds</code>.</td></tr>
+</tbody>
+</table>
+</main>
+</body>
+</html>
