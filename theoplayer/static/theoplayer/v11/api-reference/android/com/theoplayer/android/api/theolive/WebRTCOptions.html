@@ -178,6 +178,12 @@ public final class <span class="typeNameLabel"><a href=WebRTCOptions.html>WebRTC
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=WebRTCOptions.html#events>events</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -204,7 +210,7 @@ public final class <span class="typeNameLabel"><a href=WebRTCOptions.html>WebRTC
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#WebRTCOptions(com.theoplayer.android.api.theolive.PlayoutDelay)">WebRTCOptions</a></span>(<a href=PlayoutDelay.html>PlayoutDelay</a> playoutDelayMs)</code></th>
+                                                        href="#WebRTCOptions(com.theoplayer.android.api.theolive.PlayoutDelay,java.util.List)">WebRTCOptions</a></span>(<a href=PlayoutDelay.html>PlayoutDelay</a> playoutDelayMs, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt; events)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -265,6 +271,14 @@ public final class <span class="typeNameLabel"><a href=WebRTCOptions.html>WebRTC
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=WebRTCOptions.html#getEvents()>getEvents</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -296,11 +310,11 @@ public final class <span class="typeNameLabel"><a href=WebRTCOptions.html>WebRTC
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="WebRTCOptions(com.theoplayer.android.api.theolive.PlayoutDelay)"></a>
+                                <a name="WebRTCOptions(com.theoplayer.android.api.theolive.PlayoutDelay,java.util.List)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>WebRTCOptions</h4>
-                                        <pre>WebRTCOptions(<a href=PlayoutDelay.html>PlayoutDelay</a> playoutDelayMs)</pre>
+                                        <pre>WebRTCOptions(<a href=PlayoutDelay.html>PlayoutDelay</a> playoutDelayMs, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt; events)</pre>
                                         <div class="block"></div>
                                         
                                         <dl>
@@ -308,6 +322,10 @@ public final class <span class="typeNameLabel"><a href=WebRTCOptions.html>WebRTC
                                             
                                             
                                             <dd><code>playoutDelayMs</code> - The (optional) force playout delay in milliseconds.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>events</code> - The (optional) signaling events to subscribe to (e.g.</dd>
                                             
                                             
                                         </dl>
@@ -332,11 +350,34 @@ public final class <span class="typeNameLabel"><a href=WebRTCOptions.html>WebRTC
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getPlayoutDelayMs</h4>
                                         <pre class="methodSignature"> final <a href=PlayoutDelay.html>PlayoutDelay</a> <a href=WebRTCOptions.html#getPlayoutDelayMs()>getPlayoutDelayMs</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getEvents()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getEvents</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt; <a href=WebRTCOptions.html#getEvents()>getEvents</a>()</pre>
                                         <div class="block"></div>
 
                                         <dl>

@@ -11,6 +11,7 @@ $dokka.location:com.theoplayer.android.api.event.ads/AdsEventTypes.Identifiers//
 $dokka.location:com.theoplayer.android.api.event.player.theolive/TheoLiveEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/theolive/TheoLiveEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.event.player/PlayerEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/PlayerEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.latency/LatencyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/latency/LatencyConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.latency/SourceLatencyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/latency/SourceLatencyConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.pip/PipConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/pip/PipConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack.cue/DateRangeCue.CustomAttributes///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/cue/DateRangeCue.CustomAttributes.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.AttachedPicture///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.AttachedPicture.html

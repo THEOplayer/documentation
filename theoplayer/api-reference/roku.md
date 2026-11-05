@@ -558,18 +558,19 @@ The `endpointloaded` event comes with the following properties:
 | distributionId | string             | The ID used as the `src` for the THEOlive source. |
 | endpoint       | roAssociativeArray | The Endpoint that loaded.                         |
 
-The `endpoint` property contains an Endpoint object with the following information:
+The `endpoint` property contains the selected Endpoint object with the following information. The `distributionloaded` event's `distribution.endpoints` use the same Endpoint shape, but list discovery candidates rather than the selected endpoint.
 
-| Property     | Type   | Description                                                                          |
-| ------------ | ------ | ------------------------------------------------------------------------------------ |
-| cdn          | string | Optional. The CDN used for this endpoint.                                            |
-| provider     | string | Optional. The provider of this endpoint.                                             |
-| src          | string | The URL of the stream for this endpoint.                                             |
-| srcType      | string | The type of the stream for this endpoint.                                            |
-| adSrc        | string | _Deprecated_ Optional. The URL for the ad stream. Only for v1/v2 endpoints.          |
-| daiAssetKey  | string | _Deprecated_ Optional. The DAI identifier for this stream. Only for v1/v2 endpoints. |
-| hlsMpegTsSrc | string | _Deprecated_ Optional. The HLS MPEG-TS stream URL. Only for v1/v2 endpoints.         |
-| hlsSrc       | string | _Deprecated_ Optional. The HLS stream URL. Only for v1/v2 endpoints.                 |
+| Property     | Type   | Description                                                                                                                                                                    |
+| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| adSystem     | string | Optional. The selected endpoint's ad system as supplied by discovery (for example `sgai`, `dai`, `mediakind`, or `none`). An explicit `none` is distinct from a missing value. |
+| cdn          | string | Optional. The CDN used for this endpoint.                                                                                                                                      |
+| provider     | string | Optional. The provider of this endpoint.                                                                                                                                       |
+| src          | string | The URL of the stream for this endpoint.                                                                                                                                       |
+| srcType      | string | The type of the stream for this endpoint.                                                                                                                                      |
+| adSrc        | string | _Deprecated_ Optional. The URL for the ad stream. Only for v1/v2 endpoints.                                                                                                    |
+| daiAssetKey  | string | _Deprecated_ Optional. The DAI identifier for this stream. Only for v1/v2 endpoints.                                                                                           |
+| hlsMpegTsSrc | string | _Deprecated_ Optional. The HLS MPEG-TS stream URL. Only for v1/v2 endpoints.                                                                                                   |
+| hlsSrc       | string | _Deprecated_ Optional. The HLS stream URL. Only for v1/v2 endpoints.                                                                                                           |
 
 # Capabilities API
 
