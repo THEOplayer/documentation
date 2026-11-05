@@ -18,7 +18,13 @@ to update the state of your custom server-side ad integration.</p>
 <div class="tsd-tag-see">
 <h4 class="tsd-anchor-link" id="See">See<a href="#See" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><a href="Ads.html#registerServerSideIntegration" class="tsd-kind-method">Ads.registerServerSideIntegration</a></p>
 </div></div></section>
-<div class="tsd-signature"><span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">ServerSideAdIntegrationController</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#adBreaks">adBreaks</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">readonly</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#ads">ads</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">readonly</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#integration">integration</a><span class="tsd-signature-symbol">:</span> <a href="../types/CustomAdIntegrationKind.html" class="tsd-signature-type tsd-kind-type-alias">CustomAdIntegrationKind</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#beginAd-1">beginAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#createAd-1">createAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="AdInit.html" class="tsd-signature-type tsd-kind-interface">AdInit</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">?:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#createAdBreak-1">createAdBreak</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="AdBreakInit.html" class="tsd-signature-type tsd-kind-interface">AdBreakInit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#endAd-1">endAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#error-1">error</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span><span class="tsd-signature-symbol">:</span> <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error" class="tsd-signature-type external" target="_blank">Error</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#fatalError-1">fatalError</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span><span class="tsd-signature-symbol">:</span> <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error" class="tsd-signature-type external" target="_blank">Error</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">code</span><span class="tsd-signature-symbol">?:</span> <a href="../enums/ErrorCode.html" class="tsd-signature-type tsd-kind-enum">ErrorCode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#removeAd-1">removeAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#removeAdBreak-1">removeAdBreak</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#removeAllAds-1">removeAllAds</a><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#skipAd-1">skipAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#updateAd-1">updateAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdInit.html" class="tsd-signature-type tsd-kind-interface">AdInit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#updateAdBreak-1">updateAdBreak</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdBreakInit.html" class="tsd-signature-type tsd-kind-interface">AdBreakInit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#updateAdProgress-1">updateAdProgress</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">progress</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div>
+<div class="tsd-signature"><span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">ServerSideAdIntegrationController</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#adBreaks">adBreaks</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">readonly</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#ads">ads</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">readonly</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#content">content</a><span class="tsd-signature-symbol">:</span> <a href="ReadonlyContentPlayer.html" class="tsd-signature-type tsd-kind-interface">ReadonlyContentPlayer</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#integration">integration</a><span class="tsd-signature-symbol">:</span> <a href="../types/CustomAdIntegrationKind.html" class="tsd-signature-type tsd-kind-type-alias">CustomAdIntegrationKind</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#beginAd-1">beginAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#createAd-1">createAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="AdInit.html" class="tsd-signature-type tsd-kind-interface">AdInit</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">?:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#createAdBreak-1">createAdBreak</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="AdBreakInit.html" class="tsd-signature-type tsd-kind-interface">AdBreakInit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#endAd-1">endAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#endAdBreak-1">endAdBreak</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#error-1">error</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span><span class="tsd-signature-symbol">:</span> <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error" class="tsd-signature-type external" target="_blank">Error</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#fatalError-1">fatalError</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span><span class="tsd-signature-symbol">:</span> <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error" class="tsd-signature-type external" target="_blank">Error</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">code</span><span class="tsd-signature-symbol">?:</span> <a href="../enums/ErrorCode.html" class="tsd-signature-type tsd-kind-enum">ErrorCode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#removeAd-1">removeAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#removeAdBreak-1">removeAdBreak</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#removeAllAds-1">removeAllAds</a><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#skipAd-1">skipAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#updateAd-1">updateAd</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdInit.html" class="tsd-signature-type tsd-kind-interface">AdInit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#updateAdBreak-1">updateAdBreak</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdBreakInit.html" class="tsd-signature-type tsd-kind-interface">AdBreakInit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#updateAdProgress-1">updateAdProgress</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">progress</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div>
+<section class="tsd-panel tsd-hierarchy" data-refl="2612">
+<h4>Hierarchy (<a href="../hierarchy.html#ServerSideAdIntegrationController">View Summary</a>)</h4>
+<ul class="tsd-hierarchy">
+<li class="tsd-hierarchy-item"><a href="CustomAdIntegrationController.html" class="tsd-signature-type tsd-kind-interface">CustomAdIntegrationController</a>
+<ul class="tsd-hierarchy">
+<li class="tsd-hierarchy-item"><span class="tsd-hierarchy-target">ServerSideAdIntegrationController</span></li></ul></li></ul></section>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
@@ -26,59 +32,73 @@ to update the state of your custom server-side ad integration.</p>
 <div class="tsd-accordion-details">
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading tsd-anchor-link" id="Properties">Properties<a href="#Properties" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<div class="tsd-index-list"><a href="#adBreaks" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ad<wbr/>Breaks</span></a>
-<a href="#ads" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ads</span></a>
-<a href="#integration" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>integration</span></a>
+<div class="tsd-index-list"><a href="#adBreaks" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ad<wbr/>Breaks</span></a>
+<a href="#ads" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ads</span></a>
+<a href="#content" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>content</span></a>
+<a href="#integration" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>integration</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading tsd-anchor-link" id="Methods">Methods<a href="#Methods" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<div class="tsd-index-list"><a href="#beginAd" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>begin<wbr/>Ad</span></a>
-<a href="#createAd" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad</span></a>
-<a href="#createAdBreak" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad<wbr/>Break</span></a>
-<a href="#endAd" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Ad</span></a>
-<a href="#error" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>error</span></a>
-<a href="#fatalError" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>fatal<wbr/>Error</span></a>
-<a href="#removeAd" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad</span></a>
-<a href="#removeAdBreak" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad<wbr/>Break</span></a>
-<a href="#removeAllAds" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>All<wbr/>Ads</span></a>
-<a href="#skipAd" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>skip<wbr/>Ad</span></a>
-<a href="#updateAd" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad</span></a>
-<a href="#updateAdBreak" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Break</span></a>
-<a href="#updateAdProgress" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Progress</span></a>
+<div class="tsd-index-list"><a href="#beginAd" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>begin<wbr/>Ad</span></a>
+<a href="#createAd" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad</span></a>
+<a href="#createAdBreak" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad<wbr/>Break</span></a>
+<a href="#endAd" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Ad</span></a>
+<a href="#endAdBreak" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Ad<wbr/>Break</span></a>
+<a href="#error" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>error</span></a>
+<a href="#fatalError" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>fatal<wbr/>Error</span></a>
+<a href="#removeAd" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad</span></a>
+<a href="#removeAdBreak" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad<wbr/>Break</span></a>
+<a href="#removeAllAds" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>All<wbr/>Ads</span></a>
+<a href="#skipAd" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>skip<wbr/>Ad</span></a>
+<a href="#updateAd" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad</span></a>
+<a href="#updateAdBreak" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Break</span></a>
+<a href="#updateAdProgress" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Progress</span></a>
 </div></section></div></details></section></section>
 <details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
 <h2 class="tsd-anchor-link" id="Properties-1">Properties<a href="#Properties-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
 <section>
-<section class="tsd-panel tsd-member">
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="adBreaks"><code class="tsd-tag">Readonly</code><span>ad<wbr/>Breaks</span><a href="#adBreaks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">adBreaks</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">readonly</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>The scheduled ad breaks managed by this integration.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks">Remarks<a href="#Remarks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Use <a href="#createAdBreak" class="tsd-kind-method">ServerSideAdIntegrationController.createAdBreak</a> and <a href="#removeAdBreak" class="tsd-kind-method">ServerSideAdIntegrationController.removeAdBreak</a> to add or remove ad breaks.</p>
-</div></div></section>
-<section class="tsd-panel tsd-member">
+<h4 class="tsd-anchor-link" id="Remarks">Remarks<a href="#Remarks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Use <a href="CustomAdIntegrationController.html#createAdBreak" class="tsd-kind-method">createAdBreak</a> and <a href="CustomAdIntegrationController.html#removeAdBreak" class="tsd-kind-method">removeAdBreak</a> to add or remove ad breaks.</p>
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#adBreaks">adBreaks</a></p></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="ads"><code class="tsd-tag">Readonly</code><span>ads</span><a href="#ads" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">ads</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">readonly</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>The scheduled ads managed by this integration.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-1">Remarks<a href="#Remarks-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Use <a href="#createAd" class="tsd-kind-method">ServerSideAdIntegrationController.createAd</a> and <a href="#removeAd" class="tsd-kind-method">ServerSideAdIntegrationController.removeAd</a> to add or remove ads.</p>
-</div></div></section>
-<section class="tsd-panel tsd-member">
+<h4 class="tsd-anchor-link" id="Remarks-1">Remarks<a href="#Remarks-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Use <a href="CustomAdIntegrationController.html#createAd" class="tsd-kind-method">createAd</a> and <a href="CustomAdIntegrationController.html#removeAd" class="tsd-kind-method">removeAd</a> to add or remove ads.</p>
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#ads">ads</a></p></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="content"><code class="tsd-tag">Readonly</code><span>content</span><a href="#content" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">content</span><span class="tsd-signature-symbol">:</span> <a href="ReadonlyContentPlayer.html" class="tsd-signature-type tsd-kind-interface">ReadonlyContentPlayer</a></div>
+<div class="tsd-comment tsd-typography"><p>The playback state of the content.</p>
+<p>Use this instead of <a href="../classes/ChromelessPlayer.html#currentTime" class="tsd-kind-property">ChromelessPlayer.currentTime</a> and friends to decide when to load or play ads,
+so your integration never observes the playback state of a linear ad from another integration.</p>
+</div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#content">content</a></p></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="integration"><code class="tsd-tag">Readonly</code><span>integration</span><a href="#integration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">integration</span><span class="tsd-signature-symbol">:</span> <a href="../types/CustomAdIntegrationKind.html" class="tsd-signature-type tsd-kind-type-alias">CustomAdIntegrationKind</a></div>
-<div class="tsd-comment tsd-typography"><p>The identifier for this integration, as it was passed to <a href="Ads.html#registerServerSideIntegration" class="tsd-kind-method">Ads.registerServerSideIntegration</a>.</p>
-</div></section></section></details>
+<div class="tsd-comment tsd-typography"><p>The identifier for this integration, as it was passed to
+<a href="Ads.html#registerServerSideIntegration" class="tsd-kind-method">Ads.registerServerSideIntegration</a> or <a href="Ads.html#registerClientSideIntegration" class="tsd-kind-method">Ads.registerClientSideIntegration</a>.</p>
+</div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#integration">integration</a></p></aside></section></section></details>
 <details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
 <h2 class="tsd-anchor-link" id="Methods-1">Methods<a href="#Methods-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
 <section>
-<section class="tsd-panel tsd-member">
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="beginAd"><span>begin<wbr/>Ad</span><a href="#beginAd" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="beginAd-1"><span class="tsd-kind-call-signature">beginAd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#beginAd-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Begin the given ad.</p>
@@ -94,11 +114,12 @@ to update the state of your custom server-side ad integration.</p>
 <li>The ad will be added to <a href="Ads.html#currentAds" class="tsd-kind-property">Ads.currentAds</a>.</li>
 <li>An <a href="AdsEventMap.html#adbegin" class="tsd-kind-property">AdsEventMap.adbegin</a> event will be fired.</li>
 </ul>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#beginAd">beginAd</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="createAd"><span>create<wbr/>Ad</span><a href="#createAd" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="createAd-1"><span class="tsd-kind-call-signature">createAd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="AdInit.html" class="tsd-signature-type tsd-kind-interface">AdInit</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">?:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><a href="#createAd-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Create a new ad.</p>
@@ -119,11 +140,12 @@ Otherwise, appends the ad to a new or existing <a href="AdBreak.html" class="tsd
 <h4 class="tsd-anchor-link" id="Remarks-3">Remarks<a href="#Remarks-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
 <li>The ad will be added to <a href="Ads.html#scheduledAds" class="tsd-kind-property">Ads.scheduledAds</a>.</li>
 </ul>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#createAd">createAd</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="createAdBreak"><span>create<wbr/>Ad<wbr/>Break</span><a href="#createAdBreak" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="createAdBreak-1"><span class="tsd-kind-call-signature">createAdBreak</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="AdBreakInit.html" class="tsd-signature-type tsd-kind-interface">AdBreakInit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><a href="#createAdBreak-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Create a new ad break.</p>
@@ -140,17 +162,18 @@ before populating those ad breaks with ads.</p>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
 <h4 class="tsd-anchor-link" id="Remarks-4">Remarks<a href="#Remarks-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
-<li>The ad break will be added to <a href="#adBreaks" class="tsd-kind-property">ServerSideAdIntegrationController.adBreaks</a> and <a href="Ads.html#scheduledAdBreaks" class="tsd-kind-property">Ads.scheduledAdBreaks</a>.</li>
+<li>The ad break will be added to <a href="CustomAdIntegrationController.html#adBreaks" class="tsd-kind-property">adBreaks</a> and <a href="Ads.html#scheduledAdBreaks" class="tsd-kind-property">Ads.scheduledAdBreaks</a>.</li>
 </ul>
 </div>
 <div class="tsd-tag-throws">
 <h4 class="tsd-anchor-link" id="Throws">Throws<a href="#Throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Error
 If there is already an existing ad break with the given <a href="AdBreakInit.html#timeOffset" class="tsd-kind-property">AdBreakInit.timeOffset</a>.</p>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#createAdBreak">createAdBreak</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="endAd"><span>end<wbr/>Ad</span><a href="#endAd" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="endAd-1"><span class="tsd-kind-call-signature">endAd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#endAd-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>End the given ad.</p>
@@ -166,11 +189,42 @@ If there is already an existing ad break with the given <a href="AdBreakInit.htm
 <li>The ad will be removed from <a href="Ads.html#currentAds" class="tsd-kind-property">Ads.currentAds</a>.</li>
 <li>If the ad was currently playing, an <a href="AdsEventMap.html#adend" class="tsd-kind-property">AdsEventMap.adend</a> event will be fired.</li>
 </ul>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#endAd">endAd</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="endAdBreak"><span>end<wbr/>Ad<wbr/>Break</span><a href="#endAdBreak" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="endAdBreak-1"><span class="tsd-kind-call-signature">endAdBreak</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#endAdBreak-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>End the given ad break.</p>
+<p>An ad break begins implicitly when the first of its ads is <a href="CustomAdIntegrationController.html#beginAd" class="tsd-kind-method">begun</a>.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">adBreak</span>: <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a></span>
+<div class="tsd-comment tsd-typography"><p>The ad break to be ended.</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-remarks">
+<h4 class="tsd-anchor-link" id="Remarks-6">Remarks<a href="#Remarks-6" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>Any of its ads that are still playing will first be <a href="CustomAdIntegrationController.html#endAd" class="tsd-kind-method">ended</a>.</li>
+<li>An <a href="AdsEventMap.html#adbreakend" class="tsd-kind-property">AdsEventMap.adbreakend</a> event and an <a href="AdsEventMap.html#adbreakchange" class="tsd-kind-property">AdsEventMap.adbreakchange</a> event will be fired.</li>
+<li>The ad break stays in <a href="CustomAdIntegrationController.html#adBreaks" class="tsd-kind-property">adBreaks</a>, but is removed from <a href="Ads.html#scheduledAdBreaks" class="tsd-kind-property">Ads.scheduledAdBreaks</a>.
+Its ads that were not begun stay in <a href="Ads.html#scheduledAds" class="tsd-kind-property">Ads.scheduledAds</a>.</li>
+<li>To remove the ad break, call <a href="CustomAdIntegrationController.html#removeAdBreak" class="tsd-kind-method">removeAdBreak</a> afterwards. This does not end the ad break again.</li>
+<li>If one of its remaining ads is <a href="CustomAdIntegrationController.html#beginAd" class="tsd-kind-method">begun</a> later, the ad break begins again
+and is added back to <a href="Ads.html#scheduledAdBreaks" class="tsd-kind-property">Ads.scheduledAdBreaks</a>.</li>
+<li>If the ad break is not currently playing, this does nothing.</li>
+</ul>
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#endAdBreak">endAdBreak</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="error"><span>error</span><a href="#error" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="error-1"><span class="tsd-kind-call-signature">error</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span><span class="tsd-signature-symbol">:</span> <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error" class="tsd-signature-type external" target="_blank">Error</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#error-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Fire an <a href="AdsEventMap.html#aderror" class="tsd-kind-property"><code>aderror</code></a> event on the player.</p>
@@ -182,11 +236,12 @@ If there is already an existing ad break with the given <a href="AdBreakInit.htm
 <li><span><span class="tsd-kind-parameter">error</span>: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error" class="tsd-signature-type external" target="_blank">Error</a></span>
 <div class="tsd-comment tsd-typography"><p>The error.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#error">error</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="fatalError"><span>fatal<wbr/>Error</span><a href="#fatalError" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="fatalError-1"><span class="tsd-kind-call-signature">fatalError</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span><span class="tsd-signature-symbol">:</span> <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error" class="tsd-signature-type external" target="_blank">Error</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">code</span><span class="tsd-signature-symbol">?:</span> <a href="../enums/ErrorCode.html" class="tsd-signature-type tsd-kind-enum">ErrorCode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#fatalError-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Fire a fatal <a href="PlayerEventMap.html#error" class="tsd-kind-property"><code>error</code></a> event on the player.</p>
@@ -201,11 +256,12 @@ If there is already an existing ad break with the given <a href="AdBreakInit.htm
 <li><span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">code</span>: <a href="../enums/ErrorCode.html" class="tsd-signature-type tsd-kind-enum">ErrorCode</a></span>
 <div class="tsd-comment tsd-typography"><p>The error code. By default, this is set to <a href="../enums/ErrorCode.html#AD_ERROR" class="tsd-kind-enum-member">ErrorCode.AD_ERROR</a>.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#fatalError">fatalError</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="removeAd"><span>remove<wbr/>Ad</span><a href="#removeAd" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="removeAd-1"><span class="tsd-kind-call-signature">removeAd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#removeAd-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Remove the given ad.</p>
@@ -217,15 +273,16 @@ If there is already an existing ad break with the given <a href="AdBreakInit.htm
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-6">Remarks<a href="#Remarks-6" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<h4 class="tsd-anchor-link" id="Remarks-7">Remarks<a href="#Remarks-7" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
 <li>The ad will be removed from <a href="Ads.html#currentAds" class="tsd-kind-property">Ads.currentAds</a> and <a href="Ads.html#scheduledAds" class="tsd-kind-property">Ads.scheduledAds</a>.</li>
-<li>If the ad was currently playing, it will first be <a href="#endAd" class="tsd-kind-method">ended</a>.</li>
+<li>If the ad was currently playing, it will first be <a href="CustomAdIntegrationController.html#endAd" class="tsd-kind-method">ended</a>.</li>
 </ul>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#removeAd">removeAd</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="removeAdBreak"><span>remove<wbr/>Ad<wbr/>Break</span><a href="#removeAdBreak" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="removeAdBreak-1"><span class="tsd-kind-call-signature">removeAdBreak</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#removeAdBreak-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Remove the given ad break and all of its ads.</p>
@@ -239,15 +296,16 @@ If there is already an existing ad break with the given <a href="AdBreakInit.htm
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-7">Remarks<a href="#Remarks-7" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
-<li>The ad break will be removed from <a href="#adBreaks" class="tsd-kind-property">ServerSideAdIntegrationController.adBreaks</a> and <a href="Ads.html#scheduledAdBreaks" class="tsd-kind-property">Ads.scheduledAdBreaks</a>.</li>
-<li>Any remaining ads in the ad break will be <a href="#removeAd" class="tsd-kind-method">removed</a>.</li>
+<h4 class="tsd-anchor-link" id="Remarks-8">Remarks<a href="#Remarks-8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>The ad break will be removed from <a href="CustomAdIntegrationController.html#adBreaks" class="tsd-kind-property">adBreaks</a> and <a href="Ads.html#scheduledAdBreaks" class="tsd-kind-property">Ads.scheduledAdBreaks</a>.</li>
+<li>Any remaining ads in the ad break will be <a href="CustomAdIntegrationController.html#removeAd" class="tsd-kind-method">removed</a>.</li>
 </ul>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#removeAdBreak">removeAdBreak</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="removeAllAds"><span>remove<wbr/>All<wbr/>Ads</span><a href="#removeAllAds" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="removeAllAds-1"><span class="tsd-kind-call-signature">removeAllAds</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#removeAllAds-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Remove all ads and ad breaks.</p>
@@ -255,15 +313,16 @@ If there is already an existing ad break with the given <a href="AdBreakInit.htm
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-8">Remarks<a href="#Remarks-8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
-<li>This is a shorthand for calling <a href="#removeAdBreak" class="tsd-kind-method">ServerSideAdIntegrationController.removeAdBreak</a>
-on all ad breaks in <a href="#adBreaks" class="tsd-kind-property">ServerSideAdIntegrationController.adBreaks</a>.</li>
+<h4 class="tsd-anchor-link" id="Remarks-9">Remarks<a href="#Remarks-9" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>This is a shorthand for calling <a href="CustomAdIntegrationController.html#removeAdBreak" class="tsd-kind-method">removeAdBreak</a>
+on all ad breaks in <a href="CustomAdIntegrationController.html#adBreaks" class="tsd-kind-property">adBreaks</a>.</li>
 </ul>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#removeAllAds">removeAllAds</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="skipAd"><span>skip<wbr/>Ad</span><a href="#skipAd" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="skipAd-1"><span class="tsd-kind-call-signature">skipAd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#skipAd-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Skip the given ad.</p>
@@ -275,15 +334,16 @@ on all ad breaks in <a href="#adBreaks" class="tsd-kind-property">ServerSideAdIn
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-9">Remarks<a href="#Remarks-9" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<h4 class="tsd-anchor-link" id="Remarks-10">Remarks<a href="#Remarks-10" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
 <li>The ad will be removed from <a href="Ads.html#currentAds" class="tsd-kind-property">Ads.currentAds</a>.</li>
 <li>If the ad was currently playing, an <a href="AdsEventMap.html#adskip" class="tsd-kind-property">AdsEventMap.adskip</a> event will be fired.</li>
 </ul>
-</div></div></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#skipAd">skipAd</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="updateAd"><span>update<wbr/>Ad</span><a href="#updateAd" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="updateAd-1"><span class="tsd-kind-call-signature">updateAd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdInit.html" class="tsd-signature-type tsd-kind-interface">AdInit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#updateAd-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Update the given ad.</p>
@@ -297,11 +357,12 @@ on all ad breaks in <a href="#adBreaks" class="tsd-kind-property">ServerSideAdIn
 <li><span><span class="tsd-kind-parameter">init</span>: <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdInit.html" class="tsd-signature-type tsd-kind-interface">AdInit</a><span class="tsd-signature-symbol">&gt;</span></span>
 <div class="tsd-comment tsd-typography"><p>The properties to be updated on the ad.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#updateAd">updateAd</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="updateAdBreak"><span>update<wbr/>Ad<wbr/>Break</span><a href="#updateAdBreak" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="updateAdBreak-1"><span class="tsd-kind-call-signature">updateAdBreak</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">adBreak</span><span class="tsd-signature-symbol">:</span> <a href="AdBreak.html" class="tsd-signature-type tsd-kind-interface">AdBreak</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">init</span><span class="tsd-signature-symbol">:</span> <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdBreakInit.html" class="tsd-signature-type tsd-kind-interface">AdBreakInit</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#updateAdBreak-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Update the given ad break.</p>
@@ -315,11 +376,12 @@ on all ad breaks in <a href="#adBreaks" class="tsd-kind-property">ServerSideAdIn
 <li><span><span class="tsd-kind-parameter">init</span>: <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype" class="tsd-signature-type external" target="_blank">Partial</a><span class="tsd-signature-symbol">&lt;</span><a href="AdBreakInit.html" class="tsd-signature-type tsd-kind-interface">AdBreakInit</a><span class="tsd-signature-symbol">&gt;</span></span>
 <div class="tsd-comment tsd-typography"><p>The properties to be updated on the ad break.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></div></li></ul></section>
-<section class="tsd-panel tsd-member">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#updateAdBreak">updateAdBreak</a></p></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="updateAdProgress"><span>update<wbr/>Ad<wbr/>Progress</span><a href="#updateAdProgress" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="">
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
 <div class="tsd-signature tsd-anchor-link" id="updateAdProgress-1"><span class="tsd-kind-call-signature">updateAdProgress</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ad</span><span class="tsd-signature-symbol">:</span> <a href="Ad.html" class="tsd-signature-type tsd-kind-interface">Ad</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">progress</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#updateAdProgress-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Update the playback progression of the given ad.</p>
@@ -336,15 +398,16 @@ on all ad breaks in <a href="#adBreaks" class="tsd-kind-property">ServerSideAdIn
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-remarks">
-<h4 class="tsd-anchor-link" id="Remarks-10">Remarks<a href="#Remarks-10" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<h4 class="tsd-anchor-link" id="Remarks-11">Remarks<a href="#Remarks-11" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
 <li>The player will fire progression events such as <a href="AdsEventMap.html#adfirstquartile" class="tsd-kind-property">AdsEventMap.adfirstquartile</a>,
 <a href="AdsEventMap.html#admidpoint" class="tsd-kind-property">AdsEventMap.admidpoint</a> and <a href="AdsEventMap.html#adthirdquartile" class="tsd-kind-property">AdsEventMap.adthirdquartile</a>.</li>
 </ul>
 </div>
 <div class="tsd-tag-throws">
 <h4 class="tsd-anchor-link" id="Throws-1">Throws<a href="#Throws-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Error
-If the ad is not <a href="#beginAd" class="tsd-kind-method">started</a>.</p>
-</div></div></div></li></ul></section></section></details></div>
+If the ad is not <a href="CustomAdIntegrationController.html#beginAd" class="tsd-kind-method">started</a>.</p>
+</div></div><aside class="tsd-sources">
+<p>Inherited from <a href="CustomAdIntegrationController.html">CustomAdIntegrationController</a>.<a href="CustomAdIntegrationController.html#updateAdProgress">updateAdProgress</a></p></aside></div></li></ul></section></section></details></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -360,9 +423,9 @@ If the ad is not <a href="#beginAd" class="tsd-kind-method">started</a>.</p>
 <h3>On This Page</h3></summary>
 <div class="tsd-accordion-details">
 <details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Properties</summary>
-<div><a href="#adBreaks"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ad<wbr/>Breaks</span></a><a href="#ads"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ads</span></a><a href="#integration"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>integration</span></a></div></details>
+<div><a href="#adBreaks" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ad<wbr/>Breaks</span></a><a href="#ads" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ads</span></a><a href="#content" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>content</span></a><a href="#integration" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>integration</span></a></div></details>
 <details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Methods</summary>
-<div><a href="#beginAd"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>begin<wbr/>Ad</span></a><a href="#createAd"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad</span></a><a href="#createAdBreak"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad<wbr/>Break</span></a><a href="#endAd"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Ad</span></a><a href="#error"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>error</span></a><a href="#fatalError"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>fatal<wbr/>Error</span></a><a href="#removeAd"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad</span></a><a href="#removeAdBreak"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad<wbr/>Break</span></a><a href="#removeAllAds"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>All<wbr/>Ads</span></a><a href="#skipAd"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>skip<wbr/>Ad</span></a><a href="#updateAd"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad</span></a><a href="#updateAdBreak"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Break</span></a><a href="#updateAdProgress"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Progress</span></a></div></details></div></details></div>
+<div><a href="#beginAd" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>begin<wbr/>Ad</span></a><a href="#createAd" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad</span></a><a href="#createAdBreak" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Ad<wbr/>Break</span></a><a href="#endAd" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Ad</span></a><a href="#endAdBreak" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Ad<wbr/>Break</span></a><a href="#error" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>error</span></a><a href="#fatalError" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>fatal<wbr/>Error</span></a><a href="#removeAd" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad</span></a><a href="#removeAdBreak" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>Ad<wbr/>Break</span></a><a href="#removeAllAds" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>All<wbr/>Ads</span></a><a href="#skipAd" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>skip<wbr/>Ad</span></a><a href="#updateAd" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad</span></a><a href="#updateAdBreak" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Break</span></a><a href="#updateAdProgress" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update<wbr/>Ad<wbr/>Progress</span></a></div></details></div></details></div>
 <div class="site-menu">
 <nav id="tsd-sidebar-links" class="tsd-navigation"><a href="https://optiview.dolby.com/docs/" class="tsd-nav-link">Docs</a><a href="https://optiview.dolby.com/" class="tsd-nav-link">Dolby OptiView</a></nav>
 <nav class="tsd-navigation"><a href="../index.html">THEOplayer Web SDK</a>

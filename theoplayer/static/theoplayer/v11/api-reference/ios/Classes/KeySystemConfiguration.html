@@ -1165,12 +1165,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The FairPlay application certificate, as DER encoded bytes.</p>
+                        <p>The DRM certificate as raw bytes: the FairPlay application certificate (DER encoded), or the
+Widevine service certificate (<code>SignedDrmCertificate</code> bytes) used when casting.</p>
 <div class="aside aside-remark">
     <p class="aside-title">Remark</p>
     <ul>
 <li>When a non-empty certificate is provided it is used directly and no request is sent to <code><a href="../Classes/KeySystemConfiguration.html#/s:13THEOplayerSDK22KeySystemConfigurationC14certificateURL10Foundation0G0VSgvp">certificateURL</a></code>, so the <code>ContentProtectionIntegration.onCertificateRequest</code> and <code>onCertificateResponse</code> handlers are not called.</li>
 <li>When nil or empty, the certificate is fetched from <code><a href="../Classes/KeySystemConfiguration.html#/s:13THEOplayerSDK22KeySystemConfigurationC14certificateURL10Foundation0G0VSgvp">certificateURL</a></code>.</li>
+<li>In serialized form (e.g. on a <code><a href="../Classes/TypedSource.html">TypedSource</a></code> sent to a Chromecast receiver) the certificate is represented as a standard-Base64-encoded string.</li>
 </ul>
 
 </div>
@@ -1271,7 +1273,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The FairPlay application certificate as DER encoded bytes, defaults to nil. When provided, no request is sent to <code><a href="../Classes/KeySystemConfiguration.html#/s:13THEOplayerSDK22KeySystemConfigurationC14certificateURL10Foundation0G0VSgvp">certificateURL</a></code>.</p>
+                                  <p>The DRM certificate as raw bytes (DER-encoded FairPlay application certificate, or Widevine service certificate), defaults to nil. When provided, no request is sent to <code><a href="../Classes/KeySystemConfiguration.html#/s:13THEOplayerSDK22KeySystemConfigurationC14certificateURL10Foundation0G0VSgvp">certificateURL</a></code>.</p>
                                 </div>
                               </td>
                             </tr>
