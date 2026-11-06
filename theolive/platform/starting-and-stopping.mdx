@@ -34,6 +34,8 @@ The status of a channel is derived from its engines, and the most active engine 
 
 Starting an engine deploys it in its region and begins its transcoding time, even before a contribution is connected. Starting a channel starts all its engines that are `stopped`, as well as its RTSP pull ingests; engines in any other state are left as they are.
 
+A start always lands the engine on fresh infrastructure. Engines that run for a long time may eventually have to be moved to fresh infrastructure by us; [maintenance windows](./maintenance-windows.mdx) let you decide when that may happen, and stopping and starting a flagged engine yourself clears the need.
+
 ### Auto-stop timeout
 
 An engine that stays `waiting` for longer than the channel's `timeout` is stopped automatically, so an engine without contribution does not keep running. The timeout counts from the moment the engine started waiting, both after a start and after the contribution dropped. It defaults to 3600 seconds (1 hour); set it to `0` to never stop automatically. In the [dashboard](https://dashboard.optiview.dolby.com/), this is the **Auto-stop timeout** of the channel.
