@@ -9,6 +9,113 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.15.0 (2026/11/04)
+
+### General
+
+#### ⚡ Improvements
+
+- Renamed the CMCD Dolby audio capability key to `com.dolby.optiview-cap_dac` and reported its values as tokens.
+
+### Web
+
+#### ✨ Features
+
+- Added the `ad`, `message` and `errorCode` properties to the `aderror` event, exposing information about the erroring ad, when available.
+- Added support for PATHWAY-CLONES in MPEG-DASH Content Steering.
+- Added experimental `player.ads.registerClientSideIntegration()` to register a
+custom client-side ad integration.
+  - The integration schedules ads from a custom `AdDescription` (through the
+    source description or `player.ads.schedule()`) and reports its ads and
+    ad breaks.
+  - The integration can also transform the source description in
+    `setSource()`, in the same way as a custom server-side ad integration.
+  - It plays linear ads either itself or through the player's built-in
+    linear ad player.
+  - An ad description whose `integration` is neither built in nor registered
+    now fires an `aderror` event instead of being ignored.
+
+- Added `content` to the controller of custom server-side ad integrations (`player.ads.registerServerSideIntegration()`). It exposes the content's playback state and events, such as `currentTime`, `paused`, `readyState` and `error`. Integrations should use it instead of the top-level `ChromelessPlayer` API, whose state may be different when client-side ads are also in use.
+- Added `endAdBreak()` to the controller of custom server-side ad integrations. It ends the current ad break without removing it from the schedule.
+
+#### ⚡ Improvements
+
+- Improved the startup time of DRM-protected HLS streams with `EXT-X-SESSION-KEY` in the multivariant playlist: as is already done for DASH, the key system is set up and the license is requested while the media playlists are still loading.
+
+#### 🐛 Issues
+
+- Fixed an issue where no OptiView Ads ad break would play when an ID3 or EMSG signalled ad break started during the `initializationDelay`, as the Google DAI ad handler was never configured with the `networkCode` and `customAssetKey`.
+- The native picture-in-picture window now stays open when the player source changes to another source that is played the same way (for example from one HLS stream to another), and closes when the player stops or fails, on every browser with the standard picture-in-picture API (Safari, Chrome, Edge).
+- Fixed an issue where adding query parameters to a URL (for example LL-HLS delivery directives) re-encoded the existing query parameters, which could break signed CDN tokens.
+- Fixed AirPlay not starting for OptiView Live Streaming (THEOlive) channels that offer both HESP and HLS.
+- Fixed an issue where Google IMA client-side ads were not requested on Tizen, webOS and Vizio, and where Google DAI streams did not play on Vizio.
+- Fixed an issue where the player could not be created on LG webOS and Samsung Tizen when Google's DAI SDK for CTV (dai_ctv.js) was loaded without its platform library. The player now logs a warning and falls back to ima3_dai.js when it is loaded.
+- Fixed an issue where the player did not switch back to a higher quality after a temporary bandwidth drop on low-latency HLS streams with preload hints, such as OptiView Live Streaming.
+- Fixed an issue where the latency manager could stop adjusting the latency of an LL-HLS stream for the rest of the session after the player jumped back to the live edge during a stall.
+- Fixed an issue where an OptiView Live Streaming source with a backup sometimes kept showing a frozen picture instead of switching to the backup when its main stream stopped.
+- Fixed an issue where the player could keep seeking to the live point many times per second when a live HLS stream stopped updating.
+- Fixed an issue where `player.errorObject` and `player.error` kept reporting a previous Google DAI stream error after a new source was set.
+- Fixed a breaking change introduced in 11.14.0 where OptiView Real-time Streaming (Millicast) sources no longer subscribed to the `viewercount` and `vad` broadcast events by default. When `connectOptions.events` (or `TheoLiveSource.webrtc.events`) is not set, all events are subscribed again. To opt out of the optional events, set `connectOptions: { events: [] }`; the player always keeps the events it needs (`active`, `inactive`, `stopped`, `layers`, `migrate`).
+- Fixed an issue where the content resumed at the wrong position after a multi-ad OptiView Ads break played in iOS Safari native fullscreen with content replacement.
+
+### Android
+
+#### ✨ Features
+
+- Added support for Google DAI pause ads, which can be enabled with `GoogleImaConfiguration.enablePauseAds` and delayed with `GoogleImaConfiguration.pauseAdDelayMs`.
+- Added `SourceLatencyConfiguration`, which takes precedence over `TypedSource.latencyConfiguration` if specified. Unlike `LatencyConfiguration`, its `targetOffset`, `minimumOffset`, `maximumOffset` and `forceSeekOffset` are optional.
+- Added `events` to `WebRTCOptions` and support for `Option.events` on `MillicastSource`, to choose which OptiView Real-time Streaming (Millicast) events the player subscribes to, for example to opt out of `viewercount`.
+
+#### ⚡ Improvements
+
+- OptiView Live HLS streams now adjust the playback rate between  `0.92` and `1.08` to stay at their target latency, like HESP streams.
+- Reduced the initial latency of OptiView Live Streaming HLS streams: playback now starts exactly at the target live offset instead of up to a segment further behind the live edge. Other low-latency HLS sources can opt in with `HlsPlaybackConfiguration.preciseLiveStart`.
+
+#### 🐛 Issues
+
+- Fixed DRM-protected sources failing to play when casting from Android to the CAF receiver.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- 11.15.0 is the last version of the OptiView Player iOS SDK and its integrations that is published to the CocoaPods public spec repo (trunk). Newer versions will only be published to our self-hosted spec repo at https://github.com/THEOplayer/cocoapods-specs.
+    - If you install the SDK with CocoaPods, add `source 'https://github.com/THEOplayer/cocoapods-specs'` to your `Podfile` to keep receiving updates. See [Using the OptiView Player CocoaPods spec repo](/theoplayer/getting-started/sdks/ios/cocoapods-spec-repo/) for the required `Podfile` changes.
+    - As announced in 11.0.0, this change follows [the planned read-only change to the CocoaPods public spec repo](https://blog.cocoapods.org/CocoaPods-Specs-Repo/).
+    - Swift Package Manager users are not affected.
+
+#### ✨ Features
+
+- Added `events` to `WebrtcOptions` and support for `MCClientOptions.events` on `MillicastSource`, to choose which OptiView Real-time Streaming (Millicast) events the player subscribes to, for example to opt out of `viewercount`.
+- Added the `ads` property to the OptiView Live Streaming (THEOlive) `DistributionAPI`, which provides the OptiView Ads manifest URL (`adsManifestUrl`).
+
+#### ⚡ Improvements
+
+- Casting DRM-protected OptiView Live channels to a Chromecast CAF receiver forwards the Widevine service certificate supplied by discovery, avoiding an extra certificate request.
+
+#### 🐛 Issues
+
+- Fixed `SourceAbrConfiguration.maxBitrate` not being applied to HLS sources.
+- Fixed an issue where the player could crash when it was released while the app was in the background, in apps without an app delegate window such as SwiftUI apps.
+- Fixed an issue where OptiView Live Streaming (THEOlive) HLS playback could stay frozen without recovering, either right after startup or after the active endpoint stopped serving.
+- Fixed an issue where the `theoLive.authToken` was only sent as an `Authorization` header to OptiView Live Streaming hosts, so manifest and segment requests to third-party CDNs were missing it. The header is now sent on all manifest and segment requests, and no longer on channel discovery requests.
+
+### Chromecast CAF
+
+#### ⚡ Improvements
+
+- Chromecast CAF Shaka playback uses a supplied Widevine service certificate to avoid an extra certificate request when available.
+
+### Roku
+
+#### ⚡ Improvements
+
+- Expose the selected OptiView Live Streaming endpoint's optional ad system in endpointloaded events.
+
+#### 🐛 Issues
+
+- Fixed an issue where the MediaKind connector would send session beacons while an OptiView Live Streaming source was playing a non-MediaKind endpoint.
+
 ## 🚀 11.14.1 (2026/10/28)
 
 ### Web

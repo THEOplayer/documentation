@@ -197,6 +197,12 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#preciseLiveStart>preciseLiveStart</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -223,23 +229,29 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean,java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preacquireDrmFromSessionKeys)</code></th>
+                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean,java.lang.Boolean,java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preacquireDrmFromSessionKeys, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preciseLiveStart)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed)</code></th>
+                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean,java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preacquireDrmFromSessionKeys)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload)</code></th>
+                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#HlsPlaybackConfiguration(java.lang.Boolean)">HlsPlaybackConfiguration</a></span>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
                                                         href="#HlsPlaybackConfiguration()">HlsPlaybackConfiguration</a></span>()</code></th>
                                                 <td class="colLast"></td>
@@ -318,6 +330,14 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                             <td class="colLast">Flag for pre-acquiring the DRM session from the session keys (<code>EXT-X-SESSION-KEY</code>) of the multivariant playlist.</td>
                                         </tr>
                                         
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#getPreciseLiveStart()>getPreciseLiveStart</a>() </code>
+                                            </th>
+                                            <td class="colLast">Flag for starting low-latency HLS live streams exactly at the target live offset.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -348,6 +368,16 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                 <!--   -->
                             </a>
                                 <h3>Constructor Detail</h3>
+                                
+                                <a name="HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean,java.lang.Boolean,java.lang.Boolean)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>HlsPlaybackConfiguration</h4>
+                                        <pre>HlsPlaybackConfiguration(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isDelaySubtitlePreload, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> isChunklessPreparationAllowed, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preacquireDrmFromSessionKeys, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> preciseLiveStart)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
                                 
                                 <a name="HlsPlaybackConfiguration(java.lang.Boolean,java.lang.Boolean,java.lang.Boolean)"></a>
                                 <ul class="blockList">
@@ -452,12 +482,35 @@ public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getPreacquireDrmFromSessionKeys</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=HlsPlaybackConfiguration.html#getPreacquireDrmFromSessionKeys()>getPreacquireDrmFromSessionKeys</a>()</pre>
                                         <div class="block"><p>Flag for pre-acquiring the DRM session from the session keys (<code>EXT-X-SESSION-KEY</code>) of the multivariant playlist.</p><p>By default, the player only opens the DRM session (and requests its license) when it parses the first encrypted media sample, i.e. after it has downloaded the multivariant playlist, the media playlist and the first media segment. With this flag enabled, the player uses the <code>EXT-X-SESSION-KEY</code> tags of the multivariant playlist and opens the DRM session as soon as that playlist is loaded, so the license request runs in parallel with the media playlist and media segment requests. This reduces the start-up time of DRM-protected streams.</p><p>This assumes that any single session key of the multivariant playlist can be used to obtain all keys required for playback, i.e. the media playlists use the same key information as the session key. Do not enable this flag for streams where this is not the case. A license request that fails during pre-acquisition is reported like any other failed license request, through a <a href=../../event/player/ContentProtectionErrorEvent.html>ContentProtectionErrorEvent</a>.</p><p>Multivariant playlists without <code>EXT-X-SESSION-KEY</code> tags are not affected by this flag.</p><p>Default: <code>false</code>. THEOlive sources enable this flag.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPreciseLiveStart()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPreciseLiveStart</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=HlsPlaybackConfiguration.html#getPreciseLiveStart()>getPreciseLiveStart</a>()</pre>
+                                        <div class="block"><p>Flag for starting low-latency HLS live streams exactly at the target live offset.</p><p>By default, the player starts a low-latency HLS live stream at the closest independent part or segment before the target live offset, which can be up to a segment further behind the live edge. With this flag enabled, the player starts at the target live offset itself.</p><p>Media playlists with an <code>EXT-X-START</code> tag are not affected by this flag.</p><p>Default: <code>false</code>. OptiView Live Streaming sources enable this flag.</p></div>
 
                                         <dl>
 

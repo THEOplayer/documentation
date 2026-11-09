@@ -37,13 +37,20 @@ If you just installed CocoaPods or are already up-to-date, then this step can be
 :::
 
 <br />
-Add the following entry to your Podfile:
+Add our spec repo as a source and add the following entry to your Podfile:
 
 ```ruby
+source 'https://github.com/THEOplayer/cocoapods-specs'
+source 'https://cdn.cocoapods.org/'
+
 target 'MyApp' do
-  pod 'THEOplayerSDK-core', '~> 8' # at the time of writing, v8 is the latest major version.
+  pod 'THEOplayerSDK-core', '~> 11'
 end
 ```
+
+:::info
+Versions after 11.15.0 are only published to [our CocoaPods spec repo](./02-cocoapods-spec-repo.md).
+:::
 
 :::note
 You can skip specifying the version to get the latest published version of THEOplayerSDK.

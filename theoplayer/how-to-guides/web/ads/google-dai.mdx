@@ -9,61 +9,62 @@ import Intro from '../../shared/ads/_google-dai-intro.mdx';
 
 <Intro />
 
-A demo can be found at [https://demo.theoplayer.com/google-dai](https://demo.theoplayer.com/google-dai).
+A demo can be found on the [Google DAI example page](../../../examples/ads/01-google-dai.mdx).
 
 ## Prerequisites
 
-1. Your THEOplayer SDK needs to have the `google-dai` module enabled.
-2. You need to include the Google DAI JavaScript SDK as this is a dependency.
+1. Your OptiView Player SDK needs to have the `google-dai` module enabled.
+2. You need to include the Google DAI JavaScript SDK as this is a dependency. See [Smart TVs](#smart-tvs-lg-webos-and-samsung-tizen) for the library to use on LG and Samsung TVs.
 
 ## Starting Template
 
-The first thing you need is a valid THEOplayer setup. If you have no experience with setting up our player, we have an excellent [getting started guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx).
+The first thing you need is a valid OptiView Player setup. If you have no experience with setting up our player, we have an excellent [getting started guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx).
 
-To get THEOplayer to work, you only need to do three things:
+To get OptiView Player to work, you only need to do three things:
 
-1. Reference the THEOplayer JavaScript library (and optionally the default CSS styles).
+1. Reference the OptiView Player JavaScript library (and optionally the default CSS styles).
 2. Add a container which can hold your video player with HTML.
 3. Create your player through JavaScript using our [API](pathname:///theoplayer/v11/api-reference/web/classes/Player.html).
 
-A basic HTML page with a working THEOplayer could like the following:
+A basic HTML page with a working OptiView Player could look like the following:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>THEOplayer Web SDK: Getting Started</title>
-        <metaname="viewport"content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href='/path/to/ui.css'><!-- ads THEOplayer CSS -->
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OptiView Player Web SDK: Getting Started</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/path/to/ui.css" />
+    <!-- adds OptiView Player CSS -->
+  </head>
+  <body>
+    <div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
 
-        <div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
+    <script type="text/javascript" src="/path/to/THEOplayer.js"></script>
+    <!-- adds OptiView Player library -->
+    <script>
+      var element = document.querySelector('.theoplayer-container');
+      var player = new THEOplayer.Player(element);
 
-        <script type='text/javascript' src='/path/to/THEOplayer.js'></script><!-- ads THEOplayer library -->
-        <script>
-
-            var element = document.querySelector('.theoplayer-container');
-            var player = new THEOplayer.Player(element);
-
-            player.source = {
-                sources : [{
-                    src : 'your.m3u8',
-                    type : 'application/x-mpegurl'
-                }]
-            };
-
-        </script>
-    </body>
+      player.source = {
+        sources: [
+          {
+            src: 'your.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
+      };
+    </script>
+  </body>
 </html>
 ```
 
 ## Integrating Google DAI
 
-Add a Google DAI JavaScript library.
+Include the Google DAI JavaScript library. It must be loaded before the player is created (`new THEOplayer.Player(...)`), as the player picks it up when it is instantiated.
 
-```javascript
+```html
 <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
 ```
 
@@ -108,7 +109,7 @@ const SOURCES = {
     },
   },
 };
-// Configure THEOplayer Source
+// Configure OptiView Player source
 const MANIFEST_TYPE = 'hls'; // 'hls' / 'dash'
 const AVAILABILITY_TYPE = 'vod'; // 'vod' or 'live'
 
@@ -120,10 +121,39 @@ player.source = {
 };
 ```
 
+## Smart TVs (LG webOS and Samsung Tizen)
+
+Google provides a separate DAI SDK for connected TVs, `dai_ctv.js`, which adds Google's ad beaconing and ad UI on LG webOS and Samsung Tizen. From OptiView Player 11.11.0, you can include either library on these TVs:
+
+- `ima3_dai.js` (the standard library shown above): works on all platforms, including LG webOS and Samsung Tizen. No further changes are needed.
+- `dai_ctv.js` (recommended on LG webOS and Samsung Tizen): adds Google's CTV features. It requires the TV's own platform library to be included **before** it (and, like `ima3_dai.js`, before the player is created), and it only works inside a packaged TV app:
+
+```html
+<!-- Samsung Tizen -->
+<script src="$WEBAPIS/webapis/webapis.js"></script>
+<script src="https://imasdk.googleapis.com/js/sdkloader/dai_ctv.js"></script>
+
+<!-- LG webOS (webOSTV.js is shipped with the webOS TV SDK; bundle it with your app) -->
+<script src="./webOSTV.js"></script>
+<script src="https://imasdk.googleapis.com/js/sdkloader/dai_ctv.js"></script>
+```
+
+The player does not load any Google library itself; it uses the one(s) you include on the page. On LG webOS and Samsung Tizen:
+
+- only `ima3_dai.js` included: the player uses `ima3_dai.js`;
+- only `dai_ctv.js` included: the player uses `dai_ctv.js`;
+- both included: the player uses `dai_ctv.js`.
+
+On all other platforms, include `ima3_dai.js`. The `ssai` source configuration is identical for both libraries.
+
+:::note
+`dai_ctv.js` can only be used when the platform library (`webapis.js` on Samsung Tizen, `webOSTV.js` on LG webOS) is included before it. Without it, Google's CTV SDK cannot initialize on the device.
+:::
+
 ## Resources
 
 - [Google DAI Pre-Integration API](pathname:///theoplayer/v11/api-reference/web/interfaces/GoogleDAIConfiguration.html)
-- [THEOplayer Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx)
+- [OptiView Player Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 - [Google DAI website](https://developers.google.com/interactive-media-ads)
 - [Google DAI HTML5 Reference](https://developers.google.com/interactive-media-ads/docs/sdks/html5/dai)
 - [Online demo](../../../examples/ads/01-google-dai.mdx)

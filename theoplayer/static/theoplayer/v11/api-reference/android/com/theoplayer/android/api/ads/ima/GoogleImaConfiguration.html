@@ -178,6 +178,18 @@ public final class <span class="typeNameLabel"><a href=GoogleImaConfiguration.ht
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleImaConfiguration.html#enablePauseAds>enablePauseAds</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html>Long</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleImaConfiguration.html#pauseAdDelayMs>pauseAdDelayMs</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -204,7 +216,25 @@ public final class <span class="typeNameLabel"><a href=GoogleImaConfiguration.ht
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#GoogleImaConfiguration(com.google.ads.interactivemedia.v3.api.ImaSdkSettings,java.lang.Boolean,java.lang.Long)">GoogleImaConfiguration</a></span>(ImaSdkSettings imaSdkSettings, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> enablePauseAds, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html>Long</a> pauseAdDelayMs)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#GoogleImaConfiguration(com.google.ads.interactivemedia.v3.api.ImaSdkSettings,java.lang.Boolean)">GoogleImaConfiguration</a></span>(ImaSdkSettings imaSdkSettings, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> enablePauseAds)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
                                                         href="#GoogleImaConfiguration(com.google.ads.interactivemedia.v3.api.ImaSdkSettings)">GoogleImaConfiguration</a></span>(ImaSdkSettings imaSdkSettings)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#GoogleImaConfiguration()">GoogleImaConfiguration</a></span>()</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -265,6 +295,22 @@ public final class <span class="typeNameLabel"><a href=GoogleImaConfiguration.ht
                                             <td class="colLast">The settings for the IMA SDK.</td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleImaConfiguration.html#getEnablePauseAds()>getEnablePauseAds</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether Google DAI pause ads are enabled.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html>Long</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleImaConfiguration.html#getPauseAdDelayMs()>getPauseAdDelayMs</a>() </code>
+                                            </th>
+                                            <td class="colLast">The additional delay, in milliseconds, between the player pausing and the IMA SDK being told about the pause, so that a Google DAI pause ad can be shown.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -296,11 +342,41 @@ public final class <span class="typeNameLabel"><a href=GoogleImaConfiguration.ht
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="GoogleImaConfiguration(com.google.ads.interactivemedia.v3.api.ImaSdkSettings,java.lang.Boolean,java.lang.Long)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>GoogleImaConfiguration</h4>
+                                        <pre>GoogleImaConfiguration(ImaSdkSettings imaSdkSettings, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> enablePauseAds, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html>Long</a> pauseAdDelayMs)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="GoogleImaConfiguration(com.google.ads.interactivemedia.v3.api.ImaSdkSettings,java.lang.Boolean)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>GoogleImaConfiguration</h4>
+                                        <pre>GoogleImaConfiguration(ImaSdkSettings imaSdkSettings, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> enablePauseAds)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                                 <a name="GoogleImaConfiguration(com.google.ads.interactivemedia.v3.api.ImaSdkSettings)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>GoogleImaConfiguration</h4>
                                         <pre>GoogleImaConfiguration(ImaSdkSettings imaSdkSettings)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="GoogleImaConfiguration()"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>GoogleImaConfiguration</h4>
+                                        <pre>GoogleImaConfiguration()</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -323,12 +399,58 @@ public final class <span class="typeNameLabel"><a href=GoogleImaConfiguration.ht
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getImaSdkSettings</h4>
                                         <pre class="methodSignature"> final ImaSdkSettings <a href=GoogleImaConfiguration.html#getImaSdkSettings()>getImaSdkSettings</a>()</pre>
                                         <div class="block"><p>The settings for the IMA SDK.</p><p>Can be created via: <code>ImaSdkFactory.getInstance().createImaSdkSettings()</code></p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getEnablePauseAds()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getEnablePauseAds</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=GoogleImaConfiguration.html#getEnablePauseAds()>getEnablePauseAds</a>()</pre>
+                                        <div class="block"><p>Whether Google DAI pause ads are enabled.</p><ul><li><p>When enabled, the IMA SDK can show a pause ad on top of the player while a Google DAI stream is paused, if the publisher configured pause ads in Google Ad Manager.</p></li><li><p>This only applies to the Google DAI integration (<code>GoogleDaiIntegration</code>).</p></li></ul><p>Default: <code>false</code>.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPauseAdDelayMs()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPauseAdDelayMs</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html>Long</a> <a href=GoogleImaConfiguration.html#getPauseAdDelayMs()>getPauseAdDelayMs</a>()</pre>
+                                        <div class="block"><p>The additional delay, in milliseconds, between the player pausing and the IMA SDK being told about the pause, so that a Google DAI pause ad can be shown.</p><ul><li><p>The IMA SDK adds its own delay of about one second before it shows the pause ad.</p></li><li><p>This only applies when <a href=GoogleImaConfiguration.html#enablePauseAds>enablePauseAds</a> is <code>true</code>, and only to pauses outside of an ad break.</p></li><li><p>When set to <code>0</code>, the pause is forwarded to the IMA SDK immediately.</p></li><li><p>The IMA SDK only learns about a pause after this delay: pauses shorter than the delay are never reported to it, and its own pause/resume timing is shifted by the delay. Ad tracking inside ad breaks is unaffected.</p></li></ul><p>Default: <code>0</code>.</p></div>
 
                                         <dl>
 
