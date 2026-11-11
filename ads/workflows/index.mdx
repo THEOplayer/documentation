@@ -89,9 +89,9 @@ On the web, the SDK takes the OS from the browser's User-Agent:
 - `vizio` and `xbox` report no OS version, so a rule for them cannot set `osVersion`.
 - A device whose OS version is unknown does not match a rule with `osVersion`.
 
-### Example: SSAI for older LG TVs
+### Example: SSAI for older iOS versions
 
-This channel `delivery` sends LG webOS TVs up to webOS 5 (any 5.x) to SSAI, and every other device to SGAI:
+This channel `delivery` sends devices on iOS up to iOS 15 (any 15.x) to SSAI, and every other device to SGAI:
 
 ```json
 {
@@ -99,8 +99,8 @@ This channel `delivery` sends LG webOS TVs up to webOS 5 (any 5.x) to SSAI, and 
     {
       "mode": "ssai",
       "targeting": {
-        "os": "webos",
-        "osVersion": { "max": "5" }
+        "os": "ios",
+        "osVersion": { "max": "15" }
       }
     },
     { "mode": "sgai" }
@@ -108,7 +108,7 @@ This channel `delivery` sends LG webOS TVs up to webOS 5 (any 5.x) to SSAI, and 
 }
 ```
 
-The first rule matches a webOS TV on version 4.9 or 5.2, but not on version 6. All other devices fall through to the default rule.
+The first rule matches a device on iOS 14.8 or 15.7, but not on iOS 16. An iPad reports `ipados`, so it is not covered by this rule. All other devices fall through to the default rule.
 
 ## Live and VOD
 
