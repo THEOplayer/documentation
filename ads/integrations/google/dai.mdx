@@ -19,7 +19,7 @@ Before you start, make sure the [Google Ad Manager prerequisites](./index.mdx) a
 
 ### Live streams
 
-A live stream in Google Ad Manager connects your linear stream to Google's dynamic ad insertion. Create one under **Video &gt; Live streams &gt; New live stream** and select **Linear** as the type. The live stream provides the **DAI asset key** that identifies it, and it carries the **content stream URL** and the **master ad tag**.
+A live stream in Google Ad Manager connects your linear stream to Google's dynamic ad insertion. Create one under **Video &gt; Live streams &gt; New live stream** and select **Linear** as the type. The live stream provides the **DAI asset key** that identifies it, and it carries the **content stream URL** and the **master ad tag**. Its streaming format (HLS or DASH) is the format of the stream Google delivers to players, so choose the format of the channel origin it ingests.
 
 ### Content stream URL and the Dolby Ads Proxy
 
@@ -41,19 +41,46 @@ For the EU region, use `https://eu.ads.optiview.dolby.com/proxy/v1/`. Your accou
 
 The master ad tag is the ad tag URL configured on the live stream. It references your network code and the ad unit to target, so when Google inserts an ad break it knows which line items and creatives are eligible. See [Configure Google Ad Manager](./pod-serving.mdx#configure-google-ad-manager) on the Google Pod Serving page for how ad units, orders, line items, and creatives fit together — the same campaign setup applies to Google DAI.
 
+### Server-side beaconing
+
+Besides the stitched stream that a player requests through Google's IMA SDK, Google serves every linear live stream as a **server-side beaconing (SSB)** stream: a stream URL that any HLS or DASH player loads directly, without the IMA SDK. Ad Manager tracks the ads from the stream requests and reports estimated ad metrics. Google makes live linear streams available over SSB without a separate setting on the live stream; check Google's [SSB documentation](https://support.google.com/admanager/answer/7299051) for the features an SSB stream supports before you use it.
+
+OptiView Ads delivers the SSB stream of a live stream to players only when you enable `ssb` on its asset in the channel integration (see below). Players switch to it when they cannot insert ads themselves — see [Server-side beaconing streams](#server-side-beaconing-streams).
+
 ## Configure your channel
 
-Enable Google DAI on your [channel](../../concepts/channels.mdx) by creating a channel integration with the DAI asset key(s) from your Google live stream(s):
+Enable Google DAI on your [channel](../../concepts/channels.mdx) by creating a channel integration that lists the Google live streams of the channel in `daiAssets`, one entry per live stream:
 
 ```json
 {
   "type": "SSAI",
   "vendor": "GOOGLE",
-  "daiAssetKeys": ["si2XCsdWTB-Cz9zWftSCoQ"]
+  "daiAssets": [
+    {
+      "assetKey": "si2XCsdWTB-Cz9zWftSCoQ",
+      "originId": "primary-hls",
+      "ssb": {
+        "assetParameters": {
+          "cust_params": "delivery=ssb"
+        }
+      }
+    }
+  ]
 }
 ```
 
-The DAI asset key identifies the Google live stream that ad breaks are announced to. A DAI asset key can only be used on one channel within your organization.
+| Property              | Required | Description                                                                                                                                                                                                                                                                                                                                                                 |
+| --------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `assetKey`            | Yes      | The DAI asset key of the Google live stream. Ad breaks are announced to this live stream. A DAI asset key can only be used on one channel within your organization.                                                                                                                                                                                                         |
+| `originId`            | No       | The [origin](../../concepts/origins.mdx) of the channel that the live stream ingests. It must be an `HLS` or `DASH` origin of the channel; any other value is rejected with `400` and reason `DAI_ASSET_ORIGIN_INVALID`. Its type and DRM configuration describe the SSB stream. When omitted, see [Which origin backs the SSB stream](#which-origin-backs-the-ssb-stream). |
+| `ssb`                 | No       | Enables the SSB stream of the live stream in the Break Manifest. Use an empty object (`"ssb": {}`) to enable it without extra parameters. Without `ssb`, players receive no SSB stream for this live stream.                                                                                                                                                                |
+| `ssb.assetParameters` | No       | Ad tag parameters sent on the SSB stream request only, merged over the integration's `assetParameters`, for example `cust_params` targeting that marks SSB sessions. Same format and macros as other [ad tag parameters](../../how-to-guides/ad-tag-parameters.mdx).                                                                                                        |
+
+`daiAssets` holds at least one entry and must not repeat an `assetKey`. An update that includes `daiAssets` replaces the list as a whole. The integration's `assetParameters` apply to every live stream in the list.
+
+:::warning[Deprecated: `daiAssetKeys`]
+`daiAssetKeys` (a list of asset keys) is a deprecated alias of `daiAssets`. A request gives either `daiAssets` or `daiAssetKeys`, not both (`400`, reason `DAI_ASSETS_AMBIGUOUS`). Asset keys given through `daiAssetKeys` are stored as `daiAssets` entries without an origin and without SSB. Responses still return `daiAssetKeys`, holding the `assetKey` of each `daiAssets` entry. Use `daiAssets` for new integrations.
+:::
 
 ## Schedule a break
 
@@ -61,13 +88,47 @@ Scheduling works exactly like the pod serving flow: create a [break](../../conce
 
 ## How the Google DAI flow works
 
-1. A break is created and, ahead of its start (within the [look-forward time](./index.mdx#look-forward-time)), OptiView Ads announces it to Google using the integration's DAI asset key.
+1. A break is created and, ahead of its start (within the [look-forward time](./index.mdx#look-forward-time)), OptiView Ads announces it to Google using the DAI asset keys in the integration's `daiAssets`.
 2. When the break's start approaches, the Dolby Ads Proxy inserts the break's cue metadata (`EXT-X-DATERANGE` tags carrying the SCTE-35 markers) into the stream served to Google DAI. The break becomes `SIGNALED` once its cue is inserted into the stream.
 3. Google DAI detects the cue, matches it with the announced break, and stitches the decisioned ads into the stream delivered to players.
 
 ### Validate your stream
 
 You can validate the end-to-end setup with Google's [DAI SDK for HTML5 Video Suite Inspector](https://googleads.github.io/googleads-ima-html5-dai/vsi/). Enter your network code and DAI asset key to play your live stream through Google DAI and inspect the inserted ad breaks and the ad requests Google makes.
+
+## Server-side beaconing streams
+
+For each `daiAssets` entry, the [Break Manifest](../../concepts/break-manifest.mdx#google-ad-manager-vendor-configuration) carries an `ssai` entry with the asset key. When the asset has `ssb` enabled and an origin backs it, the `ssai` entry also carries the SSB stream:
+
+| Field             | Value                                                                                                                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `uri`             | Google's SSB stream URL for the asset key: `https://pubads.g.doubleclick.net/ssai/event/{assetKey}/master.m3u8` for an HLS origin, `https://pubads.g.doubleclick.net/ssai/event/{assetKey}/manifest.mpd` for a DASH origin.  |
+| `format`          | `hls` or `dash`, the type of the origin.                                                                                                                                                                                     |
+| `assetParameters` | The asset's `ssb.assetParameters`, if any.                                                                                                                                                                                   |
+| `drm`             | The origin's DRM configuration: its `integration` and its FairPlay, Widevine, and PlayReady license URLs. Google leaves the content encryption untouched, so the SSB stream uses the origin's DRM. Absent for clear origins. |
+
+Players use the first `ssai` entry, so list the live stream that players should use first in `daiAssets`.
+
+### Which origin backs the SSB stream
+
+- With `originId`, the SSB stream is described by that origin.
+- Without `originId`, it is described by the channel's enabled `HLS` or `DASH` origin with the lowest `priority` value. On equal priority, an `HLS` origin goes first.
+
+### When players receive no SSB stream
+
+Players receive no SSB stream for a live stream when:
+
+- the asset has no `ssb`;
+- the channel has no [Google Pod Serving](./pod-serving.mdx#configure-your-channel) integration: without a custom asset key, the Break Manifest carries no Google settings at all, `ssai` entries included;
+- the origin named by `originId` is disabled — OptiView Ads does not fall back to another origin;
+- without `originId`, the channel has no enabled `HLS` or `DASH` origin. `HESP` origins never back an SSB stream;
+- the origin's DRM configuration only has ClearKey. ClearKey is not delivered for SSB streams; an origin that also has FairPlay, Widevine, or PlayReady delivers those key systems.
+
+### What the OptiView Ads SDK does with the SSB stream
+
+The SDK uses the SSB stream when it cannot insert ads itself on the current output, such as while the viewer plays the channel over AirPlay. It loads the stream on the content player with the DRM configuration and the ad tag parameters — the parameters from your app, then the integration's `assetParameters`, then `ssb.assetParameters`, a later source winning for the same key. While the SSB stream plays, the stream carries the ads, so the SDK does not play the breaks from the Break Manifest. When playback returns to the device, the SDK restores your content stream and the delivery mode of the session. Without an SSB stream it can play, the SDK leaves external playback to your app.
+
+When the Break Manifest carries an SSB stream and the content player adapter supports it, the SDK also blocks AirPlay during a break and shortly before one, and retries a blocked request when the break ends. Configure this window with `externalPlayback.blockBeforeBreakSec` (default `5` seconds); see [`ExternalPlaybackConfig`](pathname:///ads/v2/api-reference/web/interfaces/ExternalPlaybackConfig.html) in the Web API reference.
 
 ## Troubleshooting
 
@@ -82,11 +143,11 @@ Use the [Video Suite Inspector](#validate-your-stream) to inspect the ad request
 
 ## Related resources
 
-| Resource                                | Relationship                                                               |
-| --------------------------------------- | -------------------------------------------------------------------------- |
-| [Google Ad Manager](./index.mdx)        | The prerequisites shared by both Google delivery modes.                    |
-| [Google Pod Serving](./pod-serving.mdx) | Server-guided (SGAI) delivery, preferred where supported.                  |
-| [Channels](../../concepts/channels.mdx) | Hold the Google DAI channel integration.                                   |
-| [Origins](../../concepts/origins.mdx)   | The stream origins proxied by the Dolby Ads Proxy.                         |
-| [Breaks](../../concepts/breaks.mdx)     | Carry the vendor asset that Google uses to make ad decisions.              |
-| [API reference](/ads/api)               | Creating and managing channels, breaks, and integrations programmatically. |
+| Resource                                | Relationship                                                                 |
+| --------------------------------------- | ---------------------------------------------------------------------------- |
+| [Google Ad Manager](./index.mdx)        | The prerequisites shared by both Google delivery modes.                      |
+| [Google Pod Serving](./pod-serving.mdx) | Server-guided (SGAI) delivery, preferred where supported.                    |
+| [Channels](../../concepts/channels.mdx) | Hold the Google DAI channel integration.                                     |
+| [Origins](../../concepts/origins.mdx)   | The stream origins proxied by the Dolby Ads Proxy; they back the SSB stream. |
+| [Breaks](../../concepts/breaks.mdx)     | Carry the vendor asset that Google uses to make ad decisions.                |
+| [API reference](/ads/api)               | Creating and managing channels, breaks, and integrations programmatically.   |
