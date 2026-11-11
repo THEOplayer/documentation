@@ -25,20 +25,12 @@ Detection then keeps polling the channel's origins until you stop it with:
 POST /channels/{channelId}/detection/stop
 ```
 
-Both requests return the channel. Calling `sync` again while detection is running changes nothing, so you can safely repeat it.
-
 The channel reports where detection stands in the read-only `detectionState` property:
 
 | `detectionState` | Meaning                                                                                     |
 | ---------------- | ------------------------------------------------------------------------------------------- |
 | `RUNNING`        | Detection polls the channel's origins and creates breaks from the markers that rules match. |
 | `STOPPED`        | Detection was stopped, or has never been started on the channel. A new channel starts here. |
-
-:::note[Deprecated: `detectionEnabled`, `/detection/enable`, and `/detection/disable`]
-
-The channel's `detectionEnabled` property and the `POST /channels/{channelId}/detection/enable` and `/detection/disable` endpoints are deprecated. They still work: the endpoints act like `sync` and `stop`, and on a live channel `detectionEnabled` is `true` while `detectionState` is `RUNNING`. Use `detectionState`, `sync`, and `stop` instead.
-
-:::
 
 ## Supported markers
 
