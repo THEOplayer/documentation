@@ -43,15 +43,15 @@ Responses carry a `Cache-Control` header aligned with the channel's active polli
 
 The Break Manifest document contains the following top-level properties:
 
-| Property              | Description                                                                                                                                                                 |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `version`             | The Break Manifest format version, following Semantic Versioning. Use it to guard against future format changes.                                                            |
-| `channelId`           | The identifier of the [channel](/ads/concepts/channels) this manifest serves. Players use it for reporting, analytics, and diagnostics.                                     |
-| `timebase`            | How each break's `start` is expressed: `wallclock` (UTC ISO 8601 timestamp) or `mediatime` (seconds from the start of a VOD asset). See [Channels](/ads/concepts/channels). |
-| `polling`             | How often the player should refresh the manifest. See [Polling](#polling).                                                                                                  |
-| `vendorConfiguration` | Session-level configuration per vendor integration — for example, the Google Ad Manager network code and custom asset key the player needs to create the stream session.    |
-| `breaks`              | The breaks currently relevant for the channel. Each entry carries the break's schedule, controls, and variants — see [Breaks](./breaks.mdx) for what a break contains.      |
-| `events`              | The channel's events in and ahead of the DVR window, with the ad configuration in effect during each. See [Events](#events).                                                |
+| Property              | Description                                                                                                                                                                                                                                               |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `version`             | The Break Manifest format version, following Semantic Versioning. Use it to guard against future format changes.                                                                                                                                          |
+| `channelId`           | The identifier of the [channel](/ads/concepts/channels) this manifest serves. Players use it for reporting, analytics, and diagnostics.                                                                                                                   |
+| `timebase`            | How each break's `start` is expressed: `wallclock` (UTC ISO 8601 timestamp) or `mediatime` (seconds from the start of a VOD asset). See [Channels](/ads/concepts/channels).                                                                               |
+| `polling`             | How often the player should refresh the manifest. See [Polling](#polling).                                                                                                                                                                                |
+| `vendorConfiguration` | Session-level configuration per vendor integration — for example, the Google Ad Manager network code and asset keys the player needs to create the stream session. See [Google Ad Manager vendor configuration](#google-ad-manager-vendor-configuration). |
+| `breaks`              | The breaks currently relevant for the channel. Each entry carries the break's schedule, controls, and variants — see [Breaks](./breaks.mdx) for what a break contains.                                                                                    |
+| `events`              | The channel's events in and ahead of the DVR window, with the ad configuration in effect during each. See [Events](#events).                                                                                                                              |
 
 Everything inside a break entry — `start`, `duration`, `resumeOffset`, `controls`, and `variant` — is described on the [Breaks](./breaks.mdx) page.
 
@@ -69,6 +69,18 @@ Both cadences are configured on the channel through its `pollingIdleSeconds` and
 The top-level configuration is always the channel's. An [event](./events.mdx) that overrides it is listed in `events`, with its `start` (inclusive) and `end` (exclusive) and only the properties it replaces — `vendorConfiguration` when the event [overrides the channel integrations](./events.mdx#integrations-during-an-event), `delivery`, and `adStartDelay`. The player applies them while its playback position is inside the event, so it switches configuration at the event boundaries without waiting for the next poll, and viewers watching behind live keep the configuration of what they are watching.
 
 The `events` list was added in Break Manifest version 1.9.0. It is omitted when the channel has no current or upcoming events.
+
+### Google Ad Manager vendor configuration
+
+When the channel has a Google Pod Serving integration, `vendorConfiguration` holds a `gam` entry with the settings the player needs for each delivery mode:
+
+| Property      | Description                                                                                                                                                                                                                                                                             |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `networkCode` | Your Google Ad Manager network code.                                                                                                                                                                                                                                                    |
+| `sgai`        | The [Google Pod Serving](../integrations/google/pod-serving.mdx) live stream: its `customAssetKey` and the integration's `assetParameters`. Used by server-guided sessions.                                                                                                             |
+| `ssai`        | The [Google DAI](../integrations/google/dai.mdx) live streams, one entry per `daiAssets` entry of the channel integration: its `assetKey`, the integration's `assetParameters` and, when enabled, the live stream's server-side beaconing stream in `ssb`. Players use the first entry. |
+
+An `ssb` stream carries its `uri`, its `format` (`hls` or `dash`), its own `assetParameters`, and the `drm` configuration of the origin it is described by. Players read it in every delivery mode, and switch to it when they cannot insert ads themselves, for example during AirPlay. See [Server-side beaconing streams](../integrations/google/dai.mdx#server-side-beaconing-streams) for when a live stream has an `ssb` stream and what the SDK does with it.
 
 ### Which breaks are included
 
