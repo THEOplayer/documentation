@@ -74,7 +74,7 @@ A [template](./templates.mdx) preconfigures a break: it stores the break payload
 
 The created break stores a **snapshot** of the template: the template's content is copied onto the break at creation time. Editing the template later does not change breaks that were already created from it.
 
-You can override parts of the template per break. Supported overrides are `id`, `start`, `duration`, and `variant`:
+You can override parts of the template per break. The supported overrides are `id`, `start`, `duration`, `variant`, `controls`, and `resumeOffset`. Each override replaces the template's value as a whole:
 
 ```bash
 curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a56-b1d4-3f8a2c9d6e01/breaks' \
@@ -89,7 +89,7 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a
   }'
 ```
 
-For templates that contain [vendor assets](#vendor-assets), you can additionally pass `assetParameters` (a string map) with the request. These are merged into the vendor assets of the template snapshot — for example to set per-break ad targeting parameters; on duplicate keys, the values you provide win.
+Ad targeting parameters (`assetParameters`) are part of the assets. Set them on the template assets when they are the same for every break. To set them for a single break, pass a `variant` override that contains the assets with their `assetParameters`. See [Ad targeting parameters](./templates.mdx#ad-targeting-parameters) on the Templates page for an example.
 
 ### Breaks during an event
 

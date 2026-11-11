@@ -58,9 +58,44 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a
   }'
 ```
 
-`templateId` is the only required field. You can override the snapshotted configuration per break with optional fields — `start`, `duration`, `variant`, and `id`. For templates that contain [vendor assets](./breaks.mdx#vendor-assets), you can additionally pass `assetParameters` (a string map) with the request; these are merged into the vendor assets of the snapshot, and on duplicate keys the values you provide win.
+`templateId` is the only required field. You can override the snapshotted configuration per break with the optional fields `id`, `start`, `duration`, `variant`, `controls`, and `resumeOffset`. An override replaces the template's value as a whole. For example, a `variant` override replaces the template's variant together with all of its assets.
 
 Start semantics depend on the channel timebase; see [Timebase-based scheduling](./breaks.mdx#timebase-based-scheduling).
+
+### Ad targeting parameters
+
+Ad targeting parameters (`assetParameters`) belong to the assets of a variant. Set them in one of two places:
+
+- **On the template assets**: parameters that are the same for every break scheduled from the template. They are copied onto each break with the rest of the snapshot.
+- **On a `variant` override**: parameters that differ per break. Pass the complete variant, including its assets and their `assetParameters`, because the override replaces the template's variant.
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a56-b1d4-3f8a2c9d6e01/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "templateId": "3b8e5f0a-7c2d-4e91-a6b3-9d4f1c8e2a70",
+    "start": "2026-07-16T13:00:00.000Z",
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "vendor",
+          "vendor": "gam",
+          "mediaType": "video",
+          "vendorParameters": { "type": "pod" },
+          "assetParameters": {
+            "description_url": "https://www.example.com/sports/live.html",
+            "cust_params": "match=final"
+          }
+        }
+      ]
+    }
+  }'
+```
+
+See [Ad targeting parameters](../how-to-guides/ad-tag-parameters.mdx) to learn how these parameters are combined with the parameters set in the OptiView Ads SDK.
 
 ## Related resources
 
