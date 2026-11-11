@@ -49,12 +49,6 @@ A marker rule turns a detected marker into a break created from a [template](./t
 | `templateId`      | The [template](./templates.mdx) to schedule the break from when the rule matches.                                                                                                                      |
 | `enabled`         | Whether the rule takes part in detection. Defaults to `true`.                                                                                                                                          |
 
-:::note Deprecated: `typedConditions`
-
-Responses also include `typedConditions`, a deprecated copy of `conditionGroups` that cannot represent a group mixing attribute and SCTE-35 conditions. Use `conditionGroups` for new rules. If a request sends both fields, they must match.
-
-:::
-
 ### Conditions
 
 `conditionGroups` is a list of groups, and each group is a list of condition pairs:
