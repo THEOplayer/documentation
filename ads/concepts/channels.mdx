@@ -84,7 +84,9 @@ Which live point a new break's start is checked against depends on how the break
 - **Breaks created through the API or the Dashboard** are checked against the channel's live offset, as described above.
 - **Breaks created by break detection** are checked against the live point of the origin the ad marker was found on, measured from that same manifest. A marker sits on that origin's timeline, so that origin's live point is where its viewers actually are. This applies even when you set a live offset on the channel. When the manifest has no measurable live point, the channel's live offset is used instead.
 
-So a detected break and an API break with the same start time can be accepted or rejected differently.
+:::tip[Recommended: let break detection measure the values]
+We recommend leaving `liveOffsetMs` and `dvrWindowMs` unset on the channel and using the values that break detection measures on the origin. The measured values follow your stream, also when detection fails over to another origin, while a value set on the channel stays fixed until you change it. Only set them on the channel in the cases described above.
+:::
 
 ### Ad prefetch window
 
