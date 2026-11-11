@@ -97,6 +97,12 @@ _Default: `10000` ms (10 seconds)_
 
 With the default of `10000` (10 seconds), a break whose start time is within the next 10 seconds is included in the manifest. This lead time gives players room to prepare and prefetch the ad content before the break actually starts.
 
+### Delivery
+
+_Default: none, every device uses SGAI_
+
+`delivery` is an ordered list of rules that steer devices to server-guided (`sgai`) or server-side (`ssai`) ad insertion, by device type, platform, OS and OS version. See [Delivery rules](../workflows/index.mdx#delivery-rules).
+
 For creating, updating, listing, and deleting channels programmatically, see the Ads API reference.
 
 ## Related resources
