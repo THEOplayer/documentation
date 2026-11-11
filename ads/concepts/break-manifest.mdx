@@ -82,8 +82,6 @@ When the channel has a Google Pod Serving integration, `vendorConfiguration` hol
 
 An `ssb` stream carries its `uri`, its `format` (`hls` or `dash`), its own `assetParameters`, and the `drm` configuration of the origin it is described by. Players read it in every delivery mode, and switch to it when they cannot insert ads themselves, for example during AirPlay. See [Server-side beaconing streams](../integrations/google/dai.mdx#server-side-beaconing-streams) for when a live stream has an `ssb` stream and what the SDK does with it.
 
-The top-level `customAssetKey` and `assetKey` of the `gam` entry are deprecated copies of the first `sgai` and `ssai` asset keys, kept for players written against earlier manifest versions.
-
 ### Which breaks are included
 
 The Break Manifest reflects the breaks that are currently relevant for delivery, not the channel's entire break history:

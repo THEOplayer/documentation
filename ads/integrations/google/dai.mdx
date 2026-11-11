@@ -78,10 +78,6 @@ Enable Google DAI on your [channel](../../concepts/channels.mdx) by creating a c
 
 `daiAssets` holds at least one entry and must not repeat an `assetKey`. An update that includes `daiAssets` replaces the list as a whole. The integration's `assetParameters` apply to every live stream in the list.
 
-:::warning[Deprecated: `daiAssetKeys`]
-`daiAssetKeys` (a list of asset keys) is a deprecated alias of `daiAssets`. A request gives either `daiAssets` or `daiAssetKeys`, not both (`400`, reason `DAI_ASSETS_AMBIGUOUS`). Asset keys given through `daiAssetKeys` are stored as `daiAssets` entries without an origin and without SSB. Responses still return `daiAssetKeys`, holding the `assetKey` of each `daiAssets` entry. Use `daiAssets` for new integrations.
-:::
-
 ## Schedule a break
 
 Scheduling works exactly like the pod serving flow: create a [break](../../concepts/breaks.mdx) with a vendor asset and optional `assetParameters`. See [Schedule a pod break](./pod-serving.mdx#schedule-a-pod-break) — including the [required Google parameters](./pod-serving.mdx#required-google-parameters).
