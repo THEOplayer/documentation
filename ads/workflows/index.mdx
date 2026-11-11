@@ -23,9 +23,92 @@ Start from your use case, [Live](./live/index.mdx) or [VOD](./vod/index.mdx): ea
 
 Both modes share the same model: you create a [channel](../concepts/channels.mdx), schedule or detect [breaks](../concepts/breaks.mdx) on it, and OptiView Ads delivers them. You do not maintain two ad setups.
 
-A channel can **steer the delivery mode per device**: for example SGAI on web and mobile, and SSAI on a specific connected TV platform. The Break Manifest then carries the delivery rules, and the SDK picks the mode for the device it runs on when the session starts. In SSAI mode, the SDK still plays the [event-triggered breaks](../concepts/breaks.mdx#event-based-triggers) — pre-roll, pause, and post-roll — on the device, because they depend on what the individual viewer does.
+A channel can **steer the delivery mode per device**: for example SGAI on web and mobile, and SSAI on a specific connected TV platform. The Break Manifest then carries the [delivery rules](#delivery-rules), and the SDK picks the mode for the device it runs on when the session starts. In SSAI mode, the SDK still plays the [event-triggered breaks](../concepts/breaks.mdx#event-based-triggers) — pre-roll, pause, and post-roll — on the device, because they depend on what the individual viewer does.
 
 SSAI is available with Google Ad Manager, through Google DAI. Static assets and VAST tags are always played server-guided.
+
+## Delivery rules
+
+The channel's `delivery` setting is an ordered list of rules. Each rule picks a delivery mode and, optionally, the devices it applies to:
+
+| Field       | Required | Description                                                                                |
+| ----------- | -------- | ------------------------------------------------------------------------------------------ |
+| `mode`      | Yes      | `sgai` or `ssai`.                                                                          |
+| `targeting` | No       | The devices the rule applies to, see [Targeting](#targeting). Omit it to make the default. |
+
+- The SDK checks the rules in order and uses the `mode` of the **first rule that matches** the device.
+- A rule without `targeting` matches every device, so put it last as the default.
+- When the channel has no rules, or no rule matches, the device uses SGAI.
+- A device steered to `ssai` needs an integration in effect that provides a server-side stream, currently [Google DAI](../integrations/google/dai.mdx). Without one, the SDK reports an error to your app instead of falling back to SGAI.
+
+The rules are set on the [channel](../concepts/channels.mdx#delivery). An [event](../concepts/events.mdx#delivery-and-ad-start-delay) can replace them for its window.
+
+### Targeting
+
+A rule's `targeting` matches a device when **every field it sets matches**. A field you omit matches any device. Each field holds one value: to target several device types, platforms or OS versions, add one rule per combination.
+
+| Field        | Values                                                                                                                          |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `deviceType` | `console`, `desktop`, `tablet`, `mobile`, `tv`. A game console is `console`, not `tv`.                                          |
+| `platform`   | The runtime the player runs on: `web`, `android`, `ios`, `tvos`, `roku`.                                                        |
+| `os`         | The operating system as the device reports it, see [Operating systems](#operating-systems).                                     |
+| `osVersion`  | A range of OS versions, `{ "min": "...", "max": "..." }`, used together with `os`. See [OS version ranges](#os-version-ranges). |
+
+The device type is independent of the platform. A browser on a smart TV is `platform: "web"` with `deviceType: "tv"`, an Android TV app is `platform: "android"` with `deviceType: "tv"`, and a browser on an Xbox is `platform: "web"` with `deviceType: "console"`.
+
+### Operating systems
+
+| `os`       | Device                                                                  |
+| ---------- | ----------------------------------------------------------------------- |
+| `android`  | Android, including Android TV, Google TV and Fire TV                    |
+| `chromeos` | A browser on a Chromebook. An Android app on a Chromebook is `android`. |
+| `ios`      | iOS                                                                     |
+| `ipados`   | An iPad                                                                 |
+| `linux`    | Linux                                                                   |
+| `macos`    | macOS                                                                   |
+| `rokuos`   | A Roku device                                                           |
+| `tizen`    | A Samsung smart TV                                                      |
+| `tvos`     | tvOS                                                                    |
+| `vizio`    | A Vizio smart TV                                                        |
+| `webos`    | An LG smart TV                                                          |
+| `windows`  | Windows                                                                 |
+| `xbox`     | An Xbox console                                                         |
+
+On the web, the SDK takes the OS from the browser's User-Agent:
+
+- iPad Safari requests the desktop site by default and then identifies as a Mac. Such an iPad is `os: "macos"` with `deviceType: "desktop"`, so a rule targeting `ipados` or `tablet` does not reach it.
+- Samsung, LG and Vizio TVs and Xbox consoles are reported as `tizen`, `webos`, `vizio` and `xbox`, even when their User-Agent also names Linux, Windows or Android. A rule targeting `linux`, `windows` or `android` does not match them.
+
+### OS version ranges
+
+`osVersion` limits a rule to a range of versions of its `os`:
+
+- Set `min`, `max`, or both. Both bounds are inclusive, and `min` must not be above `max`.
+- Versions are dot-separated integers, such as `5` or `6.5`.
+- A bound compares only the parts it specifies, part by part as integers. Extra parts of the device version are ignored, and a part the device version lacks counts as `0`: `max: "3"` matches `3.2.1`, `min: "6.5"` matches `6.5.0` but not `6.4.9`.
+- `vizio` and `xbox` report no OS version, so a rule for them cannot set `osVersion`.
+- A device whose OS version is unknown does not match a rule with `osVersion`.
+
+### Example: SSAI for older iOS versions
+
+This channel `delivery` sends devices on iOS up to iOS 15 (any 15.x) to SSAI, and every other device to SGAI:
+
+```json
+{
+  "delivery": [
+    {
+      "mode": "ssai",
+      "targeting": {
+        "os": "ios",
+        "osVersion": { "max": "15" }
+      }
+    },
+    { "mode": "sgai" }
+  ]
+}
+```
+
+The first rule matches a device on iOS 14.8 or 15.7, but not on iOS 16. An iPad reports `ipados`, so it is not covered by this rule. All other devices fall through to the default rule.
 
 ## Live and VOD
 
