@@ -75,7 +75,7 @@ The `events` list was added in Break Manifest version 1.9.0. It is omitted when 
 The Break Manifest reflects the breaks that are currently relevant for delivery, not the channel's entire break history:
 
 - An upcoming break appears in the manifest ahead of its start, controlled by the channel's ad prefetch window (`adPrefetchMs`, default 10 seconds). This gives the player time to prepare the break before it starts.
-- A past break remains included while its window still overlaps the channel's DVR window (`dvrWindowMs`, default 5 minutes), so viewers seeking back still get the break. Breaks that ended before the DVR look-back are dropped.
+- A past break remains included while its window still overlaps the channel's DVR window (`dvrWindowMs`, measured on the origin unless set, see [DVR window](./channels.mdx#dvr-window)), so viewers seeking back still get the break. Breaks that ended before the DVR look-back are dropped.
 - Only fully prepared breaks are announced. Breaks that are still being prepared, [cued breaks](./breaks.mdx#cued-breaks) waiting to be punched, and failed breaks never appear — see the [break lifecycle](./breaks.mdx#break-lifecycle).
 
 ## Related resources

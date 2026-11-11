@@ -47,21 +47,42 @@ The `timebase` determines which timeline break start times are expressed on:
 
 Choose the stream type and the timebase when creating the channel; both are fixed afterwards, and all breaks on the channel use the same timebase.
 
+### Where the values come from
+
+You don't have to set the DVR window and the live offset yourself. When [break detection](./marker-detection.mdx) polls the channel's [origins](./origins.mdx), it measures both values from each origin's manifest. For each of the two settings, the channel uses the first of these that is available:
+
+1. **The value stored on the channel**, when you set one.
+2. **The value measured on the origin**: the highest-priority enabled origin that is currently online. When the channel has marker rules, only origins that a marker rule can match count.
+3. **The fallback default**: `300000` ms (5 minutes) for the DVR window, `0` ms for the live offset.
+
+A measured value follows the stream: when the origin's manifest changes, or detection fails over to another origin, the channel follows the new measurement. A value stored on the channel always wins over the measurement, so only set one when you want to override what your stream reports. For example, set one when your players are configured to play further behind live than the manifest suggests, or when the channel has no origins.
+
+VOD channels have no live point, so their live offset is never measured. It is the stored value or `0`.
+
 ### DVR window
 
-_Default: `300000` ms (5 minutes)_
+_Default: the value measured on the origin, otherwise `300000` ms (5 minutes). See [Where the values come from](#where-the-values-come-from)._
 
-`dvrWindowMs` describes how far behind live a viewer can be while watching the channel — the time-shifted (DVR) window of the stream.
+`dvrWindowMs` describes how far behind live a viewer can be while watching the channel — the time-shifted (DVR) window of the stream. The measured value is the duration of media the origin's manifest makes available behind its live edge.
 
 It directly impacts the Break Manifest: a break is included in the manifest as long as it is still relevant for a viewer anywhere inside the DVR window. With a larger DVR window, breaks remain in the manifest for longer so that time-shifted viewers still receive them; with a small window, only breaks near the live edge are returned to the player.
 
 ### Live offset
 
-_Default: `0` ms_
+_Default: the value measured on the origin, otherwise `0` ms. See [Where the values come from](#where-the-values-come-from)._
 
-`liveOffsetMs` describes how far the player's playhead is behind live. Players never play exactly at the live edge — they buffer a few seconds behind it.
+`liveOffsetMs` describes how far the player's playhead is behind live. Players never play exactly at the live edge — they buffer a few seconds behind it. The measured value is how far a player following the origin's manifest trails real time: the manifest's own latency target or hold-back, plus any delay of the manifest's live edge.
 
 OptiView Ads uses this offset mainly to allow you to schedule a break in the past: because viewers watch behind the live edge, a break aimed at the viewer's current playhead position lies slightly behind raw server time. With the offset configured, break start times are evaluated against the position viewers are actually watching instead of raw server time, so such a break is accepted and activates when the playhead reaches it.
+
+A stored value of `0` turns the offset off, even when the origin reports a measured live offset.
+
+Which live point a new break's start is checked against depends on how the break was created:
+
+- **Breaks created through the API or the Dashboard** are checked against the channel's live offset, as described above.
+- **Breaks created by break detection** are checked against the live point of the origin the ad marker was found on, measured from that same manifest. A marker sits on that origin's timeline, so that origin's live point is where its viewers actually are. This applies even when you set a live offset on the channel. When the manifest has no measurable live point, the channel's live offset is used instead.
+
+So a detected break and an API break with the same start time can be accepted or rejected differently.
 
 ### Ad prefetch window
 
