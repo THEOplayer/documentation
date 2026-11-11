@@ -30,10 +30,7 @@ export ADS_API_SECRET='your-api-secret'
 
 A [channel](/ads/concepts/channels) represents the live stream you want to monetize. Everything else — breaks, templates, origins — lives under a channel, so this is the first thing to create.
 
-The only property you must choose is the **timebase**, which defines how break start times are expressed on this channel:
-
-- `wallclock`: breaks are scheduled at real-world times (ISO 8601 datetimes). Use this when your stream carries absolute time metadata such as `EXT-X-PROGRAM-DATE-TIME`.
-- `pts`: breaks are scheduled at presentation timestamps within the stream itself.
+The only property you must choose is the **timebase**, which defines how break start times are expressed on this channel. For a live channel, use `wallclock`: breaks are scheduled at real-world times (ISO 8601 datetimes), matched against the absolute time metadata your stream carries, such as `EXT-X-PROGRAM-DATE-TIME`. VOD channels use `mediatime` or `wallclock` — see [Timebase](/ads/concepts/channels#timebase).
 
 We also recommend setting a `name` so you can recognize the channel in the dashboard. All other properties have sensible defaults, and the channel `id` is generated for you as a UUID when you omit it.
 
