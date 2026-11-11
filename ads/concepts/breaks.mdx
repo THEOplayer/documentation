@@ -89,7 +89,7 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a
   }'
 ```
 
-Ad targeting parameters (`assetParameters`) are set on the assets, not at the top level of the request. Set them on the template assets when they are the same for every break. To set them for a single break, pass a `variant` override that contains the assets with their `assetParameters`. See [Ad targeting parameters](./templates.mdx#ad-targeting-parameters) on the Templates page for an example.
+Ad targeting parameters (`assetParameters`) are part of the assets. Set them on the template assets when they are the same for every break. To set them for a single break, pass a `variant` override that contains the assets with their `assetParameters`. See [Ad targeting parameters](./templates.mdx#ad-targeting-parameters) on the Templates page for an example.
 
 ### Breaks during an event
 
