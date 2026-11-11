@@ -42,10 +42,15 @@ The `streamType` determines the use case of the channel:
 The `timebase` determines which timeline break start times are expressed on:
 
 - **`wallclock`** — breaks are scheduled with a UTC timestamp that is matched against the wallclock timeline carried by the stream itself. Use this when the stream carries wallclock timing: in HLS this comes from `EXT-X-PROGRAM-DATE-TIME` tags, in DASH from the MPD's `availabilityStartTime` combined with the segment timeline (optionally synchronized through a `UTCTiming` element). Available for live and VOD channels.
-- **`pts`** — breaks are scheduled with a presentation timestamp (PTS) on the encoder's timeline. The player retrieves the PTS value from the media segments to know where it is on that timeline. Use this when your workflow schedules breaks against encoder PTS values rather than wallclock time. Live channels only.
 - **`mediatime`** — breaks are scheduled with a position in the asset, in seconds from its start (for example `600` for 10 minutes in). VOD channels only.
 
+Use `wallclock` for live channels. For VOD channels, use `mediatime` (recommended) or `wallclock`.
+
 Choose the stream type and the timebase when creating the channel; both are fixed afterwards, and all breaks on the channel use the same timebase.
+
+:::note[Legacy `pts` timebase]
+Some existing live channels use the legacy `pts` timebase, on which breaks are scheduled with a presentation timestamp (PTS) on the encoder's timeline. New channels can no longer be created with the `pts` timebase; please contact us for more information. Existing `pts` channels keep working unchanged.
+:::
 
 ### DVR window
 
