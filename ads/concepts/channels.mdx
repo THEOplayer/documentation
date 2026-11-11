@@ -48,10 +48,6 @@ Use `wallclock` for live channels. For VOD channels, use `mediatime` (recommende
 
 Choose the stream type and the timebase when creating the channel; both are fixed afterwards, and all breaks on the channel use the same timebase.
 
-:::note[Legacy `pts` timebase]
-Some existing live channels use the legacy `pts` timebase, on which breaks are scheduled with a presentation timestamp (PTS) on the encoder's timeline. New channels can no longer be created with the `pts` timebase; please contact us for more information. Existing `pts` channels keep working unchanged.
-:::
-
 ### DVR window
 
 _Default: `300000` ms (5 minutes)_

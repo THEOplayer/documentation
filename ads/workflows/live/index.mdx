@@ -10,7 +10,7 @@ A live channel monetizes a linear stream or a live event. Breaks are placed on t
 
 ## Set up a live channel
 
-A channel is live by default. Create it with the `wallclock` [timebase](../../concepts/channels.mdx#timebase): breaks start at a UTC timestamp, matched against the stream's own wallclock timeline (`EXT-X-PROGRAM-DATE-TIME` in HLS, the segment timeline in DASH). The legacy `pts` timebase is no longer available for new channels.
+A channel is live by default. Create it with the `wallclock` [timebase](../../concepts/channels.mdx#timebase): breaks start at a UTC timestamp, matched against the stream's own wallclock timeline (`EXT-X-PROGRAM-DATE-TIME` in HLS, the segment timeline in DASH).
 
 ```bash
 curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels' \
