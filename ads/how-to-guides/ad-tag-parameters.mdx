@@ -64,6 +64,8 @@ For a Google Pod Serving vendor asset:
 }
 ```
 
+When you schedule a break from a [template](../concepts/templates.mdx), the break copies the `assetParameters` of the template assets. To use different parameters for one break, pass a `variant` override with the assets and their `assetParameters`. A top-level `assetParameters` field in the request is not supported. See [Ad targeting parameters](../concepts/templates.mdx#ad-targeting-parameters) on the Templates page.
+
 OptiView Ads delivers these parameters to the player through the [Break Manifest](../concepts/break-manifest.mdx), so they are included on the ad request. For Google, they are also forwarded to Google when the break is announced; see [Google Pod Serving](../integrations/google/pod-serving.mdx#required-google-parameters) for the parameters Google requires.
 
 ### In the dashboard
