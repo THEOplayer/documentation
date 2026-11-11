@@ -5,7 +5,7 @@ sidebar_label: Break Detection
 
 # Break Detection
 
-A channel can detect ad markers in its origin manifests, such as SCTE-35 cues or `EXT-X-DATERANGE` tags, and turn them into breaks by applying marker rules. You enable or disable detection per channel. Automatic detection currently supports HLS manifests only. See [Origins](./origins.mdx) for origin selection, priority ordering, and first-online behavior.
+A channel can detect ad markers in its origin manifests, such as SCTE-35 cues, `EXT-X-DATERANGE` tags in HLS playlists, or SCTE-35 events in a DASH MPD, and turn them into breaks by applying marker rules. You enable or disable detection per channel. Detection reads `HLS` and `DASH` origins. See [Origins](./origins.mdx) for origin selection, priority ordering, and first-online behavior.
 
 ## How detection works
 
@@ -13,12 +13,15 @@ When detection is enabled, OptiView Ads polls the channel's enabled [origins](./
 
 ## Supported markers
 
-Detection recognizes two marker kinds in HLS manifests:
+Detection recognizes these marker kinds:
 
-| Marker rule type | HLS marker         | Detection behavior                                                                                                                                      |
-| ---------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CUE`            | `#EXT-X-CUE-OUT`   | Parses a marker start and optional duration. Rules match on the tag attributes only.                                                                    |
-| `DATERANGE`      | `#EXT-X-DATERANGE` | Requires a valid `START-DATE`. Duration comes from `DURATION`, `PLANNED-DURATION`, or `END-DATE`. Rules match on the tag attributes and SCTE-35 fields. |
+| Stream type | Marker rule type | Marker                                 | Detection behavior                                                                                                                                      |
+| ----------- | ---------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `HLS`       | `CUE`            | `#EXT-X-CUE-OUT`                       | Parses a marker start and optional duration. Rules match on the tag attributes only.                                                                    |
+| `HLS`       | `DATERANGE`      | `#EXT-X-DATERANGE`                     | Requires a valid `START-DATE`. Duration comes from `DURATION`, `PLANNED-DURATION`, or `END-DATE`. Rules match on the tag attributes and SCTE-35 fields. |
+| `DASH`      | `EVENT`          | `Event` in a SCTE-35 MPD `EventStream` | Only events that open an ad break. See [SCTE-35 events on DASH](#scte-35-events-on-dash). Rules match on the event attributes or SCTE-35 fields.        |
+
+When a marker has a duration, it overrides the [template](./templates.mdx) duration for the break it creates.
 
 `DATERANGE` is not limited to Apple interstitials. Detection considers any `#EXT-X-DATERANGE` tag with a valid start, and its attributes can be matched.
 
@@ -33,6 +36,33 @@ The fields are only available when the message opens an ad break:
 
 A `DATERANGE` tag without such a payload is still detected. This covers tags without an SCTE-35 attribute, tags whose payload does not decode, and tags whose message does not open an ad break. These tags can match attribute conditions and the [catch-all](#catch-all-rule), but never an SCTE-35 condition.
 
+### SCTE-35 events on DASH
+
+A DASH origin signals breaks with SCTE-35 events in the MPD (SCTE 214-1). Detection reads each `Period`'s `EventStream` elements whose `schemeIdUri` is one of:
+
+| `schemeIdUri`                  | Event payload                                                                                      |
+| ------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `urn:scte:scte35:2014:xml+bin` | A `Signal` element with a `Binary` child that holds the base64-encoded `splice_info_section`.      |
+| `urn:scte:scte35:2013:xml`     | A `SpliceInfoSection` element of the SCTE-35 XML schema, optionally wrapped in a `Signal` element. |
+| `urn:scte:scte35:2013:bin`     | The base64-encoded `splice_info_section` in the event's `messageData` attribute or text content.   |
+
+`EventStream` elements with any other scheme are ignored. Detection only reads the MPD. SCTE-35 messages carried in-band in the media segments (`emsg` boxes) are not supported. Your packager must write the events into the MPD.
+
+Only an event whose message [opens an ad break](#scte-35-on-daterange-tags) becomes a marker, with the same `splice_insert` and `time_signal` checks as on HLS. Unlike a `DATERANGE` tag, every other event is recorded in [detection history](#detection-history) as `SKIPPED` and never creates a break:
+
+| Event                                                                                                                                                                         | `reason`               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| A message that does not open an ad break, such as a return (`out_of_network_indicator` not set, or an ad-end segmentation type), a canceled event, or another splice command. | `MARKER_NOT_AD_OUT`    |
+| A payload that does not decode, or malformed event timing.                                                                                                                    | `MARKER_MALFORMED`     |
+| An event whose start cannot be placed on the wallclock timeline.                                                                                                              | `MARKER_MISSING_START` |
+
+Timing of an `EVENT` marker:
+
+- **Start**: the MPD's `availabilityStartTime`, plus the `Period` start, plus (`presentationTime` − `presentationTimeOffset`) ÷ `timescale` of the `EventStream`. A `Period` without `start` follows the previous `Period`, when that one has a `duration`. The MPD needs an `availabilityStartTime` for the start to be resolved.
+- **Duration**: the event's `duration` ÷ `timescale`. Without it, the `break_duration` of a `splice_insert` or the `segmentation_duration` of the primary segmentation descriptor.
+
+The same event is advertised in every MPD update while it is in the time-shift window. Detection recognizes it by its `Event` `id` and start, so it creates one break, even when a later update changes its `duration`. Give each event an `id` that is unique within its `EventStream`.
+
 ## Marker rules
 
 A marker rule turns a detected marker into a break created from a [template](./templates.mdx). A rule applies to one stream type and one marker type. It holds either a set of conditions or none at all. A rule without conditions is the catch-all.
@@ -41,8 +71,8 @@ A marker rule turns a detected marker into a break created from a [template](./t
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`              | Unique within the channel. Optional when you create a rule: OptiView Ads generates one if you omit it. If you supply your own, we recommend a UUID.                                                    |
 | `name`            | Optional display name. The dashboard shows it instead of the rule's conditions.                                                                                                                        |
-| `streamType`      | The stream type the rule applies to: `HLS`.                                                                                                                                                            |
-| `type`            | The marker kind this rule matches: `CUE` or `DATERANGE`.                                                                                                                                               |
+| `streamType`      | The stream type the rule applies to: `HLS` or `DASH`.                                                                                                                                                  |
+| `type`            | The marker kind this rule matches: `CUE` or `DATERANGE` for `HLS`, `EVENT` for `DASH`. Any other combination is rejected with `400 Bad Request`.                                                       |
 | `conditionGroups` | The [conditions](#conditions) a marker must meet: a list of alternatives. Defaults to `[]`. A rule without groups is the [catch-all](#catch-all-rule).                                                 |
 | `catchAll`        | `true` on the catch-all. Defaults to `true` when the rule has no condition groups. It must agree with `conditionGroups`: `true` without groups, `false` or omitted with groups.                        |
 | `priority`        | Integer that sets the [evaluation order](#evaluation-order) among conditional rules. Lower values are evaluated first, and negative values are allowed. Defaults to `0`. Not allowed on the catch-all. |
@@ -58,16 +88,17 @@ A marker rule turns a detected marker into a break created from a [template](./t
 
 Each pair has a `type`, a `key`, and a `value`:
 
-| Pair `type` | `key`                                                      | Matches                                                                                                       |
-| ----------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `attribute` | An HLS tag attribute name, such as `CLASS` or `X-AD-TYPE`. | The attribute value without its surrounding quotes. Names are case-insensitive and values must match exactly. |
-| `scte35`    | One of the [SCTE-35 condition keys](#scte-35-conditions).  | The decoded field from the marker's SCTE-35 payload, compared in its canonical form.                          |
+| Pair `type` | `key`                                                                                                           | Matches                                                                                                       |
+| ----------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `attribute` | An HLS tag attribute name, such as `CLASS` or `X-AD-TYPE`, or a [DASH event attribute](#dash-event-attributes). | The attribute value without its surrounding quotes. Names are case-insensitive and values must match exactly. |
+| `scte35`    | One of the [SCTE-35 condition keys](#scte-35-conditions).                                                       | The decoded field from the marker's SCTE-35 payload, compared in its canonical form.                          |
 
 Rules:
 
 - A group must contain at least one pair, and a key can appear only once per group. Attribute names are compared case-insensitively here as well.
-- `scte35` pairs are allowed on `DATERANGE` rules, not on `CUE` rules.
+- `scte35` pairs are allowed on `DATERANGE` and `EVENT` rules, not on `CUE` rules.
 - A `DATERANGE` group can mix `attribute` and `scte35` pairs. For example, one group can require `CLASS` to be `com.example.ad` and `segmentationTypeId` to be `0x34`.
+- An `EVENT` group holds either `attribute` pairs or `scte35` pairs, not both. A mixed `EVENT` group is rejected with `400 Bad Request`.
 - The reserved value `$OPTIVIEW_ANY$` requires the attribute or SCTE-35 field to be present, whatever its value. It does not match a marker that lacks it.
 
 This rule matches `DATERANGE` markers whose `CLASS` attribute is `com.example.ad`:
@@ -83,9 +114,24 @@ This rule matches `DATERANGE` markers whose `CLASS` attribute is `com.example.ad
 }
 ```
 
+### DASH event attributes
+
+`attribute` pairs on an `EVENT` rule match these attributes of the event and its `EventStream` and `Period`:
+
+| Attribute          | Source                                  |
+| ------------------ | --------------------------------------- |
+| `schemeIdUri`      | `EventStream@schemeIdUri`               |
+| `value`            | `EventStream@value`, when present.      |
+| `periodId`         | `Period@id`, when present.              |
+| `id`               | `Event@id`, when present.               |
+| `presentationTime` | `Event@presentationTime`, when present. |
+| `duration`         | `Event@duration`, when present.         |
+
+For example, a group with `schemeIdUri` set to `urn:scte:scte35:2014:xml+bin` limits a rule to that carriage. Most DASH rules match on [SCTE-35 conditions](#scte-35-conditions) instead.
+
 ### SCTE-35 conditions
 
-An `scte35` pair matches one field from the decoded payload of a marker that [opens an ad break](#scte-35-on-daterange-tags). The keys follow the attribute names of the SCTE-35 XML schema:
+An `scte35` pair matches one field from the decoded payload of a marker that [opens an ad break](#scte-35-on-daterange-tags): a `DATERANGE` tag or a DASH `EVENT`. The keys follow the attribute names of the SCTE-35 XML schema:
 
 | Key                    | Decoded from                                                                | Value format                                                                      | Canonical form                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -121,6 +167,8 @@ You can enable only one catch-all per channel, stream type, and marker type. Cre
 :::caution
 
 A `DATERANGE` catch-all also matches tags that are not ad signals, such as program boundaries, other metadata, or `SCTE35-IN` returns. Check [detection history](#detection-history) to see which tags your stream carries before you enable one.
+
+An `EVENT` catch-all only sees DASH events that open an ad break, because detection skips every other event before rules are evaluated.
 
 :::
 
@@ -199,6 +247,89 @@ To combine tag attributes with SCTE-35 fields, put both in one group. This group
 ]
 ```
 
+## Example: national and local breaks on DASH
+
+This example sets up a live DASH channel from origin to scheduled breaks. It uses the same national and local signals as the [HLS example](#example-national-and-local-breaks-on-hls).
+
+**1. Add the DASH origin.** The MPD carries the SCTE-35 `time_signal` messages in an `EventStream` of a supported [scheme](#scte-35-events-on-dash) (payloads shortened):
+
+```xml
+<MPD type="dynamic" availabilityStartTime="2026-11-11T00:00:00Z" ...>
+  <Period id="p0" start="PT0S">
+    <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" timescale="90000">
+      <Event id="1001" presentationTime="5832000000" duration="10800000">
+        <Signal><Binary>/DA...</Binary></Signal>
+      </Event>
+      <Event id="1002" presentationTime="5913000000" duration="5400000">
+        <Signal><Binary>/DA...</Binary></Signal>
+      </Event>
+    </EventStream>
+    ...
+  </Period>
+</MPD>
+```
+
+With a `timescale` of `90000`, event `1001` starts at 18:00:00 UTC and lasts 120 seconds, and event `1002` starts at 18:15:00 UTC and lasts 60 seconds. Create the origin with type `DASH` and the MPD URL, and enable detection on the channel. Until you add rules, [detection history](#detection-history) records each event as `SKIPPED` with `NO_RULES_CONFIGURED`, so you can check which signals your stream carries.
+
+**2. Route national breaks.** Event `1001` carries `segmentationTypeId` `0x30` (Provider Advertisement Start) or `0x34` (Provider Placement Opportunity Start):
+
+```json
+{
+  "name": "National breaks",
+  "streamType": "DASH",
+  "type": "EVENT",
+  "conditionGroups": [
+    [{ "type": "scte35", "key": "segmentationTypeId", "value": "0x30" }],
+    [{ "type": "scte35", "key": "segmentationTypeId", "value": "0x34" }]
+  ],
+  "priority": 10,
+  "templateId": "national-break-template",
+  "enabled": true
+}
+```
+
+**3. Route local breaks.** Event `1002` carries `0x32` (Distributor Advertisement Start) or `0x36` (Distributor Placement Opportunity Start) with an AiringID UPID. The lower priority makes detection check this rule before the national rule:
+
+```json
+{
+  "name": "Local breaks",
+  "streamType": "DASH",
+  "type": "EVENT",
+  "conditionGroups": [
+    [
+      { "type": "scte35", "key": "segmentationTypeId", "value": "0x32" },
+      { "type": "scte35", "key": "segmentationUpidType", "value": "0x08" },
+      { "type": "scte35", "key": "segmentationUpid", "value": "$OPTIVIEW_ANY$" }
+    ],
+    [
+      { "type": "scte35", "key": "segmentationTypeId", "value": "0x36" },
+      { "type": "scte35", "key": "segmentationUpidType", "value": "0x08" },
+      { "type": "scte35", "key": "segmentationUpid", "value": "$OPTIVIEW_ANY$" }
+    ]
+  ],
+  "priority": 5,
+  "templateId": "local-break-template",
+  "enabled": true
+}
+```
+
+**4. Add a catch-all behind them.** It schedules a fallback break for every other ad-break event, such as a `splice_insert` or a Break Start (`0x22`):
+
+```json
+{
+  "name": "Fallback",
+  "streamType": "DASH",
+  "type": "EVENT",
+  "catchAll": true,
+  "templateId": "fallback-break-template",
+  "enabled": true
+}
+```
+
+Detection now creates a break from `local-break-template` at 18:15:00 for event `1002` and one from `national-break-template` at 18:00:00 for event `1001`, each with the event's duration, as long as both starts are still ahead of the live point (see [Scheduling constraints](./breaks.mdx#scheduling-constraints)). Return signals and other events that do not open a break appear in detection history as `SKIPPED` with `MARKER_NOT_AD_OUT`.
+
+These rules only apply to DASH origins. If the channel also has an HLS origin, it needs its own `HLS` rules, such as the ones in the [HLS example](#example-national-and-local-breaks-on-hls). See [Mixed HLS and DASH origins](./origins.mdx#mixed-hls-and-dash-origins).
+
 ## Detection history
 
 Detection history is the audit trail of what automatic detection decided for each marker. Once an origin is enabled, every marker found in the stream is recorded, even when no marker rule exists yet. Use it to review the markers in your stream and choose which ones to turn into breaks before you configure your rules.
@@ -211,23 +342,27 @@ Every processed marker is recorded with one of three outcomes:
 | `SKIPPED` | No fault: the marker was ineligible (unparseable or without a resolvable start), no rule matched, or a scheduling condition prevented creation. |
 | `FAILED`  | An eligible, rule-matched marker could not be scheduled for an unexpected reason.                                                               |
 
-Each record includes the raw manifest tag line, the origin that supplied the marker, and a `reason` that explains skips and failures. History is deduplicated per channel. Repeated polling of the same marker does not create duplicate records, even when another origin supplies it.
+Each record includes the raw marker (the HLS tag line, or the DASH `Event` element), the origin that supplied the marker, and a `reason` that explains skips and failures. History is deduplicated per channel. Repeated polling of the same marker does not create duplicate records, even when another origin supplies it.
 
 ## Troubleshooting
 
-| Symptom                                                     | Checks                                                                                                                                                                                                                                                                                                                |
-| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| No breaks are created.                                      | Is detection enabled on the channel? Is there at least one enabled HLS origin? Is the origin reachable and returning a parseable manifest? Is there an enabled rule whose `streamType` and `type` match the marker and whose `conditionGroups` it satisfies, or an enabled catch-all? Does the rule's template exist? |
-| History contains `SKIPPED` with `NO_RULES_CONFIGURED`.      | An enabled origin is being polled and markers are being detected, but the channel has no marker rules yet. Use these records to identify the markers you want to act on, then create and enable a matching marker rule.                                                                                               |
-| History contains `SKIPPED` with `NO_RULE_MATCHED`.          | No group of any enabled rule of that type held, and there is no enabled catch-all. Every pair in a group must match. Attribute names are case-insensitive, but attribute values must match exactly. Compare SCTE-35 values with their [canonical form](#scte-35-conditions).                                          |
-| A marker uses the wrong rule or template.                   | The first match in [evaluation order](#evaluation-order) wins. Give the more specific rule a lower `priority` than the broader one. Only the catch-all is evaluated after all conditional rules.                                                                                                                      |
-| An SCTE-35 condition never matches.                         | Is the rule `DATERANGE`? `CUE` rules cannot use SCTE-35 conditions. Does the tag carry `SCTE35-OUT` or `SCTE35-CMD`, rather than only `SCTE35-IN`? Does the message [open an ad break](#scte-35-on-daterange-tags)? `uniqueProgramId` and `availNum` exist only on `splice_insert`.                                   |
-| The catch-all creates unexpected breaks.                    | A `DATERANGE` catch-all matches every `DATERANGE` tag that no conditional rule matched, including tags that are not ad signals. Replace it with conditional rules, or disable it.                                                                                                                                     |
-| Creating or enabling a catch-all fails with `409 Conflict`. | Another catch-all is already enabled for the same channel, stream type, and marker type. Disable it first.                                                                                                                                                                                                            |
-| A rule is rejected with `400 Bad Request`.                  | Check that `scte35` pairs are only on `DATERANGE` rules, that each key appears once per group, and that every SCTE-35 value has the [format](#scte-35-conditions) its key requires. A catch-all takes no `priority`, and `catchAll` must agree with `conditionGroups`.                                                |
-| DASH or HESP origin is not producing breaks.                | DASH and HESP origins are accepted but skipped by automatic detection. Use an enabled HLS origin.                                                                                                                                                                                                                     |
-| History contains `SKIPPED` with a scheduling reason.        | The marker was recognized, but the break was not scheduled. For example, its start would lie in the past or it would overlap another break. See [Scheduling constraints](./breaks.mdx#scheduling-constraints).                                                                                                        |
-| History contains `FAILED`.                                  | The rule matched, but an unexpected scheduling or configuration error prevented break creation. Inspect the `reason` and verify the template and break configuration.                                                                                                                                                 |
+| Symptom                                                                           | Checks                                                                                                                                                                                                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| No breaks are created.                                                            | Is detection enabled on the channel? Is there at least one enabled HLS or DASH origin? Is the origin reachable and returning a parseable manifest? Is there an enabled rule whose `streamType` and `type` match the marker and whose `conditionGroups` it satisfies, or an enabled catch-all? Does the rule's template exist?                                                        |
+| History contains `SKIPPED` with `NO_RULES_CONFIGURED`.                            | An enabled origin is being polled and markers are being detected, but the channel has no marker rules yet. Use these records to identify the markers you want to act on, then create and enable a matching marker rule.                                                                                                                                                              |
+| History contains `SKIPPED` with `NO_RULE_MATCHED`.                                | No group of any enabled rule of that type held, and there is no enabled catch-all. Every pair in a group must match. Attribute names are case-insensitive, but attribute values must match exactly. Compare SCTE-35 values with their [canonical form](#scte-35-conditions).                                                                                                         |
+| A marker uses the wrong rule or template.                                         | The first match in [evaluation order](#evaluation-order) wins. Give the more specific rule a lower `priority` than the broader one. Only the catch-all is evaluated after all conditional rules.                                                                                                                                                                                     |
+| An SCTE-35 condition never matches.                                               | Is the rule `DATERANGE` or `EVENT`? `CUE` rules cannot use SCTE-35 conditions. Does the tag carry `SCTE35-OUT` or `SCTE35-CMD`, rather than only `SCTE35-IN`? Does the message [open an ad break](#scte-35-on-daterange-tags)? `uniqueProgramId` and `availNum` exist only on `splice_insert`.                                                                                       |
+| The catch-all creates unexpected breaks.                                          | A `DATERANGE` catch-all matches every `DATERANGE` tag that no conditional rule matched, including tags that are not ad signals. Replace it with conditional rules, or disable it.                                                                                                                                                                                                    |
+| Creating or enabling a catch-all fails with `409 Conflict`.                       | Another catch-all is already enabled for the same channel, stream type, and marker type. Disable it first.                                                                                                                                                                                                                                                                           |
+| A rule is rejected with `400 Bad Request`.                                        | Check that `type` fits `streamType`, that `scte35` pairs are only on `DATERANGE` and `EVENT` rules, that an `EVENT` group does not mix `attribute` and `scte35` pairs, that each key appears once per group, and that every SCTE-35 value has the [format](#scte-35-conditions) its key requires. A catch-all takes no `priority`, and `catchAll` must agree with `conditionGroups`. |
+| A DASH origin is not producing breaks.                                            | Does the MPD carry the events in an `EventStream` with a [supported scheme](#scte-35-events-on-dash)? In-band `emsg` events are not read. Does the channel have enabled `DASH` rules of type `EVENT`? Once the channel has rules, detection only polls origins whose stream type has an enabled rule.                                                                                |
+| History contains `SKIPPED` with `MARKER_NOT_AD_OUT`.                              | The DASH event is a valid SCTE-35 message that does not open an ad break, such as a return or a canceled event. This is expected and needs no action.                                                                                                                                                                                                                                |
+| History contains `SKIPPED` with `MARKER_MALFORMED` or `MARKER_MISSING_START`.     | The SCTE-35 payload of a DASH event does not decode, or its timing is malformed. Or its start cannot be resolved: check the MPD's `availabilityStartTime`, the `Period` start, and the `EventStream` `timescale` and `presentationTimeOffset`.                                                                                                                                       |
+| An HESP origin is not producing breaks.                                           | Detection does not read HESP origins. It moves on to the next origin in priority order. Add an HLS or DASH origin for the same stream.                                                                                                                                                                                                                                               |
+| Breaks stop when the primary origin of a mixed HLS and DASH channel goes offline. | Rules apply to one stream type, and detection only falls back to an origin whose stream type has an enabled rule. Add rules for both `HLS` and `DASH`. See [Mixed HLS and DASH origins](./origins.mdx#mixed-hls-and-dash-origins).                                                                                                                                                   |
+| History contains `SKIPPED` with a scheduling reason.                              | The marker was recognized, but the break was not scheduled. For example, its start would lie in the past or it would overlap another break. See [Scheduling constraints](./breaks.mdx#scheduling-constraints).                                                                                                                                                                       |
+| History contains `FAILED`.                                                        | The rule matched, but an unexpected scheduling or configuration error prevented break creation. Inspect the `reason` and verify the template and break configuration.                                                                                                                                                                                                                |
 
 ## Related resources
 

@@ -24,9 +24,25 @@ Only enabled origins are considered for detection. Enabled origins are ordered b
 
 This lets you configure a primary origin and one or more lower-priority backups: when the primary source is unreachable, detection automatically falls back to a backup.
 
-:::note[Supported origin types]
-Origins can be `HLS`, `DASH`, or `HESP`, but automatic break detection currently parses **HLS** manifests only. Use `HLS` for origins you expect to drive automatic breaks.
-:::
+## Supported origin types
+
+Origins can be `HLS`, `DASH`, or `HESP`:
+
+| Origin type | Break detection                                                                                                                                                                   |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `HLS`       | Reads `#EXT-X-CUE-OUT` and `#EXT-X-DATERANGE` tags from the playlists. See [Supported markers](./marker-detection.mdx#supported-markers).                                         |
+| `DASH`      | Reads SCTE-35 events from the MPD's `EventStream` elements. In-band `emsg` events are not supported. See [SCTE-35 events on DASH](./marker-detection.mdx#scte-35-events-on-dash). |
+| `HESP`      | Not read. Detection moves on to the next enabled origin in priority order.                                                                                                        |
+
+## Mixed HLS and DASH origins
+
+A channel can combine HLS and DASH origins of the same stream, for example a DASH primary and an HLS backup. Detection still reads one origin per poll, the first online one, so the other format only serves as failover. It does not combine markers from both.
+
+[Marker rules](./marker-detection.mdx#marker-rules) apply to one stream type, so give the channel rules for each format it can fail over to:
+
+- **Without marker rules**, every enabled origin is a candidate, and the markers of the selected origin are recorded in detection history.
+- **With marker rules**, detection only considers origins whose stream type has at least one enabled rule. A channel with only `HLS` rules skips its DASH origins, and does not fall back to them when the HLS origins go offline.
+- To keep breaks coming after a failover, create equivalent `HLS` and `DASH` rules, for example the national, local, and catch-all rules from the [HLS](./marker-detection.mdx#example-national-and-local-breaks-on-hls) and [DASH](./marker-detection.mdx#example-national-and-local-breaks-on-dash) examples.
 
 ## Related resources
 
