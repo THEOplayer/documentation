@@ -107,24 +107,14 @@ Players use the first `ssai` entry, so list the live stream that players should 
 
 ### Which origin backs the SSB stream
 
-- With `originId`, the SSB stream is described by that origin.
-- Without `originId`, it is described by the channel's enabled `HLS` or `DASH` origin with the lowest `priority` value. On equal priority, an `HLS` origin goes first.
+Google passes your content through unchanged, so the SSB stream has the same format and the same DRM as the stream that Google ingests. OptiView Ads takes both from one of the channel's origins:
 
-### When players receive no SSB stream
-
-Players receive no SSB stream for a live stream when:
-
-- the asset has no `ssb`;
-- the channel has no [Google Pod Serving](./pod-serving.mdx#configure-your-channel) integration: without a custom asset key, the Break Manifest carries no Google settings at all, `ssai` entries included;
-- the origin named by `originId` is disabled — OptiView Ads does not fall back to another origin;
-- without `originId`, the channel has no enabled `HLS` or `DASH` origin. `HESP` origins never back an SSB stream;
-- the origin's DRM configuration only has ClearKey. ClearKey is not delivered for SSB streams; an origin that also has FairPlay, Widevine, or PlayReady delivers those key systems.
+- If you tell OptiView Ads which origin the Google live stream ingests, it uses that origin.
+- Otherwise, it uses the first enabled HLS or DASH origin of the channel in priority order. When an HLS and a DASH origin share the same priority, the HLS origin is used.
 
 ### What the OptiView Ads SDK does with the SSB stream
 
 The SDK uses the SSB stream when it cannot insert ads itself on the current output, such as while the viewer plays the channel over AirPlay. It loads the stream on the content player with the DRM configuration and the ad tag parameters — the parameters from your app, then the integration's `assetParameters`, then `ssb.assetParameters`, a later source winning for the same key. While the SSB stream plays, the stream carries the ads, so the SDK does not play the breaks from the Break Manifest. When playback returns to the device, the SDK restores your content stream and the delivery mode of the session. Without an SSB stream it can play, the SDK leaves external playback to your app.
-
-When the Break Manifest carries an SSB stream and the content player adapter supports it, the SDK also blocks AirPlay during a break and shortly before one, and retries a blocked request when the break ends. Configure this window with `externalPlayback.blockBeforeBreakSec` (default `5` seconds); see [`ExternalPlaybackConfig`](pathname:///ads/v2/api-reference/web/interfaces/ExternalPlaybackConfig.html) in the Web API reference.
 
 ## Troubleshooting
 
