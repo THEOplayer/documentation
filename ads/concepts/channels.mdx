@@ -50,19 +50,44 @@ Choose the stream type and the timebase when creating the channel; both are fixe
 
 ### DVR window
 
-_Default: `300000` ms (5 minutes)_
+_Default: measured on the origin, otherwise `300000` ms (5 minutes)_
 
 `dvrWindowMs` describes how far behind live a viewer can be while watching the channel — the time-shifted (DVR) window of the stream.
 
 It directly impacts the Break Manifest: a break is included in the manifest as long as it is still relevant for a viewer anywhere inside the DVR window. With a larger DVR window, breaks remain in the manifest for longer so that time-shifted viewers still receive them; with a small window, only breaks near the live edge are returned to the player.
 
+You usually don't need to set it. The channel uses the first of these that is available:
+
+1. The `dvrWindowMs` set on the channel.
+2. The DVR window [measured on the channel's origin](./origins.mdx#measured-live-offset-and-dvr-window): how much media the origin's manifest makes available behind its live edge.
+3. `300000` ms (5 minutes).
+
+Set it when your players offer a different DVR window than the manifest, or when the channel has no origins.
+
 ### Live offset
 
-_Default: `0` ms_
+_Default: measured on the origin, otherwise `0` ms_
 
 `liveOffsetMs` describes how far the player's playhead is behind live. Players never play exactly at the live edge — they buffer a few seconds behind it.
 
 OptiView Ads uses this offset mainly to allow you to schedule a break in the past: because viewers watch behind the live edge, a break aimed at the viewer's current playhead position lies slightly behind raw server time. With the offset configured, break start times are evaluated against the position viewers are actually watching instead of raw server time, so such a break is accepted and activates when the playhead reaches it.
+
+You usually don't need to set it. The channel uses the first of these that is available:
+
+1. The `liveOffsetMs` set on the channel. A value of `0` turns the offset off, even when the origin reports one.
+2. The live offset [measured on the channel's origin](./origins.mdx#measured-live-offset-and-dvr-window): how far a player following the origin's manifest trails real time, from the manifest's own latency target or hold-back plus any delay of its live edge. VOD channels have no live point, so their live offset is never measured.
+3. `0` ms.
+
+Set it when your players play further behind live than the manifest suggests, or when the channel has no origins.
+
+Which live point a new break's start is checked against depends on how the break was created:
+
+- **Breaks created through the API or the Dashboard** are checked against the channel's live offset, as described above.
+- **Breaks created by break detection** are checked against the live point of the origin the ad marker was found on, measured from that same manifest. A marker sits on that origin's timeline, so that origin's live point is where its viewers actually are. This applies even when you set a live offset on the channel. When the manifest has no measurable live point, the channel's live offset is used instead.
+
+:::tip[Recommended: let break detection measure the values]
+We recommend leaving `liveOffsetMs` and `dvrWindowMs` unset on the channel and using the values that break detection measures on the origin. The measured values follow your stream, also when detection fails over to another origin, while a value set on the channel stays fixed until you change it. Only set them on the channel in the cases described above.
+:::
 
 ### Ad prefetch window
 

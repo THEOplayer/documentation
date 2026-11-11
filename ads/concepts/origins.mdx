@@ -28,6 +28,17 @@ This lets you configure a primary origin and one or more lower-priority backups:
 Origins can be `HLS`, `DASH`, or `HESP`, but automatic break detection currently parses **HLS** manifests only. Use `HLS` for origins you expect to drive automatic breaks.
 :::
 
+## Measured live offset and DVR window
+
+Each time detection polls an origin, it also measures the origin's live offset and DVR window from its manifest. The live offset is how far a player following that manifest trails real time, and the DVR window is how much media the manifest makes available behind its live edge. In the Dashboard, the channel's **Break Detection** tab shows the detected live offset and DVR window of each origin.
+
+These measurements are used in two ways:
+
+- A channel without its own [live offset](./channels.mdx#live-offset) or [DVR window](./channels.mdx#dvr-window) follows the values measured on its highest-priority enabled origin that is online. When the channel has marker rules, only origins that a marker rule can match count.
+- Breaks created from an ad marker are timed against the live point of the origin the marker was found on.
+
+Because each origin is measured on its own, backups with a different latency or DVR window don't need matching channel settings. When detection fails over, a channel that follows the measurements switches to those of the origin now in use.
+
 ## Related resources
 
 | Resource                                  | Relationship                                                              |
