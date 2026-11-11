@@ -44,6 +44,45 @@ A channel can combine HLS and DASH origins of the same stream, for example a DAS
 - **With marker rules**, detection only considers origins whose stream type has at least one enabled rule. A channel with only `HLS` rules skips its DASH origins, and does not fall back to them when the HLS origins go offline.
 - To keep breaks coming after a failover, create equivalent `HLS` and `DASH` rules, for example the national, local, and catch-all rules from the [HLS](./marker-detection.mdx#example-national-and-local-breaks-on-hls) and [DASH](./marker-detection.mdx#example-national-and-local-breaks-on-dash) examples.
 
+## DRM-protected origins
+
+When your stream is DRM-protected, describe its DRM configuration in the origin's optional `drm` property:
+
+```json
+{
+  "id": "primary-hls",
+  "url": "https://cdn.example.com/live/index.m3u8",
+  "type": "HLS",
+  "enabled": true,
+  "drm": {
+    "integration": "ezdrm",
+    "widevine": { "licenseUrl": "https://license.example.com/widevine" },
+    "playready": { "licenseUrl": "https://license.example.com/playready" },
+    "fairplay": {
+      "licenseUrl": "https://license.example.com/fairplay",
+      "certificateUrl": "https://license.example.com/fairplay/certificate"
+    }
+  }
+}
+```
+
+| Property      | Description                                                                                                                                                            |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `integration` | Optional. The player DRM integration that shapes the license requests, such as `ezdrm` or `drmtoday`.                                                                  |
+| `widevine`    | Widevine: `{ licenseUrl }`.                                                                                                                                            |
+| `playready`   | PlayReady: `{ licenseUrl }`.                                                                                                                                           |
+| `fairplay`    | FairPlay: `{ licenseUrl, certificateUrl }`. `certificateUrl` is optional.                                                                                              |
+| `clearkey`    | ClearKey: `{ licenseUrl, keys }`, with a license URL, static keys, or both. `keys` is a list of `{ id, value }` pairs, the key ID and the key, both base64url-encoded. |
+
+Each key system is optional, but `drm` must contain at least one. License and certificate URLs must be public `http` or `https` URLs. A request with any other URL is rejected with `400 Bad Request`. When you update an origin, leave out `drm` to keep it, or set it to `null` to remove it.
+
+The DRM configuration is used in two places:
+
+- **Viewing the origin in the Dashboard.** The Dashboard player uses it to play the protected stream.
+- **Google DAI server-side beaconing streams.** When a [Google DAI](../integrations/google/dai.mdx) live stream with server-side beaconing is backed by this origin, the Break Manifest carries the origin's DRM configuration for that stream, which uses the same DRM as your origin.
+
+Break detection does not use it: detection only reads the manifests, not the protected media.
+
 ## Poll status
 
 Every origin reports its most recent poll by break detection in the read-only `lastPoll` property. Use it to check whether an origin is reachable and whether its manifest carries ad markers.
@@ -184,9 +223,10 @@ Because each origin is measured on its own, backups with a different latency or 
 
 ## Related resources
 
-| Resource                                  | Relationship                                                              |
-| ----------------------------------------- | ------------------------------------------------------------------------- |
-| [Channels](./channels.mdx)                | The parent of an origin. An origin always belongs to one channel.         |
-| [Break detection](./marker-detection.mdx) | Configure marker rules to turn ad markers in your stream into breaks.     |
-| [Templates](./templates.mdx)              | Reusable break presets that marker rules schedule when a marker matches.  |
-| [Breaks](./breaks.mdx)                    | The breaks created when detection matches a marker against a marker rule. |
+| Resource                                     | Relationship                                                                   |
+| -------------------------------------------- | ------------------------------------------------------------------------------ |
+| [Channels](./channels.mdx)                   | The parent of an origin. An origin always belongs to one channel.              |
+| [Break detection](./marker-detection.mdx)    | Configure marker rules to turn ad markers in your stream into breaks.          |
+| [Templates](./templates.mdx)                 | Reusable break presets that marker rules schedule when a marker matches.       |
+| [Breaks](./breaks.mdx)                       | The breaks created when detection matches a marker against a marker rule.      |
+| [Google DAI](../integrations/google/dai.mdx) | Uses the DRM configuration of the origin for its server-side beaconing stream. |
