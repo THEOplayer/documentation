@@ -34,7 +34,7 @@ Each time detection polls an origin, it also measures the origin's live offset a
 
 These measurements are used in two ways:
 
-- A channel without its own [live offset](./channels.mdx#live-offset) or [DVR window](./channels.mdx#dvr-window) follows the values measured on its highest-priority online origin. See [Where the values come from](./channels.mdx#where-the-values-come-from).
+- A channel without its own [live offset](./channels.mdx#live-offset) or [DVR window](./channels.mdx#dvr-window) follows the values measured on its highest-priority enabled origin that is online. When the channel has marker rules, only origins that a marker rule can match count.
 - Breaks created from an ad marker are timed against the live point of the origin the marker was found on.
 
 Because each origin is measured on its own, backups with a different latency or DVR window don't need matching channel settings. When detection fails over, a channel that follows the measurements switches to those of the origin now in use.
