@@ -5,7 +5,7 @@ sidebar_label: Origins
 
 # Origins
 
-An origin is a manifest URL that a channel monitors for ad markers. When [break detection](./marker-detection.mdx) is enabled, OptiView Ads fetches the channel's enabled origins and parses their manifests for markers. A channel can have multiple origins so that detection keeps working when one source goes offline.
+An origin is a manifest URL that a channel monitors for ad markers. While [break detection](./marker-detection.mdx) is [running](./marker-detection.mdx#start-and-stop-detection) on the channel, OptiView Ads fetches the channel's enabled origins and parses their manifests for markers. A channel can have multiple origins so that detection keeps working when one source goes offline.
 
 ## Origin identity
 
@@ -44,6 +44,172 @@ A channel can combine HLS and DASH origins of the same stream, for example a DAS
 - **With marker rules**, detection only considers origins whose stream type has at least one enabled rule. A channel with only `HLS` rules skips its DASH origins, and does not fall back to them when the HLS origins go offline.
 - To keep breaks coming after a failover, create equivalent `HLS` and `DASH` rules, for example the national, local, and catch-all rules from the [HLS](./marker-detection.mdx#example-national-and-local-breaks-on-hls) and [DASH](./marker-detection.mdx#example-national-and-local-breaks-on-dash) examples.
 
+## DRM-protected origins
+
+When your stream is DRM-protected, describe its DRM configuration in the origin's optional `drm` property:
+
+```json
+{
+  "id": "primary-hls",
+  "url": "https://cdn.example.com/live/index.m3u8",
+  "type": "HLS",
+  "enabled": true,
+  "drm": {
+    "integration": "ezdrm",
+    "widevine": { "licenseUrl": "https://license.example.com/widevine" },
+    "playready": { "licenseUrl": "https://license.example.com/playready" },
+    "fairplay": {
+      "licenseUrl": "https://license.example.com/fairplay",
+      "certificateUrl": "https://license.example.com/fairplay/certificate"
+    }
+  }
+}
+```
+
+| Property      | Description                                                                                                                                                            |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `integration` | Optional. The player DRM integration that shapes the license requests, such as `ezdrm` or `drmtoday`.                                                                  |
+| `widevine`    | Widevine: `{ licenseUrl }`.                                                                                                                                            |
+| `playready`   | PlayReady: `{ licenseUrl }`.                                                                                                                                           |
+| `fairplay`    | FairPlay: `{ licenseUrl, certificateUrl }`. `certificateUrl` is optional.                                                                                              |
+| `clearkey`    | ClearKey: `{ licenseUrl, keys }`, with a license URL, static keys, or both. `keys` is a list of `{ id, value }` pairs, the key ID and the key, both base64url-encoded. |
+
+Each key system is optional, but `drm` must contain at least one. License and certificate URLs must be public `http` or `https` URLs. A request with any other URL is rejected with `400 Bad Request`. When you update an origin, leave out `drm` to keep it, or set it to `null` to remove it.
+
+The DRM configuration is used in two places:
+
+- **Viewing the origin in the Dashboard.** The Dashboard player uses it to play the protected stream.
+- **Google DAI server-side beaconing streams.** When a [Google DAI](../integrations/google/dai.mdx) live stream with server-side beaconing is backed by this origin, the Break Manifest carries the origin's DRM configuration for that stream, which uses the same DRM as your origin.
+
+Break detection does not use it: detection only reads the manifests, not the protected media.
+
+## Poll status
+
+Every origin reports its most recent poll by break detection in the read-only `lastPoll` property. Use it to check whether an origin is reachable and whether its manifest carries ad markers.
+
+Detection polls the origin it uses at the pace of the stream. Enabled origins that the failover does not reach, such as backups behind an online primary, are still polled, less often (about once an hour), so every enabled origin reports a state. `lastPoll` is absent until detection has polled the origin, and is cleared when you change the origin's `url` or `type`.
+
+```json
+{
+  "id": "primary-hls",
+  "url": "https://cdn.example.com/live/index.m3u8",
+  "type": "HLS",
+  "enabled": true,
+  "priority": 0,
+  "lastPoll": {
+    "at": "2026-11-11T18:00:00.000Z",
+    "state": "ONLINE",
+    "requests": [
+      {
+        "at": "2026-11-11T18:00:00.120Z",
+        "kind": "MANIFEST",
+        "file": "index.m3u8",
+        "state": "ONLINE",
+        "httpStatus": 200,
+        "responseTimeMs": 95,
+        "downloadTimeMs": 120
+      },
+      {
+        "at": "2026-11-11T18:00:00.270Z",
+        "kind": "PLAYLIST",
+        "file": "720p.m3u8",
+        "state": "ONLINE",
+        "httpStatus": 200,
+        "responseTimeMs": 110,
+        "downloadTimeMs": 150
+      }
+    ],
+    "markersDetected": 2,
+    "markersSkipped": 0
+  }
+}
+```
+
+| Property                                    | Description                                                                                                                               |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `at`                                        | When the poll started.                                                                                                                    |
+| `state`                                     | The outcome of the poll: `ONLINE`, `OFFLINE`, or `ERROR`. See [Poll states](#poll-states).                                                |
+| `error`                                     | Why the poll failed: a `reason` and a `message`. Absent when `state` is `ONLINE`.                                                         |
+| `requests`                                  | Every file the poll fetched, in order. See [Fetched files](#fetched-files).                                                               |
+| `markersDetected`                           | The ad markers the manifest carried, before marker rules are applied. See [Marker counts](#marker-counts).                                |
+| `markersSkipped`                            | The marker tags and events in the manifest that could not be used as a marker. See [Marker counts](#marker-counts).                       |
+| `derivedLiveOffsetMs`, `derivedDvrWindowMs` | The live offset and DVR window measured on the manifest. See [Measured live offset and DVR window](#measured-live-offset-and-dvr-window). |
+
+### Poll states
+
+The state of a poll is the state of its last request:
+
+| `state`   | Meaning                                                                                       | `error.reason`                       |
+| --------- | --------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `ONLINE`  | The manifest was fetched and parsed. Detection can use the origin.                            | —                                    |
+| `OFFLINE` | The manifest could not be fetched. Detection falls back to the next enabled origin.           | `TIMEOUT`, `NETWORK`, or `HTTP`      |
+| `ERROR`   | The manifest was fetched but cannot be used. Detection falls back to the next enabled origin. | `PARSE`, `UNSUPPORTED`, or `NOT_VOD` |
+
+| `error.reason` | Meaning                                                                                                  |
+| -------------- | -------------------------------------------------------------------------------------------------------- |
+| `TIMEOUT`      | The origin did not respond in time.                                                                      |
+| `NETWORK`      | The connection failed, for example because the host name does not resolve or the connection was refused. |
+| `HTTP`         | The origin answered with an error status. The request's `httpStatus` holds it.                           |
+| `PARSE`        | The file is not a valid HLS playlist or DASH MPD.                                                        |
+| `UNSUPPORTED`  | Detection does not read this origin type, such as `HESP`.                                                |
+| `NOT_VOD`      | On a VOD channel, the origin serves a live manifest.                                                     |
+
+`error.message` adds the details, such as the HTTP status line or the parser message.
+
+### Fetched files
+
+`requests` lists every file the poll fetched. For an HLS origin, that is the multivariant playlist, then the media playlist that detection reads, with every variant it tried. For a DASH origin, it is the MPD.
+
+| Property         | Description                                                                        |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| `at`             | When the file was fetched.                                                         |
+| `kind`           | `MANIFEST` for the file at the origin `url`, `PLAYLIST` for an HLS media playlist. |
+| `file`           | The file name, without path or query, such as `720p.m3u8` or `live.mpd`.           |
+| `state`, `error` | The outcome of this request, as described in [Poll states](#poll-states).          |
+| `httpStatus`     | The HTTP status of the response. Absent when no response arrived.                  |
+| `responseTimeMs` | Milliseconds until the response headers arrived.                                   |
+| `downloadTimeMs` | Milliseconds until the whole file was downloaded.                                  |
+
+### Marker counts
+
+The marker counts describe the manifest of that one poll:
+
+- **`markersDetected`** is the number of ad markers the manifest carried: HLS `#EXT-X-CUE-OUT` and `#EXT-X-DATERANGE` tags, or DASH SCTE-35 events, before marker rules are applied. `0` means the manifest was read but carries no markers.
+- **`markersSkipped`** is the number of marker tags and events that did not become a marker: a DASH event that does not open an ad break, a malformed marker, or a marker without a resolvable start.
+
+Both are absent when the manifest could not be parsed.
+
+The counts relate to [detection history](./marker-detection.mdx#detection-history) as follows:
+
+- A marker stays in the manifest for several polls, so it is counted on every poll, but recorded once in detection history.
+- Each skipped marker is recorded in detection history as `SKIPPED`, with `MARKER_NOT_AD_OUT`, `MARKER_MALFORMED`, or `MARKER_MISSING_START` as the `reason`.
+- Only the origin that detection uses records markers in detection history and creates breaks. On an origin the failover does not reach, the counts show what its manifest carries without recording anything.
+
+## Poll history
+
+Each poll is also kept in the origin's poll history:
+
+```text
+GET /channels/{channelId}/origins/{originId}/history
+```
+
+The history lists the polls of the origin, newest first, in the same shape as `lastPoll` plus the `originId`. The list is paginated, can be filtered on `at` and `state`, and sorted on `at`. For example, `?filter=state==OFFLINE` returns the polls that could not fetch the manifest.
+
+Poll history is kept for a limited time, one day by default. Older polls are no longer returned.
+
+## Unreachable origin or manifest without markers?
+
+When a channel creates no breaks, the poll status tells you where to look:
+
+| `lastPoll`                                       | What it means                                                                                                                                                                                                |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `state` is `OFFLINE`                             | Detection cannot reach the origin. Check `error.reason` and the `httpStatus` of the last request, and that the URL is reachable from the public internet.                                                    |
+| `state` is `ERROR`                               | The origin answers, but its manifest cannot be used. Check `error.reason` and `error.message`.                                                                                                               |
+| `state` is `ONLINE`, `markersDetected` is `0`    | The origin is reachable, but its manifest currently carries no ad markers. Check that your packager writes the markers into the manifest. See [Supported markers](./marker-detection.mdx#supported-markers). |
+| `state` is `ONLINE`, `markersDetected` above `0` | The origin and its markers are fine. Check [detection history](./marker-detection.mdx#detection-history) to see why the markers did not become breaks.                                                       |
+
+Use the [poll history](#poll-history) to see since when an origin is offline, or whether it fails only now and then.
+
 ## Measured live offset and DVR window
 
 Each time detection polls an origin, it also measures the origin's live offset and DVR window from its manifest. The live offset is how far a player following that manifest trails real time, and the DVR window is how much media the manifest makes available behind its live edge. In the Dashboard, the channel's **Break Detection** tab shows the detected live offset and DVR window of each origin.
@@ -57,9 +223,10 @@ Because each origin is measured on its own, backups with a different latency or 
 
 ## Related resources
 
-| Resource                                  | Relationship                                                              |
-| ----------------------------------------- | ------------------------------------------------------------------------- |
-| [Channels](./channels.mdx)                | The parent of an origin. An origin always belongs to one channel.         |
-| [Break detection](./marker-detection.mdx) | Configure marker rules to turn ad markers in your stream into breaks.     |
-| [Templates](./templates.mdx)              | Reusable break presets that marker rules schedule when a marker matches.  |
-| [Breaks](./breaks.mdx)                    | The breaks created when detection matches a marker against a marker rule. |
+| Resource                                     | Relationship                                                                   |
+| -------------------------------------------- | ------------------------------------------------------------------------------ |
+| [Channels](./channels.mdx)                   | The parent of an origin. An origin always belongs to one channel.              |
+| [Break detection](./marker-detection.mdx)    | Configure marker rules to turn ad markers in your stream into breaks.          |
+| [Templates](./templates.mdx)                 | Reusable break presets that marker rules schedule when a marker matches.       |
+| [Breaks](./breaks.mdx)                       | The breaks created when detection matches a marker against a marker rule.      |
+| [Google DAI](../integrations/google/dai.mdx) | Uses the DRM configuration of the origin for its server-side beaconing stream. |
