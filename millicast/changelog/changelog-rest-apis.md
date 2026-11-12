@@ -2,6 +2,13 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-11-11 | REST APIs
+
+### Features
+
+- Media assets can now be tagged. Assign up to 10 tags when calling [Register Media Asset](/millicast/api/media-assets-register-media-asset) or [Create Media Asset](/millicast/api/media-assets-create-media-asset), and replace or clear them with [Update Media Asset](/millicast/api/media-assets-update-media-asset). Tags are returned on media asset responses
+- [List Media Assets](/millicast/api/media-assets-list-media-assets) can filter by tags using the `tags` query parameter. Set `tagsMatch` to `all` (default) to return assets with every given tag, or `any` to return assets with at least one of them
+
 ## 2026-05-25 | REST APIs
 
 ### Features
