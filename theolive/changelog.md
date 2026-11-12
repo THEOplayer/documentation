@@ -1,5 +1,10 @@
 # Changelog
 
+## [11.16.1] - 2026-11-12
+
+- Fixed choppy playback and interruptions every few minutes on channels ingesting interlaced 10-bit
+  4:2:2 SDR video, a regression in 11.15.0
+
 ## [11.16.0] - 2026-11-12
 
 - Fixed playback and recording failures at the start of HLS (CMAF) streams; media timestamps now start
