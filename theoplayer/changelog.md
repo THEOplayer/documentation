@@ -9,6 +9,26 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.15.1 (2026/11/10)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where CMCD data was missing from preload hint requests of OptiView Live Streaming low-latency HLS streams.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where the player did not switch back to a higher quality after a temporary bandwidth drop on low-latency HLS streams with preload hints, such as OptiView Live Streaming.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where CMCD data was missing from partial segment requests of OptiView Live Streaming low-latency HLS streams.
+
 ## 🚀 11.15.0 (2026/11/04)
 
 ### General
