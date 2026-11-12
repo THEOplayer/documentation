@@ -45,7 +45,7 @@
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="adsremaining"><code class="tsd-tag">Optional</code><span>ads<wbr/>Remaining</span><a href="#adsremaining" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">adsRemaining</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
-<div class="tsd-comment tsd-typography"><p>Number of ads remaining including the currently playing one; after an ad ends, the ads still to come.</p>
+<div class="tsd-comment tsd-typography"><p>Number of ads remaining including the currently playing one; after an ad ends, the ads still to come. Zero on <code>complete</code>, including cuts/errors.</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="break"><span>break</span><a href="#break" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
@@ -55,7 +55,7 @@
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="breakremainingsec"><code class="tsd-tag">Optional</code><span>break<wbr/>Remaining<wbr/>Sec</span><a href="#breakremainingsec" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">breakRemainingSec</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
-<div class="tsd-comment tsd-typography"><p>Estimated seconds left in the active break; <code>undefined</code> when not yet derivable (e.g. a backdrop break with no per-ad <code>timeupdate</code>).</p>
+<div class="tsd-comment tsd-typography"><p>Estimated seconds left in the active break; zero on <code>complete</code>, not a measure of ads watched. <code>undefined</code> when not yet derivable (e.g. a backdrop break with no per-ad <code>timeupdate</code>).</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="deliverymode"><code class="tsd-tag">Optional</code><span>delivery<wbr/>Mode</span><a href="#deliverymode" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
@@ -77,7 +77,7 @@ server-side beaconing stream and the adapter can gate external playback).</p>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="phase"><span>phase</span><a href="#phase" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">phase</span><span class="tsd-signature-symbol">:</span> <a href="../types/AdBreakPhase.html" class="tsd-signature-type tsd-kind-type-alias">AdBreakPhase</a></div>
-<div class="tsd-comment tsd-typography"><p>Current lifecycle phase of the ad break.</p>
+<div class="tsd-comment tsd-typography"><p>Current lifecycle phase. <code>complete</code> is transient; polling after cleanup returns <code>idle</code>.</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="secondsuntilbreak"><code class="tsd-tag">Optional</code><span>seconds<wbr/>Until<wbr/>Break</span><a href="#secondsuntilbreak" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>

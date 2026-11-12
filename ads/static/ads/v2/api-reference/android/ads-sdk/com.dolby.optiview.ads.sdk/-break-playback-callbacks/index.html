@@ -38,7 +38,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">1.4.0
+        <div class="library-version" id="library-version">1.6.0
         </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
@@ -125,7 +125,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="on-ad-error.html"><span class="token function">onAdError</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">brk<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break/index.html">Break</a><span class="token punctuation">, </span></span><span class="parameter ">assetId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">error<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Asset <a href="on-ad-error.html">assetId</a> of <a href="on-ad-error.html">brk</a> failed with <a href="on-ad-error.html">error</a>; null <a href="on-ad-error.html">assetId</a> when no asset was playing yet.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="on-ad-error.html"><span class="token function">onAdError</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">brk<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break/index.html">Break</a><span class="token punctuation">, </span></span><span class="parameter ">assetId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">error<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Failed before start: error only; failed after start: error then end. Null means no selected asset.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -276,6 +276,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-content-resume-seek.html"><span class="token function">onContentResumeSeek</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">targetSeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">breakEndSeconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The renderer is about to seek content back to <a href="on-content-resume-seek.html">targetSeconds</a> as its own post-break resume-seek, for a break ending at <a href="on-content-resume-seek.html">breakEndSeconds</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1110459031%2FFunctions%2F2076289483" anchor-label="onSlateProgress" id="-1110459031%2FFunctions%2F2076289483" data-filterable-set=":ads-sdk/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ads-sdk/main" data-filterable-set=":ads-sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-slate-progress.html"><span>on</span><wbr><span>Slate</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1110459031%2FFunctions%2F2076289483"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ads-sdk/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-slate-progress.html"><span class="token function">onSlateProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">brk<span class="token operator">: </span><a href="../../../ads-sdk-core/com.dolby.optiview.ads.core/-break/index.html">Break</a><span class="token punctuation">, </span></span><span class="parameter ">remainingSec<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">presenting<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The slate of <a href="on-slate-progress.html">brk</a> plays: <a href="on-slate-progress.html">remainingSec</a> is the wall time left to the break's scheduled end, <a href="on-slate-progress.html">presenting</a> is false while the slate loads or stalls. Feeds the break countdown only: the slate emits no ad event.</p></div></div></div>
                 </div>
               </div>
             </div>
