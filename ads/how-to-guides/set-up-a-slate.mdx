@@ -86,7 +86,7 @@ curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
 | `assets[].interaction.clickThrough`    | Optional URL to open when the viewer clicks the slate.                                                                                             |
 | `assets[].mimeType`, `assetParameters` | Optional, as on any [static asset](../concepts/breaks.mdx#static-assets).                                                                          |
 
-The slate is replaced as a whole on every update. Once the channel has a slate, an update must carry the asset `id`: send its current `id` to change that slate, or a new `id` to replace it with a new slate. An update without an `id` is rejected with `400` and the reason `SLATE_ID_REQUIRED`. To remove the slate, set it to `null`:
+The slate is replaced as a whole on every update. Once the channel has a slate, an update must carry the asset `id`: send its current `id` to change that slate, or a new `id` to replace it with a new slate. An update without an `id` is rejected with `400`: `The channel already has a slate: pass the id of its asset to update it, or a new id to replace it with another slate`. To remove the slate, set it to `null`:
 
 ```bash
 curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
