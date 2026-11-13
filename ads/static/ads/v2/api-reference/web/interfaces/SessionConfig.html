@@ -83,9 +83,9 @@ SessionConfig, <code>updateAssetParameters()</code>, manifest session parameters
 <h3 class="tsd-anchor-link" id="manifesturl"><code class="tsd-tag">Optional</code><span>manifest<wbr/>Url</span><a href="#manifesturl" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">manifestUrl</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>Full break-manifest URL. The SDK fetches exactly this URL and never rewrites it (proxied,
-signed or opaque endpoints all work). When omitted, the SDK uses the ads manifest URL the
-content player discovered (see <code>PlayerAdapter.discoveredAdsManifestUrl</code>); the session then
-also auto-restarts when the player reports a different discovered URL, and ends when the
+signed or opaque endpoints all work). Optional only when <code>OptiViewAdsConfig.manifestUrlDiscovery</code>
+is <code>true</code>: the SDK then uses the ads manifest URL the content player discovered (see
+<code>PlayerAdapter.discoveredAdsManifestUrl</code>); the session then also auto-restarts when the player reports a different discovered URL, and ends when the
 player reports there is none.</p>
 </div></section></section></details></div>
 <div class="col-sidebar">
