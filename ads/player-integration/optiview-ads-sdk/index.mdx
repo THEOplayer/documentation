@@ -54,10 +54,21 @@ The SDK also exposes optional presentation settings — such as ad preloading, b
 
 ### Session configuration
 
-| Property          | Description                                                                                                                                                                                          |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `manifestUrl`     | The channel's Break Manifest URL. **Required.** See [Retrieving the required values](#retrieving-the-required-values).                                                                               |
-| `assetParameters` | Session-level ad targeting parameters: appended to static asset and VAST tag URLs, or sent to Google as `adTagParameters`. See [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx). |
+| Property          | Description                                                                                                                                                                                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `manifestUrl`     | The channel's Break Manifest URL. **Required**, unless `manifestUrlDiscovery` is enabled in the SDK configuration and the content player discovers the manifest URL itself (THEOplayer with a THEOlive source). See [Retrieving the required values](#retrieving-the-required-values). |
+| `assetParameters` | Session-level ad targeting parameters: appended to static asset and VAST tag URLs, or sent to Google as `adTagParameters`. See [Ad targeting parameters](../../how-to-guides/ad-tag-parameters.mdx).                                                                                   |
+
+## Scheduled ad breaks
+
+To draw ad markers on your scrubber, read the breaks scheduled for the current viewer with `getScheduledBreaks()` and listen for the `scheduledbreakschange` event, which fires whenever the list changes (for example after a manifest update, when a break has played, or with an empty list when the session ends). Each entry has an `id`, a `position`, a start (`startSec` in content seconds, or `startDate` for wallclock breaks), a `durationSec` and a `played` flag.
+
+```js
+renderMarkers(sdk.getScheduledBreaks());
+sdk.addEventListener('scheduledbreakschange', ({ breaks }) => renderMarkers(breaks));
+```
+
+The same API is available on Android, iOS and React Native.
 
 ## Retrieving the required values
 

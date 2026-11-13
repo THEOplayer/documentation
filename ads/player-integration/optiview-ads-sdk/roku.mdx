@@ -114,9 +114,28 @@ m.player.source = {
 
 The player only starts the integration for sources with this `ssai` description, and the integration accepts the source only while the SDK session is active. Do not call the integration's functions yourself; the player invokes them. Destroying the player with `player.callFunc("destroy")` tears the integration down; destroy the `OptiViewAds` node afterwards. See the [Roku API reference](pathname:///ads/v2/api-reference/roku/#component-OptiViewAdsSDKIntegration) for details.
 
+## Using the THEOlive discovery interceptor
+
+For THEOlive channels with server-side ad insertion, set `OptiViewAds:OptiViewAdsInterceptor` as the player's discovery response interceptor. It replaces the stream the player discovers with the stream the SDK obtained for the session. Bind `adsSdk` before calling `startSession`, and pass the THEOlive channel ID as `contentUrl`:
+
+```brightscript
+m.interceptor = createObject("roSGNode", "OptiViewAds:OptiViewAdsInterceptor")
+m.interceptor.adsSdk = m.ads
+m.player.theoLive.discoveryResponseInterceptor = m.interceptor
+m.ads.callFunc("startSession", { contentUrl: theoLiveChannelId, manifestUrl: breakManifestUrl })
+```
+
+On the `ready` result, set the source with the integration kind:
+
+```brightscript
+m.player.source = { sources: [{ src: theoLiveChannelId, type: "theolive", ssai: { integration: "optiview-ads-sdk" } }] }
+```
+
+Reset `discoveryResponseInterceptor` and `adsSdk` to `invalid` when you tear the player down. See the [Roku API reference](pathname:///ads/v2/api-reference/roku/#component-OptiViewAdsInterceptor) for details.
+
 ## Events and configuration
 
-Subscribe to ad and diagnostic events with the same `addEventListener` pattern. Each listener owner must expose its callback as an interface function. Remove a listener with `removeEventListener`, using the same event type, owner, and function name.
+Subscribe to ad and diagnostic events with the same `addEventListener` pattern. While an ad plays, the SDK emits `adtimeupdate` every 0.25 seconds with the ad's `currentTime` and `duration`, for server-guided and server-side ad insertion. Ad and break events carry an `eventId` when a channel event applies. Each listener owner must expose its callback as an interface function. Remove a listener with `removeEventListener`, using the same event type, owner, and function name.
 
 The SDK also exposes session configuration, ad targeting updates, status snapshots, and capability information. See the [Roku API reference](pathname:///ads/v2/api-reference/roku/) for the full interface.
 

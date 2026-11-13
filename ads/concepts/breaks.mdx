@@ -175,7 +175,7 @@ A `start` break is a **pre-roll**: it fires when content playback begins, once p
 
 #### Pause
 
-A `pause` break is a **pause ad**: it fires every time the viewer pauses playback and is dismissed when the viewer resumes. Use it to monetize the pause screen, typically with an image overlay. With a `delay`, the break appears after the viewer has been paused for that many seconds. If the viewer resumes before the delay elapses, it cancels the pending break. When multiple `pause` breaks are defined, each pause shows the next one in order.
+A `pause` break is a **pause ad**: it fires when the viewer pauses playback and is dismissed when the viewer resumes. Use it to monetize the pause screen, typically with an image overlay. With a `delay`, the break appears after the viewer has been paused for that many seconds. If the viewer resumes before the delay elapses, it cancels the pending break. When multiple `pause` breaks are defined, each pause shows the next one in order. After the last one has been shown, further pauses show no pause ad.
 
 #### End
 
