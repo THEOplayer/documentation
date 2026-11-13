@@ -530,7 +530,7 @@ Google Ad Manager can fill a pod up to its duration with the slate you configure
 
 ### Reporting
 
-The slate is not an ad: it is not reported as ad playback and triggers no ad events. A click on the slate is reported with the slate asset's `id`.
+The slate is not an ad: it is not reported as ad playback and emits no `adbegin` or `adend` events, so ad counts are unaffected. A click on the slate is reported as `adclick` with the slate asset's `id`.
 
 ### Platform support
 
