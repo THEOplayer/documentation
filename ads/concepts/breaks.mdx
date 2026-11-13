@@ -155,13 +155,13 @@ This section describes the different possibilities of a break: its general prope
 
 Every break carries these general properties:
 
-| Property       | Description                                                                                                                                                                                                  |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `start`        | When the break starts: a position on the channel's timebase (see [Timebase-based scheduling](#timebase-based-scheduling)), or a player event (see [Event based triggers](#event-based-triggers)).            |
-| `duration`     | The **maximum** duration of the break, in seconds. When the ad content is longer, the player returns to the content when the duration is reached; when it is shorter, the player returns early.              |
-| `resumeOffset` | Where the player resumes the content after the break, in seconds relative to the break's start. `0` resumes at the point where the break started; when omitted, playback resumes after the break's duration. |
-| `controls`     | What the viewer is allowed to do during the break — see [Controls](#controls).                                                                                                                               |
-| `variant`      | The ad experience(s) to render: the layout and its assets, optionally targeted per device — see [Layouts](#layouts) and [Variants](#variants).                                                               |
+| Property       | Description                                                                                                                                                                                                                                                                                                            |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `start`        | When the break starts: a position on the channel's timebase (see [Timebase-based scheduling](#timebase-based-scheduling)), or a player event (see [Event based triggers](#event-based-triggers)).                                                                                                                      |
+| `duration`     | The **maximum** duration of the break, in seconds. When the ad content is longer, the player returns to the content when the duration is reached; when it is shorter, the rest of the break is filled with the manifest's [slate](./break-manifest.mdx#slate), or the player returns early when the manifest has none. |
+| `resumeOffset` | Where the player resumes the content after the break, in seconds relative to the break's start. `0` resumes at the point where the break started; when omitted, playback resumes after the break's duration.                                                                                                           |
+| `controls`     | What the viewer is allowed to do during the break — see [Controls](#controls).                                                                                                                                                                                                                                         |
+| `variant`      | The ad experience(s) to render: the layout and its assets, optionally targeted per device — see [Layouts](#layouts) and [Variants](#variants).                                                                                                                                                                         |
 
 ### Event based triggers
 
@@ -175,7 +175,7 @@ A `start` break is a **pre-roll**: it fires when content playback begins, once p
 
 #### Pause
 
-A `pause` break is a **pause ad**: it fires every time the viewer pauses playback and is dismissed when the viewer resumes. Use it to monetize the pause screen, typically with an image overlay. With a `delay`, the break appears after the viewer has been paused for that many seconds. If the viewer resumes before the delay elapses, it cancels the pending break. When multiple `pause` breaks are defined, each pause shows the next one in order.
+A `pause` break is a **pause ad**: it fires when the viewer pauses playback and is dismissed when the viewer resumes. Use it to monetize the pause screen, typically with an image overlay. With a `delay`, the break appears after the viewer has been paused for that many seconds. If the viewer resumes before the delay elapses, it cancels the pending break. When multiple `pause` breaks are defined, each pause shows the next one in order. After the last one has been shown, further pauses show no pause ad.
 
 #### End
 
@@ -265,6 +265,14 @@ The layout (`format`) of a variant determines how the ad and your content share 
     }
   ]
 }
+```
+
+##### Anchor
+
+Both L-shape formats accept an optional `anchor` that picks the corner of the picture the video box is anchored to: `top_left` (default), `top_right`, `bottom_left` or `bottom_right`. The ad band runs along the two other edges, so use artwork that matches the anchor. An unrecognised value renders as `top_left`; the break is not dropped.
+
+```json
+{ "format": "lshape_ad", "anchor": "bottom_right", "assets": [ ... ] }
 ```
 
 #### L-shape content

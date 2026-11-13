@@ -286,7 +286,7 @@ interceptor.adsSdk = ads ' the OptiViewAds node, bound before startSession
 player.theoLive.discoveryResponseInterceptor = interceptor
 ads.callFunc(&quot;startSession&quot;, { contentUrl: theoLiveChannelId, manifestUrl: breakManifestUrl })
 ' On the &quot;ready&quot; result of startSession:
-player.source = { sources: [{ src: theoLiveChannelId, type: &quot;theolive&quot;, ssai: { integration: integration.integrationKind } }] }</code></pre>
+player.source = { sources: [{ src: theoLiveChannelId, type: &quot;theolive&quot;, ssai: { integration: &quot;optiview-ads-sdk&quot; } }] }</code></pre>
 <ul>
 <li>Bind <code>adsSdk</code> before calling <code>startSession</code>: the interceptor learns the DAI stream from the <code>startSession</code> <code>ready</code> result (<code>playbackUrl</code>, <code>ssaiStream.assetKey</code>, <code>deliveryMode: &quot;ssai&quot;</code>) and forgets it when the start fails, is superseded, or the session ends or is destroyed.</li>
 <li>Pass the THEOlive channel ID as <code>contentUrl</code> so the Ads SDK does not stitch content before the delivery mode is known; the player resolves the content through discovery. SGAI with THEOlive is not supported yet.</li>
