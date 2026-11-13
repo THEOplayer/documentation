@@ -129,6 +129,8 @@ The "Why this ad?" parameter (`wta`) declares whether the player renders Google'
 
 A Google pod break can only be punched after Google has decisioned it — that is, once it has left the `PREPARING` state.
 
+When Google cannot fill a pod up to its duration, it can play the slate you configured in Google Ad Manager; that time is part of the pod. A channel [slate](../../concepts/breaks.mdx#slate) only covers the time after the pod ends, or the whole break when the pod cannot play.
+
 ## Troubleshooting
 
 A break that fails ends up in the `ERROR` state with an `errorReason` explaining what went wrong:
