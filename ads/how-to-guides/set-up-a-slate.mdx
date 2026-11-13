@@ -48,7 +48,7 @@ The first entry that matches the device is used; the entry without `targeting` c
    - **Asset**: the **Media Type** (image or video), the **URI**, and optionally **Device-specific URIs**, the **MIME type**, **Asset Parameters**, and a **Click-through URL**.
 4. Click **Preview** to check the media, then **Save**.
 
-The slate takes effect with the channel's next Break Manifest. Use **Edit** on the Slate card to change it, and **Delete** to remove it: players then stop showing the slate.
+Players pick up the slate through the channel's Break Manifest, see [Check the Break Manifest](#check-the-break-manifest). Use **Edit** on the Slate card to change it, and **Delete** to remove it: players then stop showing the slate.
 
 ### With the Ads API
 
@@ -120,7 +120,7 @@ The channel's [Break Manifest](../concepts/break-manifest.mdx) now carries the s
 }
 ```
 
-A change to the slate reaches players with the next manifest poll, and applies the next time a slate starts. A slate that is already playing continues until its break ends.
+A change to the slate reaches players with the next manifest poll on a live channel, and with the next playback session on a VOD channel. It applies the next time a slate starts. A slate that is already playing continues until its break ends.
 
 ## What viewers see
 
