@@ -77,6 +77,7 @@ Instead of scheduling every break, add the asset as an [origin](../../concepts/o
 - **Server-side:** Google stitches the ads into the asset, and the player plays the stitched stream.
 - Ads are decisioned per viewer session rather than per break moment, because every viewer watches from their own position: there is no audience-wide peak at a break start.
 - With `snapback`, a viewer who seeks past a break is taken back to the break first. See [Seeking and snapback](./index.mdx#seeking-and-snapback).
+- Server-guided, a channel [slate](../../concepts/breaks.mdx#slate) covers the time after the pod ends, or the whole break when the pod cannot play. Google's own slate inside the pod plays as configured in Google Ad Manager.
 
 ## What your app needs
 

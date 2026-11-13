@@ -155,13 +155,13 @@ This section describes the different possibilities of a break: its general prope
 
 Every break carries these general properties:
 
-| Property       | Description                                                                                                                                                                                                  |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `start`        | When the break starts: a position on the channel's timebase (see [Timebase-based scheduling](#timebase-based-scheduling)), or a player event (see [Event based triggers](#event-based-triggers)).            |
-| `duration`     | The **maximum** duration of the break, in seconds. When the ad content is longer, the player returns to the content when the duration is reached; when it is shorter, the player returns early.              |
-| `resumeOffset` | Where the player resumes the content after the break, in seconds relative to the break's start. `0` resumes at the point where the break started; when omitted, playback resumes after the break's duration. |
-| `controls`     | What the viewer is allowed to do during the break — see [Controls](#controls).                                                                                                                               |
-| `variant`      | The ad experience(s) to render: the layout and its assets, optionally targeted per device — see [Layouts](#layouts) and [Variants](#variants).                                                               |
+| Property       | Description                                                                                                                                                                                                                               |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `start`        | When the break starts: a position on the channel's timebase (see [Timebase-based scheduling](#timebase-based-scheduling)), or a player event (see [Event based triggers](#event-based-triggers)).                                         |
+| `duration`     | The **maximum** duration of the break, in seconds. When the ad content is longer, the player returns to the content when the duration is reached; when it is shorter, the player returns early, unless the channel has a [slate](#slate). |
+| `resumeOffset` | Where the player resumes the content after the break, in seconds relative to the break's start. `0` resumes at the point where the break started; when omitted, playback resumes after the break's duration.                              |
+| `controls`     | What the viewer is allowed to do during the break — see [Controls](#controls).                                                                                                                                                            |
+| `variant`      | The ad experience(s) to render: the layout and its assets, optionally targeted per device — see [Layouts](#layouts) and [Variants](#variants).                                                                                            |
 
 ### Event based triggers
 
@@ -483,6 +483,71 @@ For `static` and `vast` assets, the `uri` can also be a list of `{ value, target
 ```
 
 The selection rules match [Variants](#variants): an entry without `targeting` is the default, and when several entries match, the order in the list decides which one is used.
+
+## Slate
+
+A slate is an image or a video that the player shows during the part of a break that no ad covers. Ad servers do not always fill a break completely. Without a slate, the player returns to your content early, and viewers see whatever your stream shows during the break. With a slate, every break is covered from its start to its end.
+
+The slate is set on the [channel](./channels.mdx#slate) and applies to every break of that channel. See [Set up a slate](../how-to-guides/set-up-a-slate.mdx) for how to prepare the media and configure it.
+
+### When the slate plays
+
+The slate starts in two cases:
+
+- **No ad can play.** The ad server returns no ad, a pod comes back empty, the ad request fails, every ad fails before it starts, or the device cannot play any of the assets. The slate covers the whole break, and the break still begins and ends like any other break. A break without a [variant](#variants) that targets the device is not shown at all, and has no slate either.
+- **The ads end before the break ends.** The ads are shorter than the break, or an ad fails and there is no other ad to play. The slate starts when the last ad ends and covers the rest of the break.
+
+The time the player spends loading an ad is not covered by the slate. The slate never extends the break: it is cut at the break end, and your content returns at the resume point the break defines. Slate time counts as played break time, so on a VOD channel a break whose ads end early resumes at its `resumeOffset` (its `duration` when omitted) instead of after the time the ads played.
+
+When less than the slate's minimum duration (`minDuration`, default 5 seconds) is left in the break, the player does not start the slate and returns to your content, so viewers never see a slate for only a moment.
+
+For example, with a 60-second break and the default minimum duration of 5 seconds:
+
+| What happens in the break     | What the viewer sees                                             |
+| ----------------------------- | ---------------------------------------------------------------- |
+| A 60-second ad plays          | The ad for 60 seconds. No slate.                                 |
+| A 45-second ad plays          | The ad for 45 seconds, then the slate for the last 15 seconds.   |
+| The ad server returns no ad   | The slate for the whole 60 seconds.                              |
+| The ad fails after 20 seconds | The ad for 20 seconds, then the slate for the last 40 seconds.   |
+| A 57-second ad plays          | The ad for 57 seconds, then your content: 3 seconds are below 5. |
+
+### How the slate plays
+
+- **Video and image.** A video slate always starts from its beginning and plays again from the start as often as needed. An image slate stays on screen.
+- **Same layout.** The slate takes the place of the ad in the break's [layout](#layouts): the full player surface for Single, the ad box for Double Box and L-shape ad, the backdrop for L-shape content, and the overlay box for Overlay. In Double Box and L-shape ad, the companion of the break stays on screen next to the slate.
+- **Part of the break.** The break's [controls](#controls), snapback, and `resumeOffset` apply to the slate as they apply to the ads. This works the same on live and VOD channels.
+- **Viewers who tune in during a break.** On a live stream, a viewer who joins during a break starts at their position in the break. When the slate covers that part of the break, it starts from its own beginning, and only when at least the minimum duration of the break is left.
+- **Click-through.** When the slate asset has an `interaction.clickThrough`, clicks on the slate use it. The click-through of an earlier ad in the break never applies to the slate. Clicks work as they do on ads: the SDK reports the click and hands the URL to your app, which decides how to open it.
+- **Updates.** A change to the slate, or its removal, applies the next time a slate starts. A slate that is playing continues until its break ends.
+
+### When the slate cannot play
+
+When the player cannot load or play the slate, the SDK emits an `aderror` event that carries the slate asset, and the break continues as without a slate: your content returns. Your app can listen for this event to detect a broken slate.
+
+### Google Ad Manager pods
+
+Google Ad Manager can fill a pod up to its duration with the slate you configured in Google Ad Manager. That time belongs to the pod, so the Google slate keeps working as before. The OptiView Ads slate only covers the time after the pod ends, or the whole break when the pod cannot play.
+
+### Reporting
+
+The slate is not an ad: it is not reported as ad playback and emits no `adbegin` or `adend` events, so ad counts are unaffected. A click on the slate is reported as `adclick` with the slate asset's `id`.
+
+### Platform support
+
+The slate is shown by the OptiView Ads SDK **version 1.6.0 or later**:
+
+| Platform                    | Slate                                                                                                                                                                                                                                                                                                      |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Web                         | Yes. On devices where the ad and the content share one video element, such as iPhone Safari, only a video slate is shown, and only in a break that has an ad to start with: a break without an ad, and an L-shape content break, show no slate there. An ad that fails to load or play does get the slate. |
+| Android, Android TV         | Yes.                                                                                                                                                                                                                                                                                                       |
+| iOS, tvOS                   | Yes. A break that plays in picture-in-picture shows no slate.                                                                                                                                                                                                                                              |
+| React Native (Android, iOS) | Yes.                                                                                                                                                                                                                                                                                                       |
+| Roku                        | Not yet. Breaks play as without a slate.                                                                                                                                                                                                                                                                   |
+
+On every platform, these breaks show no slate:
+
+- **Server-side ad insertion (SSAI).** The stitched stream fills the break itself, also while the player plays a server-side beaconing stream. Pre-rolls and post-rolls that the SDK plays itself on an SSAI device do get the slate.
+- **Pause ads.** A [pause](#pause) break shows its pause ad until the viewer resumes.
 
 ## Related resources
 

@@ -52,6 +52,7 @@ The Break Manifest document contains the following top-level properties:
 | `vendorConfiguration` | Session-level configuration per vendor integration — for example, the Google Ad Manager network code and asset keys the player needs to create the stream session. See [Google Ad Manager vendor configuration](#google-ad-manager-vendor-configuration). |
 | `breaks`              | The breaks currently relevant for the channel. Each entry carries the break's schedule, controls, and variants — see [Breaks](./breaks.mdx) for what a break contains.                                                                                    |
 | `events`              | The channel's events in and ahead of the DVR window, with the ad configuration in effect during each. See [Events](#events).                                                                                                                              |
+| `slate`               | The media the player shows during the part of a break that no ad covers: the channel's `minDuration` and slate asset, without its `name`. Omitted when the channel has no slate. See [Slate](./breaks.mdx#slate).                                         |
 
 Everything inside a break entry — `start`, `duration`, `resumeOffset`, `controls`, and `variant` — is described on the [Breaks](./breaks.mdx) page.
 
