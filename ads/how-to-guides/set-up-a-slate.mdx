@@ -76,15 +76,15 @@ curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
   }'
 ```
 
-| Property                               | Description                                                                                                                                        |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                                 | Optional name for you to recognize the slate. It is not part of the Break Manifest.                                                                |
-| `minDuration`                          | Optional. The seconds (≥ 0) of the break that must remain for the player to start the slate. Default: 5 seconds. `0` starts the slate for any gap. |
-| `assets`                               | Exactly one static image or video asset, without `duration`: the slate always fills the rest of the break.                                         |
-| `assets[].id`                          | Identifies the slate in reporting. Generated when omitted on a channel without a slate.                                                            |
-| `assets[].uri`                         | The URL of the media, or a list of URLs with [targeting](#different-media-per-device).                                                             |
-| `assets[].interaction.clickThrough`    | Optional URL to open when the viewer clicks the slate.                                                                                             |
-| `assets[].mimeType`, `assetParameters` | Optional, as on any [static asset](../concepts/breaks.mdx#static-assets).                                                                          |
+| Property                                        | Description                                                                                                                                        |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                                          | Optional name for you to recognize the slate. It is not part of the Break Manifest.                                                                |
+| `minDuration`                                   | Optional. The seconds (≥ 0) of the break that must remain for the player to start the slate. Default: 5 seconds. `0` starts the slate for any gap. |
+| `assets`                                        | Exactly one static image or video asset, without `duration`: the slate always fills the rest of the break.                                         |
+| `assets[].id`                                   | Identifies the slate in reporting. Generated when omitted on a channel without a slate.                                                            |
+| `assets[].uri`                                  | The URL of the media, or a list of URLs with [targeting](#different-media-per-device).                                                             |
+| `assets[].interaction.clickThrough`             | Optional URL to open when the viewer clicks the slate.                                                                                             |
+| `assets[].mimeType`, `assets[].assetParameters` | Optional, as on any [static asset](../concepts/breaks.mdx#static-assets).                                                                          |
 
 The slate is replaced as a whole on every update. Once the channel has a slate, an update must carry the asset `id`: send its current `id` to change that slate, or a new `id` to replace it with a new slate. An update without an `id` is rejected with `400`: `The channel already has a slate: pass the id of its asset to update it, or a new id to replace it with another slate`. To remove the slate, set it to `null`:
 
