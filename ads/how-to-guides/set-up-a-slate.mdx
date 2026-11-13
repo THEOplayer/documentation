@@ -16,7 +16,7 @@ A slate is an image or a video that players show during the part of a break that
 A slate is one [static asset](../concepts/breaks.mdx#static-assets): an image or a video that you host yourself.
 
 - **Video.** Use HLS (recommended) or MP4. An HLS slate must be an on-demand playlist that ends with `EXT-X-ENDLIST`; a live stream cannot be a slate.
-- **Image.** Use a PNG, JPEG, or WebP image in the aspect ratio of your player, for example 1920×1080 for 16:9. The image stays on screen for as long as the slate plays.
+- **Image.** Use a still or animated image, such as a PNG, JPEG, GIF, or WebP, in the aspect ratio of your player, for example 1920×1080 for 16:9. The image stays on screen for as long as the slate plays.
 - **Match your content.** OptiView Ads does not transcode the slate: players play it as you provide it. Encode a video slate like your content — the same renditions (resolutions and bitrates), codec, and frame rate — so it looks and plays like the rest of your stream on every device.
 - **Keep it short.** A video slate plays from its start and repeats for as long as the break needs, so a loop of a few seconds to half a minute is enough. The slate is cut at the end of the break.
 - **Host it publicly.** The URL must be a public `http(s)` URL that the viewers' devices can reach. On Web, your CDN must allow cross-origin requests (CORS) from your app's origin, as for your other creatives.
