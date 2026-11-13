@@ -1,0 +1,27 @@
+<svg width="360" height="250" viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-shape anchors: the video box sits in the top left, top right, bottom left or bottom right corner, with the backdrop on the two opposite edges">
+  <rect x="0" y="0" width="100%" height="100%" rx="8" fill="#f4f4fb"/>
+  <g transform="translate(15 12)">
+    <rect x="0" y="0" width="160" height="90" rx="6" fill="#6d19ff" stroke="#4800c4" stroke-width="2"/>
+    <rect x="8" y="4.5" width="104" height="58.5" rx="3" fill="#2D3748"/>
+    <text x="60" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">VIDEO</text>
+    <text x="80" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4800c4">top_left (default)</text>
+  </g>
+  <g transform="translate(185 12)">
+    <rect x="0" y="0" width="160" height="90" rx="6" fill="#6d19ff" stroke="#4800c4" stroke-width="2"/>
+    <rect x="48" y="4.5" width="104" height="58.5" rx="3" fill="#2D3748"/>
+    <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">VIDEO</text>
+    <text x="80" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4800c4">top_right</text>
+  </g>
+  <g transform="translate(15 132)">
+    <rect x="0" y="0" width="160" height="90" rx="6" fill="#6d19ff" stroke="#4800c4" stroke-width="2"/>
+    <rect x="8" y="27" width="104" height="58.5" rx="3" fill="#2D3748"/>
+    <text x="60" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">VIDEO</text>
+    <text x="80" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4800c4">bottom_left</text>
+  </g>
+  <g transform="translate(185 132)">
+    <rect x="0" y="0" width="160" height="90" rx="6" fill="#6d19ff" stroke="#4800c4" stroke-width="2"/>
+    <rect x="48" y="27" width="104" height="58.5" rx="3" fill="#2D3748"/>
+    <text x="100" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">VIDEO</text>
+    <text x="80" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4800c4">bottom_right</text>
+  </g>
+</svg>
