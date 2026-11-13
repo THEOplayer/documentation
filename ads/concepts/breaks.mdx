@@ -497,7 +497,7 @@ The slate starts in two cases:
 - **No ad can play.** The ad server returns no ad, a pod comes back empty, the ad request fails, every ad fails before it starts, or the device cannot play any of the assets. The slate covers the whole break, and the break still begins and ends like any other break. A break without a [variant](#variants) that targets the device is not shown at all, and has no slate either.
 - **The ads end before the break ends.** The ads are shorter than the break, or an ad fails and there is no other ad to play. The slate starts when the last ad ends and covers the rest of the break.
 
-The time the player spends loading an ad is not covered by the slate. The slate never extends the break: it is cut at the break end, and your content returns at the same point as without a slate.
+The time the player spends loading an ad is not covered by the slate. The slate never extends the break: it is cut at the break end, and your content returns at the resume point the break defines. Slate time counts as played break time, so on a VOD channel a break whose ads end early resumes at its `resumeOffset` (its `duration` when omitted) instead of after the time the ads played.
 
 When less than the slate's minimum duration (`minDuration`, default 5 seconds) is left in the break, the player does not start the slate and returns to your content, so viewers never see a slate for only a moment.
 
