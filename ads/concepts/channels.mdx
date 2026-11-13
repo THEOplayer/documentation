@@ -13,14 +13,14 @@ Channels are scoped to an organization. In the OptiView Unified Dashboard, open 
 
 In the Dashboard, opening a channel gives you access to each of these tabs:
 
-| Tab                                       | Use it for                                                            |
-| ----------------------------------------- | --------------------------------------------------------------------- |
-| Overview                                  | View channel settings and Break Manifest configuration.               |
-| [Breaks](./breaks.mdx)                    | Schedule, inspect, and delete breaks for the channel.                 |
-| [Events](./events.mdx)                    | Prepare breaks for an event on your live stream.                      |
-| [Origins](./origins.mdx)                  | Add, enable, disable, and prioritize manifest origins.                |
-| [Break Detection](./marker-detection.mdx) | Configure marker rules to turn ad markers in your stream into breaks. |
-| [Integrations](../integrations/index.mdx) | Manage the channel's default integrations.                            |
+| Tab                                       | Use it for                                                                         |
+| ----------------------------------------- | ---------------------------------------------------------------------------------- |
+| Overview                                  | View channel settings and Break Manifest configuration.                            |
+| [Breaks](./breaks.mdx)                    | Schedule, inspect, and delete breaks for the channel, and set its [slate](#slate). |
+| [Events](./events.mdx)                    | Prepare breaks for an event on your live stream.                                   |
+| [Origins](./origins.mdx)                  | Add, enable, disable, and prioritize manifest origins.                             |
+| [Break Detection](./marker-detection.mdx) | Configure marker rules to turn ad markers in your stream into breaks.              |
+| [Integrations](../integrations/index.mdx) | Manage the channel's default integrations.                                         |
 
 ## Channel identity
 
@@ -104,6 +104,12 @@ _Default: none, every device uses SGAI_
 `delivery` is an ordered list of rules that steer devices to server-guided (`sgai`) or server-side (`ssai`) ad insertion, by device type, platform, OS and OS version. See [Delivery rules](../workflows/index.mdx#delivery-rules).
 
 For creating, updating, listing, and deleting channels programmatically, see the Ads API reference.
+
+## Slate
+
+_Default: none, breaks return to the content when no ad covers them_
+
+`slate` is the image or video that players show during the part of a break that no ad covers: the whole break when no ad can play, or the rest of the break when the ads end early. Setting it turns the slate on for every break of the channel, live or VOD; `null` removes it. See [Slate](./breaks.mdx#slate) for how breaks are filled, and [Set up a slate](../how-to-guides/set-up-a-slate.mdx) for how to configure one.
 
 ## Related resources
 

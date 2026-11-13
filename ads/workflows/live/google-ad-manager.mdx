@@ -67,6 +67,7 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/bre
 - OptiView Ads announces the break to Google within the [look-forward time](../../integrations/google/index.mdx#look-forward-time) before its start, so Google can decision the pod in time.
 - Create the break at least the [decisioning margin](../../integrations/google/index.mdx#decisioning-margin) before its start, or it is rejected.
 - The break starts in the `PREPARING` state, and becomes `READY` once Google has decisioned it. See [How pod decisioning works](../../integrations/google/pod-serving.mdx#how-pod-decisioning-works).
+- Server-guided, a channel [slate](../../concepts/breaks.mdx#slate) covers the time after the pod ends, or the whole break when the pod cannot play. Google's own slate inside the pod plays as configured in Google Ad Manager.
 
 ### Other ways to create the break
 

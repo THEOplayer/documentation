@@ -51,8 +51,8 @@ The Break Manifest document contains the following top-level properties:
 | `polling`             | How often the player should refresh the manifest. See [Polling](#polling).                                                                                                                                                                                |
 | `vendorConfiguration` | Session-level configuration per vendor integration — for example, the Google Ad Manager network code and asset keys the player needs to create the stream session. See [Google Ad Manager vendor configuration](#google-ad-manager-vendor-configuration). |
 | `breaks`              | The breaks currently relevant for the channel. Each entry carries the break's schedule, controls, and variants — see [Breaks](./breaks.mdx) for what a break contains.                                                                                    |
-| `slate`               | Optional. Media shown during the part of a break that no ad covers. See [Slate](#slate).                                                                                                                                                                  |
 | `events`              | The channel's events in and ahead of the DVR window, with the ad configuration in effect during each. See [Events](#events).                                                                                                                              |
+| `slate`               | The media the player shows during the part of a break that no ad covers: the channel's `minDuration` and slate asset, without its `name`. Omitted when the channel has no slate. See [Slate](./breaks.mdx#slate).                                         |
 
 Everything inside a break entry — `start`, `duration`, `resumeOffset`, `controls`, and `variant` — is described on the [Breaks](./breaks.mdx) page.
 
@@ -70,21 +70,6 @@ Both cadences are configured on the channel through its `pollingIdleSeconds` and
 The top-level configuration is always the channel's. An [event](./events.mdx) that overrides it is listed in `events`, with its `start` (inclusive) and `end` (exclusive) and only the properties it replaces — `vendorConfiguration` when the event [overrides the channel integrations](./events.mdx#integrations-during-an-event), `delivery`, and `adStartDelay`. The player applies them while its playback position is inside the event, so it switches configuration at the event boundaries without waiting for the next poll, and viewers watching behind live keep the configuration of what they are watching.
 
 The `events` list was added in Break Manifest version 1.9.0. It is omitted when the channel has no current or upcoming events.
-
-### Slate
-
-The optional top-level `slate` (Break Manifest version 1.12.0) names media the player shows when the ads of a break do not fill its whole duration, so the break is not handed back to content early. Only its first asset is used, and it must be a `static` video or image without a `duration`. A video loops and an image stays on screen until the break's scheduled end.
-
-```json
-{
-  "slate": {
-    "minDuration": 5,
-    "assets": [{ "id": "slate-brand", "type": "static", "mediaType": "image", "uri": "https://cdn.example.com/slate.png" }]
-  }
-}
-```
-
-`minDuration` (seconds, default `5`) is the least remaining time worth filling; a smaller gap is left to content. The slate emits no ad events, so ad counts and analytics are unaffected.
 
 ### Google Ad Manager vendor configuration
 

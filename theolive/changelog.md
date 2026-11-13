@@ -1,5 +1,14 @@
 # Changelog
 
+## [11.16.0] - 2026-11-12
+
+- Fixed playback and recording failures at the start of HLS (CMAF) streams; media timestamps now start
+  at 10 s
+- Gave every HLS variant a unique `SCORE`, graded by video codec, resolution and bitrate, so iOS
+  players switch back up from the lowest quality after the bandwidth recovers
+- Added Low-Latency HLS to `main.m3u8`, served when the request names a low latency with the
+  `latency` query parameter (milliseconds); without it `main.m3u8` keeps serving standard HLS
+
 ## [11.15.0] - 2026-11-04
 
 - Fixed crushed or lifted blacks for full-range SDR video sources

@@ -1,0 +1,167 @@
+---
+sidebar_position: 4.5
+---
+
+# Set up a slate
+
+A slate is an image or a video that players show during the part of a break that no ad covers: the whole break when no ad can play, or the rest of the break when the ads end early. This guide shows how to prepare the slate media, set it on a channel, and check what your viewers see. See [Slate](../concepts/breaks.mdx#slate) for exactly when the slate plays.
+
+## Before you start
+
+- A [channel](../concepts/channels.mdx). The slate applies to every break of the channel, live or VOD.
+- The OptiView Ads SDK **1.6.0 or later** in your app, on [Web](../player-integration/optiview-ads-sdk/web.mdx), [Android](../player-integration/optiview-ads-sdk/android.mdx), [iOS](../player-integration/optiview-ads-sdk/ios.mdx), or [React Native](../player-integration/optiview-ads-sdk/react-native.mdx). See [Platform support](../concepts/breaks.mdx#platform-support) for the platforms that do not show a slate yet.
+
+## Prepare the slate media
+
+A slate is one [static asset](../concepts/breaks.mdx#static-assets): an image or a video that you host yourself.
+
+- **Video.** Use HLS (recommended) or MP4. An HLS slate must be an on-demand playlist that ends with `EXT-X-ENDLIST`; a live stream cannot be a slate.
+- **Image.** Use a still or animated image, such as a PNG, JPEG, GIF, or WebP, in the aspect ratio of your player, for example 1920×1080 for 16:9. The image stays on screen for as long as the slate plays.
+- **Match your content.** OptiView Ads does not transcode the slate: players play it as you provide it. Encode a video slate like your content — the same renditions (resolutions and bitrates), codec, and frame rate — so it looks and plays like the rest of your stream on every device.
+- **Keep it short.** A video slate plays from its start and repeats for as long as the break needs, so a loop of a few seconds to half a minute is enough. The slate is cut at the end of the break.
+- **Host it publicly.** The URL must be a public `http(s)` URL that the viewers' devices can reach. On Web, your CDN must allow cross-origin requests (CORS) from your app's origin, as for your other creatives.
+
+OptiView Ads does not check whether the slate plays. The Dashboard's **Preview** shows it in your browser; also test it on your devices before you turn it on for viewers.
+
+### Different media per device
+
+The player uses the slate asset even when it cannot play it, and does not fall back to other media. To give each device media it can play, set `uri` to a list of URLs with [targeting](../concepts/breaks.mdx#asset-uri-targeting), like the URI of any static asset:
+
+```json
+"uri": [
+  { "value": "https://cdn.example.com/slates/brand/tv/master.m3u8", "targeting": { "deviceType": "tv" } },
+  { "value": "https://cdn.example.com/slates/brand/master.m3u8" }
+]
+```
+
+The first entry that matches the device is used; the entry without `targeting` covers every other device. All entries share the asset's `mediaType`, so a slate is either an image or a video on every device. On devices where the ad and the content share one video element, such as iPhone Safari, only a video slate is shown.
+
+## Set the slate on a channel
+
+### In the Dashboard
+
+1. In the OptiView Unified Dashboard, open **Ads → Channels** and select the channel.
+2. On the **Breaks** tab, click **Add** on the **Slate** card.
+3. Fill in the slate:
+   - **Name**: a name for you to recognize the slate. Players never see it.
+   - **Minimum remaining duration (seconds)**: the break time that must remain for the player to start the slate. Leave it empty for the default of 5 seconds.
+   - **Asset**: the **Media Type** (image or video), the **URI**, and optionally **Device-specific URIs**, the **MIME type**, **Asset Parameters**, and a **Click-through URL**.
+4. Click **Preview** to check the media, then **Save**.
+
+Players pick up the slate through the channel's Break Manifest, see [Check the Break Manifest](#check-the-break-manifest). Use **Edit** on the Slate card to change it, and **Delete** to remove it: players then stop showing the slate.
+
+### With the Ads API
+
+Set `slate` on the channel, when you create it or later with an update:
+
+```bash
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "slate": {
+      "name": "Brand slate",
+      "minDuration": 5,
+      "assets": [
+        {
+          "type": "static",
+          "mediaType": "video",
+          "mimeType": "application/vnd.apple.mpegurl",
+          "uri": "https://cdn.example.com/slates/brand/master.m3u8",
+          "interaction": { "clickThrough": "https://www.example.com/brand" }
+        }
+      ]
+    }
+  }'
+```
+
+| Property                                        | Description                                                                                                                                        |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                                          | Optional name for you to recognize the slate. It is not part of the Break Manifest.                                                                |
+| `minDuration`                                   | Optional. The seconds (≥ 0) of the break that must remain for the player to start the slate. Default: 5 seconds. `0` starts the slate for any gap. |
+| `assets`                                        | Exactly one static image or video asset, without `duration`: the slate always fills the rest of the break.                                         |
+| `assets[].id`                                   | Identifies the slate in reporting. Generated when omitted on a channel without a slate.                                                            |
+| `assets[].uri`                                  | The URL of the media, or a list of URLs with [targeting](#different-media-per-device).                                                             |
+| `assets[].interaction.clickThrough`             | Optional URL to open when the viewer clicks the slate.                                                                                             |
+| `assets[].mimeType`, `assets[].assetParameters` | Optional, as on any [static asset](../concepts/breaks.mdx#static-assets).                                                                          |
+
+The slate is replaced as a whole on every update. Once the channel has a slate, an update must carry the asset `id`: send its current `id` to change that slate, or a new `id` to replace it with a new slate. An update without an `id` is rejected with `400`: `The channel already has a slate: pass the id of its asset to update it, or a new id to replace it with another slate`. To remove the slate, set it to `null`:
+
+```bash
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{ "slate": null }'
+```
+
+## Check the Break Manifest
+
+The channel's [Break Manifest](../concepts/break-manifest.mdx) now carries the slate at the top level, next to the breaks:
+
+```json
+{
+  "slate": {
+    "minDuration": 5,
+    "assets": [
+      {
+        "id": "4f2b8c6e-1d3a-4e59-9b7f-0a6c2e8d1f35",
+        "type": "static",
+        "mediaType": "video",
+        "mimeType": "application/vnd.apple.mpegurl",
+        "uri": "https://cdn.example.com/slates/brand/master.m3u8",
+        "interaction": { "clickThrough": "https://www.example.com/brand" }
+      }
+    ]
+  },
+  "breaks": []
+}
+```
+
+A change to the slate reaches players with the next manifest poll on a live channel, and with the next playback session on a VOD channel. It applies the next time a slate starts. A slate that is already playing continues until its break ends.
+
+## What viewers see
+
+Take a 60-second break with a single 30-second ad, on the channel above:
+
+```json
+{
+  "start": "2026-07-16T12:15:00.000Z",
+  "duration": 60,
+  "variant": {
+    "format": "single",
+    "assets": [
+      {
+        "type": "static",
+        "mediaType": "video",
+        "mimeType": "video/mp4",
+        "uri": "https://cdn.example.com/ads/spot-30s.mp4",
+        "duration": 30
+      }
+    ]
+  }
+}
+```
+
+| Break                              | 0–30 seconds | 30–60 seconds | At 60 seconds        |
+| ---------------------------------- | ------------ | ------------- | -------------------- |
+| Partly unfilled: the ad plays      | The ad       | The slate     | Your content returns |
+| Fully unfilled: the ad cannot play | The slate    | The slate     | Your content returns |
+
+Without a slate, the partly unfilled break returns to your content after 30 seconds, and the fully unfilled break returns to it right away.
+
+- A video slate always starts from its beginning and repeats when it is shorter than the time it covers.
+- In a Double Box or L-shape ad break, the slate plays in the ad box, and the companion stays on screen. See [How the slate plays](../concepts/breaks.mdx#how-the-slate-plays).
+- When the slate has a click-through URL, a click on the slate uses the slate's URL, never the URL of the ad before it.
+- When the slate cannot load or play, the SDK emits an `aderror` event that carries the slate asset, and your content returns as without a slate. Listen for it while you test.
+
+## Related resources
+
+| Resource                                         | Description                                                         |
+| ------------------------------------------------ | ------------------------------------------------------------------- |
+| [Slate](../concepts/breaks.mdx#slate)            | When the slate plays, platform support, and Google Ad Manager pods. |
+| [Channels](../concepts/channels.mdx#slate)       | The channel setting that holds the slate.                           |
+| [Breaks](../concepts/breaks.mdx#asset-model)     | The asset model and asset URI targeting.                            |
+| [Break Manifest](../concepts/break-manifest.mdx) | The manifest that carries the slate to players.                     |
+| [Variant selection](./variant-selection.md)      | Serving a different ad experience per device.                       |
