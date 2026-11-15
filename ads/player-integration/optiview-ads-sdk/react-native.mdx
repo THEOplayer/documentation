@@ -70,6 +70,66 @@ From this point the SDK polls the [Break Manifest](../../concepts/break-manifest
 
 All configuration options, session settings, and ad events are documented in the [React Native API reference](pathname:///ads/v2/api-reference/react-native/), starting from the [`createOptiViewAds`](pathname:///ads/v2/api-reference/react-native/variables/createOptiViewAds.html) function.
 
+## Player interception (opt-in)
+
+Interception is off by default. Existing setup stays reactive.
+For react-native-theoplayer, enable it when creating the connector, before setting
+the source or playing:
+
+```tsx
+const ads = createOptiViewAds(player, { interceptPlayer: true });
+await ads.startSession({ manifestUrl: MANIFEST_URL });
+player.source = { sources: [{ src: CONTENT_URL, type: 'application/x-mpegurl' }] };
+player.play();
+```
+
+Keep using the same THEOplayer methods and events.
+With `useTHEOplayerAdsBinding`, put `interceptPlayer: true` in `adsConfig`.
+
+For react-native-video v6, use the SDK's `/video` wrapper.
+Enable interception on both the connector and the wrapper, and pass the connector
+as `ads`. Keep using react-native-video props, callbacks and ref methods:
+
+```tsx
+import { useEffect, useState } from 'react';
+import { createOptiViewAds, useReactVideoHandle, type OptiViewAdsConnector } from '@dolby-optiview/ads-sdk-react-native';
+import { Video } from '@dolby-optiview/ads-sdk-react-native/video';
+
+function ContentVideo() {
+  const { player, onVideoEvent } = useReactVideoHandle();
+  const [ads, setAds] = useState<OptiViewAdsConnector | null>(null);
+
+  useEffect(() => {
+    if (!player) return;
+    const connector = createOptiViewAds(player, { interceptPlayer: true });
+    setAds(connector);
+    void connector.startSession({ manifestUrl: MANIFEST_URL });
+    return () => {
+      setAds(null);
+      void connector.destroy();
+    };
+  }, [player]);
+
+  return (
+    <Video
+      source={{ uri: CONTENT_URL }}
+      onLoad={onVideoEvent}
+      ads={ads}
+      interceptPlayer
+      controls={false}
+      showNotificationControls={false}
+      disableFocus
+    />
+  );
+}
+```
+
+The SDK can hold first play for a preroll and route play, pause, seek, mute and volume during ads.
+Use app controls through the wrapper. Built-in controls, notification controls and
+Now Playing or other system media controls bypass interception.
+Disable `controls` and `showNotificationControls`.
+On iOS, native fullscreen can still show built-in controls.
+
 ## Supported players
 
 ### OptiView Player (react-native-theoplayer)
