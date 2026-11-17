@@ -107,7 +107,7 @@ The full connection details for a speech-enhanced push ingest are returned **onl
 - **`rtmp-push`**: the response returns the server `url` (up to the app) and a separate `streamKey`. Later reads keep the `url` unchanged, omit `streamKey`, and set `credentialHidden: true`.
 - **`srt-push`**: there is no separate stream key. The push `url` itself admits the encoder. Later reads return only its scheme and host, with no port or query, and set `credentialHidden: true`.
 
-The captioning service is first created by the request that adds the speech enhancement to an ingest that has never had one, either during ingest creation or in an update. An update that changes how the encoder connects, such as changing the ingest type, does **not** return the connection details. Removing and then re-adding the speech enhancement reuses the existing captioning service and does not return them either. Call the rotation endpoint below to get new connection details in these cases, or if you lose the original details.
+The captioning service is first created by the request that adds the speech enhancement to an ingest that has never had one, either during ingest creation (including ingests created together with a channel) or in an update. An update that changes how the encoder connects, such as changing the ingest type, does **not** return the new connection details: call the rotation endpoint below to get them. Removing and then re-adding the speech enhancement reuses the existing captioning service and its connection details, so details you saved earlier keep working; the response does not return them. Call the rotation endpoint when you no longer have valid connection details.
 
 #### Rotate push connection details
 
