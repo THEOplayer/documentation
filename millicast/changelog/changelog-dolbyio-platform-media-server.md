@@ -2,6 +2,25 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-11-18
+
+### Media Server
+
+{/* 3.10.0 */}
+
+#### Features
+
+- New subscriptions use publisher-measured bitrates and video dimensions to choose their initial video quality.
+- Video layer information becomes available earlier and updates when publisher measurements change.
+
+#### Fixes
+
+- Fixed excessive publisher memory growth when an encoder sends media at unusually high rates.
+- Improved handling of malformed RTMP, VP9 and RTCP data to prevent media-server crashes.
+- Reduced repeated statistics processing for streams with many viewers.
+- Fixed viewer connections stalling before receiving the SDP answer when the viewer-count subscription is slow or unresponsive.
+- General stability and reliability improvements.
+
 ## 2026-11-04
 
 ### Media Server
