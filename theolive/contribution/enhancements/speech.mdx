@@ -97,8 +97,24 @@ The full schema is documented in the API reference (`SpeechEnhancement` on [crea
 
 With a speech enhancement, the stream is first routed through the captioning service. This affects how you connect your encoder:
 
-- **`rtmp-push`** and **`srt-push`**: always push to the ingest URL returned by the API for that ingest — it differs from a regular ingest's connection details (an `srt-push` ingest with a speech enhancement, for example, returns a URL without a stream key).
-- **`srt-pull`**: the captioning service pulls the ingest's `url` itself, so your source must be reachable from the captioning service.
+- **`rtmp-push`** and **`srt-push`**: use the push URL and stream key returned when you add the speech enhancement, as described below. These differ from a regular ingest's connection details.
+- **`srt-pull`**: the captioning service pulls the ingest's `url` itself, so your source must be reachable from the captioning service. Credentials in that source URL are [write-only](../ingest-protocols.mdx#credentials-in-pull-source-urls).
+
+#### Save push credentials when adding speech
+
+For a push ingest with a speech enhancement, the encoder's full push `url` and `streamKey` are returned **only once**: in the response to the request that adds the speech enhancement, either ingest creation or an update that adds it. That response has `credentialHidden: false`. Save these connection details securely and configure your encoder before leaving the setup flow.
+
+Later reads return the push URL **without the key**, set `credentialHidden: true`, and omit `streamKey`. You cannot retrieve the existing key again.
+
+#### Replace a lost or compromised key
+
+To get new push credentials for a speech-enhanced ingest:
+
+1. Stop all engines using the ingest. See [Starting and stopping](../../platform/starting-and-stopping.mdx).
+2. Call `POST /v2/ingests/{id}/rotate-key`, replacing `{id}` with the ingest ID.
+3. Save the new connection details securely and update your encoder before restarting the engines. The **old key stops working** when it is rotated.
+
+Rotation is only allowed while all engines using the ingest are stopped. Otherwise, the API returns HTTP `409` with the error code `not_stopped`.
 
 ## Regions
 
