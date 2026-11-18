@@ -15,11 +15,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 #### Fixes
 
-- Fixed excessive publisher memory growth when an encoder sends media at unusually high rates.
-- Improved handling of malformed RTMP and VP9 data and control packets to prevent media-server crashes.
-- Reduced repeated statistics processing for streams with many viewers.
-- Fixed viewer connections stalling before receiving the SDP answer when the viewer-count subscription is slow or unresponsive.
-- General stability and reliability improvements.
+- General scalability, stability and reliability improvements.
 
 ## 2026-11-04
 
