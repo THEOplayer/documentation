@@ -2,6 +2,21 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-11-18
+
+### Media Server
+
+{/* 3.10.0 */}
+
+#### Features
+
+- New subscriptions use publisher-measured bitrates and video dimensions to choose their initial video quality.
+- Video layer information becomes available earlier and updates when publisher measurements change.
+
+#### Fixes
+
+- General scalability, stability and reliability improvements.
+
 ## 2026-11-04
 
 ### Media Server
