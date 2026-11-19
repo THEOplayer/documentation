@@ -108,6 +108,9 @@ var pathtoroot = "../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>com.theoplayer.android.api.event.EventDispatcher</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -115,9 +118,9 @@ var pathtoroot = "../../../../../";
                     <pre class="wrap-overflow">
 
 public interface <span class="typeNameLabel"><a href=Cast.html>Cast</a></span>
-
+ implements <a href=../event/EventDispatcher.html>EventDispatcher</a>&lt;<a href=../event/EventDispatcher.html>E</a>&gt;
                     </pre>
-                    <div class="block"><p>The cast API.</p></div>
+                    <div class="block"><p>The cast API. </p><ul><li>Dispatches <a href=../event/cast/CastEventTypes.html#CASTINGCHANGE>CASTINGCHANGE</a> when <a href=Cast.html#isCasting()>isCasting</a> changes.</li></ul></div>
 
                     <dl>
 
@@ -254,11 +257,19 @@ public interface <span class="typeNameLabel"><a href=Cast.html>Cast</a></span>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>, <a href=RoutableCast.html>RoutableCast</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Cast.html#getIntegrations()>getIntegrations</a>() </code>
+                                            </th>
+                                            <td class="colLast">The casting targets of the routable integrations that implement <a href=../integration/RoutableIntegrationHandler.html#getCast()>getCast</a>, by integration identifier.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Cast.html#isCasting()>isCasting</a>() </code>
                                             </th>
-                                            <td class="colLast">Returns whether the player is connected with a casting device.</td>
+                                            <td class="colLast">Returns whether the player is connected with a casting device, through Chromecast or a casting target of a routable integration.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -266,6 +277,12 @@ public interface <span class="typeNameLabel"><a href=Cast.html>Cast</a></span>
                                 </div>
                                 <ul class="blockList">
                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.com.theoplayer.android.api.event.EventDispatcher">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.event.EventDispatcher</h3>
+                                            <code>addEventListener, removeEventListener</code></li>
+                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
                                     </a>
@@ -331,6 +348,32 @@ public interface <span class="typeNameLabel"><a href=Cast.html>Cast</a></span>
                                     </li>
                                 </ul>
                                 
+                                <a id="getIntegrations()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getIntegrations</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/MainThread.html>MainThread</a>()@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>()@ApiStatus.Experimental() abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>, <a href=RoutableCast.html>RoutableCast</a>&gt; <a href=Cast.html#getIntegrations()>getIntegrations</a>()</pre>
+                                        <div class="block"><p>The casting targets of the routable integrations that implement <a href=../integration/RoutableIntegrationHandler.html#getCast()>getCast</a>, by integration identifier. </p><ul><li>They take part in <a href=Cast.html#isCasting()>isCasting</a> and <a href=../event/cast/CastEventTypes.html#CASTINGCHANGE>CASTINGCHANGE</a>.</li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>An unmodifiable, live view of the casting targets. (NonNull)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
                                 <a id="isCasting()">
                                     <!--   -->
                                 </a>
@@ -340,7 +383,7 @@ public interface <span class="typeNameLabel"><a href=Cast.html>Cast</a></span>
                                     <li class="blockList">
                                         <h4>isCasting</h4>
                                         <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/MainThread.html>MainThread</a>() abstract boolean <a href=Cast.html#isCasting()>isCasting</a>()</pre>
-                                        <div class="block"><p>Returns whether the player is connected with a casting device.</p></div>
+                                        <div class="block"><p>Returns whether the player is connected with a casting device, through Chromecast or a casting target of a routable integration. </p><ul><li>Fires <a href=../event/cast/CastEventTypes.html#CASTINGCHANGE>CASTINGCHANGE</a> when it changes.</li></ul></div>
 
                                         <dl>
 

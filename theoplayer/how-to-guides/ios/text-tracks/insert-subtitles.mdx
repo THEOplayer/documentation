@@ -15,9 +15,12 @@ On iOS and tvOS, playback goes through AVFoundation, which cannot sideload subti
 To insert subtitles that are not part of your stream,
 you need the [Sideloaded Subtitles connector](../../../external/iOS-Connector/Code/Sideloaded-TextTracks/README.md) in addition to the THEOplayer iOS SDK.
 
-Add the connector to your `Podfile` and install it:
+Add [our CocoaPods spec repo](../../../getting-started/01-sdks/03-ios/02-cocoapods-spec-repo.md) as a source and the connector to your `Podfile`, and install it:
 
 ```ruby
+source 'https://github.com/THEOplayer/cocoapods-specs'
+source 'https://cdn.cocoapods.org/'
+
 pod 'THEOplayer-Connector-SideloadedSubtitle'
 ```
 

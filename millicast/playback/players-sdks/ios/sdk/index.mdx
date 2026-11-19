@@ -82,9 +82,12 @@ To add the SDK to your project, you can either use Swift Package Manager or Coco
 1. Install CocoaPods if you have not already.
 2. Open a terminal in the root of your Xcode project.
 3. Type `pod init` to create a `Podfile`.
-4. Open the created file in a text editor and add the Millicast SDK as a dependency.
+4. Open the created file in a text editor, add [our CocoaPods spec repo](/theoplayer/getting-started/sdks/ios/cocoapods-spec-repo) as a source and add the Millicast SDK as a dependency.
 
 ```ruby
+source 'https://github.com/THEOplayer/cocoapods-specs'
+source 'https://cdn.cocoapods.org/'
+
 target 'MyProject' do
   platform :ios, '14.5'
   # Comment the next line if you do not want to use dynamic frameworks

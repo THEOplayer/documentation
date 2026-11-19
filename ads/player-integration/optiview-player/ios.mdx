@@ -19,12 +19,15 @@ import TabItem from '@theme/TabItem';
 
 1. Obtain an OptiView Player license compatible with OptiView Ads from the [player portal](https://portal.theoplayer.com).
 2. Retrieve the Break Manifest URL for your channel. See the [Break Manifest endpoint](../../concepts/break-manifest.mdx#endpoint).
-3. Add `THEOplayer-Integration-THEOads` to your project.
+3. Add `THEOplayer-Integration-THEOads` to your project. With CocoaPods, also add [our CocoaPods spec repo](/theoplayer/getting-started/sdks/ios/cocoapods-spec-repo) as a source.
 
 <Tabs queryString="lang">
 <TabItem value="cocoapods" label="CocoaPods">
 
 ```ruby
+source 'https://github.com/THEOplayer/cocoapods-specs'
+source 'https://cdn.cocoapods.org/'
+
 pod 'THEOplayer-Integration-THEOads', '~> 11.9'
 ```
 

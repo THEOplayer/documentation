@@ -1,0 +1,829 @@
+<!DOCTYPE HTML>
+<!-- NewPage -->
+<html lang="en"><head>
+    <title>ReadonlyContentPlayer </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="dc.created" content="2020-03-25">
+    <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../dokka-javadoc-stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../jquery/jquery-ui.css" title="Style">
+    <script type="text/javascript" src="../../../../../jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.4.0.min.js"></script>
+    <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../../../../search.js"></script>
+    <script async type="text/javascript" src="../../../../../module-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../package-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../type-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../member-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../tag-search-index.js"></script>
+</head><body>
+<script type="text/javascript">
+var pathtoroot = "../../../../../";
+</script>
+<noscript>
+    <div>JavaScript is disabled on your browser.</div>
+</noscript><header role="banner">
+    <nav role="navigation">
+        <div class="fixedNav">
+            <!-- ========= START OF TOP NAVBAR ======= -->
+            <div class="topNav"><a id="navbar.top">
+                <!--   -->
+            </a>
+                <div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a>
+                </div>
+                <a id="navbar.top.firstrow">
+                    <!--   -->
+                </a>
+                <ul class="navList" title="Navigation">
+    <li><a href="../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li>Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+            <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+
+<ul class="navListSearch">
+<li><label for="search">SEARCH:</label>
+<input type="text" id="search" value="search" class="ui-autocomplete-input" autocomplete="off" placeholder="Search">
+<input type="reset" id="reset" value="reset">
+</li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ========= END OF TOP NAVBAR ========= -->
+        </div>
+        <div class="navPadding">&nbsp;</div>
+        <script type="text/javascript"><!--
+        $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
+        //-->
+        </script>
+    </nav>
+</header>
+
+<main role="main">
+    <div class="header">
+        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">com.theoplayer.android.api.player</a></div>
+        <h2 title="Interface ReadonlyContentPlayer" class="title">Interface ReadonlyContentPlayer</h2>
+    </div>
+    <div class="contentContainer">
+        <!-- <ul class="inheritance">
+            <li>java.lang.Object</li>
+            <li>
+                <ul class="inheritance">
+                    <li>adaptation.Adaptation</li>
+                </ul>
+            </li>
+        </ul> TODO inheritance tree -->
+        <div class="description">
+            <ul class="blockList">
+                <li class="blockList">
+                    
+                    <dl>
+                        <dt>All Implemented Interfaces:</dt>
+                        <dd>
+                            
+                            <code>com.theoplayer.android.api.event.EventDispatcher</code>
+                            
+                            
+                        </dd>
+                    </dl>
+                    
+                    <hr>
+                    <pre class="wrap-overflow">
+@ApiStatus.Experimental() 
+public interface <span class="typeNameLabel"><a href=ReadonlyContentPlayer.html>ReadonlyContentPlayer</a></span>
+ implements <a href=../event/EventDispatcher.html>EventDispatcher</a>&lt;<a href=../event/player/PlayerEvent.html>PlayerEvent</a>&lt;?&gt;&gt;
+                    </pre>
+                    <div class="block"><p>Read-only playback state for the content player.</p><p>For a server-side integration, this is the state of the stitched stream, including ads. For a client-side integration, it is the state of the content only and is not affected by linear ads from any integration. While a linear ad plays, content remains paused at the position where it was interrupted.</p><p>Events from the content player are forwarded, including <a href=../event/player/PlayerEventTypes.html#PLAY>PlayerEventTypes.PLAY</a>, <a href=../event/player/PlayerEventTypes.html#PAUSE>PlayerEventTypes.PAUSE</a>, <a href=../event/player/PlayerEventTypes.html#PLAYING>PlayerEventTypes.PLAYING</a>, <a href=../event/player/PlayerEventTypes.html#SEEKING>PlayerEventTypes.SEEKING</a>, <a href=../event/player/PlayerEventTypes.html#SEEKED>PlayerEventTypes.SEEKED</a>, <a href=../event/player/PlayerEventTypes.html#TIMEUPDATE>PlayerEventTypes.TIMEUPDATE</a>, <a href=../event/player/PlayerEventTypes.html#DURATIONCHANGE>PlayerEventTypes.DURATIONCHANGE</a>, <a href=../event/player/PlayerEventTypes.html#READYSTATECHANGE>PlayerEventTypes.READYSTATECHANGE</a>, <a href=../event/player/PlayerEventTypes.html#WAITING>PlayerEventTypes.WAITING</a>, <a href=../event/player/PlayerEventTypes.html#LOADEDMETADATA>PlayerEventTypes.LOADEDMETADATA</a>, <a href=../event/player/PlayerEventTypes.html#LOADEDDATA>PlayerEventTypes.LOADEDDATA</a>, <a href=../event/player/PlayerEventTypes.html#ERROR>PlayerEventTypes.ERROR</a>, <a href=../event/player/PlayerEventTypes.html#VOLUMECHANGE>PlayerEventTypes.VOLUMECHANGE</a>, <a href=../event/player/PlayerEventTypes.html#RATECHANGE>PlayerEventTypes.RATECHANGE</a>, <a href=../event/player/PlayerEventTypes.html#ENDED>PlayerEventTypes.ENDED</a>, and <a href=../event/player/PlayerEventTypes.html#RESIZE>PlayerEventTypes.RESIZE</a>.</p></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="summary">
+            <ul class="blockList">
+                <li class="blockList">
+                <!-- ======== NESTED CLASS SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="nested.class.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Nested Class Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Class</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== FIELD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="field.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Field Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Field</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ======== CONSTRUCTOR SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tbody>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Constructor</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+
+                                        
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== ENUM CONSTANT SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="enum.constant.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Enum Constant Summary</h3>
+                                <table class="memberSummary">
+                                    <caption><span>Enum Constants</span><span class="tabEnd">&nbsp;</span></caption>
+                                    <tr>
+                                        <th class="colFirst" scope="col">Enum Constant</th>
+                                        <th class="colLast" scope="col">Description</th>
+                                    </tr>
+                                    
+                                </table>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ========== METHOD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Method Summary</h3>
+                                <div class="memberSummary">
+                                    <div role="tablist" aria-orientation="horizontal">
+                                        <button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button>
+                                        <!-- TODO: Instance and Concrete Methods #1118 -->
+                                    </div>
+                                    <div id="memberSummary_tabpanel" role="tabpanel">
+                                    <table aria-labelledby="t0">
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Method</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getCurrentTime()>getCurrentTime</a>() </code>
+                                            </th>
+                                            <td class="colLast">The current content playback position, in seconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getDuration()>getDuration</a>() </code>
+                                            </th>
+                                            <td class="colLast">The content duration, in seconds, or <code>NaN</code> if unknown.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#isPaused()>isPaused</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether content is paused.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#isEnded()>isEnded</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether content playback has ended.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#isSeeking()>isSeeking</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether content is seeking.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=../timerange/TimeRanges.html>TimeRanges</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getSeekable()>getSeekable</a>() </code>
+                                            </th>
+                                            <td class="colLast">The ranges of content that can be sought to, in seconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=../timerange/TimeRanges.html>TimeRanges</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getBuffered()>getBuffered</a>() </code>
+                                            </th>
+                                            <td class="colLast">The ranges of content that are buffered, in seconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=ReadyState.html>ReadyState</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getReadyState()>getReadyState</a>() </code>
+                                            </th>
+                                            <td class="colLast">The content player ready state, using the same values as the player.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Date.html>Date</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getCurrentProgramDateTime()>getCurrentProgramDateTime</a>() </code>
+                                            </th>
+                                            <td class="colLast">The current content position as a timestamp, or <code>null</code> if the content has no program date time information.</td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getVideoWidth()>getVideoWidth</a>() </code>
+                                            </th>
+                                            <td class="colLast">The width of the content video, or <code>0</code> if unknown.</td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getVideoHeight()>getVideoHeight</a>() </code>
+                                            </th>
+                                            <td class="colLast">The height of the content video, or <code>0</code> if unknown.</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getVolume()>getVolume</a>() </code>
+                                            </th>
+                                            <td class="colLast">The content volume, as a number between <code>0</code> and <code>1</code>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getMuted()>getMuted</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether content audio is muted.</td>
+                                        </tr>
+                                        
+                                        <tr id="i13" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getPlaybackRate()>getPlaybackRate</a>() </code>
+                                            </th>
+                                            <td class="colLast">The content playback rate.</td>
+                                        </tr>
+                                        
+                                        <tr id="i14" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=track/texttrack/TextTrackList.html>TextTrackList</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ReadonlyContentPlayer.html#getTextTracks()>getTextTracks</a>() </code>
+                                            </th>
+                                            <td class="colLast">The text tracks of the content, including metadata tracks such as ID3, EMSG, or date range tracks.</td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="blockList">
+                                
+                                    <li class="blockList"><a id="methods.inherited.from.class.com.theoplayer.android.api.event.EventDispatcher">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.event.EventDispatcher</h3>
+                                            <code>addEventListener, removeEventListener</code></li>
+                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+                                        <!--   -->
+                                    </a>
+                                        <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+                                        <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString,
+                                            wait, wait, wait</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+            <ul class="blockList">
+                <li class="blockList">
+                    <!-- ========= CONSTRUCTOR DETAIL ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Detail</h3>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ============ METHOD DETAIL ========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Method Detail</h3>
+                                
+                                <a id="getCurrentTime()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCurrentTime</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> <a href=ReadonlyContentPlayer.html#getCurrentTime()>getCurrentTime</a>()</pre>
+                                        <div class="block"><p>The current content playback position, in seconds.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getDuration()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getDuration</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> <a href=ReadonlyContentPlayer.html#getDuration()>getDuration</a>()</pre>
+                                        <div class="block"><p>The content duration, in seconds, or <code>NaN</code> if unknown.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isPaused()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isPaused</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=ReadonlyContentPlayer.html#isPaused()>isPaused</a>()</pre>
+                                        <div class="block"><p>Whether content is paused.</p><p>During linear ad playback of a client-side integration, content is always paused.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isEnded()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isEnded</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=ReadonlyContentPlayer.html#isEnded()>isEnded</a>()</pre>
+                                        <div class="block"><p>Whether content playback has ended.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isSeeking()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isSeeking</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=ReadonlyContentPlayer.html#isSeeking()>isSeeking</a>()</pre>
+                                        <div class="block"><p>Whether content is seeking.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSeekable()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSeekable</h4>
+                                        <pre class="methodSignature"> abstract <a href=../timerange/TimeRanges.html>TimeRanges</a> <a href=ReadonlyContentPlayer.html#getSeekable()>getSeekable</a>()</pre>
+                                        <div class="block"><p>The ranges of content that can be sought to, in seconds.</p><p>For a live stream, an integration can use this to choose a valid position.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getBuffered()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getBuffered</h4>
+                                        <pre class="methodSignature"> abstract <a href=../timerange/TimeRanges.html>TimeRanges</a> <a href=ReadonlyContentPlayer.html#getBuffered()>getBuffered</a>()</pre>
+                                        <div class="block"><p>The ranges of content that are buffered, in seconds.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getReadyState()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getReadyState</h4>
+                                        <pre class="methodSignature"> abstract <a href=ReadyState.html>ReadyState</a> <a href=ReadonlyContentPlayer.html#getReadyState()>getReadyState</a>()</pre>
+                                        <div class="block"><p>The content player ready state, using the same values as the player.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCurrentProgramDateTime()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCurrentProgramDateTime</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Date.html>Date</a> <a href=ReadonlyContentPlayer.html#getCurrentProgramDateTime()>getCurrentProgramDateTime</a>()</pre>
+                                        <div class="block"><p>The current content position as a timestamp, or <code>null</code> if the content has no program date time information.</p><p>The relation between this value and currentTime is determined by the manifest.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getVideoWidth()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getVideoWidth</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a> <a href=ReadonlyContentPlayer.html#getVideoWidth()>getVideoWidth</a>()</pre>
+                                        <div class="block"><p>The width of the content video, or <code>0</code> if unknown.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getVideoHeight()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getVideoHeight</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a> <a href=ReadonlyContentPlayer.html#getVideoHeight()>getVideoHeight</a>()</pre>
+                                        <div class="block"><p>The height of the content video, or <code>0</code> if unknown.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getVolume()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getVolume</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> <a href=ReadonlyContentPlayer.html#getVolume()>getVolume</a>()</pre>
+                                        <div class="block"><p>The content volume, as a number between <code>0</code> and <code>1</code>.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getMuted()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getMuted</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=ReadonlyContentPlayer.html#getMuted()>getMuted</a>()</pre>
+                                        <div class="block"><p>Whether content audio is muted.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPlaybackRate()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPlaybackRate</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> <a href=ReadonlyContentPlayer.html#getPlaybackRate()>getPlaybackRate</a>()</pre>
+                                        <div class="block"><p>The content playback rate.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getTextTracks()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getTextTracks</h4>
+                                        <pre class="methodSignature"> abstract <a href=track/texttrack/TextTrackList.html>TextTrackList</a> <a href=ReadonlyContentPlayer.html#getTextTracks()>getTextTracks</a>()</pre>
+                                        <div class="block"><p>The text tracks of the content, including metadata tracks such as ID3, EMSG, or date range tracks.</p><p>For a client-side integration, this never contains text tracks of a linear ad, even if the ad uses the built-in player.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer role="contentinfo">
+    <nav role="navigation">
+        <!-- ======= START OF BOTTOM NAVBAR ====== -->
+        <div class="bottomNav"><a id="navbar.bottom">
+            <!--   -->
+        </a>
+            <div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a>
+            </div>
+            <a id="navbar.bottom.firstrow">
+                <!--   -->
+            </a>
+            <ul class="navList" title="Navigation">
+    <li><a href="../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li>Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+        <a id="skip.navbar.bottom">
+            <!--   -->
+        </a>
+        <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ======== END OF BOTTOM NAVBAR ======= -->
+    </nav>
+</footer><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+    style="display: none;"></ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
+</html>

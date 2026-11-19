@@ -113,6 +113,16 @@ var pathtoroot = "../../../../../../";
                             ,
                             
                             
+                            <code>com.theoplayer.android.api.event.cast.VendorCastEvent</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.theoplayer.android.api.event.cast.VendorCastStateChangeEvent</code>
+                            
+                            ,
+                            
+                            
                             <code>com.theoplayer.android.api.event.chromecast.ChromecastEvent</code>
                             
                             
@@ -123,9 +133,9 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public interface <span class="typeNameLabel"><a href=CastStateChangeEvent.html>CastStateChangeEvent</a></span>
- implements <a href=ChromecastEvent.html>ChromecastEvent</a>&lt;<a href=ChromecastEvent.html>E</a>&gt;
+ implements <a href=ChromecastEvent.html>ChromecastEvent</a>&lt;<a href=ChromecastEvent.html>E</a>&gt;, <a href=../cast/VendorCastStateChangeEvent.html>VendorCastStateChangeEvent</a>
                     </pre>
-                    <div class="block"><p>Fired when <a href=ChromecastEventTypes.html#STATECHANGE>STATECHANGE</a> occurs for the <a href=../../cast/chromecast/Chromecast.html>Chromecast</a>. </p><ul><li>Thrown to indicate that the <a href=../../cast/chromecast/PlayerCastState.html>PlayerCastState</a> of the connection has changed. </li><li>Use <a href=CastStateChangeEvent.html#getState()>getState</a> to get a (textual) representation of the new state, which is THEOplayerView instance specific. </li></ul></div>
+                    <div class="block"><p>Fired when <a href=ChromecastEventTypes.html#STATECHANGE>STATECHANGE</a> occurs for the <a href=../../cast/chromecast/Chromecast.html>Chromecast</a>. </p><ul><li>Thrown to indicate that the <a href=../../cast/chromecast/PlayerCastState.html>PlayerCastState</a> of the connection has changed. </li><li>Use <a href=CastStateChangeEvent.html#getState()>getState</a> to get a (textual) representation of the new state, which is THEOplayerView instance specific. </li><li>The Chromecast variant of <a href=../cast/VendorCastStateChangeEvent.html>VendorCastStateChangeEvent</a>: its type is <a href=../cast/VendorCastEventTypes.html#STATECHANGE>STATECHANGE</a>. </li></ul></div>
 
                     <dl>
 
@@ -319,7 +329,7 @@ public interface <span class="typeNameLabel"><a href=CastStateChangeEvent.html>C
                                           >
                                     <li class="blockList">
                                         <h4>getState</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=../../cast/chromecast/PlayerCastState.html>PlayerCastState</a> <a href=CastStateChangeEvent.html#getState()>getState</a>()</pre>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() abstract <a href=../../cast/chromecast/PlayerCastState.html>PlayerCastState</a> <a href=CastStateChangeEvent.html#getState()>getState</a>()</pre>
                                         <div class="block"><p>The new <a href=../../cast/chromecast/PlayerCastState.html>PlayerCastState</a>.</p></div>
 
                                         <dl>
@@ -328,7 +338,7 @@ public interface <span class="typeNameLabel"><a href=CastStateChangeEvent.html>C
 
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The new casting state. (Nullable)</p></dd>
+                                            <dd><p>The new casting state. (NonNull)</p></dd>
                                         
 
                                         

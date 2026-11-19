@@ -9,6 +9,95 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.16.0 (2026/11/19)
+
+### Web
+
+#### ✨ Features
+
+- Added feature modules: every player feature can now be imported individually.
+  - `theoplayer/core` and `theoplayer/ui` provide the player without any
+    feature modules, so apps can bundle only the features they use.
+  - Each `theoplayer/<feature>` module registers one feature (for example
+    `theoplayer/hls`, `theoplayer/dash`, `theoplayer/chromecast`,
+    `theoplayer/ads`).
+  - Importing `theoplayer` still enables all features of the package
+    variant; `theoplayer/chromeless` enables all non-UI features.
+  - See [our guide on feature modules](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/how-to-use-feature-modules/) for more information.
+
+- Added `reportAdImpression()` and `reportAdClick()` to the controller of custom server-side and client-side ad integrations, to fire `adimpression` and `adclicked` events for their ads.
+- Added `VendorCastErrorEvent` and an `error` event on `VendorCast`. `ChromecastErrorEvent` now extends `VendorCastErrorEvent`, and `ChromecastError` now extends `Error`.
+
+#### 🐛 Issues
+
+- Fixed an issue where `Ad.adSystem` was `undefined` for ads created through `ServerSideAdIntegrationController`, even when `adSystem` was provided.
+- Fixed an issue where a multi-period DASH stream could stop loading and buffer indefinitely after seeking back into an earlier period.
+- Fixed an issue where a Google IMA ad break skipped because of `playAdsAfterTime` would leave the content video hidden (black) until the next ad break, and the content would not start playing until `play()` was called again.
+- Fixed an issue where FairPlay HLS streams in Chrome on iPhone and iPad running iOS/iPadOS 18 and later stopped with an output protection error while Screen Mirroring was active.
+
+### Android
+
+#### ✨ Features
+
+- Added experimental `player.ads.registerClientSideIntegration()` to register a custom client-side ad integration.
+- Added `reportAdImpression()` and `reportAdClick()` to the controller of custom server-side and client-side ad integrations, to dispatch an `AdImpressionEvent` or `AdClickedEvent` for their ads.
+- Added `LinearAd.clickThrough`, which returns the website of the advertiser for linear ads of custom server-side and client-side ad integrations.
+- Added `VendorCast`, the common casting API implemented by `Chromecast`, with `VendorCastEventTypes` for its `STATECHANGE` and `ERROR` events.
+
+#### ⚡ Improvements
+
+- `HlsPlaybackConfiguration.isChunklessPreparationAllowed` and `HlsPlaybackConfiguration.preacquireDrmFromSessionKeys` can now be overridden through the Discovery response of an OptiView Live stream. For example, chunkless preparation may need to be turned off if the stream carries ID3 metadata in an HLS audio rendition rather than in the variant streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where, with multiple server-side ad integrations registered through `Ads.registerServerSideIntegration`, each integration's `setSource` received the original source instead of the source returned by the previous integration.
+- Fixed an issue where OptiView Ads overlay images were stretched instead of keeping their aspect ratio.
+- Fixed an issue where the Google IMA integration always enabled ad preloading since 10.2.0, ignoring `AdsRenderingSettings.enablePreloading`. Preloading now follows the Google IMA SDK default and can be enabled with `AdsRenderingSettings.setEnablePreloading(true)`.
+- Fixed an issue where `Player.source` returned the source returned by a custom server-side ad integration's `setSource()`, instead of the source set by the application.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- `Ads.registerServerSideIntegration` no longer replaces an integration that was registered earlier with the same `integrationId`. The new registration is ignored and an `AdsEventTypes.AD_ERROR` event is fired instead. The same happens for `none` and the identifiers of the built-in ad integrations (`AdIntegrationKind`).
+
+#### ✨ Features
+
+- Added the `keySystem` property to `ContentProtectionSuccessEvent` and `ContentProtectionError`, indicating which key system was used.
+- Added `CustomAdIntegrationController` and `CustomAdIntegrationHandler`, which contain the API shared by all custom ad integrations. `ServerSideAdIntegrationController` and `ServerSideAdIntegrationHandler` now inherit from them.
+- Added `endAdBreak(adBreak:)` to the controller of custom ad integrations. It ends the current ad break without removing it from the schedule.
+- Added experimental `Ads.registerClientSideIntegration` to integrate a client-side ad provider. The integration receives its `CustomAdDescription`s from `Ads.schedule` and the source, can read and control the content through `AdContentPlayer`, and can show overlay ads in its `adContainer`.
+- Added experimental `startLinearAdBreak`, `updateLinearAdBreak` and `endLinearAdBreak` to `ClientSideAdIntegrationController`, so a client-side ad integration can play linear ads with its own player while the THEOplayer API reports the ad.
+- Added an experimental built-in `linearAdPlayer` to `ClientSideAdIntegrationController`, so a client-side ad integration can play MP4 or HLS linear ads, with optional preloading, without writing its own player.
+- Added Picture-in-Picture support to the experimental built-in `linearAdPlayer` of `ClientSideAdIntegrationController`, so its linear ads show in native Picture-in-Picture.
+- Added `reportAdImpression(ad:)` and `reportAdClick(ad:)` to `CustomAdIntegrationController`, so a custom ad integration can report an ad impression or click. The player then fires `AdsEventTypes.AD_IMPRESSION` or `AdsEventTypes.AD_CLICKED`.
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Ads overlay images were stretched instead of keeping their aspect ratio.
+
+### Roku
+
+#### ✨ Features
+
+- Added `programupdate` events for program end tags in MediaKind streams. When the current program ends, the event has no current program ID or title.
+- Added support for asynchronous `theolive.discoveryResponseInterceptor` nodes. An interceptor that declares a `playerSupportsAsync` field can return `invalid` from `onDiscoveryResponse` and later write the rewritten response to its `discoveryResponse` field. The player sets `playerSupportsAsync` to `true` to signal that it can wait for the answer.
+- Added support for calling `update()` to merge session metadata.
+
+#### ⚡ Improvements
+
+- Calling `configure()` with a different player now logs an error and leaves the connector unchanged; destroy the connector and create a new one to switch players.
+
+#### 🐛 Issues
+
+- Fixed an issue where the Mux connector kept the metadata of a previous session (such as `video_id`, `video_title` and `player_name`) when starting a new session on a reused connector.
+- Fixed an issue where the app could crash when the source was cleared, or the player destroyed, while a client-side (VAST) pre-roll was still being set up. Clearing the source now also stops the pending ad break.
+- Fixed an issue where the Mux connector could start a session before its content was ready.
+- Fixed an issue where the Mux connector could fail to start for content set before configuration.
+- Fixed an issue where the Mux connector could register duplicate listeners when configured repeatedly.
+- Fixed an issue where the MediaKind connector would not report ads for an OptiView Live Streaming MediaKind endpoint that did not specify an ad system.
+- Fixed an issue where the MediaKind connector dropped ads whose cue IDs did not match the ad break's ID, did not report ads when playback started in the middle of an ad break, and reported ad errors when the same ad cues were delivered more than once.
+
 ## 🚀 11.15.1 (2026/11/10)
 
 ### Web
@@ -100,7 +189,7 @@ custom client-side ad integration.
 #### 💥 Breaking Changes
 
 - 11.15.0 is the last version of the OptiView Player iOS SDK and its integrations that is published to the CocoaPods public spec repo (trunk). Newer versions will only be published to our self-hosted spec repo at https://github.com/THEOplayer/cocoapods-specs.
-    - If you install the SDK with CocoaPods, add `source 'https://github.com/THEOplayer/cocoapods-specs'` to your `Podfile` to keep receiving updates. See [Using the OptiView Player CocoaPods spec repo](/theoplayer/getting-started/sdks/ios/cocoapods-spec-repo/) for the required `Podfile` changes.
+    - If you install the SDK with CocoaPods, add `source 'https://github.com/THEOplayer/cocoapods-specs'` to your `Podfile` to keep receiving updates. See [Using the OptiView Player CocoaPods spec repo](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/cocoapods-spec-repo/) for the required `Podfile` changes.
     - As announced in 11.0.0, this change follows [the planned read-only change to the CocoaPods public spec repo](https://blog.cocoapods.org/CocoaPods-Specs-Repo/).
     - Swift Package Manager users are not affected.
 
@@ -274,8 +363,8 @@ custom client-side ad integration.
 - The player now always wraps its media elements in container elements inside the player element, instead of only for OptiView Ads sources.
   - The `theo-ads-sgai-container`, `theo-ads-sgai-content-player` and `theo-ads-sgai-ad-player` classes are still applied while an OptiView Ads source is active.
   - When using `ChromelessPlayer`, CSS or scripts that expect the `<video>` element to be a direct child of the player element (for example `.my-player > video`) should use a descendant selector instead.
-- Added the `theoLive.discoveryUrl` and `theoLive.discoveryUrls` player configuration options to the public API, to override the discovery URLs that are tried before the built-in OptiView Live Streaming discovery URLs. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
-- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `theoLive.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- Added the `theoLive.discoveryUrl` and `theoLive.discoveryUrls` player configuration options to the public API, to override the discovery URLs that are tried before the built-in OptiView Live Streaming discovery URLs. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
+- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `theoLive.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/discovery-urls/) for more information.
 - `THEOplayer.features` now lists the features that are actually loaded, in a fixed order.
 
 #### 🐛 Issues
@@ -299,7 +388,7 @@ custom client-side ad integration.
 
 #### ⚡ Improvements
 
-- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOLiveConfig.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/android/theolive/discovery-urls/) for more information.
+- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOLiveConfig.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/theolive/discovery-urls/) for more information.
 - The CMCD video codec now reports the codec that is actually decoded when a Dolby Vision stream falls back to its base layer.
 - The Widevine service certificate provided by OptiView Live channel discovery will now be used when starting playback, saving the certificate request. An empty certificate from discovery no longer overrides one configured on the source.
 - When provided, `KeySystemConfiguration.certificate` will now be applied as the Widevine service certificate for DRM playback.
@@ -317,7 +406,7 @@ custom client-side ad integration.
 
 #### ⚡ Improvements
 
-- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOliveConfiguration.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](/theoplayer/how-to-guides/ios/theolive/discovery-urls/) for more information.
+- OptiView Live Streaming (THEOlive) channels are now discovered through the V2 discovery API first, with automatic fallback to the legacy API for channels not yet available on V2 (one extra request before playback starts). Set `THEOliveConfiguration.discoveryUrl` to pin the discovery API and skip the fallback. See [our guide on discovery URLs](https://optiview.dolby.com/docs/theoplayer/how-to-guides/ios/theolive/discovery-urls/) for more information.
 - OptiView Live Streaming (THEOlive) sources now use the FairPlay certificate returned by the discovery response instead of downloading it from the certificate URL. Added `certificate` to `KeySystemConfiguration` and `FairPlayDRMConfiguration` to provide the FairPlay certificate directly; when it is missing or empty, the certificate URL is still used. A non-empty certificate is used as-is, also with a custom `ContentProtectionIntegration`: its `onCertificateRequest` and `onCertificateResponse` handlers are then not called. A certificate from the discovery response takes precedence over one configured on the source.
 
 #### 🐛 Issues
@@ -997,6 +1086,14 @@ custom client-side ad integration.
 
 - Fixed an issue with tag remover's handling of URIs that started with "data:".
 
+## 🚀 11.4.1 (2026/11/10)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where the Google IMA integration always enabled ad preloading since 10.2.0, ignoring `AdsRenderingSettings.enablePreloading`. Preloading now follows the Google IMA SDK default and can be enabled with `AdsRenderingSettings.setEnablePreloading(true)`.
+
 ## 🚀 11.4.0 (2026/06/03)
 
 ### Web
@@ -1077,7 +1174,7 @@ custom client-side ad integration.
 
 #### ✨ Features
 
-- Added support for OptiView Live streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
+- Added support for OptiView Live streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
 - Added support for DRM-protected OptiView Live streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
 
 #### 🐛 Issues
@@ -1244,7 +1341,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -1257,7 +1354,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
 - Removed `TheoLive.preloadChannels`.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.
