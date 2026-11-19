@@ -14,11 +14,24 @@ sidebar_label: Getting started
 ### Add an OptiView Live source
 
 After setting up your THEOplayer in your app, set its source to a `SourceDescription` containing a `TheoLiveSource`.
-You'll need an OptiView Live channel ID:
+Pass the identifier of your OptiView Live distribution as `src`:
 
 ```swift
-theoplayer.source = SourceDescription(source: TheoLiveSource(channelId: "3aa5qylwwk7gijsobayq09yee"))
+theoplayer.source = SourceDescription(source: TheoLiveSource(src: "3aa5qylwwk7gijsobayq09yee"))
 ```
+
+The `src` parameter accepts any of these formats:
+
+- A V1 channel ID, e.g. `2jENbm22UH5PobDm0Dqjtmkrx2E`
+- A V2/V3 distribution ID, e.g. `1f17631a-861d-42c2-9105-d97de0ab9c07`
+- A V3 organization ID and distribution name separated by `/`, e.g. `1f17631a-861d-42c2-9105-d97de0ab9c06/my-distribution`
+
+:::note
+
+`TheoLiveSource(src:)` was introduced in THEOplayer 11.17.0, replacing the deprecated `TheoLiveSource(channelId:)`.
+On older versions, use `TheoLiveSource(channelId:)` instead.
+
+:::
 
 ## More information
 
