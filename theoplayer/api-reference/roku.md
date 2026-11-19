@@ -456,11 +456,24 @@ The CMCD configuration enables Common Media Client Data reporting. It can be set
 
 ## THEOlive API
 
-The THEOlive API exposes the following property.
+The THEOlive API exposes the following properties.
 
-| Property  | Type   | Description                                                                                                |
-| --------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| authToken | string | Optional. The JWT to be included on THEOlive media requests in the Authorization header as a bearer token. |
+| Property                     | Type     | Description                                                                                                                                                         |
+| ---------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| authToken                    | string   | Optional. The JWT to be included on THEOlive media requests in the Authorization header as a bearer token.                                                          |
+| discoveryResponseInterceptor | roSGNode | Optional. A node that can rewrite the THEOlive discovery response before the player uses it. See [Discovery Response Interceptor](#discovery-response-interceptor). |
+
+### Discovery Response Interceptor
+
+The node set on `discoveryResponseInterceptor` must expose a function `onDiscoveryResponse(response as string)`. The player calls it with the discovery response JSON string each time it loads the distribution, including on fallback rediscoveries.
+
+- **Synchronous:** return the rewritten response JSON string. The player continues with it immediately.
+- **Asynchronous:** declare a `playerSupportsAsync` field on the interceptor node (`<field id="playerSupportsAsync" type="boolean" value="false" />`). A player that supports asynchronous interceptors sets it to `true` before each `onDiscoveryResponse` call. When it is `true`, the interceptor may return `invalid`, then write the rewritten response JSON string to a `discoveryResponse` field on the interceptor node (`<field id="discoveryResponse" type="string" alwaysNotify="true" />`). The player waits until that field is written before it continues discovery.
+  - When `playerSupportsAsync` is still `false`, the player is an older version that cannot wait: the interceptor must answer synchronously, for example by returning the response unchanged.
+  - If the interceptor has no `playerSupportsAsync` field and returns `invalid`, the player continues with the original response.
+  - If the field is not written within 10 seconds, the player continues with the original response and ignores any later write.
+  - To give up, write a JSON object with an `error` property (for example `{"error": "ads session failed"}`). The player logs a warning and continues with the original response.
+  - Always answer the latest `onDiscoveryResponse` call. A write is taken as the answer to the call the player is currently waiting on.
 
 ## Network API
 

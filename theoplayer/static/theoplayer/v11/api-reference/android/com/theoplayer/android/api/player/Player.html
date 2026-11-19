@@ -273,6 +273,14 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Player.html#registerRoutableIntegration(com.theoplayer.android.api.integration.RoutableIntegrationOptions,com.theoplayer.android.api.integration.RoutableIntegrationFactory)>registerRoutableIntegration</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=../integration/RoutableIntegrationOptions.html>RoutableIntegrationOptions</a> options, @<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=../integration/RoutableIntegrationFactory.html>RoutableIntegrationFactory</a> factory) </code>
+                                            </th>
+                                            <td class="colLast">Registers a routable integration: a layer of the player that can take over its playback, advertising and casting operations through a <a href=../integration/RoutableIntegrationHandler.html>com.theoplayer.android.api.integration.RoutableIntegrationHandler</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=theolive/TheoLive.html>TheoLive</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getTheoLive()>getTheoLive</a>() </code>
@@ -280,7 +288,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The TheoLive API.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../ads/Ads.html>Ads</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getAds()>getAds</a>() </code>
@@ -288,7 +296,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The ads API.</td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
+                                        <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=../abr/Abr.html>Abr</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getAbr()>getAbr</a>() </code>
@@ -296,7 +304,15 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The adaptive bitrate configuration.</td>
                                         </tr>
                                         
-                                        <tr id="i6" class="altColor">
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract Cmcd</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Player.html#getCmcd()>getCmcd</a>() </code>
+                                            </th>
+                                            <td class="colLast">The CMCD API.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=track/mediatrack/MediaTrackList.html>MediaTrackList</a>&lt;<a href=track/mediatrack/quality/VideoQuality.html>VideoQuality</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getVideoTracks()>getVideoTracks</a>() </code>
@@ -304,7 +320,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">List of video tracks of the current source.</td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=track/mediatrack/MediaTrackList.html>MediaTrackList</a>&lt;<a href=track/mediatrack/quality/AudioQuality.html>AudioQuality</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getAudioTracks()>getAudioTracks</a>() </code>
@@ -312,7 +328,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">List of audio tracks of the current source.</td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
+                                        <tr id="i10" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=track/texttrack/TextTrackList.html>TextTrackList</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getTextTracks()>getTextTracks</a>() </code>
@@ -320,7 +336,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">List of text tracks of the current source.</td>
                                         </tr>
                                         
-                                        <tr id="i9" class="rowColor">
+                                        <tr id="i11" class="rowColor">
                                             <td class="colFirst"><code>abstract double</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getDuration()>getDuration</a>() </code>
@@ -328,7 +344,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The duration of the media, in seconds.</td>
                                         </tr>
                                         
-                                        <tr id="i10" class="altColor">
+                                        <tr id="i12" class="altColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#isAutoplay()>isAutoplay</a>() </code>
@@ -336,7 +352,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns whether the player should immediately start playback after source change.</td>
                                         </tr>
                                         
-                                        <tr id="i11" class="rowColor">
+                                        <tr id="i13" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setAutoplay(boolean)>setAutoplay</a>(boolean autoplay) </code>
@@ -344,7 +360,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets whether the player should immediately start playback after source change.</td>
                                         </tr>
                                         
-                                        <tr id="i12" class="altColor">
+                                        <tr id="i14" class="altColor">
                                             <td class="colFirst"><code>abstract double</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getVolume()>getVolume</a>() </code>
@@ -352,7 +368,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The volume of the audio.</td>
                                         </tr>
                                         
-                                        <tr id="i13" class="rowColor">
+                                        <tr id="i15" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setVolume(double)>setVolume</a>(double volume) </code>
@@ -360,7 +376,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets the volume of the audio.</td>
                                         </tr>
                                         
-                                        <tr id="i14" class="altColor">
+                                        <tr id="i16" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=PreloadType.html>PreloadType</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getPreload()>getPreload</a>() </code>
@@ -368,7 +384,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The <a href=PreloadType.html>PreloadType</a> of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i15" class="rowColor">
+                                        <tr id="i17" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setPreload(com.theoplayer.android.api.player.PreloadType)>setPreload</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=PreloadType.html>PreloadType</a> preload) </code>
@@ -376,7 +392,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets the <a href=PreloadType.html>PreloadType</a> of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i16" class="altColor">
+                                        <tr id="i18" class="altColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#isMuted()>isMuted</a>() </code>
@@ -384,7 +400,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns whether the audio is muted.</td>
                                         </tr>
                                         
-                                        <tr id="i17" class="rowColor">
+                                        <tr id="i19" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setMuted(boolean)>setMuted</a>(boolean muted) </code>
@@ -392,7 +408,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets whether the audio is muted.</td>
                                         </tr>
                                         
-                                        <tr id="i18" class="altColor">
+                                        <tr id="i20" class="altColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#isSeeking()>isSeeking</a>() </code>
@@ -400,7 +416,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns whether the player is seeking.</td>
                                         </tr>
                                         
-                                        <tr id="i19" class="rowColor">
+                                        <tr id="i21" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../source/SourceDescription.html>SourceDescription</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getSource()>getSource</a>() </code>
@@ -408,7 +424,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The current source which describes the desired playback of a media.</td>
                                         </tr>
                                         
-                                        <tr id="i20" class="altColor">
+                                        <tr id="i22" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setSource(com.theoplayer.android.api.source.SourceDescription)>setSource</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../source/SourceDescription.html>SourceDescription</a> source) </code>
@@ -416,7 +432,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets a new <a href=../source/SourceDescription.html>SourceDescription</a>.</td>
                                         </tr>
                                         
-                                        <tr id="i21" class="rowColor">
+                                        <tr id="i23" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getSrc()>getSrc</a>() </code>
@@ -424,7 +440,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The current URL of the media.</td>
                                         </tr>
                                         
-                                        <tr id="i22" class="altColor">
+                                        <tr id="i24" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setSrc(java.lang.String)>setSrc</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> src) </code>
@@ -432,7 +448,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets a new media source URL.</td>
                                         </tr>
                                         
-                                        <tr id="i23" class="rowColor">
+                                        <tr id="i25" class="rowColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#isPaused()>isPaused</a>() </code>
@@ -440,7 +456,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns whether the player is paused.</td>
                                         </tr>
                                         
-                                        <tr id="i24" class="altColor">
+                                        <tr id="i26" class="altColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#isEnded()>isEnded</a>() </code>
@@ -448,7 +464,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns whether playback of the media has ended.</td>
                                         </tr>
                                         
-                                        <tr id="i25" class="rowColor">
+                                        <tr id="i27" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#play()>play</a>() </code>
@@ -456,7 +472,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Starts or resumes playback.</td>
                                         </tr>
                                         
-                                        <tr id="i26" class="altColor">
+                                        <tr id="i28" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#pause()>pause</a>() </code>
@@ -464,7 +480,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Pauses playback.</td>
                                         </tr>
                                         
-                                        <tr id="i27" class="rowColor">
+                                        <tr id="i29" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#stop()>stop</a>() </code>
@@ -472,7 +488,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Stops playback.</td>
                                         </tr>
                                         
-                                        <tr id="i28" class="altColor">
+                                        <tr id="i30" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=ReadyState.html>ReadyState</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getReadyState()>getReadyState</a>() </code>
@@ -480,7 +496,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The <a href=ReadyState.html>ReadyState</a> of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i29" class="rowColor">
+                                        <tr id="i31" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../timerange/TimeRanges.html>TimeRanges</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getBuffered()>getBuffered</a>() </code>
@@ -488,7 +504,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns the ranges of the media that the player has buffered.</td>
                                         </tr>
                                         
-                                        <tr id="i30" class="altColor">
+                                        <tr id="i32" class="altColor">
                                             <td class="colFirst"><code>abstract double</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getCurrentTime()>getCurrentTime</a>() </code>
@@ -496,7 +512,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns the current playback position of the media, in seconds.</td>
                                         </tr>
                                         
-                                        <tr id="i31" class="rowColor">
+                                        <tr id="i33" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setCurrentTime(double)>setCurrentTime</a>(double currentTime) </code>
@@ -504,7 +520,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets the playback position of the media.</td>
                                         </tr>
                                         
-                                        <tr id="i32" class="altColor">
+                                        <tr id="i34" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=../metrics/Metrics.html>Metrics</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getMetrics()>getMetrics</a>() </code>
@@ -512,7 +528,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Get the current <a href=../metrics/Metrics.html>Metrics</a> of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i33" class="rowColor">
+                                        <tr id="i35" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getError()>getError</a>() </code>
@@ -520,7 +536,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The last error that occurred for the current source, if any.</td>
                                         </tr>
                                         
-                                        <tr id="i34" class="altColor">
+                                        <tr id="i36" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=../error/THEOplayerException.html>THEOplayerException</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getErrorObject()>getErrorObject</a>() </code>
@@ -528,7 +544,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The last <a href=../error/THEOplayerException.html>THEOplayerException</a> that occurred for the current source, if any.</td>
                                         </tr>
                                         
-                                        <tr id="i35" class="rowColor">
+                                        <tr id="i37" class="rowColor">
                                             <td class="colFirst"><code>abstract double</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getPlaybackRate()>getPlaybackRate</a>() </code>
@@ -536,7 +552,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The playback rate of the media.</td>
                                         </tr>
                                         
-                                        <tr id="i36" class="altColor">
+                                        <tr id="i38" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setPlaybackRate(double)>setPlaybackRate</a>(double playbackRate) </code>
@@ -544,7 +560,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets the playback rate of the media.</td>
                                         </tr>
                                         
-                                        <tr id="i37" class="rowColor">
+                                        <tr id="i39" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../timerange/TimeRanges.html>TimeRanges</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getPlayed()>getPlayed</a>() </code>
@@ -552,7 +568,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns the ranges of the media that the player has played.</td>
                                         </tr>
                                         
-                                        <tr id="i38" class="altColor">
+                                        <tr id="i40" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=../timerange/TimeRanges.html>TimeRanges</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getSeekable()>getSeekable</a>() </code>
@@ -560,7 +576,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns the ranges of the media that are seekable by the player.</td>
                                         </tr>
                                         
-                                        <tr id="i39" class="rowColor">
+                                        <tr id="i41" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Date.html>Date</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getCurrentProgramDateTime()>getCurrentProgramDateTime</a>() </code>
@@ -568,7 +584,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The current playback position of the media, as a timestamp.</td>
                                         </tr>
                                         
-                                        <tr id="i40" class="altColor">
+                                        <tr id="i42" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setCurrentProgramDateTime(java.util.Date)>setCurrentProgramDateTime</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Date.html>Date</a> currentProgramDateTime) </code>
@@ -576,7 +592,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets the current program date time.</td>
                                         </tr>
                                         
-                                        <tr id="i41" class="rowColor">
+                                        <tr id="i43" class="rowColor">
                                             <td class="colFirst"><code>abstract int</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getVideoHeight()>getVideoHeight</a>() </code>
@@ -584,7 +600,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns the height of the active video rendition, in pixels.</td>
                                         </tr>
                                         
-                                        <tr id="i42" class="altColor">
+                                        <tr id="i44" class="altColor">
                                             <td class="colFirst"><code>abstract int</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getVideoWidth()>getVideoWidth</a>() </code>
@@ -592,7 +608,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Returns the width of the active video rendition, in pixels.</td>
                                         </tr>
                                         
-                                        <tr id="i43" class="rowColor">
+                                        <tr id="i45" class="rowColor">
                                             <td class="colFirst"><code>abstract HespApi</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getHespApi()>getHespApi</a>() </code>
@@ -600,7 +616,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The HESP API.</td>
                                         </tr>
                                         
-                                        <tr id="i44" class="altColor">
+                                        <tr id="i46" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setAspectRatio(com.theoplayer.android.api.player.AspectRatio)>setAspectRatio</a>(<a href=AspectRatio.html>AspectRatio</a> aspectRatio) </code>
@@ -608,7 +624,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets the aspect ratio of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i45" class="rowColor">
+                                        <tr id="i47" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setRenderingTarget(com.theoplayer.android.api.player.RenderingTarget)>setRenderingTarget</a>(<a href=RenderingTarget.html>RenderingTarget</a> renderingTarget) </code>
@@ -616,7 +632,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets the player rendering target where the player is displaying the video.</td>
                                         </tr>
                                         
-                                        <tr id="i46" class="altColor">
+                                        <tr id="i48" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setCustomSurface(android.view.Surface,int,int)>setCustomSurface</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/android/view/Surface.html>Surface</a> surface, int width, int height) </code>
@@ -624,7 +640,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">Sets a custom Surface for the player to draw into.</td>
                                         </tr>
                                         
-                                        <tr id="i47" class="rowColor">
+                                        <tr id="i49" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=track/texttrack/TextTrackStyle.html>TextTrackStyle</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getTextTrackStyle()>getTextTrackStyle</a>() </code>
@@ -632,7 +648,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The Text Track Style API.</td>
                                         </tr>
                                         
-                                        <tr id="i48" class="altColor">
+                                        <tr id="i50" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=../network/Network.html>Network</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getNetwork()>getNetwork</a>() </code>
@@ -640,7 +656,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The Network API that manages the current player.</td>
                                         </tr>
                                         
-                                        <tr id="i49" class="rowColor">
+                                        <tr id="i51" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../latency/LatencyManager.html>LatencyManager</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getLatencyManager()>getLatencyManager</a>() </code>
@@ -648,7 +664,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The Latency Manager API used to control low-latency live playback.</td>
                                         </tr>
                                         
-                                        <tr id="i50" class="altColor">
+                                        <tr id="i52" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getPoster()>getPoster</a>() </code>
@@ -656,7 +672,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The poster image URL of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i51" class="rowColor">
+                                        <tr id="i53" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setPoster(java.lang.String)>setPoster</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> poster) </code>
@@ -800,6 +816,40 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                     </li>
                                 </ul>
                                 
+                                <a id="registerRoutableIntegration(com.theoplayer.android.api.integration.RoutableIntegrationOptions,com.theoplayer.android.api.integration.RoutableIntegrationFactory)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>registerRoutableIntegration</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/MainThread.html>MainThread</a>()@ApiStatus.Experimental() abstract void <a href=Player.html#registerRoutableIntegration(com.theoplayer.android.api.integration.RoutableIntegrationOptions,com.theoplayer.android.api.integration.RoutableIntegrationFactory)>registerRoutableIntegration</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=../integration/RoutableIntegrationOptions.html>RoutableIntegrationOptions</a> options, @<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=../integration/RoutableIntegrationFactory.html>RoutableIntegrationFactory</a> factory)</pre>
+                                        <div class="block"><p>Registers a routable integration: a layer of the player that can take over its playback, advertising and casting operations through a <a href=../integration/RoutableIntegrationHandler.html>com.theoplayer.android.api.integration.RoutableIntegrationHandler</a>. </p><ul><li>Note: This API is experimental; it may change or be removed without notice.</li><li>One integration per <a href=../integration/RoutableIntegrationSlot.html>com.theoplayer.android.api.integration.RoutableIntegrationSlot</a>.</li><li>Must be called before the first source is set.</li></ul></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>options</code> - The options of the integration: its slot and identifier.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>factory</code> - Creates the integration's handler from the <a href=../integration/RoutableIntegrationController.html>com.theoplayer.android.api.integration.RoutableIntegrationController</a>.</dd>
+                                            
+                                            
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
                                 <a id="getTheoLive()">
                                     <!--   -->
                                 </a>
@@ -870,6 +920,32 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The adaptive bitrate configuration. (NonNull)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCmcd()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCmcd</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/MainThread.html>MainThread</a>()@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>()@ApiStatus.Internal() abstract Cmcd <a href=Player.html#getCmcd()>getCmcd</a>()</pre>
+                                        <div class="block"><p>The CMCD API.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The CMCD API. (NonNull)</p></dd>
                                         
 
                                         

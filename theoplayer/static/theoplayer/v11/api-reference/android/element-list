@@ -87,6 +87,7 @@ com.theoplayer.android.api.event.ads
 com.theoplayer.android.api.event.cache
 com.theoplayer.android.api.event.cache.task
 com.theoplayer.android.api.event.cache.tasklist
+com.theoplayer.android.api.event.cast
 com.theoplayer.android.api.event.chromecast
 com.theoplayer.android.api.event.player
 com.theoplayer.android.api.event.player.theolive
@@ -102,6 +103,7 @@ com.theoplayer.android.api.event.track.texttrack.list
 com.theoplayer.android.api.event.track.texttrack.texttrackcue
 com.theoplayer.android.api.event.track.tracklist
 com.theoplayer.android.api.fullscreen
+com.theoplayer.android.api.integration
 com.theoplayer.android.api.latency
 com.theoplayer.android.api.metrics
 com.theoplayer.android.api.millicast

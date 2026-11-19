@@ -312,6 +312,14 @@ public interface <span class="typeNameLabel"><a href=Ads.html>Ads</a></span>
                                             <td class="colLast">Register a custom advertisement integration.</td>
                                         </tr>
                                         
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Ads.html#registerClientSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ClientSideAdIntegrationFactory)>registerClientSideIntegration</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> integrationId, @<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=ClientSideAdIntegrationFactory.html>ClientSideAdIntegrationFactory</a> integrationFactory) </code>
+                                            </th>
+                                            <td class="colLast">Register a custom client-side ad integration.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -537,7 +545,7 @@ public interface <span class="typeNameLabel"><a href=Ads.html>Ads</a></span>
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>registerServerSideIntegration</h4>
@@ -555,6 +563,40 @@ public interface <span class="typeNameLabel"><a href=Ads.html>Ads</a></span>
                                             
                                             
                                             <dd><code>integrationFactory</code> - Factory that will construct an <a href=ServerSideAdIntegrationHandler.html>ServerSideAdIntegrationHandler</a> for this integration.</dd>
+                                            
+                                            
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="registerClientSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ClientSideAdIntegrationFactory)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>registerClientSideIntegration</h4>
+                                        <pre class="methodSignature"> void <a href=Ads.html#registerClientSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ClientSideAdIntegrationFactory)>registerClientSideIntegration</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> integrationId, @<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=ClientSideAdIntegrationFactory.html>ClientSideAdIntegrationFactory</a> integrationFactory)</pre>
+                                        <div class="block"><p>Register a custom client-side ad integration. </p><p>This allows you to integrate with third-party ad providers that play ads separately from the content, and have them report their ads and ad-related events through the THEOplayer <a href=Ads.html>Ads</a> API.</p><p>Ad descriptions whose <a href=theoads/TheoAdDescription.html#getIntegration()>getIntegration</a> matches <code>integrationId</code>, scheduled through getAds or <a href=Ads.html#schedule(com.theoplayer.android.api.source.addescription.AdDescription)>schedule</a>, are passed to schedule.</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>integrationId</code> - An identifier unique across custom ad integrations.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>integrationFactory</code> - Factory that constructs a <a href=ClientSideAdIntegrationHandler.html>ClientSideAdIntegrationHandler</a> for this integration.</dd>
                                             
                                             
                                         

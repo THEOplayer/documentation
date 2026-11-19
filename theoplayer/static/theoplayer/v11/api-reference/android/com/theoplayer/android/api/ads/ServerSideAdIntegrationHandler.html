@@ -108,6 +108,9 @@ var pathtoroot = "../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>com.theoplayer.android.api.ads.CustomAdIntegrationHandler</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -115,7 +118,7 @@ var pathtoroot = "../../../../../";
                     <pre class="wrap-overflow">
 
 public interface <span class="typeNameLabel"><a href=ServerSideAdIntegrationHandler.html>ServerSideAdIntegrationHandler</a></span>
-
+ implements <a href=CustomAdIntegrationHandler.html>CustomAdIntegrationHandler</a>
                     </pre>
                     <div class="block"><p>A handler for a server-side ad integration.</p><p>You can implement one or more of these methods to hook into various parts of the player's lifecycle and perform your integration-specific ad handling.</p><p>Use the <a href=ServerSideAdIntegrationController.html>ServerSideAdIntegrationController</a> provided by <a href=ServerSideAdIntegrationFactory.html>ServerSideAdIntegrationFactory</a> to update the state of your integration.</p></div>
 
@@ -245,43 +248,17 @@ public interface <span class="typeNameLabel"><a href=ServerSideAdIntegrationHand
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
                                         
-                                        <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=../source/SourceDescription.html>SourceDescription</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=ServerSideAdIntegrationHandler.html#setSource(com.theoplayer.android.api.source.SourceDescription)>setSource</a>(<a href=../source/SourceDescription.html>SourceDescription</a> source) </code>
-                                            </th>
-                                            <td class="colLast">Handler which will be called when a new source is loaded into the player.</td>
-                                        </tr>
-                                        
-                                        <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=ServerSideAdIntegrationHandler.html#skipAd(com.theoplayer.android.api.ads.Ad)>skipAd</a>(<a href=Ad.html>Ad</a> ad) </code>
-                                            </th>
-                                            <td class="colLast">Handler which will be called when an ad is requested to be skipped.</td>
-                                        </tr>
-                                        
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=ServerSideAdIntegrationHandler.html#resetSource()>resetSource</a>() </code>
-                                            </th>
-                                            <td class="colLast">Handler which will be called before a new source is loaded into the player, or before the player is destroyed.</td>
-                                        </tr>
-                                        
-                                        <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=ServerSideAdIntegrationHandler.html#destroy()>destroy</a>() </code>
-                                            </th>
-                                            <td class="colLast">Handler which will be called when the player is destroyed.</td>
-                                        </tr>
-                                        
                                         </tbody>
                                     </table>
                                 </div>
                                 <ul class="blockList">
                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.com.theoplayer.android.api.ads.CustomAdIntegrationHandler">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.ads.CustomAdIntegrationHandler</h3>
+                                            <code>destroy, resetSource, setSource, skipAd</code></li>
+                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
                                     </a>
@@ -320,98 +297,6 @@ public interface <span class="typeNameLabel"><a href=ServerSideAdIntegrationHand
                                 <!--   -->
                             </a>
                                 <h3>Method Detail</h3>
-                                
-                                <a id="setSource(com.theoplayer.android.api.source.SourceDescription)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setSource</h4>
-                                        <pre class="methodSignature"> <a href=../source/SourceDescription.html>SourceDescription</a> <a href=ServerSideAdIntegrationHandler.html#setSource(com.theoplayer.android.api.source.SourceDescription)>setSource</a>(<a href=../source/SourceDescription.html>SourceDescription</a> source)</pre>
-                                        <div class="block"><p>Handler which will be called when a new source is loaded into the player.</p><p>This allows the integration to transform the source description, e.g. by calling an external service to replace <a href=../theolive/TheoLiveSource.html#src>the content URL</a>, or by adding a fixed pre-roll linear ad to <a href=../source/SourceDescription.html#ads>the list of ads</a>.</p><ul><li><p>If this handler throws an error, the player fires a fatal <a href=../event/player/ErrorEvent.html>ErrorEvent</a> (as if by calling <a href=ServerSideAdIntegrationController.html#fatalError(java.lang.Throwable,com.theoplayer.android.api.error.ErrorCode)>ServerSideAdIntegrationController.fatalError</a>).</p></li></ul></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="skipAd(com.theoplayer.android.api.ads.Ad)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>skipAd</h4>
-                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ServerSideAdIntegrationHandler.html#skipAd(com.theoplayer.android.api.ads.Ad)>skipAd</a>(<a href=Ad.html>Ad</a> ad)</pre>
-                                        <div class="block"><p>Handler which will be called when an ad is requested to be skipped.</p><p>To skip the ad, the handler should call <a href=ServerSideAdIntegrationController.html#skipAd(com.theoplayer.android.api.ads.Ad)>ServerSideAdIntegrationController.skipAd</a>.</p><ul><li><p>This is only called for ads whose <a href=Ad.html#getIntegration()>integration</a> matches ServerSideAdIntegrationController.integration.</p></li><li><p>If this handler is missing, the player will always skip the ad by calling <a href=ServerSideAdIntegrationController.html#skipAd(com.theoplayer.android.api.ads.Ad)>ServerSideAdIntegrationController.skipAd</a>.</p></li><li><p>If this handler throws an error, the player fires a non-fatal <a href=../event/ads/AdErrorEvent.html>AdErrorEvent</a> (as if by calling <a href=ServerSideAdIntegrationController.html#error(java.lang.Throwable)>ServerSideAdIntegrationController.error</a>).</p></li></ul></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="resetSource()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>resetSource</h4>
-                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ServerSideAdIntegrationHandler.html#resetSource()>resetSource</a>()</pre>
-                                        <div class="block"><p>Handler which will be called before a new source is loaded into the player, or before the player is destroyed.</p><p>This allows the integration to clean up any source-specific resources, such as scheduled ads or pending HTTP requests.</p><ul><li><p>If this handler is missing, the player will remove all remaining ads by calling <a href=ServerSideAdIntegrationController.html#removeAllAds()>ServerSideAdIntegrationController.removeAllAds</a>.</p></li><li><p>If this handler throws an error, the player fires a fatal <a href=../event/player/ErrorEvent.html>ErrorEvent</a> (as if by calling <a href=ServerSideAdIntegrationController.html#fatalError(java.lang.Throwable,com.theoplayer.android.api.error.ErrorCode)>ServerSideAdIntegrationController.fatalError</a>).</p></li></ul></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="destroy()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockListLast"
-                                          >
-                                    <li class="blockList">
-                                        <h4>destroy</h4>
-                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=ServerSideAdIntegrationHandler.html#destroy()>destroy</a>()</pre>
-                                        <div class="block"><p>Handler which will be called when the player is destroyed.</p><p>This allows the integration to clean up any resources, such as UI views or event listeners.</p></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
                                 
                             </li>
                         </ul>

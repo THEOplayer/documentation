@@ -9,6 +9,95 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.16.0 (2026/11/19)
+
+### Web
+
+#### ✨ Features
+
+- Added feature modules: every player feature can now be imported individually.
+  - `theoplayer/core` and `theoplayer/ui` provide the player without any
+    feature modules, so apps can bundle only the features they use.
+  - Each `theoplayer/<feature>` module registers one feature (for example
+    `theoplayer/hls`, `theoplayer/dash`, `theoplayer/chromecast`,
+    `theoplayer/ads`).
+  - Importing `theoplayer` still enables all features of the package
+    variant; `theoplayer/chromeless` enables all non-UI features.
+  - See [our guide on feature modules](/theoplayer/getting-started/sdks/web/how-to-use-feature-modules/) for more information.
+
+- Added `reportAdImpression()` and `reportAdClick()` to the controller of custom server-side and client-side ad integrations, to fire `adimpression` and `adclicked` events for their ads.
+- Added `VendorCastErrorEvent` and an `error` event on `VendorCast`. `ChromecastErrorEvent` now extends `VendorCastErrorEvent`, and `ChromecastError` now extends `Error`.
+
+#### 🐛 Issues
+
+- Fixed an issue where `Ad.adSystem` was `undefined` for ads created through `ServerSideAdIntegrationController`, even when `adSystem` was provided.
+- Fixed an issue where a multi-period DASH stream could stop loading and buffer indefinitely after seeking back into an earlier period.
+- Fixed an issue where a Google IMA ad break skipped because of `playAdsAfterTime` would leave the content video hidden (black) until the next ad break, and the content would not start playing until `play()` was called again.
+- Fixed an issue where FairPlay HLS streams in Chrome on iPhone and iPad running iOS/iPadOS 18 and later stopped with an output protection error while Screen Mirroring was active.
+
+### Android
+
+#### ✨ Features
+
+- Added experimental `player.ads.registerClientSideIntegration()` to register a custom client-side ad integration.
+- Added `reportAdImpression()` and `reportAdClick()` to the controller of custom server-side and client-side ad integrations, to dispatch an `AdImpressionEvent` or `AdClickedEvent` for their ads.
+- Added `LinearAd.clickThrough`, which returns the website of the advertiser for linear ads of custom server-side and client-side ad integrations.
+- Added `VendorCast`, the common casting API implemented by `Chromecast`, with `VendorCastEventTypes` for its `STATECHANGE` and `ERROR` events.
+
+#### ⚡ Improvements
+
+- `HlsPlaybackConfiguration.isChunklessPreparationAllowed` and `HlsPlaybackConfiguration.preacquireDrmFromSessionKeys` can now be overridden through the Discovery response of an OptiView Live stream. For example, chunkless preparation may need to be turned off if the stream carries ID3 metadata in an HLS audio rendition rather than in the variant streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where, with multiple server-side ad integrations registered through `Ads.registerServerSideIntegration`, each integration's `setSource` received the original source instead of the source returned by the previous integration.
+- Fixed an issue where OptiView Ads overlay images were stretched instead of keeping their aspect ratio.
+- Fixed an issue where the Google IMA integration always enabled ad preloading since 10.2.0, ignoring `AdsRenderingSettings.enablePreloading`. Preloading now follows the Google IMA SDK default and can be enabled with `AdsRenderingSettings.setEnablePreloading(true)`.
+- Fixed an issue where `Player.source` returned the source returned by a custom server-side ad integration's `setSource()`, instead of the source set by the application.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- `Ads.registerServerSideIntegration` no longer replaces an integration that was registered earlier with the same `integrationId`. The new registration is ignored and an `AdsEventTypes.AD_ERROR` event is fired instead. The same happens for `none` and the identifiers of the built-in ad integrations (`AdIntegrationKind`).
+
+#### ✨ Features
+
+- Added the `keySystem` property to `ContentProtectionSuccessEvent` and `ContentProtectionError`, indicating which key system was used.
+- Added `CustomAdIntegrationController` and `CustomAdIntegrationHandler`, which contain the API shared by all custom ad integrations. `ServerSideAdIntegrationController` and `ServerSideAdIntegrationHandler` now inherit from them.
+- Added `endAdBreak(adBreak:)` to the controller of custom ad integrations. It ends the current ad break without removing it from the schedule.
+- Added experimental `Ads.registerClientSideIntegration` to integrate a client-side ad provider. The integration receives its `CustomAdDescription`s from `Ads.schedule` and the source, can read and control the content through `AdContentPlayer`, and can show overlay ads in its `adContainer`.
+- Added experimental `startLinearAdBreak`, `updateLinearAdBreak` and `endLinearAdBreak` to `ClientSideAdIntegrationController`, so a client-side ad integration can play linear ads with its own player while the THEOplayer API reports the ad.
+- Added an experimental built-in `linearAdPlayer` to `ClientSideAdIntegrationController`, so a client-side ad integration can play MP4 or HLS linear ads, with optional preloading, without writing its own player.
+- Added Picture-in-Picture support to the experimental built-in `linearAdPlayer` of `ClientSideAdIntegrationController`, so its linear ads show in native Picture-in-Picture.
+- Added `reportAdImpression(ad:)` and `reportAdClick(ad:)` to `CustomAdIntegrationController`, so a custom ad integration can report an ad impression or click. The player then fires `AdsEventTypes.AD_IMPRESSION` or `AdsEventTypes.AD_CLICKED`.
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Ads overlay images were stretched instead of keeping their aspect ratio.
+
+### Roku
+
+#### ✨ Features
+
+- Added `programupdate` events for program end tags in MediaKind streams. When the current program ends, the event has no current program ID or title.
+- Added support for asynchronous `theolive.discoveryResponseInterceptor` nodes. An interceptor that declares a `playerSupportsAsync` field can return `invalid` from `onDiscoveryResponse` and later write the rewritten response to its `discoveryResponse` field. The player sets `playerSupportsAsync` to `true` to signal that it can wait for the answer.
+- Added support for calling `update()` to merge session metadata.
+
+#### ⚡ Improvements
+
+- Calling `configure()` with a different player now logs an error and leaves the connector unchanged; destroy the connector and create a new one to switch players.
+
+#### 🐛 Issues
+
+- Fixed an issue where the Mux connector kept the metadata of a previous session (such as `video_id`, `video_title` and `player_name`) when starting a new session on a reused connector.
+- Fixed an issue where the app could crash when the source was cleared, or the player destroyed, while a client-side (VAST) pre-roll was still being set up. Clearing the source now also stops the pending ad break.
+- Fixed an issue where the Mux connector could start a session before its content was ready.
+- Fixed an issue where the Mux connector could fail to start for content set before configuration.
+- Fixed an issue where the Mux connector could register duplicate listeners when configured repeatedly.
+- Fixed an issue where the MediaKind connector would not report ads for an OptiView Live Streaming MediaKind endpoint that did not specify an ad system.
+- Fixed an issue where the MediaKind connector dropped ads whose cue IDs did not match the ad break's ID, did not report ads when playback started in the middle of an ad break, and reported ad errors when the same ad cues were delivered more than once.
+
 ## 🚀 11.15.1 (2026/11/10)
 
 ### Web
@@ -996,6 +1085,14 @@ custom client-side ad integration.
 #### 🐛 Issues
 
 - Fixed an issue with tag remover's handling of URIs that started with "data:".
+
+## 🚀 11.4.1 (2026/11/10)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where the Google IMA integration always enabled ad preloading since 10.2.0, ignoring `AdsRenderingSettings.enablePreloading`. Preloading now follows the Google IMA SDK default and can be enabled with `AdsRenderingSettings.setEnablePreloading(true)`.
 
 ## 🚀 11.4.0 (2026/06/03)
 
