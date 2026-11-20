@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OptiViewAds — Roku API reference (1.6.0)</title>
+<title>OptiViewAds — Roku API reference (1.6.1)</title>
 <style>
 body { font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; color: #1d1d1f; }
 header, main { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
@@ -24,7 +24,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <body>
 <header>
 <h1>OptiViewAds</h1>
-<p class="version">OptiView Ads SDK for Roku, version 1.6.0</p>
+<p class="version">OptiView Ads SDK for Roku, version 1.6.1</p>
 <p>SceneGraph component that inserts OptiView Ads breaks into clear live HLS on Roku through one application-owned Video node: client-side stitching of Google Ad Manager pods (SGAI), or the channel's Google DAI live stream when the break manifest selects server-side ad insertion for TV devices (SSAI).</p>
 <nav>
 <a href="#fields">Fields</a>
@@ -53,7 +53,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <p>Call with <code>CallFunc</code>. Asynchronous calls return an operation ID and report through <code>operationresult</code> events; getters return snapshots. Register listeners with <code>addEventListener(eventType, listenerOwner, listenerName)</code>: the owner is the application's node and the listener one of its interface functions, invoked with the event as its argument.</p>
 <h3 id="function-addEventListener"><code>addEventListener</code></h3>
 <pre><code>addEventListener(eventType as String, listenerOwner as Object, listenerName as String)</code></pre>
-<p>Subscribes <code>listenerOwner.listenerName</code> to an event type (see Events). <code>listenerOwner</code> is the application's node (usually <code>m.top</code>) and <code>listenerName</code> one of its interface <code>&lt;function&gt;</code>s, invoked with the event as its single argument: <code>m.ads.callFunc(&quot;addEventListener&quot;, m.ads.events.adbreakbegin, m.top, &quot;onAdBreakBegin&quot;)</code>.</p>
+<p>Subscribes <code>listenerOwner.listenerName</code> to an event type (see Events). <code>listenerOwner</code> is the application's node (usually <code>m.top</code>) and <code>listenerName</code> one of its interface <code>&lt;function&gt;</code>s, invoked with the event as its single argument: <code>m.ads.callFunc(&quot;addEventListener&quot;, m.ads.events.adbreakbegin, m.top, &quot;onAdBreakBegin&quot;)</code>. A listener that fails when called is dropped for that event type with one warning; the other listeners still get the event.</p>
 
 <h3 id="function-removeEventListener"><code>removeEventListener</code></h3>
 <pre><code>removeEventListener(eventType as String, listenerOwner as Object, listenerName as String)</code></pre>
@@ -85,7 +85,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <p class="meta">Operation statuses: <code>updated</code>, <code>error</code></p>
 <h3 id="function-getAdBreakStatus"><code>getAdBreakStatus</code></h3>
 <pre><code>getAdBreakStatus() as Object</code></pre>
-<p>Snapshot of the break state: <code>phase</code>, <code>state</code>, <code>generation</code>, <code>ticking</code>, the selected <code>break</code> and its countdown, all known <code>breaks</code> (<code>breakId</code>, <code>occurrence</code>, <code>state</code>, <code>reason</code>, <code>reasonDetail</code>) and <code>deliveryMode</code>. When playback must be restarted it adds <code>recoveryRequired</code>, <code>reloadRequired</code> and <code>reloadReason</code>.</p>
+<p>Snapshot of the break state: <code>phase</code>, <code>state</code>, <code>generation</code>, <code>ticking</code>, the selected <code>break</code> and its countdown, the <code>breaks</code> the manifest lists plus breaks that ended less than 30 s ago (<code>breakId</code>, <code>occurrence</code>, <code>state</code>, <code>reason</code>, <code>reasonDetail</code>) and <code>deliveryMode</code>. When playback must be restarted it adds <code>recoveryRequired</code>, <code>reloadRequired</code> and <code>reloadReason</code>.</p>
 
 <h3 id="function-isSessionActive"><code>isSessionActive</code></h3>
 <pre><code>isSessionActive() as Boolean</code></pre>
@@ -101,14 +101,14 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 
 <h3 id="function-resolveGateway"><code>resolveGateway</code></h3>
 <pre><code>resolveGateway(result as Object) as Boolean</code></pre>
-<p>Answers a <code>gatewayrequest</code> event: <code>{ requestId, generation, status, value }</code> with <code>status</code> <code>&quot;ok&quot;</code> or <code>&quot;error&quot;</code>. Returns <code>false</code> for an unknown or stale request. Without an answer within two seconds the SDK uses the original request, response or registered macro values and reports a diagnostic.</p>
+<p>Answers a <code>gatewayrequest</code> event: <code>{ requestId, generation, status, value }</code> with <code>status</code> <code>&quot;ok&quot;</code> or <code>&quot;error&quot;</code>. Returns <code>false</code> for an unknown or stale request. Without an answer within two seconds the SDK uses the original request, response or registered macro values and reports a diagnostic. A manifest supplied as a BrightScript object is read like the same manifest sent as JSON: manifest fields match their spec spelling whatever case the object stores, while free-form keys keep the case the object stores.</p>
 
 <h2 id="start-config">Start configuration</h2>
 <p>Keys of the object passed to <code>startSession</code>. Built-in macros: <code>$OPTIVIEW_USER_AGENT$</code>, <code>$OPTIVIEW_PLAYER_WIDTH$</code>, <code>$OPTIVIEW_PLAYER_HEIGHT$</code>, <code>$OPTIVIEW_BREAK_DURATION_SECONDS$</code>, <code>$OPTIVIEW_BREAK_DURATION_MS$</code>.</p>
 <table>
 <thead><tr><th>Key</th><th>Type</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code id="config-contentUrl">contentUrl</code> <strong>required</strong></td><td>String</td><td>Live HLS master playlist. With <code>OptiViewAdsInterceptor</code> and the OptiView Player's THEOlive source, pass the THEOlive channel ID instead: a value that is not an <code>http(s)</code> URL declares an SSAI-only session (nothing is stitched; the start fails with <code>content-url-required</code> if the break manifest selects SGAI).</td></tr>
+<tr><td><code id="config-contentUrl">contentUrl</code> <strong>required</strong></td><td>String</td><td>Live HLS master playlist. With <code>OptiViewAdsInterceptor</code> and the OptiView Player's THEOlive source, pass the THEOlive channel ID instead: a value that is not an <code>http(s)</code> URL declares an SSAI-only session (nothing is stitched; the start fails with <code>content-url-required</code> if the break manifest selects SGAI). A session the interceptor starts after <code>configure</code> gets the discovered SGAI endpoint as its <code>contentUrl</code>.</td></tr>
 <tr><td><code id="config-manifestUrl">manifestUrl</code> <strong>required</strong></td><td>String</td><td>Break manifest URL. Network manifests must carry a valid detached signature.</td></tr>
 <tr><td><code id="config-contentHeaders">contentHeaders</code></td><td>Object</td><td>HTTP headers sent with content playlist and segment requests.</td></tr>
 <tr><td><code id="config-assetParameters">assetParameters</code></td><td>Object</td><td>Ad tag parameters added to Google Ad Manager requests, merged with the manifest's parameters.</td></tr>
@@ -129,7 +129,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <table>
 <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
 <tbody>
-<tr><td><code>ready</code></td><td>The session is ready; the result carries <code>playbackUrl</code> and <code>deliveryMode</code>.</td></tr>
+<tr><td><code>ready</code></td><td>The session is ready; the result carries <code>playbackUrl</code>, <code>contentUrl</code> and <code>deliveryMode</code>.</td></tr>
 <tr><td><code>error</code></td><td>The call failed; <code>reason</code> names why (for example <code>missing-session-url</code>, <code>invalid-configuration</code>, <code>invalid-video-binding</code>, <code>invalid-alignment-tolerance</code>, <code>invalid-delivery-mode</code>, <code>invalid-raf-metadata</code>, <code>invalid-stream-activity-monitor-id</code>, <code>invalid-parameters</code>, <code>invalid-macros</code>, <code>playback-detach-required</code>, <code>unsupported-state</code>, <code>content-url-required</code>, <code>no-session</code>, <code>destroyed</code>).</td></tr>
 <tr><td><code>cancelled</code></td><td>Superseded by a newer call or ended with the session (<code>superseded</code>, <code>session-ended</code>).</td></tr>
 <tr><td><code>draining</code></td><td><code>endSession</code> while playback is attached; detach to finish.</td></tr>
@@ -143,7 +143,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <table>
 <thead><tr><th>Type</th><th>Meaning</th></tr></thead>
 <tbody>
-<tr><td><code id="event-operationresult">operationresult</code></td><td>Result of an asynchronous call: <code>operationId</code>, <code>operation</code> (<code>startSession</code>, <code>endSession</code>, <code>destroy</code>, <code>updateAssetParameters</code>, <code>updateAssetParameterMacros</code>, <code>updateRafMetadata</code>), <code>generation</code>, <code>status</code> and an optional <code>reason</code>. A <code>ready</code> result of <code>startSession</code> carries <code>playbackUrl</code>, <code>deliveryMode</code> and, in SSAI, <code>ssaiStream</code>. See Operation results.</td></tr>
+<tr><td><code id="event-operationresult">operationresult</code></td><td>Result of an asynchronous call: <code>operationId</code>, <code>operation</code> (<code>startSession</code>, <code>endSession</code>, <code>destroy</code>, <code>updateAssetParameters</code>, <code>updateAssetParameterMacros</code>, <code>updateRafMetadata</code>), <code>generation</code>, <code>status</code> and an optional <code>reason</code>. A <code>ready</code> result of <code>startSession</code> carries <code>playbackUrl</code>, <code>contentUrl</code>, <code>deliveryMode</code> and, in SSAI, <code>ssaiStream</code>. See Operation results.</td></tr>
 <tr><td><code id="event-diagnostic">diagnostic</code></td><td>Diagnostics with <code>code</code>, an optional <code>reason</code> and code-specific context (see Diagnostics).</td></tr>
 <tr><td><code id="event-gatewayrequest">gatewayrequest</code></td><td>Interception and macro requests (<code>kind</code>: <code>manifest-request</code>, <code>manifest-response</code> or <code>asset-parameter-macros</code>) with <code>requestId</code>, <code>generation</code>, <code>value</code> and <code>context</code>. Answer each with <code>resolveGateway</code> within two seconds.</td></tr>
 <tr><td><code id="event-adbreakbegin">adbreakbegin</code></td><td>A break started playing at its actual splice point. Break and ad events carry <code>eventId</code> when the break belongs to a channel event.</td></tr>
@@ -181,7 +181,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 <tr><td><code id="ROKU-MANIFEST-INVALID">ROKU-MANIFEST-INVALID</code></td><td>A break manifest failed validation; it is not used and is polled again after 5 s.</td></tr>
 <tr><td><code id="ROKU-MANIFEST-UNSUPPORTED">ROKU-MANIFEST-UNSUPPORTED</code></td><td>The manifest cannot be used for Roku insertion (for example its timebase is not <code>wallclock</code>).</td></tr>
 <tr><td><code id="ROKU-POLLING-INVALID">ROKU-POLLING-INVALID</code></td><td>The manifest's polling instructions were invalid; the manifest is polled again after 5 s.</td></tr>
-<tr><td><code id="ROKU-RESOURCE-LIMIT">ROKU-RESOURCE-LIMIT</code></td><td>Too many breaks: a manifest over the limit is not used; a full session ledger stops ad insertion for the session.</td></tr>
+<tr><td><code id="ROKU-RESOURCE-LIMIT">ROKU-RESOURCE-LIMIT</code></td><td>Too many breaks: a manifest over the limit is not used; more than 512 breaks listed or in progress at once stops ad insertion for the session.</td></tr>
 <tr><td><code id="ROKU-IMA-FAILED">ROKU-IMA-FAILED</code></td><td>IMA pod serving could not be set up; it is retried after 10 s and breaks due meanwhile are skipped.</td></tr>
 <tr><td><code id="ROKU-IMA-STOP-TIMEOUT">ROKU-IMA-STOP-TIMEOUT</code></td><td>The IMA pod-serving task did not stop in time during cleanup.</td></tr>
 <tr><td><code id="ROKU-DAI-STOP-TIMEOUT">ROKU-DAI-STOP-TIMEOUT</code></td><td>SSAI: the IMA DAI task did not stop in time during cleanup.</td></tr>
@@ -259,7 +259,7 @@ pre { background: #f5f5f7; padding: 10px 12px; overflow-x: auto; }
 </tbody>
 </table>
 <h2 id="components">Other components</h2>
-<p>Further public components of the <code>OptiViewAds</code> library. Only the fields listed are for application use; their interface functions are called by the player.</p>
+<p>Further public components of the <code>OptiViewAds</code> library. Only the fields and functions listed are for application use; their other interface functions are called by the player.</p>
 <h3 id="component-OptiViewAdsSDKIntegration"><code>OptiViewAds:OptiViewAdsSDKIntegration</code></h3>
 <p>Custom ad integration for the OptiView Player (THEOplayer Roku SDK). Register it with the player and the player's <code>ads</code> API dispatches the Ads SDK's break and ad events (<code>adloaded</code>, <code>adbreakbegin</code>, <code>adimpression</code>, <code>adbegin</code>, the quartiles, <code>adend</code>, <code>adbreakend</code>, <code>aderror</code>) with <code>player.ads.playing</code>, <code>currentAdBreak</code> and <code>currentAds</code> kept in step, so channels and analytics connectors that already listen on <code>player.ads</code> need no second event source. The Ads SDK itself keeps emitting its own events.</p>
 <pre><code>integration = createObject(&quot;roSGNode&quot;, &quot;OptiViewAds:OptiViewAdsSDKIntegration&quot;)
@@ -279,26 +279,41 @@ player.source = { sources: [{ src: result.playbackUrl, type: &quot;application/x
 <tr><td><code id="OptiViewAdsSDKIntegration-field-integrationKind">integrationKind</code></td><td>string</td><td>read</td><td>The integration kind, <code>optiview-ads-sdk</code>: pass it to <code>registerServerSideIntegration</code> and set it as <code>ssai.integration</code> on the source the player plays.</td></tr>
 </tbody>
 </table>
+
 <h3 id="component-OptiViewAdsInterceptor"><code>OptiViewAds:OptiViewAdsInterceptor</code></h3>
-<p>THEOlive discovery response interceptor for the OptiView Player (THEOplayer Roku SDK). In an SSAI session it rewrites the distribution the player discovers so the Google DAI stream the Ads SDK obtained becomes the only priority-0 endpoint (<code>src</code> the DAI URL, <code>srcType: &quot;hls&quot;</code>, <code>adSystem: &quot;none&quot;</code>, <code>provider: &quot;external&quot;</code>, <code>weight: 100</code>); the DAI endpoint of the session's asset key is removed and every other endpoint at priority 0 moves to priority 1 as fallback. Both the V2 and V3 discovery shapes are handled. Without a ready SSAI session (including SGAI sessions) the response passes through unchanged.</p>
+<p>THEOlive discovery response interceptor for the OptiView Player (THEOplayer Roku SDK). It rewrites the distribution the player discovers so the stream of the Ads SDK session becomes the only priority-0 endpoint (<code>src</code> the stream URL, <code>srcType: &quot;hls&quot;</code>, <code>adSystem: &quot;none&quot;</code>, <code>provider: &quot;external&quot;</code>, <code>weight: 100</code>): the Google DAI stream in SSAI, the SDK's stitched stream (its local proxy URL) in SGAI. In SSAI the DAI endpoint of the session's asset key is removed (V2 and V3 discovery shapes). In SGAI the endpoint the SDK stitches is removed: on V3 the <code>adSystem: &quot;sgai&quot;</code> endpoint with an <code>http(s)</code> <code>src</code> and the lowest <code>priority</code> number, then the highest <code>weight</code>, then the first listed; on V2 the endpoint whose <code>hlsSrc</code> is the session's <code>contentUrl</code> (<code>daiAssetKey</code> and all: the player derives a DAI endpoint from it), or the stream is added in front of the others when none matches; a distribution without one (a V2 distribution without a <code>contentUrl</code> or without endpoints) passes through unchanged. Every endpoint that stays moves down one priority, keeping its order as fallback. Without a ready session, or for a distribution without endpoints, the response passes through exactly as fetched. After <code>configure</code>, with a player that supports asynchronous interceptors, it also starts the session itself from the <code>ads.adsManifestUrl</code> of each discovery response.</p>
 <pre><code>interceptor = createObject(&quot;roSGNode&quot;, &quot;OptiViewAds:OptiViewAdsInterceptor&quot;)
-interceptor.adsSdk = ads ' the OptiViewAds node, bound before startSession
+interceptor.adsSdk = ads ' the OptiViewAds node
 player.theoLive.discoveryResponseInterceptor = interceptor
+' Session from the discovery response (ads.adsManifestUrl): the startSession config without manifestUrl.
+interceptor.callFunc(&quot;configure&quot;, { assetParameters: { iu: &quot;/network/unit&quot; } })
+player.source = { sources: [{ src: theoLiveChannelId, type: &quot;theolive&quot;, ssai: { integration: integration.integrationKind } }] }
+
+' Or, app-started session with a known break manifest URL (no configure call):
 ads.callFunc(&quot;startSession&quot;, { contentUrl: theoLiveChannelId, manifestUrl: breakManifestUrl })
 ' On the &quot;ready&quot; result of startSession:
-player.source = { sources: [{ src: theoLiveChannelId, type: &quot;theolive&quot;, ssai: { integration: &quot;optiview-ads-sdk&quot; } }] }</code></pre>
+player.source = { sources: [{ src: theoLiveChannelId, type: &quot;theolive&quot;, ssai: { integration: integration.integrationKind } }] }</code></pre>
 <ul>
-<li>Bind <code>adsSdk</code> before calling <code>startSession</code>: the interceptor learns the DAI stream from the <code>startSession</code> <code>ready</code> result (<code>playbackUrl</code>, <code>ssaiStream.assetKey</code>, <code>deliveryMode: &quot;ssai&quot;</code>) and forgets it when the start fails, is superseded, or the session ends or is destroyed.</li>
-<li>Pass the THEOlive channel ID as <code>contentUrl</code> so the Ads SDK does not stitch content before the delivery mode is known; the player resolves the content through discovery. SGAI with THEOlive is not supported yet.</li>
+<li>After <code>configure(config)</code>, each discovery response carrying <code>ads.adsManifestUrl</code> makes the interceptor return <code>invalid</code> to the player and call <code>startSession</code> with <code>config</code> plus <code>manifestUrl</code> (a configured <code>manifestUrl</code> wins) and, unless configured, <code>contentUrl</code>: the <code>src</code> of the discovered <code>sgai</code> endpoint, so the break manifest can select SGAI or SSAI, else the distribution id (or <code>&quot;theolive&quot;</code> when absent; an SSAI-only session), not the channel ID used in app-started mode; when that start settles it writes the rewritten response (<code>ready</code>) or <code>{&quot;error&quot;: &quot;...&quot;}</code> (failed or superseded; the player keeps the discovered channel) to <code>discoveryResponse</code>. A response without <code>ads.adsManifestUrl</code> passes through unchanged and ends a session the interceptor started; a rediscovery of the same distribution with the same URL reuses the running session, a different URL restarts it, and another distribution (channel switch) ends the interceptor-started session before starting one for it (passing through unchanged when the SDK refuses the start while the previous stream is still attached). Requires an OptiView Player that sets <code>playerSupportsAsync</code>; otherwise, and without <code>configure</code>, the interceptor answers synchronously.</li>
+<li>Bind <code>adsSdk</code> before calling <code>startSession</code>: the interceptor learns the stream from the <code>startSession</code> <code>ready</code> result (<code>playbackUrl</code> and <code>deliveryMode</code>; in SSAI also <code>ssaiStream.assetKey</code>, in SGAI also <code>contentUrl</code>) and forgets it when the start fails, is superseded, or the session ends or is destroyed.</li>
+<li>In app-started mode only, pass the THEOlive channel ID as <code>contentUrl</code> so the Ads SDK does not stitch content before the delivery mode is known; the player resolves the content through discovery. A channel-ID <code>contentUrl</code> session is SSAI-only; an app-started SGAI session with a URL <code>contentUrl</code> replaces the V2 endpoint with that <code>hlsSrc</code> (the <code>ready</code> result carries the <code>contentUrl</code>; the running session's URL wins over a configured one), and for an interceptor-started SGAI session use <code>configure</code>.</li>
 <li>Set <code>player.theoLive.discoveryResponseInterceptor = invalid</code> and <code>interceptor.adsSdk = invalid</code> when tearing the player down.</li>
-<li>Do not call the node's functions: <code>onDiscoveryResponse</code> is invoked by the player and <code>onAdsOperation</code> by the Ads SDK.</li>
+<li>Do not call the node's other functions or write its other fields: <code>onDiscoveryResponse</code> is invoked and <code>playerSupportsAsync</code> written by the player, <code>onAdsOperation</code> is invoked by the Ads SDK and <code>discoveryResponse</code> is the interceptor's answer to the player.</li>
+<li>Do not mix modes: after <code>configure</code>, do not call <code>startSession</code> yourself; the next discovery replaces that session.</li>
+<li>While a start is in progress, only the latest pending <code>onDiscoveryResponse</code> call is answered; there is no request id. Earlier calls are left to the player's fixed 10 s timeout. After that timeout discovery continues with the original response and a later <code>discoveryResponse</code> write is ignored.</li>
+<li><code>configure(invalid)</code> (or any non-object) disables discovery-started sessions and ends a session the interceptor started. Rebinding <code>adsSdk</code> ends that session on the previous node before resetting discovery state. Neither ends an app-started session.</li>
 </ul>
 <table>
 <thead><tr><th>Field</th><th>Type</th><th>Use</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code id="OptiViewAdsInterceptor-field-adsSdk">adsSdk</code></td><td>node</td><td>write</td><td>The <code>OptiViewAds</code> node whose SSAI stream the discovery response should carry. Bind it before <code>startSession</code>; set to <code>invalid</code> to detach.</td></tr>
+<tr><td><code id="OptiViewAdsInterceptor-field-adsSdk">adsSdk</code></td><td>node</td><td>write</td><td>The <code>OptiViewAds</code> node whose session stream the discovery response should carry. Bind it before <code>startSession</code>; set to <code>invalid</code> to detach.</td></tr>
+<tr><td><code id="OptiViewAdsInterceptor-field-playerSupportsAsync">playerSupportsAsync</code></td><td>boolean</td><td>read</td><td>Set to <code>true</code> by an OptiView Player that waits for asynchronous interceptor answers; required for <code>configure</code>-driven sessions.</td></tr>
+<tr><td><code id="OptiViewAdsInterceptor-field-discoveryResponse">discoveryResponse</code></td><td>string</td><td>read</td><td>The asynchronous answer the interceptor writes for the player: the rewritten discovery response or a JSON object with an <code>error</code> property.</td></tr>
 </tbody>
 </table>
+<h4 id="OptiViewAdsInterceptor-function-configure"><code>configure</code></h4>
+<pre><code>configure(config as Object)</code></pre>
+<p>Lets the interceptor start the session from the discovered ads manifest URL. <code>config</code> is the <code>startSession</code> config without <code>manifestUrl</code> (a given <code>manifestUrl</code> wins over discovery; a given <code>contentUrl</code> wins over the discovered SGAI endpoint and the distribution id). Call before setting the THEOlive source; pass a non-object to stop starting sessions and end any session the interceptor started.</p>
 </main>
 </body>
 </html>
