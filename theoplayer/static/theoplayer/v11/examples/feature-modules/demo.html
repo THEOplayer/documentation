@@ -36,9 +36,9 @@
     <script type="importmap">
       {
         "imports": {
-          "theoplayer/core": "https://unpkg.com/theoplayer@11.16.0/module/core.js",
-          "theoplayer/chromeless": "https://unpkg.com/theoplayer@11.16.0/module/core.js",
-          "theoplayer/hls": "https://unpkg.com/theoplayer@11.16.0/module/hls.js",
+          "theoplayer/core": "https://cdn.theoplayer.com/dash/theoplayer/module/core.js",
+          "theoplayer/chromeless": "https://cdn.theoplayer.com/dash/theoplayer/module/core.js",
+          "theoplayer/hls": "https://cdn.theoplayer.com/dash/theoplayer/module/hls.js",
           "@theoplayer/web-ui": "https://unpkg.com/@theoplayer/web-ui@2/dist/THEOplayerUI.mjs",
           "lit": "https://ga.jspm.io/npm:lit@3.3.2/index.js",
           "lit/decorators.js": "https://ga.jspm.io/npm:lit@3.3.2/decorators.js",
@@ -74,15 +74,14 @@
   </head>
   <body>
     <!--
-      libraryLocation: The library files on the theoplayer.com CDN don't include the feature modules,
-      so for demonstration purposes, this example loads the npm package from unpkg.
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
       For production use, host the library yourself and update this URL and the import map above.
 
       licenseUrl: Change this to point to your THEOplayer license file.
       Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://unpkg.com/theoplayer@11.16.0/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
       source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
