@@ -6,7 +6,7 @@ import styles from '../shared.module.css';
 type SourceName = 'drm' | 'aes';
 
 const sourceLabels: Record<SourceName, string> = {
-  drm: 'DRM: Widevine or PlayReady (DASH), FairPlay (HLS)',
+  drm: 'DRM: Widevine, PlayReady or FairPlay (HLS)',
   aes: 'AES-128 (HLS)',
 };
 
@@ -18,8 +18,7 @@ const keySystems: Record<string, string> = {
 
 function describeSource(src: string | undefined): string {
   if (!src) return '-';
-  if (src.includes('dash-wv-pr')) return 'DASH with Widevine or PlayReady';
-  if (src.includes('hls-fp')) return 'HLS with FairPlay';
+  if (src.includes('protected_1080p_h264_cbcs')) return 'HLS with Widevine, PlayReady or FairPlay';
   if (src.includes('encrypted')) return 'HLS with AES-128';
   return src;
 }

@@ -45,9 +45,9 @@
     ></theoplayer-default-ui>
     <script src="../utils.js"></script>
     <script>
-      // A test token for the KeyOS license server.
-      const keyosCustomData =
-        'PEtleU9TQXV0aGVudGljYXRpb25YTUw+PERhdGE+PEdlbmVyYXRpb25UaW1lPjIwMTYtMTEtMTkgMDk6MzQ6MDEuOTkyPC9HZW5lcmF0aW9uVGltZT48RXhwaXJhdGlvblRpbWU+MjAyNi0xMS0xOSAwOTozNDowMS45OTI8L0V4cGlyYXRpb25UaW1lPjxVbmlxdWVJZD4wZmZmMTk3YWQzMzQ0ZTMyOWU0MTA0OTIwMmQ5M2VlYzwvVW5pcXVlSWQ+PFJTQVB1YktleUlkPjdlMTE0MDBjN2RjY2QyOWQwMTc0YzY3NDM5N2Q5OWRkPC9SU0FQdWJLZXlJZD48V2lkZXZpbmVQb2xpY3kgZmxfQ2FuUGxheT0idHJ1ZSIgZmxfQ2FuUGVyc2lzdD0iZmFsc2UiIC8+PFdpZGV2aW5lQ29udGVudEtleVNwZWMgVHJhY2tUeXBlPSJIRCI+PFNlY3VyaXR5TGV2ZWw+MTwvU2VjdXJpdHlMZXZlbD48L1dpZGV2aW5lQ29udGVudEtleVNwZWM+PEZhaXJQbGF5UG9saWN5IC8+PExpY2Vuc2UgdHlwZT0ic2ltcGxlIiAvPjwvRGF0YT48U2lnbmF0dXJlPk1sNnhkcU5xc1VNalNuMDdicU8wME15bHhVZUZpeERXSHB5WjhLWElBYlAwOE9nN3dnRUFvMTlYK1c3MDJOdytRdmEzNFR0eDQydTlDUlJPU1NnREQzZTM4aXE1RHREcW9HelcwS2w2a0JLTWxHejhZZGRZOWhNWmpPTGJkNFVkRnJUbmxxU21raC9CWnNjSFljSmdaUm5DcUZIbGI1Y0p0cDU1QjN4QmtxMUREZUEydnJUNEVVcVJiM3YyV1NueUhGeVZqWDhCR3o0ZWFwZmVFeDlxSitKbWI3dUt3VjNqVXN2Y0Fab1ozSHh4QzU3WTlySzRqdk9Wc1I0QUd6UDlCc3pYSXhKd1ZSZEk3RXRoMjhZNXVEQUVZVi9hZXRxdWZiSXIrNVZOaE9yQ2JIVjhrR2praDhHRE43dC9nYWh6OWhVeUdOaXRqY2NCekJvZHRnaXdSUT09PC9TaWduYXR1cmU+PC9LZXlPU0F1dGhlbnRpY2F0aW9uWE1MPg==';
+      // A test token for the Axinom license servers.
+      const axinomToken =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJ2ZXJzaW9uIjogMSwKICAiY29tX2tleV9pZCI6ICI2OWU1NDA4OC1lOWUwLTQ1MzAtOGMxYS0xZWI2ZGNkMGQxNGUiLAogICJtZXNzYWdlIjogewogICAgInR5cGUiOiAiZW50aXRsZW1lbnRfbWVzc2FnZSIsCiAgICAidmVyc2lvbiI6IDIsCiAgICAibGljZW5zZSI6IHsKICAgICAgImFsbG93X3BlcnNpc3RlbmNlIjogdHJ1ZQogICAgfSwKICAgICJjb250ZW50X2tleXNfc291cmNlIjogewogICAgICAiaW5saW5lIjogWwogICAgICAgIHsKICAgICAgICAgICJpZCI6ICIzMDJmODBkZC00MTFlLTQ4ODYtYmNhNS1iYjFmODAxOGEwMjQiLAogICAgICAgICAgImVuY3J5cHRlZF9rZXkiOiAicm9LQWcwdDdKaTFpNDNmd3YremZ0UT09IiwKICAgICAgICAgICJ1c2FnZV9wb2xpY3kiOiAiUG9saWN5IEEiCiAgICAgICAgfQogICAgICBdCiAgICB9LAogICAgImNvbnRlbnRfa2V5X3VzYWdlX3BvbGljaWVzIjogWwogICAgICB7CiAgICAgICAgIm5hbWUiOiAiUG9saWN5IEEiLAogICAgICAgICJwbGF5cmVhZHkiOiB7CiAgICAgICAgICAibWluX2RldmljZV9zZWN1cml0eV9sZXZlbCI6IDE1MCwKICAgICAgICAgICJwbGF5X2VuYWJsZXJzIjogWwogICAgICAgICAgICAiNzg2NjI3RDgtQzJBNi00NEJFLThGODgtMDhBRTI1NUIwMUE3IgogICAgICAgICAgXQogICAgICAgIH0KICAgICAgfQogICAgXQogIH0KfQ._NfhLVY7S6k8TJDWPeMPhUawhympnrk6WAZHOVjER6M';
 
       const sources = {
         // HLS with AES-128 encryption: no extra configuration is needed.
@@ -59,35 +59,28 @@
           poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
           metadata: { title: 'Big Buck Bunny (AES-128)' },
         },
-        // The player picks the first source that is supported by the current browser:
-        // DASH with Widevine or PlayReady, or HLS with FairPlay.
+        // A single HLS (CMAF) stream protected with Widevine, PlayReady and FairPlay.
+        // The player uses the key system that is supported by the current browser.
         drm: {
-          sources: [
-            {
-              src: 'https://d2jl6e4h8300i8.cloudfront.net/netflix_meridian/4k-18.5!9/keyos-logo/g180-avc_a2.0-vbr-aac-128k/r30/dash-wv-pr/stream.mpd',
-              type: 'application/dash+xml',
-              contentProtection: {
-                integration: 'keyos',
-                widevine: {},
-                playready: {},
-                preferredKeySystems: ['widevine', 'playready'],
-                customdata: keyosCustomData,
+          sources: {
+            src: 'https://media.axprod.net/TestVectors/Cmaf/protected_1080p_h264_cbcs/manifest.m3u8',
+            type: 'application/x-mpegurl',
+            contentProtection: {
+              integration: 'axinom',
+              token: axinomToken,
+              widevine: {
+                licenseAcquisitionURL: 'https://drm-widevine-licensing.axtest.net/AcquireLicense',
+              },
+              playready: {
+                licenseAcquisitionURL: 'https://drm-playready-licensing.axtest.net/AcquireLicense',
+              },
+              fairplay: {
+                licenseAcquisitionURL: 'https://drm-fairplay-licensing.axtest.net/AcquireLicense',
+                certificateURL: 'https://vtb.axinom.com/FPScert/fairplay.cer',
               },
             },
-            {
-              src: 'https://d2jl6e4h8300i8.cloudfront.net/netflix_meridian/4k-19.5!9/keyos-logo/g180-avc_a2.0-vbr-aac-128k/r30/hls-fp/master.m3u8',
-              type: 'application/x-mpegurl',
-              contentProtection: {
-                integration: 'keyos',
-                fairplay: {
-                  certificateURL: 'https://fp-keyos.licensekeyserver.com/cert/7e11400c7dccd29d0174c674397d99dd.der',
-                  licenseAcquisitionURL: 'https://fp-keyos.licensekeyserver.com/getkey/',
-                },
-                customdata: keyosCustomData,
-              },
-            },
-          ],
-          metadata: { title: 'Meridian (Widevine, PlayReady or FairPlay)' },
+          },
+          metadata: { title: 'Axinom test vector (Widevine, PlayReady or FairPlay)' },
         },
       };
 

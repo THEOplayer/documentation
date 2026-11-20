@@ -13,12 +13,12 @@ import DrmDemo from '../_components/DrmDemo';
 
 This example plays protected content:
 
-- **DRM**: a single source description with a DASH stream protected with Widevine and PlayReady, and an HLS stream protected with FairPlay.
-  The player picks the first stream that the current browser supports: Widevine or PlayReady in most browsers, and FairPlay in Safari.
-  The license requests are handled by the KeyOS [DRM integration](../../how-to-guides/web/drm/buydrm-keyos.mdx).
+- **DRM**: an HLS stream protected with Widevine, PlayReady and FairPlay.
+  The player uses the key system that the current browser supports: Widevine or PlayReady in most browsers, and FairPlay in Safari.
+  The license requests are handled by the Axinom [DRM integration](../../how-to-guides/web/drm/axinom.mdx).
 - **AES-128**: an HLS stream encrypted with AES-128. The player fetches the decryption key from the URL in the HLS playlist, so no extra configuration is needed.
 
-The box below the player shows which stream the player selected, and which DRM key systems your browser supports.
+The box below the player shows which stream the player is playing, and which DRM key systems your browser supports.
 
 <details>
   <summary>Code</summary>
