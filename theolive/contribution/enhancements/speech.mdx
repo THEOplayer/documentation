@@ -97,8 +97,27 @@ The full schema is documented in the API reference (`SpeechEnhancement` on [crea
 
 With a speech enhancement, the stream is first routed through the captioning service. This affects how you connect your encoder:
 
-- **`rtmp-push`** and **`srt-push`**: always push to the ingest URL returned by the API for that ingest — it differs from a regular ingest's connection details (an `srt-push` ingest with a speech enhancement, for example, returns a URL without a stream key).
-- **`srt-pull`**: the captioning service pulls the ingest's `url` itself, so your source must be reachable from the captioning service.
+- **`rtmp-push`** and **`srt-push`**: use the push connection details returned when the captioning service is created or when you rotate the credentials, as described below. These differ from a regular ingest's connection details.
+- **`srt-pull`**: the captioning service pulls the ingest's `url` itself, so your source must be reachable from the captioning service. Credentials in that source URL are [write-only](../ingest-protocols.mdx#credentials-in-pull-source-urls).
+
+#### Save push connection details
+
+The full connection details for a speech-enhanced push ingest are returned **only when the captioning service is first created or when you rotate the credentials**, with `credentialHidden: false`. Save them securely and use them to configure your encoder:
+
+- **`rtmp-push`**: the response returns the server `url` (up to the app) and a separate `streamKey`. Later reads keep the `url` unchanged, omit `streamKey`, and set `credentialHidden: true`.
+- **`srt-push`**: there is no separate stream key. The push `url` itself admits the encoder. Later reads return only its scheme and host, with no port or query, and set `credentialHidden: true`.
+
+The captioning service is first created by the request that adds the speech enhancement to an ingest that has never had one, either during ingest creation (including ingests created together with a channel) or in an update. An update that changes how the encoder connects, such as changing the ingest type, does **not** return the new connection details: call the rotation endpoint below to get them. Removing and then re-adding the speech enhancement reuses the existing captioning service and its connection details, so details you saved earlier keep working; the response does not return them. Call the rotation endpoint when you no longer have valid connection details.
+
+#### Rotate push connection details
+
+To get new push connection details for a speech-enhanced ingest:
+
+1. Stop every engine using the ingest, whether as its ingest or as its backup ingest. See [Starting and stopping](../../platform/starting-and-stopping.mdx).
+2. Call [`POST /v2/ingests/{id}/rotate-key`](../../api/rotate-ingest-key.api.mdx), replacing `{id}` with the ingest ID.
+3. Save the new connection details from the rotation response: `url` and, for RTMP only, `streamKey`, with `credentialHidden: false`. This response is the only time the new full connection details are returned. Update your encoder before restarting the engines. The **old connection details stop working** when they are rotated.
+
+Rotation is only allowed while every engine using the ingest, including as a backup ingest, is stopped. Otherwise, the API returns HTTP `409` with the error code `not_stopped`, and nothing changes.
 
 ## Regions
 
