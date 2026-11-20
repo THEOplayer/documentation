@@ -101,6 +101,14 @@ From the settings menu you can open the [Media Stats](/millicast/analytics/media
 
 In addition, if [Multi-view](/millicast/playback/multi-view.md) is enabled then there will be controls to adjust the layout for multiple incoming streams.
 
+With `clientStats=true`, open the settings gear (1) and select **Download client stats** (2) to save two files: `*-webrtc-dump.json` and `*-network.har`. They cover the current connection from its start until you click download. Send both files to support when troubleshooting playback issues. If Chrome asks you to **Allow multiple downloads**, allow it to save both files.
+
+import HostedViewerClientStats from '../../assets/img/hosted-viewer-download-client-stats.png';
+
+<div class="center-container">
+  <img src={HostedViewerClientStats} width="600" alt="Hosted player settings gear (1) and Download client stats menu item (2)" />
+</div>
+
 #### Google Cast
 
 The cast icon lets you forward the stream to a compatible device such as Google Cast compatible televisions.
@@ -158,6 +166,10 @@ Control how the adaptive bitrate of the player behaves and choose an [ABR strate
 
 - `&abrStrategy=quality`: an example of setting the `quality` ABR strategy
 - `&abrStrategy=quality&abrInitialBandwidth=1200000`: an example choosing the `quality` ABR strategy with a 1.2 Mbps bitrate (this value is in bits-per-second)
+
+### Collecting client stats
+
+- `&clientStats=true`: enables local collection of WebRTC stats, signaling, and network data on the viewer's device for support. This is off by default. The captured data stays on the device and is not uploaded automatically. Use **Download client stats** in the settings menu to save the files and share them with support.
 
 ### Settings
 
