@@ -52,6 +52,29 @@ Neither level holds ad server URLs or accounts. What to play, and where to fetch
 
 The SDK also exposes optional presentation settings — such as ad preloading, break chaining, and tune-in behavior — with sensible defaults. The platform pages describe the platform-specific options.
 
+### Player interception (opt-in)
+
+Player interception is off by default. Existing integrations keep reactive playback.
+For Web, add the option to your existing SDK configuration before loading or playing content:
+
+```typescript
+const sdk = new OptiViewAds({ ...sdkConfig, interceptPlayer: true });
+```
+
+Here, `sdkConfig` is your existing configuration, including its player adapter.
+The SDK can hold first play for a preroll and route play, pause, seek, mute and volume during ads.
+Your app keeps its player methods and events.
+
+Use the opt-in setup in the [Web](./web.mdx#player-interception-opt-in),
+[Android](./android.mdx#player-interception-opt-in),
+[iOS and tvOS](./ios.mdx#player-interception-opt-in), or
+[React Native](./react-native.mdx#player-interception-opt-in) guide.
+Android needs the adapter's `interceptedPlayer`; raw `THEOplayerView.player` is not intercepted.
+AVPlayer needs `InterceptedAVPlayer`.
+React-native-video needs the `/video` wrapper with native controls disabled.
+Built-in, notification and Now Playing controls bypass interception.
+THEOplayer Web needs 11.15+; older versions warn and keep reactive playback.
+
 ### Session configuration
 
 | Property          | Description                                                                                                                                                                                                                                                                            |
