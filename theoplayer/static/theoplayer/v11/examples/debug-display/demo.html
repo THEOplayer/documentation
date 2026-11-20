@@ -34,7 +34,7 @@
     <script type="importmap">
       {
         "imports": {
-          "theoplayer/chromeless": "https://unpkg.com/theoplayer@11/THEOplayer.chromeless.esm.js",
+          "theoplayer/chromeless": "https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.chromeless.esm.js",
           "@theoplayer/web-ui": "https://unpkg.com/@theoplayer/web-ui@2/dist/THEOplayerUI.mjs",
           "@theoplayer/web-ui/debug": "https://unpkg.com/@theoplayer/web-ui@2/dist/THEOplayerUI.debug.mjs",
           "lit": "https://ga.jspm.io/npm:lit@3.3.2/index.js",
@@ -62,7 +62,7 @@
   </head>
   <body>
     <!--
-      libraryLocation: For demonstration purposes, we load THEOplayer from unpkg.
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
       For production use, host the library yourself and update this URL and the import map above.
 
       licenseUrl: Point this to your license file, or replace it with a license property.
@@ -71,7 +71,7 @@
       <theoplayer-debug-button> shows or hides the debug display from the control bar.
     -->
     <theoplayer-default-ui
-      configuration='{"libraryLocation":"https://unpkg.com/theoplayer@11/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt","mutedAutoplay":"all"}'
       source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
     >
       <theoplayer-debug-display slot="overlay" hidden></theoplayer-debug-display>
