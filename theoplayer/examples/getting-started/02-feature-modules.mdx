@@ -1,0 +1,37 @@
+---
+sidebar_custom_props: { icon: '🧩' }
+description: Import only the player features your app needs with feature modules, and check which features are enabled.
+---
+
+# Feature modules
+
+import CodeBlock from '@theme/CodeBlock';
+import demoSource from '!!raw-loader!../../static/theoplayer/v11/examples/feature-modules/demo.html';
+import FeatureModulesDemo from '../_components/FeatureModulesDemo';
+
+<FeatureModulesDemo />
+
+Since version 11.16.0, the Web SDK ships every feature as a separate module.
+This example imports the player without any features from `theoplayer/core`, and adds HLS playback with `theoplayer/hls`:
+
+```js
+import * as THEOplayer from 'theoplayer/core';
+import 'theoplayer/hls';
+import '@theoplayer/web-ui';
+```
+
+`THEOplayer.features` lists the features that are enabled, so the box below the player only shows `hls`.
+Import every feature module before the player is created.
+
+This example loads the packages from a CDN with an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap).
+Open Video UI imports the player from `theoplayer/chromeless`, so the import map points that name to `theoplayer/core` as well.
+In your application, install `theoplayer` and `@theoplayer/web-ui` from npm and bundle them instead.
+
+See [How to use THEOplayer feature modules](../../getting-started/01-sdks/01-web/14-how-to-use-feature-modules.md) for all available modules.
+
+<details>
+  <summary>Code</summary>
+  <CodeBlock language="html" title="demo.html" showLineNumbers>
+    {demoSource}
+  </CodeBlock>
+</details>

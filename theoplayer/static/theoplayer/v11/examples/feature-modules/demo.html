@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Feature modules</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      theoplayer-default-ui:not(:defined) {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      theoplayer-default-ui {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        font-family: 'Noto Sans', sans-serif;
+        background: #000;
+      }
+    </style>
+    <!--
+      The feature modules are only available as ES modules, so this example loads THEOplayer and Open Video UI as ES modules.
+      The import map tells the browser where to find each package.
+      Open Video UI imports the player from "theoplayer/chromeless", so that name points to "theoplayer/core" as well:
+      the player then only has the features that are imported below.
+      For production use, install the packages from npm and bundle them with your application instead.
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "theoplayer/core": "https://cdn.theoplayer.com/dash/theoplayer/module/core.js",
+          "theoplayer/chromeless": "https://cdn.theoplayer.com/dash/theoplayer/module/core.js",
+          "theoplayer/hls": "https://cdn.theoplayer.com/dash/theoplayer/module/hls.js",
+          "@theoplayer/web-ui": "https://unpkg.com/@theoplayer/web-ui@2/dist/THEOplayerUI.mjs",
+          "lit": "https://ga.jspm.io/npm:lit@3.3.2/index.js",
+          "lit/decorators.js": "https://ga.jspm.io/npm:lit@3.3.2/decorators.js",
+          "lit/directives/": "https://ga.jspm.io/npm:lit@3.3.2/directives/"
+        },
+        "scopes": {
+          "https://ga.jspm.io/": {
+            "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@2.1.2/reactive-element.js",
+            "@lit/reactive-element/decorators/": "https://ga.jspm.io/npm:@lit/reactive-element@2.1.2/decorators/",
+            "lit-element/lit-element.js": "https://ga.jspm.io/npm:lit-element@4.2.2/lit-element.js",
+            "lit-html": "https://ga.jspm.io/npm:lit-html@3.3.2/lit-html.js",
+            "lit-html/": "https://ga.jspm.io/npm:lit-html@3.3.2/"
+          }
+        }
+      }
+    </script>
+    <script type="module">
+      // Import the player without any features, then only the features this page needs.
+      // Import every feature module before the player is created.
+      import * as THEOplayer from 'theoplayer/core';
+      import 'theoplayer/hls';
+      import '@theoplayer/web-ui';
+
+      // Expose the player library for use from the browser's developer console.
+      window.THEOplayer = THEOplayer;
+
+      sendToParent('feature-modules', {
+        modules: ['theoplayer/core', 'theoplayer/hls'],
+        features: THEOplayer.features,
+        version: THEOplayer.version,
+      });
+    </script>
+  </head>
+  <body>
+    <!--
+      libraryLocation: For demonstration purposes, we use the THEOplayer CDN.
+      For production use, host the library yourself and update this URL and the import map above.
+
+      licenseUrl: Change this to point to your THEOplayer license file.
+      Alternatively, replace it with a "license" property whose value is your THEOplayer license itself.
+    -->
+    <theoplayer-default-ui
+      configuration='{"libraryLocation":"https://cdn.theoplayer.com/dash/theoplayer/","licenseUrl":"../../../../theoplayer-license.txt"}'
+      source='{"sources":{"src":"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8","type":"application/x-mpegurl"},"poster":"https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg","metadata":{"title":"Big Buck Bunny"}}'
+    ></theoplayer-default-ui>
+    <script src="../utils.js"></script>
+  </body>
+</html>
