@@ -2,6 +2,17 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## Rollout date pending confirmation
+
+### Media Server
+
+{/* 3.10.1 */}
+
+#### Fixes
+
+- Applied security updates to the media server images.
+- General stability and reliability improvements.
+
 ## 2026-11-18
 
 ### Media Server
