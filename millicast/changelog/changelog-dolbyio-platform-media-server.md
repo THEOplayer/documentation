@@ -2,7 +2,7 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
-## Release date pending confirmation
+## 2026-11-24
 
 ### Media Server
 
