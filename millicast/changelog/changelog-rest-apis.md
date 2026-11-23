@@ -2,7 +2,7 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
-## 2026-11-11 | REST APIs
+## 2026-11-23 | REST APIs
 
 ### Features
 
