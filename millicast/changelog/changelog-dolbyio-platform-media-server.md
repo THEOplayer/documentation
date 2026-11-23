@@ -2,7 +2,7 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
-## Rollout date pending confirmation
+## Release date pending confirmation
 
 ### Media Server
 
