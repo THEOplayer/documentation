@@ -109,13 +109,13 @@ https://sbp.optiview.dolby.com/latest/?sourceType=realtime&source=k9Mwad/multivi
 This is an example to load an OptiView low-delay stream and start with automatic playback:
 
 ```
-https://sbp.optiview.dolby.com/latest/?sourceType=lowdelay&source=ar5c53uzm3si4h4zgkzrju44h&autoPlay=true&muted=true&license=LICENSE_STRING
+https://sbp.optiview.dolby.com/latest/?sourceType=lowdelay&source=af5d8187-1af0-46af-92da-a9333719f296&autoPlay=true&muted=true&license=LICENSE_STRING
 ```
 
 This is an example to load an HLS stream and start with automatic playback:
 
 ```
-https://sbp.optiview.dolby.com/latest/?sourceType=live&source=https://stream.theo.live/europe-west/e2c4220c-3cf4-4499-ab3a-ea5e904d0406/ar5c53uzm3si4h4zgkzrju44h/stream/main.m3u8&autoPlay=true&muted=false&license=LICENSE_STRING
+https://sbp.optiview.dolby.com/latest/?sourceType=live&source=https://discovery.theo.live/v2/distributions/demo/hls/main.m3u8&autoPlay=true&muted=false&license=LICENSE_STRING
 ```
 
 ## A Complete Example
