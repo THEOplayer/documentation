@@ -11,7 +11,6 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 #### Fixes
 
 - Applied security updates to the media server images.
-- General stability and reliability improvements.
 
 ## 2026-11-18
 
