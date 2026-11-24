@@ -1,0 +1,135 @@
+---
+sidebar_position: 5
+sidebar_label: Smart crop
+sidebar_custom_props:
+  icon: 📱
+description: Automatically reframe a landscape live stream into vertical 9:16 video in real time.
+---
+
+# Smart crop
+
+Smart crop automatically reframes a landscape live stream into portrait (9:16) in real time by following the action in the video. From a single ingest and engine, it produces a vertical rendition for every quality rung in the engine's [ABR ladder](./abr.mdx) alongside the landscape renditions.
+
+import CalloutPremiumFeature from '../callouts/_premium_feature.md';
+
+<CalloutPremiumFeature />
+
+As long as the feature is not enabled on your account, requests that enable smart crop fail with `403 feature_not_enabled`. Disabling or clearing smart crop is allowed even when the feature is not enabled on your account.
+
+## How it works
+
+### Generated renditions
+
+For every quality rung in the engine's ABR ladder (for example, `1080p` at 1920×1080), the engine generates a vertical counterpart with ID `<id>-vertical` and swapped dimensions (1080×1920), sharing the same bitrate, frame rate, and codec.
+
+### Live-edge alignment
+
+Because each vertical frame is held for `lookahead + latency` seconds before encoding, vertical renditions trail the landscape live edge by that hold duration, while their `EXT-X-PROGRAM-DATE-TIME` timestamps remain aligned to the corresponding source frames.
+
+### Output protocols
+
+Vertical renditions are offered over **Low-Latency HLS and HLS (CMAF)** and restream outputs. **HESP** and **HLS (MPEG-TS)** outputs do not carry alternate video renditions, so HLS output (`outputs.hls: true`) must be enabled on the engine to deliver vertical video to viewers. See [Streaming protocols](./streaming-protocols.mdx) for configuring engine outputs and [Other HLS player](../playback/other-hls-player.mdx) for direct HLS manifest URLs.
+
+### HLS multivariant playlist
+
+Vertical renditions are not exposed as separate `EXT-X-STREAM-INF` variants. Instead, each landscape variant references a `VIDEO` rendition group (`VIDEO="video-<qualityId>"`) containing two `EXT-X-MEDIA:TYPE=VIDEO` entries:
+
+- `NAME="Landscape"` (`DEFAULT=YES`, `AUTOSELECT=YES`, no `URI`) — uses the variant's own media playlist, so players that do not handle `TYPE=VIDEO` groups continue playing landscape as before.
+- `NAME="Vertical"` (`URI="video/<id>-vertical/playlist.m3u8"`, `DEFAULT=NO`, `AUTOSELECT=NO`).
+
+```text
+#EXT-X-MEDIA:TYPE=VIDEO,GROUP-ID="video-1080p",NAME="Landscape",DEFAULT=YES,AUTOSELECT=YES
+#EXT-X-MEDIA:TYPE=VIDEO,GROUP-ID="video-1080p",NAME="Vertical",DEFAULT=NO,AUTOSELECT=NO,URI="video/1080p-vertical/playlist.m3u8"
+
+#EXT-X-STREAM-INF:BANDWIDTH=4500000,FRAME-RATE=30.000,CODECS="avc1.640028,mp4a.40.2",AUDIO="audio",VIDEO="video-1080p"
+video/1080p/playlist.m3u8
+```
+
+- Because a variant's `VIDEO` group holds renditions with different orientations, `RESOLUTION` is omitted on variants that have a vertical alternative (RFC 8216bis, Section 4.4.6.2.1), and `CODECS` lists the codecs of both renditions when they differ.
+- Landscape and vertical renditions share the same `EXT-X-PROGRAM-DATE-TIME` (PDT) timeline, audio, subtitle, and closed-caption groups, [DRM](./drm.mdx) encryption, and [JWT token authentication](../distribution/security/token-based-security.mdx).
+
+## Dashboard
+
+Smart crop is configured per engine in the [dashboard](https://dashboard.optiview.dolby.com/). When creating an engine, or from the **Smart crop** card (**Edit smart crop**) of an existing engine:
+
+1. Toggle **Enable smart crop**.
+2. Select a **Profile** (**Generic** or **Soccer**).
+3. Optionally set **Lookahead (s)** and **Latency (s)**.
+
+The engine must be stopped before you can edit its smart crop settings.
+
+## API configuration
+
+Configure `smartCrop` when creating or updating an engine:
+
+- [`POST /v2/channels/{channelId}/engines`](../api/create-channel-engine.api.mdx) — create an engine with smart crop enabled
+- [`POST /v2/ingests/{ingestId}/engines`](../api/create-ingest-engine.api.mdx) — create an engine for an ingest with smart crop enabled
+- [`POST /v2/channels`](../api/create-channel.api.mdx) — configure smart crop on nested engines when creating a channel
+- [`PATCH /v2/engines/{engineId}`](../api/update-engine.api.mdx) — enable, update, disable, or clear smart crop on an existing engine
+
+`POST https://api.theo.live/v2/channels/{channelId}/engines`
+
+```json
+{
+  "name": "my-engine",
+  "region": "europe-west",
+  "quality": {
+    "abrLadderId": "your-abr-ladder-id"
+  },
+  "outputs": {
+    "hls": true
+  },
+  "smartCrop": {
+    "enabled": true,
+    "profile": "soccer",
+    "lookahead": 0.4,
+    "latency": 0.08
+  }
+}
+```
+
+### Fields
+
+| Field       | Type                    | Required | Default     | Description                                                                                                                                                                                                                  |
+| ----------- | ----------------------- | -------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `enabled`   | `boolean`               | Yes      | —           | Whether smart crop is enabled.                                                                                                                                                                                               |
+| `profile`   | `"generic" \| "soccer"` | No       | `"generic"` | What the crop follows: `generic` for general content, `soccer` for football/soccer matches.                                                                                                                                  |
+| `lookahead` | `number`                | No       | `0.4`       | How far ahead (in seconds, `0` to `60`) the crop looks before framing a picture. Longer lookahead gives steadier camera moves and delays the vertical renditions by the same amount.                                         |
+| `latency`   | `number`                | No       | `0.08`      | Processing budget per frame in seconds (greater than `0`, at most `10`) once its lookahead has arrived. Too short and frames reuse an earlier framing; increasing it adds the same amount to the vertical renditions' delay. |
+
+### Updating and disabling
+
+- On `PATCH /v2/engines/{engineId}`, the provided `smartCrop` object replaces the stored configuration as a whole.
+- Pass `"smartCrop": null` to clear the configuration, or `"smartCrop": { "enabled": false, ... }` to turn it off while preserving your settings.
+- Smart crop can only be updated while the engine is stopped; updating a running engine fails with `409 engine_playing`. See [Starting and stopping](../platform/starting-and-stopping.mdx).
+
+## Crop window timed metadata
+
+On Low-Latency HLS and HLS (CMAF) outputs, each vertical rendition embeds the applied crop rectangle in CMAF segments and partial segments as an ID3 v2.4 `TXXX` frame inside an `emsg` box with `scheme_id_uri` set to `https://aomedia.org/emsg/ID3` and `value` set to `optiview.live:crop`. Crop window events are only emitted on vertical renditions.
+
+The `TXXX` frame has description `optiview.live:crop` and a UTF-8 JSON value describing the crop window in source pixels:
+
+```json
+{
+  "x": 656,
+  "y": 0,
+  "width": 608,
+  "height": 1080,
+  "sourceWidth": 1920,
+  "sourceHeight": 1080
+}
+```
+
+The window can extend beyond the source frame (for example, negative `x`/`y` or `x + width > sourceWidth`) when the crop zooms out further than the source covers.
+
+- **Timing:** Emitted on the earliest-presented frame of each segment and partial segment, and on every frame where the crop window changes (during a camera move this can be every frame). OptiView Player starts the cue at that frame's presentation time and keeps it active until the next crop window cue starts.
+- **Deduplication:** Each `emsg` declares a duration of one frame. A segment and its first partial segment emit the same event with the same `emsg` id.
+- **Consuming on the player:** Crop window events surface on OptiView Player's `'id3'` text track as a `TXXX` frame with description `'optiview.live:crop'`. See the metadata guides for [Web](/theoplayer/how-to-guides/web/theolive/metadata/#crop-window), [Android](/theoplayer/how-to-guides/android/theolive/metadata/#crop-window), and [iOS](/theoplayer/how-to-guides/ios/theolive/metadata/#crop-window).
+
+## Requirements and limitations
+
+- **Account entitlement:** Smart crop must be enabled on your account (`403 feature_not_enabled`).
+- **ABR ladder:** The engine must use an ABR ladder with hardware encoding (`400 smart_crop_gpu_required`). Contact your account representative or [submit a support ticket](https://support.dolby.io/hc/en-au) if you need a smart-crop-capable ladder.
+- **Quality ID naming:** No quality ID in the ladder may equal another quality's ID followed by `-vertical`, such as `1080p` and `1080p-vertical` (`400 smart_crop_quality_id_conflict`).
+- **Stopped engine:** Smart crop can only be updated while the engine is stopped (`409 engine_playing`).
+- **Image overlays:** [Image overlays](./image-overlays.mdx) are only burned into the landscape output, so landscape-positioned graphics are not cut off in vertical renditions.

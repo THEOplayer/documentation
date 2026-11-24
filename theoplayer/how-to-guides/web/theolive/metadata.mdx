@@ -116,6 +116,30 @@ track.addEventListener('exitcue', (e) => {
 });
 ```
 
+## Crop window
+
+import CropIntro from '../../shared/theolive/_metadata-crop-intro.mdx';
+
+<CropIntro />
+
+### Reading the crop window with the Web SDK
+
+Crop window events surface on the same `'id3'` text track as the metadata above, as [ID3Cue](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3Cue.html)s whose `content` is an [ID3UserDefinedText](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3UserDefinedText.html) frame with `id` equal to `'TXXX'` and `description` equal to `'optiview.live:crop'`. The frame's `text` holds the JSON payload.
+
+Add this listener where the `'id3'` track is found in the example above:
+
+```javascript
+// By default, metadata tracks are disabled and do not fire cue events
+track.mode = 'hidden';
+track.addEventListener('entercue', (e) => {
+  const frame = e.cue.content;
+  if (frame.id === 'TXXX' && frame.description === 'optiview.live:crop') {
+    const crop = JSON.parse(frame.text);
+    console.log('crop window', crop);
+  }
+});
+```
+
 ## Picture timing SEI
 
 Picture timing SEI cues surface on a text track with [`TextTrack.id`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#id) equal to `'timecode'`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
