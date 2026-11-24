@@ -1,0 +1,58 @@
+---
+sidebar_position: 6
+sidebar_label: IP addresses
+sidebar_custom_props:
+  icon: 🧱
+description: The IP addresses OptiView Live uses for ingest and restreams, to allowlist on your firewall.
+---
+
+# IP addresses
+
+If your encoder, media server or restream destination sits behind a firewall, it has to let OptiView Live through. OptiView Live publishes the IP
+addresses it uses for ingest and restreams in a JSON file:
+
+**[https://ip-ranges.optiview.dolby.com/live.json](https://ip-ranges.optiview.dolby.com/live.json)**
+
+Each entry has a direction:
+
+| `direction` | What it is                                                                                                                                                  | Rule on your firewall                                                                    |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `egress`    | An address OptiView Live connects from: pull ingests, where OptiView Live calls your RTMP server or SRT listener, and restreams pushed to your destinations | Allow inbound connections from it                                                        |
+| `ingress`   | An address your equipment connects to: push ingests from your encoders, and restreams you pull from OptiView Live                                           | Allow outbound connections to it: RTMP on 1935/TCP, RTMPS on 443/TCP and SRT on 9000/UDP |
+
+## Format
+
+```json
+{
+  "createDate": "2026-11-24T15:16:15Z",
+  "prefixes": [
+    { "direction": "egress", "ip_prefix": "130.162.181.227/32", "region": "oke-prd-uk-london-1" },
+    { "direction": "ingress", "ip_prefix": "143.47.231.95/32", "region": "oke-prd-uk-london-1" }
+  ],
+  "syncToken": "1795533375"
+}
+```
+
+- `ip_prefix`: the address range in CIDR notation. A single IPv4 address is a `/32`.
+- `region`: the region's identifier in the OptiView Live API. An address that serves several regions is listed once for each of them.
+- `direction`: `egress` or `ingress`, as described above.
+- `syncToken` (Unix time, as a string) and `createDate` change whenever the list changes.
+
+The file is served as compact JSON on a single line; the example above is formatted for reading.
+
+## Keep your rules up to date
+
+The list changes as regions are added or retired. Rather than copying addresses by hand, fetch the file regularly and update your rules when
+`syncToken` changes. Once a day is enough, and fetching more often than every five minutes brings nothing new.
+
+For example, to list the addresses OptiView Live connects from in one region:
+
+```bash
+curl -s https://ip-ranges.optiview.dolby.com/live.json \
+  | jq -r '.prefixes[] | select(.region == "oke-prd-uk-london-1" and .direction == "egress") | .ip_prefix'
+```
+
+## Regions without entries
+
+Only regions with fixed addresses are listed. If the region of your channel or ingest has no entries, its connections can come from changing addresses
+and can't be allowlisted. If your firewall needs fixed addresses, use a region from the file.
