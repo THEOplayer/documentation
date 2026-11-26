@@ -10,7 +10,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 #### Features
 
-- Improved resilience during Redis failovers.
+- Improved resilience during Redis failover.
 
 #### Fixes
 
