@@ -9,6 +9,15 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.16.1 (2026/11/26)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Live playback could stop with error `THEO_LIVE_UNKNOWN_ERROR` (13000) while switching to a backup endpoint.
+- Fixed an issue where Google IMA ads failed to load with a media timeout (error 402) when Google's `gpt_proxy.js` script was present on the page.
+
 ## 🚀 11.16.0 (2026/11/19)
 
 ### Web
