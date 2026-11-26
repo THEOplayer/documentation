@@ -1,5 +1,11 @@
 # Changelog
 
+## [11.17.0] - 2026-11-25
+
+- Fixed HLS video segments running far longer than the target duration after the ingest stalled and
+  resumed, most often right after a channel start; such segments stayed in the DVR window for its
+  whole length and stopped Safari from playing the stream
+
 ## [11.16.1] - 2026-11-12
 
 - Fixed choppy playback and interruptions every few minutes on channels ingesting interlaced 10-bit
