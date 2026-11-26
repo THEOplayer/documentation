@@ -2,6 +2,21 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-11-26
+
+### Media Server
+
+{/* 3.11.0 */}
+
+#### Features
+
+- Improved resilience during Redis failover.
+
+#### Fixes
+
+- Faster video-quality recovery after temporary network loss.
+- General scalability, stability and reliability improvements.
+
 ## 2026-11-24
 
 ### Media Server
