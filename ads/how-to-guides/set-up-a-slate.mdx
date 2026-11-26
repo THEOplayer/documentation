@@ -4,7 +4,7 @@ sidebar_position: 4.5
 
 # Set up a slate
 
-A slate is an image or a video that players show during the part of a break that no ad covers: the whole break when no ad can play, or the rest of the break when the ads end early. This guide shows how to prepare the slate media, set it on a channel, and check what your viewers see. See [Slate](../concepts/breaks.mdx#slate) for exactly when the slate plays.
+A slate is an image or a video that players show during the part of a break that no ad covers: the whole break when no ad can play, or the rest of the break when the ads end early. You can save a slate once for several channels or set an asset on just one channel. See [Slate](../concepts/breaks.mdx#slate) for exactly when the slate plays.
 
 ## Before you start
 
@@ -36,23 +36,71 @@ The player uses the slate asset even when it cannot play it, and does not fall b
 
 The first entry that matches the device is used; the entry without `targeting` covers every other device. All entries share the asset's `mediaType`, so a slate is either an image or a video on every device. On devices where the ad and the content share one video element, such as iPhone Safari, only a video slate is shown.
 
+## Create a reusable slate
+
+### In the Dashboard
+
+1. In the OptiView Unified Dashboard, open **Ads → Slates** and click **New**.
+2. Enter a **Name** and add an image or video asset. Set **Minimum remaining duration (seconds)** if you want a different minimum than 5 seconds.
+3. To make this the organization default, turn on **Default slate**. Click **Preview** to check the media, then **Save**.
+
+To set an existing slate as the default, choose **Make default** for that slate. Only one slate can be the default. Channels set to **Organization default** follow the change; channels that selected a specific slate keep using that slate.
+
+### With the Ads API
+
+Create a slate under `/api/v1/organizations/slates`. The `X-Org-ID` header identifies the organization. This example creates a slate and makes it the default:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/organizations/slates' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{
+    "name": "Brand slate",
+    "minDuration": 5,
+    "isDefault": true,
+    "assets": [
+      {
+        "type": "static",
+        "mediaType": "image",
+        "uri": "https://cdn.example.com/slates/brand.png"
+      }
+    ]
+  }'
+```
+
+Copy the response's `id` to select this slate on a channel. Use `GET /api/v1/organizations/slates` to list the organization's slates. To read, update, or delete a slate, use `GET`, `PATCH`, or `DELETE` on `/api/v1/organizations/slates/{slateId}` with the same header. To make an existing slate the default, send `{"isDefault": true}` in a `PATCH` request.
+
 ## Set the slate on a channel
 
 ### In the Dashboard
 
 1. In the OptiView Unified Dashboard, open **Ads → Channels** and select the channel.
-2. On the **Breaks** tab, click **Add** on the **Slate** card.
-3. Fill in the slate:
-   - **Name**: a name for you to recognize the slate. Players never see it.
-   - **Minimum remaining duration (seconds)**: the break time that must remain for the player to start the slate. Leave it empty for the default of 5 seconds.
-   - **Asset**: the **Media Type** (image or video), the **URI**, and optionally **Device-specific URIs**, the **MIME type**, **Asset Parameters**, and a **Click-through URL**.
-4. Click **Preview** to check the media, then **Save**.
+2. On the **Breaks** tab, click **Add** on the **Slate** card, or **Edit** if the channel already has a slate setting.
+3. Choose a source:
+   - **Organization default** follows whichever slate is the organization's default.
+   - **Organization slate** lets you pick a saved slate by name. If that slate is deleted, the channel shows no slate; it does not fall back to the default.
+   - **Own asset** lets you give the channel its own slate. Enter a **Name** and provide the asset's **Media Type** and **URI**. You can also set **Device-specific URIs**, **MIME type**, **Asset Parameters**, and a **Click-through URL**.
+4. Set **Minimum remaining duration (seconds)** to override the selected slate's minimum. Leave it empty to use the organization slate's minimum, or 5 seconds if none is set.
+5. For **Own asset**, click **Preview** to check the media. Click **Save**. To preview a saved organization slate after assigning it, use **View** on the **Slate** card.
 
-Players pick up the slate through the channel's Break Manifest, see [Check the Break Manifest](#check-the-break-manifest). Use **Edit** on the Slate card to change it, and **Delete** to remove it: players then stop showing the slate.
+Creating an organization default does not turn on slates for channels that have none configured. If the channel has no slate and the organization has a default, you can turn on the switch on the **Slate** card to start using the default. Turn the switch off to stop showing the slate without losing your settings. To clear the channel's slate settings, click **Delete** and confirm the removal. This does not delete a saved organization slate.
 
 ### With the Ads API
 
-Set `slate` on the channel, when you create it or later with an update:
+Set `slate` when you create or update a channel. To use a saved slate, send its organization slate ID as `slateId`:
+
+```bash
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: <org-id>' \
+  -d '{ "slate": { "enabled": true, "slateId": "<slate-id>" } }'
+```
+
+To follow the organization default, send `{"slate": {"enabled": true}}`. The channel shows no slate while there is no default. A channel without a `slate` setting does not use the default. Do not send `slateId` and `assets` together.
+
+To set the channel's own slate, send `assets` instead of `slateId`:
 
 ```bash
 curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
@@ -76,17 +124,13 @@ curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
   }'
 ```
 
-| Property                                        | Description                                                                                                                                        |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                                          | Optional name for you to recognize the slate. It is not part of the Break Manifest.                                                                |
-| `minDuration`                                   | Optional. The seconds (≥ 0) of the break that must remain for the player to start the slate. Default: 5 seconds. `0` starts the slate for any gap. |
-| `assets`                                        | Exactly one static image or video asset, without `duration`: the slate always fills the rest of the break.                                         |
-| `assets[].id`                                   | Identifies the slate in reporting. Generated when omitted on a channel without a slate.                                                            |
-| `assets[].uri`                                  | The URL of the media, or a list of URLs with [targeting](#different-media-per-device).                                                             |
-| `assets[].interaction.clickThrough`             | Optional URL to open when the viewer clicks the slate.                                                                                             |
-| `assets[].mimeType`, `assets[].assetParameters` | Optional, as on any [static asset](../concepts/breaks.mdx#static-assets).                                                                          |
+- `enabled` defaults to `true` when you send a slate object.
+- `name` is optional and is not part of the Break Manifest.
+- `minDuration` is the break time in seconds (≥ 0) that must remain for the player to start the slate. A channel value overrides the organization slate's minimum. If neither sets a value, the player uses 5 seconds. Set it to `0` to allow the slate to start for any remaining time.
+- `assets`, when supplied, must contain exactly one [static image or video asset](../concepts/breaks.mdx#static-assets), without `duration`. It accepts a media URL or [targeted URLs](#different-media-per-device), plus optional `mimeType`, `assetParameters`, and `interaction.clickThrough`.
+- The asset's `id` identifies it in reporting. If there is no stored asset, the API generates an ID when you omit it. When updating an existing asset, send its current `id` to keep its identity or a new `id` to replace it. Omitting the ID in that case returns `400`.
 
-The slate is replaced as a whole on every update. Once the channel has a slate, an update must carry the asset `id`: send its current `id` to change that slate, or a new `id` to replace it with a new slate. An update without an `id` is rejected with `400`: `The channel already has a slate: pass the id of its asset to update it, or a new id to replace it with another slate`. To remove the slate, set it to `null`:
+A channel update replaces the whole `slate` object. To turn it off without clearing the settings, resend the stored object with `enabled: false`. For example, for the channel using the saved slate above, send `{"slate": {"enabled": false, "slateId": "<slate-id>"}}`. To clear the channel's slate settings, send `null`:
 
 ```bash
 curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
@@ -98,7 +142,7 @@ curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
 
 ## Check the Break Manifest
 
-The channel's [Break Manifest](../concepts/break-manifest.mdx) now carries the slate at the top level, next to the breaks:
+When the channel's slate is on and its source is available, the [Break Manifest](../concepts/break-manifest.mdx) carries the resolved slate at the top level, next to the breaks:
 
 ```json
 {
