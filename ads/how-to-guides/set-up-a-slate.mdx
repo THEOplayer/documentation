@@ -81,7 +81,7 @@ Copy the response's `id` to select this slate on a channel. Use `GET /api/v1/org
    - **Organization default** follows whichever slate is the organization's default.
    - **Organization slate** lets you pick a saved slate by name. If that slate is deleted, the channel shows no slate; it does not fall back to the default.
    - **Own asset** lets you give the channel its own slate. Enter a **Name** and provide the asset's **Media Type** and **URI**. You can also set **Device-specific URIs**, **MIME type**, **Asset Parameters**, and a **Click-through URL**.
-4. Set **Minimum remaining duration (seconds)** to override the selected slate's minimum. Leave it empty to use the organization slate's minimum, or 5 seconds if none is set.
+4. Set **Minimum remaining duration (seconds)** to override the minimum. Leave it empty to use the minimum of the organization slate the channel uses, or 5 seconds.
 5. For **Own asset**, click **Preview** to check the media. Click **Save**. To preview a saved organization slate after assigning it, use **View** on the **Slate** card.
 
 Creating an organization default does not turn on slates for channels that have none configured. If the channel has no slate and the organization has a default, you can turn on the switch on the **Slate** card to start using the default. Turn the switch off to stop showing the slate without losing your settings. To clear the channel's slate settings, click **Delete** and confirm the removal. This does not delete a saved organization slate.
