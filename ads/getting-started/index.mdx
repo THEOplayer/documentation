@@ -81,6 +81,25 @@ await sdk.startSession({
 
 Follow the platform guide for [Web](/ads/player-integration/optiview-ads-sdk/web), [Android](/ads/player-integration/optiview-ads-sdk/android), [iOS](/ads/player-integration/optiview-ads-sdk/ios), or [React Native](/ads/player-integration/optiview-ads-sdk/react-native). If you use the OptiView Player, the legacy [OptiView Player integration](/ads/player-integration/optiview-player/) is also available.
 
+### Player interception (opt-in)
+
+The example above keeps the default reactive playback.
+To let the SDK hold first play for a preroll and route player controls during ads,
+add `interceptPlayer: true` before loading or playing content:
+
+```typescript
+const sdk = new OptiViewAds({
+  player: new THEOplayerAdapter(player, container),
+  container,
+  interceptPlayer: true,
+});
+```
+
+Keep using the same player methods and events.
+THEOplayer Web requires 11.15+ with `ads.registerClientSideIntegration`.
+Older versions warn and keep reactive playback.
+See each platform guide for its opt-in setup and limitations.
+
 This integration plays every [ad workflow](/ads/workflows/): static assets from your CDN, VAST tags from your ad server, and Google Ad Manager — on live and VOD channels. Static assets need nothing more; for VAST or Google Ad Manager on Web, the workflow page lists the Google IMA script to add to your page.
 
 ## 4. Schedule a break

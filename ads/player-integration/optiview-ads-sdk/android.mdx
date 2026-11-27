@@ -42,19 +42,88 @@ The app needs Java 17 and `compileSdk` 34 or later.
 Create the SDK with an adapter around your player, then start a session with the channel's Break Manifest URL. The example below uses the OptiView Player (THEOplayer) adapter; the other adapters work the same way:
 
 ```kotlin
+import com.dolby.optiview.ads.adapter.theoplayer.THEOplayerAdapter
+import com.dolby.optiview.ads.runtime.OverlayAdRenderer
+import com.dolby.optiview.ads.sdk.CoroutineSchedulerTicker
+import com.dolby.optiview.ads.sdk.HttpManifestSource
+import com.dolby.optiview.ads.sdk.OptiViewAds
+import com.dolby.optiview.ads.sdk.OptiViewAdsConfig
+import com.dolby.optiview.ads.sdk.SessionConfig
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+
+val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+val contentAdapter = THEOplayerAdapter(theoPlayerView.player)
 val sdk = OptiViewAds(
-    config = OptiViewAdsConfig(player = THEOplayerAdapter(theoPlayerView.player)),
-    renderer = OverlayAdRenderer(adContainer),
+    config = OptiViewAdsConfig(player = contentAdapter),
+    renderer = OverlayAdRenderer(context, adContainer, contentAdapter),
+    manifestSource = HttpManifestSource(scope),
+    ticker = CoroutineSchedulerTicker(scope),
+    scope = scope,
 )
 
-sdk.startSession(
-    SessionConfig(
-        manifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+scope.launch {
+    sdk.startSession(
+        SessionConfig(
+            manifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        )
     )
-)
+}
 ```
 
 From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
+
+## Player interception (opt-in)
+
+Interception is off by default. The existing integration example stays reactive.
+For Media3, give your UI the adapter's `interceptedPlayer`, not the raw ExoPlayer.
+Use that same player for app commands and listeners. Its Media3 `Player` API stays the same.
+
+```kotlin
+val contentPlayer = ExoPlayer.Builder(context).build()
+val contentAdapter = ExoPlayerAdapter(contentPlayer)
+val appPlayer = contentAdapter.interceptedPlayer
+playerView.player = appPlayer
+val config = OptiViewAdsConfig(player = contentAdapter, interceptPlayer = true)
+```
+
+Pass `config` to `OptiViewAds`. Keep the integration example's renderer, manifest source and ticker.
+Create the SDK and start the session before calling `appPlayer.play()`.
+The SDK can hold first play for a preroll and route play, pause, seek, mute and volume during ads.
+
+For THEOplayer, use its adapter's player in app code:
+
+```kotlin
+val contentAdapter = THEOplayerAdapter(theoPlayerView.player)
+val appPlayer = contentAdapter.interceptedPlayer
+val config = OptiViewAdsConfig(player = contentAdapter, interceptPlayer = true)
+```
+
+The raw `THEOplayerView.player` is not intercepted.
+Only calls and listeners through `appPlayer` use interception.
+
+In Java, use `contentAdapter.getInterceptedPlayer()` for the UI and app.
+Starting from your existing `OptiViewAdsConfig config`, preserve its options and use
+the full `copy` overload to enable interception before constructing the SDK:
+
+```java
+OptiViewAdsConfig interceptedConfig = config.copy(
+    config.getPlayer(), config.getAdPreload(), config.getDoubleBoxAudio(),
+    config.getAdInsertion(), config.getTransition(), config.getChaining(),
+    config.getTuneIn(), config.getBreakWarnings(), config.getPdtGraceSeconds(),
+    config.getPtsSource(), config.getContinueContentDuringBreak(),
+    config.getManifestUrlDiscovery(), config.getLiveStartPushback(),
+    config.getDiagnostics(), config.getDebug(), config.getGam(),
+    config.getDeliveryMode(), config.getAdBreakCutSafetyMarginSec(),
+    config.getInterceptManifestResponse(), config.getInterceptManifestRequest(),
+    config.getExternalPlayback(), true
+);
+```
+
+The last argument is `interceptPlayer`. The older Java constructor leaves it off.
+The older `copy` overload preserves the existing interception setting.
 
 ## Supported players
 
