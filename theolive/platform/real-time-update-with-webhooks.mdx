@@ -61,13 +61,30 @@ Events are grouped by resource type:
 
 What each engine state means, and when `engine.stopping` and `engine.stopped` arrive for each way of stopping, is explained in [Starting and stopping](./starting-and-stopping.mdx#webhooks).
 
+| Event                          | Triggered when                                                                                     |
+| ------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `engine.maintenance.required`  | An engine has to move to fresh infrastructure; it will be restarted in the next maintenance window |
+| `engine.maintenance.started`   | The maintenance restart of an engine begins                                                        |
+| `engine.maintenance.completed` | The engine is back after its maintenance restart                                                   |
+| `engine.maintenance.failed`    | The engine did not come back by itself after its maintenance restart                               |
+| `engine.maintenance.cancelled` | The maintenance is no longer needed, e.g. because the engine was stopped                           |
+
+The maintenance events, their `data` and the statuses they report are explained in [Maintenance windows](./maintenance-windows.mdx#webhooks).
+
 ### Ingest events
 
-| Event            | Triggered when             |
-| ---------------- | -------------------------- |
-| `ingest.created` | An ingest point is created |
-| `ingest.updated` | An ingest point is updated |
-| `ingest.deleted` | An ingest point is deleted |
+| Event                          | Triggered when                                                                                 |
+| ------------------------------ | ---------------------------------------------------------------------------------------------- |
+| `ingest.created`               | An ingest point is created                                                                     |
+| `ingest.updated`               | An ingest point is updated                                                                     |
+| `ingest.deleted`               | An ingest point is deleted                                                                     |
+| `ingest.maintenance.required`  | An ingest has to move to fresh infrastructure; it will be moved in the next maintenance window |
+| `ingest.maintenance.started`   | The ingest is being moved: its encoder is disconnected and reconnects to the same URL          |
+| `ingest.maintenance.completed` | The ingest is live again on fresh infrastructure                                               |
+| `ingest.maintenance.failed`    | The ingest did not come back after its move, typically because the encoder did not reconnect   |
+| `ingest.maintenance.cancelled` | The maintenance is no longer needed, e.g. because the ingest reconnected elsewhere by itself   |
+
+For `rtsp-pull` ingests, which are started and stopped as a whole, the `ingest.maintenance.*` events also report the maintenance restart of the engine behind the ingest. See [Maintenance windows](./maintenance-windows.mdx).
 
 ### Distribution events
 
