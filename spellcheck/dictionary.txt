@@ -79,6 +79,7 @@ AVPlayer
 Axinom
 backdoors
 backend
+backoff
 backticks
 badging
 basename
@@ -441,6 +442,7 @@ Jira
 JIT
 JitPack
 Jitter
+jitter
 JNI
 JNI-related
 JOC
