@@ -98,7 +98,7 @@ curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
   -d '{ "slate": { "enabled": true, "slateId": "<slate-id>" } }'
 ```
 
-To follow the organization default, send `{"slate": {"enabled": true}}`. The channel shows no slate while there is no default. A channel without a `slate` setting does not use the default. Do not send `slateId` and `assets` together.
+To follow the organization default, send `{"slate": {"enabled": true}}`. The channel shows no slate while there is no default. Do not send `slateId` and `assets` together. A `slateId` that does not exist returns `404`, unless it is the one already stored on the channel: resending the stored `slate` object keeps working after that slate is deleted.
 
 To set the channel's own slate, send `assets` instead of `slateId`:
 
