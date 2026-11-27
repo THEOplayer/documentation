@@ -37,6 +37,7 @@ AGP
 AGWG
 AirPlay
 AJA
+allowlisted
 ALSA
 ALU
 Ambisonic
@@ -708,6 +709,8 @@ repos
 reprioritize
 Rescale
 Rescaling
+restream
+restreams
 resync
 Resync
 retargeted
