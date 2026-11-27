@@ -677,4 +677,4 @@ Limits are applied over a sliding window, so short bursts are fine as long as th
 - If you retry automatically, use exponential backoff with jitter, and give up after a bounded number of attempts.
 - Spread scheduled work, such as polling the monitoring endpoints, so it does not all fire at the same instant.
 
-Requests may also be rejected before they reach the API when an API key sends traffic at a very high rate. These responses are also `429` and include `Retry-After`: normally 2 seconds, and 20 seconds for the monitoring endpoints. Honor the header in the same way.
+Requests may also be rejected before they reach the API when an API key sends traffic at a very high rate. These responses are also `429` and include a `Retry-After` of 2 seconds. Honor the header in the same way.
