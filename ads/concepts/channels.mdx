@@ -109,7 +109,7 @@ For creating, updating, listing, and deleting channels programmatically, see the
 
 _Default: none, breaks return to the content when no ad covers them_
 
-`slate` controls the image or video that players show during the part of a break that no ad covers. On a live or VOD channel with slate enabled, the channel can use its own asset, select a saved organization slate by `slateId`, or follow the organization default when neither is specified. The channel shows no slate if its selected slate is deleted or if it follows a default that has not been set. A channel without a `slate` setting does not use the default.
+`slate` controls the image or video that players show during the part of a break that no ad covers. With the slate enabled, a channel uses its own asset, a saved organization slate (`slateId`), or, when it sets neither, the organization default. The channel shows no slate if its selected slate is deleted or if it follows a default that has not been set. A channel without a `slate` setting does not use the default.
 
 A channel that uses a saved slate or the default takes that slate's `minDuration` when it sets none itself; otherwise the player uses 5 seconds. Set `enabled: false` to turn the slate off without losing the settings, or set `slate` to `null` to remove the settings. See [Slate](./breaks.mdx#slate) for how breaks are filled and [Set up a slate](../how-to-guides/set-up-a-slate.mdx) for Dashboard steps and API examples.
 
