@@ -69,7 +69,7 @@ curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/organizations/slates' \
   }'
 ```
 
-Copy the response's `id` to select this slate on a channel. Use `GET /api/v1/organizations/slates` to list the organization's slates. To read, update, or delete a slate, use `GET`, `PATCH`, or `DELETE` on `/api/v1/organizations/slates/{slateId}` with the same header. To make an existing slate the default, send `{"isDefault": true}` in a `PATCH` request.
+Copy the response's `id` to select this slate on a channel. Use `GET /api/v1/organizations/slates` to list the organization's slates. To read, update, or delete a slate, use `GET`, `PATCH`, or `DELETE` on `/api/v1/organizations/slates/{slateId}` with the same header. A `PATCH` changes only the fields you send. To make an existing slate the default, send `{"isDefault": true}`. A `PATCH` that carries `assets` must include the asset `id`: its current `id` to update that asset, or a new `id` to replace it. Without an `id`, the request returns `400`.
 
 ## Set the slate on a channel
 
