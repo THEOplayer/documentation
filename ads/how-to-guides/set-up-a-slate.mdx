@@ -126,7 +126,7 @@ curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>' \
 
 - `enabled` defaults to `true` when you send a slate object.
 - `name` is optional and is not part of the Break Manifest.
-- `minDuration` is the break time in seconds (≥ 0) that must remain for the player to start the slate. A channel value overrides the organization slate's minimum. If neither sets a value, the player uses 5 seconds. Set it to `0` to allow the slate to start for any remaining time.
+- `minDuration` is the break time in seconds (≥ 0) that must remain for the player to start the slate. A channel using a saved slate or the default takes that slate's `minDuration` when it sets none; otherwise the player uses 5 seconds. Set it to `0` to allow the slate to start for any remaining time.
 - `assets`, when supplied, must contain exactly one [static image or video asset](../concepts/breaks.mdx#static-assets), without `duration`. It accepts a media URL or [targeted URLs](#different-media-per-device), plus optional `mimeType`, `assetParameters`, and `interaction.clickThrough`.
 - The asset's `id` identifies it in reporting. If there is no stored asset, the API generates an ID when you omit it. When updating an existing asset, send its current `id` to keep its identity or a new `id` to replace it. Omitting the ID in that case returns `400`.
 
