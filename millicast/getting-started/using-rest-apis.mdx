@@ -659,22 +659,12 @@ https.createServer(httpsOptions, app).listen(port, (err) => {
 
 ## Rate limits
 
-REST API requests are rate limited per API key so that one client cannot degrade the service for others. When you exceed a limit the API responds with HTTP `429 Too Many Requests` and a `Retry-After` header containing the number of seconds to wait before the next request can succeed. Requests rejected with `429` by the API do not count against these limits.
+Some REST API endpoints are rate limited to keep the service responsive for everyone. Limits can change over time, so design your client to react to rate-limit responses rather than to fixed request counts.
 
-| Limit                          | Applies to                                                                                                                              | Allowed requests                                 |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| Standard                       | Analytics, Transcoders, Record Files, Account, Cluster, Stream, Publish Token (v1), Subscribe Token (v1), Webhooks and Encoder Profiles | 1000 per 120 seconds, per API key and IP address |
-| Monitoring: stream details     | `GET /api/monitoring/streams/{streamName}`                                                                                              | 120 per 10 minutes, per API key                  |
-| Monitoring: list and summaries | `GET /api/monitoring/streams`, `GET /api/monitoring/summary` and `GET /api/monitoring/summary/{streamName}`                             | 600 per minute, per API key                      |
-
-The standard limit is one budget shared by all the endpoints it covers, and it is counted separately for each IP address that calls the API with a given key. Endpoints that are not listed, such as the Media Assets, Media Distributions and v2 token update endpoints, are not subject to these limits. The on-demand thumbnail limit is documented with the [thumbnail webhook](/millicast/webhooks/thumbnail.mdx).
-
-Limits are applied over a sliding window, so short bursts are fine as long as the total over the window stays within the limit.
+When a request is rate limited, the API responds with HTTP `429 Too Many Requests` and a `Retry-After` header containing the number of seconds to wait before retrying.
 
 ### Handling `429` responses
 
-- Wait at least the number of seconds in the `Retry-After` header before sending the next request to the same endpoint.
-- If you retry automatically, use exponential backoff with jitter, and give up after a bounded number of attempts.
-- Spread scheduled work, such as polling the monitoring endpoints, so it does not all fire at the same instant.
-
-Requests may also be rejected before they reach the API when an API key sends traffic at a very high rate. These responses are also `429` and include a `Retry-After` of 2 seconds. Honor the header in the same way.
+- Wait at least the number of seconds in the `Retry-After` header before retrying the request.
+- If you retry automatically, use exponential backoff with jitter, and stop after a bounded number of attempts.
+- Spread scheduled or polling requests over time rather than sending them in bursts.
