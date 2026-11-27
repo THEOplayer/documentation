@@ -656,3 +656,15 @@ https.createServer(httpsOptions, app).listen(port, (err) => {
   </body>
 </html>
 ```
+
+## Rate limits
+
+Some REST API endpoints are rate limited to keep the service responsive for everyone. Limits can change over time, so design your client to react to rate-limit responses rather than to fixed request counts.
+
+When a request is rate limited, the API responds with HTTP `429 Too Many Requests` and a `Retry-After` header containing the number of seconds to wait before retrying.
+
+### Handling `429` responses
+
+- Wait at least the number of seconds in the `Retry-After` header before retrying the request.
+- If you retry automatically, use exponential backoff with jitter, and stop after a bounded number of attempts.
+- Spread scheduled or polling requests over time rather than sending them in bursts.
