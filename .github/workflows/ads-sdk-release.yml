@@ -38,6 +38,6 @@ jobs:
             --base main \
             --head "$GITHUB_REF_NAME" \
             --title "OptiView Ads SDK ${ads_sdk_version}" \
-            --body "This PR contains the Web API reference for OptiView Ads SDK version ${ads_sdk_version}."
+            --body "This PR contains the generated API references (web, Android, iOS, React Native, Roku) for OptiView Ads SDK version ${ads_sdk_version}."
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
