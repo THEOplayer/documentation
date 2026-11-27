@@ -81,6 +81,31 @@ theoplayerView.player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRA
 }
 ```
 
+## Crop window
+
+import CropIntro from '../../shared/theolive/_metadata-crop-intro.mdx';
+
+<CropIntro />
+
+### Reading the crop window with the Android SDK
+
+Crop window events surface on the same `TextTrackType.ID3` text track as the metadata above, as an `ID3Cue` whose `frame` is an [ID3Frame.Text](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Text.html) with `id` equal to `"TXXX"` and `description` equal to `"optiview.live:crop"`. The frame's `text` holds the JSON payload:
+
+```kotlin
+val cropCueListener = EventListener<EnterCueEvent> { event ->
+    val frame = (event.cue as? ID3Cue)?.frame as? ID3Frame.Text ?: return@EventListener
+    if (frame.id == "TXXX" && frame.description == "optiview.live:crop") {
+        Log.d("MyApp", "Crop window: ${frame.text}")
+    }
+}
+theoplayerView.player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRACK) { event ->
+    val track = event.track as TextTrack
+    if (track.type == TextTrackType.ID3) {
+        track.addEventListener(TextTrackEventTypes.ENTERCUE, cropCueListener)
+    }
+}
+```
+
 ## Picture timing SEI
 
 Picture timing SEI cues surface on a text track with [`TextTrack.type`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html#getType()>) equal to `TextTrackType.TIMECODE`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.

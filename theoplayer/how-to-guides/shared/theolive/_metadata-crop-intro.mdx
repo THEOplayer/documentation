@@ -1,0 +1,27 @@
+When [smart crop](/theolive/media-engine/smart-crop/) is enabled on an engine, each vertical rendition in Low-Latency HLS and HLS (CMAF) output embeds the applied crop rectangle as ID3 timed metadata, so players and overlays can map coordinates between the cropped vertical frame and the original landscape source. Crop window events are only present while the player plays a vertical rendition.
+
+Crop window events travel the same way as the metadata above: an ID3 v2.4 tag in an `emsg` box with scheme `https://aomedia.org/emsg/ID3` and value `optiview.live:crop`, carried by the CMAF segments and partial segments of the vertical rendition. The tag holds a `TXXX` (user defined text) frame:
+
+- The description of the `TXXX` frame is `optiview.live:crop`.
+- Its value is a UTF-8 JSON object describing the crop window in source pixels, for example:
+
+```json
+{
+  "x": 656,
+  "y": 0,
+  "width": 608,
+  "height": 1080,
+  "sourceWidth": 1920,
+  "sourceHeight": 1080
+}
+```
+
+The window can extend beyond the source frame (for example, negative `x`/`y` or `x + width > sourceWidth`) when the crop zooms out further than the source covers.
+
+(See [section 4.2.6 of the ID3 v2.4 Native Frames specification](https://id3.org/id3v2.4.0-frames) for the `TXXX` frame.)
+
+### Where the crop window events sit
+
+A crop window event is emitted on the earliest-presented frame of each segment and partial segment, and on every frame where the crop window changes (during a camera move this can be every frame). Each `emsg` box declares a duration of one frame; OptiView Player starts the cue at that frame's presentation time and keeps it active until the next crop window cue starts.
+
+A segment and its first partial segment open on the same frame, so they emit the same event with the same `emsg` id so players can deduplicate them.

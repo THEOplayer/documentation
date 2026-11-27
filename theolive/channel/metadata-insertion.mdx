@@ -66,6 +66,8 @@ See the API reference for [Send instream metadata](../api/send-channel-instream-
 
 All metadata payloads — whether pushed via the API or forwarded from SEI — surface on the player as cues on a text track. See the [metadata guide for OptiView Player on web](/theoplayer/how-to-guides/web/theolive/metadata/), [Android](/theoplayer/how-to-guides/android/theolive/metadata/) or [iOS](/theoplayer/how-to-guides/ios/theolive/metadata/) for how to listen for and parse them in your application.
 
+When [smart crop](../media-engine/smart-crop.mdx#crop-window-timed-metadata) is enabled on an engine, vertical renditions in Low-Latency HLS and HLS (CMAF) output also carry automatic [crop window](/theoplayer/how-to-guides/web/theolive/metadata/#crop-window) timed metadata on the same ID3 text track without enabling `instreamMetadata`.
+
 ## High Availability
 
 Metadata insertion is applied at the channel level. Any engine within the channel will receive the same metadata messages so in an active-active setup, both engines will get the metadata. At this time it is not possible to disable metadata on an individual engine within a channel.

@@ -214,6 +214,7 @@ decisioning
 decrypt
 decrypted
 decrypting
+deduplicate
 Deduplicate
 deduplicated
 deduplication
@@ -697,6 +698,7 @@ recognizers
 reconnection
 reconnections
 reflog
+reframes
 regionalization
 removead
 removeadbreak
@@ -708,6 +710,7 @@ repos
 reprioritize
 Rescale
 Rescaling
+restream
 resync
 Resync
 retargeted

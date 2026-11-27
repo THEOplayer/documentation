@@ -72,5 +72,5 @@ Add a logo overlay in the bottom-right corner when [creating](../api/create-chan
 ## Notes
 
 - Use **PNG images with transparency** for clean overlays that blend naturally with the video.
-- The overlay is burned into the transcoded output, so it will appear on all quality levels and all output protocols.
+- The overlay is burned into the transcoded output, so it appears on all quality levels and output protocols — except the vertical renditions of [smart crop](./smart-crop.mdx), so landscape-positioned graphics are not cut off.
 - To remove overlays, update the engine with an empty `overlays` array and restart the engine.

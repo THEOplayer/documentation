@@ -80,3 +80,28 @@ _ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRA
   })
 })
 ```
+
+## Crop window
+
+import CropIntro from '../../shared/theolive/_metadata-crop-intro.mdx';
+
+<CropIntro />
+
+### Reading the crop window with the iOS SDK
+
+Crop window events surface on the same `"id3"` text track as the metadata above, as an `Id3Cue` whose `contentDictionary` has `id` equal to `"TXXX"` and `description` equal to `"optiview.live:crop"`. The frame's `text` holds the JSON payload:
+
+```swift
+_ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: { (addTrackEvent) in
+  guard let track = addTrackEvent.track as? TextTrack,
+        track.type == "id3"
+        else { return }
+  _ = track.addEventListener(type: TextTrackEventTypes.ENTER_CUE, listener: { (enterCueEvent) in
+      guard let frame = (enterCueEvent.cue as? Id3Cue)?.contentDictionary,
+            frame["id"] == "TXXX",
+            frame["description"] == "optiview.live:crop"
+            else { return }
+      print("Crop window: \(frame["text"] ?? "")")
+  })
+})
+```
