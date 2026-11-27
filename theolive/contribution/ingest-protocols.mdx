@@ -41,6 +41,19 @@ SRT is an open-source protocol designed for low latency, secure, and reliable vi
 
 ### SRT passphrase
 
-In **pull mode**, you can secure the connection by including the passphrase directly in the SRT URL that you configure on your channel (e.g. `srt://encoder-host:port?passphrase=my-secret`).
+In **pull mode**, you can secure the connection by including the passphrase directly in the SRT URL that you configure on your channel (e.g. `srt://encoder-host:port?passphrase=my-secret`). The passphrase is [write-only](#credentials-in-pull-source-urls).
 
 In **push mode**, the Dolby team configures the passphrase for you and provides an SRT URL with the passphrase included.
+
+## Credentials in pull source URLs
+
+Credentials in the source `url` of a pull ingest (`srt-pull`, `rtmp-pull` or `rtsp-pull`) are **write-only**. These include SRT passphrases and stream IDs, RTMP stream keys in the last path segment, and usernames or passwords in the URL's user info.
+
+Neither the API nor the dashboard returns these credentials after you submit them, **including in create and update responses**. The API sanitizes the `url` as follows:
+
+- **For all three (SRT, RTMP and RTSP)**: user info, query and fragment are removed.
+- **For RTMP also**: the last path segment (the stream key) is removed.
+
+The entire SRT query is removed, including non-secret options such as `latency` or `mode`, not just the passphrase or stream ID. When anything is removed, the response includes `credentialHidden: true`. Otherwise, the URL is returned unchanged and `credentialHidden` is absent.
+
+Keep the full source URL securely: to change the source, send the **full URL, including credentials**, again. Do not reuse the sanitized response URL as the source URL in an update. An update that omits `url` keeps the stored URL and its credentials.
