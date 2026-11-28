@@ -117,7 +117,16 @@
           player.addEventListener(type, () => logEvent(type, formatCurrentTime(player)));
         }
         player.addEventListener('ended', () => logEvent('ended', formatCurrentTime(player)));
-        player.addEventListener('error', () => logEvent('error', player.errorObject ? player.errorObject.message : 'unknown'));
+        player.addEventListener('error', (event) => {
+          const error = event.errorObject ?? player.errorObject;
+          const code = error?.code;
+          let details = error?.message ?? 'unknown';
+          if (typeof code === 'number') {
+            const name = THEOplayer.ErrorCode?.[code];
+            details = `code ${code}${name ? ` (${name})` : ''} · ${details}`;
+          }
+          logEvent('error', details);
+        });
         player.addEventListener('volumechange', () => logEvent('volumechange', `volume ${player.volume.toFixed(2)}, muted ${player.muted}`));
         player.addEventListener('ratechange', () => logEvent('ratechange', `playbackRate ${player.playbackRate}`));
         player.videoTracks.addEventListener('addtrack', (event) =>

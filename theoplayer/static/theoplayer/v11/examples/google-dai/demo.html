@@ -121,7 +121,14 @@
           if (event.adBreak) {
             details.push(`break at ${event.adBreak.timeOffset.toFixed(1)} s`);
           }
-          const errorMessage = event.error?.message || event.error || event.message;
+          const error = name === 'error' ? (event.errorObject ?? player.errorObject) : undefined;
+          const errorCode = name === 'aderror' ? event.errorCode : error?.code;
+          if (typeof errorCode === 'number') {
+            const errorName = error ? THEOplayer.ErrorCode?.[errorCode] : undefined;
+            details.push(errorName ? `code ${errorCode} (${errorName})` : `code ${errorCode}`);
+          }
+          const errorMessage =
+            error?.message || event.error?.message || event.error || event.message || (name === 'error' ? 'Player error' : undefined);
           if (errorMessage) details.push(String(errorMessage));
           events = [
             {
@@ -184,10 +191,7 @@
           adBreaks = [];
           logEvent('sourcechange', event);
         });
-        player.addEventListener('error', (event) => {
-          const error = player.errorObject;
-          logEvent('error', { ...event, message: error?.message || event.message || 'Player error' });
-        });
+        player.addEventListener('error', (event) => logEvent('error', event));
         player.addEventListener('timeupdate', reportTime);
 
         onParentMessage('load-dai', (message) => {

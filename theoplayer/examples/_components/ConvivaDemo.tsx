@@ -1,4 +1,5 @@
 import React, { type JSX, useEffect, useRef, useState } from 'react';
+import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Example, { type ExampleController } from '@site/src/components/Example';
 import styles from '../shared.module.css';
@@ -147,7 +148,7 @@ export default function ConvivaDemo(): JSX.Element {
             <span className={styles.eventLogEmpty}>No events reported yet.</span>
           ) : (
             events.map((entry, index) => (
-              <div key={`${entry.time}-${index}`} className={styles.eventLogRow}>
+              <div key={`${entry.time}-${index}`} className={clsx(styles.eventLogRow, entry.event === 'error' && styles.eventLogRowError)}>
                 <span>{entry.time}</span>
                 <span>{entry.event}</span>
                 <span>{entry.details}</span>
