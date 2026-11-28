@@ -1,4 +1,5 @@
 import React, { type JSX, useMemo, useRef, useState } from 'react';
+import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import CodeBlock from '@theme/CodeBlock';
 import Example, { type ExampleController } from '@site/src/components/Example';
@@ -302,7 +303,10 @@ export default function AdTesterDemo(): JSX.Element {
             <span className={styles.eventLogEmpty}>No events reported yet.</span>
           ) : (
             events.map((entry, index) => (
-              <div key={`${entry.time}-${index}`} className={styles.eventLogRow}>
+              <div
+                key={`${entry.time}-${index}`}
+                className={clsx(styles.eventLogRow, (entry.event === 'error' || entry.event === 'aderror') && styles.eventLogRowError)}
+              >
                 <span>{entry.time}</span>
                 <span>{entry.event}</span>
                 <span>{entry.details || '—'}</span>

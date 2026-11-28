@@ -316,6 +316,11 @@
   gap: 0 0.75rem;
 }
 
+.eventLogRowError {
+  color: var(--ifm-color-danger-contrast-foreground);
+  background-color: var(--ifm-color-danger-contrast-background);
+}
+
 .eventLogRow > :first-child {
   opacity: 0.7;
 }
