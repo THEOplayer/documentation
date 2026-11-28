@@ -138,7 +138,10 @@
             details.push(`break at ${event.adBreak.timeOffset.toFixed(1)} s`);
           }
           const errorCode = event.errorObject?.code ?? event.errorCode;
-          if (typeof errorCode === 'number') details.push(`code ${errorCode}`);
+          if (typeof errorCode === 'number') {
+            const errorName = event.errorObject ? THEOplayer.ErrorCode?.[errorCode] : undefined;
+            details.push(errorName ? `code ${errorCode} (${errorName})` : `code ${errorCode}`);
+          }
           const errorMessage = event.errorObject?.message || event.error?.message || event.error || event.message;
           if (errorMessage) details.push(String(errorMessage));
           logEvent(name, details.join(' · '));
