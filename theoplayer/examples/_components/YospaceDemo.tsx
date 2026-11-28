@@ -69,7 +69,7 @@ export default function YospaceDemo(): JSX.Element {
             <span className={styles.eventLogEmpty}>No events reported yet.</span>
           ) : (
             events.map((entry, index) => (
-              <div key={`${entry.time}-${index}`} className={styles.eventLogRow}>
+              <div key={`${entry.time}-${index}`} className={clsx(styles.eventLogRow, entry.event === 'error' && styles.eventLogRowError)}>
                 <span>{entry.time}</span>
                 <span>{entry.event}</span>
                 <span>{entry.details}</span>

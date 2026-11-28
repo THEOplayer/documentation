@@ -125,7 +125,14 @@
           addLogLine(event.type, `Ad ${event.ad.id ?? ''} (${event.ad.duration ?? '?'} s)`);
         });
         player.addEventListener('error', (event) => {
-          addLogLine(event.type, event.errorObject?.message ?? 'unknown');
+          const error = event.errorObject ?? player.errorObject;
+          const code = error?.code;
+          let details = error?.message ?? 'unknown';
+          if (typeof code === 'number') {
+            const name = THEOplayer.ErrorCode?.[code];
+            details = `code ${code}${name ? ` (${name})` : ''} · ${details}`;
+          }
+          addLogLine(event.type, details);
         });
 
         onParentMessage('yospace-stream', ({ stream }) => loadStream(stream));
